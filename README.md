@@ -59,10 +59,14 @@ Run the interactive examples with `npm run demo -- --port 4173`, then open
 <http://127.0.0.1:4173/examples/>. The translated rank tests and their upstream
 coverage mapping are in [`test/`](./test/UPSTREAM-RANK-COVERAGE.md).
 
-## License and attribution
+## Credits and license
 
-This project is distributed under the Mozilla Public License 2.0. It contains
-a TypeScript port of the TALA DAG ranker from D2. See [LICENSE](./LICENSE),
-[NOTICE.md](./NOTICE.md), and [UPSTREAM-AUTHORS.md](./UPSTREAM-AUTHORS.md).
+This layout builds on TALA, D2's graph layout engine from Terrastruct. Thanks
+to the upstream TALA contributors—Alexander Wang, Gavin Nishizawa, and Júlio
+César Batista—for the original work. This is an independent TypeScript port.
 The upstream source is pinned to
 [D2 commit `bf337903`](https://github.com/d2lang/d2/tree/bf33790338b9854cb2a34418e69c17f9abf8de4b/d2layouts/d2talalayout).
+
+This project is distributed under the Mozilla Public License 2.0. See
+[LICENSE](./LICENSE), [NOTICE.md](./NOTICE.md), and
+[UPSTREAM-AUTHORS.md](./UPSTREAM-AUTHORS.md) for license and attribution details.
