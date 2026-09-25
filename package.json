@@ -1,0 +1,58 @@
+{
+  "name": "mermaid-layout-tala",
+  "version": "0.1.0",
+  "description": "TALA-derived hierarchical layout loader for Mermaid flowcharts",
+  "type": "module",
+  "license": "MPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crowecawcaw/mermaid-layout-tala.git"
+  },
+  "homepage": "https://github.com/crowecawcaw/mermaid-layout-tala#readme",
+  "bugs": {
+    "url": "https://github.com/crowecawcaw/mermaid-layout-tala/issues"
+  },
+  "keywords": [
+    "mermaid",
+    "mermaid-layout",
+    "layout-engine",
+    "tala",
+    "typescript",
+    "flowchart"
+  ],
+  "main": "./build/src/index.js",
+  "types": "./build/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./build/src/index.d.ts",
+      "import": "./build/src/index.js"
+    }
+  },
+  "files": [
+    "build",
+    "src",
+    "test",
+    "docs/tala-layout-example.svg",
+    "LICENSE",
+    "UPSTREAM-AUTHORS.md",
+    "NOTICE.md",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run --dir test",
+    "test:rank": "vitest run test/rank.test.ts",
+    "demo": "vite --host 127.0.0.1",
+    "prepack": "npm run build"
+  },
+  "peerDependencies": {
+    "mermaid": ">=12.0.0"
+  },
+  "devDependencies": {
+    "jsdom": "^29.1.1",
+    "mermaid": "^12.0.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.1",
+    "vitest": "^4.1.11"
+  }
+}
