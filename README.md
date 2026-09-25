@@ -59,6 +59,17 @@ Run the interactive examples with `npm run demo -- --port 4173`, then open
 <http://127.0.0.1:4173/examples/>. The translated rank tests and their upstream
 coverage mapping are in [`test/`](./test/UPSTREAM-RANK-COVERAGE.md).
 
+## Releases
+
+Releases use [Release Please](https://github.com/googleapis/release-please-action)
+and Conventional Commits. Commits to `main` update a release PR with the next
+version and changelog; merging that PR creates a GitHub release and publishes
+the package to npm after the build and tests pass.
+
+- `fix:` creates a patch release.
+- `feat:` creates a minor release.
+- Add `!` after the type (for example, `feat!:`) for a breaking major release.
+
 ## Credits and license
 
 This layout builds on TALA, D2's graph layout engine from Terrastruct. Thanks
