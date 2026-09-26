@@ -1,5 +1,5 @@
 import { rankDag, type RankEdge, type RankNode } from './rank.js';
-import { routeGraphEdges } from './route.js';
+import { chooseLabelPoint, routeGraphEdges } from './route.js';
 import { TalaGraph } from './tala/graph.js';
 import { addHubs } from './tala/proximity.js';
 import { countNonSharedCrossings } from './tala/crossings.js';
@@ -11,6 +11,7 @@ import { prescaleNodes } from './tala/prescale.js';
 import { placeFlatClusters } from './tala/flat-cluster-placement.js';
 import { placeFlatSequences } from './tala/flat-sequence-placement.js';
 import { sequenceDefiningEdges } from './tala/sequence-topology.js';
+import { simplifyEdgeRoutes } from './tala/edge-simplify.js';
 import { prepareNodeLabels } from './tala/label-policy.js';
 import { normalizeLayoutResult } from './tala/normalize.js';
 
@@ -352,8 +353,14 @@ function layoutCompoundFlowchart(
 function routeWithConsumedEdges(nodes: readonly PositionedNode[], edges: readonly LayoutEdge[],
   direction: LayoutDirection, consumed: ReadonlySet<string>,
   canonicalTreePaths: ReadonlyMap<string, Point[]> = new Map()): PositionedEdge[] {
-  const routed = routeGraphEdges(nodes, edges.filter((edge) => !consumed.has(edge.id)),
+  const initialRoutes = routeGraphEdges(nodes, edges.filter((edge) => !consumed.has(edge.id)),
     direction, canonicalTreePaths);
+  const beforeById = new Map(initialRoutes.map((edge) => [edge.id, edge]));
+  const routed = simplifyEdgeRoutes(nodes, initialRoutes).map((edge) => {
+    if (edge.points.length === beforeById.get(edge.id)!.points.length) return edge;
+    const point = chooseLabelPoint(edge.points, edge, nodes);
+    return { ...edge, x: point.x, y: point.y };
+  });
   const hidden = edges.filter((edge) => consumed.has(edge.id)).map((edge) => {
     const { labelBBox: _labelBBox, ...withoutLabel } = edge;
     return { ...withoutLabel, points: [] as Point[], x: 0, y: 0 };

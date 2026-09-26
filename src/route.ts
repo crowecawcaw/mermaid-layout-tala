@@ -286,7 +286,7 @@ function normalize(points: Point[]): Point[] {
   return compact;
 }
 
-function chooseLabelPoint(points: readonly Point[], edge: LayoutEdge, nodes: readonly PositionedNode[]): Point {
+export function chooseLabelPoint(points: readonly Point[], edge: LayoutEdge, nodes: readonly PositionedNode[]): Point {
   const lengths: number[] = [];
   let total = 0;
   for (let i = 1; i < points.length; i++) {
