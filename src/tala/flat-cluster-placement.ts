@@ -4,10 +4,16 @@ import { placeOrdinaryNodes } from './ordinary-placement.js';
 import { discoverFlatClusters } from './flat-clusters.js';
 import { activateFlatClusters } from './cluster-topology.js';
 
+export interface PlacedCluster {
+  nodes: string[];
+  arrangement: 'Row' | 'Column';
+  padding: number;
+}
+
 /** The flat ordinary placement path after sibling clusters become vessels. */
 export function placeFlatClusters(nodes: readonly LayoutNode[], edges: readonly LayoutEdge[],
   direction: LayoutDirection, seed: number, ranks: ReadonlyMap<string, number>,
-  constrainDirection = true): PositionedNode[] | undefined {
+  constrainDirection = true, placedClusters?: PlacedCluster[]): PositionedNode[] | undefined {
   const discovery = discoverFlatClusters(nodes, edges, seed);
   if (discovery.clusters.length === 0) return;
   const byId = new Map(nodes.map((node) => [node.id, node]));
@@ -94,5 +100,8 @@ export function placeFlatClusters(nodes: readonly LayoutNode[], edges: readonly 
     row.forEach((node, index) => { node.order = index; });
   }
   active.restore();
+  if (placedClusters) for (const cluster of discovery.clusters) placedClusters.push({
+    nodes: [...cluster.nodes], arrangement: cluster.arrangement, padding: cluster.padding,
+  });
   return nodes.map((node) => placed.get(node.id)!);
 }

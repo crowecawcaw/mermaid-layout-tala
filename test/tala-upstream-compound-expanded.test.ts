@@ -29,7 +29,7 @@ describe('expanded compound pipeline oracle', () => {
     });
   }
 
-  it('matches upstream node boxes and route shapes in the multiple-boundary graph', () => {
+  it('matches complete upstream output for the multiple-boundary graph', () => {
     const input = cases.find((item) => item.name === 'multiple-boundary-edges')!;
     const oracle = expected.find((item) => item.name === input.name)!;
     const actual = layoutFlowchart(input.nodes, input.edges,
@@ -37,14 +37,9 @@ describe('expanded compound pipeline oracle', () => {
     expect(actual.nodes.map((node) => ({ id: node.id,
       x: node.x - node.width / 2, y: node.y - node.height / 2,
       width: node.width, height: node.height }))).toEqual(oracle.nodes);
-    for (const edge of actual.edges.filter((item) => item.id !== 'ax')) {
+    for (const edge of actual.edges) {
       expect(edge.points).toEqual(oracle.edges.find((item) => item.id === edge.id)!.points);
     }
-    const ax = actual.edges.find((item) => item.id === 'ax')!.points;
-    const expectedAx = oracle.edges.find((item) => item.id === 'ax')!.points;
-    expect(ax.map((point) => point.x)).toEqual(expectedAx.map((point) => point.x));
-    expect(ax[0]!.y).toBe(expectedAx[0]!.y);
-    expect(ax.slice(1).map((point) => point.y - expectedAx[1]!.y)).toEqual([1, 1]);
   });
 
   it('packs the empty nested container and connected siblings like upstream', () => {
@@ -65,17 +60,18 @@ describe('expanded compound pipeline oracle', () => {
     expect((x.x - x.width / 2) - expectedX.x).toBe(-12);
   });
 
-  it('places a clustered diamond inside a container without losing parent ownership', () => {
+  it('matches complete upstream output for a clustered container diamond', () => {
     const input = cases.find((item) => item.name === 'container-diamond')!;
     const oracle = expected.find((item) => item.name === input.name)!;
     const actual = layoutFlowchart(input.nodes, input.edges,
       { strategy: 'tala', direction: input.direction, seeds: [input.seed] });
+    expect(actual.nodes.map((node) => ({ id: node.id,
+      x: node.x - node.width / 2, y: node.y - node.height / 2,
+      width: node.width, height: node.height }))).toEqual(oracle.nodes);
+    for (const edge of actual.edges) {
+      expect(edge.points).toEqual(oracle.edges.find((item) => item.id === edge.id)!.points);
+    }
     const group = actual.nodes.find((node) => node.id === 'Group')!;
-    const outside = actual.nodes.find((node) => node.id === 'Outside')!;
-    expect(group.width).toBe(oracle.nodes.find((node) => node.id === 'Group')!.width);
-    expect(group.height).toBe(oracle.nodes.find((node) => node.id === 'Group')!.height);
-    expect(outside.x - outside.width / 2)
-      .toBe(oracle.nodes.find((node) => node.id === 'Outside')!.x);
     for (const node of actual.nodes.filter((item) => item.parentId === 'Group')) {
       expect(node.x - node.width / 2).toBeGreaterThanOrEqual(group.x - group.width / 2);
       expect(node.x + node.width / 2).toBeLessThanOrEqual(group.x + group.width / 2);

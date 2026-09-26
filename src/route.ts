@@ -168,11 +168,12 @@ function port(node: PositionedNode, side: Side, offset: number, columnIndex?: nu
 
 function searchGrid(start: Point, end: Point, obstacles: readonly Rect[],
   startSide: Side, endSide: Side): Point[] | undefined {
-  const xs = uniqueSorted([start.x, end.x, (start.x + end.x) / 2,
+  const midX = (start.x + end.x) / 2, midY = (start.y + end.y) / 2;
+  const xs = uniqueSorted([start.x, end.x, midX,
     ...obstacles.flatMap((box) => [box.left, box.right]),
     Math.min(start.x, end.x, ...obstacles.map((box) => box.left)) - CLEARANCE,
     Math.max(start.x, end.x, ...obstacles.map((box) => box.right)) + CLEARANCE]);
-  const ys = uniqueSorted([start.y, end.y, (start.y + end.y) / 2,
+  const ys = uniqueSorted([start.y, end.y, midY,
     ...obstacles.flatMap((box) => [box.top, box.bottom]),
     Math.min(start.y, end.y, ...obstacles.map((box) => box.top)) - CLEARANCE,
     Math.max(start.y, end.y, ...obstacles.map((box) => box.bottom)) + CLEARANCE]);
@@ -219,8 +220,13 @@ function searchGrid(start: Point, end: Point, obstacles: readonly Rect[],
       const a = { x: xs[x]!, y: ys[y]! }, b = { x: xs[nx]!, y: ys[ny]! };
       if (segmentBlocked(a, b, obstacles)) continue;
       const next = neighbor * 3 + nextAxis;
+      const turns = axis !== 0 && axis !== nextAxis;
+      // When several shortest orthogonal routes tie, place the bend near the
+      // midpoint of the clear channel, as Tala's route graph does.
+      const midpointTie = turns ? (axis === 1 ? Math.abs(a.x - midX)
+        : Math.abs(a.y - midY)) * 1e-6 : 0;
       const candidate = item.cost + Math.abs(a.x - b.x) + Math.abs(a.y - b.y)
-        + (axis !== 0 && axis !== nextAxis ? BEND_COST : 0);
+        + (turns ? BEND_COST : 0) + midpointTie;
       if (candidate < distances[next]!) {
         distances[next] = candidate;
         previous[next] = state;

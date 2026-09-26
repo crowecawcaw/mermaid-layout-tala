@@ -9,7 +9,8 @@ import { placeSimpleTree } from './tala/simple-tree.js';
 import { extractFlatTrees, type TreeExtraction } from './tala/tree-extraction.js';
 import { canonicalTreePaths } from './tala/tree-routing.js';
 import { prescaleNodes } from './tala/prescale.js';
-import { placeFlatClusters } from './tala/flat-cluster-placement.js';
+import { placeFlatClusters, type PlacedCluster } from './tala/flat-cluster-placement.js';
+import { activateFlatClusters } from './tala/cluster-topology.js';
 import { placeFlatSequences } from './tala/flat-sequence-placement.js';
 import { sequenceDefiningEdges } from './tala/sequence-topology.js';
 import { simplifyEdgeRoutes } from './tala/edge-simplify.js';
@@ -151,7 +152,8 @@ function layoutFlatFlowchart(
   seed = 1,
   constrainDirection = true,
   endpointReplacements: ReadonlyMap<string, EdgeEndpointReplacements> = new Map(),
-  projectedChildren: ReadonlyMap<string, readonly ProjectedChildGeometry[]> = new Map()
+  projectedChildren: ReadonlyMap<string, readonly ProjectedChildGeometry[]> = new Map(),
+  placedClusters?: PlacedCluster[]
 ): LayoutResult {
   const direction = options.direction ?? 'TB';
   const nodeSpacing = finiteSpacing(options.nodeSpacing ?? 48, 'nodeSpacing');
@@ -202,7 +204,7 @@ function layoutFlatFlowchart(
       extraction: extractFlatTrees(component, componentEdges) });
     const cluster = useOrdinary && !sequence && !tree && !hasFixed && component.every((node) => !node.isGroup)
       ? placeFlatClusters(component, componentEdges, direction, seed, ranks,
-        constrainDirection) : undefined;
+        constrainDirection, placedClusters) : undefined;
     const fixedSingleton = useOrdinary && component.length === 1 && component[0]!.fixedTopLeft
       ? [{ ...component[0]!, x: component[0]!.fixedTopLeft!.x + component[0]!.width / 2,
         y: component[0]!.fixedTopLeft!.y + component[0]!.height / 2,
@@ -317,7 +319,7 @@ function layoutCompoundFlowchart(
     siblings.push(node);
     children.set(node.parentId, siblings);
   }
-  interface Scope { width: number; height: number; positioned: PositionedNode[] }
+  interface Scope { width: number; height: number; positioned: PositionedNode[]; clusters: PlacedCluster[] }
   const active = new Set<string>();
   const placeScope = (parentId: string | undefined, direction: LayoutDirection): Scope => {
     if (parentId) {
@@ -328,7 +330,7 @@ function layoutCompoundFlowchart(
     if (parentId && siblingNodes.length === 0) {
       const empty = byId.get(parentId)!;
       active.delete(parentId);
-      return { width: empty.width, height: empty.height, positioned: [] };
+      return { width: empty.width, height: empty.height, positioned: [], clusters: [] };
     }
     const nested = new Map<string, Scope>();
     const measured = siblingNodes.map((node) => {
@@ -377,9 +379,10 @@ function layoutCompoundFlowchart(
     projection.restore();
     // Upstream only records an interior direction when the container declares
     // one. The LR axis below is a presentation fallback for ranks and packing.
+    const localClusters: PlacedCluster[] = [];
     const flat = layoutFlatFlowchart(measured, projected, { ...options, direction }, seed,
       parentId === undefined || byId.get(parentId)?.dir !== undefined,
-      endpointReplacements, projectedChildren);
+      endpointReplacements, projectedChildren, localClusters);
     const box = bounds(flat.nodes);
     const group = parentId ? byId.get(parentId)! : undefined;
     const padding = 60;
@@ -402,9 +405,11 @@ function layoutCompoundFlowchart(
       }
     }
     if (parentId) active.delete(parentId);
-    return { width, height, positioned };
+    return { width, height, positioned,
+      clusters: [...nested.values()].flatMap((scope) => scope.clusters).concat(localClusters) };
   };
-  const placed = placeScope(undefined, options.direction ?? 'TB').positioned;
+  const rootScope = placeScope(undefined, options.direction ?? 'TB');
+  const placed = rootScope.positioned;
   const useTala = options.strategy === 'tala' || options.strategy !== 'layered'
     && options.nodeSpacing === undefined && options.rankSpacing === undefined
     && options.orderingPasses === undefined;
@@ -417,15 +422,37 @@ function layoutCompoundFlowchart(
       node.topLeft = { x: positioned.x - positioned.width / 2,
         y: positioned.y - positioned.height / 2 };
     }
+    const usedIds = new Set(placedById.keys());
+    const specifications = rootScope.clusters.map((cluster, index) => {
+      let vesselId = `__tala_compound_cluster_${index}`;
+      while (usedIds.has(vesselId)) vesselId += '_';
+      usedIds.add(vesselId);
+      return { ...cluster, vesselId };
+    });
+    const clustered = specifications.length
+      ? activateFlatClusters(alignmentGraph, specifications) : undefined;
+    clustered?.clusters.forEach((cluster, index) => {
+      const members = specifications[index]!.nodes.map((id) => placedById.get(id)!);
+      cluster.vessel.topLeft = {
+        x: Math.min(...members.map((node) => node.x - node.width / 2)),
+        y: Math.min(...members.map((node) => node.y - node.height / 2)),
+      };
+      cluster.syncGeometry();
+    });
     const alignmentScore = (graph: TalaGraph) => ordinaryPlacementEdgeLength(graph)
       + containerAlignmentCost(graph);
-    let changed = transposeLeaves(alignmentGraph);
-    changed = alignAxesPass(alignmentGraph, alignmentScore) || changed;
-    changed = normalizeGaps(alignmentGraph) || changed;
-    changed = alignAxesPass(alignmentGraph, alignmentScore) || changed;
-    changed = balanceSymmetry(alignmentGraph) || changed;
-    changed = equidistance(alignmentGraph) || changed;
-    changed = alignAxesPass(alignmentGraph, alignmentScore) || changed;
+    let changed = false;
+    try {
+      changed = transposeLeaves(alignmentGraph);
+      changed = alignAxesPass(alignmentGraph, alignmentScore) || changed;
+      changed = normalizeGaps(alignmentGraph) || changed;
+      changed = alignAxesPass(alignmentGraph, alignmentScore) || changed;
+      changed = balanceSymmetry(alignmentGraph) || changed;
+      changed = equidistance(alignmentGraph) || changed;
+      changed = alignAxesPass(alignmentGraph, alignmentScore) || changed;
+    } finally {
+      clustered?.restore();
+    }
     if (changed) {
       const aligned = new Map(alignmentGraph.nodes.map((node) => [node.id, node]));
       for (const node of placed) {
