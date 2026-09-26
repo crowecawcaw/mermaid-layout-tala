@@ -8,7 +8,8 @@ export function sizedTurnCost(graph: TalaGraph): number {
 }
 
 /** Ordinary-node branch of placementcost.NodeEdgeLength with sized geometry. */
-export function sizedNodeEdgeLength(node: TalaNode, graph: TalaGraph, turnCost = sizedTurnCost(graph)): number {
+export function sizedNodeEdgeLength(node: TalaNode, graph: TalaGraph,
+  turnCost = sizedTurnCost(graph), penalizeDirection = true): number {
   if (!node.topLeft) throw new Error(`node ${node.id} has no position`);
   const preferred = graph.directions.get(node.parent);
   const direction: Orientation = preferred === 'TB' ? 'Bottom'
@@ -71,7 +72,7 @@ export function sizedNodeEdgeLength(node: TalaNode, graph: TalaGraph, turnCost =
     }
     if (blocked) distance += turnCost * (diagonal ? 1
       : semiDiagonal && !semiDiagonalAlternateBlocked(node, other, orientation, blockers.slice(firstBlockedIndex)) ? 1 : 2);
-    if (edge.directed || preferred) {
+    if (penalizeDirection && (edge.directed || preferred)) {
       const edgeDirection = edge.from === node ? opposite(orientation) : orientation;
       const preferredCompass = directionCompass(direction), edgeCompass = directionCompass(edgeDirection);
       let delta = Math.abs(compassDelta(preferredCompass, edgeCompass));

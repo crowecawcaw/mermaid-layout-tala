@@ -73,4 +73,15 @@ describe('pinned upstream compound-layout interiors', () => {
       x: node.x - node.width / 2, y: node.y - node.height / 2,
       width: node.width, height: node.height }))).toEqual(oracle.nodes);
   });
+
+  it('matches all upstream node positions and sizes for linked containers', () => {
+    const input = cases.find((item) => item.name === 'two-container-links')!;
+    const oracle = expected.find((item) => item.name === input.name)!;
+    const actual = layoutFlowchart(input.nodes, input.edges,
+      { strategy: 'tala', direction: input.direction, seeds: [input.seed] });
+    const byId = new Map(actual.nodes.map((node) => [node.id, node]));
+    expect(oracle.nodes.map(({ id }) => byId.get(id)!).map((node) => ({ id: node.id,
+      x: node.x - node.width / 2, y: node.y - node.height / 2,
+      width: node.width, height: node.height }))).toEqual(oracle.nodes);
+  });
 });

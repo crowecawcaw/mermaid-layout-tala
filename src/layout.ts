@@ -18,6 +18,8 @@ import { normalizeLayoutResult } from './tala/normalize.js';
 import { alignAxesPass } from './tala/alignment-search.js';
 import { ordinaryPlacementEdgeLength } from './tala/placement-edge-length.js';
 import { containerAlignmentCost } from './tala/container-alignment-cost.js';
+import { normalizeGaps } from './tala/gap-normalization.js';
+import { equidistance } from './tala/equidistance.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
@@ -353,10 +355,18 @@ function layoutCompoundFlowchart(
     }
     const alignmentScore = (graph: TalaGraph) => ordinaryPlacementEdgeLength(graph)
       + containerAlignmentCost(graph);
-    if (alignAxesPass(alignmentGraph, alignmentScore)) {
+    let changed = alignAxesPass(alignmentGraph, alignmentScore);
+    changed = normalizeGaps(alignmentGraph) || changed;
+    changed = alignAxesPass(alignmentGraph, alignmentScore) || changed;
+    changed = equidistance(alignmentGraph) || changed;
+    changed = alignAxesPass(alignmentGraph, alignmentScore) || changed;
+    if (changed) {
       const aligned = new Map(alignmentGraph.nodes.map((node) => [node.id, node]));
       for (const node of placed) {
-        const topLeft = aligned.get(node.id)!.topLeft!;
+        const current = aligned.get(node.id)!;
+        const topLeft = current.topLeft!;
+        node.width = current.width;
+        node.height = current.height;
         node.x = topLeft.x + node.width / 2;
         node.y = topLeft.y + node.height / 2;
       }
