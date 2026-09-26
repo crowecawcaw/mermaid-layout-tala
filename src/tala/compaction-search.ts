@@ -2,7 +2,7 @@ import type { Point } from '../layout.js';
 import { compactionCandidateMoves, inflateAlongAxis, nearestVisibilityPredecessor, visibilityEdges, type CompactionAxis, type VisibilityEdge } from './compaction.js';
 import { TalaGraph, TalaNode } from './graph.js';
 import { doesOverlapAt } from './overlap.js';
-import { sizedNodeEdgeLength, sizedTurnCost } from './sized-cost.js';
+import { sizedNodeEdgeLength } from './sized-cost.js';
 import { sizelessNodeEdgeLength } from './sizeless-cost.js';
 import { nodeSymmetry } from './symmetry.js';
 
@@ -23,7 +23,7 @@ export function compactOrdinaryGraph(graph: TalaGraph, options: OrdinaryCompacti
     inflateAlongAxis(graph, options.axis, options.includeSizes, options.factor, visible, !!options.transition);
     if (options.transition) return;
     // Upstream caches this cost at its first use, after inflation.
-    const turnCost = options.includeSizes ? sizedTurnCost(graph) * 2 : 0;
+    const turnCost = options.includeSizes ? graph.turnCost() : 0;
     const cost = (node: TalaNode): number => options.includeSizes
       ? sizedNodeEdgeLength(node, graph, turnCost)
       : sizelessNodeEdgeLength(node, graph);

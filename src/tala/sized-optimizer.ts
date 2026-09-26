@@ -3,7 +3,7 @@ import { GoRandom } from './go-rng.js';
 import { TalaGraph, TalaNode } from './graph.js';
 import { doesOverlapAt } from './overlap.js';
 import { closestSizedUnoccupiedDistance, sizedPlacementPoints } from './sized-candidates.js';
-import { sizedNodeEdgeLength, sizedTurnCost } from './sized-cost.js';
+import { sizedNodeEdgeLength } from './sized-cost.js';
 import { nodeSymmetry } from './symmetry.js';
 
 const precision = 1e-6;
@@ -36,7 +36,7 @@ export class SizedOptimizer {
 
   constructor(private readonly graph: TalaGraph, private readonly random: GoRandom,
     score?: (node: TalaNode) => number) {
-    const turnCost = sizedTurnCost(graph);
+    const turnCost = graph.turnCost();
     this.score = score ?? ((node) => sizedNodeEdgeLength(node, graph, turnCost)
       - nodeSymmetry(node, graph) * graph.cellSize * node.edges.length);
   }

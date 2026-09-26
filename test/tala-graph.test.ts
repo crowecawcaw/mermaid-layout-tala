@@ -29,6 +29,23 @@ describe('TALA graph model', () => {
     expect(mixed.cellSize).toBe(30);
   });
 
+  it('caches, halves, clones, and resets the upstream turn cost', () => {
+    const graph = TalaGraph.fromFlowchart(
+      ['a', 'b'].map((id) => ({ id, width: 40, height: 20 })),
+      [{ id: 'ab', from: 'a', to: 'b' }], 'LR'
+    );
+    graph.nodes[0]!.topLeft = { x: 0, y: 0 };
+    graph.nodes[1]!.topLeft = { x: 140, y: 0 };
+    expect(graph.turnCost()).toBe(12.5);
+    graph.halveTurnCost();
+    expect(graph.turnCost()).toBe(6.25);
+    graph.nodes[1]!.topLeft = { x: 300, y: 0 };
+    expect(graph.turnCost()).toBe(6.25);
+    expect(graph.clone().turnCost()).toBe(6.25);
+    graph.resetTurnCost();
+    expect(graph.turnCost()).toBe(32.5);
+  });
+
   it('clones topology and geometry without sharing mutable records', () => {
     const original = TalaGraph.fromFlowchart(
       [

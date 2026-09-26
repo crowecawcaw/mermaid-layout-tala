@@ -1,21 +1,10 @@
 import type { Point } from '../layout.js';
 import { TalaGraph, TalaNode } from './graph.js';
-import { ConnectedNodeGap } from './geometry-policy.js';
-import { SideEdgeSpacing, compassAxisDelta, compassDelta, directionCompass, distanceBetweenBoxes, distanceToPoint, placementDistance, sizedOrientation, type Orientation } from './placement-geometry.js';
+import { SideEdgeSpacing, compassAxisDelta, compassDelta, directionCompass, distanceToPoint, placementDistance, sizedOrientation, type Orientation } from './placement-geometry.js';
 
 /** The sized phase halves TALA's cached turn cost after sizeless placement. */
 export function sizedTurnCost(graph: TalaGraph): number {
-  let longest = 0;
-  let hasPositionedEdge = false;
-  for (const edge of graph.edges) {
-    if (!edge.from.topLeft || !edge.to.topLeft) continue;
-    hasPositionedEdge = true;
-    longest = Math.max(longest, distanceBetweenBoxes(
-      { topLeft: edge.from.topLeft, width: edge.from.width, height: edge.from.height },
-      { topLeft: edge.to.topLeft, width: edge.to.width, height: edge.to.height },
-    ));
-  }
-  return hasPositionedEdge ? 0.0625 * graph.edges.length * Math.max(ConnectedNodeGap, longest) : 0;
+  return graph.turnCost() / 2;
 }
 
 /** Ordinary-node branch of placementcost.NodeEdgeLength with sized geometry. */
