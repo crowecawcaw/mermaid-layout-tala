@@ -28,6 +28,7 @@ import { balanceSymmetry } from './tala/balance-symmetry.js';
 import { directOrdinaryGraph } from './tala/direct.js';
 import { combineSubgraphs } from './tala/combine-subgraphs.js';
 import { dejitterTreeRoutes } from './tala/dejitter.js';
+import { discoverFlatHierarchy, placeFlatHierarchy } from './tala/hierarchy-flat.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
@@ -203,14 +204,20 @@ function layoutFlatFlowchart(
       ? placeSimpleTree(component, componentEdges, direction, ranks) : undefined;
     if (tree) treeComponents.push({ ids: componentIds, edges: componentEdges,
       extraction: extractFlatTrees(component, componentEdges) });
-    const cluster = useOrdinary && !sequence && !tree && !hasFixed && component.every((node) => !node.isGroup)
+    const hierarchyLevels = useOrdinary && !sequence && !tree && !hasFixed
+      && component.every((node) => !node.isGroup)
+      && extractFlatTrees(component, componentEdges).remaining.length === component.length
+      ? discoverFlatHierarchy(component, componentEdges, direction) : undefined;
+    const hierarchy = hierarchyLevels
+      ? placeFlatHierarchy(component, componentEdges, hierarchyLevels, direction, seed) : undefined;
+    const cluster = useOrdinary && !sequence && !tree && !hierarchy && !hasFixed && component.every((node) => !node.isGroup)
       ? placeFlatClusters(component, componentEdges, direction, seed, ranks,
         constrainDirection, placedClusters) : undefined;
     const fixedSingleton = useOrdinary && component.length === 1 && component[0]!.fixedTopLeft
       ? [{ ...component[0]!, x: component[0]!.fixedTopLeft!.x + component[0]!.width / 2,
         y: component[0]!.fixedTopLeft!.y + component[0]!.height / 2,
         rank: 0, order: 0 }] : undefined;
-    const localNodes = sequence ?? tree ?? cluster ?? fixedSingleton ?? (useOrdinary && component.length > 1
+    const localNodes = sequence ?? tree ?? hierarchy ?? cluster ?? fixedSingleton ?? (useOrdinary && component.length > 1
       ? positionOrdinaryComponent(component, componentEdges, ranks, direction, seed,
         constrainDirection, endpointReplacements, projectedChildren)
       : positionComponent(component, weightedDag, ranks, nodeSpacing, rankSpacing, passes, direction, seed));

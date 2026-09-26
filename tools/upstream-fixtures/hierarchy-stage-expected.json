@@ -1,0 +1,100 @@
+[
+  {
+    "name": "branched-workflow-tb",
+    "nodes": [
+      {
+        "id": "A",
+        "x": 100,
+        "y": 0,
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "B",
+        "x": 200,
+        "y": 130,
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "C",
+        "x": 0,
+        "y": 130,
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "D",
+        "x": 0,
+        "y": 260,
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "E",
+        "x": 200,
+        "y": 260,
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "F",
+        "x": 100,
+        "y": 390,
+        "width": 80,
+        "height": 40
+      }
+    ]
+  },
+  {
+    "name": "branched-workflow-lr",
+    "nodes": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 80,
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "B",
+        "x": 170,
+        "y": 160,
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "C",
+        "x": 170,
+        "y": 0,
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "D",
+        "x": 340,
+        "y": 0,
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "E",
+        "x": 340,
+        "y": 160,
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "F",
+        "x": 510,
+        "y": 80,
+        "width": 80,
+        "height": 40
+      }
+    ]
+  },
+  {
+    "name": "diamond-not-hierarchy",
+    "nodes": []
+  }
+]

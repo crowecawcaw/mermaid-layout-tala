@@ -5,6 +5,19 @@ node placement costs. The browser and published package do not use this harness.
 
 Source revision: `bf33790338b9854cb2a34418e69c17f9abf8de4b`.
 
+`hierarchy-stage-oracle_test.go` records the graph after upstream
+`PreprocessHierarchies`. Copy it into the pinned checkout's `internal/engine`
+package as `ts_hierarchy_stage_oracle_test.go`. Set
+`TALA_TS_HIERARCHY_INPUT` and `TALA_TS_HIERARCHY_OUTPUT` to absolute input and
+output paths, then run
+`go test ./d2layouts/d2talalayout/internal/engine -run '^TestTSHierarchyStageFixtures$' -count=1`.
+The curated pair is `hierarchy-cases.json` / `hierarchy-stage-expected.json`;
+`node generate-hierarchy-cases.mjs` recreates the twelve varied inputs in
+`hierarchy-generated-cases.json`, whose stage output is
+`hierarchy-generated-stage-expected.json`. The complete pipeline oracle also
+produces `hierarchy-expected.json` and `hierarchy-generated-expected.json`.
+The TypeScript parity test is `test/tala-upstream-hierarchy.test.ts`.
+
 `prescale-oracle_test.go` records upstream `placement.Prescale` for the eight
 inputs in `prescale-cases.json`. Copy it into the pinned checkout's
 `internal/engine` package as `ts_prescale_fixture_test.go`. Set

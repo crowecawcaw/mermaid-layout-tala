@@ -1,0 +1,1580 @@
+[
+  {
+    "name": "layered-1",
+    "direction": "TB",
+    "seed": 1,
+    "nodes": [
+      {
+        "id": "L0_0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "L1_0",
+        "width": 111,
+        "height": 57
+      },
+      {
+        "id": "L1_1",
+        "width": 77,
+        "height": 48
+      },
+      {
+        "id": "L2_0",
+        "width": 128,
+        "height": 39
+      },
+      {
+        "id": "L2_1",
+        "width": 94,
+        "height": 30
+      },
+      {
+        "id": "L3_0",
+        "width": 60,
+        "height": 57
+      }
+    ],
+    "edges": [
+      {
+        "id": "e001",
+        "from": "L0_0",
+        "to": "L1_0",
+        "directed": true
+      },
+      {
+        "id": "e002",
+        "from": "L0_0",
+        "to": "L1_1",
+        "directed": true
+      },
+      {
+        "id": "e003",
+        "from": "L1_0",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e004",
+        "from": "L1_0",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e005",
+        "from": "L1_1",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e006",
+        "from": "L1_1",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e007",
+        "from": "L2_0",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e008",
+        "from": "L2_1",
+        "to": "L3_0",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "layered-2",
+    "direction": "LR",
+    "seed": 2,
+    "nodes": [
+      {
+        "id": "L0_0",
+        "width": 94,
+        "height": 57
+      },
+      {
+        "id": "L1_0",
+        "width": 60,
+        "height": 48
+      },
+      {
+        "id": "L1_1",
+        "width": 111,
+        "height": 39
+      },
+      {
+        "id": "L2_0",
+        "width": 77,
+        "height": 30
+      },
+      {
+        "id": "L2_1",
+        "width": 128,
+        "height": 57
+      },
+      {
+        "id": "L3_0",
+        "width": 94,
+        "height": 48
+      }
+    ],
+    "edges": [
+      {
+        "id": "e001",
+        "from": "L0_0",
+        "to": "L1_0",
+        "directed": true
+      },
+      {
+        "id": "e002",
+        "from": "L0_0",
+        "to": "L1_1",
+        "directed": true
+      },
+      {
+        "id": "e003",
+        "from": "L1_0",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e004",
+        "from": "L1_0",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e005",
+        "from": "L1_1",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e006",
+        "from": "L1_1",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e007",
+        "from": "L2_0",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e008",
+        "from": "L2_1",
+        "to": "L3_0",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "layered-3",
+    "direction": "TB",
+    "seed": 3,
+    "nodes": [
+      {
+        "id": "L0_0",
+        "width": 128,
+        "height": 48
+      },
+      {
+        "id": "L1_0",
+        "width": 94,
+        "height": 39
+      },
+      {
+        "id": "L1_1",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "L1_2",
+        "width": 111,
+        "height": 57
+      },
+      {
+        "id": "L2_0",
+        "width": 77,
+        "height": 48
+      },
+      {
+        "id": "L2_1",
+        "width": 128,
+        "height": 39
+      },
+      {
+        "id": "L2_2",
+        "width": 94,
+        "height": 30
+      },
+      {
+        "id": "L3_0",
+        "width": 60,
+        "height": 57
+      }
+    ],
+    "edges": [
+      {
+        "id": "e001",
+        "from": "L0_0",
+        "to": "L1_0",
+        "directed": true
+      },
+      {
+        "id": "e002",
+        "from": "L0_0",
+        "to": "L1_1",
+        "directed": true
+      },
+      {
+        "id": "e003",
+        "from": "L0_0",
+        "to": "L1_2",
+        "directed": true
+      },
+      {
+        "id": "e004",
+        "from": "L1_0",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e005",
+        "from": "L1_0",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e006",
+        "from": "L1_0",
+        "to": "L2_2",
+        "directed": true
+      },
+      {
+        "id": "e007",
+        "from": "L1_1",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e008",
+        "from": "L1_1",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e009",
+        "from": "L1_1",
+        "to": "L2_2",
+        "directed": true
+      },
+      {
+        "id": "e010",
+        "from": "L1_2",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e011",
+        "from": "L1_2",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e012",
+        "from": "L1_2",
+        "to": "L2_2",
+        "directed": true
+      },
+      {
+        "id": "e013",
+        "from": "L2_0",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e014",
+        "from": "L2_1",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e015",
+        "from": "L2_2",
+        "to": "L3_0",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "layered-4",
+    "direction": "RL",
+    "seed": 1,
+    "nodes": [
+      {
+        "id": "L0_0",
+        "width": 77,
+        "height": 39
+      },
+      {
+        "id": "L1_0",
+        "width": 128,
+        "height": 30
+      },
+      {
+        "id": "L1_1",
+        "width": 94,
+        "height": 57
+      },
+      {
+        "id": "L1_2",
+        "width": 60,
+        "height": 48
+      },
+      {
+        "id": "L2_0",
+        "width": 111,
+        "height": 39
+      },
+      {
+        "id": "L2_1",
+        "width": 77,
+        "height": 30
+      },
+      {
+        "id": "L2_2",
+        "width": 128,
+        "height": 57
+      },
+      {
+        "id": "L3_0",
+        "width": 94,
+        "height": 48
+      }
+    ],
+    "edges": [
+      {
+        "id": "e001",
+        "from": "L0_0",
+        "to": "L1_0",
+        "directed": true
+      },
+      {
+        "id": "e002",
+        "from": "L0_0",
+        "to": "L1_1",
+        "directed": true
+      },
+      {
+        "id": "e003",
+        "from": "L0_0",
+        "to": "L1_2",
+        "directed": true
+      },
+      {
+        "id": "e004",
+        "from": "L1_0",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e005",
+        "from": "L1_0",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e006",
+        "from": "L1_0",
+        "to": "L2_2",
+        "directed": true
+      },
+      {
+        "id": "e007",
+        "from": "L1_1",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e008",
+        "from": "L1_1",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e009",
+        "from": "L1_1",
+        "to": "L2_2",
+        "directed": true
+      },
+      {
+        "id": "e010",
+        "from": "L1_2",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e011",
+        "from": "L1_2",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e012",
+        "from": "L1_2",
+        "to": "L2_2",
+        "directed": true
+      },
+      {
+        "id": "e013",
+        "from": "L2_0",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e014",
+        "from": "L2_1",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e015",
+        "from": "L2_2",
+        "to": "L3_0",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "layered-5",
+    "direction": "BT",
+    "seed": 2,
+    "nodes": [
+      {
+        "id": "L0_0",
+        "width": 111,
+        "height": 30
+      },
+      {
+        "id": "L1_0",
+        "width": 77,
+        "height": 57
+      },
+      {
+        "id": "L1_1",
+        "width": 128,
+        "height": 48
+      },
+      {
+        "id": "L2_0",
+        "width": 94,
+        "height": 39
+      },
+      {
+        "id": "L2_1",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "L2_2",
+        "width": 111,
+        "height": 57
+      },
+      {
+        "id": "L3_0",
+        "width": 77,
+        "height": 48
+      },
+      {
+        "id": "L3_1",
+        "width": 128,
+        "height": 39
+      },
+      {
+        "id": "L4_0",
+        "width": 94,
+        "height": 30
+      }
+    ],
+    "edges": [
+      {
+        "id": "e001",
+        "from": "L0_0",
+        "to": "L1_0",
+        "directed": true
+      },
+      {
+        "id": "e002",
+        "from": "L0_0",
+        "to": "L1_1",
+        "directed": true
+      },
+      {
+        "id": "e003",
+        "from": "L1_0",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e004",
+        "from": "L1_0",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e005",
+        "from": "L1_0",
+        "to": "L2_2",
+        "directed": true
+      },
+      {
+        "id": "e006",
+        "from": "L1_1",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e007",
+        "from": "L1_1",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e008",
+        "from": "L1_1",
+        "to": "L2_2",
+        "directed": true
+      },
+      {
+        "id": "e009",
+        "from": "L2_0",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e010",
+        "from": "L2_0",
+        "to": "L3_1",
+        "directed": true
+      },
+      {
+        "id": "e011",
+        "from": "L2_1",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e012",
+        "from": "L2_1",
+        "to": "L3_1",
+        "directed": true
+      },
+      {
+        "id": "e013",
+        "from": "L2_2",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e014",
+        "from": "L2_2",
+        "to": "L3_1",
+        "directed": true
+      },
+      {
+        "id": "e015",
+        "from": "L3_0",
+        "to": "L4_0",
+        "directed": true
+      },
+      {
+        "id": "e016",
+        "from": "L3_1",
+        "to": "L4_0",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "layered-6",
+    "direction": "LR",
+    "seed": 3,
+    "nodes": [
+      {
+        "id": "L0_0",
+        "width": 60,
+        "height": 57
+      },
+      {
+        "id": "L1_0",
+        "width": 111,
+        "height": 48
+      },
+      {
+        "id": "L1_1",
+        "width": 77,
+        "height": 39
+      },
+      {
+        "id": "L2_0",
+        "width": 128,
+        "height": 30
+      },
+      {
+        "id": "L2_1",
+        "width": 94,
+        "height": 57
+      },
+      {
+        "id": "L2_2",
+        "width": 60,
+        "height": 48
+      },
+      {
+        "id": "L3_0",
+        "width": 111,
+        "height": 39
+      },
+      {
+        "id": "L3_1",
+        "width": 77,
+        "height": 30
+      },
+      {
+        "id": "L4_0",
+        "width": 128,
+        "height": 57
+      }
+    ],
+    "edges": [
+      {
+        "id": "e001",
+        "from": "L0_0",
+        "to": "L1_0",
+        "directed": true
+      },
+      {
+        "id": "e002",
+        "from": "L0_0",
+        "to": "L1_1",
+        "directed": true
+      },
+      {
+        "id": "e003",
+        "from": "L1_0",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e004",
+        "from": "L1_0",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e005",
+        "from": "L1_0",
+        "to": "L2_2",
+        "directed": true
+      },
+      {
+        "id": "e006",
+        "from": "L1_1",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e007",
+        "from": "L1_1",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e008",
+        "from": "L1_1",
+        "to": "L2_2",
+        "directed": true
+      },
+      {
+        "id": "e009",
+        "from": "L2_0",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e010",
+        "from": "L2_0",
+        "to": "L3_1",
+        "directed": true
+      },
+      {
+        "id": "e011",
+        "from": "L2_1",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e012",
+        "from": "L2_1",
+        "to": "L3_1",
+        "directed": true
+      },
+      {
+        "id": "e013",
+        "from": "L2_2",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e014",
+        "from": "L2_2",
+        "to": "L3_1",
+        "directed": true
+      },
+      {
+        "id": "e015",
+        "from": "L3_0",
+        "to": "L4_0",
+        "directed": true
+      },
+      {
+        "id": "e016",
+        "from": "L3_1",
+        "to": "L4_0",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "layered-7",
+    "direction": "TB",
+    "seed": 2,
+    "nodes": [
+      {
+        "id": "L0_0",
+        "width": 94,
+        "height": 48
+      },
+      {
+        "id": "L1_0",
+        "width": 60,
+        "height": 39
+      },
+      {
+        "id": "L1_1",
+        "width": 111,
+        "height": 30
+      },
+      {
+        "id": "L2_0",
+        "width": 77,
+        "height": 57
+      },
+      {
+        "id": "L2_1",
+        "width": 128,
+        "height": 48
+      },
+      {
+        "id": "L3_0",
+        "width": 94,
+        "height": 39
+      },
+      {
+        "id": "L3_1",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "L4_0",
+        "width": 111,
+        "height": 57
+      },
+      {
+        "id": "L4_1",
+        "width": 77,
+        "height": 48
+      },
+      {
+        "id": "L5_0",
+        "width": 128,
+        "height": 39
+      }
+    ],
+    "edges": [
+      {
+        "id": "e001",
+        "from": "L0_0",
+        "to": "L1_0",
+        "directed": true
+      },
+      {
+        "id": "e002",
+        "from": "L0_0",
+        "to": "L1_1",
+        "directed": true
+      },
+      {
+        "id": "e003",
+        "from": "L1_0",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e004",
+        "from": "L1_0",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e005",
+        "from": "L1_1",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e006",
+        "from": "L1_1",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e007",
+        "from": "L2_0",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e008",
+        "from": "L2_0",
+        "to": "L3_1",
+        "directed": true
+      },
+      {
+        "id": "e009",
+        "from": "L2_1",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e010",
+        "from": "L2_1",
+        "to": "L3_1",
+        "directed": true
+      },
+      {
+        "id": "e011",
+        "from": "L3_0",
+        "to": "L4_0",
+        "directed": true
+      },
+      {
+        "id": "e012",
+        "from": "L3_0",
+        "to": "L4_1",
+        "directed": true
+      },
+      {
+        "id": "e013",
+        "from": "L3_1",
+        "to": "L4_0",
+        "directed": true
+      },
+      {
+        "id": "e014",
+        "from": "L3_1",
+        "to": "L4_1",
+        "directed": true
+      },
+      {
+        "id": "e015",
+        "from": "L4_0",
+        "to": "L5_0",
+        "directed": true
+      },
+      {
+        "id": "e016",
+        "from": "L4_1",
+        "to": "L5_0",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "layered-8",
+    "direction": "RL",
+    "seed": 3,
+    "nodes": [
+      {
+        "id": "L0_0",
+        "width": 128,
+        "height": 39
+      },
+      {
+        "id": "L1_0",
+        "width": 94,
+        "height": 30
+      },
+      {
+        "id": "L1_1",
+        "width": 60,
+        "height": 57
+      },
+      {
+        "id": "L2_0",
+        "width": 111,
+        "height": 48
+      },
+      {
+        "id": "L2_1",
+        "width": 77,
+        "height": 39
+      },
+      {
+        "id": "L3_0",
+        "width": 128,
+        "height": 30
+      },
+      {
+        "id": "L3_1",
+        "width": 94,
+        "height": 57
+      },
+      {
+        "id": "L4_0",
+        "width": 60,
+        "height": 48
+      },
+      {
+        "id": "L4_1",
+        "width": 111,
+        "height": 39
+      },
+      {
+        "id": "L5_0",
+        "width": 77,
+        "height": 30
+      }
+    ],
+    "edges": [
+      {
+        "id": "e001",
+        "from": "L0_0",
+        "to": "L1_0",
+        "directed": true
+      },
+      {
+        "id": "e002",
+        "from": "L0_0",
+        "to": "L1_1",
+        "directed": true
+      },
+      {
+        "id": "e003",
+        "from": "L1_0",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e004",
+        "from": "L1_0",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e005",
+        "from": "L1_1",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e006",
+        "from": "L1_1",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e007",
+        "from": "L2_0",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e008",
+        "from": "L2_0",
+        "to": "L3_1",
+        "directed": true
+      },
+      {
+        "id": "e009",
+        "from": "L2_1",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e010",
+        "from": "L2_1",
+        "to": "L3_1",
+        "directed": true
+      },
+      {
+        "id": "e011",
+        "from": "L3_0",
+        "to": "L4_0",
+        "directed": true
+      },
+      {
+        "id": "e012",
+        "from": "L3_0",
+        "to": "L4_1",
+        "directed": true
+      },
+      {
+        "id": "e013",
+        "from": "L3_1",
+        "to": "L4_0",
+        "directed": true
+      },
+      {
+        "id": "e014",
+        "from": "L3_1",
+        "to": "L4_1",
+        "directed": true
+      },
+      {
+        "id": "e015",
+        "from": "L4_0",
+        "to": "L5_0",
+        "directed": true
+      },
+      {
+        "id": "e016",
+        "from": "L4_1",
+        "to": "L5_0",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "layered-9",
+    "direction": "TB",
+    "seed": 2,
+    "nodes": [
+      {
+        "id": "L0_0",
+        "width": 77,
+        "height": 30
+      },
+      {
+        "id": "L1_0",
+        "width": 128,
+        "height": 57
+      },
+      {
+        "id": "L1_1",
+        "width": 94,
+        "height": 48
+      },
+      {
+        "id": "L2_0",
+        "width": 60,
+        "height": 39
+      },
+      {
+        "id": "L2_1",
+        "width": 111,
+        "height": 30
+      },
+      {
+        "id": "L3_0",
+        "width": 77,
+        "height": 57
+      }
+    ],
+    "edges": [
+      {
+        "id": "e001",
+        "from": "L0_0",
+        "to": "L1_0",
+        "directed": true
+      },
+      {
+        "id": "e002",
+        "from": "L0_0",
+        "to": "L1_1",
+        "directed": true
+      },
+      {
+        "id": "e003",
+        "from": "L1_0",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e004",
+        "from": "L1_0",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e005",
+        "from": "L1_1",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e006",
+        "from": "L1_1",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e007",
+        "from": "L2_0",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e008",
+        "from": "L2_1",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e009",
+        "from": "L0_0",
+        "to": "L2_0",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "layered-10",
+    "direction": "LR",
+    "seed": 3,
+    "nodes": [
+      {
+        "id": "L0_0",
+        "width": 111,
+        "height": 57
+      },
+      {
+        "id": "L1_0",
+        "width": 77,
+        "height": 48
+      },
+      {
+        "id": "L1_1",
+        "width": 128,
+        "height": 39
+      },
+      {
+        "id": "L2_0",
+        "width": 94,
+        "height": 30
+      },
+      {
+        "id": "L2_1",
+        "width": 60,
+        "height": 57
+      },
+      {
+        "id": "L3_0",
+        "width": 111,
+        "height": 48
+      }
+    ],
+    "edges": [
+      {
+        "id": "e001",
+        "from": "L0_0",
+        "to": "L1_0",
+        "directed": true
+      },
+      {
+        "id": "e002",
+        "from": "L0_0",
+        "to": "L1_1",
+        "directed": true
+      },
+      {
+        "id": "e003",
+        "from": "L1_0",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e004",
+        "from": "L1_0",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e005",
+        "from": "L1_1",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e006",
+        "from": "L1_1",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e007",
+        "from": "L2_0",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e008",
+        "from": "L2_1",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e009",
+        "from": "L0_0",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e010",
+        "from": "L1_0",
+        "to": "L3_0",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "layered-11",
+    "direction": "BT",
+    "seed": 1,
+    "nodes": [
+      {
+        "id": "L0_0",
+        "width": 60,
+        "height": 48
+      },
+      {
+        "id": "L1_0",
+        "width": 111,
+        "height": 39
+      },
+      {
+        "id": "L1_1",
+        "width": 77,
+        "height": 30
+      },
+      {
+        "id": "L2_0",
+        "width": 128,
+        "height": 57
+      },
+      {
+        "id": "L2_1",
+        "width": 94,
+        "height": 48
+      },
+      {
+        "id": "L2_2",
+        "width": 60,
+        "height": 39
+      },
+      {
+        "id": "L3_0",
+        "width": 111,
+        "height": 30
+      },
+      {
+        "id": "L3_1",
+        "width": 77,
+        "height": 57
+      },
+      {
+        "id": "L4_0",
+        "width": 128,
+        "height": 48
+      }
+    ],
+    "edges": [
+      {
+        "id": "e001",
+        "from": "L0_0",
+        "to": "L1_0",
+        "directed": true
+      },
+      {
+        "id": "e002",
+        "from": "L0_0",
+        "to": "L1_1",
+        "directed": true
+      },
+      {
+        "id": "e003",
+        "from": "L1_0",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e004",
+        "from": "L1_0",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e005",
+        "from": "L1_0",
+        "to": "L2_2",
+        "directed": true
+      },
+      {
+        "id": "e006",
+        "from": "L1_1",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e007",
+        "from": "L1_1",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e008",
+        "from": "L1_1",
+        "to": "L2_2",
+        "directed": true
+      },
+      {
+        "id": "e009",
+        "from": "L2_0",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e010",
+        "from": "L2_0",
+        "to": "L3_1",
+        "directed": true
+      },
+      {
+        "id": "e011",
+        "from": "L2_1",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e012",
+        "from": "L2_1",
+        "to": "L3_1",
+        "directed": true
+      },
+      {
+        "id": "e013",
+        "from": "L2_2",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e014",
+        "from": "L2_2",
+        "to": "L3_1",
+        "directed": true
+      },
+      {
+        "id": "e015",
+        "from": "L3_0",
+        "to": "L4_0",
+        "directed": true
+      },
+      {
+        "id": "e016",
+        "from": "L3_1",
+        "to": "L4_0",
+        "directed": true
+      },
+      {
+        "id": "e017",
+        "from": "L0_0",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e018",
+        "from": "L1_0",
+        "to": "L3_0",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "layered-12",
+    "direction": "RL",
+    "seed": 2,
+    "nodes": [
+      {
+        "id": "L0_0",
+        "width": 94,
+        "height": 39
+      },
+      {
+        "id": "L1_0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "L1_1",
+        "width": 111,
+        "height": 57
+      },
+      {
+        "id": "L2_0",
+        "width": 77,
+        "height": 48
+      },
+      {
+        "id": "L2_1",
+        "width": 128,
+        "height": 39
+      },
+      {
+        "id": "L2_2",
+        "width": 94,
+        "height": 30
+      },
+      {
+        "id": "L3_0",
+        "width": 60,
+        "height": 57
+      },
+      {
+        "id": "L3_1",
+        "width": 111,
+        "height": 48
+      },
+      {
+        "id": "L4_0",
+        "width": 77,
+        "height": 39
+      }
+    ],
+    "edges": [
+      {
+        "id": "e001",
+        "from": "L0_0",
+        "to": "L1_0",
+        "directed": true
+      },
+      {
+        "id": "e002",
+        "from": "L0_0",
+        "to": "L1_1",
+        "directed": true
+      },
+      {
+        "id": "e003",
+        "from": "L1_0",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e004",
+        "from": "L1_0",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e005",
+        "from": "L1_0",
+        "to": "L2_2",
+        "directed": true
+      },
+      {
+        "id": "e006",
+        "from": "L1_1",
+        "to": "L2_0",
+        "directed": true
+      },
+      {
+        "id": "e007",
+        "from": "L1_1",
+        "to": "L2_1",
+        "directed": true
+      },
+      {
+        "id": "e008",
+        "from": "L1_1",
+        "to": "L2_2",
+        "directed": true
+      },
+      {
+        "id": "e009",
+        "from": "L2_0",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e010",
+        "from": "L2_0",
+        "to": "L3_1",
+        "directed": true
+      },
+      {
+        "id": "e011",
+        "from": "L2_1",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e012",
+        "from": "L2_1",
+        "to": "L3_1",
+        "directed": true
+      },
+      {
+        "id": "e013",
+        "from": "L2_2",
+        "to": "L3_0",
+        "directed": true
+      },
+      {
+        "id": "e014",
+        "from": "L2_2",
+        "to": "L3_1",
+        "directed": true
+      },
+      {
+        "id": "e015",
+        "from": "L3_0",
+        "to": "L4_0",
+        "directed": true
+      },
+      {
+        "id": "e016",
+        "from": "L3_1",
+        "to": "L4_0",
+        "directed": true
+      },
+      {
+        "id": "e017",
+        "from": "L0_0",
+        "to": "L4_0",
+        "directed": true
+      },
+      {
+        "id": "e018",
+        "from": "L1_0",
+        "to": "L3_0",
+        "directed": true
+      }
+    ]
+  }
+]
