@@ -1,7 +1,7 @@
 import type { Point } from '../layout.js';
 import { TalaGraph, TalaNode } from './graph.js';
 import { ConnectedNodeGap } from './geometry-policy.js';
-import { compassAxisDelta, compassDelta, directionCompass, distanceBetweenBoxes, distanceToPoint, placementDistance, sizedOrientation, type Orientation } from './placement-geometry.js';
+import { SideEdgeSpacing, compassAxisDelta, compassDelta, directionCompass, distanceBetweenBoxes, distanceToPoint, placementDistance, sizedOrientation, type Orientation } from './placement-geometry.js';
 
 /** The sized phase halves TALA's cached turn cost after sizeless placement. */
 export function sizedTurnCost(graph: TalaGraph): number {
@@ -34,6 +34,11 @@ export function sizedNodeEdgeLength(node: TalaNode, graph: TalaGraph, turnCost =
     if (orientation === 'NONE') continue;
     const diagonal = orientation === 'TopLeft' || orientation === 'TopRight'
       || orientation === 'BottomLeft' || orientation === 'BottomRight';
+    const semiDiagonal = !diagonal && (orientation === 'Top' || orientation === 'Bottom'
+      ? Math.abs(node.topLeft.x - other.topLeft.x) > SideEdgeSpacing
+        || Math.abs(node.topLeft.x + node.width - other.topLeft.x - other.width) > SideEdgeSpacing
+      : Math.abs(node.topLeft.y - other.topLeft.y) > SideEdgeSpacing
+        || Math.abs(node.topLeft.y + node.height - other.topLeft.y - other.height) > SideEdgeSpacing);
     const firstCenter = center(node), secondCenter = center(other);
     let start: Point, end: Point;
     let distance: number;
@@ -56,17 +61,19 @@ export function sizedNodeEdgeLength(node: TalaNode, graph: TalaGraph, turnCost =
     }
     const blockers = graph.containers.get(node.parent) ?? graph.nodes;
     let blocked = false;
+    let cornerABlocked = false, cornerBBlocked = false;
     for (const blocker of blockers) {
       if (blocker === node || blocker === other || !blocker.topLeft) continue;
       if (diagonal) {
         const cornerA = { x: start.x, y: end.y };
         const cornerB = { x: end.x, y: start.y };
-        const a = segmentIntersectsBox(start, cornerA, blocker) || segmentIntersectsBox(cornerA, end, blocker);
-        const b = segmentIntersectsBox(start, cornerB, blocker) || segmentIntersectsBox(cornerB, end, blocker);
-        if (a && b) { blocked = true; break; }
+        cornerABlocked ||= segmentIntersectsBox(start, cornerA, blocker) || segmentIntersectsBox(cornerA, end, blocker);
+        cornerBBlocked ||= segmentIntersectsBox(start, cornerB, blocker) || segmentIntersectsBox(cornerB, end, blocker);
+        if (cornerABlocked && cornerBBlocked) { blocked = true; break; }
       } else if (segmentIntersectsBox(start, end, blocker)) { blocked = true; break; }
     }
-    if (blocked) distance += turnCost * (diagonal ? 1 : 2);
+    if (blocked) distance += turnCost * (diagonal ? 1
+      : semiDiagonal && !semiDiagonalAlternateBlocked(node, other, orientation, blockers) ? 1 : 2);
     if (edge.directed || preferred) {
       const edgeDirection = edge.from === node ? opposite(orientation) : orientation;
       const preferredCompass = directionCompass(direction), edgeCompass = directionCompass(edgeDirection);
@@ -77,6 +84,60 @@ export function sizedNodeEdgeLength(node: TalaNode, graph: TalaGraph, turnCost =
     total += distance;
   }
   return total;
+}
+
+function semiDiagonalAlternateBlocked(node: TalaNode, other: TalaNode,
+  orientation: Orientation, blockers: readonly TalaNode[]): boolean {
+  let l1 = false, l2 = false;
+  const first = node.topLeft!, second = other.topLeft!;
+  if (orientation === 'Top' || orientation === 'Bottom') {
+    if (Math.abs(first.x - second.x) <= SideEdgeSpacing) l2 = true;
+    else if (Math.abs(first.x + node.width - second.x - other.width) <= SideEdgeSpacing) l1 = true;
+  } else {
+    if (Math.abs(first.y - second.y) <= SideEdgeSpacing) l1 = true;
+    else if (Math.abs(first.y + node.height - second.y - other.height) <= SideEdgeSpacing) l2 = true;
+  }
+  const source = orientation === 'Bottom' || orientation === 'Right' ? other : node;
+  const target = source === node ? other : node;
+  const a = source.topLeft!, b = target.topLeft!;
+  const ac = center(source), bc = center(target);
+  const passes = (blocker: TalaNode, from: Point, to: Point) => segmentIntersectsBox(from, to, blocker);
+  for (const blocker of blockers) {
+    if (blocker === node || blocker === other || !blocker.topLeft) continue;
+    if (orientation === 'Top' || orientation === 'Bottom') {
+      const floor = Math.max(a.x, b.x), ceil = Math.min(a.x + source.width, b.x + target.width);
+      if (!l2) {
+        const x = Math.min(a.x, b.x) + Math.abs(floor - Math.min(a.x, b.x)) / 2;
+        const top = { x, y: ac.y }, bottom = { x, y: bc.y };
+        if (a.x < b.x) l2 = passes(blocker, top, bottom) || passes(blocker, bottom, bc);
+        else if (a.x > b.x) l2 = passes(blocker, ac, top) || passes(blocker, bottom, top);
+      }
+      if (!l1) {
+        const maxX = Math.max(a.x + source.width, b.x + target.width);
+        const x = maxX - Math.abs(ceil - maxX) / 2;
+        const top = { x, y: ac.y }, bottom = { x, y: bc.y };
+        if (a.x + source.width > b.x + target.width) l1 = passes(blocker, top, bottom) || passes(blocker, bc, bottom);
+        else if (a.x + source.width < b.x + target.width) l1 = passes(blocker, ac, top) || passes(blocker, bottom, top);
+      }
+    } else {
+      const floor = Math.max(a.y, b.y), ceil = Math.min(a.y + source.height, b.y + target.height);
+      if (!l1) {
+        const y = Math.min(a.y, b.y) + Math.abs(floor - Math.min(a.y, b.y)) / 2;
+        const left = { x: ac.x, y }, right = { x: bc.x, y };
+        if (a.y < b.y) l1 = passes(blocker, left, right) || passes(blocker, bc, right);
+        else if (a.y > b.y) l1 = passes(blocker, ac, left) || passes(blocker, right, left);
+      }
+      if (!l2) {
+        const maxY = Math.max(a.y + source.height, b.y + target.height);
+        const y = maxY - Math.abs(ceil - maxY) / 2;
+        const left = { x: ac.x, y }, right = { x: bc.x, y };
+        if (a.y + source.height > b.y + target.height) l2 = passes(blocker, left, right) || passes(blocker, bc, right);
+        else if (a.y + source.height < b.y + target.height) l2 = passes(blocker, ac, left) || passes(blocker, right, left);
+      }
+    }
+    if (l1 && l2) return true;
+  }
+  return l1 && l2;
 }
 
 function center(node: TalaNode): Point {
