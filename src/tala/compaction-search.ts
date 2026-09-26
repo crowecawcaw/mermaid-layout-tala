@@ -16,7 +16,9 @@ export interface OrdinaryCompactionOptions {
 /** Ordinary-node branch of placement.compaction, including both search loops. */
 export function compactOrdinaryGraph(graph: TalaGraph, options: OrdinaryCompactionOptions): void {
   if (!Number.isFinite(options.factor) || options.factor <= 0) throw new RangeError('compaction factor must be finite and positive');
-  if (graph.nodes.some((node) => node.isGroup)) throw new Error('compound compaction is not ported');
+  if (graph.nodes.some((node) => node.isGroup && node.children.length > 0)) {
+    throw new Error('compound compaction with attached children is not ported');
+  }
   const original = new Map(graph.nodes.map((node) => [node, node.topLeft ? { ...node.topLeft } : undefined]));
   try {
     const visible = visibilityEdges(graph, options.axis, options.includeSizes);

@@ -11,7 +11,9 @@ import { SizelessOptimizer } from './sizeless-optimizer.js';
 export function placeOrdinaryNodes(graph: TalaGraph, seed: number,
   trace?: (stage: string, iteration: number, graph: TalaGraph) => void): void {
   if (graph.nodes.length < 2) throw new Error('ordinary placement requires at least two nodes');
-  if (graph.nodes.some((node) => node.isGroup)) throw new Error('compound placement is not ported');
+  if (graph.nodes.some((node) => node.isGroup && node.children.length > 0)) {
+    throw new Error('compound placement with attached children is not ported');
+  }
   const random = new GoRandom(seed);
   if (seed % 2 !== 0 || !initializeByGraphDistance(graph)) initializeNodes(graph);
   trace?.('initialized', -1, graph);

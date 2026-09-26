@@ -7,7 +7,9 @@ import { closestUnoccupiedDistance, medianToNeighbors } from './sizeless-optimiz
  * cannot handle a component. */
 export function initializeNodes(graph: TalaGraph): void {
   if (graph.nodes.length === 0) return;
-  if (graph.nodes.some((node) => node.isGroup)) throw new Error('compound initialization is not ported');
+  if (graph.nodes.some((node) => node.isGroup && node.children.length > 0)) {
+    throw new Error('compound initialization with attached children is not ported');
+  }
   const fixed = graph.nodes.filter((node) => node.fixedTopLeft);
   const order: TalaNode[] = [];
   const visited = new Set<TalaNode>();

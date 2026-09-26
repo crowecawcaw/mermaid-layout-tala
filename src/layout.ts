@@ -185,7 +185,7 @@ function layoutFlatFlowchart(
       ? placeFlatSequences(component, componentEdges, direction, seed, ranks) : undefined;
     const sequence = sequencePlacement?.nodes;
     for (const id of sequencePlacement?.definingEdgeIds ?? []) sequenceDefiningEdgeIds.add(id);
-    const tree = useOrdinary && !sequence && !hasFixed
+    const tree = useOrdinary && !sequence && !hasFixed && component.every((node) => !node.isGroup)
       ? placeSimpleTree(component, componentEdges, direction, ranks) : undefined;
     if (tree) treeComponents.push({ ids: componentIds, edges: componentEdges,
       extraction: extractFlatTrees(component, componentEdges) });
@@ -195,7 +195,7 @@ function layoutFlatFlowchart(
       ? [{ ...component[0]!, x: component[0]!.fixedTopLeft!.x + component[0]!.width / 2,
         y: component[0]!.fixedTopLeft!.y + component[0]!.height / 2,
         rank: 0, order: 0 }] : undefined;
-    const localNodes = sequence ?? tree ?? cluster ?? fixedSingleton ?? (useOrdinary && component.length > 1 && component.every((node) => !node.isGroup)
+    const localNodes = sequence ?? tree ?? cluster ?? fixedSingleton ?? (useOrdinary && component.length > 1
       ? positionOrdinaryComponent(component, componentEdges, ranks, direction, seed)
       : positionComponent(component, weightedDag, ranks, nodeSpacing, rankSpacing, passes, direction, seed));
     for (const node of localNodes) allPositions.set(node.id, node);

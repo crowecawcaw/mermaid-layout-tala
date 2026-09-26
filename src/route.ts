@@ -282,7 +282,6 @@ function normalize(points: Point[]): Point[] {
     if ((before.x === current.x && current.x === after.x) || (before.y === current.y && current.y === after.y)) compact.splice(i, 1);
     else i++;
   }
-  if (compact.length === 2) compact.splice(1, 0, { x: (compact[0]!.x + compact[1]!.x) / 2, y: (compact[0]!.y + compact[1]!.y) / 2 });
   return compact;
 }
 

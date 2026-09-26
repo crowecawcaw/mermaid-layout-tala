@@ -5,7 +5,7 @@ import { layoutFlowchart, type LayoutDirection, type LayoutEdge, type LayoutNode
 interface Case { name: string; direction: LayoutDirection; seed: number;
   nodes: LayoutNode[]; edges: LayoutEdge[] }
 interface Expected { name: string; nodes: Array<{ id: string; x: number; y: number;
-  width: number; height: number }> }
+  width: number; height: number }>; edges: Array<{ id: string; points: Array<{ x: number; y: number }> }> }
 const read = (name: string) => JSON.parse(readFileSync(
   new URL(`../tools/upstream-fixtures/${name}`, import.meta.url), 'utf8'));
 const cases = read('compound-layout-cases.json') as Case[];
@@ -48,5 +48,29 @@ describe('pinned upstream compound-layout interiors', () => {
     const outside = actual.nodes.find((node) => node.id === 'Outside')!;
     expect(outside.y - outside.height / 2)
       .toBe(oracle.nodes.find((node) => node.id === 'Outside')!.y);
+  });
+
+  it('matches complete upstream geometry and routes for one-container chain', () => {
+    const input = cases.find((item) => item.name === 'one-container-chain')!;
+    const oracle = expected.find((item) => item.name === input.name)!;
+    const actual = layoutFlowchart(input.nodes, input.edges,
+      { strategy: 'tala', direction: input.direction, seeds: [input.seed] });
+    const byId = new Map(actual.nodes.map((node) => [node.id, node]));
+    expect(oracle.nodes.map(({ id }) => byId.get(id)!).map((node) => ({ id: node.id,
+      x: node.x - node.width / 2, y: node.y - node.height / 2,
+      width: node.width, height: node.height }))).toEqual(oracle.nodes);
+    expect(actual.edges.map((edge) => ({ id: edge.id, points: edge.points })))
+      .toEqual(oracle.edges);
+  });
+
+  it('matches all upstream node positions for the directioned container', () => {
+    const input = cases.find((item) => item.name === 'directioned-container')!;
+    const oracle = expected.find((item) => item.name === input.name)!;
+    const actual = layoutFlowchart(input.nodes, input.edges,
+      { strategy: 'tala', direction: input.direction, seeds: [input.seed] });
+    const byId = new Map(actual.nodes.map((node) => [node.id, node]));
+    expect(oracle.nodes.map(({ id }) => byId.get(id)!).map((node) => ({ id: node.id,
+      x: node.x - node.width / 2, y: node.y - node.height / 2,
+      width: node.width, height: node.height }))).toEqual(oracle.nodes);
   });
 });
