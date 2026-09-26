@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { layoutFlowchart } from '../src/layout.js';
 import { TalaGraph } from '../src/tala/graph.js';
 import { placeOrdinaryNodes } from '../src/tala/ordinary-placement.js';
+import { directOrdinaryGraph } from '../src/tala/direct.js';
 
 describe('Mermaid flowchart layout slice', () => {
   it('uses translated ordinary placement for flat components by default', () => {
@@ -14,6 +15,7 @@ describe('Mermaid flowchart layout slice', () => {
     ];
     const graph = TalaGraph.fromFlowchart(nodes, edges, 'TB');
     placeOrdinaryNodes(graph, 1);
+    directOrdinaryGraph(graph, 'TB');
     const actual = layoutFlowchart(nodes, edges, { seeds: [1] });
     const reference = graph.nodes[0]!;
     const placed = actual.nodes.find((node) => node.id === reference.id)!;

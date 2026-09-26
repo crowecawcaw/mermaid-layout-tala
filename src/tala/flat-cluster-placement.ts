@@ -29,7 +29,8 @@ export function placeFlatClusters(nodes: readonly LayoutNode[], edges: readonly 
   const placementDirection: LayoutDirection = arrangement === 'Column'
     ? direction === 'RL' ? 'RL' : 'LR'
     : arrangement === 'Row' ? direction === 'BT' ? 'BT' : 'TB' : direction;
-  const graph = TalaGraph.fromFlowchart(nodes, edges, placementDirection);
+  const graph = TalaGraph.fromFlowchart(nodes.map((node) => ({ ...node, parentId: undefined })),
+    edges, placementDirection);
   const active = activateFlatClusters(graph, discovery.clusters.map((cluster, index) => ({
     nodes: cluster.nodes, arrangement: cluster.arrangement, padding: cluster.padding,
     vesselId: vesselIds[index]!,

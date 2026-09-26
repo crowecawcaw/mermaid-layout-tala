@@ -92,6 +92,14 @@ func run(input inputCase) (outputCase, error) {
 			graph.Directions[nodes[item.ID]] = direction(item.Direction)
 		}
 	}
+	for _, item := range input.Nodes {
+		if item.IsGroup {
+			container := nodes[item.ID]
+			if _, exists := graph.Containers[container]; !exists {
+				graph.Containers[container] = []*layoutgraph.Node{}
+			}
+		}
+	}
 	edgeIDs := make(map[string]layoutgraph.EntityID, len(input.Edges))
 	for index, item := range input.Edges {
 		from, to := nodes[item.From], nodes[item.To]

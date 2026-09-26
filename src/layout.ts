@@ -22,6 +22,8 @@ import { normalizeGaps } from './tala/gap-normalization.js';
 import { equidistance } from './tala/equidistance.js';
 import { transposeLeaves } from './tala/transpose.js';
 import { balanceStraightSegments } from './tala/edge-balance.js';
+import { balanceSymmetry } from './tala/balance-symmetry.js';
+import { directOrdinaryGraph } from './tala/direct.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
@@ -115,7 +117,7 @@ export function layoutFlowchart(
   // the adapter boundary; the TALA graph retains caller order like upstream.
   const graph = TalaGraph.fromFlowchart(
     [...sourceNodes].sort((a, b) => compareText(a.id, b.id)),
-    [...inputEdges].sort((a, b) => compareText(a.id, b.id)),
+    inputEdges,
     options.direction ?? 'TB'
   );
   let selected: LayoutResult | undefined;
@@ -252,6 +254,7 @@ function positionOrdinaryComponent(nodes: readonly LayoutNode[], edges: readonly
     if (replacements) graph.edgeEndpointReplacements.set(edge.id, replacements);
   }
   placeOrdinaryNodes(graph, seed);
+  directOrdinaryGraph(graph, constrainDirection ? direction : undefined);
   const crossAxis = direction === 'TB' || direction === 'BT' ? 'x' : 'y';
   const orderById = new Map<string, number>();
   const byRank = new Map<number, typeof graph.nodes>();
@@ -311,6 +314,11 @@ function layoutCompoundFlowchart(
       active.add(parentId);
     }
     const siblingNodes = children.get(parentId) ?? [];
+    if (parentId && siblingNodes.length === 0) {
+      const empty = byId.get(parentId)!;
+      active.delete(parentId);
+      return { width: empty.width, height: empty.height, positioned: [] };
+    }
     const nested = new Map<string, Scope>();
     const measured = siblingNodes.map((node) => {
       if (!node.isGroup) return node;
@@ -396,6 +404,7 @@ function layoutCompoundFlowchart(
     changed = alignAxesPass(alignmentGraph, alignmentScore) || changed;
     changed = normalizeGaps(alignmentGraph) || changed;
     changed = alignAxesPass(alignmentGraph, alignmentScore) || changed;
+    changed = balanceSymmetry(alignmentGraph) || changed;
     changed = equidistance(alignmentGraph) || changed;
     changed = alignAxesPass(alignmentGraph, alignmentScore) || changed;
     if (changed) {

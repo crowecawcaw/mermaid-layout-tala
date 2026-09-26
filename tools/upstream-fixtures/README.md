@@ -117,6 +117,15 @@ relative geometry differences. The test `tala-upstream-full-layout.test.ts`
 pins the nine cases whose node geometry matches; edge routes are still outside
 that assertion.
 
+The same oracle reads `compound-expanded-cases.json` and produces
+`compound-expanded-expected.json`. It creates empty container entries in the
+Go graph so empty nested groups match the production adapter's input model.
+`compound-expanded-stage-oracle_test.go` can be copied into the pinned
+upstream `internal/engine` package. Set `TALA_TS_COMPOUND_CASES` to the absolute
+case-file path and `TALA_TS_COMPOUND_NAME` to one case name, then run
+`go test ./d2layouts/d2talalayout/internal/engine -run '^TestTSExpandedCompoundTrace$' -count=1 -v`
+to trace its pipeline stages.
+
 Run `node full-tree-random-cases.mjs` to regenerate 24 deeper branching-tree
 cases. `full-tree-random-expected.json` records complete upstream results for
 them. Compare with `node tools/upstream-fixtures/compare-full.mjs
