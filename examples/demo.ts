@@ -1,5 +1,5 @@
 import mermaid from 'mermaid';
-import talaLayouts, { setTalaSeeds } from '../src/index.js';
+import talaLayouts from '../src/index.js';
 import { examples } from './examples.js';
 
 type Layout = 'tala' | 'elk' | 'dagre';
@@ -11,28 +11,17 @@ const preview = document.querySelector<HTMLElement>('#preview')!;
 const status = document.querySelector<HTMLElement>('#status')!;
 const description = document.querySelector<HTMLElement>('#example-description')!;
 const downloadButton = document.querySelector<HTMLButtonElement>('#download')!;
-const zoomOutButton = document.querySelector<HTMLButtonElement>('#zoom-out')!;
-const zoomResetButton = document.querySelector<HTMLButtonElement>('#zoom-reset')!;
-const zoomInButton = document.querySelector<HTMLButtonElement>('#zoom-in')!;
 const renderButton = document.querySelector<HTMLButtonElement>('#render')!;
 const talaOptions = document.querySelector<HTMLElement>('#tala-options')!;
-const talaSeeds = document.querySelector<HTMLInputElement>('#tala-seeds')!;
+const nodeSpacing = document.querySelector<HTMLInputElement>('#node-spacing')!;
+const rankSpacing = document.querySelector<HTMLInputElement>('#rank-spacing')!;
+const nodeSpacingValue = document.querySelector<HTMLOutputElement>('#node-spacing-value')!;
+const rankSpacingValue = document.querySelector<HTMLOutputElement>('#rank-spacing-value')!;
 
 let renderVersion = 0;
 let renderQueue = Promise.resolve();
 let debounceTimer: number | undefined;
 let renderedSvg = '';
-let zoom = 1;
-
-function applyZoom(): void {
-  zoomResetButton.textContent = `${Math.round(zoom * 100)}%`;
-  const svg = preview.querySelector<SVGSVGElement>('svg');
-  if (!svg) return;
-  const width = svg.viewBox.baseVal.width;
-  if (!width) return;
-  const fit = Math.min(1, Math.max(1, preview.clientWidth - 48) / width);
-  svg.style.width = `${Math.round(width * fit * zoom)}px`;
-}
 
 mermaid.registerLayoutLoaders(talaLayouts);
 
@@ -69,19 +58,14 @@ function render(): void {
 
     const renderId = `playground-${version}`;
     try {
-      if (layout === 'tala') {
-        const seeds = talaSeeds.value.split(',').map((value) => Number(value.trim()));
-        if (seeds.some((seed) => !Number.isSafeInteger(seed)) || talaSeeds.value.split(',').some((value) => !value.trim())) {
-          throw new Error('Enter 1–16 comma-separated integer seeds.');
-        }
-        setTalaSeeds(seeds);
-      }
       mermaid.initialize({
         startOnLoad: false,
         layout,
         theme: 'default',
         securityLevel: 'strict',
-        flowchart: { htmlLabels: false },
+        flowchart: layout === 'tala'
+          ? { htmlLabels: false, nodeSpacing: nodeSpacing.valueAsNumber, rankSpacing: rankSpacing.valueAsNumber }
+          : { htmlLabels: false },
       });
       const parsed = await mermaid.parse(diagram);
       const isFlowchart = parsed.diagramType.startsWith('flowchart');
@@ -89,7 +73,6 @@ function render(): void {
       if (version !== renderVersion) return;
 
       preview.innerHTML = result.svg;
-      applyZoom();
       result.bindFunctions?.(preview);
       renderedSvg = result.svg;
       downloadButton.disabled = false;
@@ -133,7 +116,12 @@ layoutSelect.addEventListener('change', () => {
   talaOptions.hidden = layoutSelect.value !== 'tala';
   render();
 });
-talaSeeds.addEventListener('input', scheduleRender);
+for (const [input, output] of [[nodeSpacing, nodeSpacingValue], [rankSpacing, rankSpacingValue]] as const) {
+  input.addEventListener('input', () => {
+    output.value = `${input.value} px`;
+    scheduleRender();
+  });
+}
 source.addEventListener('input', () => {
   exampleSelect.value = '';
   description.textContent = 'Your own Mermaid diagram.';
@@ -155,10 +143,6 @@ downloadButton.addEventListener('click', () => {
   link.click();
   window.setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
-zoomOutButton.addEventListener('click', () => { zoom = Math.max(0.5, zoom / 1.25); applyZoom(); });
-zoomInButton.addEventListener('click', () => { zoom = Math.min(4, zoom * 1.25); applyZoom(); });
-zoomResetButton.addEventListener('click', () => { zoom = 1; applyZoom(); });
-window.addEventListener('resize', applyZoom);
 
 exampleSelect.value = '0';
 selectExample(0);

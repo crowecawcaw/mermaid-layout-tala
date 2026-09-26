@@ -1,7 +1,7 @@
 {
   "name": "mermaid-layout-tala",
   "version": "0.1.0",
-  "description": "Mermaid flowchart layout using the original TALA engine via WebAssembly",
+  "description": "TALA-derived hierarchical layout loader for Mermaid flowcharts",
   "type": "module",
   "license": "MPL-2.0",
   "repository": {
@@ -29,14 +29,10 @@
     }
   },
   "files": [
-    "build/src/index.js",
-    "build/src/index.d.ts",
-    "build/src/render.js",
-    "build/src/render.d.ts",
-    "build/src/upstream.js",
-    "build/src/upstream.d.ts",
+    "build",
     "src",
     "test",
+    "docs/tala-layout-example.svg",
     "LICENSE",
     "UPSTREAM-AUTHORS.md",
     "NOTICE.md",
@@ -45,6 +41,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "vitest run --dir test",
+    "test:rank": "vitest run test/rank.test.ts",
     "demo": "vite examples --host 127.0.0.1",
     "build:playground": "vite build examples --base=/mermaid-layout-tala/ --outDir ../dist --emptyOutDir",
     "check:playground": "tsc --noEmit --ignoreConfig --skipLibCheck --target ES2022 --module ESNext --moduleResolution Bundler --lib ES2022,DOM examples/demo.ts examples/examples.ts",
@@ -59,8 +56,5 @@
     "typescript": "^7.0.2",
     "vite": "^8.3.1",
     "vitest": "^4.1.11"
-  },
-  "dependencies": {
-    "@d2lang/d2": "0.1.34"
   }
 }

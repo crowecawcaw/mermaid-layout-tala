@@ -1,17 +1,17 @@
 import type { LayoutLoaderDefinition } from 'mermaid';
 
+export { rankDag, type RankEdge, type RankNode } from './rank.js';
 export {
-  disposeTala,
-  getTalaSeeds,
-  layoutWithTala,
-  setTalaSeeds,
-  toD2,
-  type TalaDirection,
-  type TalaEdge,
-  type TalaNode,
-  type TalaOptions,
-  type TalaResult,
-} from './upstream.js';
+  layoutFlowchart,
+  type LayoutDirection,
+  type LayoutEdge,
+  type LayoutNode,
+  type LayoutOptions,
+  type LayoutResult,
+  type Point,
+  type PositionedEdge,
+  type PositionedNode,
+} from './layout.js';
 
 const talaLayouts: LayoutLoaderDefinition[] = [
   {

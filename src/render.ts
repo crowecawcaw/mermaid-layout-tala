@@ -1,5 +1,5 @@
 import type { InternalHelpers, LayoutData, RenderOptions, SVG } from 'mermaid';
-import { getTalaSeeds, layoutWithTala, type TalaDirection } from './upstream.js';
+import { layoutFlowchart, type LayoutDirection } from './layout.js';
 
 type NodeWithPosition = LayoutData['nodes'][number] & {
   x?: number;
@@ -16,9 +16,12 @@ export async function render(
   helpers: InternalHelpers,
   _options?: RenderOptions
 ): Promise<void> {
+  if (data.nodes.some((node) => node.isGroup)) {
+    throw new Error('mermaid-layout-tala does not support subgraph containers yet');
+  }
+
   const root = svg.select('g');
   helpers.insertMarkers(root, data.markers ?? [], data.type, data.diagramId);
-  const clusters = root.insert('g').attr('class', 'clusters');
   const edgePaths = root.insert('g').attr('class', 'edgePaths');
   const edgeLabels = root.insert('g').attr('class', 'edgeLabels');
   const nodeElements = root.insert('g').attr('class', 'nodes');
@@ -27,16 +30,6 @@ export async function render(
   await Promise.all(data.nodes.map(async (node) => {
     const nodeWithPosition: NodeWithPosition = { ...node };
     nodesById[node.id] = nodeWithPosition;
-    if (node.isGroup) {
-      if (node.label) {
-        const { shapeSvg, bbox } = await helpers.labelHelper(nodeElements, node);
-        nodeWithPosition.labelBBox = { width: bbox.width, height: bbox.height };
-        shapeSvg.remove();
-      }
-      nodeWithPosition.width = Math.max(node.width ?? 0, nodeWithPosition.labelBBox?.width ?? 0, 1);
-      nodeWithPosition.height = Math.max(node.height ?? 0, nodeWithPosition.labelBBox?.height ?? 0, 1);
-      return;
-    }
     const element = await helpers.insertNode(nodeElements, node as Parameters<InternalHelpers['insertNode']>[1], {
       config: data.config,
       dir: (data.direction ?? 'TB') as string,
@@ -50,25 +43,21 @@ export async function render(
   }));
 
   const direction = normalizeDirection(data.direction);
-  const seeds = getTalaSeeds();
-  const result = await layoutWithTala(
+  const flowchartConfig = data.config.flowchart;
+  const result = layoutFlowchart(
     data.nodes.map((node) => {
       const measured = nodesById[node.id]!;
       return {
         id: node.id,
-        ...(node.parentId ? { parentId: node.parentId } : {}),
-        isGroup: node.isGroup,
-        label: node.label,
-        shape: node.shape,
-        dir: normalizeDirection(node.dir ?? data.direction),
         width: measured.width ?? node.width ?? 100,
         height: measured.height ?? node.height ?? 50,
       };
     }),
-    data.edges.map((edge) => ({ id: edge.id, from: edge.start ?? '', to: edge.end ?? '', label: edge.label })),
+    data.edges.map((edge) => ({ id: edge.id, from: edge.start ?? '', to: edge.end ?? '' })),
     {
       direction,
-      ...(seeds ? { seeds } : {}),
+      ...(flowchartConfig?.nodeSpacing !== undefined ? { nodeSpacing: flowchartConfig.nodeSpacing } : {}),
+      ...(flowchartConfig?.rankSpacing !== undefined ? { rankSpacing: flowchartConfig.rankSpacing } : {}),
     }
   );
   const positionedEdges = new Map(result.edges.map((edge) => [edge.id, edge]));
@@ -76,13 +65,7 @@ export async function render(
     const node = nodesById[positioned.id]!;
     node.x = positioned.x;
     node.y = positioned.y;
-    node.width = positioned.width;
-    node.height = positioned.height;
-    if (node.isGroup) {
-      await helpers.insertCluster(clusters, node as Parameters<InternalHelpers['insertCluster']>[1]);
-    } else {
-      node.domElement?.attr('transform', `translate(${positioned.x}, ${positioned.y})`);
-    }
+    node.domElement?.attr('transform', `translate(${positioned.x}, ${positioned.y})`);
   }
 
   await Promise.all(data.edges.map(async (edge) => {
@@ -100,14 +83,13 @@ export async function render(
       data.type,
       startNode,
       endNode,
-      data.diagramId,
-      true
+      data.diagramId
     );
     helpers.positionEdgeLabel(edgeWithPath, paths);
   }));
 }
 
-function normalizeDirection(value: unknown): TalaDirection {
+function normalizeDirection(value: unknown): LayoutDirection {
   switch (value) {
     case 'BT':
     case 'LR':

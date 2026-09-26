@@ -1,10 +1,7 @@
 import mermaid, { type InternalHelpers, type LayoutData, type SVG } from 'mermaid';
-import { afterAll, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import talaLayouts from '../src/index.js';
 import { render } from '../src/render.js';
-import { disposeTala } from '../src/upstream.js';
-
-afterAll(disposeTala);
 
 describe('Mermaid adapter', () => {
   it('registers as an external Mermaid layout loader', async () => {
@@ -54,8 +51,8 @@ describe('Mermaid adapter', () => {
 
     expect(transforms.get('A')).toMatch(/^translate\(/);
     expect(transforms.get('B')).toMatch(/^translate\(/);
-    expect(routedEdges[0]?.points?.length).toBeGreaterThanOrEqual(2);
-    expect(routedEdges[0]?.points?.every(({ x, y }) => Number.isFinite(x) && Number.isFinite(y))).toBe(true);
+    expect(routedEdges[0]?.points).toHaveLength(3);
+    expect(new Set(routedEdges[0]?.points?.map(({ x, y }) => `${x},${y}`)).size).toBe(3);
     expect(helpers.positionEdgeLabel).toHaveBeenCalledOnce();
   });
 });
