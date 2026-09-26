@@ -21,6 +21,7 @@ import { containerAlignmentCost } from './tala/container-alignment-cost.js';
 import { normalizeGaps } from './tala/gap-normalization.js';
 import { equidistance } from './tala/equidistance.js';
 import { transposeLeaves } from './tala/transpose.js';
+import { balanceStraightSegments } from './tala/edge-balance.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
@@ -414,13 +415,15 @@ function layoutCompoundFlowchart(
     const original = TalaGraph.fromFlowchart(nodes, inputEdges, options.direction ?? 'TB');
     for (const id of sequenceDefiningEdges(original)) consumed.add(id);
   }
-  const edges = routeWithConsumedEdges(placed, inputEdges, options.direction ?? 'TB', consumed);
+  const edges = routeWithConsumedEdges(placed, inputEdges, options.direction ?? 'TB', consumed,
+    new Map(), useTala);
   return { nodes: placed, edges };
 }
 
 function routeWithConsumedEdges(nodes: readonly PositionedNode[], edges: readonly LayoutEdge[],
   direction: LayoutDirection, consumed: ReadonlySet<string>,
-  canonicalTreePaths: ReadonlyMap<string, Point[]> = new Map()): PositionedEdge[] {
+  canonicalTreePaths: ReadonlyMap<string, Point[]> = new Map(),
+  balanceStraight = false): PositionedEdge[] {
   const initialRoutes = routeGraphEdges(nodes, edges.filter((edge) => !consumed.has(edge.id)),
     direction, canonicalTreePaths);
   const beforeById = new Map(initialRoutes.map((edge) => [edge.id, edge]));
@@ -433,7 +436,8 @@ function routeWithConsumedEdges(nodes: readonly PositionedNode[], edges: readonl
     const { labelBBox: _labelBBox, ...withoutLabel } = edge;
     return { ...withoutLabel, points: [] as Point[], x: 0, y: 0 };
   });
-  return [...routed, ...hidden].sort((a, b) => compareText(a.id, b.id));
+  const balanced = balanceStraight ? balanceStraightSegments(nodes, routed) : routed;
+  return [...balanced, ...hidden].sort((a, b) => compareText(a.id, b.id));
 }
 
 function makeAcyclic(nodes: readonly LayoutNode[], edges: readonly LayoutEdge[]): WeightedEdge[] {
