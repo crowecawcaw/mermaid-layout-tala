@@ -58,6 +58,7 @@ placement and refinement stages for trees, hubs, clusters, symmetry, packing,
 edge channels, shape borders, and labels. Its placement and scoring are not yet
 ported exactly, so this package should not be treated as layout-equivalent to
 the D2 implementation.
+See [port status](./PORT_STATUS.md) for the remaining upstream areas.
 
 ## Development
 
