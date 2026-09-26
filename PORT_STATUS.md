@@ -55,8 +55,14 @@ six node boxes and four of five routes; its `ax` route still differs. The
 visibility-grid search now accounts for turns at both endpoint ports. It
 chooses the upstream `ax` source side and bend coordinate, leaving only a
 one-pixel target-center rounding difference in that route. The
-empty-container fixture still differs in packing positions, and the diamond
-fixture still differs after placement. These remain diagnostic cases.
+empty-container fixture now matches its container and interior child boxes:
+the TypeScript port applies upstream's area and square-deviation scoring when
+combining disconnected subgraphs. Its external node remains 12 pixels left of
+upstream. The diamond fixture now matches upstream's node-placement stage:
+an unconstrained container interior keeps the optimizer's cluster vessel
+coordinate, and the outside node appears on the same side of the group.
+Its later cluster-aware `AlignAxes` move is still missing, so final vertical
+positions and routes differ. These remain diagnostic cases.
 The ordinary-endpoint `AlignAxes` delta calculation, ordinary-container
 connected-set traversal, non-center-port penalty, and equal-size peer-container
 alignment cost are ported. The stage's shift validity check now applies the

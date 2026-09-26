@@ -25,6 +25,7 @@ import { transposeLeaves } from './tala/transpose.js';
 import { balanceStraightSegments } from './tala/edge-balance.js';
 import { balanceSymmetry } from './tala/balance-symmetry.js';
 import { directOrdinaryGraph } from './tala/direct.js';
+import { combineSubgraphs } from './tala/combine-subgraphs.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
@@ -200,7 +201,8 @@ function layoutFlatFlowchart(
     if (tree) treeComponents.push({ ids: componentIds, edges: componentEdges,
       extraction: extractFlatTrees(component, componentEdges) });
     const cluster = useOrdinary && !sequence && !tree && !hasFixed && component.every((node) => !node.isGroup)
-      ? placeFlatClusters(component, componentEdges, direction, seed, ranks) : undefined;
+      ? placeFlatClusters(component, componentEdges, direction, seed, ranks,
+        constrainDirection) : undefined;
     const fixedSingleton = useOrdinary && component.length === 1 && component[0]!.fixedTopLeft
       ? [{ ...component[0]!, x: component[0]!.fixedTopLeft!.x + component[0]!.width / 2,
         y: component[0]!.fixedTopLeft!.y + component[0]!.height / 2,
@@ -213,24 +215,28 @@ function layoutFlatFlowchart(
     componentBounds.push(bounds(localNodes));
   }
 
-  // Pack weakly connected components along the cross axis, which is the least
-  // surprising direction for both tall and wide flowcharts.
+  // Upstream combines independent subgraphs by testing candidate corners and
+  // scoring the area and square deviation of each combined bounding box.
   const alongX = direction === 'TB' || direction === 'BT';
   const fixedBoxes = componentBounds.filter((_, index) => components[index]!
     .some((node) => node.fixedTopLeft !== undefined));
-  let componentOffset = fixedBoxes.length === 0 ? 0 : Math.max(0, ...fixedBoxes.map((box) =>
-    alongX ? box.minX + box.width : box.minY + box.height)) + (useOrdinary ? 20 : rankSpacing);
-  for (let i = 0; i < components.length; i++) {
-    const local = components[i]!.map((node) => allPositions.get(node.id)!);
-    const box = componentBounds[i]!;
-    if (components[i]!.some((node) => node.fixedTopLeft !== undefined)) continue;
-    const shift = alongX ? componentOffset - box.minX : componentOffset - box.minY;
-    const rankShift = alongX ? -box.minY : -box.minX;
-    for (const node of local) {
-      if (alongX) { node.x += shift; node.y += rankShift; }
-      else { node.y += shift; node.x += rankShift; }
+  if (useOrdinary && fixedBoxes.length === 0) {
+    combineSubgraphs(components.map((component) => component.map((node) => allPositions.get(node.id)!)));
+  } else {
+    let componentOffset = fixedBoxes.length === 0 ? 0 : Math.max(0, ...fixedBoxes.map((box) =>
+      alongX ? box.minX + box.width : box.minY + box.height)) + (useOrdinary ? 20 : rankSpacing);
+    for (let i = 0; i < components.length; i++) {
+      const local = components[i]!.map((node) => allPositions.get(node.id)!);
+      const box = componentBounds[i]!;
+      if (components[i]!.some((node) => node.fixedTopLeft !== undefined)) continue;
+      const shift = alongX ? componentOffset - box.minX : componentOffset - box.minY;
+      const rankShift = alongX ? -box.minY : -box.minX;
+      for (const node of local) {
+        if (alongX) { node.x += shift; node.y += rankShift; }
+        else { node.y += shift; node.x += rankShift; }
+      }
+      componentOffset += (alongX ? box.width : box.height) + (useOrdinary ? 20 : rankSpacing);
     }
-    componentOffset += (alongX ? box.width : box.height) + (useOrdinary ? 20 : rankSpacing);
   }
 
   const positionedNodes = nodes.map((node) => allPositions.get(node.id)!);

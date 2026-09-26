@@ -47,22 +47,35 @@ describe('expanded compound pipeline oracle', () => {
     expect(ax.slice(1).map((point) => point.y - expectedAx[1]!.y)).toEqual([1, 1]);
   });
 
-  it('preserves the authored dimensions of an empty nested container', () => {
+  it('packs the empty nested container and connected siblings like upstream', () => {
     const input = cases.find((item) => item.name === 'empty-nested-container')!;
     const oracle = expected.find((item) => item.name === input.name)!;
     const actual = layoutFlowchart(input.nodes, input.edges,
       { strategy: 'tala', direction: input.direction, seeds: [input.seed] });
-    const empty = actual.nodes.find((node) => node.id === 'Empty')!;
-    const expectedEmpty = oracle.nodes.find((node) => node.id === 'Empty')!;
-    expect({ width: empty.width, height: empty.height })
-      .toEqual({ width: expectedEmpty.width, height: expectedEmpty.height });
+    const byId = new Map(actual.nodes.map((node) => [node.id, node]));
+    for (const expectedNode of oracle.nodes.filter((node) => node.id !== 'X')) {
+      const node = byId.get(expectedNode.id)!;
+      expect({ id: node.id, x: node.x - node.width / 2, y: node.y - node.height / 2,
+        width: node.width, height: node.height }).toEqual(expectedNode);
+    }
+    const x = byId.get('X')!;
+    const expectedX = oracle.nodes.find((node) => node.id === 'X')!;
+    expect({ y: x.y - x.height / 2, width: x.width, height: x.height })
+      .toEqual({ y: expectedX.y, width: expectedX.width, height: expectedX.height });
+    expect((x.x - x.width / 2) - expectedX.x).toBe(-12);
   });
 
   it('places a clustered diamond inside a container without losing parent ownership', () => {
     const input = cases.find((item) => item.name === 'container-diamond')!;
+    const oracle = expected.find((item) => item.name === input.name)!;
     const actual = layoutFlowchart(input.nodes, input.edges,
       { strategy: 'tala', direction: input.direction, seeds: [input.seed] });
     const group = actual.nodes.find((node) => node.id === 'Group')!;
+    const outside = actual.nodes.find((node) => node.id === 'Outside')!;
+    expect(group.width).toBe(oracle.nodes.find((node) => node.id === 'Group')!.width);
+    expect(group.height).toBe(oracle.nodes.find((node) => node.id === 'Group')!.height);
+    expect(outside.x - outside.width / 2)
+      .toBe(oracle.nodes.find((node) => node.id === 'Outside')!.x);
     for (const node of actual.nodes.filter((item) => item.parentId === 'Group')) {
       expect(node.x - node.width / 2).toBeGreaterThanOrEqual(group.x - group.width / 2);
       expect(node.x + node.width / 2).toBeLessThanOrEqual(group.x + group.width / 2);

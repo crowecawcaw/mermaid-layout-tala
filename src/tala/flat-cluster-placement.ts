@@ -6,7 +6,8 @@ import { activateFlatClusters } from './cluster-topology.js';
 
 /** The flat ordinary placement path after sibling clusters become vessels. */
 export function placeFlatClusters(nodes: readonly LayoutNode[], edges: readonly LayoutEdge[],
-  direction: LayoutDirection, seed: number, ranks: ReadonlyMap<string, number>): PositionedNode[] | undefined {
+  direction: LayoutDirection, seed: number, ranks: ReadonlyMap<string, number>,
+  constrainDirection = true): PositionedNode[] | undefined {
   const discovery = discoverFlatClusters(nodes, edges, seed);
   if (discovery.clusters.length === 0) return;
   const byId = new Map(nodes.map((node) => [node.id, node]));
@@ -30,7 +31,7 @@ export function placeFlatClusters(nodes: readonly LayoutNode[], edges: readonly 
     ? direction === 'RL' ? 'RL' : 'LR'
     : arrangement === 'Row' ? direction === 'BT' ? 'BT' : 'TB' : direction;
   const graph = TalaGraph.fromFlowchart(nodes.map((node) => ({ ...node, parentId: undefined })),
-    edges, placementDirection);
+    edges, constrainDirection ? placementDirection : undefined);
   const active = activateFlatClusters(graph, discovery.clusters.map((cluster, index) => ({
     nodes: cluster.nodes, arrangement: cluster.arrangement, padding: cluster.padding,
     vesselId: vesselIds[index]!,
@@ -64,8 +65,12 @@ export function placeFlatClusters(nodes: readonly LayoutNode[], edges: readonly 
     const crossCenter = centers.length > 0
       ? centers.reduce((sum, center) => sum + center, 0) / centers.length
       : horizontal ? point.y + cluster.height / 2 : point.x + cluster.width / 2;
-    const vesselX = horizontal ? point.x : Math.round(crossCenter - cluster.width / 2);
-    const vesselY = horizontal ? Math.round(crossCenter - cluster.height / 2) : point.y;
+    // A container without an authored direction keeps the optimizer's vessel
+    // coordinate. The later graph-wide alignment stage may center its spokes.
+    const vesselX = horizontal || !constrainDirection ? point.x
+      : Math.round(crossCenter - cluster.width / 2);
+    const vesselY = !horizontal || !constrainDirection ? point.y
+      : Math.round(crossCenter - cluster.height / 2);
     const activeCluster = active.clusters[index]!;
     const vesselNode = activeCluster.vessel;
     vesselNode.topLeft = { x: vesselX, y: vesselY };
