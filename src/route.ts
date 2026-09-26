@@ -1,5 +1,4 @@
 import type { LayoutDirection, LayoutEdge, Point, PositionedEdge, PositionedNode } from './layout.js';
-import { canonicalTreePath } from './tala/tree-routing.js';
 
 type Side = 'N' | 'S' | 'E' | 'W';
 type Axis = 0 | 1 | 2;
@@ -14,7 +13,7 @@ export function routeGraphEdges(
   nodes: readonly PositionedNode[],
   edges: readonly LayoutEdge[],
   direction: LayoutDirection,
-  canonicalTreeEdgeIds: ReadonlySet<string> = new Set()
+  canonicalTreePaths: ReadonlyMap<string, Point[]> = new Map()
 ): PositionedEdge[] {
   const byId = new Map(nodes.map((node) => [node.id, node]));
   const parallel = new Map<string, LayoutEdge[]>();
@@ -34,11 +33,11 @@ export function routeGraphEdges(
     const source = byId.get(edge.from)!;
     const target = byId.get(edge.to)!;
     const offset = offsets.get(edge.id) ?? 0;
-    const treeEdge = canonicalTreeEdgeIds.has(edge.id);
-    const points = treeEdge ? canonicalTreePath(source, target, direction) : source.id === target.id
+    const treePoints = canonicalTreePaths.get(edge.id);
+    const points = treePoints ?? (source.id === target.id
       ? selfLoop(source, offset)
-      : routeBetween(source, target, nodes, byId, direction, offset);
-    const compact = treeEdge ? points : normalize(points);
+      : routeBetween(source, target, nodes, byId, direction, offset));
+    const compact = treePoints ? points : normalize(points);
     const middle = chooseLabelPoint(compact, edge, nodes);
     return { ...edge, points: compact, x: middle.x, y: middle.y };
   });

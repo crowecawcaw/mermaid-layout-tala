@@ -13,7 +13,7 @@ that engine yet.
 | Seed attempts | Independent mutable graph clones and deterministic ordering attempts are implemented. Upstream crossing evaluation is ported; random placement and full label scoring remain unported. |
 | Tree, hierarchy, hub, proximity, cluster, and sequence discovery | Upstream `AddHubs` discovery, flat tree leaf peeling, and sibling cluster discovery are ported. Tree extraction matches 24 pinned generated trees; flat sibling clustering matches five upstream cases. Tree geometry now follows upstream's orientation transforms, level placement, sibling spacing, and edge-label clearance. Incoming and outgoing branches are placed around their junction. A flat cluster vessel placement branch matches the completed upstream geometry in the diamond and three-way parallel fan. General compound grouping, hierarchy discovery and placement, and other grouping algorithms remain unported. Ordinary connected components use translated TALA placement by default; nested containers still use the adapter's recursive placement. |
 | General placement, symmetry, compaction, and bin packing | The ordinary-node initializer, Go-compatible random stream, sizeless and sized optimizers, spatial swaps, quarter-turn transposes, compaction, distance-cluster joining, and placement stage are translated. The graph direction mirror matches 24 upstream tree-stage fixtures. Sized scoring includes upstream flow continuity and ordered obstruction handling; transpose scoring includes straight-edge crossings and cached crossing cost. Placement costs match 54 pinned upstream fixtures, compaction matches 65 fixtures, distance-cluster joining matches 7 fixtures, and the complete ordinary placement stage matches 12 curated plus 30 generated graphs exactly. Compound placement, labels, herd behavior, bin packing, and the other upstream placement branches remain unported. The ordinary stage is connected to the renderer for flat components. |
-| Edge routing | The center-port, S-shaped tree route kernel is ported for outward trees and matches all edges in 18 pinned upstream tree fixtures. Visibility-grid routing handles other graph types and avoids node interiors; upstream route graph, general port policies, channel refinements, and route cleanup remain unported. |
+| Edge routing | The center-port, S-shaped tree route kernel is ported for inward and outward branches and matches all edges in 24 pinned upstream tree fixtures. Visibility-grid routing handles other graph types and avoids node interiors; upstream route graph, general port policies, channel refinements, and route cleanup remain unported. |
 | Labels | Edge labels are measured and placed on a selected route segment; upstream label optimization remains unported. |
 | Validation and resource limits | Basic input validation exists. Upstream graph invariants and work budgets remain unported. |
 
@@ -30,10 +30,9 @@ pipeline's relative node geometry on 16 of the 24. The remaining cases have
 post-placement movement in upstream's routing and `Dejitter` stages; those
 stages have not been ported.
 
-For ordinary outward trees, the route points match upstream in 18 pinned
-fixtures when given upstream's completed node geometry. Ten of these match
-the completed node geometry and route points together through the public
-TypeScript layout entry point.
+Tree route points match upstream in all 24 pinned fixtures when given upstream's
+completed node geometry. Sixteen match the completed node geometry and route
+points together through the public TypeScript layout entry point.
 
 The current playground defaults to the translated ordinary placement stage
 for flat components. Its optional layered setting uses the previous adapter

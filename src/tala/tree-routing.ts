@@ -1,4 +1,5 @@
 import type { LayoutDirection, LayoutEdge, Point, PositionedNode } from '../layout.js';
+import type { ExtractedTree, TreeExtraction } from './tree-extraction.js';
 
 /** The treeEdgeMidpoints path for an outward branch with center ports. */
 export function canonicalTreePath(source: PositionedNode, target: PositionedNode,
@@ -30,13 +31,28 @@ export function canonicalTreePath(source: PositionedNode, target: PositionedNode
         && !(list[index - 1]!.y === point.y && point.y === list[index + 1]!.y));
 }
 
-export function isOutwardTree(nodes: readonly PositionedNode[], edges: readonly LayoutEdge[]): boolean {
-  if (nodes.length < 2 || edges.length !== nodes.length - 1) return false;
-  const incoming = new Map(nodes.map((node) => [node.id, 0]));
-  for (const edge of edges) {
-    if (edge.directed === false || !incoming.has(edge.from) || !incoming.has(edge.to)) return false;
-    incoming.set(edge.to, incoming.get(edge.to)! + 1);
-  }
-  return [...incoming.values()].filter((count) => count === 0).length === 1
-    && [...incoming.values()].every((count) => count <= 1);
+/** Routes each extracted branch in its actual placement direction. */
+export function canonicalTreePaths(nodes: readonly PositionedNode[], edges: readonly LayoutEdge[],
+  direction: LayoutDirection, extraction: TreeExtraction): Map<string, Point[]> | undefined {
+  const byId = new Map(nodes.map((node) => [node.id, node]));
+  const paths = new Map<string, Point[]>();
+  const vertical = direction === 'TB' || direction === 'BT';
+  const visit = (parentId: string, trees: readonly ExtractedTree[]): boolean => {
+    for (const tree of trees) {
+      const parent = byId.get(parentId), child = byId.get(tree.id);
+      if (!parent || !child) return false;
+      const candidates = edges.filter((edge) => edge.from === parentId && edge.to === tree.id
+        || edge.to === parentId && edge.from === tree.id);
+      if (candidates.length !== 1) return false;
+      const edge = candidates[0]!;
+      const orientation = vertical ? child.y >= parent.y ? 'TB' : 'BT'
+        : child.x >= parent.x ? 'LR' : 'RL';
+      const points = canonicalTreePath(parent, child, orientation);
+      paths.set(edge.id, edge.from === tree.id ? points.reverse() : points);
+      if (!visit(tree.id, tree.children)) return false;
+    }
+    return true;
+  };
+  for (const entry of extraction.trees) if (!visit(entry.sentinel, entry.roots)) return;
+  return paths.size === edges.length ? paths : undefined;
 }

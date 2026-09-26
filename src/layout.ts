@@ -5,8 +5,8 @@ import { addHubs } from './tala/proximity.js';
 import { countNonSharedCrossings } from './tala/crossings.js';
 import { placeOrdinaryNodes } from './tala/ordinary-placement.js';
 import { placeSimpleTree } from './tala/simple-tree.js';
-import { extractFlatTrees } from './tala/tree-extraction.js';
-import { isOutwardTree } from './tala/tree-routing.js';
+import { extractFlatTrees, type TreeExtraction } from './tala/tree-extraction.js';
+import { canonicalTreePaths } from './tala/tree-routing.js';
 import { prescaleNodes } from './tala/prescale.js';
 import { placeFlatClusters } from './tala/flat-cluster-placement.js';
 
@@ -144,7 +144,7 @@ function layoutFlatFlowchart(
     || options.strategy !== 'layered' && options.nodeSpacing === undefined
       && options.rankSpacing === undefined && options.orderingPasses === undefined;
   const allPositions = new Map<string, PositionedNode>();
-  const canonicalTreeEdgeIds = new Set<string>();
+  const treeComponents: Array<{ ids: Set<string>; edges: LayoutEdge[]; extraction: TreeExtraction }> = [];
   const componentBounds: Array<ReturnType<typeof bounds>> = [];
   for (const component of components) {
     const componentIds = new Set(component.map((node) => node.id));
@@ -159,13 +159,8 @@ function layoutFlatFlowchart(
           weight: edge.weight,
         } satisfies RankEdge)));
     const tree = useOrdinary ? placeSimpleTree(component, componentEdges, direction, ranks) : undefined;
-    if (tree && isOutwardTree(tree, componentEdges)) {
-      const extracted = extractFlatTrees(component, componentEdges);
-      const root = component.find((node) => !componentEdges.some((edge) => edge.to === node.id));
-      if (root && extracted.remaining.length === 1 && extracted.remaining[0] === root.id) {
-        for (const edge of componentEdges) canonicalTreeEdgeIds.add(edge.id);
-      }
-    }
+    if (tree) treeComponents.push({ ids: componentIds, edges: componentEdges,
+      extraction: extractFlatTrees(component, componentEdges) });
     const cluster = useOrdinary && !tree && component.every((node) => !node.isGroup)
       ? placeFlatClusters(component, componentEdges, direction, seed, ranks) : undefined;
     const localNodes = tree ?? cluster ?? (useOrdinary && component.length > 1 && component.every((node) => !node.isGroup)
@@ -192,7 +187,13 @@ function layoutFlatFlowchart(
   }
 
   const positionedNodes = nodes.map((node) => allPositions.get(node.id)!);
-  const positionedEdges = routeGraphEdges(positionedNodes, edges, direction, canonicalTreeEdgeIds);
+  const treePaths = new Map<string, Point[]>();
+  for (const component of treeComponents) {
+    const paths = canonicalTreePaths(positionedNodes.filter((node) => component.ids.has(node.id)),
+      component.edges, direction, component.extraction);
+    if (paths) for (const [edgeId, points] of paths) treePaths.set(edgeId, points);
+  }
+  const positionedEdges = routeGraphEdges(positionedNodes, edges, direction, treePaths);
   return { nodes: positionedNodes, edges: positionedEdges };
 }
 
