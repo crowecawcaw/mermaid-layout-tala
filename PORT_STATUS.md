@@ -121,6 +121,12 @@ The post-sweep center connections, isolated-vertex removal, near-port flags,
 and per-vertex indices now match all nine upstream final OVG fixtures in
 `src/tala/ovg-finalize.ts`. The route search's stable indexed priority queue
 is translated in `src/tala/priority-queue.ts`.
+`src/tala/ovg-search.ts` translates the ordinary single-edge search branch,
+including port direction checks, center-port and turn penalties, near-port
+penalties, and path reconstruction. Its full vertex sequence and search cost
+match pinned Go output for all nine flat OVG fixtures. Sequential multi-edge
+search still needs occupied-route, sharing, crossing, and label costs before
+this can replace the public router.
 
 A separate set of 24 generated branching trees exercises deeper and uneven
 structures. The TypeScript geometry matches the upstream node-placement stage
