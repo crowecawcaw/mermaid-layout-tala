@@ -112,7 +112,26 @@ export class TalaGraph {
       if (!from || !to) throw new Error(`edge ${input.id} references a missing node`);
       graph.edges.push(new TalaEdge(input, from, to));
     }
+    graph.computeCellSize();
     return graph;
+  }
+
+  /** Port of upstream layoutgraph.Graph.ComputeCellSize. */
+  computeCellSize(): void {
+    let minHeight = Infinity, minWidth = Infinity;
+    let maxHeight = -Infinity, maxWidth = -Infinity;
+    for (const node of this.nodes) {
+      minWidth = Math.min(minWidth, node.width);
+      minHeight = Math.min(minHeight, node.height);
+      maxWidth = Math.max(maxWidth, node.width);
+      maxHeight = Math.max(maxHeight, node.height);
+    }
+    const minLength = Math.min(minWidth, minHeight);
+    const maxLength = Math.max(maxWidth, maxHeight);
+    this.cellSize = maxLength < 3 * minLength
+      ? Math.ceil(maxLength)
+      : Math.ceil(3 * minLength / 2);
+    this.cellSize = Math.max(this.cellSize, 10);
   }
 
   clone(): TalaGraph {
