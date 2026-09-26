@@ -38,6 +38,21 @@ describe('TALA ordinary-node sized placement', () => {
     expect(doesOverlapAt(a!, b!, a!.topLeft!)).toBe(false);
   });
 
+  it('uses the upstream ordinary-node scorer by default', () => {
+    const graph = TalaGraph.fromFlowchart(
+      ['a', 'b'].map((id) => ({ id, width: 40, height: 20 })),
+      [{ id: 'ab', from: 'a', to: 'b' }], 'LR'
+    );
+    const [a, b] = graph.nodes;
+    a!.topLeft = { x: 0, y: 0 };
+    b!.topLeft = { x: 300, y: 0 };
+    const optimizer = new SizedOptimizer(graph, new GoRandom(1));
+    expect(optimizer.moveNodeToBest(a!, [
+      { x: 100, y: 0 }, { x: 200, y: 0 },
+    ], true)).toBe(true);
+    expect(a!.topLeft).toEqual({ x: 200, y: 0 });
+  });
+
   it('uses the upstream fixture to reject padded overlaps', () => {
     const graph = TalaGraph.fromFlowchart(
       ['n1', 'n2', 'n3', 'n4', 'n5'].map((id) => ({ id, width: 50, height: 50 })),

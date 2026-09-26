@@ -3,6 +3,8 @@ import { GoRandom } from './go-rng.js';
 import { TalaGraph, TalaNode } from './graph.js';
 import { doesOverlapAt } from './overlap.js';
 import { closestSizedUnoccupiedDistance, sizedPlacementPoints } from './sized-candidates.js';
+import { sizedNodeEdgeLength, sizedTurnCost } from './sized-cost.js';
+import { nodeSymmetry } from './symmetry.js';
 
 const precision = 1e-6;
 
@@ -26,12 +28,18 @@ export function sizedMedianToNeighbors(node: TalaNode, graph: TalaGraph): Point 
   return { x: x / graph.cellSize, y: y / graph.cellSize };
 }
 
-/** Ordinary-node sized placement control flow. The scorer must include
- * NodeEdgeLength, column crossing, and symmetry terms. Container movement,
- * swap, transpose, and hub escape are separate upstream operations. */
+/** Ordinary-node sized placement control flow with the upstream local edge and
+ * symmetry score. Container movement, swap, transpose, and hub escape are
+ * separate upstream operations. */
 export class SizedOptimizer {
+  private readonly score: (node: TalaNode) => number;
+
   constructor(private readonly graph: TalaGraph, private readonly random: GoRandom,
-    private readonly score: (node: TalaNode) => number) {}
+    score?: (node: TalaNode) => number) {
+    const turnCost = sizedTurnCost(graph);
+    this.score = score ?? ((node) => sizedNodeEdgeLength(node, graph, turnCost)
+      - nodeSymmetry(node, graph) * graph.cellSize * node.edges.length);
+  }
 
   medianPoint(node: TalaNode, temp: number): Point {
     if (!Number.isFinite(temp) || temp < 0) throw new RangeError('invalid temperature');

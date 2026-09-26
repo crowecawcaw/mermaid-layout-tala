@@ -1,6 +1,7 @@
 import type { Point } from '../layout.js';
 import { GoRandom } from './go-rng.js';
 import { TalaGraph, TalaNode } from './graph.js';
+import { sizelessNodeEdgeLength } from './sizeless-cost.js';
 
 const positionKey = (point: Point): string => `${point.x},${point.y}`;
 
@@ -54,14 +55,16 @@ export function placementPoints(median: Point, minUnoccupiedDistance: number, oc
   return points;
 }
 
-/** The upstream sizeless loop with an injected edge cost. The full cost
- * evaluator has to be ported before this can replace the live placer. */
+/** The upstream ordinary-node sizeless loop. Callers may inject a scorer for
+ * differential tests; the default uses the ported edge cost. */
 export class SizelessOptimizer {
   private readonly occupied = new Map<string, TalaNode>();
   private readonly movable: TalaNode[];
+  private readonly score: (node: TalaNode) => number;
 
   constructor(private readonly graph: TalaGraph, private readonly random: GoRandom,
-    private readonly score: (node: TalaNode) => number) {
+    score?: (node: TalaNode) => number) {
+    this.score = score ?? ((node) => sizelessNodeEdgeLength(node, graph));
     this.movable = graph.nodes.filter((node) => node.edges.length > 0 && !node.fixedTopLeft);
     this.resetOccupied();
   }

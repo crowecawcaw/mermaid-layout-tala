@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { TalaGraph } from '../src/tala/graph.js';
 import { GoRandom } from '../src/tala/go-rng.js';
 import { closestUnoccupiedDistance, medianToNeighbors, placementPoints, SizelessOptimizer } from '../src/tala/sizeless-optimizer.js';
+import { sizelessNodeEdgeLength } from '../src/tala/sizeless-cost.js';
 
 describe('TALA sizeless placement', () => {
   it('uses the median of positioned adjacent nodes', () => {
@@ -38,6 +39,19 @@ describe('TALA sizeless placement', () => {
     new SizelessOptimizer(graph, new GoRandom(1), score).optimize(0);
     expect(graph.nodes[0]!.topLeft).not.toEqual(graph.nodes[1]!.topLeft);
     expect(Math.abs(graph.nodes[0]!.topLeft!.x - graph.nodes[1]!.topLeft!.x)).toBeLessThan(before);
+  });
+
+  it('uses the ported edge score when no scorer is injected', () => {
+    const graph = TalaGraph.fromFlowchart(
+      ['a', 'b'].map((id) => ({ id, width: 40, height: 20 })),
+      [{ id: 'ab', from: 'a', to: 'b' }], 'LR'
+    );
+    graph.nodes[0]!.topLeft = { x: 0, y: 0 };
+    graph.nodes[1]!.topLeft = { x: 8, y: 0 };
+    const before = sizelessNodeEdgeLength(graph.nodes[0]!, graph);
+    new SizelessOptimizer(graph, new GoRandom(1)).optimize(0);
+    expect(sizelessNodeEdgeLength(graph.nodes[0]!, graph)).toBeLessThan(before);
+    expect(graph.nodes[0]!.topLeft).not.toEqual(graph.nodes[1]!.topLeft);
   });
 
   it('does not move fixed anchors', () => {
