@@ -73,6 +73,17 @@ export class SizelessOptimizer {
 
   optimize(temp: number): void {
     if (!Number.isFinite(temp) || temp < 0) throw new RangeError('invalid temperature');
+    const snapshot = new Map(this.graph.nodes.map((node) => [node, node.topLeft ? { ...node.topLeft } : undefined]));
+    try {
+      this.optimizePass(temp);
+    } catch (error) {
+      for (const [node, position] of snapshot) node.topLeft = position ? { ...position } : undefined;
+      this.resetOccupied();
+      throw error;
+    }
+  }
+
+  private optimizePass(temp: number): void {
     const indices = this.movable.map((_, index) => index);
     this.random.shuffle(indices);
     for (const index of indices) {
@@ -125,12 +136,17 @@ export class SizelessOptimizer {
     for (const candidate of candidates) {
       const candidatePosition = candidate.topLeft!;
       const candidateCost = this.score(candidate);
-      node.topLeft = candidatePosition;
-      candidate.topLeft = original;
-      const swappedNodeCost = this.score(node);
-      const swappedCandidateCost = swappedNodeCost < bestCost - 1e-6 ? this.score(candidate) : Infinity;
-      node.topLeft = original;
-      candidate.topLeft = candidatePosition;
+      let swappedNodeCost: number;
+      let swappedCandidateCost: number;
+      try {
+        node.topLeft = candidatePosition;
+        candidate.topLeft = original;
+        swappedNodeCost = this.score(node);
+        swappedCandidateCost = swappedNodeCost < bestCost - 1e-6 ? this.score(candidate) : Infinity;
+      } finally {
+        node.topLeft = original;
+        candidate.topLeft = candidatePosition;
+      }
       if (swappedNodeCost < bestCost - 1e-6 && swappedCandidateCost <= candidateCost + 1e-6) {
         bestCost = swappedNodeCost;
         best = candidate;

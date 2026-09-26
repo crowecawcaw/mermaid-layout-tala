@@ -52,4 +52,21 @@ describe('TALA sizeless placement', () => {
     new SizelessOptimizer(graph, new GoRandom(1), score).optimize(0);
     expect(graph.nodes[0]!.topLeft).toEqual({ x: 0, y: 0 });
   });
+
+  it('rolls back all node positions when scoring fails', () => {
+    const graph = TalaGraph.fromFlowchart(
+      ['a', 'b', 'c'].map((id) => ({ id, width: 40, height: 20 })),
+      [{ id: 'ab', from: 'a', to: 'b' }, { id: 'bc', from: 'b', to: 'c' }], 'TB'
+    );
+    graph.nodes.forEach((node, index) => { node.topLeft = { x: index * 5, y: 0 }; });
+    const original = graph.nodes.map((node) => ({ ...node.topLeft! }));
+    let calls = 0;
+    const score = () => {
+      if (++calls === 4) throw new Error('injected scoring failure');
+      return calls;
+    };
+    const optimizer = new SizelessOptimizer(graph, new GoRandom(1), score);
+    expect(() => optimizer.optimize(0)).toThrow('injected scoring failure');
+    expect(graph.nodes.map((node) => node.topLeft)).toEqual(original);
+  });
 });
