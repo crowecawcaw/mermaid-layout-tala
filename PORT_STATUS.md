@@ -111,10 +111,12 @@ the upstream OVG router and its later route cleanup passes.
 The ordinary-node OVG visibility sweep from `routing/ovg.go` is translated in
 `src/tala/ovg-sweep.ts`. It matches five focused Go sweep fixtures and nine
 complete flat OVG builds when supplied the Go build's pre-sweep vertices,
-including the obstacle, port-direction, touching-port, and tunnel cases.
-The translated candidate-point and visibility-sweep stages are not yet
-assembled into the public router; vertex construction, tunnel creation, OVG
-path search, and route cleanup remain to be ported.
+including obstacle, port-direction, touching-port, and tunnel cases.
+`src/tala/ovg-build.ts` now connects the translated candidate geometry,
+visibility filtering, boundary stages, tunnel entries, and sweep for flat
+graphs. Its full OVG vertex and edge sets match all nine pinned upstream
+graphs. This graph construction is not yet integrated into the public router;
+OVG path search, route cleanup, and hierarchical graph construction remain.
 
 A separate set of 24 generated branching trees exercises deeper and uneven
 structures. The TypeScript geometry matches the upstream node-placement stage

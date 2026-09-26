@@ -38,6 +38,7 @@ type tsRealSweepOutput struct {
     Obstacles []tsRealSweepNode `json:"obstacles"`
     Vertices []tsRealSweepVertex `json:"vertices"`
     PreTunnelCount int `json:"preTunnelCount"`
+    TunnelEdges [][4]float64 `json:"tunnelEdges"`
     Edges [][4]float64 `json:"edges"`
 }
 
@@ -78,7 +79,8 @@ func TestTSOVGRealSweepFixtures(t *testing.T) {
         if err := ovg.addTunnels(g, guard); err != nil { t.Fatal(err) }
         output := tsRealSweepOutput{Name: input.Name, Obstacles: input.Nodes,
             Vertices: make([]tsRealSweepVertex, 0, len(ovg.Nodes)),
-            PreTunnelCount: preTunnelCount, Edges: make([][4]float64, 0)}
+            PreTunnelCount: preTunnelCount, TunnelEdges: make([][4]float64, 0),
+            Edges: make([][4]float64, 0)}
         for _, vertex := range ovg.Nodes {
             item := tsRealSweepVertex{X: vertex.X, Y: vertex.Y, Center: vertex.IsNodeCenter,
                 Tunnel: vertex.IsTunnel}
@@ -96,6 +98,11 @@ func TestTSOVGRealSweepFixtures(t *testing.T) {
             output.Vertices = append(output.Vertices, item)
         }
         preexistingEdges := len(ovg.Edges) // addTunnels connects its entries before the sweep
+        for _, edge := range ovg.Edges {
+            a, b := edge.From.Point, edge.To.Point
+            if a.X > b.X || (a.X == b.X && a.Y > b.Y) { a, b = b, a }
+            output.TunnelEdges = append(output.TunnelEdges, [4]float64{a.X, a.Y, b.X, b.Y})
+        }
         if err := ovg.connectNodes(g, guard); err != nil { t.Fatal(err) }
         for _, edge := range ovg.Edges[preexistingEdges:] {
             a, b := edge.From.Point, edge.To.Point
@@ -105,6 +112,12 @@ func TestTSOVGRealSweepFixtures(t *testing.T) {
         sort.Slice(output.Edges, func(i,j int) bool {
             for k := 0; k < 4; k++ {
                 if output.Edges[i][k] != output.Edges[j][k] { return output.Edges[i][k] < output.Edges[j][k] }
+            }
+            return false
+        })
+        sort.Slice(output.TunnelEdges, func(i,j int) bool {
+            for k := 0; k < 4; k++ {
+                if output.TunnelEdges[i][k] != output.TunnelEdges[j][k] { return output.TunnelEdges[i][k] < output.TunnelEdges[j][k] }
             }
             return false
         })

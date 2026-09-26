@@ -80,12 +80,17 @@ function segmentPassesThroughNode(a: Point, b: Point, node: OVGCandidateNode): b
   return false;
 }
 
-function ports(node: OVGCandidateNode): NodePorts {
+export function ovgPortGroups(node: OVGCandidateNode): Point[][] {
   const groups = shapePortPolicy(node.shape, node.numColumns).groups.map((group) =>
     group.map((relative) => ({
       x: node.x + roundAway(node.width * relative.x),
       y: node.y + roundAway(node.height * relative.y),
     })));
+  return groups;
+}
+
+function ports(node: OVGCandidateNode): NodePorts {
+  const groups = ovgPortGroups(node);
   return { groups, all: groups.flat() };
 }
 
