@@ -112,4 +112,20 @@ describe('upstream Step sequence rules', () => {
     expect(b.x - b.width / 2 - (a.x - a.width / 2)).toBe(sequenceAdvance(a.width));
     expect(c.x - c.width / 2 - (b.x - b.width / 2)).toBe(sequenceAdvance(b.width));
   });
+
+  it('suppresses defining edges inside a nested container as well', () => {
+    const result = layoutFlowchart([
+      { id: 'G', width: 240, height: 180, isGroup: true },
+      { id: 'A', parentId: 'G', shape: 'Step', width: 40, height: 30 },
+      { id: 'B', parentId: 'G', shape: 'Step', width: 40, height: 30 },
+      { id: 'X', width: 60, height: 35 },
+    ], [
+      { id: 'ab', from: 'A', to: 'B' }, { id: 'bx', from: 'B', to: 'X' },
+    ], { strategy: 'tala', seeds: [1] });
+    expect(result.edges.find((edge) => edge.id === 'ab')?.points).toEqual([]);
+    expect(result.edges.find((edge) => edge.id === 'bx')?.points.length).toBeGreaterThanOrEqual(2);
+    const a = result.nodes.find((node) => node.id === 'A')!;
+    const b = result.nodes.find((node) => node.id === 'B')!;
+    expect(b.x - b.width / 2 - (a.x - a.width / 2)).toBe(sequenceAdvance(a.width));
+  });
 });

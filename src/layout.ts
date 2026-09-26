@@ -10,6 +10,7 @@ import { canonicalTreePaths } from './tala/tree-routing.js';
 import { prescaleNodes } from './tala/prescale.js';
 import { placeFlatClusters } from './tala/flat-cluster-placement.js';
 import { placeFlatSequences } from './tala/flat-sequence-placement.js';
+import { sequenceDefiningEdges } from './tala/sequence-topology.js';
 import { prepareNodeLabels } from './tala/label-policy.js';
 import { normalizeLayoutResult } from './tala/normalize.js';
 
@@ -223,13 +224,8 @@ function layoutFlatFlowchart(
       component.edges, direction, component.extraction);
     if (paths) for (const [edgeId, points] of paths) treePaths.set(edgeId, points);
   }
-  const routedEdges = routeGraphEdges(positionedNodes,
-    edges.filter((edge) => !sequenceDefiningEdgeIds.has(edge.id)), direction, treePaths);
-  const positionedEdges = [...routedEdges, ...edges.filter((edge) => sequenceDefiningEdgeIds.has(edge.id))
-    .map((edge) => {
-      const { labelBBox: _labelBBox, ...withoutLabel } = edge;
-      return { ...withoutLabel, points: [] as Point[], x: 0, y: 0 };
-    })].sort((a, b) => compareText(a.id, b.id));
+  const positionedEdges = routeWithConsumedEdges(positionedNodes, edges, direction,
+    sequenceDefiningEdgeIds, treePaths);
   return { nodes: positionedNodes, edges: positionedEdges };
 }
 
@@ -342,8 +338,27 @@ function layoutCompoundFlowchart(
     return { width, height, positioned };
   };
   const placed = placeScope(undefined, options.direction ?? 'TB').positioned;
-  const edges = routeGraphEdges(placed, inputEdges, options.direction ?? 'TB');
+  const consumed = new Set<string>();
+  if (options.strategy === 'tala' || options.strategy !== 'layered'
+    && options.nodeSpacing === undefined && options.rankSpacing === undefined
+    && options.orderingPasses === undefined) {
+    const original = TalaGraph.fromFlowchart(nodes, inputEdges, options.direction ?? 'TB');
+    for (const id of sequenceDefiningEdges(original)) consumed.add(id);
+  }
+  const edges = routeWithConsumedEdges(placed, inputEdges, options.direction ?? 'TB', consumed);
   return { nodes: placed, edges };
+}
+
+function routeWithConsumedEdges(nodes: readonly PositionedNode[], edges: readonly LayoutEdge[],
+  direction: LayoutDirection, consumed: ReadonlySet<string>,
+  canonicalTreePaths: ReadonlyMap<string, Point[]> = new Map()): PositionedEdge[] {
+  const routed = routeGraphEdges(nodes, edges.filter((edge) => !consumed.has(edge.id)),
+    direction, canonicalTreePaths);
+  const hidden = edges.filter((edge) => consumed.has(edge.id)).map((edge) => {
+    const { labelBBox: _labelBBox, ...withoutLabel } = edge;
+    return { ...withoutLabel, points: [] as Point[], x: 0, y: 0 };
+  });
+  return [...routed, ...hidden].sort((a, b) => compareText(a.id, b.id));
 }
 
 function makeAcyclic(nodes: readonly LayoutNode[], edges: readonly LayoutEdge[]): WeightedEdge[] {
