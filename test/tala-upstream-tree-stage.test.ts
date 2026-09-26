@@ -1,6 +1,9 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { layoutFlowchart, type LayoutDirection } from '../src/layout.js';
+import type { LayoutDirection } from '../src/layout.js';
+import { placeSimpleTree } from '../src/tala/simple-tree.js';
+import { prescaleNodes } from '../src/tala/prescale.js';
+import { prepareNodeLabels } from '../src/tala/label-policy.js';
 
 interface Case {
   name: string;
@@ -24,13 +27,13 @@ describe('upstream tree placement stage', () => {
       const input = cases[index]!;
       const output = expected[index]!;
       expect(output.name).toBe(input.name);
-      const placed = layoutFlowchart(input.nodes, input.edges, {
-        strategy: 'tala', direction: input.direction, seeds: [input.seed],
-      });
+      const prepared = prepareNodeLabels(prescaleNodes(input.nodes, input.edges));
+      const placed = placeSimpleTree(prepared, input.edges, input.direction,
+        new Map(prepared.map((node) => [node.id, 0])))!;
       const first = output.nodes[0]!;
-      const placedFirst = placed.nodes.find((node) => node.id === first.id)!;
+      const placedFirst = placed.find((node) => node.id === first.id)!;
       for (const node of output.nodes) {
-        const actual = placed.nodes.find((candidate) => candidate.id === node.id)!;
+        const actual = placed.find((candidate) => candidate.id === node.id)!;
         expect(actual.width).toBe(node.width);
         expect(actual.height).toBe(node.height);
         expect(actual.x - actual.width / 2 - placedFirst.x + placedFirst.width / 2).toBe(node.x - first.x);
@@ -41,13 +44,13 @@ describe('upstream tree placement stage', () => {
   for (const [index, input] of labeledCases.entries()) {
     it(`matches labeled tree ${input.name}`, () => {
       const output = labeledExpected[index]!;
-      const placed = layoutFlowchart(input.nodes, input.edges, {
-        strategy: 'tala', direction: input.direction, seeds: [input.seed],
-      });
+      const prepared = prepareNodeLabels(prescaleNodes(input.nodes, input.edges));
+      const placed = placeSimpleTree(prepared, input.edges, input.direction,
+        new Map(prepared.map((node) => [node.id, 0])))!;
       const first = output.nodes[0]!;
-      const placedFirst = placed.nodes.find((node) => node.id === first.id)!;
+      const placedFirst = placed.find((node) => node.id === first.id)!;
       for (const node of output.nodes) {
-        const actual = placed.nodes.find((candidate) => candidate.id === node.id)!;
+        const actual = placed.find((candidate) => candidate.id === node.id)!;
         expect(actual.x - actual.width / 2 - placedFirst.x + placedFirst.width / 2).toBe(node.x - first.x);
         expect(actual.y - actual.height / 2 - placedFirst.y + placedFirst.height / 2).toBe(node.y - first.y);
       }

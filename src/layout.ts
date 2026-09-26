@@ -27,6 +27,7 @@ import { balanceStraightSegments } from './tala/edge-balance.js';
 import { balanceSymmetry } from './tala/balance-symmetry.js';
 import { directOrdinaryGraph } from './tala/direct.js';
 import { combineSubgraphs } from './tala/combine-subgraphs.js';
+import { dejitterTreeRoutes } from './tala/dejitter.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
@@ -243,13 +244,25 @@ function layoutFlatFlowchart(
 
   const positionedNodes = nodes.map((node) => allPositions.get(node.id)!);
   const treePaths = new Map<string, Point[]>();
-  for (const component of treeComponents) {
-    const paths = canonicalTreePaths(positionedNodes.filter((node) => component.ids.has(node.id)),
-      component.edges, direction, component.extraction);
-    if (paths) for (const [edgeId, points] of paths) treePaths.set(edgeId, points);
-  }
-  const positionedEdges = routeWithConsumedEdges(positionedNodes, edges, direction,
+  const updateTreePaths = () => {
+    treePaths.clear();
+    for (const component of treeComponents) {
+      const paths = canonicalTreePaths(positionedNodes.filter((node) => component.ids.has(node.id)),
+        component.edges, direction, component.extraction);
+      if (paths) for (const [edgeId, points] of paths) treePaths.set(edgeId, points);
+    }
+  };
+  updateTreePaths();
+  let positionedEdges = routeWithConsumedEdges(positionedNodes, edges, direction,
     sequenceDefiningEdgeIds, treePaths);
+  if (useOrdinary && treeComponents.length > 0) {
+    const sentinels = new Set(treeComponents.flatMap((component) => component.extraction.remaining));
+    if (dejitterTreeRoutes(positionedNodes, positionedEdges, sentinels)) {
+      updateTreePaths();
+      positionedEdges = routeWithConsumedEdges(positionedNodes, edges, direction,
+        sequenceDefiningEdgeIds, treePaths);
+    }
+  }
   return { nodes: positionedNodes, edges: positionedEdges };
 }
 
