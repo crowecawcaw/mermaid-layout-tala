@@ -92,8 +92,10 @@ function routeSequential(nodes: readonly OVGFlatNode[],
     let bf = byId.get(b.from)!, bt = byId.get(b.to)!;
     if (af.y > at.y) [af, at] = [at, af];
     if (bf.y > bt.y) [bf, bt] = [bt, bf];
-    return af.y - bf.y || (af !== bf ? af.x - bf.x : 0)
-      || at.y - bt.y || at.x - bt.x;
+    if (af.y !== bf.y) return af.y - bf.y;
+    if (af !== bf) return af.x - bf.x;
+    if (at.y === bt.y) return at.x - bt.x;
+    return at.y - bt.y;
   });
   const routeState = new OVGRouteState<OVGFlatEdge>(graph);
   return ordered.map((edge) => {

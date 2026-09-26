@@ -122,9 +122,9 @@ func TestTSOVGSequentialFixtures(t *testing.T) {
             }
             output.Generated = append(output.Generated, item)
         }
-        output.Flavors = make([]tsSequentialFlavor, 0, 3)
+        output.Flavors = make([]tsSequentialFlavor, 0, 4)
         bestCost := 1e100
-        for _, flavor := range []RouteGenerationFlavor{ShortestToLongest, LongestToShortest, Default} {
+        for _, flavor := range []RouteGenerationFlavor{ShortestToLongest, LongestToShortest, Default, TopDownLeftRight} {
             flavorRouter, err := newOVGEdgeRouterWithWorkLimit(context.Background(), flavor,
                 ovg, g, nil, g.Edges, maxRouteSearchWorkUnits)
             if err != nil { t.Fatal(err) }
@@ -143,7 +143,7 @@ func TestTSOVGSequentialFixtures(t *testing.T) {
                 item.Routes = append(item.Routes, path)
             }
             output.Flavors = append(output.Flavors, item)
-            if result.Err == nil && bestCost - result.Distance >= geo.PRECISION {
+            if flavor != TopDownLeftRight && result.Err == nil && bestCost - result.Distance >= geo.PRECISION {
                 bestCost = result.Distance
                 output.SelectedFlavor = string(flavor)
             }

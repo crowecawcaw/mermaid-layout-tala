@@ -136,7 +136,8 @@ and nine earlier single-edge geometry cases. Arrowhead and label costs,
 route cleanup, hierarchical graph construction, and broader public router
 integration remain.
 Go's three ordinary route orders and first-minimum selection are translated;
-all orders match the pinned eleven multi-edge fixtures. `Route.createSegmentEndpoints`
+the separate top-down order used by hierarchies also matches the pinned
+eleven multi-edge fixtures. `Route.createSegmentEndpoints`
 matches Go on those fixtures and the nine single-edge geometry cases. The
 public TALA path now uses the selected OVG routes for flat, ordinary,
 rectangle-only graphs without tree-sentinel routes, loops, or table-column
