@@ -21,6 +21,8 @@ export interface LayoutNode extends RankNode {
   dir?: LayoutDirection | undefined;
   shape?: string | undefined;
   aspectRatio1?: boolean | undefined;
+  fontSize?: number | undefined;
+  fixedTopLeft?: Point | undefined;
   desiredWidth?: number | undefined;
   desiredHeight?: number | undefined;
 }
@@ -85,8 +87,7 @@ export function layoutFlowchart(
   const useTala = options.strategy === 'tala'
     || options.strategy !== 'layered' && options.nodeSpacing === undefined
       && options.rankSpacing === undefined && options.orderingPasses === undefined;
-  const sourceNodes = useTala && inputNodes.every((node) => !node.isGroup)
-    ? prescaleNodes(inputNodes, inputEdges) : inputNodes;
+  const sourceNodes = useTala ? prescaleNodes(inputNodes, inputEdges) : inputNodes;
   // Mermaid's parser order is not a placement constraint. Normalize only at
   // the adapter boundary; the TALA graph retains caller order like upstream.
   const graph = TalaGraph.fromFlowchart(

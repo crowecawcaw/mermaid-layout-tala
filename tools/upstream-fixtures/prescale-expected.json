@@ -1,0 +1,142 @@
+[
+  {
+    "name": "circle-aspect-ratio",
+    "nodes": [
+      {
+        "id": "A",
+        "width": 80,
+        "height": 80,
+        "shape": "circle"
+      }
+    ]
+  },
+  {
+    "name": "real-square-fixed-size",
+    "nodes": [
+      {
+        "id": "A",
+        "width": 80,
+        "height": 80,
+        "shape": "real_square",
+        "desiredHeight": 80
+      }
+    ]
+  },
+  {
+    "name": "self-loop-only",
+    "nodes": [
+      {
+        "id": "A",
+        "width": 60,
+        "height": 40
+      }
+    ]
+  },
+  {
+    "name": "parallel-ports-font",
+    "nodes": [
+      {
+        "id": "A",
+        "width": 126,
+        "height": 126,
+        "fontSize": 24,
+        "labelBBox": {
+          "width": 36,
+          "height": 12
+        }
+      },
+      {
+        "id": "B",
+        "width": 120,
+        "height": 120
+      }
+    ]
+  },
+  {
+    "name": "desired-width-skips-ports",
+    "nodes": [
+      {
+        "id": "A",
+        "width": 40,
+        "height": 30,
+        "desiredWidth": 100
+      },
+      {
+        "id": "B",
+        "width": 120,
+        "height": 120
+      }
+    ]
+  },
+  {
+    "name": "fixed-node-skips-ports",
+    "nodes": [
+      {
+        "id": "A",
+        "width": 40,
+        "height": 30,
+        "fixedTopLeft": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "id": "B",
+        "width": 120,
+        "height": 120
+      }
+    ]
+  },
+  {
+    "name": "table-and-class-skip-ports",
+    "nodes": [
+      {
+        "id": "A",
+        "width": 40,
+        "height": 30,
+        "shape": "table"
+      },
+      {
+        "id": "B",
+        "width": 50,
+        "height": 40,
+        "shape": "class"
+      }
+    ]
+  },
+  {
+    "name": "five-neighbor-ports",
+    "nodes": [
+      {
+        "id": "A",
+        "width": 120,
+        "height": 120
+      },
+      {
+        "id": "B",
+        "width": 40,
+        "height": 30
+      },
+      {
+        "id": "C",
+        "width": 40,
+        "height": 30
+      },
+      {
+        "id": "D",
+        "width": 40,
+        "height": 30
+      },
+      {
+        "id": "E",
+        "width": 40,
+        "height": 30
+      },
+      {
+        "id": "F",
+        "width": 40,
+        "height": 30
+      }
+    ]
+  }
+]

@@ -12,6 +12,7 @@ export class TalaNode {
   readonly direction: LayoutDirection | undefined;
   readonly shape: string | undefined;
   readonly aspectRatio1: boolean;
+  readonly fontSize: number | undefined;
   readonly desiredWidth: number | undefined;
   readonly desiredHeight: number | undefined;
   parent: TalaNode | null = null;
@@ -31,8 +32,10 @@ export class TalaNode {
     this.direction = input.dir;
     this.shape = input.shape;
     this.aspectRatio1 = input.aspectRatio1 ?? false;
+    this.fontSize = input.fontSize;
     this.desiredWidth = input.desiredWidth;
     this.desiredHeight = input.desiredHeight;
+    this.fixedTopLeft = input.fixedTopLeft ? { ...input.fixedTopLeft } : undefined;
   }
 
   adjacent(edge: TalaEdge): TalaNode {
@@ -224,6 +227,8 @@ export class TalaGraph {
       ...(node.direction ? { dir: node.direction } : {}),
       ...(node.shape ? { shape: node.shape } : {}),
       ...(node.aspectRatio1 ? { aspectRatio1: true } : {}),
+      ...(node.fontSize !== undefined ? { fontSize: node.fontSize } : {}),
+      ...(node.fixedTopLeft ? { fixedTopLeft: { ...node.fixedTopLeft } } : {}),
       ...(node.desiredWidth !== undefined ? { desiredWidth: node.desiredWidth } : {}),
       ...(node.desiredHeight !== undefined ? { desiredHeight: node.desiredHeight } : {}),
     }));

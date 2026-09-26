@@ -4,6 +4,15 @@
 node placement costs. The browser and published package do not use this harness.
 
 Source revision: `bf33790338b9854cb2a34418e69c17f9abf8de4b`.
+
+`prescale-oracle_test.go` records upstream `placement.Prescale` for the eight
+inputs in `prescale-cases.json`. Copy it into the pinned checkout's
+`internal/engine` package as `ts_prescale_fixture_test.go`. Set
+`TALA_TS_PRESCALE_INPUT` and `TALA_TS_PRESCALE_OUTPUT` to absolute paths for
+`prescale-cases.json` and `prescale-expected.json`, then run
+`go test ./d2layouts/d2talalayout/internal/engine -run '^TestTSPrescaleFixtures$' -count=1`.
+The TypeScript parity test is `test/tala-upstream-prescale.test.ts`.
+
 Place `main.go` at
 `d2layouts/d2talalayout/cmd/ts-fixtures/main.go` within a checkout of that
 revision. From the D2 repository root, build the command and run it against
