@@ -128,10 +128,13 @@ match pinned Go output for all nine flat OVG fixtures. Sequential multi-edge
 search now indexes occupied points and edges in `src/tala/ovg-route-state.ts`
 and applies center symmetry, duplicate-port, sharing, near-edge, and crossing
 costs. Ordered paths and costs match nine pinned Go cases with two or three
-edges, including parallel and crossing routes. Go's `generateRoutes` can
-choose shorter slingshot paths before search; those paths, arrowhead and label
-costs, and route cleanup still need translation before replacing the public
-router.
+edges, including parallel and crossing routes. `src/tala/ovg-slingshot.ts`
+now translates Go's L- and S-shaped rule-based choices, including obstruction,
+sharing, crossing, and flight costs. The complete flat route-generation stage
+matches Go's selected paths and total costs in those nine multi-edge cases
+and nine earlier single-edge geometry cases. Arrowhead and label costs,
+route cleanup, hierarchical graph construction, and public router integration
+remain.
 
 A separate set of 24 generated branching trees exercises deeper and uneven
 structures. The TypeScript geometry matches the upstream node-placement stage

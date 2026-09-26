@@ -1,11 +1,12 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { searchFlatOVGSequential, type OVGSequentialEdge } from '../src/tala/ovg-search.js';
+import { generateFlatOVGRoutes, searchFlatOVGSequential,
+  type OVGSequentialEdge } from '../src/tala/ovg-search.js';
 import type { OVGFlatNode } from '../src/tala/ovg-build.js';
 
 interface Case { name: string; nodes: OVGFlatNode[]; edges: OVGSequentialEdge[] }
 interface Route { id: string; cost: number; points: [number, number][]; error?: string }
-interface Output { name: string; routes: Route[] }
+interface Output { name: string; routes: Route[]; generated: Route[]; totalCost: number }
 const read = (file: string) => JSON.parse(readFileSync(new URL(`../tools/upstream-fixtures/${file}`,
   import.meta.url), 'utf8'));
 const cases = read('ovg-sequential-cases.json') as Case[];
@@ -35,6 +36,17 @@ describe('pinned upstream sequential OVG search', () => {
         expect(actual[i]!.points.map(({ x, y }) => [x, y])).toEqual(oracle[i]!.points);
         expect(actual[i]!.cost).toBeCloseTo(oracle[i]!.cost, 7);
       }
+    });
+    it(`generated routes: ${input.name}`, () => {
+      const actual = generateFlatOVGRoutes(input.nodes, input.edges);
+      const oracle = expected.find((item) => item.name === input.name)!;
+      expect(actual.map((route) => route.id)).toEqual(oracle.generated.map((route) => route.id));
+      for (let i = 0; i < oracle.generated.length; i++) {
+        expect(actual[i]!.points.map(({ x, y }) => [x, y]))
+          .toEqual(oracle.generated[i]!.points);
+      }
+      expect(actual.reduce((sum, route) => sum + route.cost, 0))
+        .toBeCloseTo(oracle.totalCost, 7);
     });
   }
 });

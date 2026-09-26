@@ -6,6 +6,7 @@ import { ovgPortGroups } from './ovg-candidates.js';
 import { shapePortPolicy } from './shape-ports.js';
 import { TalaPriorityQueue, type TalaQueueEntry } from './priority-queue.js';
 import { OVGRouteState, type OVGRecordedRoute } from './ovg-route-state.js';
+import { slingshotFlatOVG } from './ovg-slingshot.js';
 
 interface SearchContext {
   verticalDistance: number;
@@ -38,6 +39,16 @@ export function searchFlatOVGSingleEdge(nodes: readonly OVGFlatNode[],
 
 export function searchFlatOVGSequential(nodes: readonly OVGFlatNode[],
   edges: readonly OVGSequentialEdge[]): OVGSequentialRoute[] {
+  return routeSequential(nodes, edges, false);
+}
+
+export function generateFlatOVGRoutes(nodes: readonly OVGFlatNode[],
+  edges: readonly OVGSequentialEdge[]): OVGSequentialRoute[] {
+  return routeSequential(nodes, edges, true);
+}
+
+function routeSequential(nodes: readonly OVGFlatNode[],
+  edges: readonly OVGSequentialEdge[], useSlingshot: boolean): OVGSequentialRoute[] {
   const graph = completeFlatOVG(nodes, edges);
   const byId = new Map(nodes.map((node) => [node.id, node]));
   const ordered = [...edges].sort((a, b) => {
@@ -48,7 +59,9 @@ export function searchFlatOVGSequential(nodes: readonly OVGFlatNode[],
   const routeState = new OVGRouteState<OVGFlatEdge>(graph);
   return ordered.map((edge) => {
     const from = byId.get(edge.from)!, to = byId.get(edge.to)!;
-    const result = searchSingleEdge(graph, nodes, edges, routeState, from, to,
+    const slingshot = useSlingshot
+      ? slingshotFlatOVG(graph, nodes, edges, routeState, edge) : undefined;
+    const result = slingshot ?? searchSingleEdge(graph, nodes, edges, routeState, from, to,
       graph.centers.get(from.id)!, graph.centers.get(to.id)!);
     routeState.addRoute({ edge, nodes: result.routeNodes });
     return { id: edge.id, points: result.points, cost: result.cost };

@@ -26,6 +26,9 @@ type tsSearchOutput struct {
     Cost float64 `json:"cost"`
     Points [][2]float64 `json:"points"`
     Error string `json:"error,omitempty"`
+    GeneratedPoints [][2]float64 `json:"generatedPoints"`
+    GeneratedCost float64 `json:"generatedCost"`
+    GenerationError string `json:"generationError,omitempty"`
 }
 
 func TestTSOVGSearchFixtures(t *testing.T) {
@@ -58,6 +61,18 @@ func TestTSOVGSearchFixtures(t *testing.T) {
         if err != nil { output.Error = err.Error() }
         for _, point := range path {
             output.Points = append(output.Points, [2]float64{point.X, point.Y})
+        }
+        generator, err := newOVGEdgeRouterWithWorkLimit(context.Background(), ShortestToLongest,
+            ovg, g, nil, []*layoutgraph.Edge{edge}, maxRouteSearchWorkUnits)
+        if err != nil { t.Fatal(err) }
+        response := generator.generateRoutes(context.Background(), false)
+        output.GeneratedPoints = make([][2]float64, 0)
+        output.GeneratedCost = response.Distance
+        if response.Err != nil { output.GenerationError = response.Err.Error() }
+        for _, route := range response.Routes {
+            for _, point := range route.OVGNodes {
+                output.GeneratedPoints = append(output.GeneratedPoints, [2]float64{point.X, point.Y})
+            }
         }
         outputs = append(outputs, output)
     }

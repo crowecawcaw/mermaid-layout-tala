@@ -1,10 +1,11 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { searchFlatOVGSingleEdge } from '../src/tala/ovg-search.js';
+import { generateFlatOVGRoutes, searchFlatOVGSingleEdge } from '../src/tala/ovg-search.js';
 import type { OVGFlatNode } from '../src/tala/ovg-build.js';
 
 interface Case { name: string; nodes: OVGFlatNode[] }
-interface Output { name: string; points: [number, number][]; cost: number; error?: string }
+interface Output { name: string; points: [number, number][]; cost: number; error?: string;
+  generatedPoints?: [number, number][]; generatedCost?: number; generationError?: string }
 const read = (file: string) => JSON.parse(readFileSync(new URL(`../tools/upstream-fixtures/${file}`,
   import.meta.url), 'utf8'));
 const cases = read('ovg-candidate-cases.json') as Case[];
@@ -18,6 +19,12 @@ describe('pinned upstream ordinary OVG search', () => {
       const oracle = expected.find((item) => item.name === input.name)!;
       expect(result.points.map(({ x, y }) => [x, y])).toEqual(oracle.points);
       expect(result.cost).toBeCloseTo(oracle.cost, 7);
+      const generated = generateFlatOVGRoutes(input.nodes, [{
+        id: 'edge', from: input.nodes[0]!.id, to: input.nodes[1]!.id,
+      }])[0]!;
+      expect(oracle.generationError).toBeUndefined();
+      expect(generated.points.map(({ x, y }) => [x, y])).toEqual(oracle.generatedPoints);
+      expect(generated.cost).toBeCloseTo(oracle.generatedCost!, 7);
     });
   }
 });

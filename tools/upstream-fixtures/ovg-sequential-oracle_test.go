@@ -37,6 +37,7 @@ type tsSequentialOutput struct {
     Name string `json:"name"`
     Routes []tsSequentialRoute `json:"routes"`
     Generated []tsSequentialRoute `json:"generated"`
+    Slingshots []tsSequentialRoute `json:"slingshots"`
     GenerationError string `json:"generationError,omitempty"`
     TotalCost float64 `json:"totalCost"`
 }
@@ -80,6 +81,19 @@ func TestTSOVGSequentialFixtures(t *testing.T) {
             if len(path) < 3 { t.Fatalf("%s: route too short", input.Name) }
             if err := router.addRoute(&Route{GEdge: edge, OVGNodes: path,
                 FromPort: *path[1].Point, ToPort: *path[len(path)-2].Point}); err != nil { t.Fatal(err) }
+        }
+        slingshotRouter, err := newOVGEdgeRouterWithWorkLimit(context.Background(), ShortestToLongest,
+            ovg, g, nil, g.Edges, maxRouteSearchWorkUnits)
+        if err != nil { t.Fatal(err) }
+        output.Slingshots = make([]tsSequentialRoute, 0, len(slingshotRouter.edges))
+        for _, edge := range slingshotRouter.edges {
+            path, cost, err := slingshotRouter.slingshot(context.Background(), edge)
+            item := tsSequentialRoute{ID: edgeIDs[edge], Cost: cost, Points: make([][2]float64, 0)}
+            if err != nil { item.Error = err.Error() }
+            for _, point := range path {
+                item.Points = append(item.Points, [2]float64{point.X, point.Y})
+            }
+            output.Slingshots = append(output.Slingshots, item)
         }
         generator, err := newOVGEdgeRouterWithWorkLimit(context.Background(), ShortestToLongest,
             ovg, g, nil, g.Edges, maxRouteSearchWorkUnits)
