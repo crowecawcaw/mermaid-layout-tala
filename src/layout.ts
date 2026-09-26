@@ -243,6 +243,23 @@ function layoutFlatFlowchart(
   }
 
   const positionedNodes = nodes.map((node) => allPositions.get(node.id)!);
+  if (useOrdinary) for (const component of treeComponents) {
+    const local = positionedNodes.filter((node) => component.ids.has(node.id));
+    const gapGraph = TalaGraph.fromFlowchart(local, component.edges, direction);
+    const byPosition = new Map(local.map((node) => [node.id, node]));
+    for (const node of gapGraph.nodes) {
+      const placed = byPosition.get(node.id)!;
+      node.topLeft = { x: placed.x - placed.width / 2, y: placed.y - placed.height / 2 };
+    }
+    const remaining = new Set(component.extraction.remaining);
+    const treeNodeIds = new Set(local.filter((node) => !remaining.has(node.id))
+      .map((node) => node.id));
+    if (normalizeGaps(gapGraph, treeNodeIds)) for (const node of gapGraph.nodes) {
+      const placed = byPosition.get(node.id)!;
+      placed.x = node.topLeft!.x + node.width / 2;
+      placed.y = node.topLeft!.y + node.height / 2;
+    }
+  }
   const treePaths = new Map<string, Point[]>();
   const updateTreePaths = () => {
     treePaths.clear();

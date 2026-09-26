@@ -3,13 +3,14 @@ import { nodeDelta } from './overlap.js';
 import { TalaGraph, TalaNode } from './graph.js';
 import { ordinaryPlacementEdgeLength } from './placement-edge-length.js';
 import { wrapContainers } from './equidistance.js';
+import { introducesOverlap, overlapPairs } from './alignment-shift.js';
 
 type Axis = 'x' | 'y';
 type Direction = 1 | -1;
 const largeGapThreshold = 0.5;
 
 /** Ordinary-container portion of placement.NormalizeGaps. */
-export function normalizeGaps(graph: TalaGraph): boolean {
+export function normalizeGaps(graph: TalaGraph, excludedNodes: ReadonlySet<string> = new Set()): boolean {
   let changed = false;
   const containers = graph.nodes.filter((node) => node.isGroup)
     .sort((a, b) => depth(b) - depth(a) || graph.nodes.indexOf(b) - graph.nodes.indexOf(a));
@@ -21,6 +22,7 @@ export function normalizeGaps(graph: TalaGraph): boolean {
         const ordered = [...scope].sort((a, b) => b.edges.length - a.edges.length
           || a.id.localeCompare(b.id));
         for (const node of ordered) {
+          if (excludedNodes.has(node.id)) continue;
           changed = reduceGapToNeighbors(node, graph, axis, direction, true) || changed;
         }
       }
@@ -48,10 +50,13 @@ function reduceGapToNeighbors(node: TalaNode, graph: TalaGraph, axis: Axis,
   const delta = (IdealGapSize - gap) * direction;
   if (delta === 0) return false;
   const baseline = ordinaryPlacementEdgeLength(graph, graph.turnCost(), false);
+  const existingOverlaps = overlapPairs(graph);
   const original = geometrySnapshot(graph);
   moveConnected(connected, axis, delta);
   wrapContainers(graph);
-  if (!validGeometry(graph)) { restore(original); return false; }
+  if (!validGeometry(graph) || introducesOverlap(graph, existingOverlaps)) {
+    restore(original); return false;
+  }
   const movedCost = ordinaryPlacementEdgeLength(graph, graph.turnCost(), false);
   if (recoverSymmetry) {
     const afterFirst = geometrySnapshot(graph);

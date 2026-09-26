@@ -57,7 +57,7 @@ export function overlapPairs(graph: TalaGraph): OverlapPairs {
   return { padded, exact };
 }
 
-function introducesOverlap(graph: TalaGraph, existing: OverlapPairs): boolean {
+export function introducesOverlap(graph: TalaGraph, existing: OverlapPairs): boolean {
   for (let i = 0; i < graph.nodes.length; i++) {
     for (let j = i + 1; j < graph.nodes.length; j++) {
       const first = graph.nodes[i]!, second = graph.nodes[j]!;
