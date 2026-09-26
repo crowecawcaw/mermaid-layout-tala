@@ -1,7 +1,7 @@
 # Mermaid TALA Layout
 
 An experimental TypeScript layout loader for Mermaid 12 flowcharts. It ports
-TALA's ordinary graph placement and weighted DAG rank assignment from D2, and
+TALA's ordinary graph placement, rooted-tree geometry, and weighted DAG rank assignment from D2, and
 adds nested container layout, deterministic seed attempts, and obstacle-aware
 orthogonal routes.
 
@@ -56,7 +56,7 @@ integers, with `[1, 2, 3]` as the default. Mermaid's direction declaration
 sets direction; it is not a separate TALA option.
 
 This is still a subset of upstream TALA. The upstream engine has many additional
-placement and refinement stages for compound graphs, trees, clusters, packing,
+placement and refinement stages for compound graphs, general trees, hierarchies, clusters, packing,
 edge channels, shape borders, and labels. The ordinary placement stage matches
 pinned upstream fixtures; the complete engine does not, so this package should not be treated as layout-equivalent to
 the D2 implementation.

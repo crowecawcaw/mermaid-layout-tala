@@ -62,3 +62,13 @@ and `TALA_TS_JOIN_OUTPUT` to absolute paths for `join-cases.json` and
 ```powershell
 go test ./d2layouts/d2talalayout/internal/grouping -run '^TestTSOrdinaryJoinFixtures$' -count=1
 ```
+
+`full-layout-oracle.go` runs the complete upstream pipeline for the graphs in
+`full-layout-cases.json`. Copy it to
+`d2layouts/d2talalayout/cmd/ts-full-layout/main.go` in the pinned checkout,
+then pass the case JSON on stdin to `go run ./d2layouts/d2talalayout/cmd/ts-full-layout`.
+Its output is `full-layout-expected.json`. After `npm run build`, run
+`node tools/upstream-fixtures/compare-full.mjs` from this repository to show
+relative geometry differences. The test `tala-upstream-full-layout.test.ts`
+pins the nine cases whose node geometry matches; edge routes are still outside
+that assertion.

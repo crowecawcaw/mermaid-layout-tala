@@ -27,7 +27,7 @@ describe('Mermaid flowchart layout slice', () => {
   it('uses deterministic layout seeds and rejects invalid lists', () => {
     const nodes = ['A', 'B', 'C', 'D', 'E', 'F'].map((id) => ({ id, width: 50, height: 30 }));
     const edges = ['B', 'C', 'D', 'E', 'F'].map((id) => ({ id: `A${id}`, from: 'A', to: id }));
-    const order = (seed: number) => layoutFlowchart(nodes, edges, { seeds: [seed] }).nodes
+    const order = (seed: number) => layoutFlowchart(nodes, edges, { seeds: [seed], strategy: 'layered' }).nodes
       .filter((node) => node.rank === 1).sort((a, b) => a.x - b.x).map((node) => node.id).join('');
     expect(order(1)).toBe(order(1));
     expect(order(1)).not.toBe(order(5));

@@ -4,6 +4,7 @@ import { TalaGraph } from './tala/graph.js';
 import { addHubs } from './tala/proximity.js';
 import { countNonSharedCrossings } from './tala/crossings.js';
 import { placeOrdinaryNodes } from './tala/ordinary-placement.js';
+import { placeSimpleTree } from './tala/simple-tree.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
@@ -126,6 +127,9 @@ function layoutFlatFlowchart(
   }
 
   const components = connectedComponents(nodes, edges);
+  const useOrdinary = options.strategy === 'tala'
+    || options.strategy !== 'layered' && options.nodeSpacing === undefined
+      && options.rankSpacing === undefined && options.orderingPasses === undefined;
   const allPositions = new Map<string, PositionedNode>();
   const componentBounds: Array<ReturnType<typeof bounds>> = [];
   for (const component of components) {
@@ -140,12 +144,10 @@ function layoutFlatFlowchart(
           to: edge.to,
           weight: edge.weight,
         } satisfies RankEdge)));
-    const useOrdinary = options.strategy === 'tala'
-      || options.strategy !== 'layered' && options.nodeSpacing === undefined
-        && options.rankSpacing === undefined && options.orderingPasses === undefined;
-    const localNodes = useOrdinary && component.length > 1 && component.every((node) => !node.isGroup)
+    const tree = useOrdinary ? placeSimpleTree(component, componentEdges, direction, ranks) : undefined;
+    const localNodes = tree ?? (useOrdinary && component.length > 1 && component.every((node) => !node.isGroup)
       ? positionOrdinaryComponent(component, componentEdges, ranks, direction, seed)
-      : positionComponent(component, weightedDag, ranks, nodeSpacing, rankSpacing, passes, direction, seed);
+      : positionComponent(component, weightedDag, ranks, nodeSpacing, rankSpacing, passes, direction, seed));
     for (const node of localNodes) allPositions.set(node.id, node);
     componentBounds.push(bounds(localNodes));
   }
@@ -163,7 +165,7 @@ function layoutFlatFlowchart(
       if (alongX) { node.x += shift; node.y += rankShift; }
       else { node.y += shift; node.x += rankShift; }
     }
-    componentOffset += (alongX ? box.width : box.height) + rankSpacing;
+    componentOffset += (alongX ? box.width : box.height) + (useOrdinary ? 20 : rankSpacing);
   }
 
   const positionedNodes = nodes.map((node) => allPositions.get(node.id)!);
