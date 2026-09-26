@@ -44,4 +44,13 @@ describe('Mermaid render integration', () => {
     }
     expect(talaLoaderCalled).toBe(true);
   });
+
+  it('keeps the placement mode in Mermaid flowchart configuration', () => {
+    mermaid.initialize({
+      startOnLoad: false,
+      layout: 'tala',
+      flowchart: { talaPlacement: 'layered' } as never,
+    });
+    expect((mermaid.mermaidAPI.getConfig().flowchart as { talaPlacement?: string }).talaPlacement).toBe('layered');
+  });
 });
