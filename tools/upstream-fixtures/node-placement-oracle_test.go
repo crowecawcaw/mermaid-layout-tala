@@ -10,6 +10,7 @@ import (
 	"testing"
 
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/layoutgraph"
+	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/trees"
 	"github.com/d2lang/d2/lib/geo"
 )
 
@@ -117,6 +118,65 @@ func TestTSTreeExtractionFixtures(t *testing.T) {
 				entry.Roots = append(entry.Roots, tsTreeRecordFor(root, names))
 			}
 			output.Trees = append(output.Trees, entry)
+		}
+		outputs = append(outputs, output)
+	}
+	encoded, err := json.MarshalIndent(outputs, "", "  ")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(outputPath, append(encoded, '\n'), 0644); err != nil {
+		t.Fatal(err)
+	}
+}
+
+// Captures the tree geometry before placement.direct mirrors the full graph.
+func TestTSTreeRawPlacementFixtures(t *testing.T) {
+	inputPath, outputPath := os.Getenv("TALA_TS_TREE_RAW_INPUT"), os.Getenv("TALA_TS_TREE_RAW_OUTPUT")
+	if inputPath == "" || outputPath == "" {
+		t.Skip("set fixture paths")
+	}
+	data, err := os.ReadFile(inputPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var cases []tsPlacementCase
+	if err := json.Unmarshal(data, &cases); err != nil {
+		t.Fatal(err)
+	}
+	outputs := make([]tsPlacementOutputCase, 0, len(cases))
+	for _, input := range cases {
+		graph := layoutgraph.NewGraph()
+		graph.Directions[nil] = tsPlacementDirection(input.Direction)
+		nodes := make(map[string]*layoutgraph.Node, len(input.Nodes))
+		for index, item := range input.Nodes {
+			node := layoutgraph.NewNode(layoutgraph.EntityID(index+1), item.Width, item.Height)
+			graph.AddNodeUnchecked(node)
+			graph.AddNodeToContainer(nil, node)
+			nodes[item.ID] = node
+		}
+		for index, item := range input.Edges {
+			edge := graph.Connect(nodes[item.From], nodes[item.To])
+			edge.ID = layoutgraph.EntityID(index + 1)
+			if item.Directed {
+				edge.TargetArrowhead = layoutgraph.TriangleArrowhead
+			}
+		}
+		pipeline := newPipeline(graph, input.Seed, false)
+		pipeline.stages = defaultPipelineStages[:4]
+		if err := pipeline.runAllStages(context.Background()); err != nil {
+			t.Fatalf("%s: %v", input.Name, err)
+		}
+		for _, node := range graph.Nodes {
+			node.TopLeft = geo.NewPoint(0, 0)
+		}
+		if err := trees.Place(context.Background(), graph, nil); err != nil {
+			t.Fatalf("%s: %v", input.Name, err)
+		}
+		output := tsPlacementOutputCase{Name: input.Name, Nodes: make([]tsPlacementOutputNode, 0, len(input.Nodes))}
+		for _, item := range input.Nodes {
+			node := nodes[item.ID]
+			output.Nodes = append(output.Nodes, tsPlacementOutputNode{ID: item.ID, X: node.TopLeft.X, Y: node.TopLeft.Y, Width: node.Width, Height: node.Height})
 		}
 		outputs = append(outputs, output)
 	}

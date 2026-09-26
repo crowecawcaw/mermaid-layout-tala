@@ -100,3 +100,9 @@ and run with `TALA_TS_TREE_EXTRACTION_INPUT` pointing to
 `full-tree-random-cases.json` and `TALA_TS_TREE_EXTRACTION_OUTPUT` pointing to
 `full-tree-random-extraction-expected.json`. This records the graph's remaining
 nodes and the ordered extracted trees after upstream's fourth pipeline stage.
+
+For a trace between extraction and the graph-wide direction mirror, run
+`TestTSTreeRawPlacementFixtures` with `TALA_TS_TREE_RAW_INPUT` pointing to the
+same cases and `TALA_TS_TREE_RAW_OUTPUT` pointing to
+`full-tree-random-raw-expected.json`. This runs upstream `trees.Place` after
+preprocessing and before `placement.direct`.

@@ -1,5 +1,6 @@
 import type { LayoutDirection, LayoutEdge, LayoutNode, PositionedNode } from '../layout.js';
 import { extractFlatTrees, type ExtractedTree } from './tree-extraction.js';
+import { directionTransforms } from './direct.js';
 
 // The ordinary arborescence branch of upstream trees: a branching root owns
 // its descendants, siblings have a 50-unit gap, and levels have a 100-unit gap.
@@ -148,39 +149,16 @@ export function placeSimpleTree(nodes: readonly LayoutNode[], edges: readonly La
       else point.x = -point.x - node.width;
     }
   }
-  // Upstream placement.direct mirrors a placed tree toward the dominant edge
-  // direction. A deep branch can make the cross-axis direction unbalanced.
-  const directions = ['right', 'bottom', 'left', 'top'] as const;
-  type Side = typeof directions[number];
-  const counts = new Map<Side, number>(directions.map((side) => [side, 0]));
-  for (const edge of edges) {
-    const from = points.get(edge.from)!, to = points.get(edge.to)!;
-    const a = byId.get(edge.from)!, b = byId.get(edge.to)!;
-    if (to.x >= from.x + a.width) counts.set('right', counts.get('right')! + 1);
-    if (to.x + b.width <= from.x) counts.set('left', counts.get('left')! + 1);
-    if (to.y >= from.y + a.height) counts.set('bottom', counts.get('bottom')! + 1);
-    if (to.y + b.height <= from.y) counts.set('top', counts.get('top')! + 1);
-  }
-  const preferred: Side = direction === 'LR' ? 'right' : direction === 'RL' ? 'left'
-    : direction === 'BT' ? 'top' : 'bottom';
-  const ranked = [...directions].sort((a, b) => counts.get(b)! - counts.get(a)!
-    || Number(b === preferred) - Number(a === preferred));
-  const opposite = (a: Side, b: Side) => a === 'right' && b === 'left' || a === 'left' && b === 'right'
-    || a === 'top' && b === 'bottom' || a === 'bottom' && b === 'top';
-  const primary = ranked[0]!;
-  const secondary = opposite(ranked[1]!, primary) ? ranked[2]! : ranked[1]!;
-  const mirror = { x: false, y: false };
-  const selectMirror = (side: Side): void => {
-    if (side === 'left' || side === 'right') mirror.x = side !== (horizontal ? preferred : 'right');
-    else mirror.y = side !== (horizontal ? 'bottom' : preferred);
-  };
-  selectMirror(primary);
-  if (counts.get(secondary)! > counts.get(ranked[3]!)!) selectMirror(secondary);
-  if (mirror.x || mirror.y) {
+  // Upstream placement.direct applies a graph-wide mirror after placing trees.
+  const mirror = directionTransforms(nodes.map((node) => ({
+    id: node.id, x: points.get(node.id)!.x, y: points.get(node.id)!.y,
+    width: node.width, height: node.height,
+  })), edges, direction);
+  if (mirror.mirrorX || mirror.mirrorY) {
     for (const node of nodes) {
       const point = points.get(node.id)!;
-      if (mirror.x) point.x = -point.x - node.width;
-      if (mirror.y) point.y = -point.y - node.height;
+      if (mirror.mirrorX) point.x = -point.x - node.width;
+      if (mirror.mirrorY) point.y = -point.y - node.height;
     }
   }
   const crossOrder = new Map<string, number>();
