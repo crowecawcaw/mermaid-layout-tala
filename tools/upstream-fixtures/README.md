@@ -79,3 +79,18 @@ them. Compare with `node tools/upstream-fixtures/compare-full.mjs
 ./full-tree-random-cases.json ./full-tree-random-expected.json`. These generated
 cases currently expose the missing general tree pipeline; they are diagnostic
 inputs, not parity assertions.
+
+`node-placement-oracle_test.go` records the upstream graph immediately after
+the `NodePlacement` pipeline stage. Copy it into the pinned checkout's
+`internal/engine` package as `ts_node_placement_fixture_test.go`. Set
+`TALA_TS_NODE_PLACEMENT_INPUT` and `TALA_TS_NODE_PLACEMENT_OUTPUT` to absolute
+paths for `full-tree-random-cases.json` and
+`full-tree-random-stage-expected.json`, then run:
+
+```powershell
+go test ./d2layouts/d2talalayout/internal/engine -run '^TestTSNodePlacementFixtures$' -count=1
+```
+
+`test/tala-upstream-tree-stage.test.ts` pins the 12 generated cases with exact
+relative node geometry at that stage. Later routing refinements can still move
+nodes, so the completed-layout fixture is a separate check.

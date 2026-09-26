@@ -24,10 +24,10 @@ selects hierarchical placement. Edge routes and labels are not included in
 that nine-of-ten comparison.
 
 A separate set of 24 generated branching trees exercises deeper and uneven
-structures. Most do not yet match upstream because its tree extraction,
-ordering, orientation selection, and later refinement are not ported. The
-current rooted-tree branch only covers the straightforward case represented by
-the pinned exact fixtures.
+structures. The TypeScript geometry now matches the upstream node-placement
+stage on 12 of them, and matches the completed pipeline on 8. The remaining
+cases include tree partitions and orientation choices that are not yet ported,
+prescaling that changes node sizes, and post-route `Dejitter` moves.
 
 The current playground defaults to the translated ordinary placement stage
 for flat components. Its optional layered setting uses the previous adapter
