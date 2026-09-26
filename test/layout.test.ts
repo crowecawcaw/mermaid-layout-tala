@@ -8,8 +8,8 @@ describe('Mermaid flowchart layout slice', () => {
     const nodes = ['A', 'B', 'C', 'D'].map((id) => ({ id, width: 60, height: 40 }));
     const edges = [
       { id: 'ab', from: 'A', to: 'B' },
-      { id: 'ac', from: 'A', to: 'C' },
-      { id: 'bd', from: 'B', to: 'D' },
+      { id: 'bc', from: 'B', to: 'C' },
+      { id: 'ca', from: 'C', to: 'A' },
       { id: 'cd', from: 'C', to: 'D' },
     ];
     const graph = TalaGraph.fromFlowchart(nodes, edges, 'TB');

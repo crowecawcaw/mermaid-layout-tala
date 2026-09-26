@@ -1,0 +1,91 @@
+[
+  {
+    "name": "chain-tb",
+    "remaining": [
+      "A",
+      "B",
+      "C"
+    ],
+    "clusters": []
+  },
+  {
+    "name": "diamond-lr",
+    "remaining": [
+      "A",
+      "D"
+    ],
+    "clusters": [
+      {
+        "nodes": [
+          "B",
+          "C"
+        ],
+        "arrangement": "Column",
+        "padding": 20,
+        "width": 80,
+        "height": 100
+      }
+    ]
+  },
+  {
+    "name": "star-tb",
+    "remaining": [
+      "A"
+    ],
+    "clusters": []
+  },
+  {
+    "name": "star-lr",
+    "remaining": [
+      "A"
+    ],
+    "clusters": []
+  },
+  {
+    "name": "star-bt",
+    "remaining": [
+      "A"
+    ],
+    "clusters": []
+  },
+  {
+    "name": "star-rl",
+    "remaining": [
+      "A"
+    ],
+    "clusters": []
+  },
+  {
+    "name": "star-uneven",
+    "remaining": [
+      "A"
+    ],
+    "clusters": []
+  },
+  {
+    "name": "two-level-tree",
+    "remaining": [
+      "A"
+    ],
+    "clusters": []
+  },
+  {
+    "name": "cycle-rl",
+    "remaining": [
+      "A",
+      "B",
+      "C"
+    ],
+    "clusters": []
+  },
+  {
+    "name": "two-components",
+    "remaining": [
+      "A",
+      "C",
+      "B",
+      "D"
+    ],
+    "clusters": []
+  }
+]

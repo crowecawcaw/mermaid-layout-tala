@@ -16,7 +16,7 @@ interface Expected {
 const inputs = JSON.parse(readFileSync(new URL('../tools/upstream-fixtures/full-layout-cases.json', import.meta.url), 'utf8')) as Case[];
 const outputs = JSON.parse(readFileSync(new URL('../tools/upstream-fixtures/full-layout-expected.json', import.meta.url), 'utf8')) as Expected[];
 const exactCases = new Set([
-  'chain-tb', 'star-tb', 'star-lr', 'star-bt', 'star-rl',
+  'chain-tb', 'diamond-lr', 'star-tb', 'star-lr', 'star-bt', 'star-rl',
   'star-uneven', 'two-level-tree', 'cycle-rl', 'two-components',
 ]);
 

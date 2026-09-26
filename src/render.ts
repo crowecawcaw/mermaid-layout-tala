@@ -73,6 +73,7 @@ export async function render(
         ...(node.isGroup ? { isGroup: true } : {}),
         ...(measured.labelBBox ? { labelBBox: measured.labelBBox } : {}),
         ...(node.dir ? { dir: normalizeDirection(node.dir) } : {}),
+        ...(node.shape ? { shape: node.shape } : {}),
         width: measured.width ?? node.width ?? 100,
         height: measured.height ?? node.height ?? 50,
       };

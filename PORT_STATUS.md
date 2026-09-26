@@ -11,17 +11,17 @@ that engine yet.
 | Input graph and shape geometry | Independent mutable graph records, input order, container ownership, adjacency, clone isolation, ordinary component splitting, and fixed-node component grouping are ported in `src/tala`. The edge-port prescale rule is ported for ordinary flat graphs, and the Mermaid renderer grows the node outline to match. Upstream compound topology mutations and other shape policies remain unported. |
 | Nested containers and direction | Supported by a Mermaid-specific recursive layout in `src/layout.ts`; placement differs from upstream. |
 | Seed attempts | Independent mutable graph clones and deterministic ordering attempts are implemented. Upstream crossing evaluation is ported; random placement and full label scoring remain unported. |
-| Tree, hierarchy, hub, proximity, cluster, and sequence discovery | Upstream `AddHubs` discovery and the flat tree leaf-peeling and terminal decisions are ported. Extraction matches 24 pinned upstream generated trees. The tree geometry branch places both incoming and outgoing branches around their junction and matches completed upstream node geometry in six curated trees. Compound tree extraction, hierarchy discovery and placement, and other grouping algorithms remain unported. Ordinary connected components use translated TALA placement by default; nested containers still use the adapter's recursive placement. |
+| Tree, hierarchy, hub, proximity, cluster, and sequence discovery | Upstream `AddHubs` discovery, flat tree leaf peeling, and sibling cluster discovery are ported. Tree extraction matches 24 pinned generated trees; flat sibling clustering matches five upstream cases. The tree geometry branch places incoming and outgoing branches around their junction. A flat cluster vessel placement branch matches the completed upstream geometry in the diamond and three-way parallel fan. General compound grouping, hierarchy discovery and placement, and other grouping algorithms remain unported. Ordinary connected components use translated TALA placement by default; nested containers still use the adapter's recursive placement. |
 | General placement, symmetry, compaction, and bin packing | The ordinary-node initializer, Go-compatible random stream, sizeless and sized optimizers, spatial swaps, quarter-turn transposes, compaction, distance-cluster joining, and placement stage are translated. The graph direction mirror matches 24 upstream tree-stage fixtures. Sized scoring includes upstream flow continuity and ordered obstruction handling; transpose scoring includes straight-edge crossings and cached crossing cost. Placement costs match 54 pinned upstream fixtures, compaction matches 65 fixtures, distance-cluster joining matches 7 fixtures, and the complete ordinary placement stage matches 12 curated plus 30 generated graphs exactly. Compound placement, labels, herd behavior, bin packing, and the other upstream placement branches remain unported. The ordinary stage is connected to the renderer for flat components. |
 | Edge routing | Visibility-grid routing avoids node interiors; upstream route graph, port policies, channel refinements, and route cleanup remain unported. |
 | Labels | Edge labels are measured and placed on a selected route segment; upstream label optimization remains unported. |
 | Validation and resource limits | Basic input validation exists. Upstream graph invariants and work budgets remain unported. |
 
 The complete Go pipeline oracle now covers ten small flat graphs. Relative
-node positions and sizes match exactly in nine: a chain, a cycle, six rooted
-trees, and two disconnected chains. The diamond still differs because upstream
-selects hierarchical placement. Edge routes and labels are not included in
-that nine-of-ten comparison.
+node positions and sizes match exactly in all ten: a chain, a cycle, six rooted
+trees, two disconnected chains, and a diamond. Upstream treats the diamond's
+middle pair as a temporary cluster, which the TypeScript port now does too.
+Edge routes and labels are not included in that comparison.
 
 A separate set of 24 generated branching trees exercises deeper and uneven
 structures. The TypeScript geometry now matches the upstream node-placement

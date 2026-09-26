@@ -6,6 +6,7 @@ import { countNonSharedCrossings } from './tala/crossings.js';
 import { placeOrdinaryNodes } from './tala/ordinary-placement.js';
 import { placeSimpleTree } from './tala/simple-tree.js';
 import { prescaleNodes } from './tala/prescale.js';
+import { placeFlatClusters } from './tala/flat-cluster-placement.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
@@ -16,6 +17,7 @@ export interface LayoutNode extends RankNode {
   isGroup?: boolean | undefined;
   labelBBox?: { width: number; height: number } | undefined;
   dir?: LayoutDirection | undefined;
+  shape?: string | undefined;
   aspectRatio1?: boolean | undefined;
   desiredWidth?: number | undefined;
   desiredHeight?: number | undefined;
@@ -154,7 +156,9 @@ function layoutFlatFlowchart(
           weight: edge.weight,
         } satisfies RankEdge)));
     const tree = useOrdinary ? placeSimpleTree(component, componentEdges, direction, ranks) : undefined;
-    const localNodes = tree ?? (useOrdinary && component.length > 1 && component.every((node) => !node.isGroup)
+    const cluster = useOrdinary && !tree && component.every((node) => !node.isGroup)
+      ? placeFlatClusters(component, componentEdges, direction, seed, ranks) : undefined;
+    const localNodes = tree ?? cluster ?? (useOrdinary && component.length > 1 && component.every((node) => !node.isGroup)
       ? positionOrdinaryComponent(component, componentEdges, ranks, direction, seed)
       : positionComponent(component, weightedDag, ranks, nodeSpacing, rankSpacing, passes, direction, seed));
     for (const node of localNodes) allPositions.set(node.id, node);

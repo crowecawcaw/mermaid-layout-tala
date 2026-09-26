@@ -106,3 +106,8 @@ For a trace between extraction and the graph-wide direction mirror, run
 same cases and `TALA_TS_TREE_RAW_OUTPUT` pointing to
 `full-tree-random-raw-expected.json`. This runs upstream `trees.Place` after
 preprocessing and before `placement.direct`.
+
+`TestTSClusterExtractionFixtures` records ordinary sibling clusters after the
+sixth upstream stage. Set `TALA_TS_CLUSTER_INPUT` to `flat-cluster-cases.json`
+and `TALA_TS_CLUSTER_OUTPUT` to `flat-cluster-expected.json`. The complete
+pipeline results for those cases are in `flat-cluster-full-expected.json`.

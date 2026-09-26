@@ -1,0 +1,27 @@
+[
+  {
+    "name": "diamond-lr", "direction": "LR", "seed": 1,
+    "nodes": [{"id":"A","width":80,"height":40},{"id":"B","width":80,"height":40},{"id":"C","width":80,"height":40},{"id":"D","width":80,"height":40}],
+    "edges": [{"id":"ab","from":"A","to":"B","directed":true},{"id":"ac","from":"A","to":"C","directed":true},{"id":"bd","from":"B","to":"D","directed":true},{"id":"cd","from":"C","to":"D","directed":true}]
+  },
+  {
+    "name": "triple-diamond-tb", "direction": "TB", "seed": 1,
+    "nodes": [{"id":"A","width":90,"height":40},{"id":"B","width":70,"height":40},{"id":"C","width":90,"height":50},{"id":"D","width":80,"height":45},{"id":"E","width":90,"height":40}],
+    "edges": [{"id":"ab","from":"A","to":"B","directed":true},{"id":"ac","from":"A","to":"C","directed":true},{"id":"ad","from":"A","to":"D","directed":true},{"id":"be","from":"B","to":"E","directed":true},{"id":"ce","from":"C","to":"E","directed":true},{"id":"de","from":"D","to":"E","directed":true}]
+  },
+  {
+    "name": "parallel-twins", "direction": "LR", "seed": 2,
+    "nodes": [{"id":"A","width":80,"height":40},{"id":"B","width":80,"height":40},{"id":"C","width":80,"height":40},{"id":"D","width":80,"height":40}],
+    "edges": [{"id":"ab1","from":"A","to":"B","directed":true},{"id":"ab2","from":"A","to":"B","directed":true},{"id":"ac1","from":"A","to":"C","directed":true},{"id":"ac2","from":"A","to":"C","directed":true},{"id":"bd","from":"B","to":"D","directed":true},{"id":"cd","from":"C","to":"D","directed":true}]
+  },
+  {
+    "name": "opposing-neighbors", "direction": "LR", "seed": 1,
+    "nodes": [{"id":"A","width":80,"height":40},{"id":"B","width":80,"height":40},{"id":"C","width":80,"height":40},{"id":"D","width":80,"height":40}],
+    "edges": [{"id":"ab","from":"A","to":"B","directed":true},{"id":"ca","from":"C","to":"A","directed":true},{"id":"bd","from":"B","to":"D","directed":true},{"id":"dc","from":"D","to":"C","directed":true}]
+  },
+  {
+    "name": "tree-leaves", "direction": "TB", "seed": 1,
+    "nodes": [{"id":"A","width":80,"height":40},{"id":"B","width":80,"height":40},{"id":"C","width":80,"height":40},{"id":"D","width":80,"height":40}],
+    "edges": [{"id":"ab","from":"A","to":"B","directed":true},{"id":"ac","from":"A","to":"C","directed":true},{"id":"ad","from":"A","to":"D","directed":true}]
+  }
+]

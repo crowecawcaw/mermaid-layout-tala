@@ -189,6 +189,80 @@ func TestTSTreeRawPlacementFixtures(t *testing.T) {
 	}
 }
 
+type tsClusterRecord struct {
+	Nodes       []string `json:"nodes"`
+	Arrangement string   `json:"arrangement"`
+	Padding     float64  `json:"padding"`
+	Width       float64  `json:"width"`
+	Height      float64  `json:"height"`
+}
+type tsClusterOutput struct {
+	Name      string            `json:"name"`
+	Remaining []string          `json:"remaining"`
+	Clusters  []tsClusterRecord `json:"clusters"`
+}
+
+func TestTSClusterExtractionFixtures(t *testing.T) {
+	inputPath, outputPath := os.Getenv("TALA_TS_CLUSTER_INPUT"), os.Getenv("TALA_TS_CLUSTER_OUTPUT")
+	if inputPath == "" || outputPath == "" {
+		t.Skip("set fixture paths")
+	}
+	data, err := os.ReadFile(inputPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var cases []tsPlacementCase
+	if err := json.Unmarshal(data, &cases); err != nil {
+		t.Fatal(err)
+	}
+	outputs := make([]tsClusterOutput, 0, len(cases))
+	for _, input := range cases {
+		graph := layoutgraph.NewGraph()
+		graph.Directions[nil] = tsPlacementDirection(input.Direction)
+		nodes := make(map[string]*layoutgraph.Node, len(input.Nodes))
+		names := make(map[layoutgraph.EntityID]string, len(input.Nodes))
+		for index, item := range input.Nodes {
+			id := layoutgraph.EntityID(index + 1)
+			node := layoutgraph.NewNode(id, item.Width, item.Height)
+			graph.AddNodeUnchecked(node)
+			graph.AddNodeToContainer(nil, node)
+			nodes[item.ID], names[id] = node, item.ID
+		}
+		for index, item := range input.Edges {
+			edge := graph.Connect(nodes[item.From], nodes[item.To])
+			edge.ID = layoutgraph.EntityID(index + 1)
+			if item.Directed {
+				edge.TargetArrowhead = layoutgraph.TriangleArrowhead
+			}
+		}
+		pipeline := newPipeline(graph, input.Seed, false)
+		pipeline.stages = defaultPipelineStages[:6]
+		if err := pipeline.runAllStages(context.Background()); err != nil {
+			t.Fatalf("%s: %v", input.Name, err)
+		}
+		output := tsClusterOutput{Name: input.Name, Remaining: []string{}, Clusters: []tsClusterRecord{}}
+		for _, node := range graph.Nodes {
+			if cluster := graph.Clusters[node]; cluster != nil {
+				record := tsClusterRecord{Nodes: []string{}, Arrangement: string(cluster.Arrangement), Padding: cluster.Padding, Width: node.Width, Height: node.Height}
+				for _, member := range cluster.Nodes {
+					record.Nodes = append(record.Nodes, names[member.ID])
+				}
+				output.Clusters = append(output.Clusters, record)
+			} else {
+				output.Remaining = append(output.Remaining, names[node.ID])
+			}
+		}
+		outputs = append(outputs, output)
+	}
+	encoded, err := json.MarshalIndent(outputs, "", "  ")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(outputPath, append(encoded, '\n'), 0644); err != nil {
+		t.Fatal(err)
+	}
+}
+
 func tsPlacementDirection(value string) geo.Orientation {
 	switch value {
 	case "TB":

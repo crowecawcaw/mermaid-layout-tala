@@ -1,0 +1,86 @@
+[
+  {
+    "name": "diamond-lr",
+    "remaining": [
+      "A",
+      "D"
+    ],
+    "clusters": [
+      {
+        "nodes": [
+          "B",
+          "C"
+        ],
+        "arrangement": "Column",
+        "padding": 20,
+        "width": 80,
+        "height": 100
+      }
+    ]
+  },
+  {
+    "name": "triple-diamond-tb",
+    "remaining": [
+      "A",
+      "E"
+    ],
+    "clusters": [
+      {
+        "nodes": [
+          "B",
+          "C",
+          "D"
+        ],
+        "arrangement": "Column",
+        "padding": 20,
+        "width": 90,
+        "height": 190
+      }
+    ]
+  },
+  {
+    "name": "parallel-twins",
+    "remaining": [
+      "A",
+      "D"
+    ],
+    "clusters": [
+      {
+        "nodes": [
+          "B",
+          "C"
+        ],
+        "arrangement": "Row",
+        "padding": 20,
+        "width": 260,
+        "height": 120
+      }
+    ]
+  },
+  {
+    "name": "opposing-neighbors",
+    "remaining": [
+      "B",
+      "C"
+    ],
+    "clusters": [
+      {
+        "nodes": [
+          "A",
+          "D"
+        ],
+        "arrangement": "Column",
+        "padding": 20,
+        "width": 80,
+        "height": 100
+      }
+    ]
+  },
+  {
+    "name": "tree-leaves",
+    "remaining": [
+      "A"
+    ],
+    "clusters": []
+  }
+]

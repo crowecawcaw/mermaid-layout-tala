@@ -10,6 +10,7 @@ export class TalaNode {
   readonly labelBBox: { width: number; height: number } | undefined;
   readonly isGroup: boolean;
   readonly direction: LayoutDirection | undefined;
+  readonly shape: string | undefined;
   parent: TalaNode | null = null;
   readonly children: TalaNode[] = [];
   readonly edges: TalaEdge[] = [];
@@ -25,6 +26,7 @@ export class TalaNode {
     this.labelBBox = input.labelBBox ? { ...input.labelBBox } : undefined;
     this.isGroup = input.isGroup ?? false;
     this.direction = input.dir;
+    this.shape = input.shape;
   }
 
   adjacent(edge: TalaEdge): TalaNode {
@@ -214,6 +216,7 @@ export class TalaGraph {
       ...(node.isGroup ? { isGroup: true } : {}),
       ...(node.labelBBox ? { labelBBox: { ...node.labelBBox } } : {}),
       ...(node.direction ? { dir: node.direction } : {}),
+      ...(node.shape ? { shape: node.shape } : {}),
     }));
   }
 
