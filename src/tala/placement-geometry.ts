@@ -62,6 +62,25 @@ export function sizelessOrientation(node: TalaNode, other: TalaNode): Orientatio
   return 'NONE';
 }
 
+/** Port of layoutgraph.Node.orientation for ordinary boxes. The result is the
+ * first box's position relative to the second box. */
+export function sizedOrientation(node: TalaNode, other: TalaNode): Orientation {
+  if (!node.topLeft || !other.topLeft) return 'NONE';
+  if (node.topLeft.y + node.height < other.topLeft.y) {
+    if (node.topLeft.x + node.width < other.topLeft.x) return 'TopLeft';
+    if (other.topLeft.x + other.width < node.topLeft.x) return 'TopRight';
+    return 'Top';
+  }
+  if (other.topLeft.y + other.height < node.topLeft.y) {
+    if (node.topLeft.x + node.width < other.topLeft.x) return 'BottomLeft';
+    if (other.topLeft.x + other.width < node.topLeft.x) return 'BottomRight';
+    return 'Bottom';
+  }
+  if (other.topLeft.x + other.width < node.topLeft.x) return 'Right';
+  if (node.topLeft.x + node.width < other.topLeft.x) return 'Left';
+  return 'NONE';
+}
+
 export function directionCompass(direction: Orientation): number {
   switch (direction) {
     case 'BottomLeft': return -3;

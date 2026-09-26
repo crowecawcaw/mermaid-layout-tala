@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { TalaGraph } from '../src/tala/graph.js';
-import { compassAxisDelta, compassDelta, directionCompass, distanceBetweenBoxes, placementDistance, sizelessOrientation } from '../src/tala/placement-geometry.js';
+import { compassAxisDelta, compassDelta, directionCompass, distanceBetweenBoxes, placementDistance, sizedOrientation, sizelessOrientation } from '../src/tala/placement-geometry.js';
 
 describe('upstream TALA placement geometry', () => {
   it('measures box gaps on both axes', () => {
@@ -19,6 +19,7 @@ describe('upstream TALA placement geometry', () => {
     b!.topLeft = { x: 40, y: 10 };
     expect(placementDistance(a!, b!, true)).toBeCloseTo(20.0125);
     expect(sizelessOrientation(a!, b!)).toBe('TopLeft');
+    expect(sizedOrientation(a!, b!)).toBe('Left');
   });
 
   it('uses the upstream compass wraparound rules', () => {
