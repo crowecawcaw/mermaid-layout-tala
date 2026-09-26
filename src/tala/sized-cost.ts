@@ -48,13 +48,15 @@ export function sizedNodeEdgeLength(node: TalaNode, graph: TalaGraph, turnCost =
         end = { x: orientation === 'Left' ? other.topLeft.x : other.topLeft.x + other.width, y };
       }
     }
-    const blockers = graph.containers.get(node.parent) ?? graph.nodes;
+    const blockers = obstructionNodes(node, other, graph);
     let blocked = false;
     let firstBlockedIndex = -1;
     let cornerABlocked = false, cornerBBlocked = false;
     for (let blockerIndex = 0; blockerIndex < blockers.length; blockerIndex++) {
       const blocker = blockers[blockerIndex]!;
       if (blocker === node || blocker === other || !blocker.topLeft) continue;
+      if (node.isDescendantOf(blocker) || other.isDescendantOf(blocker)
+        || blocker.isDescendantOf(node) || blocker.isDescendantOf(other)) continue;
       if (diagonal) {
         const cornerA = { x: start.x, y: end.y };
         const cornerB = { x: end.x, y: start.y };
@@ -79,6 +81,21 @@ export function sizedNodeEdgeLength(node: TalaNode, graph: TalaGraph, turnCost =
     total += distance;
   }
   return total + flowContinuityCost(node, turnCost);
+}
+
+function obstructionNodes(first: TalaNode, second: TalaNode, graph: TalaGraph): TalaNode[] {
+  const result: TalaNode[] = [];
+  const seenContainers = new Set<TalaNode | null>();
+  for (const endpoint of [first, second]) {
+    let container = endpoint.parent;
+    while (!seenContainers.has(container)) {
+      seenContainers.add(container);
+      result.push(...(graph.containers.get(container) ?? []));
+      if (!container) break;
+      container = container.parent;
+    }
+  }
+  return result;
 }
 
 /** Upstream placementcost.flowContinuityCost for ordinary directed edges. */

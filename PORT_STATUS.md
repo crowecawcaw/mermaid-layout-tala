@@ -32,9 +32,15 @@ alignment cost are ported. The stage's shift validity check now applies the
 upstream graph-size and center-line obstruction rules, and accepts the exact
 connected move in the pinned compound stage trace. The ordinary-endpoint
 candidate search is ported as a pass that accepts a graph scoring callback,
-including upstream's Y-before-X tie order. Full upstream edge-length scoring,
-tree-edge exclusions, and placement-stage geometry are still absent, so that
-pass is not yet wired into the public layout.
+including upstream's Y-before-X tie order. The ordinary graph-level edge
+score now combines per-node costs, symmetry, and straight-edge crossings.
+Its value and accepted alignment match both pinned upstream stage scores for
+the one-container chain. The public compound path runs that pass before
+routing: the outgoing node's horizontal coordinate now matches upstream, and
+the directioned-container output matches upstream on the vertical axis.
+Container abduction scoring, table-column costs, tree-edge exclusions, and
+placement-stage geometry remain incomplete; the first fixture's outgoing node
+is still 16 units too high.
 
 The complete Go pipeline oracle now covers ten small flat graphs. Relative
 node positions and sizes match exactly in all ten: a chain, a cycle, six rooted

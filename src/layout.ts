@@ -15,6 +15,9 @@ import { simplifyEdgeRoutes } from './tala/edge-simplify.js';
 import { projectContainerEdges } from './tala/container-topology.js';
 import { prepareNodeLabels } from './tala/label-policy.js';
 import { normalizeLayoutResult } from './tala/normalize.js';
+import { alignAxesPass } from './tala/alignment-search.js';
+import { ordinaryPlacementEdgeLength } from './tala/placement-edge-length.js';
+import { containerAlignmentCost } from './tala/container-alignment-cost.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
@@ -336,10 +339,31 @@ function layoutCompoundFlowchart(
     return { width, height, positioned };
   };
   const placed = placeScope(undefined, options.direction ?? 'TB').positioned;
-  const consumed = new Set<string>();
-  if (options.strategy === 'tala' || options.strategy !== 'layered'
+  const useTala = options.strategy === 'tala' || options.strategy !== 'layered'
     && options.nodeSpacing === undefined && options.rankSpacing === undefined
-    && options.orderingPasses === undefined) {
+    && options.orderingPasses === undefined;
+  if (useTala && !inputEdges.some((edge) => edge.fromTableColumnIndex !== undefined
+    || edge.toTableColumnIndex !== undefined)) {
+    const alignmentGraph = TalaGraph.fromFlowchart(placed, inputEdges, options.direction ?? 'TB');
+    const placedById = new Map(placed.map((node) => [node.id, node]));
+    for (const node of alignmentGraph.nodes) {
+      const positioned = placedById.get(node.id)!;
+      node.topLeft = { x: positioned.x - positioned.width / 2,
+        y: positioned.y - positioned.height / 2 };
+    }
+    const alignmentScore = (graph: TalaGraph) => ordinaryPlacementEdgeLength(graph)
+      + containerAlignmentCost(graph);
+    if (alignAxesPass(alignmentGraph, alignmentScore)) {
+      const aligned = new Map(alignmentGraph.nodes.map((node) => [node.id, node]));
+      for (const node of placed) {
+        const topLeft = aligned.get(node.id)!.topLeft!;
+        node.x = topLeft.x + node.width / 2;
+        node.y = topLeft.y + node.height / 2;
+      }
+    }
+  }
+  const consumed = new Set<string>();
+  if (useTala) {
     const original = TalaGraph.fromFlowchart(nodes, inputEdges, options.direction ?? 'TB');
     for (const id of sequenceDefiningEdges(original)) consumed.add(id);
   }

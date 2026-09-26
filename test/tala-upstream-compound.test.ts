@@ -29,4 +29,24 @@ describe('pinned upstream compound-layout interiors', () => {
       })).toEqual(oracle.nodes.filter((node) => (interior as readonly string[]).includes(node.id)));
     });
   }
+
+  it('aligns the external endpoint on the upstream axis', () => {
+    const input = cases.find((item) => item.name === 'one-container-chain')!;
+    const oracle = expected.find((item) => item.name === input.name)!;
+    const actual = layoutFlowchart(input.nodes, input.edges,
+      { strategy: 'tala', direction: input.direction, seeds: [input.seed] });
+    const outside = actual.nodes.find((node) => node.id === 'X')!;
+    expect(outside.x - outside.width / 2)
+      .toBe(oracle.nodes.find((node) => node.id === 'X')!.x);
+  });
+
+  it('aligns the directioned container output vertically with its last child', () => {
+    const input = cases.find((item) => item.name === 'directioned-container')!;
+    const oracle = expected.find((item) => item.name === input.name)!;
+    const actual = layoutFlowchart(input.nodes, input.edges,
+      { strategy: 'tala', direction: input.direction, seeds: [input.seed] });
+    const outside = actual.nodes.find((node) => node.id === 'Outside')!;
+    expect(outside.y - outside.height / 2)
+      .toBe(oracle.nodes.find((node) => node.id === 'Outside')!.y);
+  });
 });
