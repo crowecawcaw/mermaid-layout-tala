@@ -1,0 +1,226 @@
+[
+  {
+    "name": "row-resized",
+    "vessel": {
+      "id": "vessel",
+      "width": 220,
+      "height": 30,
+      "x": 100,
+      "y": 200
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "width": 60,
+        "height": 30,
+        "x": 100,
+        "y": 200
+      },
+      {
+        "id": "B",
+        "width": 60,
+        "height": 30,
+        "x": 180,
+        "y": 200
+      },
+      {
+        "id": "C",
+        "width": 60,
+        "height": 30,
+        "x": 260,
+        "y": 200
+      }
+    ],
+    "afterSync": [
+      {
+        "id": "A",
+        "width": 60,
+        "height": 30,
+        "x": 100,
+        "y": 200
+      },
+      {
+        "id": "B",
+        "width": 60,
+        "height": 30,
+        "x": 180,
+        "y": 200
+      },
+      {
+        "id": "C",
+        "width": 60,
+        "height": 30,
+        "x": 260,
+        "y": 200
+      }
+    ]
+  },
+  {
+    "name": "column-resized",
+    "vessel": {
+      "id": "vessel",
+      "width": 80,
+      "height": 183,
+      "x": 35,
+      "y": -80
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "width": 80,
+        "height": 45,
+        "x": 35,
+        "y": -80
+      },
+      {
+        "id": "B",
+        "width": 80,
+        "height": 45,
+        "x": 35,
+        "y": -11
+      },
+      {
+        "id": "C",
+        "width": 80,
+        "height": 45,
+        "x": 35,
+        "y": 58
+      }
+    ],
+    "afterSync": [
+      {
+        "id": "A",
+        "width": 80,
+        "height": 45,
+        "x": 35,
+        "y": -80
+      },
+      {
+        "id": "B",
+        "width": 80,
+        "height": 45,
+        "x": 35,
+        "y": -11
+      },
+      {
+        "id": "C",
+        "width": 80,
+        "height": 45,
+        "x": 35,
+        "y": 58
+      }
+    ]
+  },
+  {
+    "name": "row-fixed-sizes",
+    "vessel": {
+      "id": "vessel",
+      "width": 244,
+      "height": 31,
+      "x": -25,
+      "y": 31
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "width": 40,
+        "height": 20,
+        "x": -25,
+        "y": 37
+      },
+      {
+        "id": "B",
+        "width": 70,
+        "height": 31,
+        "x": 32,
+        "y": 31
+      },
+      {
+        "id": "C",
+        "width": 55,
+        "height": 26,
+        "x": 119,
+        "y": 34
+      }
+    ],
+    "afterSync": [
+      {
+        "id": "A",
+        "width": 40,
+        "height": 20,
+        "x": -25,
+        "y": 36
+      },
+      {
+        "id": "B",
+        "width": 70,
+        "height": 31,
+        "x": 32,
+        "y": 31
+      },
+      {
+        "id": "C",
+        "width": 55,
+        "height": 26,
+        "x": 119,
+        "y": 33
+      }
+    ]
+  },
+  {
+    "name": "column-fixed-sizes",
+    "vessel": {
+      "id": "vessel",
+      "width": 70,
+      "height": 143,
+      "x": -42,
+      "y": -19
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "width": 41,
+        "height": 20,
+        "x": -28,
+        "y": -19
+      },
+      {
+        "id": "B",
+        "width": 70,
+        "height": 39,
+        "x": -42,
+        "y": 14
+      },
+      {
+        "id": "C",
+        "width": 55,
+        "height": 26,
+        "x": -35,
+        "y": 66
+      }
+    ],
+    "afterSync": [
+      {
+        "id": "A",
+        "width": 41,
+        "height": 20,
+        "x": -27,
+        "y": -19
+      },
+      {
+        "id": "B",
+        "width": 70,
+        "height": 39,
+        "x": -42,
+        "y": 14
+      },
+      {
+        "id": "C",
+        "width": 55,
+        "height": 26,
+        "x": -34,
+        "y": 66
+      }
+    ]
+  }
+]

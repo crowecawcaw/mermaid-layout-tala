@@ -1,0 +1,54 @@
+[
+  {
+    "name": "row-resized",
+    "arrangement": "Row",
+    "fixedSize": false,
+    "padding": 20,
+    "x": 100,
+    "y": 200,
+    "nodes": [
+      { "id": "A", "width": 40, "height": 20 },
+      { "id": "B", "width": 60, "height": 30 },
+      { "id": "C", "width": 50, "height": 25 }
+    ]
+  },
+  {
+    "name": "column-resized",
+    "arrangement": "Column",
+    "fixedSize": false,
+    "padding": 24,
+    "x": 35,
+    "y": -80,
+    "nodes": [
+      { "id": "A", "width": 65, "height": 25 },
+      { "id": "B", "width": 50, "height": 35 },
+      { "id": "C", "width": 80, "height": 45 }
+    ]
+  },
+  {
+    "name": "row-fixed-sizes",
+    "arrangement": "Row",
+    "fixedSize": true,
+    "padding": 17,
+    "x": -25,
+    "y": 31,
+    "nodes": [
+      { "id": "A", "width": 40, "height": 20 },
+      { "id": "B", "width": 70, "height": 31 },
+      { "id": "C", "width": 55, "height": 26 }
+    ]
+  },
+  {
+    "name": "column-fixed-sizes",
+    "arrangement": "Column",
+    "fixedSize": true,
+    "padding": 13,
+    "x": -42,
+    "y": -19,
+    "nodes": [
+      { "id": "A", "width": 41, "height": 20 },
+      { "id": "B", "width": 70, "height": 39 },
+      { "id": "C", "width": 55, "height": 26 }
+    ]
+  }
+]

@@ -113,3 +113,10 @@ preprocessing and before `placement.direct`.
 sixth upstream stage. Set `TALA_TS_CLUSTER_INPUT` to `flat-cluster-cases.json`
 and `TALA_TS_CLUSTER_OUTPUT` to `flat-cluster-expected.json`. The complete
 pipeline results for those cases are in `flat-cluster-full-expected.json`.
+
+`cluster-geometry-oracle_test.go` records `layoutgraph.Cluster.Resize`,
+`ArrangeClusterNodes`, and a second `SyncGeometry` pass for row and column
+vessels. Copy it into the pinned upstream engine package as
+`ts_cluster_geometry_fixture_test.go`; set `TALA_TS_CLUSTER_GEOMETRY_INPUT` to
+`cluster-geometry-cases.json` and `TALA_TS_CLUSTER_GEOMETRY_OUTPUT` to
+`cluster-geometry-expected.json`, then run `TestTSClusterGeometryFixtures`.

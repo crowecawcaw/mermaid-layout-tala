@@ -1,7 +1,8 @@
 import type { LayoutDirection, LayoutEdge, LayoutNode, PositionedNode } from '../layout.js';
-import { TalaGraph } from './graph.js';
+import { TalaGraph, TalaNode } from './graph.js';
 import { placeOrdinaryNodes } from './ordinary-placement.js';
 import { discoverFlatClusters } from './flat-clusters.js';
+import { TalaCluster } from './cluster-geometry.js';
 
 /** The flat ordinary placement path after sibling clusters become vessels. */
 export function placeFlatClusters(nodes: readonly LayoutNode[], edges: readonly LayoutEdge[],
@@ -66,19 +67,17 @@ export function placeFlatClusters(nodes: readonly LayoutNode[], edges: readonly 
       : horizontal ? point.y + cluster.height / 2 : point.x + cluster.width / 2;
     const vesselX = horizontal ? point.x : Math.round(crossCenter - cluster.width / 2);
     const vesselY = horizontal ? Math.round(crossCenter - cluster.height / 2) : point.y;
-    const maxWidth = Math.max(...cluster.nodes.map((id) => byId.get(id)!.width));
-    const maxHeight = Math.max(...cluster.nodes.map((id) => byId.get(id)!.height));
     const fixedSize = cluster.nodes.some((id) => byId.get(id)!.aspectRatio1);
-    for (const [memberIndex, id] of cluster.nodes.entries()) {
-      const source = byId.get(id)!;
-      const width = fixedSize ? source.width : maxWidth;
-      const height = fixedSize ? source.height : maxHeight;
-      const x = cluster.arrangement === 'Row'
-        ? vesselX + memberIndex * (maxWidth + cluster.padding) : vesselX + (cluster.width - width) / 2;
-      const y = cluster.arrangement === 'Column'
-        ? vesselY + memberIndex * (maxHeight + cluster.padding) : vesselY + (cluster.height - height) / 2;
-      placed.set(id, { ...source, width, height, x: x + width / 2, y: y + height / 2,
-        rank: ranks.get(id) ?? 0, order: memberIndex });
+    const members = cluster.nodes.map((id) => new TalaNode(byId.get(id)!));
+    const vesselNode = new TalaNode({ id: vessel, width: cluster.width, height: cluster.height });
+    vesselNode.topLeft = { x: vesselX, y: vesselY };
+    new TalaCluster(vesselNode, members, cluster.arrangement, cluster.padding, fixedSize).syncGeometry();
+    for (const [memberIndex, member] of members.entries()) {
+      const source = byId.get(member.id)!;
+      const point = member.topLeft!;
+      placed.set(member.id, { ...source, width: member.width, height: member.height,
+        x: point.x + member.width / 2, y: point.y + member.height / 2,
+        rank: ranks.get(member.id) ?? 0, order: memberIndex });
     }
   }
   const byRank = new Map<number, PositionedNode[]>();
