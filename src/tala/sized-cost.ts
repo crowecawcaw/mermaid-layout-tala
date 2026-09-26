@@ -8,27 +8,29 @@ export function sizedTurnCost(graph: TalaGraph): number {
 }
 
 /** Ordinary-node branch of placementcost.NodeEdgeLength with sized geometry. */
-export function sizedNodeEdgeLength(node: TalaNode, graph: TalaGraph,
+export function sizedNodeEdgeLength(owner: TalaNode, graph: TalaGraph,
   turnCost = sizedTurnCost(graph), penalizeDirection = true): number {
-  if (!node.topLeft) throw new Error(`node ${node.id} has no position`);
-  const preferred = graph.directions.get(node.parent);
+  if (!owner.topLeft) throw new Error(`node ${owner.id} has no position`);
+  const preferred = graph.directions.get(owner.parent);
   const direction: Orientation = preferred === 'TB' ? 'Bottom'
     : preferred === 'BT' ? 'Top' : preferred === 'LR' ? 'Right'
     : preferred === 'RL' ? 'Left' : 'BottomRight';
   const factor = preferred ? 6 : 0.3;
   let total = 0;
-  for (const edge of node.edges) {
-    const other = node.adjacent(edge);
+  for (const edge of owner.edges) {
+    const node = graph.endpointFor(edge, edge.from === owner ? 'from' : 'to');
+    const other = graph.endpointFor(edge, edge.from === owner ? 'to' : 'from');
     if (!other.topLeft) continue;
+    const nodeTopLeft = node.topLeft!;
     const orientation = sizedOrientation(node, other);
     if (orientation === 'NONE') continue;
     const diagonal = orientation === 'TopLeft' || orientation === 'TopRight'
       || orientation === 'BottomLeft' || orientation === 'BottomRight';
     const semiDiagonal = !diagonal && (orientation === 'Top' || orientation === 'Bottom'
-      ? Math.abs(node.topLeft.x - other.topLeft.x) > SideEdgeSpacing
-        || Math.abs(node.topLeft.x + node.width - other.topLeft.x - other.width) > SideEdgeSpacing
-      : Math.abs(node.topLeft.y - other.topLeft.y) > SideEdgeSpacing
-        || Math.abs(node.topLeft.y + node.height - other.topLeft.y - other.height) > SideEdgeSpacing);
+      ? Math.abs(nodeTopLeft.x - other.topLeft.x) > SideEdgeSpacing
+        || Math.abs(nodeTopLeft.x + node.width - other.topLeft.x - other.width) > SideEdgeSpacing
+      : Math.abs(nodeTopLeft.y - other.topLeft.y) > SideEdgeSpacing
+        || Math.abs(nodeTopLeft.y + node.height - other.topLeft.y - other.height) > SideEdgeSpacing);
     const firstCenter = center(node), secondCenter = center(other);
     let start: Point, end: Point;
     let distance: number;
@@ -40,12 +42,12 @@ export function sizedNodeEdgeLength(node: TalaNode, graph: TalaGraph,
     } else {
       distance = placementDistance(node, other, true);
       if (orientation === 'Top' || orientation === 'Bottom') {
-        const x = (Math.max(node.topLeft.x, other.topLeft.x) + Math.min(node.topLeft.x + node.width, other.topLeft.x + other.width)) / 2;
-        start = { x, y: orientation === 'Top' ? node.topLeft.y + node.height : node.topLeft.y };
+        const x = (Math.max(nodeTopLeft.x, other.topLeft.x) + Math.min(nodeTopLeft.x + node.width, other.topLeft.x + other.width)) / 2;
+        start = { x, y: orientation === 'Top' ? nodeTopLeft.y + node.height : nodeTopLeft.y };
         end = { x, y: orientation === 'Top' ? other.topLeft.y : other.topLeft.y + other.height };
       } else {
-        const y = (Math.max(node.topLeft.y, other.topLeft.y) + Math.min(node.topLeft.y + node.height, other.topLeft.y + other.height)) / 2;
-        start = { x: orientation === 'Left' ? node.topLeft.x + node.width : node.topLeft.x, y };
+        const y = (Math.max(nodeTopLeft.y, other.topLeft.y) + Math.min(nodeTopLeft.y + node.height, other.topLeft.y + other.height)) / 2;
+        start = { x: orientation === 'Left' ? nodeTopLeft.x + node.width : nodeTopLeft.x, y };
         end = { x: orientation === 'Left' ? other.topLeft.x : other.topLeft.x + other.width, y };
       }
     }
@@ -73,7 +75,7 @@ export function sizedNodeEdgeLength(node: TalaNode, graph: TalaGraph,
     if (blocked) distance += turnCost * (diagonal ? 1
       : semiDiagonal && !semiDiagonalAlternateBlocked(node, other, orientation, blockers.slice(firstBlockedIndex)) ? 1 : 2);
     if (penalizeDirection && (edge.directed || preferred)) {
-      const edgeDirection = edge.from === node ? opposite(orientation) : orientation;
+      const edgeDirection = edge.from === owner ? opposite(orientation) : orientation;
       const preferredCompass = directionCompass(direction), edgeCompass = directionCompass(edgeDirection);
       let delta = Math.abs(compassDelta(preferredCompass, edgeCompass));
       if (!edge.directed) delta = 0.1 * delta + 0.9 * Math.abs(compassAxisDelta(preferredCompass, edgeCompass));
@@ -81,7 +83,7 @@ export function sizedNodeEdgeLength(node: TalaNode, graph: TalaGraph,
     }
     total += distance;
   }
-  return total + flowContinuityCost(node, turnCost);
+  return total + flowContinuityCost(owner, turnCost);
 }
 
 function obstructionNodes(first: TalaNode, second: TalaNode, graph: TalaGraph): TalaNode[] {

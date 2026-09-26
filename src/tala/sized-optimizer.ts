@@ -13,7 +13,8 @@ const precision = 1e-6;
 /** Port of placement.optimizerMedianToNeighbors with IncludeNodeSizes=true for
  * ordinary nodes. The result is expressed in cell units, like upstream. */
 export function sizedMedianToNeighbors(node: TalaNode, graph: TalaGraph): Point {
-  const neighbors = node.edges.map((edge) => node.adjacent(edge)).filter((other) => other.topLeft);
+  const neighbors = node.edges.map((edge) => graph.endpointFor(edge,
+    edge.from === node ? 'to' : 'from')).filter((other) => other.topLeft);
   if (neighbors.length === 0) throw new Error(`node ${node.id} has no positioned neighbors`);
   const compare = (a: TalaNode, b: TalaNode): number => a.id < b.id ? -1 : a.id > b.id ? 1 : 0;
   const byX = [...neighbors].sort((a, b) =>

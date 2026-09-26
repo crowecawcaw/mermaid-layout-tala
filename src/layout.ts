@@ -1,6 +1,6 @@
 import { rankDag, type RankEdge, type RankNode } from './rank.js';
 import { chooseLabelPoint, routeGraphEdges } from './route.js';
-import { TalaGraph } from './tala/graph.js';
+import { TalaGraph, type EdgeEndpointReplacement, type EdgeEndpointReplacements } from './tala/graph.js';
 import { addHubs } from './tala/proximity.js';
 import { countNonSharedCrossings } from './tala/crossings.js';
 import { placeOrdinaryNodes } from './tala/ordinary-placement.js';
@@ -144,7 +144,8 @@ function layoutFlatFlowchart(
   inputEdges: readonly LayoutEdge[],
   options: LayoutOptions = {},
   seed = 1,
-  constrainDirection = true
+  constrainDirection = true,
+  endpointReplacements: ReadonlyMap<string, EdgeEndpointReplacements> = new Map()
 ): LayoutResult {
   const direction = options.direction ?? 'TB';
   const nodeSpacing = finiteSpacing(options.nodeSpacing ?? 48, 'nodeSpacing');
@@ -200,7 +201,8 @@ function layoutFlatFlowchart(
         y: component[0]!.fixedTopLeft!.y + component[0]!.height / 2,
         rank: 0, order: 0 }] : undefined;
     const localNodes = sequence ?? tree ?? cluster ?? fixedSingleton ?? (useOrdinary && component.length > 1
-      ? positionOrdinaryComponent(component, componentEdges, ranks, direction, seed, constrainDirection)
+      ? positionOrdinaryComponent(component, componentEdges, ranks, direction, seed,
+        constrainDirection, endpointReplacements)
       : positionComponent(component, weightedDag, ranks, nodeSpacing, rankSpacing, passes, direction, seed));
     for (const node of localNodes) allPositions.set(node.id, node);
     componentBounds.push(bounds(localNodes));
@@ -240,9 +242,14 @@ function layoutFlatFlowchart(
 
 function positionOrdinaryComponent(nodes: readonly LayoutNode[], edges: readonly LayoutEdge[],
   ranks: ReadonlyMap<string, number>, direction: LayoutDirection, seed: number,
-  constrainDirection = true): PositionedNode[] {
+  constrainDirection = true,
+  endpointReplacements: ReadonlyMap<string, EdgeEndpointReplacements> = new Map()): PositionedNode[] {
   const graph = TalaGraph.fromFlowchart(nodes.map((node) => ({ ...node, parentId: undefined })),
     edges, constrainDirection ? direction : undefined);
+  for (const edge of edges) {
+    const replacements = endpointReplacements.get(edge.id);
+    if (replacements) graph.edgeEndpointReplacements.set(edge.id, replacements);
+  }
   placeOrdinaryNodes(graph, seed);
   const crossAxis = direction === 'TB' || direction === 'BT' ? 'x' : 'y';
   const orderById = new Map<string, number>();
@@ -315,6 +322,28 @@ function layoutCompoundFlowchart(
     });
     const projection = projectContainerEdges(projectionGraph,
       parentId ? projectionById.get(parentId)! : null);
+    const endpointReplacements = new Map<string, EdgeEndpointReplacements>();
+    for (const abduction of projection.abductions) {
+      const endpoint = (originalId: string, proxyId: string): EdgeEndpointReplacement | undefined => {
+        const scope = nested.get(proxyId);
+        const descendant = scope?.positioned.find((item) => item.id === originalId);
+        const original = byId.get(originalId);
+        if (!scope || !descendant || !original) return;
+        return { original: { ...original, width: descendant.width, height: descendant.height }, proxyId,
+          offsetX: descendant.x - descendant.width / 2 + scope.width / 2,
+          offsetY: descendant.y - descendant.height / 2 + scope.height / 2 };
+      };
+      const replacements: EdgeEndpointReplacements = {};
+      if (abduction.originallyFrom && abduction.currentFrom) {
+        const from = endpoint(abduction.originallyFrom.id, abduction.currentFrom.id);
+        if (from) replacements.from = from;
+      }
+      if (abduction.originallyTo && abduction.currentTo) {
+        const to = endpoint(abduction.originallyTo.id, abduction.currentTo.id);
+        if (to) replacements.to = to;
+      }
+      if (replacements.from || replacements.to) endpointReplacements.set(abduction.edge.id, replacements);
+    }
     const projected: LayoutEdge[] = projection.projected.map((edge) => ({
       id: edge.id, from: edge.from.id, to: edge.to.id,
     }));
@@ -322,7 +351,7 @@ function layoutCompoundFlowchart(
     // Upstream only records an interior direction when the container declares
     // one. The LR axis below is a presentation fallback for ranks and packing.
     const flat = layoutFlatFlowchart(measured, projected, { ...options, direction }, seed,
-      parentId === undefined || byId.get(parentId)?.dir !== undefined);
+      parentId === undefined || byId.get(parentId)?.dir !== undefined, endpointReplacements);
     const box = bounds(flat.nodes);
     const group = parentId ? byId.get(parentId)! : undefined;
     const padding = 60;

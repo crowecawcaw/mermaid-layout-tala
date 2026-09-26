@@ -132,15 +132,42 @@ export class TalaEdge {
   }
 }
 
+export interface EdgeEndpointReplacement {
+  original: LayoutNode;
+  proxyId: string;
+  offsetX: number;
+  offsetY: number;
+}
+export interface EdgeEndpointReplacements {
+  from?: EdgeEndpointReplacement;
+  to?: EdgeEndpointReplacement;
+}
+
 export class TalaGraph {
   readonly nodes: TalaNode[] = [];
   readonly edges: TalaEdge[] = [];
   readonly containers = new Map<TalaNode | null, TalaNode[]>();
   readonly directions = new Map<TalaNode | null, LayoutDirection>();
   readonly hubs = new Map<TalaNode, TalaNode[]>();
+  readonly edgeEndpointReplacements = new Map<string, EdgeEndpointReplacements>();
   cellSize = 10;
   private turnCostCache = 0;
   private crossingCostCache = 0;
+
+  /** Geometry of an original endpoint while its edge is projected onto a
+   * direct-child container proxy during compound placement. */
+  endpointFor(edge: TalaEdge, side: 'from' | 'to'): TalaNode {
+    const owner = side === 'from' ? edge.from : edge.to;
+    const replacement = this.edgeEndpointReplacements.get(edge.id)?.[side];
+    if (!replacement) return owner;
+    const proxy = this.nodes.find((node) => node.id === replacement.proxyId);
+    if (!proxy?.topLeft) return owner;
+    const original = new TalaNode(replacement.original);
+    original.parent = proxy;
+    original.topLeft = { x: proxy.topLeft.x + replacement.offsetX,
+      y: proxy.topLeft.y + replacement.offsetY };
+    return original;
+  }
 
   /** Port of layoutgraph.Graph.TurnCost's lazy cost cache. */
   turnCost(): number {
