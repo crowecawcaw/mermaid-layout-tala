@@ -72,7 +72,7 @@ export class TalaGraph {
   static fromFlowchart(nodes: readonly LayoutNode[], edges: readonly LayoutEdge[], direction: LayoutDirection): TalaGraph {
     const graph = new TalaGraph();
     const byId = new Map<string, TalaNode>();
-    for (const input of [...nodes].sort((a, b) => compareText(a.id, b.id))) {
+    for (const input of nodes) {
       if (byId.has(input.id)) throw new Error('duplicate node ID');
       if (!Number.isFinite(input.width) || input.width <= 0 || !Number.isFinite(input.height) || input.height <= 0) {
         throw new Error(`node ${input.id} must have finite positive dimensions`);
@@ -105,7 +105,7 @@ export class TalaGraph {
       graph.containers.set(node.parent, children);
     }
     const edgeIds = new Set<string>();
-    for (const input of [...edges].sort((a, b) => compareText(a.id, b.id))) {
+    for (const input of edges) {
       if (edgeIds.has(input.id)) throw new Error('duplicate edge ID');
       edgeIds.add(input.id);
       const from = byId.get(input.from), to = byId.get(input.to);
@@ -196,5 +196,3 @@ export class TalaGraph {
     }
   }
 }
-
-function compareText(a: string, b: string): number { return a < b ? -1 : a > b ? 1 : 0; }

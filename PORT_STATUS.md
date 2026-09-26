@@ -8,7 +8,7 @@ that engine yet.
 | Upstream area | TypeScript status |
 | --- | --- |
 | Weighted DAG ranker | Ported in `src/rank.ts` with translated fixtures and tests. |
-| Input graph and shape geometry | Independent mutable graph records, container ownership, adjacency, and clone isolation are ported in `src/tala/graph.ts`. Upstream topology mutations and shape policies remain unported. |
+| Input graph and shape geometry | Independent mutable graph records, input order, container ownership, adjacency, clone isolation, and ordinary connected-component splitting are ported in `src/tala`. Upstream compound topology mutations and shape policies remain unported. |
 | Nested containers and direction | Supported by a Mermaid-specific recursive layout in `src/layout.ts`; placement differs from upstream. |
 | Seed attempts | Independent mutable graph clones and deterministic ordering attempts are implemented. Upstream crossing evaluation is ported; random placement and full label scoring remain unported. |
 | Tree, hierarchy, hub, proximity, cluster, and sequence discovery | Upstream `AddHubs` is ported. The other algorithms remain unported. The adapter still applies layered placement to all connected components. |

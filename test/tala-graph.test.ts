@@ -4,6 +4,15 @@ import { addHubs } from '../src/tala/proximity.js';
 import { initializeByGraphDistance } from '../src/tala/graph-distance.js';
 
 describe('TALA graph model', () => {
+  it('preserves upstream entity order through clone', () => {
+    const graph = TalaGraph.fromFlowchart([
+      { id: 'z', width: 30, height: 20 }, { id: 'a', width: 30, height: 20 },
+    ], [{ id: 'second', from: 'a', to: 'z' }, { id: 'first', from: 'z', to: 'a' }], 'TB');
+    expect(graph.nodes.map((node) => node.id)).toEqual(['z', 'a']);
+    expect(graph.edges.map((edge) => edge.id)).toEqual(['second', 'first']);
+    expect(graph.clone().nodes.map((node) => node.id)).toEqual(['z', 'a']);
+  });
+
   it('computes upstream placement cell size from node dimensions', () => {
     const similar = TalaGraph.fromFlowchart([
       { id: 'a', width: 40, height: 30 }, { id: 'b', width: 50, height: 40 },

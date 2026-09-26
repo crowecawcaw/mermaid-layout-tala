@@ -70,7 +70,13 @@ export function layoutFlowchart(
   options: LayoutOptions = {}
 ): LayoutResult {
   const seeds = normalizeSeeds(options.seeds ?? [1, 2, 3]);
-  const graph = TalaGraph.fromFlowchart(inputNodes, inputEdges, options.direction ?? 'TB');
+  // Mermaid's parser order is not a placement constraint. Normalize only at
+  // the adapter boundary; the TALA graph retains caller order like upstream.
+  const graph = TalaGraph.fromFlowchart(
+    [...inputNodes].sort((a, b) => compareText(a.id, b.id)),
+    [...inputEdges].sort((a, b) => compareText(a.id, b.id)),
+    options.direction ?? 'TB'
+  );
   let selected: LayoutResult | undefined;
   let selectedScore: { penalty: number; area: number } | undefined;
   for (const seed of seeds) {
