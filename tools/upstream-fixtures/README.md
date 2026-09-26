@@ -72,3 +72,10 @@ Its output is `full-layout-expected.json`. After `npm run build`, run
 relative geometry differences. The test `tala-upstream-full-layout.test.ts`
 pins the nine cases whose node geometry matches; edge routes are still outside
 that assertion.
+
+Run `node full-tree-random-cases.mjs` to regenerate 24 deeper branching-tree
+cases. `full-tree-random-expected.json` records complete upstream results for
+them. Compare with `node tools/upstream-fixtures/compare-full.mjs
+./full-tree-random-cases.json ./full-tree-random-expected.json`. These generated
+cases currently expose the missing general tree pipeline; they are diagnostic
+inputs, not parity assertions.

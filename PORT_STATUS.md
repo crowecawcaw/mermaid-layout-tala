@@ -23,6 +23,12 @@ trees, and two disconnected chains. The diamond still differs because upstream
 selects hierarchical placement. Edge routes and labels are not included in
 that nine-of-ten comparison.
 
+A separate set of 24 generated branching trees exercises deeper and uneven
+structures. Most do not yet match upstream because its tree extraction,
+ordering, orientation selection, and later refinement are not ported. The
+current rooted-tree branch only covers the straightforward case represented by
+the pinned exact fixtures.
+
 The current playground defaults to the translated ordinary placement stage
 for flat components. Its optional layered setting uses the previous adapter
 placement and spacing controls. A faithful TALA port still needs the remaining

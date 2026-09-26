@@ -3,8 +3,8 @@
 import { readFileSync } from 'node:fs';
 import { layoutFlowchart } from '../../build/src/layout.js';
 
-const cases = JSON.parse(readFileSync(new URL('./full-layout-cases.json', import.meta.url), 'utf8'));
-const expected = JSON.parse(readFileSync(new URL('./full-layout-expected.json', import.meta.url), 'utf8'));
+const cases = JSON.parse(readFileSync(new URL(process.argv[2] ?? './full-layout-cases.json', import.meta.url), 'utf8'));
+const expected = JSON.parse(readFileSync(new URL(process.argv[3] ?? './full-layout-expected.json', import.meta.url), 'utf8'));
 for (const [index, input] of cases.entries()) {
   const actual = layoutFlowchart(input.nodes, input.edges, {
     direction: input.direction,

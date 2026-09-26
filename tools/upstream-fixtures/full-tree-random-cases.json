@@ -1,0 +1,2065 @@
+[
+  {
+    "name": "tree-random-0",
+    "direction": "TB",
+    "seed": 1,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 80,
+        "height": 25
+      },
+      {
+        "id": "B",
+        "width": 80,
+        "height": 25
+      },
+      {
+        "id": "C",
+        "width": 80,
+        "height": 35
+      },
+      {
+        "id": "D",
+        "width": 80,
+        "height": 35
+      },
+      {
+        "id": "E",
+        "width": 60,
+        "height": 25
+      },
+      {
+        "id": "F",
+        "width": 80,
+        "height": 25
+      },
+      {
+        "id": "G",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "H",
+        "width": 40,
+        "height": 45
+      },
+      {
+        "id": "I",
+        "width": 100,
+        "height": 45
+      },
+      {
+        "id": "J",
+        "width": 100,
+        "height": 45
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "A",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "e4",
+        "from": "A",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "e5",
+        "from": "C",
+        "to": "F",
+        "directed": true
+      },
+      {
+        "id": "e6",
+        "from": "E",
+        "to": "G",
+        "directed": true
+      },
+      {
+        "id": "e7",
+        "from": "D",
+        "to": "H",
+        "directed": true
+      },
+      {
+        "id": "e8",
+        "from": "E",
+        "to": "I",
+        "directed": true
+      },
+      {
+        "id": "e9",
+        "from": "F",
+        "to": "J",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-1",
+    "direction": "LR",
+    "seed": 2,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 50,
+        "height": 40
+      },
+      {
+        "id": "B",
+        "width": 80,
+        "height": 50
+      },
+      {
+        "id": "C",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "D",
+        "width": 40,
+        "height": 40
+      },
+      {
+        "id": "E",
+        "width": 70,
+        "height": 30
+      },
+      {
+        "id": "F",
+        "width": 80,
+        "height": 30
+      },
+      {
+        "id": "G",
+        "width": 90,
+        "height": 30
+      },
+      {
+        "id": "H",
+        "width": 60,
+        "height": 40
+      },
+      {
+        "id": "I",
+        "width": 100,
+        "height": 50
+      },
+      {
+        "id": "J",
+        "width": 60,
+        "height": 50
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "A",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "e4",
+        "from": "D",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "e5",
+        "from": "C",
+        "to": "F",
+        "directed": true
+      },
+      {
+        "id": "e6",
+        "from": "F",
+        "to": "G",
+        "directed": true
+      },
+      {
+        "id": "e7",
+        "from": "D",
+        "to": "H",
+        "directed": true
+      },
+      {
+        "id": "e8",
+        "from": "H",
+        "to": "I",
+        "directed": true
+      },
+      {
+        "id": "e9",
+        "from": "I",
+        "to": "J",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-2",
+    "direction": "BT",
+    "seed": 2,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 50,
+        "height": 35
+      },
+      {
+        "id": "B",
+        "width": 50,
+        "height": 35
+      },
+      {
+        "id": "C",
+        "width": 100,
+        "height": 25
+      },
+      {
+        "id": "D",
+        "width": 90,
+        "height": 25
+      },
+      {
+        "id": "E",
+        "width": 60,
+        "height": 25
+      },
+      {
+        "id": "F",
+        "width": 80,
+        "height": 25
+      },
+      {
+        "id": "G",
+        "width": 100,
+        "height": 25
+      },
+      {
+        "id": "H",
+        "width": 90,
+        "height": 35
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "B",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "e4",
+        "from": "C",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "e5",
+        "from": "A",
+        "to": "F",
+        "directed": true
+      },
+      {
+        "id": "e6",
+        "from": "A",
+        "to": "G",
+        "directed": true
+      },
+      {
+        "id": "e7",
+        "from": "C",
+        "to": "H",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-3",
+    "direction": "RL",
+    "seed": 3,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 80,
+        "height": 30
+      },
+      {
+        "id": "B",
+        "width": 90,
+        "height": 50
+      },
+      {
+        "id": "C",
+        "width": 90,
+        "height": 40
+      },
+      {
+        "id": "D",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "E",
+        "width": 50,
+        "height": 40
+      },
+      {
+        "id": "F",
+        "width": 90,
+        "height": 40
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "A",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "e4",
+        "from": "D",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "e5",
+        "from": "E",
+        "to": "F",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-4",
+    "direction": "TB",
+    "seed": 3,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 100,
+        "height": 35
+      },
+      {
+        "id": "B",
+        "width": 50,
+        "height": 35
+      },
+      {
+        "id": "C",
+        "width": 60,
+        "height": 25
+      },
+      {
+        "id": "D",
+        "width": 60,
+        "height": 45
+      },
+      {
+        "id": "E",
+        "width": 100,
+        "height": 35
+      },
+      {
+        "id": "F",
+        "width": 90,
+        "height": 35
+      },
+      {
+        "id": "G",
+        "width": 100,
+        "height": 35
+      },
+      {
+        "id": "H",
+        "width": 90,
+        "height": 45
+      },
+      {
+        "id": "I",
+        "width": 100,
+        "height": 25
+      },
+      {
+        "id": "J",
+        "width": 70,
+        "height": 45
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "B",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "e4",
+        "from": "C",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "e5",
+        "from": "A",
+        "to": "F",
+        "directed": true
+      },
+      {
+        "id": "e6",
+        "from": "E",
+        "to": "G",
+        "directed": true
+      },
+      {
+        "id": "e7",
+        "from": "B",
+        "to": "H",
+        "directed": true
+      },
+      {
+        "id": "e8",
+        "from": "G",
+        "to": "I",
+        "directed": true
+      },
+      {
+        "id": "e9",
+        "from": "D",
+        "to": "J",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-5",
+    "direction": "LR",
+    "seed": 1,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 70,
+        "height": 40
+      },
+      {
+        "id": "B",
+        "width": 90,
+        "height": 40
+      },
+      {
+        "id": "C",
+        "width": 60,
+        "height": 50
+      },
+      {
+        "id": "D",
+        "width": 40,
+        "height": 30
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "B",
+        "to": "D",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-6",
+    "direction": "BT",
+    "seed": 3,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 80,
+        "height": 25
+      },
+      {
+        "id": "B",
+        "width": 100,
+        "height": 25
+      },
+      {
+        "id": "C",
+        "width": 100,
+        "height": 25
+      },
+      {
+        "id": "D",
+        "width": 100,
+        "height": 35
+      },
+      {
+        "id": "E",
+        "width": 70,
+        "height": 25
+      },
+      {
+        "id": "F",
+        "width": 90,
+        "height": 35
+      },
+      {
+        "id": "G",
+        "width": 80,
+        "height": 35
+      },
+      {
+        "id": "H",
+        "width": 70,
+        "height": 45
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "C",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "e4",
+        "from": "C",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "e5",
+        "from": "E",
+        "to": "F",
+        "directed": true
+      },
+      {
+        "id": "e6",
+        "from": "C",
+        "to": "G",
+        "directed": true
+      },
+      {
+        "id": "e7",
+        "from": "D",
+        "to": "H",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-7",
+    "direction": "RL",
+    "seed": 2,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 40,
+        "height": 40
+      },
+      {
+        "id": "B",
+        "width": 50,
+        "height": 40
+      },
+      {
+        "id": "C",
+        "width": 40,
+        "height": 30
+      },
+      {
+        "id": "D",
+        "width": 70,
+        "height": 30
+      },
+      {
+        "id": "E",
+        "width": 100,
+        "height": 50
+      },
+      {
+        "id": "F",
+        "width": 60,
+        "height": 40
+      },
+      {
+        "id": "G",
+        "width": 60,
+        "height": 40
+      },
+      {
+        "id": "H",
+        "width": 70,
+        "height": 40
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "A",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "e4",
+        "from": "D",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "e5",
+        "from": "C",
+        "to": "F",
+        "directed": true
+      },
+      {
+        "id": "e6",
+        "from": "B",
+        "to": "G",
+        "directed": true
+      },
+      {
+        "id": "e7",
+        "from": "F",
+        "to": "H",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-8",
+    "direction": "TB",
+    "seed": 1,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 90,
+        "height": 35
+      },
+      {
+        "id": "B",
+        "width": 100,
+        "height": 35
+      },
+      {
+        "id": "C",
+        "width": 100,
+        "height": 35
+      },
+      {
+        "id": "D",
+        "width": 100,
+        "height": 25
+      },
+      {
+        "id": "E",
+        "width": 40,
+        "height": 45
+      },
+      {
+        "id": "F",
+        "width": 100,
+        "height": 25
+      },
+      {
+        "id": "G",
+        "width": 50,
+        "height": 35
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "A",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "e4",
+        "from": "C",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "e5",
+        "from": "B",
+        "to": "F",
+        "directed": true
+      },
+      {
+        "id": "e6",
+        "from": "A",
+        "to": "G",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-9",
+    "direction": "LR",
+    "seed": 1,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 70,
+        "height": 45
+      },
+      {
+        "id": "B",
+        "width": 40,
+        "height": 25
+      },
+      {
+        "id": "C",
+        "width": 70,
+        "height": 25
+      },
+      {
+        "id": "D",
+        "width": 40,
+        "height": 35
+      },
+      {
+        "id": "E",
+        "width": 60,
+        "height": 45
+      },
+      {
+        "id": "F",
+        "width": 50,
+        "height": 45
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "C",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "e4",
+        "from": "A",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "e5",
+        "from": "E",
+        "to": "F",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-10",
+    "direction": "BT",
+    "seed": 1,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 90,
+        "height": 40
+      },
+      {
+        "id": "B",
+        "width": 60,
+        "height": 40
+      },
+      {
+        "id": "C",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "D",
+        "width": 60,
+        "height": 40
+      },
+      {
+        "id": "E",
+        "width": 90,
+        "height": 30
+      },
+      {
+        "id": "F",
+        "width": 40,
+        "height": 40
+      },
+      {
+        "id": "G",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "H",
+        "width": 90,
+        "height": 50
+      },
+      {
+        "id": "I",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "J",
+        "width": 60,
+        "height": 50
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "A",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "e4",
+        "from": "D",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "e5",
+        "from": "A",
+        "to": "F",
+        "directed": true
+      },
+      {
+        "id": "e6",
+        "from": "F",
+        "to": "G",
+        "directed": true
+      },
+      {
+        "id": "e7",
+        "from": "B",
+        "to": "H",
+        "directed": true
+      },
+      {
+        "id": "e8",
+        "from": "H",
+        "to": "I",
+        "directed": true
+      },
+      {
+        "id": "e9",
+        "from": "A",
+        "to": "J",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-11",
+    "direction": "RL",
+    "seed": 3,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 60,
+        "height": 35
+      },
+      {
+        "id": "B",
+        "width": 100,
+        "height": 45
+      },
+      {
+        "id": "C",
+        "width": 50,
+        "height": 25
+      },
+      {
+        "id": "D",
+        "width": 60,
+        "height": 35
+      },
+      {
+        "id": "E",
+        "width": 50,
+        "height": 25
+      },
+      {
+        "id": "F",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "G",
+        "width": 70,
+        "height": 25
+      },
+      {
+        "id": "H",
+        "width": 100,
+        "height": 35
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "B",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "e4",
+        "from": "C",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "e5",
+        "from": "C",
+        "to": "F",
+        "directed": true
+      },
+      {
+        "id": "e6",
+        "from": "A",
+        "to": "G",
+        "directed": true
+      },
+      {
+        "id": "e7",
+        "from": "G",
+        "to": "H",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-12",
+    "direction": "TB",
+    "seed": 3,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 90,
+        "height": 30
+      },
+      {
+        "id": "B",
+        "width": 90,
+        "height": 50
+      },
+      {
+        "id": "C",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "D",
+        "width": 50,
+        "height": 50
+      },
+      {
+        "id": "E",
+        "width": 90,
+        "height": 50
+      },
+      {
+        "id": "F",
+        "width": 100,
+        "height": 30
+      },
+      {
+        "id": "G",
+        "width": 60,
+        "height": 40
+      },
+      {
+        "id": "H",
+        "width": 40,
+        "height": 30
+      },
+      {
+        "id": "I",
+        "width": 60,
+        "height": 30
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "A",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "e4",
+        "from": "B",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "e5",
+        "from": "E",
+        "to": "F",
+        "directed": true
+      },
+      {
+        "id": "e6",
+        "from": "F",
+        "to": "G",
+        "directed": true
+      },
+      {
+        "id": "e7",
+        "from": "E",
+        "to": "H",
+        "directed": true
+      },
+      {
+        "id": "e8",
+        "from": "B",
+        "to": "I",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-13",
+    "direction": "LR",
+    "seed": 3,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 90,
+        "height": 40
+      },
+      {
+        "id": "B",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "C",
+        "width": 90,
+        "height": 30
+      },
+      {
+        "id": "D",
+        "width": 40,
+        "height": 30
+      },
+      {
+        "id": "E",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "F",
+        "width": 70,
+        "height": 30
+      },
+      {
+        "id": "G",
+        "width": 70,
+        "height": 40
+      },
+      {
+        "id": "H",
+        "width": 100,
+        "height": 30
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "B",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "e4",
+        "from": "B",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "e5",
+        "from": "C",
+        "to": "F",
+        "directed": true
+      },
+      {
+        "id": "e6",
+        "from": "D",
+        "to": "G",
+        "directed": true
+      },
+      {
+        "id": "e7",
+        "from": "G",
+        "to": "H",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-14",
+    "direction": "BT",
+    "seed": 2,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 100,
+        "height": 35
+      },
+      {
+        "id": "B",
+        "width": 70,
+        "height": 45
+      },
+      {
+        "id": "C",
+        "width": 40,
+        "height": 45
+      },
+      {
+        "id": "D",
+        "width": 70,
+        "height": 45
+      },
+      {
+        "id": "E",
+        "width": 50,
+        "height": 45
+      },
+      {
+        "id": "F",
+        "width": 50,
+        "height": 45
+      },
+      {
+        "id": "G",
+        "width": 80,
+        "height": 25
+      },
+      {
+        "id": "H",
+        "width": 100,
+        "height": 35
+      },
+      {
+        "id": "I",
+        "width": 90,
+        "height": 35
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "C",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "e4",
+        "from": "A",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "e5",
+        "from": "A",
+        "to": "F",
+        "directed": true
+      },
+      {
+        "id": "e6",
+        "from": "E",
+        "to": "G",
+        "directed": true
+      },
+      {
+        "id": "e7",
+        "from": "B",
+        "to": "H",
+        "directed": true
+      },
+      {
+        "id": "e8",
+        "from": "E",
+        "to": "I",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-15",
+    "direction": "RL",
+    "seed": 3,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 70,
+        "height": 45
+      },
+      {
+        "id": "B",
+        "width": 50,
+        "height": 25
+      },
+      {
+        "id": "C",
+        "width": 90,
+        "height": 25
+      },
+      {
+        "id": "D",
+        "width": 90,
+        "height": 25
+      },
+      {
+        "id": "E",
+        "width": 70,
+        "height": 45
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "A",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "e4",
+        "from": "C",
+        "to": "E",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-16",
+    "direction": "TB",
+    "seed": 2,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 60,
+        "height": 45
+      },
+      {
+        "id": "B",
+        "width": 60,
+        "height": 35
+      },
+      {
+        "id": "C",
+        "width": 100,
+        "height": 25
+      },
+      {
+        "id": "D",
+        "width": 60,
+        "height": 35
+      },
+      {
+        "id": "E",
+        "width": 50,
+        "height": 35
+      },
+      {
+        "id": "F",
+        "width": 80,
+        "height": 45
+      },
+      {
+        "id": "G",
+        "width": 60,
+        "height": 45
+      },
+      {
+        "id": "H",
+        "width": 40,
+        "height": 25
+      },
+      {
+        "id": "I",
+        "width": 100,
+        "height": 35
+      },
+      {
+        "id": "J",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "A",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "e4",
+        "from": "C",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "e5",
+        "from": "B",
+        "to": "F",
+        "directed": true
+      },
+      {
+        "id": "e6",
+        "from": "C",
+        "to": "G",
+        "directed": true
+      },
+      {
+        "id": "e7",
+        "from": "F",
+        "to": "H",
+        "directed": true
+      },
+      {
+        "id": "e8",
+        "from": "G",
+        "to": "I",
+        "directed": true
+      },
+      {
+        "id": "e9",
+        "from": "D",
+        "to": "J",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-17",
+    "direction": "LR",
+    "seed": 3,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "B",
+        "width": 90,
+        "height": 50
+      },
+      {
+        "id": "C",
+        "width": 90,
+        "height": 40
+      },
+      {
+        "id": "D",
+        "width": 100,
+        "height": 50
+      },
+      {
+        "id": "E",
+        "width": 90,
+        "height": 40
+      },
+      {
+        "id": "F",
+        "width": 40,
+        "height": 30
+      },
+      {
+        "id": "G",
+        "width": 70,
+        "height": 50
+      },
+      {
+        "id": "H",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "C",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "e4",
+        "from": "B",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "e5",
+        "from": "E",
+        "to": "F",
+        "directed": true
+      },
+      {
+        "id": "e6",
+        "from": "F",
+        "to": "G",
+        "directed": true
+      },
+      {
+        "id": "e7",
+        "from": "F",
+        "to": "H",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-18",
+    "direction": "BT",
+    "seed": 2,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 90,
+        "height": 25
+      },
+      {
+        "id": "B",
+        "width": 100,
+        "height": 45
+      },
+      {
+        "id": "C",
+        "width": 40,
+        "height": 25
+      },
+      {
+        "id": "D",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "E",
+        "width": 60,
+        "height": 25
+      },
+      {
+        "id": "F",
+        "width": 80,
+        "height": 25
+      },
+      {
+        "id": "G",
+        "width": 40,
+        "height": 45
+      },
+      {
+        "id": "H",
+        "width": 70,
+        "height": 25
+      },
+      {
+        "id": "I",
+        "width": 90,
+        "height": 45
+      },
+      {
+        "id": "J",
+        "width": 60,
+        "height": 25
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "C",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "e4",
+        "from": "C",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "e5",
+        "from": "B",
+        "to": "F",
+        "directed": true
+      },
+      {
+        "id": "e6",
+        "from": "C",
+        "to": "G",
+        "directed": true
+      },
+      {
+        "id": "e7",
+        "from": "G",
+        "to": "H",
+        "directed": true
+      },
+      {
+        "id": "e8",
+        "from": "C",
+        "to": "I",
+        "directed": true
+      },
+      {
+        "id": "e9",
+        "from": "E",
+        "to": "J",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-19",
+    "direction": "RL",
+    "seed": 2,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 90,
+        "height": 50
+      },
+      {
+        "id": "B",
+        "width": 80,
+        "height": 30
+      },
+      {
+        "id": "C",
+        "width": 90,
+        "height": 30
+      },
+      {
+        "id": "D",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "E",
+        "width": 90,
+        "height": 30
+      },
+      {
+        "id": "F",
+        "width": 70,
+        "height": 50
+      },
+      {
+        "id": "G",
+        "width": 60,
+        "height": 40
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "C",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "e4",
+        "from": "D",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "e5",
+        "from": "C",
+        "to": "F",
+        "directed": true
+      },
+      {
+        "id": "e6",
+        "from": "F",
+        "to": "G",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-20",
+    "direction": "TB",
+    "seed": 3,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 90,
+        "height": 50
+      },
+      {
+        "id": "B",
+        "width": 80,
+        "height": 50
+      },
+      {
+        "id": "C",
+        "width": 70,
+        "height": 30
+      },
+      {
+        "id": "D",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "C",
+        "to": "D",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-21",
+    "direction": "LR",
+    "seed": 1,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 100,
+        "height": 45
+      },
+      {
+        "id": "B",
+        "width": 100,
+        "height": 45
+      },
+      {
+        "id": "C",
+        "width": 70,
+        "height": 25
+      },
+      {
+        "id": "D",
+        "width": 70,
+        "height": 25
+      },
+      {
+        "id": "E",
+        "width": 70,
+        "height": 45
+      },
+      {
+        "id": "F",
+        "width": 40,
+        "height": 35
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "B",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "e4",
+        "from": "C",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "e5",
+        "from": "B",
+        "to": "F",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-22",
+    "direction": "BT",
+    "seed": 2,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 40,
+        "height": 40
+      },
+      {
+        "id": "B",
+        "width": 80,
+        "height": 30
+      },
+      {
+        "id": "C",
+        "width": 90,
+        "height": 30
+      },
+      {
+        "id": "D",
+        "width": 60,
+        "height": 30
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "C",
+        "to": "D",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "tree-random-23",
+    "direction": "RL",
+    "seed": 1,
+    "nodes": [
+      {
+        "id": "A",
+        "width": 50,
+        "height": 25
+      },
+      {
+        "id": "B",
+        "width": 50,
+        "height": 35
+      },
+      {
+        "id": "C",
+        "width": 70,
+        "height": 25
+      },
+      {
+        "id": "D",
+        "width": 80,
+        "height": 35
+      },
+      {
+        "id": "E",
+        "width": 80,
+        "height": 35
+      },
+      {
+        "id": "F",
+        "width": 100,
+        "height": 25
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "e2",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "e3",
+        "from": "B",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "e4",
+        "from": "C",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "e5",
+        "from": "A",
+        "to": "F",
+        "directed": true
+      }
+    ]
+  }
+]
