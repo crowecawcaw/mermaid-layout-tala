@@ -134,5 +134,133 @@
       { "id": "ab1", "from": "a", "to": "b" },
       { "id": "ab2", "from": "a", "to": "b" }
     ]
+  },
+  {
+    "name": "shape-parallelogram",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 120, "height": 80, "shape": "Parallelogram" },
+      { "id": "b", "x": 280, "y": 0, "width": 100, "height": 60 }
+    ],
+    "edges": [{ "id": "ab", "from": "a", "to": "b" }]
+  },
+  {
+    "name": "shape-hexagon",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 120, "height": 80, "shape": "Hexagon" },
+      { "id": "b", "x": 280, "y": 65, "width": 100, "height": 60 }
+    ],
+    "edges": [{ "id": "ab", "from": "a", "to": "b" }]
+  },
+  {
+    "name": "shape-step",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 120, "height": 80, "shape": "Step" },
+      { "id": "b", "x": 280, "y": 0, "width": 100, "height": 60 }
+    ],
+    "edges": [{ "id": "ab", "from": "a", "to": "b" }]
+  },
+  {
+    "name": "shape-package",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 120, "height": 80, "shape": "Package" },
+      { "id": "b", "x": 280, "y": 0, "width": 100, "height": 60 }
+    ],
+    "edges": [{ "id": "ab", "from": "a", "to": "b" }]
+  },
+  {
+    "name": "shape-callout",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 120, "height": 80, "shape": "Callout" },
+      { "id": "b", "x": 0, "y": 220, "width": 100, "height": 60 }
+    ],
+    "edges": [{ "id": "ab", "from": "a", "to": "b" }]
+  },
+  {
+    "name": "shape-oval",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 120, "height": 80, "shape": "Oval" },
+      { "id": "b", "x": 280, "y": 65, "width": 100, "height": 60 }
+    ],
+    "edges": [{ "id": "ab", "from": "a", "to": "b" }]
+  },
+  {
+    "name": "shape-circle",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 120, "height": 80, "shape": "Circle" },
+      { "id": "b", "x": 280, "y": 0, "width": 100, "height": 60 }
+    ],
+    "edges": [{ "id": "ab", "from": "a", "to": "b" }]
+  },
+  {
+    "name": "shape-diamond",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 120, "height": 80, "shape": "Diamond" },
+      { "id": "b", "x": 280, "y": 65, "width": 100, "height": 60 }
+    ],
+    "edges": [{ "id": "ab", "from": "a", "to": "b" }]
+  },
+  {
+    "name": "shape-document",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 120, "height": 80, "shape": "Document" },
+      { "id": "b", "x": 280, "y": 65, "width": 100, "height": 60 }
+    ],
+    "edges": [{ "id": "ab", "from": "a", "to": "b" }]
+  },
+  {
+    "name": "shape-cylinder",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 120, "height": 80, "shape": "Cylinder" },
+      { "id": "b", "x": 280, "y": 0, "width": 100, "height": 60 }
+    ],
+    "edges": [{ "id": "ab", "from": "a", "to": "b" }]
+  },
+  {
+    "name": "shape-queue",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 120, "height": 80, "shape": "Queue" },
+      { "id": "b", "x": 280, "y": 65, "width": 100, "height": 60 }
+    ],
+    "edges": [{ "id": "ab", "from": "a", "to": "b" }]
+  },
+  {
+    "name": "shape-page",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 120, "height": 80, "shape": "Page" },
+      { "id": "b", "x": 280, "y": 0, "width": 100, "height": 60 }
+    ],
+    "edges": [{ "id": "ab", "from": "a", "to": "b" }]
+  },
+  {
+    "name": "shape-stored-data",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 120, "height": 80, "shape": "StoredData" },
+      { "id": "b", "x": 280, "y": 65, "width": 100, "height": 60 }
+    ],
+    "edges": [{ "id": "ab", "from": "a", "to": "b" }]
+  },
+  {
+    "name": "shape-person",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 120, "height": 80, "shape": "Person" },
+      { "id": "b", "x": 280, "y": 0, "width": 100, "height": 60 }
+    ],
+    "edges": [{ "id": "ab", "from": "a", "to": "b" }]
+  },
+  {
+    "name": "shape-c4-person",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 120, "height": 80, "shape": "C4Person" },
+      { "id": "b", "x": 280, "y": 65, "width": 100, "height": 60 }
+    ],
+    "edges": [{ "id": "ab", "from": "a", "to": "b" }]
+  },
+  {
+    "name": "shape-cloud",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 120, "height": 80, "shape": "Cloud" },
+      { "id": "b", "x": 280, "y": 0, "width": 100, "height": 60 }
+    ],
+    "edges": [{ "id": "ab", "from": "a", "to": "b" }]
   }
 ]

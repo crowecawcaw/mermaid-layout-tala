@@ -16,6 +16,7 @@ type tsSequentialNode struct {
     Y float64 `json:"y"`
     Width float64 `json:"width"`
     Height float64 `json:"height"`
+    Shape string `json:"shape,omitempty"`
 }
 type tsSequentialEdge struct {
     ID string `json:"id"`
@@ -44,6 +45,7 @@ type tsSequentialOutput struct {
     Flavors []tsSequentialFlavor `json:"flavors"`
     SelectedFlavor string `json:"selectedFlavor"`
     FinalRoutes []tsSequentialRoute `json:"finalRoutes"`
+    TracedRoutes []tsSequentialRoute `json:"tracedRoutes"`
 }
 type tsSequentialFlavor struct {
     Name string `json:"name"`
@@ -65,6 +67,7 @@ func TestTSOVGSequentialFixtures(t *testing.T) {
         nodes := map[string]*layoutgraph.Node{}
         for i, item := range input.Nodes {
             n := layoutgraph.NewNode(layoutgraph.EntityID(i+1), item.Width, item.Height)
+            if item.Shape != "" { n.SetShape(item.Shape) }
             n.TopLeft = geo.NewPoint(item.X, item.Y)
             g.AddNodeUnchecked(n)
             g.AddNodeToContainer(nil, n)
@@ -156,6 +159,15 @@ func TestTSOVGSequentialFixtures(t *testing.T) {
                 item.Points = append(item.Points, [2]float64{point.X, point.Y})
             }
             output.FinalRoutes = append(output.FinalRoutes, item)
+        }
+        output.TracedRoutes = make([]tsSequentialRoute, 0, len(g.Edges))
+        for _, edge := range g.Edges {
+            traceToShapeBorder(edge)
+            item := tsSequentialRoute{ID: edgeIDs[edge], Points: make([][2]float64, 0)}
+            for _, point := range edge.Points {
+                item.Points = append(item.Points, [2]float64{point.X, point.Y})
+            }
+            output.TracedRoutes = append(output.TracedRoutes, item)
         }
         outputs = append(outputs, output)
     }

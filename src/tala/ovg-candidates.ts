@@ -1,5 +1,5 @@
 import type { Point } from '../layout.js';
-import { shapePortPolicy } from './shape-ports.js';
+import { shapePortGroups } from './shape-ports.js';
 import { assertOVGCount, MAX_OVG_INTERSECTION_CANDIDATES } from './ovg-limits.js';
 
 export interface OVGCandidateNode {
@@ -84,12 +84,8 @@ function segmentPassesThroughNode(a: Point, b: Point, node: OVGCandidateNode): b
 }
 
 export function ovgPortGroups(node: OVGCandidateNode): Point[][] {
-  const groups = shapePortPolicy(node.shape, node.numColumns).groups.map((group) =>
-    group.map((relative) => ({
-      x: node.x + roundAway(node.width * relative.x),
-      y: node.y + roundAway(node.height * relative.y),
-    })));
-  return groups;
+  return shapePortGroups(node.shape, { x: node.x, y: node.y },
+    node.width, node.height, node.numColumns);
 }
 
 function ports(node: OVGCandidateNode): NodePorts {

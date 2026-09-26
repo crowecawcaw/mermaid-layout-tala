@@ -7,6 +7,7 @@ interface Case { name: string; nodes: OVGFlatNode[];
   edges: Array<{ id: string; from: string; to: string }> }
 interface Output { name: string; selectedFlavor: string;
   finalRoutes: Array<{ id: string; points: [number, number][] }>;
+  tracedRoutes: Array<{ id: string; points: [number, number][] }>;
   flavors: Array<{ name: string;
     routes: Array<{ id: string; segmentPoints: [number, number][] }> }> }
 const read = (file: string) => JSON.parse(readFileSync(new URL(
@@ -21,7 +22,7 @@ describe('public flat router uses the selected Go OVG route flavor', () => {
       rank: 0, order: 0 }));
     const routes = routeGraphEdges(nodes, input.edges, 'TB', new Map(), true);
     const oracle = expected.find((item) => item.name === input.name)!;
-    for (const route of oracle.finalRoutes) {
+    for (const route of oracle.tracedRoutes) {
       expect(routes.find((item) => item.id === route.id)!.points.map(({ x, y }) => [x, y]))
         .toEqual(route.points);
     }

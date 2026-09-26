@@ -24,7 +24,7 @@ describe('pinned upstream sequential OVG search', () => {
       expect(actual.points.map(({ x, y }) => [x, y])).toEqual(oracle.points);
       expect(actual.cost).toBeCloseTo(oracle.cost, 7);
     });
-    it(`second route: ${input.name}`, () => {
+    if (input.edges.length > 1) it(`second route: ${input.name}`, () => {
       const actual = searchFlatOVGSequential(input.nodes, input.edges)[1]!;
       const oracle = expected.find((item) => item.name === input.name)!.routes[1]!;
       expect(actual.id).toBe(oracle.id);

@@ -3,6 +3,7 @@ import { centerPort, shapePortPolicy, shapePorts, tableColumnPortIndex,
   type PortSide } from './tala/shape-ports.js';
 import { outsideTopCenterLoopLabelBox, routeNodeLoops } from './tala/loop-routing.js';
 import { generateBestFlatOVGRoutes } from './tala/ovg-search.js';
+import { supportsShapeBorderTrace, traceShapeBorder } from './tala/trace-shape-border.js';
 
 type Side = 'N' | 'S' | 'E' | 'W';
 type Axis = 0 | 1 | 2;
@@ -24,7 +25,7 @@ export function routeGraphEdges(
   if (edges.length === 0) return [];
   if (useOVG && canonicalTreePaths.size === 0
     && nodes.every((node) => !node.parentId && !node.isGroup
-    && (!node.shape || ['rectangle', 'square'].includes(node.shape.toLowerCase())))
+    && supportsShapeBorderTrace(node.shape))
     && edges.every((edge) => edge.from !== edge.to
       && edge.fromTableColumnIndex === undefined && edge.toTableColumnIndex === undefined)) {
     const ovgNodes = nodes.map((node) => ({ id: node.id,
@@ -33,10 +34,16 @@ export function routeGraphEdges(
       ...(node.shape ? { shape: node.shape } : {}),
       ...(node.numColumns !== undefined ? { numColumns: node.numColumns } : {}) }));
     const result = generateBestFlatOVGRoutes(ovgNodes, edges);
+    const byNode = new Map(ovgNodes.map((node) => [node.id, node]));
     return result.routes.map((route) => {
       const edge = edges.find((candidate) => candidate.id === route.id)!;
-      const middle = chooseLabelPoint(route.segmentPoints, edge, nodes);
-      return { ...edge, points: route.segmentPoints, x: middle.x, y: middle.y };
+      const points = route.segmentPoints.map((point) => ({ ...point }));
+      const from = byNode.get(edge.from)!, to = byNode.get(edge.to)!;
+      points[0] = traceShapeBorder(from.shape, from, points[0]!, points[1]!)!;
+      points[points.length - 1] = traceShapeBorder(to.shape, to,
+        points[points.length - 1]!, points[points.length - 2]!)!;
+      const middle = chooseLabelPoint(points, edge, nodes);
+      return { ...edge, points, x: middle.x, y: middle.y };
     }).sort((a, b) => compareText(a.id, b.id));
   }
   const byId = new Map(nodes.map((node) => [node.id, node]));
