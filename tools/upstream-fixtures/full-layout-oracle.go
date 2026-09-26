@@ -23,10 +23,11 @@ type inputNode struct {
 	Direction string  `json:"dir"`
 }
 type inputEdge struct {
-	ID       string `json:"id"`
-	From     string `json:"from"`
-	To       string `json:"to"`
-	Directed bool   `json:"directed"`
+	ID              string `json:"id"`
+	From            string `json:"from"`
+	To              string `json:"to"`
+	Directed        bool   `json:"directed"`
+	SourceArrowhead string `json:"sourceArrowhead"`
 }
 type inputCase struct {
 	Name      string      `json:"name"`
@@ -110,6 +111,9 @@ func run(input inputCase) (outputCase, error) {
 		edge.ID = layoutgraph.EntityID(index + 1)
 		if item.Directed {
 			edge.TargetArrowhead = layoutgraph.TriangleArrowhead
+		}
+		if item.SourceArrowhead != "" {
+			edge.SourceArrowhead = layoutgraph.TriangleArrowhead
 		}
 		edgeIDs[item.ID] = edge.ID
 	}

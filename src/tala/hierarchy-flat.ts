@@ -2,8 +2,9 @@ import type { LayoutDirection, LayoutEdge, LayoutNode, PositionedNode, Point } f
 import { rankDag } from '../rank.js';
 import { GoRandom } from './go-rng.js';
 import { alignFlatHierarchy } from './hierarchy-align.js';
+import { hierarchyArrowDirection, prepareHierarchyDag } from './hierarchy-dag.js';
 
-/** Flat, directed part of upstream hierarchy discovery and placement. */
+/** Flat part of upstream hierarchy discovery and placement. */
 export interface HierarchyVertex {
   node: LayoutNode;
   level: number;
@@ -23,23 +24,32 @@ const siblingSpacing = 60;
 const minPortClearance = 20;
 
 /** Return levels only when upstream's ordinary automatic hierarchy rules
- * admit an entire flat, directed DAG component. */
+ * admit an entire flat component. */
 export function discoverFlatHierarchy(nodes: readonly LayoutNode[],
   edges: readonly LayoutEdge[], direction: LayoutDirection): Map<string, number> | undefined {
   if (nodes.length < 3 || nodes.some((node) => node.isGroup || node.fixedTopLeft
     || node.shape?.toLowerCase() === 'table')) return undefined;
   const structural = edges.filter((edge) => edge.from !== edge.to);
-  if (structural.length === 0 || structural.some((edge) => edge.directed === false
-    || edge.sourceArrowhead && edge.sourceArrowhead !== 'none'
-    || edge.targetArrowhead === 'none')) return undefined;
+  if (structural.length === 0) return undefined;
   const byId = new Map(nodes.map((node) => [node.id, node]));
   const incoming = new Map(nodes.map((node) => [node.id, 0]));
   const outgoing = new Map(nodes.map((node) => [node.id, 0]));
   const degree = new Map(nodes.map((node) => [node.id, 0]));
   for (const edge of structural) {
     if (!byId.has(edge.from) || !byId.has(edge.to)) return undefined;
-    incoming.set(edge.to, incoming.get(edge.to)! + 1);
-    outgoing.set(edge.from, outgoing.get(edge.from)! + 1);
+    const orientation = hierarchyArrowDirection(edge);
+    if (orientation === 'forward') {
+      incoming.set(edge.to, incoming.get(edge.to)! + 1);
+      outgoing.set(edge.from, outgoing.get(edge.from)! + 1);
+    } else if (orientation === 'backward') {
+      incoming.set(edge.from, incoming.get(edge.from)! + 1);
+      outgoing.set(edge.to, outgoing.get(edge.to)! + 1);
+    } else {
+      incoming.set(edge.from, incoming.get(edge.from)! + 1);
+      incoming.set(edge.to, incoming.get(edge.to)! + 1);
+      outgoing.set(edge.from, outgoing.get(edge.from)! + 1);
+      outgoing.set(edge.to, outgoing.get(edge.to)! + 1);
+    }
     degree.set(edge.from, degree.get(edge.from)! + 1);
     degree.set(edge.to, degree.get(edge.to)! + 1);
   }
@@ -48,10 +58,9 @@ export function discoverFlatHierarchy(nodes: readonly LayoutNode[],
   if (sources.length === 0 || sinks.length === 0) return undefined;
   let levels: Map<string, number>;
   try {
-    levels = rankDag(nodes, structural.map((edge) => ({ id: edge.id,
-      from: edge.from, to: edge.to })));
+    levels = rankDag(nodes, prepareHierarchyDag(nodes, structural));
   } catch {
-    return undefined; // Cycle reversal is a later hierarchy port step.
+    return undefined;
   }
   const levelCount = Math.max(...levels.values()) + 1;
   if (levelCount < 3) return undefined;
@@ -59,6 +68,15 @@ export function discoverFlatHierarchy(nodes: readonly LayoutNode[],
   const tooTall = aspect < 0.5, tooWide = aspect > 2;
   let branchedWorkflow = nodes.length > levelCount && sources.length === 1
     && sinks.length === 1 && nodes.length <= 128 && structural.length <= 256;
+  let forwardEdges = 0;
+  for (const edge of structural) {
+    const orientation = hierarchyArrowDirection(edge);
+    if (orientation === 'forward' && levels.get(edge.to)! > levels.get(edge.from)!
+      || orientation === 'backward' && levels.get(edge.from)! > levels.get(edge.to)!) {
+      forwardEdges++;
+    }
+  }
+  branchedWorkflow = branchedWorkflow && forwardEdges === structural.length;
   if (tooTall && branchedWorkflow) {
     const horizontal = direction === 'LR' || direction === 'RL';
     const sizes = Array.from({ length: levelCount }, () => 0);
@@ -72,6 +90,7 @@ export function discoverFlatHierarchy(nodes: readonly LayoutNode[],
   }
   const maxEdges = 2 * Math.ceil(Math.sqrt(nodes.length));
   if (tooWide || tooTall && !branchedWorkflow
+    || forwardEdges < 1.5 * (structural.length - forwardEdges)
     || [...degree.values()].some((value) => value > maxEdges)
     || isOneManyOne(nodes, structural, levels, levelCount)) return undefined;
   return levels;

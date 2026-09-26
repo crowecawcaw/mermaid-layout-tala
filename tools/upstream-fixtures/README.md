@@ -16,6 +16,11 @@ The curated pair is `hierarchy-cases.json` / `hierarchy-stage-expected.json`;
 `hierarchy-generated-cases.json`, whose stage output is
 `hierarchy-generated-stage-expected.json`. The complete pipeline oracle also
 produces `hierarchy-expected.json` and `hierarchy-generated-expected.json`.
+The same generator writes `hierarchy-mixed-cases.json` for repeated edges,
+feedback edges, undirected and bidirectional edges, and a source-arrow edge. Its upstream
+outputs are `hierarchy-mixed-stage-expected.json` and
+`hierarchy-mixed-expected.json`. The latter uses the source-arrow support in
+`full-layout-oracle.go`.
 The TypeScript parity test is `test/tala-upstream-hierarchy.test.ts`.
 
 `prescale-oracle_test.go` records upstream `placement.Prescale` for the eight

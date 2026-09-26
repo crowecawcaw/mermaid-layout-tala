@@ -38,3 +38,35 @@ const cases = patterns.map(({ levels, direction, seed, skips = [] }, caseIndex) 
 
 writeFileSync(new URL('./hierarchy-generated-cases.json', import.meta.url),
   JSON.stringify(cases, null, 2) + '\n');
+
+const variants = [
+  { name: 'parallel-edges', direction: 'TB', base: cases[0], append: [
+    { from: 'L1_0', to: 'L2_0', directed: true },
+    { from: 'L1_1', to: 'L2_1', directed: true },
+  ] },
+  { name: 'single-back-edge', direction: 'LR', base: cases[2], append: [
+    { from: 'L2_1', to: 'L1_0', directed: true },
+  ] },
+  { name: 'undirected-cross-edge', direction: 'TB', base: cases[2], append: [
+    { from: 'L1_0', to: 'L2_1', directed: false },
+  ] },
+  { name: 'source-arrow-back-edge', direction: 'RL', base: cases[2], append: [
+    { from: 'L1_0', to: 'L2_1', directed: false, sourceArrowhead: 'triangle' },
+  ] },
+  { name: 'two-feedback-edges', direction: 'TB', base: cases[2], append: [
+    { from: 'L2_1', to: 'L1_0', directed: true },
+    { from: 'L2_2', to: 'L1_1', directed: true },
+  ] },
+  { name: 'bidirectional-cross-edge', direction: 'BT', base: cases[2], append: [
+    { from: 'L1_0', to: 'L2_1', directed: true, sourceArrowhead: 'triangle' },
+  ] },
+].map((variant) => ({ name: variant.name, direction: variant.direction,
+  seed: 1, nodes: variant.base.nodes, edges: [
+    ...variant.base.edges,
+    ...variant.append.map((edge, index) => ({
+      id: `e${String(variant.base.edges.length + index + 1).padStart(3, '0')}`,
+      ...edge,
+    })),
+  ] }));
+writeFileSync(new URL('./hierarchy-mixed-cases.json', import.meta.url),
+  JSON.stringify(variants, null, 2) + '\n');

@@ -26,10 +26,49 @@ const generatedStage = JSON.parse(readFileSync(new URL('../tools/upstream-fixtur
   import.meta.url), 'utf8')) as typeof completed;
 const generatedCompleted = JSON.parse(readFileSync(new URL('../tools/upstream-fixtures/hierarchy-generated-expected.json',
   import.meta.url), 'utf8')) as typeof completed;
+const mixed = JSON.parse(readFileSync(new URL('../tools/upstream-fixtures/hierarchy-mixed-cases.json',
+  import.meta.url), 'utf8')) as Case[];
+const mixedStage = JSON.parse(readFileSync(new URL('../tools/upstream-fixtures/hierarchy-mixed-stage-expected.json',
+  import.meta.url), 'utf8')) as typeof completed;
+const mixedCompleted = JSON.parse(readFileSync(new URL('../tools/upstream-fixtures/hierarchy-mixed-expected.json',
+  import.meta.url), 'utf8')) as typeof completed;
 const expected = new Map(curatedStage.filter((item) => item.nodes.length > 0)
   .map((item) => [item.name, item.nodes.map((node) => [node.x, node.y])]));
 
 describe('pinned upstream flat hierarchy placement', () => {
+  for (const input of mixed) {
+    it(`${input.name} matches the Go hierarchy stage after DAG simplification`, () => {
+      const oracle = mixedStage.find((item) => item.name === input.name)!;
+      const scaled = prescaleNodes(input.nodes, input.edges);
+      const levels = discoverFlatHierarchy(scaled, input.edges, input.direction);
+      expect(levels).toBeDefined();
+      const result = placeFlatHierarchy(scaled, input.edges, levels!,
+        input.direction, input.seed);
+      expect(result.map((node) => ({ id: node.id,
+        x: node.x - node.width / 2, y: node.y - node.height / 2,
+        width: node.width, height: node.height }))).toEqual(oracle.nodes);
+    });
+  }
+  for (const input of mixed.filter((item) => ['parallel-edges', 'undirected-cross-edge',
+    'two-feedback-edges', 'bidirectional-cross-edge']
+    .includes(item.name))) {
+    it(`${input.name} matches completed Go node geometry through the public API`, () => {
+      const oracle = mixedCompleted.find((item) => item.name === input.name)!;
+      const result = layoutFlowchart(input.nodes, input.edges, {
+        strategy: 'tala', direction: input.direction, seeds: [input.seed],
+      });
+      const actualReference = result.nodes.find((node) => node.id === oracle.nodes[0]!.id)!;
+      const reference = oracle.nodes[0]!;
+      for (const node of oracle.nodes) {
+        const actual = result.nodes.find((candidate) => candidate.id === node.id)!;
+        expect([actual.width, actual.height]).toEqual([node.width, node.height]);
+        expect(actual.x - actual.width / 2 - actualReference.x + actualReference.width / 2)
+          .toBe(node.x - reference.x);
+        expect(actual.y - actual.height / 2 - actualReference.y + actualReference.height / 2)
+          .toBe(node.y - reference.y);
+      }
+    });
+  }
   for (const input of generated) {
     it(`${input.name} matches the generated Go PreprocessHierarchies stage`, () => {
       const oracle = generatedStage.find((item) => item.name === input.name)!;

@@ -16,9 +16,10 @@ type tsHierarchyNode struct {
 	Height float64 `json:"height"`
 }
 type tsHierarchyEdge struct {
-	From     string `json:"from"`
-	To       string `json:"to"`
-	Directed bool   `json:"directed"`
+	From            string `json:"from"`
+	To              string `json:"to"`
+	Directed        bool   `json:"directed"`
+	SourceArrowhead string `json:"sourceArrowhead"`
 }
 type tsHierarchyCase struct {
 	Name      string            `json:"name"`
@@ -77,6 +78,9 @@ func TestTSHierarchyStageFixtures(t *testing.T) {
 			edge.ID = layoutgraph.EntityID(index + 1)
 			if item.Directed {
 				edge.TargetArrowhead = layoutgraph.TriangleArrowhead
+			}
+			if item.SourceArrowhead != "" {
+				edge.SourceArrowhead = layoutgraph.TriangleArrowhead
 			}
 		}
 		pipeline := newPipeline(graph, input.Seed, false)
