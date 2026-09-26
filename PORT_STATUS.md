@@ -26,8 +26,12 @@ chain and one outgoing edge. Upstream completes its inner container geometry
 during `NodePlacement`; it then aligns the outgoing node with the connected
 child at `AlignAxes`. The TypeScript inner geometry matches that fixture, but
 the outgoing-node alignment and later compound adjustments are still absent.
-The ordinary-endpoint `AlignAxes` delta calculation is ported and matches the
-stage trace; its candidate search and accepted movement are still absent.
+The ordinary-endpoint `AlignAxes` delta calculation, ordinary-container
+connected-set traversal, non-center-port penalty, and equal-size peer-container
+alignment cost are ported. The stage's shift validity check now applies the
+upstream graph-size and center-line obstruction rules, and accepts the exact
+connected move in the pinned compound stage trace. Candidate search, full
+edge-length scoring, and placement-stage geometry remain absent.
 
 The complete Go pipeline oracle now covers ten small flat graphs. Relative
 node positions and sizes match exactly in all ten: a chain, a cycle, six rooted

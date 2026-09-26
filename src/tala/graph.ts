@@ -63,6 +63,35 @@ export class TalaNode {
     }
     return false;
   }
+
+  /** Port of layoutgraph.Node.connectedNodes for ordinary containers.
+   * Every reached container travels with its children, unless the excluded
+   * endpoint is one of those children. */
+  connectedNodes(excludedNodes: readonly TalaNode[], graph: TalaGraph): TalaNode[] {
+    const excluded = new Set(excludedNodes);
+    const queue: TalaNode[] = [this];
+    const queued = new Set<TalaNode>(queue);
+    const result: TalaNode[] = [];
+    const enqueue = (node: TalaNode): void => {
+      if (!queued.has(node)) { queue.push(node); queued.add(node); }
+    };
+    for (let head = 0; head < queue.length; head++) {
+      const current = queue[head]!;
+      if (excludedNodes.some((node) => current.isDescendantOf(node)
+        || node.isDescendantOf(current) && !this.isDescendantOf(current))) continue;
+      result.push(current);
+      for (const edge of current.edges) {
+        const adjacent = current.adjacent(edge);
+        if (!excluded.has(adjacent)) enqueue(adjacent);
+      }
+      for (const [container, children] of graph.containers) {
+        if (!container || excluded.has(container) || children.some((child) => excluded.has(child))) continue;
+        if (children.includes(current)) enqueue(container);
+        if (container === current) for (const child of children) enqueue(child);
+      }
+    }
+    return result;
+  }
 }
 
 export class TalaEdge {
@@ -150,6 +179,28 @@ export class TalaGraph {
     this.crossingCostCache = hasPositionedEdge
       ? CrossingCostWeight * this.edges.length * Math.max(ConnectedNodeGap, longest) : 0;
     return this.crossingCostCache;
+  }
+
+  /** Port of layoutgraph.Graph.nonCenterPortCostValue. */
+  nonCenterPortCost(): number {
+    if (this.edges.length === 0) return 0;
+    let longest = 0;
+    let positioned = false;
+    for (const edge of this.edges) {
+      if (!edge.from.topLeft || !edge.to.topLeft) continue;
+      positioned = true;
+      longest = Math.max(longest, distanceBetweenBoxes(
+        { topLeft: edge.from.topLeft, width: edge.from.width, height: edge.from.height },
+        { topLeft: edge.to.topLeft, width: edge.to.width, height: edge.to.height },
+      ));
+    }
+    let minNodeSize = Infinity;
+    for (const node of this.nodes) if (!node.isGroup) {
+      minNodeSize = Math.min(minNodeSize, node.width, node.height);
+    }
+    return Math.max(positioned ? 0.35 ** 3 * this.edges.length
+      * Math.max(ConnectedNodeGap, longest) : 0,
+    Number.isFinite(minNodeSize) ? minNodeSize / 3 : 0);
   }
 
   static fromFlowchart(nodes: readonly LayoutNode[], edges: readonly LayoutEdge[], direction?: LayoutDirection): TalaGraph {
