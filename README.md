@@ -6,6 +6,8 @@ component placement, and orthogonal edge routes.
 
 ![A left-to-right flowchart arranged by the TALA-derived layout](./docs/tala-layout-example.svg)
 
+Try the [interactive playground](https://crowecawcaw.github.io/mermaid-layout-tala/) to edit Mermaid flowcharts and compare TALA with Mermaid's ELK and Dagre layouts. It includes eight selectable examples.
+
 ## Install
 
 ```sh
@@ -55,8 +57,10 @@ npm run build
 npm test
 ```
 
-Run the interactive examples with `npm run demo -- --port 4173`, then open
-<http://127.0.0.1:4173/examples/>. The translated rank tests and their upstream
+Run the playground with `npm run demo -- --port 4173`, then open
+<http://127.0.0.1:4173/>. Build the GitHub Pages site with
+`npm run build:playground`. A push to `main` deploys it through the Pages workflow.
+The translated rank tests and their upstream
 coverage mapping are in [`test/`](./test/UPSTREAM-RANK-COVERAGE.md).
 
 ## Releases

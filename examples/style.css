@@ -1,0 +1,80 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #23312e;
+  background: #f3f1e9;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, select, textarea { font: inherit; }
+button, select { cursor: pointer; }
+a { color: inherit; }
+.page { max-width: 1640px; min-height: 100vh; margin: auto; padding: 0 clamp(16px, 3.5vw, 60px); }
+.site-header, .site-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.site-header { min-height: 72px; border-bottom: 1px solid #d6d9d0; }
+.brand { display: flex; align-items: center; gap: 11px; color: #172925; font-size: 13px; font-weight: 800; letter-spacing: .085em; }
+.brand-mark { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 6px; background: #285b47; color: white; font-size: 20px; font-weight: 400; line-height: 1; }
+.brand-tag { margin-left: 4px; padding: 5px 7px; border: 1px solid #b8c7bb; border-radius: 3px; color: #3e6856; font-size: 10px; letter-spacing: .12em; }
+.repo-link, .site-footer a { color: #476f5d; font-size: 13px; font-weight: 650; text-decoration: none; }
+.repo-link:hover, .site-footer a:hover { text-decoration: underline; }
+.intro { display: flex; align-items: end; justify-content: space-between; gap: 40px; padding: clamp(34px, 5vw, 76px) 0 38px; }
+.eyebrow, .panel-kicker { margin: 0 0 12px; color: #438264; font-size: 11px; font-weight: 800; letter-spacing: .18em; }
+h1 { max-width: 900px; margin: 0; color: #183a30; font-size: clamp(35px, 4.5vw, 70px); font-weight: 760; letter-spacing: -.065em; line-height: 1.05; }
+h1 em { color: #71a483; font-family: Georgia, serif; font-weight: 400; }
+.lede { max-width: 650px; margin: 20px 0 0; color: #596860; font-size: 16px; line-height: 1.6; }
+.intro-note { display: flex; align-items: flex-start; gap: 12px; max-width: 270px; margin-bottom: 5px; padding: 15px 16px; border: 1px solid #d8decf; border-radius: 8px; background: #e9eee3; color: #52695c; font-size: 12px; line-height: 1.45; }
+.note-symbol { color: #478566; font-size: 22px; line-height: 1; }
+.workspace { display: grid; grid-template-columns: minmax(300px, .84fr) minmax(0, 1.16fr); gap: 16px; align-items: stretch; }
+.panel { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid #d5ddd3; border-radius: 11px; background: #fff; box-shadow: 0 15px 35px #2949380a; }
+.panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 85px; padding: 18px 23px; border-bottom: 1px solid #e7ebe4; }
+.panel-kicker { margin-bottom: 5px; font-size: 10px; }
+h2 { margin: 0; color: #253d33; font-size: 19px; letter-spacing: -.03em; }
+.panel-hint { color: #89948a; font-size: 11px; white-space: nowrap; }
+.editor-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 20px 23px 0; }
+.field { min-width: 0; }
+.field label { display: block; margin-bottom: 8px; color: #506358; font-size: 11px; font-weight: 750; text-transform: uppercase; letter-spacing: .08em; }
+.field select { width: 100%; min-height: 42px; padding: 0 31px 0 12px; border: 1px solid #d5dfd5; border-radius: 6px; background: #f8faf7; color: #2f493b; font-size: 13px; }
+.field select:focus, textarea:focus, button:focus-visible, a:focus-visible { outline: 2px solid #458b67; outline-offset: 2px; }
+.example-description { min-height: 20px; margin: 14px 23px 12px; color: #7c897f; font-size: 12px; }
+textarea { display: block; flex: 1; width: calc(100% - 46px); min-height: 380px; margin: 0 23px; padding: 17px 19px; resize: vertical; border: 1px solid #d8e2d7; border-radius: 7px; background: #f7f9f6; color: #29423a; font: 13px/1.7 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; tab-size: 2; }
+.editor-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 23px; color: #839085; font-size: 12px; }
+.primary-button, .secondary-button { display: inline-flex; align-items: center; justify-content: center; gap: 14px; min-height: 38px; padding: 0 14px; border: 1px solid transparent; border-radius: 6px; font-size: 12px; font-weight: 750; white-space: nowrap; }
+.primary-button { background: #2d6a4f; color: white; }
+.primary-button:hover { background: #22553e; }
+.secondary-button { border-color: #d7e2d8; background: #f7faf6; color: #477359; }
+.secondary-button:not(:disabled):hover { background: #e9f2e8; }
+.secondary-button:disabled { cursor: not-allowed; opacity: .55; }
+.preview { display: grid; flex: 1; place-items: center; min-height: 480px; overflow: auto; padding: 32px; background-color: #fbfcfa; background-image: radial-gradient(#dae4d9 0.7px, transparent 0.7px); background-size: 19px 19px; }
+.preview svg { display: block; max-width: 100%; height: auto; }
+.preview-footer { display: flex; align-items: center; gap: 9px; min-height: 54px; padding: 11px 23px; border-top: 1px solid #e7ebe4; color: #708276; font-size: 12px; }
+.status-dot { flex: none; width: 7px; height: 7px; border-radius: 50%; background: #64a77a; }
+#status.error { color: #af3f3f; white-space: pre-wrap; overflow-wrap: anywhere; }
+.site-footer { padding: 27px 0 32px; color: #8a958b; font-size: 12px; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+@media (max-width: 900px) {
+  .intro { align-items: flex-start; }
+  .intro-note { display: none; }
+  .workspace { grid-template-columns: 1fr; }
+  textarea { min-height: 300px; }
+  .preview { min-height: 420px; }
+}
+
+@media (max-width: 560px) {
+  .site-header { min-height: 64px; }
+  .brand { font-size: 11px; gap: 7px; }
+  .brand-tag { display: none; }
+  .repo-link { font-size: 11px; white-space: nowrap; }
+  .intro { padding: 34px 0 26px; }
+  .lede { font-size: 14px; }
+  .panel-heading { min-height: 74px; padding: 14px 16px; }
+  .panel-hint { display: none; }
+  .editor-controls { grid-template-columns: 1fr; padding: 16px 16px 0; }
+  .example-description { margin: 13px 16px 10px; }
+  textarea { width: calc(100% - 32px); min-height: 280px; margin: 0 16px; padding: 13px; font-size: 12px; }
+  .editor-footer { padding: 15px 16px; }
+  .preview { min-height: 320px; padding: 14px; }
+  .preview-footer { padding: 10px 16px; }
+  .site-footer { align-items: flex-start; flex-direction: column; gap: 8px; padding: 22px 0; }
+}
