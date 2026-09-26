@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { TalaGraph } from '../src/tala/graph.js';
 import { containerAlignmentCost } from '../src/tala/container-alignment-cost.js';
 import { attemptAxisShift } from '../src/tala/alignment-shift.js';
+import { alignAxesPass } from '../src/tala/alignment-search.js';
 
 describe('upstream connectedNodes ordinary-container traversal', () => {
   it('moves a connected child with its container and siblings', () => {
@@ -94,5 +95,43 @@ describe('upstream AlignAxes shift validity', () => {
     graph.nodes[2]!.topLeft = { x: 110, y: 85 };
     expect(attemptAxisShift(graph, graph.edges[0]!, [graph.nodes[0]!], 0, 80)).toBe(false);
     expect(graph.nodes[0]!.topLeft).toEqual({ x: 0, y: 0 });
+  });
+});
+
+describe('upstream AlignAxes candidate order', () => {
+  it('selects the container move from the pinned compound stage trace', () => {
+    const graph = TalaGraph.fromFlowchart([
+      { id: 'G', width: 360, height: 160, isGroup: true },
+      { id: 'A', width: 80, height: 40, parentId: 'G' },
+      { id: 'B', width: 80, height: 40, parentId: 'G' },
+      { id: 'X', width: 80, height: 40 },
+    ], [{ id: 'ab', from: 'A', to: 'B' }, { id: 'bx', from: 'B', to: 'X' }]);
+    for (const [node, point] of graph.nodes.map((node, index) => [node,
+      [{ x: 0, y: 0 }, { x: 60, y: 60 }, { x: 220, y: 60 }, { x: 240, y: 240 }][index]!] as const)) {
+      node.topLeft = point;
+    }
+    const score = (candidate: TalaGraph) => {
+      const b = candidate.nodes[2]!, x = candidate.nodes[3]!;
+      return Math.abs(b.topLeft!.x - x.topLeft!.x)
+        + Math.abs(x.topLeft!.x - 240) * 2;
+    };
+    expect(alignAxesPass(graph, score)).toBe(true);
+    expect(graph.nodes.map((node) => node.topLeft!.x)).toEqual([20, 80, 240, 240]);
+  });
+
+  it('prefers the later X attempt on a tied score', () => {
+    const graph = TalaGraph.fromFlowchart([
+      { id: 'A', width: 80, height: 40 },
+      { id: 'B', width: 80, height: 40 },
+    ], [{ id: 'ab', from: 'A', to: 'B' }]);
+    graph.nodes[0]!.topLeft = { x: 0, y: 0 };
+    graph.nodes[1]!.topLeft = { x: 200, y: 200 };
+    const score = (candidate: TalaGraph) => {
+      const a = candidate.nodes[0]!, b = candidate.nodes[1]!;
+      return Math.abs(a.topLeft!.x - b.topLeft!.x)
+        + Math.abs(a.topLeft!.y - b.topLeft!.y);
+    };
+    expect(alignAxesPass(graph, score)).toBe(true);
+    expect(graph.nodes[0]!.topLeft).toEqual({ x: 200, y: 0 });
   });
 });
