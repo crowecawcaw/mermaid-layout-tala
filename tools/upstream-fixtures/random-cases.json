@@ -1,0 +1,972 @@
+[
+  {
+    "name": "varied-00",
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 20,
+        "x": -80,
+        "y": 80
+      },
+      {
+        "id": "c",
+        "width": 30,
+        "height": 20,
+        "x": 0,
+        "y": -120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-01",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 20,
+        "x": 80,
+        "y": 240
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 40,
+        "x": 120,
+        "y": 0
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-02",
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 70,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 20,
+        "x": 0,
+        "y": 80
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 20,
+        "x": 120,
+        "y": 60
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-03",
+    "direction": "",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 70,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 50,
+        "x": 120,
+        "y": -120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-04",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 70,
+        "height": 70,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 50,
+        "x": -80,
+        "y": -120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-05",
+    "direction": "",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 20,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 50,
+        "x": 80,
+        "y": 120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-06",
+    "direction": "",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 20,
+        "x": -180,
+        "y": 0
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 20,
+        "x": 0,
+        "y": 60
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-07",
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 70,
+        "height": 50,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 70,
+        "x": -120,
+        "y": 240
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 30,
+        "x": 0,
+        "y": -60
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      }
+    ]
+  },
+  {
+    "name": "varied-08",
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 70,
+        "height": 20,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 50,
+        "x": 80,
+        "y": -240
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 30,
+        "x": -120,
+        "y": 60
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-09",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 50,
+        "x": 80,
+        "y": 240
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 20,
+        "x": -120,
+        "y": 120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-10",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 70,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 30,
+        "x": -180,
+        "y": 240
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 20,
+        "x": 60,
+        "y": 120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-11",
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 50,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 30,
+        "x": 180,
+        "y": -80
+      },
+      {
+        "id": "c",
+        "width": 30,
+        "height": 20,
+        "x": 120,
+        "y": -60
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-12",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 50,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 30,
+        "x": 180,
+        "y": -80
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      }
+    ]
+  },
+  {
+    "name": "varied-13",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 70,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 70,
+        "x": 240,
+        "y": 180
+      },
+      {
+        "id": "c",
+        "width": 30,
+        "height": 20,
+        "x": -60,
+        "y": 60
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      }
+    ]
+  },
+  {
+    "name": "varied-14",
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 20,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 50,
+        "x": 0,
+        "y": -120
+      },
+      {
+        "id": "c",
+        "width": 30,
+        "height": 40,
+        "x": 120,
+        "y": -120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-15",
+    "direction": "RL",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 70,
+        "height": 50,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 30,
+        "x": 0,
+        "y": -240
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-16",
+    "direction": "",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 50,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 50,
+        "x": 180,
+        "y": 240
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      }
+    ]
+  },
+  {
+    "name": "varied-17",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 20,
+        "x": 80,
+        "y": -120
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 40,
+        "x": 60,
+        "y": -120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-18",
+    "direction": "RL",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 70,
+        "height": 70,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 70,
+        "x": -120,
+        "y": -80
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-19",
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 70,
+        "x": 120,
+        "y": 80
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-20",
+    "direction": "RL",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 30,
+        "x": -120,
+        "y": -240
+      },
+      {
+        "id": "c",
+        "width": 30,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-21",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 70,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 20,
+        "x": 240,
+        "y": -240
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-22",
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 20,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 30,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 20,
+        "x": -60,
+        "y": 0
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-23",
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 50,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 30,
+        "x": 80,
+        "y": 0
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 40,
+        "x": 0,
+        "y": -120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-24",
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 70,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 70,
+        "x": 120,
+        "y": 240
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-25",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 20,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 50,
+        "x": -180,
+        "y": 0
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 20,
+        "x": -120,
+        "y": 0
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-27",
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 50,
+        "x": 240,
+        "y": -240
+      },
+      {
+        "id": "c",
+        "width": 30,
+        "height": 30,
+        "x": -60,
+        "y": 120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-28",
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 70,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 70,
+        "x": 80,
+        "y": 180
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-29",
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 30,
+        "x": 240,
+        "y": -180
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 30,
+        "x": 0,
+        "y": -120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-30",
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 70,
+        "height": 20,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 70,
+        "x": -180,
+        "y": 120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "varied-31",
+    "direction": "",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 50,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 20,
+        "x": -180,
+        "y": -80
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  }
+]

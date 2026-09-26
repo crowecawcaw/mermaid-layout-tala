@@ -1,0 +1,1582 @@
+[
+  {
+    "name": "varied-00",
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 20,
+        "x": -80,
+        "y": 80
+      },
+      {
+        "id": "c",
+        "width": 30,
+        "height": 20,
+        "x": 0,
+        "y": -120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "turnCost": 3.75,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 118.26208498984761,
+        "sizedCost": 223.75,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 118.26208498984761,
+        "sizedCost": 248.75,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-01",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 20,
+        "x": 80,
+        "y": 240
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 40,
+        "x": 120,
+        "y": 0
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 50,
+    "turnCost": 13.258252147247767,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 257.35721281347037,
+        "sizedCost": 363.2582521472478,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 257.35721281347037,
+        "sizedCost": 368.2582521472478,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-02",
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 70,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 20,
+        "x": 0,
+        "y": 80
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 20,
+        "x": 120,
+        "y": 60
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "turnCost": 3.75,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 81.5,
+        "sizedCost": 190,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 81.5,
+        "sizedCost": 190,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-03",
+    "direction": "",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 70,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 50,
+        "x": 120,
+        "y": -120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 70,
+    "turnCost": 5.376453291901642,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 175.85562748477142,
+        "sizedCost": 195.87645329190164,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 175.85562748477142,
+        "sizedCost": 185.87645329190164,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-04",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 70,
+        "height": 70,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 50,
+        "x": -80,
+        "y": -120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 70,
+    "turnCost": 5.038911092686593,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 149.34705101855957,
+        "sizedCost": 490.0389110926866,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 149.34705101855957,
+        "sizedCost": 485.0389110926866,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-05",
+    "direction": "",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 20,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 50,
+        "x": 80,
+        "y": 120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "turnCost": 6.987712429686843,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 148.22205101855957,
+        "sizedCost": 196.98771242968684,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 148.22205101855957,
+        "sizedCost": 201.98771242968684,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-06",
+    "direction": "",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 20,
+        "x": -180,
+        "y": 0
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 20,
+        "x": 0,
+        "y": 60
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "turnCost": 6.875,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 180.225,
+        "sizedCost": 116.755,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 180.225,
+        "sizedCost": 116.755,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-07",
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 70,
+        "height": 50,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 70,
+        "x": -120,
+        "y": 240
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 30,
+        "x": 0,
+        "y": -60
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      }
+    ],
+    "cellSize": 30,
+    "turnCost": 13.139872526017898,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 274.70315729997475,
+        "sizedCost": 408.1398725260179,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 274.70315729997475,
+        "sizedCost": 378.1398725260179,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-08",
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 70,
+        "height": 20,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 50,
+        "x": 80,
+        "y": -240
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 30,
+        "x": -120,
+        "y": 60
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "turnCost": 11.89143599402528,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 257.35721281347037,
+        "sizedCost": 316.8914359940253,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 257.35721281347037,
+        "sizedCost": 281.8914359940253,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-09",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 50,
+        "x": 80,
+        "y": 240
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 20,
+        "x": -120,
+        "y": 120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "turnCost": 13.491895715576815,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 257.35721281347037,
+        "sizedCost": 358.4918957155768,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 257.35721281347037,
+        "sizedCost": 368.4918957155768,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-10",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 70,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 30,
+        "x": -180,
+        "y": 240
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 20,
+        "x": 60,
+        "y": 120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "turnCost": 16.129359875704925,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 310.125,
+        "sizedCost": 561.129359875705,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 310.125,
+        "sizedCost": 541.129359875705,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-11",
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 50,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 30,
+        "x": 180,
+        "y": -80
+      },
+      {
+        "id": "c",
+        "width": 30,
+        "height": 20,
+        "x": 120,
+        "y": -60
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "turnCost": 9.291292967074066,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 201.3521560359221,
+        "sizedCost": 279.29129296707407,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 201.3521560359221,
+        "sizedCost": 304.29129296707407,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-12",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 50,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 30,
+        "x": 180,
+        "y": -80
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      }
+    ],
+    "cellSize": 50,
+    "turnCost": 9.882117688026186,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 201.3521560359221,
+        "sizedCost": 314.8821176880262,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 201.3521560359221,
+        "sizedCost": 329.8821176880262,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-13",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 70,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 70,
+        "x": 240,
+        "y": 180
+      },
+      {
+        "id": "c",
+        "width": 30,
+        "height": 20,
+        "x": -60,
+        "y": 60
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      }
+    ],
+    "cellSize": 30,
+    "turnCost": 14.265890263141658,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 309.375,
+        "sizedCost": 424.26589026314167,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 309.375,
+        "sizedCost": 424.26589026314167,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-14",
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 20,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 50,
+        "x": 0,
+        "y": -120
+      },
+      {
+        "id": "c",
+        "width": 30,
+        "height": 40,
+        "x": 120,
+        "y": -120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 50,
+    "turnCost": 4.375,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 121.5,
+        "sizedCost": 370,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 121.5,
+        "sizedCost": 370,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-15",
+    "direction": "RL",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 70,
+        "height": 50,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 30,
+        "x": 0,
+        "y": -240
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 70,
+    "turnCost": 13.125,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 240.75,
+        "sizedCost": 420,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 240.75,
+        "sizedCost": 420,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-16",
+    "direction": "",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 50,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 50,
+        "x": 180,
+        "y": 240
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      }
+    ],
+    "cellSize": 50,
+    "turnCost": 14.388580541526673,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 309,
+        "sizedCost": 384.38858054152666,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 309,
+        "sizedCost": 379.38858054152666,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-17",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 20,
+        "x": 80,
+        "y": -120
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 40,
+        "x": 60,
+        "y": -120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 50,
+    "turnCost": 6.73145600891813,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 148.59705101855957,
+        "sizedCost": 251.73145600891814,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 148.59705101855957,
+        "sizedCost": 261.73145600891814,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-18",
+    "direction": "RL",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 70,
+        "height": 70,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 70,
+        "x": -120,
+        "y": -80
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 70,
+    "turnCost": 3.75,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 148.59705101855957,
+        "sizedCost": 238.75,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 148.59705101855957,
+        "sizedCost": 238.75,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-19",
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 70,
+        "x": 120,
+        "y": 80
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 70,
+    "turnCost": 5.376453291901642,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 149.34705101855957,
+        "sizedCost": 500.3764532919016,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 149.34705101855957,
+        "sizedCost": 480.3764532919016,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-20",
+    "direction": "RL",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 30,
+        "x": -120,
+        "y": -240
+      },
+      {
+        "id": "c",
+        "width": 30,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 40,
+    "turnCost": 14.045128158902646,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 274.70315729997475,
+        "sizedCost": 408.09025631780526,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 274.70315729997475,
+        "sizedCost": 413.09025631780526,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-21",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 70,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 20,
+        "x": 240,
+        "y": -240
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "turnCost": 18.58258593414813,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 351.7862549695428,
+        "sizedCost": 513.5825859341481,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 351.7862549695428,
+        "sizedCost": 533.5825859341481,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-22",
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 20,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 30,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 20,
+        "x": -60,
+        "y": 0
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 50,
+    "turnCost": 12.88470508005519,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 263.9334412271571,
+        "sizedCost": 417.8847050800552,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 263.9334412271571,
+        "sizedCost": 412.8847050800552,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-23",
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 50,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 30,
+        "x": 80,
+        "y": 0
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 40,
+        "x": 0,
+        "y": -120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 50,
+    "turnCost": 3.75,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 80.75,
+        "sizedCost": 200.00625,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 80.75,
+        "sizedCost": 200.00625,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-24",
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 70,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 70,
+        "x": 120,
+        "y": 240
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 70,
+    "turnCost": 13.491895715576815,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 274.70315729997475,
+        "sizedCost": 448.4918957155768,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 274.70315729997475,
+        "sizedCost": 413.4918957155768,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-25",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 20,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 50,
+        "x": -180,
+        "y": 0
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 20,
+        "x": -120,
+        "y": 0
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "turnCost": 6.875,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 181.5,
+        "sizedCost": 303.7607142857143,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 181.5,
+        "sizedCost": 303.7607142857143,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-27",
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 50,
+        "x": 240,
+        "y": -240
+      },
+      {
+        "id": "c",
+        "width": 30,
+        "height": 30,
+        "x": -60,
+        "y": 120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 50,
+    "turnCost": 17.69975282313287,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 351.7862549695428,
+        "sizedCost": 532.6997528231329,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 351.7862549695428,
+        "sizedCost": 527.6997528231329,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-28",
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 70,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 70,
+        "x": 80,
+        "y": 180
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 70,
+    "turnCost": 9.395810236483067,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 202.1021560359221,
+        "sizedCost": 563.7916204729661,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 202.1021560359221,
+        "sizedCost": 533.7916204729661,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-29",
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 30,
+        "x": 240,
+        "y": -180
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 30,
+        "x": 0,
+        "y": -120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 40,
+    "turnCost": 16.129359875704925,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 310.125,
+        "sizedCost": 586.129359875705,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 310.125,
+        "sizedCost": 591.129359875705,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-30",
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 70,
+        "height": 20,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 70,
+        "x": -180,
+        "y": 120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "turnCost": 9.291292967074066,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 222.70807652783935,
+        "sizedCost": 334.29129296707407,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 222.70807652783935,
+        "sizedCost": 309.29129296707407,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "varied-31",
+    "direction": "",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 50,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 70,
+        "height": 20,
+        "x": -180,
+        "y": -80
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "turnCost": 7.831227553838542,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 201.2771560359221,
+        "sizedCost": 221.83122755383854,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 201.2771560359221,
+        "sizedCost": 246.83122755383854,
+        "symmetry": 0
+      }
+    ]
+  }
+]

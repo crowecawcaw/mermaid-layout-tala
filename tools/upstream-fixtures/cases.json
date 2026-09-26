@@ -1,0 +1,62 @@
+[
+  {
+    "name": "vertical-forward", "direction": "TB",
+    "nodes": [{"id":"a","width":40,"height":20,"x":0,"y":0},{"id":"b","width":40,"height":20,"x":0,"y":140}],
+    "edges": [{"from":"a","to":"b","directed":true}]
+  },
+  {
+    "name": "vertical-reversed", "direction": "TB",
+    "nodes": [{"id":"a","width":40,"height":20,"x":0,"y":0},{"id":"b","width":40,"height":20,"x":0,"y":-140}],
+    "edges": [{"from":"a","to":"b","directed":true}]
+  },
+  {
+    "name": "horizontal-forward", "direction": "LR",
+    "nodes": [{"id":"a","width":40,"height":20,"x":0,"y":0},{"id":"b","width":40,"height":20,"x":140,"y":0}],
+    "edges": [{"from":"a","to":"b","directed":true}]
+  },
+  {
+    "name": "diagonal", "direction": "TB",
+    "nodes": [{"id":"a","width":40,"height":20,"x":0,"y":0},{"id":"b","width":40,"height":20,"x":140,"y":140}],
+    "edges": [{"from":"a","to":"b","directed":true}]
+  },
+  {
+    "name": "straight-blocked", "direction": "TB",
+    "nodes": [{"id":"a","width":40,"height":20,"x":0,"y":0},{"id":"b","width":40,"height":20,"x":0,"y":300},{"id":"c","width":40,"height":20,"x":0,"y":150}],
+    "edges": [{"from":"a","to":"b","directed":true}]
+  },
+  {
+    "name": "symmetric-fan", "direction": "LR",
+    "nodes": [{"id":"hub","width":50,"height":50,"x":0,"y":0},{"id":"left","width":40,"height":40,"x":-180,"y":5},{"id":"right","width":40,"height":40,"x":190,"y":5}],
+    "edges": [{"from":"hub","to":"left","directed":true},{"from":"hub","to":"right","directed":true}]
+  },
+  {
+    "name": "undirected-no-direction", "direction": "",
+    "nodes": [{"id":"a","width":70,"height":30,"x":0,"y":0},{"id":"b","width":40,"height":60,"x":120,"y":140}],
+    "edges": [{"from":"a","to":"b","directed":false}]
+  },
+  {
+    "name": "horizontal-blocked", "direction": "LR",
+    "nodes": [{"id":"a","width":40,"height":20,"x":0,"y":0},{"id":"b","width":40,"height":20,"x":300,"y":0},{"id":"c","width":40,"height":20,"x":150,"y":0}],
+    "edges": [{"from":"a","to":"b","directed":true}]
+  },
+  {
+    "name": "diagonal-one-route-blocked", "direction": "TB",
+    "nodes": [{"id":"a","width":40,"height":20,"x":0,"y":0},{"id":"b","width":40,"height":20,"x":180,"y":180},{"id":"c","width":30,"height":30,"x":15,"y":80}],
+    "edges": [{"from":"a","to":"b","directed":true}]
+  },
+  {
+    "name": "vertical-symmetric-fan", "direction": "TB",
+    "nodes": [{"id":"hub","width":50,"height":50,"x":0,"y":0},{"id":"top","width":40,"height":40,"x":5,"y":-180},{"id":"bottom","width":40,"height":40,"x":5,"y":190}],
+    "edges": [{"from":"hub","to":"top","directed":true},{"from":"hub","to":"bottom","directed":true}]
+  },
+  {
+    "name": "undirected-with-direction", "direction": "RL",
+    "nodes": [{"id":"a","width":60,"height":30,"x":0,"y":0},{"id":"b","width":60,"height":30,"x":180,"y":0}],
+    "edges": [{"from":"a","to":"b","directed":false}]
+  },
+  {
+    "name": "bottom-up-forward", "direction": "BT",
+    "nodes": [{"id":"a","width":30,"height":30,"x":0,"y":0},{"id":"b","width":30,"height":30,"x":0,"y":100}],
+    "edges": [{"from":"b","to":"a","directed":true}]
+  }
+]

@@ -10,7 +10,8 @@ export function splitOrdinarySubgraphs(graph: TalaGraph): TalaGraph[] {
   const fixed = graph.nodes.filter((node) => node.fixedTopLeft);
   const makeComponent = (): TalaGraph => {
     const component = new TalaGraph();
-    component.directions.set(null, graph.directions.get(null) ?? 'TB');
+    const direction = graph.directions.get(null);
+    if (direction) component.directions.set(null, direction);
     component.containers.set(null, component.nodes);
     components.push(component);
     return component;

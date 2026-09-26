@@ -48,6 +48,7 @@ export class TalaEdge {
   readonly from: TalaNode;
   readonly to: TalaNode;
   readonly labelBBox: { width: number; height: number } | undefined;
+  readonly directed: boolean;
   points: Point[] = [];
   labelX: number | undefined;
   labelY: number | undefined;
@@ -57,6 +58,7 @@ export class TalaEdge {
     this.from = from;
     this.to = to;
     this.labelBBox = input.labelBBox ? { ...input.labelBBox } : undefined;
+    this.directed = input.directed ?? true;
     from.edges.push(this);
     if (to !== from) to.edges.push(this);
   }
@@ -70,7 +72,7 @@ export class TalaGraph {
   readonly hubs = new Map<TalaNode, TalaNode[]>();
   cellSize = 10;
 
-  static fromFlowchart(nodes: readonly LayoutNode[], edges: readonly LayoutEdge[], direction: LayoutDirection): TalaGraph {
+  static fromFlowchart(nodes: readonly LayoutNode[], edges: readonly LayoutEdge[], direction?: LayoutDirection): TalaGraph {
     const graph = new TalaGraph();
     const byId = new Map<string, TalaNode>();
     for (const input of nodes) {
@@ -82,7 +84,7 @@ export class TalaGraph {
       graph.nodes.push(node);
       byId.set(node.id, node);
     }
-    graph.directions.set(null, direction);
+    if (direction) graph.directions.set(null, direction);
     for (const input of nodes) {
       const node = byId.get(input.id)!;
       if (input.parentId) {
@@ -136,7 +138,7 @@ export class TalaGraph {
   }
 
   clone(): TalaGraph {
-    const copy = TalaGraph.fromFlowchart(this.toLayoutNodes(), this.toLayoutEdges(), this.directions.get(null) ?? 'TB');
+    const copy = TalaGraph.fromFlowchart(this.toLayoutNodes(), this.toLayoutEdges(), this.directions.get(null));
     copy.cellSize = this.cellSize;
     const oldById = new Map(this.nodes.map((node) => [node.id, node]));
     for (const node of copy.nodes) {
@@ -173,6 +175,7 @@ export class TalaGraph {
   toLayoutEdges(): LayoutEdge[] {
     return this.edges.map((edge) => ({
       id: edge.id, from: edge.from.id, to: edge.to.id,
+      ...(edge.directed ? {} : { directed: false }),
       ...(edge.labelBBox ? { labelBBox: { ...edge.labelBBox } } : {}),
     }));
   }

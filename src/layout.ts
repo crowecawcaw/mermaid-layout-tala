@@ -19,6 +19,7 @@ export interface LayoutEdge {
   id: string;
   from: string;
   to: string;
+  directed?: boolean;
   labelBBox?: { width: number; height: number };
 }
 

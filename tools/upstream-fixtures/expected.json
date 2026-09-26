@@ -1,0 +1,593 @@
+[
+  {
+    "name": "vertical-forward",
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 20,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 20,
+        "x": 0,
+        "y": 140
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 40,
+    "turnCost": 7.5,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 140,
+        "sizedCost": 120,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 140,
+        "sizedCost": 120,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "vertical-reversed",
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 20,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 20,
+        "x": 0,
+        "y": -140
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 40,
+    "turnCost": 7.5,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 141.5,
+        "sizedCost": 360,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 141.5,
+        "sizedCost": 360,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "horizontal-forward",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 20,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 20,
+        "x": 140,
+        "y": 0
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 40,
+    "turnCost": 6.25,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 140,
+        "sizedCost": 100,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 140,
+        "sizedCost": 100,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "diagonal",
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 20,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 20,
+        "x": 140,
+        "y": 140
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 40,
+    "turnCost": 9.762812094883317,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 205.3648987322333,
+        "sizedCost": 319.7628120948833,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 205.3648987322333,
+        "sizedCost": 319.7628120948833,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "straight-blocked",
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 20,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 20,
+        "x": 0,
+        "y": 300
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 20,
+        "x": 0,
+        "y": 150
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 40,
+    "turnCost": 17.5,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 300,
+        "sizedCost": 315,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 300,
+        "sizedCost": 315,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "symmetric-fan",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "hub",
+        "width": 50,
+        "height": 50,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "left",
+        "width": 40,
+        "height": 40,
+        "x": -180,
+        "y": 5
+      },
+      {
+        "id": "right",
+        "width": 40,
+        "height": 40,
+        "x": 190,
+        "y": 5
+      }
+    ],
+    "edges": [
+      {
+        "from": "hub",
+        "to": "left",
+        "directed": true
+      },
+      {
+        "from": "hub",
+        "to": "right",
+        "directed": true
+      }
+    ],
+    "cellSize": 50,
+    "turnCost": 17.5,
+    "results": [
+      {
+        "id": "hub",
+        "sizelessCost": 372.13520914117316,
+        "sizedCost": 580,
+        "symmetry": 1
+      },
+      {
+        "id": "left",
+        "sizelessCost": 181.44443105369106,
+        "sizedCost": 440,
+        "symmetry": 1
+      },
+      {
+        "id": "right",
+        "sizelessCost": 190.69077808748213,
+        "sizedCost": 140,
+        "symmetry": 1
+      }
+    ]
+  },
+  {
+    "name": "undirected-no-direction",
+    "direction": "",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 70,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 60,
+        "x": 120,
+        "y": 140
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      }
+    ],
+    "cellSize": 70,
+    "turnCost": 7.551903733496608,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 190.39088914585776,
+        "sizedCost": 232.5519037334966,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 190.39088914585776,
+        "sizedCost": 202.5519037334966,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "horizontal-blocked",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 20,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 20,
+        "x": 300,
+        "y": 0
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 20,
+        "x": 150,
+        "y": 0
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 40,
+    "turnCost": 16.25,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 300,
+        "sizedCost": 292.5,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 300,
+        "sizedCost": 292.5,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "diagonal-one-route-blocked",
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 20,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 20,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "id": "c",
+        "width": 30,
+        "height": 30,
+        "x": 15,
+        "y": 80
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 40,
+    "turnCost": 13.287682265918312,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 263.9334412271571,
+        "sizedCost": 403.2876822659183,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 263.9334412271571,
+        "sizedCost": 403.2876822659183,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 0,
+        "sizedCost": 0,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "vertical-symmetric-fan",
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "hub",
+        "width": 50,
+        "height": 50,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "top",
+        "width": 40,
+        "height": 40,
+        "x": 5,
+        "y": -180
+      },
+      {
+        "id": "bottom",
+        "width": 40,
+        "height": 40,
+        "x": 5,
+        "y": 190
+      }
+    ],
+    "edges": [
+      {
+        "from": "hub",
+        "to": "top",
+        "directed": true
+      },
+      {
+        "from": "hub",
+        "to": "bottom",
+        "directed": true
+      }
+    ],
+    "cellSize": 50,
+    "turnCost": 17.5,
+    "results": [
+      {
+        "id": "hub",
+        "sizelessCost": 372.13520914117316,
+        "sizedCost": 580,
+        "symmetry": 1
+      },
+      {
+        "id": "top",
+        "sizelessCost": 181.44443105369106,
+        "sizedCost": 440,
+        "symmetry": 1
+      },
+      {
+        "id": "bottom",
+        "sizelessCost": 190.69077808748213,
+        "sizedCost": 140,
+        "symmetry": 1
+      }
+    ]
+  },
+  {
+    "name": "undirected-with-direction",
+    "direction": "RL",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 60,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 60,
+        "height": 30,
+        "x": 180,
+        "y": 0
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      }
+    ],
+    "cellSize": 60,
+    "turnCost": 7.5,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 180.15,
+        "sizedCost": 156,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 180.15,
+        "sizedCost": 156,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "bottom-up-forward",
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 30,
+        "x": 0,
+        "y": 100
+      }
+    ],
+    "edges": [
+      {
+        "from": "b",
+        "to": "a",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "turnCost": 4.375,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 100,
+        "sizedCost": 70,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 100,
+        "sizedCost": 70,
+        "symmetry": 0
+      }
+    ]
+  }
+]
