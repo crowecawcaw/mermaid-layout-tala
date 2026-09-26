@@ -13,6 +13,13 @@ const cases = read('ovg-candidate-cases.json') as Case[];
 const expected = read('ovg-candidate-expected.json') as Output[];
 
 describe('pinned upstream OVG candidate geometry', () => {
+  it('rejects an oversized port grid before scanning its Cartesian product', () => {
+    const nodes = Array.from({ length: 600 }, (_, index) => ({
+      x: index * 100, y: index * 100, width: 40, height: 30,
+    }));
+    expect(() => ovgPortGridIntersections(nodes))
+      .toThrow(/intersection candidate count .* exceeds limit 1000000/);
+  });
   for (const input of cases) {
     it(input.name, () => {
       const result = ovgCandidatePoints(input.nodes[0]!, input.nodes[1]!);

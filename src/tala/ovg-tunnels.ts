@@ -1,6 +1,7 @@
 import type { Point } from '../layout.js';
 import type { OVGFlatEdge, OVGFlatNode } from './ovg-build.js';
 import type { OVGSweepEdge, OVGSweepVertex } from './ovg-sweep.js';
+import { assertOVGCount, MAX_OVG_NODES } from './ovg-limits.js';
 
 interface Range { start: number; end: number }
 export interface OVGTunnelEdge extends OVGSweepEdge { fromOwner: string; toOwner: string }
@@ -15,6 +16,7 @@ export function addFlatOVGTunnels(nodes: readonly OVGFlatNode[],
     const key = `${point.x},${point.y}`;
     let vertex = occupied.get(key);
     if (!vertex) {
+      assertOVGCount('node count', vertices.length + 1, MAX_OVG_NODES);
       vertex = { ...point };
       occupied.set(key, vertex);
       vertices.push(vertex);

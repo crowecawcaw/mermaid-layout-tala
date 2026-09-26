@@ -2,6 +2,7 @@ import type { Point } from '../layout.js';
 import { buildFlatOVG, type OVGFlatEdge, type OVGFlatNode } from './ovg-build.js';
 import { ovgPortGroups } from './ovg-candidates.js';
 import type { OVGSweepEdge, OVGSweepVertex } from './ovg-sweep.js';
+import { assertOVGCount, MAX_OVG_EDGES, MAX_OVG_NODES } from './ovg-limits.js';
 
 export interface OVGFlatRoutingGraph {
   vertices: OVGSweepVertex[];
@@ -29,6 +30,7 @@ export function completeFlatOVG(nodes: readonly OVGFlatNode[],
   const centers = new Map<string, OVGSweepVertex>();
   const ports = new Map<string, OVGSweepVertex[]>();
   const link = (a: OVGSweepVertex, b: OVGSweepVertex): void => {
+    assertOVGCount('edge count', edgeObjects.length + 1, MAX_OVG_EDGES);
     let from = adjacent.get(a), to = adjacent.get(b);
     if (!from) adjacent.set(a, from = []);
     if (!to) adjacent.set(b, to = []);
@@ -49,6 +51,7 @@ export function completeFlatOVG(nodes: readonly OVGFlatNode[],
 
   const centerEdges: OVGSweepEdge[] = [];
   for (const node of nodes) {
+    assertOVGCount('node count', graph.vertices.length + 1, MAX_OVG_NODES);
     const center: OVGSweepVertex = { x: node.x + node.width / 2,
       y: node.y + node.height / 2, center: true };
     centers.set(node.id, center);

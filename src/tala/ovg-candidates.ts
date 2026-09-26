@@ -1,5 +1,6 @@
 import type { Point } from '../layout.js';
 import { shapePortPolicy } from './shape-ports.js';
+import { assertOVGCount, MAX_OVG_INTERSECTION_CANDIDATES } from './ovg-limits.js';
 
 export interface OVGCandidateNode {
   x: number;
@@ -40,6 +41,8 @@ function portIntersections(nodes: readonly OVGCandidateNode[],
   portSets: readonly NodePorts[]): Point[] {
   const xs = [...new Set(portSets.flatMap((ports) => ports.all.map((point) => point.x)))].sort((a, b) => a - b);
   const ys = [...new Set(portSets.flatMap((ports) => ports.all.map((point) => point.y)))].sort((a, b) => a - b);
+  assertOVGCount('intersection candidate count', xs.length * ys.length,
+    MAX_OVG_INTERSECTION_CANDIDATES);
   const result: Point[] = [];
   for (const x of xs) for (const y of ys) {
     const candidate = { x, y };

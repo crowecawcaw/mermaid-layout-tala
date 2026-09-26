@@ -5,6 +5,7 @@ import { shapePortPolicy } from './shape-ports.js';
 import { connectOVGSweepNodes, type OVGPortDirection, type OVGSweepEdge,
   type OVGSweepVertex } from './ovg-sweep.js';
 import { addFlatOVGTunnels, type OVGTunnelEdge } from './ovg-tunnels.js';
+import { assertOVGCount, MAX_OVG_NODES } from './ovg-limits.js';
 
 export interface OVGFlatNode extends OVGCandidateNode { id: string }
 export interface OVGFlatEdge { from: string; to: string }
@@ -29,6 +30,7 @@ export function buildFlatOVGVertices(nodes: readonly OVGFlatNode[],
     const key = `${point.x},${point.y}`;
     let vertex = occupied.get(key);
     if (!vertex) {
+      assertOVGCount('node count', vertices.length + 1, MAX_OVG_NODES);
       vertex = { x: point.x, y: point.y };
       occupied.set(key, vertex);
       vertices.push(vertex);

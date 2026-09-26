@@ -144,7 +144,10 @@ ports. Nine pinned routing-stage cases pass through that public branch, and
 the chain, diamond, cycle, and disconnected-chain complete-layout fixtures
 retain exact Go routes. Other graphs still use the earlier visibility-grid
 router until shape-border tracing, tree-route occupancy, nested OVG
-construction, postprocessing, and resource guards are ported.
+construction, postprocessing, and full resource accounting are ported.
+The TypeScript OVG construction now enforces upstream's one-million
+intersection-candidate, 200,000-node, and 500,000-edge limits. Its separate
+work-unit budgets and atomic cancellation behavior remain unported.
 
 A separate set of 24 generated branching trees exercises deeper and uneven
 structures. The TypeScript geometry matches the upstream node-placement stage
