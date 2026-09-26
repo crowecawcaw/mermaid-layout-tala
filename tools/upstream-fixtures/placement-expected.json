@@ -1,0 +1,899 @@
+[
+  {
+    "name": "directed-pair-left-right",
+    "seed": 1,
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 30
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 40,
+    "initial": {
+      "a": {
+        "x": 2,
+        "y": 2
+      },
+      "b": {
+        "x": 3,
+        "y": 2
+      }
+    },
+    "positions": {
+      "a": {
+        "x": -120,
+        "y": -320
+      },
+      "b": {
+        "x": 0,
+        "y": -320
+      }
+    }
+  },
+  {
+    "name": "directed-pair-top-bottom",
+    "seed": 2,
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 30
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 40,
+    "initial": {
+      "a": {
+        "x": 2,
+        "y": 2
+      },
+      "b": {
+        "x": 2,
+        "y": 3
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 480,
+        "y": 0
+      },
+      "b": {
+        "x": 480,
+        "y": 120
+      }
+    }
+  },
+  {
+    "name": "three-node-chain",
+    "seed": 1,
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 40
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 30
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": true
+      }
+    ],
+    "cellSize": 50,
+    "initial": {
+      "a": {
+        "x": 3,
+        "y": 3
+      },
+      "b": {
+        "x": 3,
+        "y": 4
+      },
+      "c": {
+        "x": 3,
+        "y": 5
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 100,
+        "y": -100
+      },
+      "b": {
+        "x": 100,
+        "y": 0
+      },
+      "c": {
+        "x": 100,
+        "y": 100
+      }
+    }
+  },
+  {
+    "name": "four-node-fan",
+    "seed": 2,
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "hub",
+        "width": 50,
+        "height": 50
+      },
+      {
+        "id": "a",
+        "width": 40,
+        "height": 40
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 40
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 40
+      }
+    ],
+    "edges": [
+      {
+        "from": "hub",
+        "to": "a",
+        "directed": true
+      },
+      {
+        "from": "hub",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "hub",
+        "to": "c",
+        "directed": true
+      }
+    ],
+    "cellSize": 50,
+    "initial": {
+      "a": {
+        "x": 5,
+        "y": 6
+      },
+      "b": {
+        "x": 2,
+        "y": 4
+      },
+      "c": {
+        "x": 5,
+        "y": 2
+      },
+      "hub": {
+        "x": 4,
+        "y": 4
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 150,
+        "y": -100
+      },
+      "b": {
+        "x": 150,
+        "y": 150
+      },
+      "c": {
+        "x": 300,
+        "y": 0
+      },
+      "hub": {
+        "x": 150,
+        "y": 0
+      }
+    }
+  },
+  {
+    "name": "undirected-diamond",
+    "seed": 1,
+    "direction": "",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 30
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 30
+      },
+      {
+        "id": "c",
+        "width": 50,
+        "height": 30
+      },
+      {
+        "id": "d",
+        "width": 50,
+        "height": 30
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": false
+      },
+      {
+        "from": "b",
+        "to": "d",
+        "directed": false
+      },
+      {
+        "from": "c",
+        "to": "d",
+        "directed": false
+      }
+    ],
+    "cellSize": 50,
+    "initial": {
+      "a": {
+        "x": 4,
+        "y": 4
+      },
+      "b": {
+        "x": 3,
+        "y": 4
+      },
+      "c": {
+        "x": 4,
+        "y": 3
+      },
+      "d": {
+        "x": 3,
+        "y": 3
+      }
+    },
+    "positions": {
+      "a": {
+        "x": -900,
+        "y": 0
+      },
+      "b": {
+        "x": -850,
+        "y": -100
+      },
+      "c": {
+        "x": -850,
+        "y": 100
+      },
+      "d": {
+        "x": -800,
+        "y": 0
+      }
+    }
+  },
+  {
+    "name": "directed-pair-bottom-top",
+    "seed": 5,
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 60,
+        "height": 25
+      },
+      {
+        "id": "b",
+        "width": 35,
+        "height": 45
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 60,
+    "initial": {
+      "a": {
+        "x": 2,
+        "y": 2
+      },
+      "b": {
+        "x": 2,
+        "y": 1
+      }
+    },
+    "positions": {
+      "a": {
+        "x": -60,
+        "y": 0
+      },
+      "b": {
+        "x": -60,
+        "y": -120
+      }
+    }
+  },
+  {
+    "name": "directed-pair-right-left",
+    "seed": 6,
+    "direction": "RL",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 60,
+        "height": 25
+      },
+      {
+        "id": "b",
+        "width": 35,
+        "height": 45
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 60,
+    "initial": {
+      "a": {
+        "x": 2,
+        "y": 2
+      },
+      "b": {
+        "x": 1,
+        "y": 2
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 900,
+        "y": -2160
+      },
+      "b": {
+        "x": 780,
+        "y": -2160
+      }
+    }
+  },
+  {
+    "name": "four-node-chain",
+    "seed": 4,
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 40
+      },
+      {
+        "id": "c",
+        "width": 35,
+        "height": 45
+      },
+      {
+        "id": "d",
+        "width": 40,
+        "height": 30
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": true
+      },
+      {
+        "from": "c",
+        "to": "d",
+        "directed": true
+      }
+    ],
+    "cellSize": 50,
+    "initial": {
+      "a": {
+        "x": 6,
+        "y": 5
+      },
+      "b": {
+        "x": 4,
+        "y": 5
+      },
+      "c": {
+        "x": 3,
+        "y": 4
+      },
+      "d": {
+        "x": 3,
+        "y": 2
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 250,
+        "y": -50
+      },
+      "b": {
+        "x": 250,
+        "y": 50
+      },
+      "c": {
+        "x": 250,
+        "y": 150
+      },
+      "d": {
+        "x": 250,
+        "y": 300
+      }
+    }
+  },
+  {
+    "name": "five-node-star",
+    "seed": 3,
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "hub",
+        "width": 60,
+        "height": 60
+      },
+      {
+        "id": "a",
+        "width": 40,
+        "height": 25
+      },
+      {
+        "id": "b",
+        "width": 35,
+        "height": 35
+      },
+      {
+        "id": "c",
+        "width": 45,
+        "height": 30
+      },
+      {
+        "id": "d",
+        "width": 30,
+        "height": 40
+      }
+    ],
+    "edges": [
+      {
+        "from": "hub",
+        "to": "a",
+        "directed": true
+      },
+      {
+        "from": "hub",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "hub",
+        "to": "c",
+        "directed": true
+      },
+      {
+        "from": "hub",
+        "to": "d",
+        "directed": true
+      }
+    ],
+    "cellSize": 60,
+    "initial": {
+      "a": {
+        "x": 6,
+        "y": 5
+      },
+      "b": {
+        "x": 5,
+        "y": 6
+      },
+      "c": {
+        "x": 5,
+        "y": 4
+      },
+      "d": {
+        "x": 6,
+        "y": 6
+      },
+      "hub": {
+        "x": 5,
+        "y": 5
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 60,
+        "y": 180
+      },
+      "b": {
+        "x": 60,
+        "y": 240
+      },
+      "c": {
+        "x": 120,
+        "y": 240
+      },
+      "d": {
+        "x": -60,
+        "y": 300
+      },
+      "hub": {
+        "x": -60,
+        "y": 180
+      }
+    }
+  },
+  {
+    "name": "directed-diamond",
+    "seed": 8,
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30
+      },
+      {
+        "id": "b",
+        "width": 45,
+        "height": 35
+      },
+      {
+        "id": "c",
+        "width": 45,
+        "height": 35
+      },
+      {
+        "id": "d",
+        "width": 40,
+        "height": 30
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "d",
+        "directed": true
+      },
+      {
+        "from": "c",
+        "to": "d",
+        "directed": true
+      }
+    ],
+    "cellSize": 45,
+    "initial": {
+      "a": {
+        "x": 5,
+        "y": 4
+      },
+      "b": {
+        "x": 4,
+        "y": 5
+      },
+      "c": {
+        "x": 3,
+        "y": 4
+      },
+      "d": {
+        "x": 4,
+        "y": 3
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 180,
+        "y": 0
+      },
+      "b": {
+        "x": 135,
+        "y": 90
+      },
+      "c": {
+        "x": 225,
+        "y": 90
+      },
+      "d": {
+        "x": 180,
+        "y": 225
+      }
+    }
+  },
+  {
+    "name": "four-node-cycle",
+    "seed": 7,
+    "direction": "",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 35,
+        "height": 35
+      },
+      {
+        "id": "b",
+        "width": 35,
+        "height": 35
+      },
+      {
+        "id": "c",
+        "width": 35,
+        "height": 35
+      },
+      {
+        "id": "d",
+        "width": 35,
+        "height": 35
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": false
+      },
+      {
+        "from": "c",
+        "to": "d",
+        "directed": false
+      },
+      {
+        "from": "d",
+        "to": "a",
+        "directed": false
+      }
+    ],
+    "cellSize": 35,
+    "initial": {
+      "a": {
+        "x": 4,
+        "y": 4
+      },
+      "b": {
+        "x": 3,
+        "y": 4
+      },
+      "c": {
+        "x": 3,
+        "y": 3
+      },
+      "d": {
+        "x": 4,
+        "y": 3
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 0,
+        "y": 210
+      },
+      "b": {
+        "x": 35,
+        "y": 105
+      },
+      "c": {
+        "x": 0,
+        "y": 0
+      },
+      "d": {
+        "x": -35,
+        "y": 105
+      }
+    }
+  },
+  {
+    "name": "seven-node-branch",
+    "seed": 10,
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 30
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 30
+      },
+      {
+        "id": "d",
+        "width": 40,
+        "height": 30
+      },
+      {
+        "id": "e",
+        "width": 40,
+        "height": 30
+      },
+      {
+        "id": "f",
+        "width": 40,
+        "height": 30
+      },
+      {
+        "id": "g",
+        "width": 40,
+        "height": 30
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "d",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "e",
+        "directed": true
+      },
+      {
+        "from": "c",
+        "to": "f",
+        "directed": true
+      },
+      {
+        "from": "c",
+        "to": "g",
+        "directed": true
+      }
+    ],
+    "cellSize": 40,
+    "initial": {
+      "a": {
+        "x": 8,
+        "y": 8
+      },
+      "b": {
+        "x": 6,
+        "y": 9
+      },
+      "c": {
+        "x": 9,
+        "y": 6
+      },
+      "d": {
+        "x": 5,
+        "y": 11
+      },
+      "e": {
+        "x": 4,
+        "y": 8
+      },
+      "f": {
+        "x": 7,
+        "y": 4
+      },
+      "g": {
+        "x": 10,
+        "y": 5
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 120,
+        "y": 160
+      },
+      "b": {
+        "x": 240,
+        "y": 160
+      },
+      "c": {
+        "x": 80,
+        "y": 280
+      },
+      "d": {
+        "x": 360,
+        "y": 160
+      },
+      "e": {
+        "x": 280,
+        "y": 280
+      },
+      "f": {
+        "x": 80,
+        "y": 400
+      },
+      "g": {
+        "x": 200,
+        "y": 280
+      }
+    }
+  }
+]

@@ -50,8 +50,10 @@ export function sizedNodeEdgeLength(node: TalaNode, graph: TalaGraph, turnCost =
     }
     const blockers = graph.containers.get(node.parent) ?? graph.nodes;
     let blocked = false;
+    let firstBlockedIndex = -1;
     let cornerABlocked = false, cornerBBlocked = false;
-    for (const blocker of blockers) {
+    for (let blockerIndex = 0; blockerIndex < blockers.length; blockerIndex++) {
+      const blocker = blockers[blockerIndex]!;
       if (blocker === node || blocker === other || !blocker.topLeft) continue;
       if (diagonal) {
         const cornerA = { x: start.x, y: end.y };
@@ -59,10 +61,14 @@ export function sizedNodeEdgeLength(node: TalaNode, graph: TalaGraph, turnCost =
         cornerABlocked ||= segmentIntersectsBox(start, cornerA, blocker) || segmentIntersectsBox(cornerA, end, blocker);
         cornerBBlocked ||= segmentIntersectsBox(start, cornerB, blocker) || segmentIntersectsBox(cornerB, end, blocker);
         if (cornerABlocked && cornerBBlocked) { blocked = true; break; }
-      } else if (segmentIntersectsBox(start, end, blocker)) { blocked = true; break; }
+      } else if (segmentIntersectsBox(start, end, blocker)) {
+        blocked = true;
+        firstBlockedIndex = blockerIndex;
+        break;
+      }
     }
     if (blocked) distance += turnCost * (diagonal ? 1
-      : semiDiagonal && !semiDiagonalAlternateBlocked(node, other, orientation, blockers) ? 1 : 2);
+      : semiDiagonal && !semiDiagonalAlternateBlocked(node, other, orientation, blockers.slice(firstBlockedIndex)) ? 1 : 2);
     if (edge.directed || preferred) {
       const edgeDirection = edge.from === node ? opposite(orientation) : orientation;
       const preferredCompass = directionCompass(direction), edgeCompass = directionCompass(edgeDirection);
@@ -72,7 +78,43 @@ export function sizedNodeEdgeLength(node: TalaNode, graph: TalaGraph, turnCost =
     }
     total += distance;
   }
-  return total;
+  return total + flowContinuityCost(node, turnCost);
+}
+
+/** Upstream placementcost.flowContinuityCost for ordinary directed edges. */
+export function flowContinuityCost(node: TalaNode, turnCost: number): number {
+  if (!node.topLeft || node.isGroup || node.edges.length < 2 || node.edges.length > 8) return 0;
+  const rays = new Map<TalaNode, { x: number; y: number; directions: number }>();
+  const cx = node.topLeft.x + node.width / 2;
+  const cy = node.topLeft.y + node.height / 2;
+  for (const edge of node.edges) {
+    if (!edge.directed || edge.from === edge.to) continue;
+    const adjacent = node.adjacent(edge);
+    if (!adjacent.topLeft || adjacent.parent !== node.parent) continue;
+    const direction = edge.to === node ? 1 : 2;
+    const existing = rays.get(adjacent);
+    if (existing) { existing.directions |= direction; continue; }
+    const x = adjacent.topLeft.x + adjacent.width / 2 - cx;
+    const y = adjacent.topLeft.y + adjacent.height / 2 - cy;
+    const length = Math.hypot(x, y);
+    if (length !== 0) rays.set(adjacent, { x: x / length, y: y / length, directions: direction });
+  }
+  const values = [...rays.values()];
+  let spine = Infinity, branchSum = 0, branches = 0;
+  for (let i = 0; i < values.length; i++) {
+    for (let j = i + 1; j < values.length; j++) {
+      const a = values[i]!, b = values[j]!;
+      const dot = Math.max(-1, Math.min(1, a.x * b.x + a.y * b.y));
+      if ((a.directions & 1) && (b.directions & 2)
+        || (a.directions & 2) && (b.directions & 1)) spine = Math.min(spine, 1 + dot);
+      if (a.directions & b.directions) {
+        branchSum += Math.max(0, 2 * dot - 1);
+        branches++;
+      }
+    }
+  }
+  const cost = (Number.isFinite(spine) ? spine : 0) + (branches ? branchSum / branches : 0);
+  return turnCost * cost;
 }
 
 function semiDiagonalAlternateBlocked(node: TalaNode, other: TalaNode,

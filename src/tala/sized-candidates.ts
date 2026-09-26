@@ -49,8 +49,9 @@ export function closestSizedUnoccupiedDistance(
     };
     if (fixedOrigin && (point.x < fixedOrigin.x || point.y < fixedOrigin.y)) return true;
     for (const other of graph.nodes) {
-      if (other === node || !other.topLeft) continue;
+      if (!other.topLeft) continue;
       if (other.topLeft.x === point.x && other.topLeft.y === point.y) return true;
+      if (other === node) continue;
       if (doesOverlapAt(node, other, point)) return true;
     }
     return false;

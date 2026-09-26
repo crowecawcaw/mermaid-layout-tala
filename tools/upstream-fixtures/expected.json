@@ -934,5 +934,535 @@
         "symmetry": 0
       }
     ]
+  },
+  {
+    "name": "upstream-diamond-cost",
+    "direction": "",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 30,
+        "x": -900,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 30,
+        "x": -850,
+        "y": -100
+      },
+      {
+        "id": "c",
+        "width": 50,
+        "height": 30,
+        "x": -850,
+        "y": 100
+      },
+      {
+        "id": "d",
+        "width": 50,
+        "height": 30,
+        "x": -800,
+        "y": 0
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": false
+      },
+      {
+        "from": "b",
+        "to": "d",
+        "directed": false
+      },
+      {
+        "from": "c",
+        "to": "d",
+        "directed": false
+      }
+    ],
+    "cellSize": 50,
+    "turnCost": 17.5,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 228.60679774997897,
+        "sizedCost": 140.05,
+        "symmetry": 1
+      },
+      {
+        "id": "b",
+        "sizelessCost": 228.60679774997897,
+        "sizedCost": 140.05,
+        "symmetry": 0.25
+      },
+      {
+        "id": "c",
+        "sizelessCost": 228.60679774997897,
+        "sizedCost": 140.05,
+        "symmetry": 0.25
+      },
+      {
+        "id": "d",
+        "sizelessCost": 228.60679774997897,
+        "sizedCost": 140.05,
+        "symmetry": 1
+      }
+    ]
+  },
+  {
+    "name": "typescript-diamond-cost",
+    "direction": "",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 30,
+        "x": -150,
+        "y": 150
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 30,
+        "x": -150,
+        "y": 300
+      },
+      {
+        "id": "c",
+        "width": 50,
+        "height": 30,
+        "x": -200,
+        "y": 50
+      },
+      {
+        "id": "d",
+        "width": 50,
+        "height": 30,
+        "x": -200,
+        "y": 200
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": false
+      },
+      {
+        "from": "b",
+        "to": "d",
+        "directed": false
+      },
+      {
+        "from": "c",
+        "to": "d",
+        "directed": false
+      }
+    ],
+    "cellSize": 50,
+    "turnCost": 30,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 264.3033988749895,
+        "sizedCost": 190.025,
+        "symmetry": 1
+      },
+      {
+        "id": "b",
+        "sizelessCost": 264.3033988749895,
+        "sizedCost": 190.025,
+        "symmetry": 1
+      },
+      {
+        "id": "c",
+        "sizelessCost": 264.3033988749895,
+        "sizedCost": 190.025,
+        "symmetry": 1
+      },
+      {
+        "id": "d",
+        "sizelessCost": 264.3033988749895,
+        "sizedCost": 190.025,
+        "symmetry": 1
+      }
+    ]
+  },
+  {
+    "name": "five-node-star-stage-cost-180-240",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "hub",
+        "width": 60,
+        "height": 60,
+        "x": 0,
+        "y": 180
+      },
+      {
+        "id": "a",
+        "width": 40,
+        "height": 25,
+        "x": 180,
+        "y": 240
+      },
+      {
+        "id": "b",
+        "width": 35,
+        "height": 35,
+        "x": 120,
+        "y": 180
+      },
+      {
+        "id": "c",
+        "width": 45,
+        "height": 30,
+        "x": 300,
+        "y": 240
+      },
+      {
+        "id": "d",
+        "width": 30,
+        "height": 40,
+        "x": 120,
+        "y": 240
+      }
+    ],
+    "edges": [
+      {
+        "from": "hub",
+        "to": "a",
+        "directed": true
+      },
+      {
+        "from": "hub",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "hub",
+        "to": "c",
+        "directed": true
+      },
+      {
+        "from": "hub",
+        "to": "d",
+        "directed": true
+      }
+    ],
+    "cellSize": 60,
+    "turnCost": 60,
+    "results": [
+      {
+        "id": "hub",
+        "sizelessCost": 759.9669090756571,
+        "sizedCost": 713.6944916739143,
+        "symmetry": 0
+      },
+      {
+        "id": "a",
+        "sizelessCost": 193.11165961010275,
+        "sizedCost": 180.025,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 120,
+        "sizedCost": 60.00657894736842,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 309.3161708155671,
+        "sizedCost": 360.025,
+        "symmetry": 0
+      },
+      {
+        "id": "d",
+        "sizelessCost": 137.53907864998737,
+        "sizedCost": 60.025,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "five-node-star-stage-cost-180-180",
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "hub",
+        "width": 60,
+        "height": 60,
+        "x": 0,
+        "y": 180
+      },
+      {
+        "id": "a",
+        "width": 40,
+        "height": 25,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "id": "b",
+        "width": 35,
+        "height": 35,
+        "x": 120,
+        "y": 180
+      },
+      {
+        "id": "c",
+        "width": 45,
+        "height": 30,
+        "x": 300,
+        "y": 240
+      },
+      {
+        "id": "d",
+        "width": 30,
+        "height": 40,
+        "x": 120,
+        "y": 240
+      }
+    ],
+    "edges": [
+      {
+        "from": "hub",
+        "to": "a",
+        "directed": true
+      },
+      {
+        "from": "hub",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "hub",
+        "to": "c",
+        "directed": true
+      },
+      {
+        "from": "hub",
+        "to": "d",
+        "directed": true
+      }
+    ],
+    "cellSize": 60,
+    "turnCost": 60,
+    "results": [
+      {
+        "id": "hub",
+        "sizelessCost": 746.8552494655545,
+        "sizedCost": 711.8808451798956,
+        "symmetry": 0
+      },
+      {
+        "id": "a",
+        "sizelessCost": 180,
+        "sizedCost": 240.01029411764705,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 120,
+        "sizedCost": 60.00657894736842,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 309.3161708155671,
+        "sizedCost": 300.025,
+        "symmetry": 0
+      },
+      {
+        "id": "d",
+        "sizelessCost": 137.53907864998737,
+        "sizedCost": 60.025,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "directed-diamond-stage-cost-180--180",
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30,
+        "x": 180,
+        "y": -180
+      },
+      {
+        "id": "b",
+        "width": 45,
+        "height": 35,
+        "x": 135,
+        "y": -90
+      },
+      {
+        "id": "c",
+        "width": 45,
+        "height": 35,
+        "x": 135,
+        "y": 0
+      },
+      {
+        "id": "d",
+        "width": 40,
+        "height": 30,
+        "x": 270,
+        "y": 0
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "d",
+        "directed": true
+      },
+      {
+        "from": "c",
+        "to": "d",
+        "directed": true
+      }
+    ],
+    "cellSize": 45,
+    "turnCost": 37.5,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 291.41281214028527,
+        "sizedCost": 321.02664555984995,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 270.37286638337,
+        "sizedCost": 379.31195980646254,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 323.91475315279473,
+        "sizedCost": 496.71968890423835,
+        "symmetry": 0
+      },
+      {
+        "id": "d",
+        "sizelessCost": 302.87480739587954,
+        "sizedCost": 536.7959664327452,
+        "symmetry": 0
+      }
+    ]
+  },
+  {
+    "name": "directed-diamond-stage-cost-135--180",
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30,
+        "x": 135,
+        "y": -180
+      },
+      {
+        "id": "b",
+        "width": 45,
+        "height": 35,
+        "x": 135,
+        "y": -90
+      },
+      {
+        "id": "c",
+        "width": 45,
+        "height": 35,
+        "x": 135,
+        "y": 0
+      },
+      {
+        "id": "d",
+        "width": 40,
+        "height": 30,
+        "x": 270,
+        "y": 0
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "d",
+        "directed": true
+      },
+      {
+        "from": "c",
+        "to": "d",
+        "directed": true
+      }
+    ],
+    "cellSize": 45,
+    "turnCost": 37.5,
+    "results": [
+      {
+        "id": "a",
+        "sizelessCost": 270,
+        "sizedCost": 322.4962852615129,
+        "symmetry": 0
+      },
+      {
+        "id": "b",
+        "sizelessCost": 257.12480739587954,
+        "sizedCost": 363.4987738752201,
+        "symmetry": 0
+      },
+      {
+        "id": "c",
+        "sizelessCost": 315.75,
+        "sizedCost": 487.6971895268578,
+        "symmetry": 0
+      },
+      {
+        "id": "d",
+        "sizelessCost": 302.87480739587954,
+        "sizedCost": 536.7959664327452,
+        "symmetry": 0
+      }
+    ]
   }
 ]
