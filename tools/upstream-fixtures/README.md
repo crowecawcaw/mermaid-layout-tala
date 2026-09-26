@@ -91,9 +91,11 @@ paths for `full-tree-random-cases.json` and
 go test ./d2layouts/d2talalayout/internal/engine -run '^TestTSNodePlacementFixtures$' -count=1
 ```
 
-`test/tala-upstream-tree-stage.test.ts` pins the 12 generated cases with exact
-relative node geometry at that stage. Later routing refinements can still move
-nodes, so the completed-layout fixture is a separate check.
+`test/tala-upstream-tree-stage.test.ts` pins all 24 generated cases and four
+edge-labeled trees with exact relative node geometry at that stage. Later
+routing refinements can still move nodes, so the completed-layout fixture is a
+separate check. The labeled inputs and oracle results are in
+`labeled-tree-cases.json` and `labeled-tree-stage-expected.json`.
 For tree preprocessing, the same `node-placement-oracle_test.go` harness has
 `TestTSTreeExtractionFixtures`. Copy it into the pinned upstream engine package
 and run with `TALA_TS_TREE_EXTRACTION_INPUT` pointing to

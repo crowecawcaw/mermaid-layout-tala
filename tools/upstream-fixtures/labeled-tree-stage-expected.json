@@ -1,0 +1,134 @@
+[
+  {
+    "name": "single-long-label-tb",
+    "nodes": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "B",
+        "x": 62,
+        "y": 260,
+        "width": 70,
+        "height": 30
+      },
+      {
+        "id": "C",
+        "x": -48,
+        "y": 260,
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "D",
+        "x": 62,
+        "y": 500,
+        "width": 70,
+        "height": 30
+      }
+    ]
+  },
+  {
+    "name": "single-long-label-lr",
+    "nodes": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "B",
+        "x": 300,
+        "y": 45,
+        "width": 70,
+        "height": 30
+      },
+      {
+        "id": "C",
+        "x": 305,
+        "y": -35,
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "D",
+        "x": 580,
+        "y": 45,
+        "width": 70,
+        "height": 30
+      }
+    ]
+  },
+  {
+    "name": "single-long-label-bt",
+    "nodes": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "B",
+        "x": -52,
+        "y": -250,
+        "width": 70,
+        "height": 30
+      },
+      {
+        "id": "C",
+        "x": 68,
+        "y": -250,
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "D",
+        "x": -52,
+        "y": -490,
+        "width": 70,
+        "height": 30
+      }
+    ]
+  },
+  {
+    "name": "single-long-label-rl",
+    "nodes": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "B",
+        "x": -290,
+        "y": -35,
+        "width": 70,
+        "height": 30
+      },
+      {
+        "id": "C",
+        "x": -285,
+        "y": 45,
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "D",
+        "x": -570,
+        "y": -35,
+        "width": 70,
+        "height": 30
+      }
+    ]
+  }
+]

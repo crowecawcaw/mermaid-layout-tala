@@ -23,6 +23,10 @@ type tsPlacementEdge struct {
 	From     string `json:"from"`
 	To       string `json:"to"`
 	Directed bool   `json:"directed"`
+	LabelBBox struct {
+		Width float64 `json:"width"`
+		Height float64 `json:"height"`
+	} `json:"labelBBox"`
 }
 type tsPlacementCase struct {
 	Name      string            `json:"name"`
@@ -97,6 +101,8 @@ func TestTSTreeExtractionFixtures(t *testing.T) {
 			if item.Directed {
 				edge.TargetArrowhead = layoutgraph.TriangleArrowhead
 			}
+			edge.MinWidth = int(item.LabelBBox.Width)
+			edge.MinHeight = int(item.LabelBBox.Height)
 		}
 		pipeline := newPipeline(graph, input.Seed, false)
 		pipeline.stages = defaultPipelineStages[:4]
@@ -161,6 +167,8 @@ func TestTSTreeRawPlacementFixtures(t *testing.T) {
 			if item.Directed {
 				edge.TargetArrowhead = layoutgraph.TriangleArrowhead
 			}
+			edge.MinWidth = int(item.LabelBBox.Width)
+			edge.MinHeight = int(item.LabelBBox.Height)
 		}
 		pipeline := newPipeline(graph, input.Seed, false)
 		pipeline.stages = defaultPipelineStages[:4]
@@ -234,6 +242,8 @@ func TestTSClusterExtractionFixtures(t *testing.T) {
 			if item.Directed {
 				edge.TargetArrowhead = layoutgraph.TriangleArrowhead
 			}
+			edge.MinWidth = int(item.LabelBBox.Width)
+			edge.MinHeight = int(item.LabelBBox.Height)
 		}
 		pipeline := newPipeline(graph, input.Seed, false)
 		pipeline.stages = defaultPipelineStages[:6]
@@ -311,6 +321,8 @@ func TestTSNodePlacementFixtures(t *testing.T) {
 			if item.Directed {
 				edge.TargetArrowhead = layoutgraph.TriangleArrowhead
 			}
+			edge.MinWidth = int(item.LabelBBox.Width)
+			edge.MinHeight = int(item.LabelBBox.Height)
 		}
 		pipeline := newPipeline(graph, input.Seed, false)
 		pipeline.stages = defaultPipelineStages[:8]

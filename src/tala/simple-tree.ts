@@ -1,6 +1,7 @@
 import type { LayoutDirection, LayoutEdge, LayoutNode, PositionedNode } from '../layout.js';
 import { extractFlatTrees, type ExtractedTree } from './tree-extraction.js';
 import { directionTransforms } from './direct.js';
+import { placeCanonicalTree } from './canonical-tree.js';
 
 // The ordinary arborescence branch of upstream trees: a branching root owns
 // its descendants, siblings have a 50-unit gap, and levels have a 100-unit gap.
@@ -50,6 +51,12 @@ export function placeSimpleTree(nodes: readonly LayoutNode[], edges: readonly La
     for (const node of fringe) remaining.delete(node.id);
   }
   if (remaining.size === 1 && [...remaining][0] === root.id) children = ordered;
+  if (!allowChain && remaining.size === 1 && [...remaining][0] === root.id) {
+    // The graph is an ordinary outward tree. Split branches above retain
+    // their separate placement path.
+    const canonical = placeCanonicalTree(nodes, edges, root.id, children, direction, ranks);
+    if (canonical) return canonical;
+  }
   if (direction === 'BT' || direction === 'RL') {
     for (const list of children.values()) list.reverse();
   }
@@ -192,14 +199,17 @@ function placeSplitTree(nodes: readonly LayoutNode[], edges: readonly LayoutEdge
   for (const [side, sideRoots] of groups) {
     const ids = new Set<string>([sentinel]);
     const orientedEdges: LayoutEdge[] = [];
+    const children = new Map<string, string[]>([[sentinel, []]]);
     const collect = (tree: ExtractedTree, parent: string): void => {
       ids.add(tree.id);
       orientedEdges.push({ id: `${parent}:${tree.id}`, from: parent, to: tree.id, directed: true });
+      children.get(parent)!.push(tree.id);
+      children.set(tree.id, []);
       for (const child of tree.children) collect(child, tree.id);
     };
     for (const tree of sideRoots) collect(tree, sentinel);
-    const local = placeSimpleTree(nodes.filter((node) => ids.has(node.id)), orientedEdges,
-      side === 'out' ? direction : opposite[direction], ranks, true);
+    const local = placeCanonicalTree(nodes.filter((node) => ids.has(node.id)), orientedEdges,
+      sentinel, children, side === 'out' ? direction : opposite[direction], ranks);
     if (!local) return;
     const localRoot = local.find((node) => node.id === sentinel)!;
     const root = byId.get(sentinel)!;

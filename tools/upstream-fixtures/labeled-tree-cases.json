@@ -1,0 +1,66 @@
+[
+  {
+    "name": "single-long-label-tb",
+    "direction": "TB",
+    "seed": 1,
+    "nodes": [
+      { "id": "A", "width": 80, "height": 40 },
+      { "id": "B", "width": 70, "height": 30 },
+      { "id": "C", "width": 60, "height": 30 },
+      { "id": "D", "width": 70, "height": 30 }
+    ],
+    "edges": [
+      { "id": "e1", "from": "A", "to": "B", "directed": true, "labelBBox": { "width": 40, "height": 130 } },
+      { "id": "e2", "from": "A", "to": "C", "directed": true },
+      { "id": "e3", "from": "B", "to": "D", "directed": true, "labelBBox": { "width": 35, "height": 170 } }
+    ]
+  },
+  {
+    "name": "single-long-label-lr",
+    "direction": "LR",
+    "seed": 1,
+    "nodes": [
+      { "id": "A", "width": 80, "height": 40 },
+      { "id": "B", "width": 70, "height": 30 },
+      { "id": "C", "width": 60, "height": 30 },
+      { "id": "D", "width": 70, "height": 30 }
+    ],
+    "edges": [
+      { "id": "e1", "from": "A", "to": "B", "directed": true, "labelBBox": { "width": 130, "height": 40 } },
+      { "id": "e2", "from": "A", "to": "C", "directed": true },
+      { "id": "e3", "from": "B", "to": "D", "directed": true, "labelBBox": { "width": 170, "height": 35 } }
+    ]
+  },
+  {
+    "name": "single-long-label-bt",
+    "direction": "BT",
+    "seed": 1,
+    "nodes": [
+      { "id": "A", "width": 80, "height": 40 },
+      { "id": "B", "width": 70, "height": 30 },
+      { "id": "C", "width": 60, "height": 30 },
+      { "id": "D", "width": 70, "height": 30 }
+    ],
+    "edges": [
+      { "id": "e1", "from": "A", "to": "B", "directed": true, "labelBBox": { "width": 40, "height": 130 } },
+      { "id": "e2", "from": "A", "to": "C", "directed": true },
+      { "id": "e3", "from": "B", "to": "D", "directed": true, "labelBBox": { "width": 35, "height": 170 } }
+    ]
+  },
+  {
+    "name": "single-long-label-rl",
+    "direction": "RL",
+    "seed": 1,
+    "nodes": [
+      { "id": "A", "width": 80, "height": 40 },
+      { "id": "B", "width": 70, "height": 30 },
+      { "id": "C", "width": 60, "height": 30 },
+      { "id": "D", "width": 70, "height": 30 }
+    ],
+    "edges": [
+      { "id": "e1", "from": "A", "to": "B", "directed": true, "labelBBox": { "width": 130, "height": 40 } },
+      { "id": "e2", "from": "A", "to": "C", "directed": true },
+      { "id": "e3", "from": "B", "to": "D", "directed": true, "labelBBox": { "width": 170, "height": 35 } }
+    ]
+  }
+]
