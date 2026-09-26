@@ -68,14 +68,15 @@ export function placeFlatClusters(nodes: readonly LayoutNode[], edges: readonly 
     const vesselY = horizontal ? Math.round(crossCenter - cluster.height / 2) : point.y;
     const maxWidth = Math.max(...cluster.nodes.map((id) => byId.get(id)!.width));
     const maxHeight = Math.max(...cluster.nodes.map((id) => byId.get(id)!.height));
+    const fixedSize = cluster.nodes.some((id) => byId.get(id)!.aspectRatio1);
     for (const [memberIndex, id] of cluster.nodes.entries()) {
       const source = byId.get(id)!;
-      const width = cluster.arrangement === 'Row' || cluster.arrangement === 'Column' ? maxWidth : source.width;
-      const height = cluster.arrangement === 'Row' || cluster.arrangement === 'Column' ? maxHeight : source.height;
+      const width = fixedSize ? source.width : maxWidth;
+      const height = fixedSize ? source.height : maxHeight;
       const x = cluster.arrangement === 'Row'
-        ? vesselX + memberIndex * (width + cluster.padding) : vesselX + (cluster.width - width) / 2;
+        ? vesselX + memberIndex * (maxWidth + cluster.padding) : vesselX + (cluster.width - width) / 2;
       const y = cluster.arrangement === 'Column'
-        ? vesselY + memberIndex * (height + cluster.padding) : vesselY + (cluster.height - height) / 2;
+        ? vesselY + memberIndex * (maxHeight + cluster.padding) : vesselY + (cluster.height - height) / 2;
       placed.set(id, { ...source, width, height, x: x + width / 2, y: y + height / 2,
         rank: ranks.get(id) ?? 0, order: memberIndex });
     }

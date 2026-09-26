@@ -11,6 +11,9 @@ export class TalaNode {
   readonly isGroup: boolean;
   readonly direction: LayoutDirection | undefined;
   readonly shape: string | undefined;
+  readonly aspectRatio1: boolean;
+  readonly desiredWidth: number | undefined;
+  readonly desiredHeight: number | undefined;
   parent: TalaNode | null = null;
   readonly children: TalaNode[] = [];
   readonly edges: TalaEdge[] = [];
@@ -27,6 +30,9 @@ export class TalaNode {
     this.isGroup = input.isGroup ?? false;
     this.direction = input.dir;
     this.shape = input.shape;
+    this.aspectRatio1 = input.aspectRatio1 ?? false;
+    this.desiredWidth = input.desiredWidth;
+    this.desiredHeight = input.desiredHeight;
   }
 
   adjacent(edge: TalaEdge): TalaNode {
@@ -217,6 +223,9 @@ export class TalaGraph {
       ...(node.labelBBox ? { labelBBox: { ...node.labelBBox } } : {}),
       ...(node.direction ? { dir: node.direction } : {}),
       ...(node.shape ? { shape: node.shape } : {}),
+      ...(node.aspectRatio1 ? { aspectRatio1: true } : {}),
+      ...(node.desiredWidth !== undefined ? { desiredWidth: node.desiredWidth } : {}),
+      ...(node.desiredHeight !== undefined ? { desiredHeight: node.desiredHeight } : {}),
     }));
   }
 
