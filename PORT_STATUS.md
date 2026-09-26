@@ -133,8 +133,18 @@ now translates Go's L- and S-shaped rule-based choices, including obstruction,
 sharing, crossing, and flight costs. The complete flat route-generation stage
 matches Go's selected paths and total costs in those nine multi-edge cases
 and nine earlier single-edge geometry cases. Arrowhead and label costs,
-route cleanup, hierarchical graph construction, and public router integration
-remain.
+route cleanup, hierarchical graph construction, and broader public router
+integration remain.
+Go's three ordinary route orders and first-minimum selection are translated;
+all orders match the pinned nine multi-edge fixtures. `Route.createSegmentEndpoints`
+matches Go on those fixtures and the nine single-edge geometry cases. The
+public TALA path now uses the selected OVG routes for flat, ordinary,
+rectangle-only graphs without tree-sentinel routes, loops, or table-column
+ports. Nine pinned routing-stage cases pass through that public branch, and
+the chain, diamond, cycle, and disconnected-chain complete-layout fixtures
+retain exact Go routes. Other graphs still use the earlier visibility-grid
+router until shape-border tracing, tree-route occupancy, nested OVG
+construction, postprocessing, and resource guards are ported.
 
 A separate set of 24 generated branching trees exercises deeper and uneven
 structures. The TypeScript geometry matches the upstream node-placement stage

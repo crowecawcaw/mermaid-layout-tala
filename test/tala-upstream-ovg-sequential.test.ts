@@ -1,12 +1,15 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { generateFlatOVGRoutes, searchFlatOVGSequential,
-  type OVGSequentialEdge } from '../src/tala/ovg-search.js';
+import { generateBestFlatOVGRoutes, generateFlatOVGRoutes, searchFlatOVGSequential,
+  type OVGRouteFlavor, type OVGSequentialEdge } from '../src/tala/ovg-search.js';
 import type { OVGFlatNode } from '../src/tala/ovg-build.js';
 
 interface Case { name: string; nodes: OVGFlatNode[]; edges: OVGSequentialEdge[] }
-interface Route { id: string; cost: number; points: [number, number][]; error?: string }
-interface Output { name: string; routes: Route[]; generated: Route[]; totalCost: number }
+interface Route { id: string; cost: number; points: [number, number][];
+  segmentPoints?: [number, number][]; error?: string }
+interface Flavor { name: OVGRouteFlavor; routes: Route[]; totalCost: number; error?: string }
+interface Output { name: string; routes: Route[]; generated: Route[]; totalCost: number;
+  flavors: Flavor[]; selectedFlavor: OVGRouteFlavor }
 const read = (file: string) => JSON.parse(readFileSync(new URL(`../tools/upstream-fixtures/${file}`,
   import.meta.url), 'utf8'));
 const cases = read('ovg-sequential-cases.json') as Case[];
@@ -44,9 +47,29 @@ describe('pinned upstream sequential OVG search', () => {
       for (let i = 0; i < oracle.generated.length; i++) {
         expect(actual[i]!.points.map(({ x, y }) => [x, y]))
           .toEqual(oracle.generated[i]!.points);
+        expect(actual[i]!.segmentPoints.map(({ x, y }) => [x, y]))
+          .toEqual(oracle.generated[i]!.segmentPoints);
       }
       expect(actual.reduce((sum, route) => sum + route.cost, 0))
         .toBeCloseTo(oracle.totalCost, 7);
+    });
+    it(`all route flavors: ${input.name}`, () => {
+      const oracle = expected.find((item) => item.name === input.name)!;
+      for (const flavor of oracle.flavors) {
+        expect(flavor.error).toBeUndefined();
+        const actual = generateFlatOVGRoutes(input.nodes, input.edges, flavor.name);
+        expect(actual.map((route) => route.id)).toEqual(flavor.routes.map((route) => route.id));
+        for (let i = 0; i < actual.length; i++) {
+          expect(actual[i]!.points.map(({ x, y }) => [x, y]))
+            .toEqual(flavor.routes[i]!.points);
+          expect(actual[i]!.segmentPoints.map(({ x, y }) => [x, y]))
+            .toEqual(flavor.routes[i]!.segmentPoints);
+        }
+        expect(actual.reduce((sum, route) => sum + route.cost, 0))
+          .toBeCloseTo(flavor.totalCost, 7);
+      }
+      const selected = generateBestFlatOVGRoutes(input.nodes, input.edges);
+      expect(selected.flavor).toBe(oracle.selectedFlavor);
     });
   }
 });

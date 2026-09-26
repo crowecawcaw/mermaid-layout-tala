@@ -2,6 +2,7 @@ import type { LayoutDirection, LayoutEdge, Point, PositionedEdge, PositionedNode
 import { centerPort, shapePortPolicy, shapePorts, tableColumnPortIndex,
   type PortSide } from './tala/shape-ports.js';
 import { outsideTopCenterLoopLabelBox, routeNodeLoops } from './tala/loop-routing.js';
+import { generateBestFlatOVGRoutes } from './tala/ovg-search.js';
 
 type Side = 'N' | 'S' | 'E' | 'W';
 type Axis = 0 | 1 | 2;
@@ -17,8 +18,27 @@ export function routeGraphEdges(
   nodes: readonly PositionedNode[],
   edges: readonly LayoutEdge[],
   direction: LayoutDirection,
-  canonicalTreePaths: ReadonlyMap<string, Point[]> = new Map()
+  canonicalTreePaths: ReadonlyMap<string, Point[]> = new Map(),
+  useOVG = false
 ): PositionedEdge[] {
+  if (edges.length === 0) return [];
+  if (useOVG && canonicalTreePaths.size === 0
+    && nodes.every((node) => !node.parentId && !node.isGroup
+    && (!node.shape || ['rectangle', 'square'].includes(node.shape.toLowerCase())))
+    && edges.every((edge) => edge.from !== edge.to
+      && edge.fromTableColumnIndex === undefined && edge.toTableColumnIndex === undefined)) {
+    const ovgNodes = nodes.map((node) => ({ id: node.id,
+      x: node.x - node.width / 2, y: node.y - node.height / 2,
+      width: node.width, height: node.height,
+      ...(node.shape ? { shape: node.shape } : {}),
+      ...(node.numColumns !== undefined ? { numColumns: node.numColumns } : {}) }));
+    const result = generateBestFlatOVGRoutes(ovgNodes, edges);
+    return result.routes.map((route) => {
+      const edge = edges.find((candidate) => candidate.id === route.id)!;
+      const middle = chooseLabelPoint(route.segmentPoints, edge, nodes);
+      return { ...edge, points: route.segmentPoints, x: middle.x, y: middle.y };
+    }).sort((a, b) => compareText(a.id, b.id));
+  }
   const byId = new Map(nodes.map((node) => [node.id, node]));
   const parallel = new Map<string, LayoutEdge[]>();
   for (const edge of edges) {

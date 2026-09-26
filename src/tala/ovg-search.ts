@@ -17,7 +17,11 @@ interface SearchContext {
 interface TurnAxis { isX: boolean; value: number }
 export interface OVGSearchResult { points: Point[]; cost: number }
 export interface OVGSequentialEdge extends OVGFlatEdge { id: string }
-export interface OVGSequentialRoute extends OVGSearchResult { id: string }
+export interface OVGSequentialRoute extends OVGSearchResult { id: string; segmentPoints: Point[] }
+export type OVGRouteFlavor = 'ShortestToLongest' | 'LongestToShortest' | 'Default'
+  | 'TopDownLeftRight';
+export interface OVGFlavorResult { flavor: OVGRouteFlavor;
+  routes: OVGSequentialRoute[]; totalCost: number }
 type RouteRecord = OVGRecordedRoute<OVGFlatEdge>;
 interface SearchInternal extends OVGSearchResult { routeNodes: OVGSweepVertex[] }
 
@@ -43,18 +47,51 @@ export function searchFlatOVGSequential(nodes: readonly OVGFlatNode[],
 }
 
 export function generateFlatOVGRoutes(nodes: readonly OVGFlatNode[],
-  edges: readonly OVGSequentialEdge[]): OVGSequentialRoute[] {
-  return routeSequential(nodes, edges, true);
+  edges: readonly OVGSequentialEdge[], flavor: OVGRouteFlavor = 'ShortestToLongest'
+): OVGSequentialRoute[] {
+  return routeSequential(nodes, edges, true, flavor);
+}
+
+/** Go's ordinary route coordinator tries three stable edge orders and chooses
+ * the first one within geometric precision of the minimum total cost. */
+export function generateBestFlatOVGRoutes(nodes: readonly OVGFlatNode[],
+  edges: readonly OVGSequentialEdge[]): OVGFlavorResult {
+  const graph = completeFlatOVG(nodes, edges);
+  let best: OVGFlavorResult | undefined;
+  let lastError: unknown;
+  for (const flavor of ['ShortestToLongest', 'LongestToShortest', 'Default'] as const) {
+    let routes: OVGSequentialRoute[];
+    try { routes = routeSequential(nodes, edges, true, flavor, graph); }
+    catch (error) { lastError = error; continue; }
+    const totalCost = routes.reduce((sum, route) => sum + route.cost, 0);
+    if (!best || best.totalCost - totalCost >= 0.0001) {
+      best = { flavor, routes, totalCost };
+    }
+  }
+  if (!best) throw lastError ?? new Error('no OVG route flavor succeeded');
+  return best;
 }
 
 function routeSequential(nodes: readonly OVGFlatNode[],
-  edges: readonly OVGSequentialEdge[], useSlingshot: boolean): OVGSequentialRoute[] {
-  const graph = completeFlatOVG(nodes, edges);
+  edges: readonly OVGSequentialEdge[], useSlingshot: boolean,
+  flavor: OVGRouteFlavor = 'ShortestToLongest',
+  graph: OVGFlatRoutingGraph = completeFlatOVG(nodes, edges)): OVGSequentialRoute[] {
   const byId = new Map(nodes.map((node) => [node.id, node]));
-  const ordered = [...edges].sort((a, b) => {
+  const distanceOrder = (a: OVGSequentialEdge, b: OVGSequentialEdge): number => {
     const aFrom = byId.get(a.from)!, aTo = byId.get(a.to)!;
     const bFrom = byId.get(b.from)!, bTo = byId.get(b.to)!;
     return edgeSortDistance(aFrom, aTo) - edgeSortDistance(bFrom, bTo);
+  };
+  const ordered = [...edges];
+  if (flavor === 'ShortestToLongest') ordered.sort(distanceOrder);
+  else if (flavor === 'LongestToShortest') ordered.sort((a, b) => distanceOrder(b, a));
+  else if (flavor === 'TopDownLeftRight') ordered.sort((a, b) => {
+    let af = byId.get(a.from)!, at = byId.get(a.to)!;
+    let bf = byId.get(b.from)!, bt = byId.get(b.to)!;
+    if (af.y > at.y) [af, at] = [at, af];
+    if (bf.y > bt.y) [bf, bt] = [bt, bf];
+    return af.y - bf.y || (af !== bf ? af.x - bf.x : 0)
+      || at.y - bt.y || at.x - bt.x;
   });
   const routeState = new OVGRouteState<OVGFlatEdge>(graph);
   return ordered.map((edge) => {
@@ -64,9 +101,25 @@ function routeSequential(nodes: readonly OVGFlatNode[],
     const result = slingshot ?? searchSingleEdge(graph, nodes, edges, routeState, from, to,
       graph.centers.get(from.id)!, graph.centers.get(to.id)!);
     routeState.addRoute({ edge, nodes: result.routeNodes });
-    return { id: edge.id, points: result.points, cost: result.cost };
+    return { id: edge.id, points: result.points, cost: result.cost,
+      segmentPoints: createSegmentEndpoints(result.routeNodes) };
   });
 }
+
+/** Go Route.createSegmentEndpoints: discard center nodes and retain turns. */
+export function createSegmentEndpoints(path: readonly Point[]): Point[] {
+  if (path.length < 3) throw new Error('OVG route has no endpoint ports');
+  const points: Point[] = [copyPoint(path[1]!)];
+  for (let i = 2; i < path.length - 2; i++) {
+    const previous = path[i - 1]!, current = path[i]!, next = path[i + 1]!;
+    if (current.x === previous.x && current.x !== next.x
+      || current.y === previous.y && current.y !== next.y) points.push(copyPoint(current));
+  }
+  points.push(copyPoint(path[path.length - 2]!));
+  return points;
+}
+
+function copyPoint(point: Point): Point { return { x: point.x, y: point.y }; }
 
 function searchSingleEdge(graph: OVGFlatRoutingGraph,
   nodes: readonly OVGFlatNode[], edges: readonly OVGFlatEdge[],

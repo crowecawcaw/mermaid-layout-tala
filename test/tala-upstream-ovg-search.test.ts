@@ -5,7 +5,8 @@ import type { OVGFlatNode } from '../src/tala/ovg-build.js';
 
 interface Case { name: string; nodes: OVGFlatNode[] }
 interface Output { name: string; points: [number, number][]; cost: number; error?: string;
-  generatedPoints?: [number, number][]; generatedCost?: number; generationError?: string }
+  generatedPoints?: [number, number][]; generatedSegmentPoints?: [number, number][];
+  generatedCost?: number; generationError?: string }
 const read = (file: string) => JSON.parse(readFileSync(new URL(`../tools/upstream-fixtures/${file}`,
   import.meta.url), 'utf8'));
 const cases = read('ovg-candidate-cases.json') as Case[];
@@ -24,6 +25,8 @@ describe('pinned upstream ordinary OVG search', () => {
       }])[0]!;
       expect(oracle.generationError).toBeUndefined();
       expect(generated.points.map(({ x, y }) => [x, y])).toEqual(oracle.generatedPoints);
+      expect(generated.segmentPoints.map(({ x, y }) => [x, y]))
+        .toEqual(oracle.generatedSegmentPoints);
       expect(generated.cost).toBeCloseTo(oracle.generatedCost!, 7);
     });
   }

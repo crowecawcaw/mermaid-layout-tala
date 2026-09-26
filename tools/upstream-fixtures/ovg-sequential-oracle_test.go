@@ -31,6 +31,7 @@ type tsSequentialRoute struct {
     ID string `json:"id"`
     Cost float64 `json:"cost"`
     Points [][2]float64 `json:"points"`
+    SegmentPoints [][2]float64 `json:"segmentPoints,omitempty"`
     Error string `json:"error,omitempty"`
 }
 type tsSequentialOutput struct {
@@ -40,6 +41,14 @@ type tsSequentialOutput struct {
     Slingshots []tsSequentialRoute `json:"slingshots"`
     GenerationError string `json:"generationError,omitempty"`
     TotalCost float64 `json:"totalCost"`
+    Flavors []tsSequentialFlavor `json:"flavors"`
+    SelectedFlavor string `json:"selectedFlavor"`
+}
+type tsSequentialFlavor struct {
+    Name string `json:"name"`
+    Routes []tsSequentialRoute `json:"routes"`
+    TotalCost float64 `json:"totalCost"`
+    Error string `json:"error,omitempty"`
 }
 
 func TestTSOVGSequentialFixtures(t *testing.T) {
@@ -107,7 +116,36 @@ func TestTSOVGSequentialFixtures(t *testing.T) {
             for _, point := range route.OVGNodes {
                 item.Points = append(item.Points, [2]float64{point.X, point.Y})
             }
+            for _, point := range route.createSegmentEndpoints() {
+                item.SegmentPoints = append(item.SegmentPoints, [2]float64{point.X, point.Y})
+            }
             output.Generated = append(output.Generated, item)
+        }
+        output.Flavors = make([]tsSequentialFlavor, 0, 3)
+        bestCost := 1e100
+        for _, flavor := range []RouteGenerationFlavor{ShortestToLongest, LongestToShortest, Default} {
+            flavorRouter, err := newOVGEdgeRouterWithWorkLimit(context.Background(), flavor,
+                ovg, g, nil, g.Edges, maxRouteSearchWorkUnits)
+            if err != nil { t.Fatal(err) }
+            result := flavorRouter.generateRoutes(context.Background(), false)
+            item := tsSequentialFlavor{Name: string(flavor), TotalCost: result.Distance,
+                Routes: make([]tsSequentialRoute, 0, len(result.Routes))}
+            if result.Err != nil { item.Error = result.Err.Error() }
+            for _, route := range result.Routes {
+                path := tsSequentialRoute{ID: edgeIDs[route.GEdge], Points: make([][2]float64, 0)}
+                for _, point := range route.OVGNodes {
+                    path.Points = append(path.Points, [2]float64{point.X, point.Y})
+                }
+                for _, point := range route.createSegmentEndpoints() {
+                    path.SegmentPoints = append(path.SegmentPoints, [2]float64{point.X, point.Y})
+                }
+                item.Routes = append(item.Routes, path)
+            }
+            output.Flavors = append(output.Flavors, item)
+            if result.Err == nil && bestCost - result.Distance >= geo.PRECISION {
+                bestCost = result.Distance
+                output.SelectedFlavor = string(flavor)
+            }
         }
         outputs = append(outputs, output)
     }

@@ -27,6 +27,7 @@ type tsSearchOutput struct {
     Points [][2]float64 `json:"points"`
     Error string `json:"error,omitempty"`
     GeneratedPoints [][2]float64 `json:"generatedPoints"`
+    GeneratedSegmentPoints [][2]float64 `json:"generatedSegmentPoints"`
     GeneratedCost float64 `json:"generatedCost"`
     GenerationError string `json:"generationError,omitempty"`
 }
@@ -72,6 +73,9 @@ func TestTSOVGSearchFixtures(t *testing.T) {
         for _, route := range response.Routes {
             for _, point := range route.OVGNodes {
                 output.GeneratedPoints = append(output.GeneratedPoints, [2]float64{point.X, point.Y})
+            }
+            for _, point := range route.createSegmentEndpoints() {
+                output.GeneratedSegmentPoints = append(output.GeneratedSegmentPoints, [2]float64{point.X, point.Y})
             }
         }
         outputs = append(outputs, output)

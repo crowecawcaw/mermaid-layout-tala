@@ -278,13 +278,13 @@ function layoutFlatFlowchart(
   };
   updateTreePaths();
   let positionedEdges = routeWithConsumedEdges(positionedNodes, edges, direction,
-    sequenceDefiningEdgeIds, treePaths);
+    sequenceDefiningEdgeIds, treePaths, false, useOrdinary);
   if (useOrdinary && treeComponents.length > 0) {
     const sentinels = new Set(treeComponents.flatMap((component) => component.extraction.remaining));
     if (dejitterTreeRoutes(positionedNodes, positionedEdges, sentinels)) {
       updateTreePaths();
       positionedEdges = routeWithConsumedEdges(positionedNodes, edges, direction,
-        sequenceDefiningEdgeIds, treePaths);
+        sequenceDefiningEdgeIds, treePaths, false, useOrdinary);
     }
   }
   return { nodes: positionedNodes, edges: positionedEdges };
@@ -508,16 +508,16 @@ function layoutCompoundFlowchart(
     for (const id of sequenceDefiningEdges(original)) consumed.add(id);
   }
   const edges = routeWithConsumedEdges(placed, inputEdges, options.direction ?? 'TB', consumed,
-    new Map(), useTala);
+    new Map(), useTala, useTala);
   return { nodes: placed, edges };
 }
 
 function routeWithConsumedEdges(nodes: readonly PositionedNode[], edges: readonly LayoutEdge[],
   direction: LayoutDirection, consumed: ReadonlySet<string>,
   canonicalTreePaths: ReadonlyMap<string, Point[]> = new Map(),
-  balanceStraight = false): PositionedEdge[] {
+  balanceStraight = false, useOVG = false): PositionedEdge[] {
   const initialRoutes = routeGraphEdges(nodes, edges.filter((edge) => !consumed.has(edge.id)),
-    direction, canonicalTreePaths);
+    direction, canonicalTreePaths, useOVG);
   const beforeById = new Map(initialRoutes.map((edge) => [edge.id, edge]));
   const routed = simplifyEdgeRoutes(nodes, initialRoutes).map((edge) => {
     if (edge.points.length === beforeById.get(edge.id)!.points.length) return edge;
