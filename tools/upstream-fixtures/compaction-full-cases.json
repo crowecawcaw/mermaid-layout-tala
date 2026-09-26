@@ -1,0 +1,37 @@
+[
+  {
+    "name": "full-sizeless-horizontal-pair", "axis": "x", "includeSizes": false, "transition": false, "factor": 3, "full": true,
+    "nodes": [{"id":"a","width":40,"height":30,"x":0,"y":0},{"id":"b","width":40,"height":30,"x":12,"y":0}],
+    "edges": [{"from":"a","to":"b"}]
+  },
+  {
+    "name": "full-sizeless-vertical-chain", "axis": "y", "includeSizes": false, "transition": false, "factor": 3, "full": true,
+    "nodes": [{"id":"a","width":40,"height":30,"x":0,"y":0},{"id":"b","width":40,"height":30,"x":0,"y":12},{"id":"c","width":40,"height":30,"x":0,"y":24}],
+    "edges": [{"from":"a","to":"b"},{"from":"b","to":"c"}]
+  },
+  {
+    "name": "full-sized-horizontal-pair", "axis": "x", "includeSizes": true, "transition": false, "factor": 2, "full": true,
+    "nodes": [{"id":"a","width":40,"height":30,"x":0,"y":0},{"id":"b","width":40,"height":30,"x":240,"y":0}],
+    "edges": [{"from":"a","to":"b"}]
+  },
+  {
+    "name": "full-sized-vertical-chain", "axis": "y", "includeSizes": true, "transition": false, "factor": 2, "full": true,
+    "nodes": [{"id":"a","width":40,"height":30,"x":0,"y":0},{"id":"b","width":40,"height":30,"x":0,"y":200},{"id":"c","width":40,"height":30,"x":0,"y":400}],
+    "edges": [{"from":"a","to":"b"},{"from":"b","to":"c"}]
+  },
+  {
+    "name": "full-sized-three-branches", "axis": "x", "includeSizes": true, "transition": false, "factor": 1.5, "full": true,
+    "nodes": [{"id":"a","width":40,"height":30,"x":0,"y":0},{"id":"b","width":50,"height":30,"x":240,"y":-100},{"id":"c","width":50,"height":30,"x":240,"y":100},{"id":"d","width":40,"height":30,"x":480,"y":0}],
+    "edges": [{"from":"a","to":"b"},{"from":"a","to":"c"},{"from":"b","to":"d"},{"from":"c","to":"d"}]
+  },
+  {
+    "name": "full-sized-fixed-pair", "axis": "x", "includeSizes": true, "transition": false, "factor": 1.5, "full": true,
+    "nodes": [{"id":"a","width":40,"height":30,"x":0,"y":0,"fixed":true},{"id":"b","width":40,"height":30,"x":240,"y":0}],
+    "edges": [{"from":"a","to":"b"}]
+  },
+  {
+    "name": "full-sized-transition", "axis": "y", "includeSizes": true, "transition": true, "factor": 3, "full": true,
+    "nodes": [{"id":"a","width":40,"height":30,"x":0,"y":0},{"id":"b","width":40,"height":30,"x":0,"y":200},{"id":"c","width":40,"height":30,"x":0,"y":400}],
+    "edges": [{"from":"a","to":"b"},{"from":"b","to":"c"}]
+  }
+]

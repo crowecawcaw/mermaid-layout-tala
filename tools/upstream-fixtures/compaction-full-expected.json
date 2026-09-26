@@ -1,0 +1,883 @@
+[
+  {
+    "name": "full-sizeless-horizontal-pair",
+    "axis": "x",
+    "includeSizes": false,
+    "transition": false,
+    "factor": 3,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 0,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 30,
+        "x": 12,
+        "y": 0,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      }
+    ],
+    "cellSize": 40,
+    "visibility": [
+      {
+        "from": "a",
+        "to": "b"
+      }
+    ],
+    "candidates": {
+      "a": [
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "b": [
+        {
+          "x": 3,
+          "y": 0
+        },
+        {
+          "x": 4,
+          "y": 0
+        },
+        {
+          "x": 5,
+          "y": 0
+        },
+        {
+          "x": 6,
+          "y": 0
+        },
+        {
+          "x": 7,
+          "y": 0
+        },
+        {
+          "x": 8,
+          "y": 0
+        },
+        {
+          "x": 9,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 0
+        },
+        {
+          "x": 11,
+          "y": 0
+        },
+        {
+          "x": 12,
+          "y": 0
+        }
+      ]
+    },
+    "inflated": {
+      "a": {
+        "x": 0,
+        "y": 0
+      },
+      "b": {
+        "x": 12,
+        "y": 0
+      }
+    },
+    "compacted": {
+      "a": {
+        "x": 0,
+        "y": 0
+      },
+      "b": {
+        "x": 3,
+        "y": 0
+      }
+    }
+  },
+  {
+    "name": "full-sizeless-vertical-chain",
+    "axis": "y",
+    "includeSizes": false,
+    "transition": false,
+    "factor": 3,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 0,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 12,
+        "fixed": false
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 24,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      },
+      {
+        "from": "b",
+        "to": "c"
+      }
+    ],
+    "cellSize": 40,
+    "visibility": [
+      {
+        "from": "a",
+        "to": "b"
+      },
+      {
+        "from": "b",
+        "to": "c"
+      }
+    ],
+    "candidates": {
+      "a": [
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "b": [
+        {
+          "x": 0,
+          "y": 3
+        },
+        {
+          "x": 0,
+          "y": 4
+        },
+        {
+          "x": 0,
+          "y": 5
+        },
+        {
+          "x": 0,
+          "y": 6
+        },
+        {
+          "x": 0,
+          "y": 7
+        },
+        {
+          "x": 0,
+          "y": 8
+        },
+        {
+          "x": 0,
+          "y": 9
+        },
+        {
+          "x": 0,
+          "y": 10
+        },
+        {
+          "x": 0,
+          "y": 11
+        },
+        {
+          "x": 0,
+          "y": 12
+        }
+      ],
+      "c": [
+        {
+          "x": 0,
+          "y": 15
+        },
+        {
+          "x": 0,
+          "y": 16
+        },
+        {
+          "x": 0,
+          "y": 17
+        },
+        {
+          "x": 0,
+          "y": 18
+        },
+        {
+          "x": 0,
+          "y": 19
+        },
+        {
+          "x": 0,
+          "y": 20
+        },
+        {
+          "x": 0,
+          "y": 21
+        },
+        {
+          "x": 0,
+          "y": 22
+        },
+        {
+          "x": 0,
+          "y": 23
+        },
+        {
+          "x": 0,
+          "y": 24
+        }
+      ]
+    },
+    "inflated": {
+      "a": {
+        "x": 0,
+        "y": 0
+      },
+      "b": {
+        "x": 0,
+        "y": 12
+      },
+      "c": {
+        "x": 0,
+        "y": 24
+      }
+    },
+    "compacted": {
+      "a": {
+        "x": 0,
+        "y": 0
+      },
+      "b": {
+        "x": 0,
+        "y": 12
+      },
+      "c": {
+        "x": 0,
+        "y": 15
+      }
+    }
+  },
+  {
+    "name": "full-sized-horizontal-pair",
+    "axis": "x",
+    "includeSizes": true,
+    "transition": false,
+    "factor": 2,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 0,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 30,
+        "x": 240,
+        "y": 0,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      }
+    ],
+    "cellSize": 40,
+    "visibility": [
+      {
+        "from": "a",
+        "to": "b"
+      }
+    ],
+    "candidates": {
+      "a": [
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "b": [
+        {
+          "x": 120,
+          "y": 0
+        },
+        {
+          "x": 160,
+          "y": 0
+        },
+        {
+          "x": 200,
+          "y": 0
+        },
+        {
+          "x": 240,
+          "y": 0
+        }
+      ]
+    },
+    "inflated": {
+      "a": {
+        "x": 0,
+        "y": 0
+      },
+      "b": {
+        "x": 240,
+        "y": 0
+      }
+    },
+    "compacted": {
+      "a": {
+        "x": 0,
+        "y": 0
+      },
+      "b": {
+        "x": 120,
+        "y": 0
+      }
+    }
+  },
+  {
+    "name": "full-sized-vertical-chain",
+    "axis": "y",
+    "includeSizes": true,
+    "transition": false,
+    "factor": 2,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 0,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 200,
+        "fixed": false
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 400,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      },
+      {
+        "from": "b",
+        "to": "c"
+      }
+    ],
+    "cellSize": 40,
+    "visibility": [
+      {
+        "from": "a",
+        "to": "b"
+      },
+      {
+        "from": "b",
+        "to": "c"
+      }
+    ],
+    "candidates": {
+      "a": [
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "b": [
+        {
+          "x": 0,
+          "y": 120
+        },
+        {
+          "x": 0,
+          "y": 160
+        },
+        {
+          "x": 0,
+          "y": 200
+        }
+      ],
+      "c": [
+        {
+          "x": 0,
+          "y": 320
+        },
+        {
+          "x": 0,
+          "y": 360
+        },
+        {
+          "x": 0,
+          "y": 400
+        }
+      ]
+    },
+    "inflated": {
+      "a": {
+        "x": 0,
+        "y": 0
+      },
+      "b": {
+        "x": 0,
+        "y": 200
+      },
+      "c": {
+        "x": 0,
+        "y": 400
+      }
+    },
+    "compacted": {
+      "a": {
+        "x": 0,
+        "y": 0
+      },
+      "b": {
+        "x": 0,
+        "y": 160
+      },
+      "c": {
+        "x": 0,
+        "y": 280
+      }
+    }
+  },
+  {
+    "name": "full-sized-three-branches",
+    "axis": "x",
+    "includeSizes": true,
+    "transition": false,
+    "factor": 1.5,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 0,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 30,
+        "x": 240,
+        "y": -100,
+        "fixed": false
+      },
+      {
+        "id": "c",
+        "width": 50,
+        "height": 30,
+        "x": 240,
+        "y": 100,
+        "fixed": false
+      },
+      {
+        "id": "d",
+        "width": 40,
+        "height": 30,
+        "x": 480,
+        "y": 0,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      },
+      {
+        "from": "a",
+        "to": "c"
+      },
+      {
+        "from": "b",
+        "to": "d"
+      },
+      {
+        "from": "c",
+        "to": "d"
+      }
+    ],
+    "cellSize": 50,
+    "visibility": [
+      {
+        "from": "a",
+        "to": "d"
+      }
+    ],
+    "candidates": {
+      "a": [
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "b": [
+        {
+          "x": 0,
+          "y": -100
+        },
+        {
+          "x": 50,
+          "y": -100
+        },
+        {
+          "x": 100,
+          "y": -100
+        },
+        {
+          "x": 150,
+          "y": -100
+        },
+        {
+          "x": 200,
+          "y": -100
+        }
+      ],
+      "c": [
+        {
+          "x": 0,
+          "y": 100
+        },
+        {
+          "x": 50,
+          "y": 100
+        },
+        {
+          "x": 100,
+          "y": 100
+        },
+        {
+          "x": 150,
+          "y": 100
+        },
+        {
+          "x": 200,
+          "y": 100
+        }
+      ],
+      "d": [
+        {
+          "x": 100,
+          "y": 0
+        },
+        {
+          "x": 150,
+          "y": 0
+        },
+        {
+          "x": 200,
+          "y": 0
+        },
+        {
+          "x": 250,
+          "y": 0
+        },
+        {
+          "x": 300,
+          "y": 0
+        },
+        {
+          "x": 350,
+          "y": 0
+        },
+        {
+          "x": 400,
+          "y": 0
+        },
+        {
+          "x": 450,
+          "y": 0
+        }
+      ]
+    },
+    "inflated": {
+      "a": {
+        "x": 0,
+        "y": 0
+      },
+      "b": {
+        "x": 240,
+        "y": -100
+      },
+      "c": {
+        "x": 240,
+        "y": 100
+      },
+      "d": {
+        "x": 480,
+        "y": 0
+      }
+    },
+    "compacted": {
+      "a": {
+        "x": -100,
+        "y": 0
+      },
+      "b": {
+        "x": -100,
+        "y": -100
+      },
+      "c": {
+        "x": -100,
+        "y": 100
+      },
+      "d": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  },
+  {
+    "name": "full-sized-fixed-pair",
+    "axis": "x",
+    "includeSizes": true,
+    "transition": false,
+    "factor": 1.5,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 0,
+        "fixed": true
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 30,
+        "x": 240,
+        "y": 0,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      }
+    ],
+    "cellSize": 40,
+    "visibility": [
+      {
+        "from": "a",
+        "to": "b"
+      }
+    ],
+    "candidates": {
+      "a": [
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "b": [
+        {
+          "x": 120,
+          "y": 0
+        },
+        {
+          "x": 160,
+          "y": 0
+        },
+        {
+          "x": 200,
+          "y": 0
+        },
+        {
+          "x": 240,
+          "y": 0
+        }
+      ]
+    },
+    "inflated": {
+      "a": {
+        "x": 0,
+        "y": 0
+      },
+      "b": {
+        "x": 240,
+        "y": 0
+      }
+    },
+    "compacted": {
+      "a": {
+        "x": 0,
+        "y": 0
+      },
+      "b": {
+        "x": 120,
+        "y": 0
+      }
+    }
+  },
+  {
+    "name": "full-sized-transition",
+    "axis": "y",
+    "includeSizes": true,
+    "transition": true,
+    "factor": 3,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 0,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 200,
+        "fixed": false
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 400,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      },
+      {
+        "from": "b",
+        "to": "c"
+      }
+    ],
+    "cellSize": 40,
+    "visibility": [
+      {
+        "from": "a",
+        "to": "b"
+      },
+      {
+        "from": "b",
+        "to": "c"
+      }
+    ],
+    "candidates": {
+      "a": [
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "b": [
+        {
+          "x": 0,
+          "y": 120
+        },
+        {
+          "x": 0,
+          "y": 160
+        },
+        {
+          "x": 0,
+          "y": 200
+        }
+      ],
+      "c": [
+        {
+          "x": 0,
+          "y": 320
+        },
+        {
+          "x": 0,
+          "y": 360
+        },
+        {
+          "x": 0,
+          "y": 400
+        }
+      ]
+    },
+    "inflated": {
+      "a": {
+        "x": 0,
+        "y": 0
+      },
+      "b": {
+        "x": 0,
+        "y": 200
+      },
+      "c": {
+        "x": 0,
+        "y": 400
+      }
+    },
+    "compacted": {
+      "a": {
+        "x": 0,
+        "y": 0
+      },
+      "b": {
+        "x": 0,
+        "y": 200
+      },
+      "c": {
+        "x": 0,
+        "y": 400
+      }
+    }
+  }
+]

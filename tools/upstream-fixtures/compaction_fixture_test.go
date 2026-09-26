@@ -27,6 +27,7 @@ type tsCompactionCase struct {
     IncludeSizes bool `json:"includeSizes"`
     Transition bool `json:"transition"`
     Factor float64 `json:"factor"`
+    Full bool `json:"full,omitempty"`
     Nodes []tsCompactionNode `json:"nodes"`
     Edges []tsCompactionEdge `json:"edges"`
 }
@@ -37,6 +38,8 @@ type tsCompactionResult struct {
     Visibility []tsCompactionEdge `json:"visibility"`
     Candidates map[string][]tsCompactionPoint `json:"candidates"`
     Inflated map[string]tsCompactionPoint `json:"inflated"`
+    Compacted map[string]tsCompactionPoint `json:"compacted,omitempty"`
+    Error string `json:"error,omitempty"`
 }
 
 func TestTSCompactionFixtures(t *testing.T) {
@@ -80,6 +83,20 @@ func TestTSCompactionFixtures(t *testing.T) {
         for _, input := range c.Nodes {
             p := byID[input.ID].TopLeft
             out.Inflated[input.ID] = tsCompactionPoint{p.X, p.Y}
+        }
+        if c.Full {
+            for _, input := range c.Nodes { byID[input.ID].TopLeft = geo.NewPoint(input.X, input.Y) }
+            axis := verticalAxis
+            if horizontal { axis = horizontalAxis }
+            if err := compaction(context.Background(), g, compactionOptions{
+                axis: axis, includeSizes: c.IncludeSizes, factor: c.Factor, transition: c.Transition,
+            }); err != nil { out.Error = err.Error() } else {
+                out.Compacted = make(map[string]tsCompactionPoint)
+                for _, input := range c.Nodes {
+                    p := byID[input.ID].TopLeft
+                    out.Compacted[input.ID] = tsCompactionPoint{p.X, p.Y}
+                }
+            }
         }
         results = append(results, out)
     }

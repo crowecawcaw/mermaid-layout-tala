@@ -1,0 +1,870 @@
+[
+  {
+    "name": "full-compaction-varied-00",
+    "axis": "x",
+    "includeSizes": false,
+    "transition": false,
+    "factor": 1.5,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 40,
+        "x": 0,
+        "y": -2,
+        "fixed": true
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 20,
+        "x": 8,
+        "y": 2,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      }
+    ]
+  },
+  {
+    "name": "full-compaction-varied-01",
+    "axis": "y",
+    "includeSizes": true,
+    "transition": false,
+    "factor": 2,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30,
+        "x": 80,
+        "y": 0,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 30,
+        "x": -80,
+        "y": 240,
+        "fixed": false
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 20,
+        "x": 0,
+        "y": 480,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      },
+      {
+        "from": "b",
+        "to": "c"
+      }
+    ]
+  },
+  {
+    "name": "full-compaction-varied-02",
+    "axis": "x",
+    "includeSizes": true,
+    "transition": false,
+    "factor": 2,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 20,
+        "x": 0,
+        "y": 80,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 40,
+        "x": 200,
+        "y": 0,
+        "fixed": false
+      },
+      {
+        "id": "c",
+        "width": 30,
+        "height": 40,
+        "x": 400,
+        "y": 0,
+        "fixed": false
+      },
+      {
+        "id": "d",
+        "width": 40,
+        "height": 20,
+        "x": 600,
+        "y": 80,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      },
+      {
+        "from": "b",
+        "to": "c"
+      },
+      {
+        "from": "c",
+        "to": "d"
+      }
+    ]
+  },
+  {
+    "name": "full-compaction-varied-03",
+    "axis": "y",
+    "includeSizes": true,
+    "transition": false,
+    "factor": 3,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 40,
+        "x": 80,
+        "y": 0,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 20,
+        "x": 80,
+        "y": 200,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      }
+    ]
+  },
+  {
+    "name": "full-compaction-varied-04",
+    "axis": "x",
+    "includeSizes": false,
+    "transition": false,
+    "factor": 1.5,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 20,
+        "x": 0,
+        "y": -2,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 40,
+        "x": 12,
+        "y": 2,
+        "fixed": false
+      },
+      {
+        "id": "c",
+        "width": 30,
+        "height": 30,
+        "x": 24,
+        "y": -2,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      },
+      {
+        "from": "b",
+        "to": "c"
+      }
+    ]
+  },
+  {
+    "name": "full-compaction-varied-05",
+    "axis": "y",
+    "includeSizes": true,
+    "transition": false,
+    "factor": 2,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30,
+        "x": 80,
+        "y": 0,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 40,
+        "x": -80,
+        "y": 160,
+        "fixed": false
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 20,
+        "x": 0,
+        "y": 320,
+        "fixed": false
+      },
+      {
+        "id": "d",
+        "width": 50,
+        "height": 30,
+        "x": -80,
+        "y": 480,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      },
+      {
+        "from": "b",
+        "to": "c"
+      },
+      {
+        "from": "c",
+        "to": "d"
+      }
+    ]
+  },
+  {
+    "name": "full-compaction-varied-06",
+    "axis": "x",
+    "includeSizes": true,
+    "transition": false,
+    "factor": 1.5,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 20,
+        "x": 0,
+        "y": 0,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 20,
+        "x": 200,
+        "y": 80,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      }
+    ]
+  },
+  {
+    "name": "full-compaction-varied-07",
+    "axis": "y",
+    "includeSizes": true,
+    "transition": false,
+    "factor": 1.5,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 40,
+        "x": -80,
+        "y": 0,
+        "fixed": true
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 40,
+        "x": 80,
+        "y": 200,
+        "fixed": false
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 20,
+        "x": 0,
+        "y": 400,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      },
+      {
+        "from": "b",
+        "to": "c"
+      }
+    ]
+  },
+  {
+    "name": "full-compaction-varied-08",
+    "axis": "x",
+    "includeSizes": false,
+    "transition": false,
+    "factor": 1.5,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 30,
+        "x": 0,
+        "y": 0,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 40,
+        "x": 8,
+        "y": -2,
+        "fixed": false
+      },
+      {
+        "id": "c",
+        "width": 50,
+        "height": 20,
+        "x": 16,
+        "y": -2,
+        "fixed": false
+      },
+      {
+        "id": "d",
+        "width": 40,
+        "height": 20,
+        "x": 24,
+        "y": 2,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      },
+      {
+        "from": "b",
+        "to": "c"
+      },
+      {
+        "from": "c",
+        "to": "d"
+      }
+    ]
+  },
+  {
+    "name": "full-compaction-varied-09",
+    "axis": "y",
+    "includeSizes": true,
+    "transition": false,
+    "factor": 1.5,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 30,
+        "x": -80,
+        "y": 0,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 30,
+        "x": 0,
+        "y": 160,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      }
+    ]
+  },
+  {
+    "name": "full-compaction-varied-10",
+    "axis": "x",
+    "includeSizes": true,
+    "transition": false,
+    "factor": 1,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 40,
+        "x": 0,
+        "y": 80,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 30,
+        "x": 160,
+        "y": 80,
+        "fixed": false
+      },
+      {
+        "id": "c",
+        "width": 50,
+        "height": 30,
+        "x": 320,
+        "y": 80,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      },
+      {
+        "from": "b",
+        "to": "c"
+      }
+    ]
+  },
+  {
+    "name": "full-compaction-varied-11",
+    "axis": "y",
+    "includeSizes": true,
+    "transition": false,
+    "factor": 3,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 30,
+        "x": 0,
+        "y": 0,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 30,
+        "x": 80,
+        "y": 200,
+        "fixed": false
+      },
+      {
+        "id": "c",
+        "width": 50,
+        "height": 30,
+        "x": -80,
+        "y": 400,
+        "fixed": false
+      },
+      {
+        "id": "d",
+        "width": 40,
+        "height": 40,
+        "x": 0,
+        "y": 600,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      },
+      {
+        "from": "b",
+        "to": "c"
+      },
+      {
+        "from": "c",
+        "to": "d"
+      }
+    ]
+  },
+  {
+    "name": "full-compaction-varied-12",
+    "axis": "x",
+    "includeSizes": false,
+    "transition": false,
+    "factor": 1,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 20,
+        "x": 0,
+        "y": -2,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 40,
+        "x": 12,
+        "y": -2,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      }
+    ]
+  },
+  {
+    "name": "full-compaction-varied-13",
+    "axis": "y",
+    "includeSizes": true,
+    "transition": false,
+    "factor": 1.5,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 30,
+        "x": 0,
+        "y": 0,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 40,
+        "x": 80,
+        "y": 160,
+        "fixed": false
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 30,
+        "x": -80,
+        "y": 320,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      },
+      {
+        "from": "b",
+        "to": "c"
+      }
+    ]
+  },
+  {
+    "name": "full-compaction-varied-14",
+    "axis": "x",
+    "includeSizes": true,
+    "transition": false,
+    "factor": 1,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 20,
+        "x": 0,
+        "y": 80,
+        "fixed": true
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 40,
+        "x": 200,
+        "y": -80,
+        "fixed": false
+      },
+      {
+        "id": "c",
+        "width": 50,
+        "height": 30,
+        "x": 400,
+        "y": 0,
+        "fixed": false
+      },
+      {
+        "id": "d",
+        "width": 50,
+        "height": 40,
+        "x": 600,
+        "y": -80,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      },
+      {
+        "from": "b",
+        "to": "c"
+      },
+      {
+        "from": "c",
+        "to": "d"
+      }
+    ]
+  },
+  {
+    "name": "full-compaction-varied-15",
+    "axis": "y",
+    "includeSizes": true,
+    "transition": false,
+    "factor": 2,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 20,
+        "x": 0,
+        "y": 0,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 20,
+        "x": -80,
+        "y": 160,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      }
+    ]
+  },
+  {
+    "name": "full-compaction-varied-16",
+    "axis": "x",
+    "includeSizes": false,
+    "transition": false,
+    "factor": 1.5,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 30,
+        "x": 0,
+        "y": 2,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 20,
+        "x": 10,
+        "y": 2,
+        "fixed": false
+      },
+      {
+        "id": "c",
+        "width": 50,
+        "height": 30,
+        "x": 20,
+        "y": -2,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      },
+      {
+        "from": "b",
+        "to": "c"
+      }
+    ]
+  },
+  {
+    "name": "full-compaction-varied-17",
+    "axis": "y",
+    "includeSizes": true,
+    "transition": false,
+    "factor": 2,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30,
+        "x": -80,
+        "y": 0,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 40,
+        "x": 0,
+        "y": 240,
+        "fixed": false
+      },
+      {
+        "id": "c",
+        "width": 50,
+        "height": 40,
+        "x": -80,
+        "y": 480,
+        "fixed": false
+      },
+      {
+        "id": "d",
+        "width": 40,
+        "height": 30,
+        "x": 80,
+        "y": 720,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      },
+      {
+        "from": "b",
+        "to": "c"
+      },
+      {
+        "from": "c",
+        "to": "d"
+      }
+    ]
+  },
+  {
+    "name": "full-compaction-varied-18",
+    "axis": "x",
+    "includeSizes": true,
+    "transition": false,
+    "factor": 1,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 30,
+        "x": 0,
+        "y": -80,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 30,
+        "x": 240,
+        "y": 0,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      }
+    ]
+  },
+  {
+    "name": "full-compaction-varied-19",
+    "axis": "y",
+    "includeSizes": true,
+    "transition": false,
+    "factor": 1,
+    "full": true,
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 40,
+        "x": -80,
+        "y": 0,
+        "fixed": false
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 30,
+        "x": 0,
+        "y": 240,
+        "fixed": false
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 40,
+        "x": 0,
+        "y": 480,
+        "fixed": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b"
+      },
+      {
+        "from": "b",
+        "to": "c"
+      }
+    ]
+  }
+]

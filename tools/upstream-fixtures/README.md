@@ -32,3 +32,7 @@ go test ./d2layouts/d2talalayout/internal/placement -run '^TestTSCompactionFixtu
 The pairs are `compaction-cases.json` / `compaction-expected.json` and
 `compaction-random-cases.json` / `compaction-random-expected.json`. Run
 `node compaction-random-cases.mjs` to reproduce the latter inputs.
+Full compaction runs are in `compaction-full-cases.json` /
+`compaction-full-expected.json` and `compaction-full-random-cases.json` /
+`compaction-full-random-expected.json`. Run
+`node compaction-full-random-cases.mjs` to reproduce the varied full inputs.
