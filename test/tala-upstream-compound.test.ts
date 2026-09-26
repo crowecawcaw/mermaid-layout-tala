@@ -72,6 +72,8 @@ describe('pinned upstream compound-layout interiors', () => {
     expect(oracle.nodes.map(({ id }) => byId.get(id)!).map((node) => ({ id: node.id,
       x: node.x - node.width / 2, y: node.y - node.height / 2,
       width: node.width, height: node.height }))).toEqual(oracle.nodes);
+    expect(actual.edges.map((edge) => ({ id: edge.id, points: edge.points })))
+      .toEqual(oracle.edges);
   });
 
   it('matches all upstream node positions and sizes for linked containers', () => {
