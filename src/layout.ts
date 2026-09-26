@@ -9,6 +9,7 @@ import { extractFlatTrees, type TreeExtraction } from './tala/tree-extraction.js
 import { canonicalTreePaths } from './tala/tree-routing.js';
 import { prescaleNodes } from './tala/prescale.js';
 import { placeFlatClusters } from './tala/flat-cluster-placement.js';
+import { placeFlatSequences } from './tala/flat-sequence-placement.js';
 import { prepareNodeLabels } from './tala/label-policy.js';
 import { normalizeLayoutResult } from './tala/normalize.js';
 
@@ -173,17 +174,19 @@ function layoutFlatFlowchart(
           to: edge.to,
           weight: edge.weight,
         } satisfies RankEdge)));
-    const tree = useOrdinary && !hasFixed
+    const sequence = useOrdinary && !hasFixed && component.every((node) => !node.isGroup)
+      ? placeFlatSequences(component, componentEdges, direction, seed, ranks) : undefined;
+    const tree = useOrdinary && !sequence && !hasFixed
       ? placeSimpleTree(component, componentEdges, direction, ranks) : undefined;
     if (tree) treeComponents.push({ ids: componentIds, edges: componentEdges,
       extraction: extractFlatTrees(component, componentEdges) });
-    const cluster = useOrdinary && !tree && !hasFixed && component.every((node) => !node.isGroup)
+    const cluster = useOrdinary && !sequence && !tree && !hasFixed && component.every((node) => !node.isGroup)
       ? placeFlatClusters(component, componentEdges, direction, seed, ranks) : undefined;
     const fixedSingleton = useOrdinary && component.length === 1 && component[0]!.fixedTopLeft
       ? [{ ...component[0]!, x: component[0]!.fixedTopLeft!.x + component[0]!.width / 2,
         y: component[0]!.fixedTopLeft!.y + component[0]!.height / 2,
         rank: 0, order: 0 }] : undefined;
-    const localNodes = tree ?? cluster ?? fixedSingleton ?? (useOrdinary && component.length > 1 && component.every((node) => !node.isGroup)
+    const localNodes = sequence ?? tree ?? cluster ?? fixedSingleton ?? (useOrdinary && component.length > 1 && component.every((node) => !node.isGroup)
       ? positionOrdinaryComponent(component, componentEdges, ranks, direction, seed)
       : positionComponent(component, weightedDag, ranks, nodeSpacing, rankSpacing, passes, direction, seed));
     for (const node of localNodes) allPositions.set(node.id, node);
