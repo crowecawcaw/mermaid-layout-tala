@@ -125,8 +125,13 @@ is translated in `src/tala/priority-queue.ts`.
 including port direction checks, center-port and turn penalties, near-port
 penalties, and path reconstruction. Its full vertex sequence and search cost
 match pinned Go output for all nine flat OVG fixtures. Sequential multi-edge
-search still needs occupied-route, sharing, crossing, and label costs before
-this can replace the public router.
+search now indexes occupied points and edges in `src/tala/ovg-route-state.ts`
+and applies center symmetry, duplicate-port, sharing, near-edge, and crossing
+costs. Ordered paths and costs match nine pinned Go cases with two or three
+edges, including parallel and crossing routes. Go's `generateRoutes` can
+choose shorter slingshot paths before search; those paths, arrowhead and label
+costs, and route cleanup still need translation before replacing the public
+router.
 
 A separate set of 24 generated branching trees exercises deeper and uneven
 structures. The TypeScript geometry matches the upstream node-placement stage

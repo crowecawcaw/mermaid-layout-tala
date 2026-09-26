@@ -1,8 +1,11 @@
 import type { Point } from '../layout.js';
-import type { OVGFlatNode } from './ovg-build.js';
+import type { OVGFlatEdge, OVGFlatNode } from './ovg-build.js';
 import { completeFlatOVG, type OVGFlatRoutingGraph } from './ovg-finalize.js';
 import type { OVGPortDirection, OVGSweepVertex } from './ovg-sweep.js';
+import { ovgPortGroups } from './ovg-candidates.js';
+import { shapePortPolicy } from './shape-ports.js';
 import { TalaPriorityQueue, type TalaQueueEntry } from './priority-queue.js';
+import { OVGRouteState, type OVGRecordedRoute } from './ovg-route-state.js';
 
 interface SearchContext {
   verticalDistance: number;
@@ -12,6 +15,10 @@ interface SearchContext {
 }
 interface TurnAxis { isX: boolean; value: number }
 export interface OVGSearchResult { points: Point[]; cost: number }
+export interface OVGSequentialEdge extends OVGFlatEdge { id: string }
+export interface OVGSequentialRoute extends OVGSearchResult { id: string }
+type RouteRecord = OVGRecordedRoute<OVGFlatEdge>;
+interface SearchInternal extends OVGSearchResult { routeNodes: OVGSweepVertex[] }
 
 /** The ordinary, unoccupied-route branch of ovg_edge_router.go search.
  * This entry point is for differential validation before the route coordinator
@@ -23,17 +30,45 @@ export function searchFlatOVGSingleEdge(nodes: readonly OVGFlatNode[],
   const targetNode = nodes.find((node) => node.id === toId);
   const source = graph.centers.get(fromId), target = graph.centers.get(toId);
   if (!sourceNode || !targetNode || !source || !target) throw new Error('unknown route endpoint');
-  return searchSingleEdge(graph, sourceNode, targetNode, source, target);
+  const routeState = new OVGRouteState<OVGFlatEdge>(graph);
+  const result = searchSingleEdge(graph, nodes, [{ from: fromId, to: toId }], routeState,
+    sourceNode, targetNode, source, target);
+  return { points: result.points, cost: result.cost };
 }
 
-function searchSingleEdge(graph: OVGFlatRoutingGraph, sourceNode: OVGFlatNode,
+export function searchFlatOVGSequential(nodes: readonly OVGFlatNode[],
+  edges: readonly OVGSequentialEdge[]): OVGSequentialRoute[] {
+  const graph = completeFlatOVG(nodes, edges);
+  const byId = new Map(nodes.map((node) => [node.id, node]));
+  const ordered = [...edges].sort((a, b) => {
+    const aFrom = byId.get(a.from)!, aTo = byId.get(a.to)!;
+    const bFrom = byId.get(b.from)!, bTo = byId.get(b.to)!;
+    return edgeSortDistance(aFrom, aTo) - edgeSortDistance(bFrom, bTo);
+  });
+  const routeState = new OVGRouteState<OVGFlatEdge>(graph);
+  return ordered.map((edge) => {
+    const from = byId.get(edge.from)!, to = byId.get(edge.to)!;
+    const result = searchSingleEdge(graph, nodes, edges, routeState, from, to,
+      graph.centers.get(from.id)!, graph.centers.get(to.id)!);
+    routeState.addRoute({ edge, nodes: result.routeNodes });
+    return { id: edge.id, points: result.points, cost: result.cost };
+  });
+}
+
+function searchSingleEdge(graph: OVGFlatRoutingGraph,
+  nodes: readonly OVGFlatNode[], edges: readonly OVGFlatEdge[],
+  routeState: OVGRouteState<OVGFlatEdge>, sourceNode: OVGFlatNode,
   targetNode: OVGFlatNode, source: OVGSweepVertex,
-  target: OVGSweepVertex): OVGSearchResult {
+  target: OVGSweepVertex): SearchInternal {
   const gap = boxGap(sourceNode, targetNode);
-  const maxLength = Math.max(60, gap);
-  const turnCost = 0.125 * maxLength;
-  const minSize = Math.min(...[sourceNode, targetNode].flatMap((n) => [n.width, n.height]));
-  const nonCenterPortCost = Math.max(0.04287499999999999 * maxLength, minSize / 3);
+  const byId = new Map(nodes.map((node) => [node.id, node]));
+  const maxLength = Math.max(60, ...edges.map((edge) =>
+    boxGap(byId.get(edge.from)!, byId.get(edge.to)!)));
+  const turnCost = 0.125 * edges.length * maxLength;
+  const crossingCost = 0.48 * 0.48 * 0.48 * edges.length * maxLength;
+  const minSize = Math.min(...nodes.flatMap((n) => [n.width, n.height]));
+  const nonCenterPortCost = Math.max(0.04287499999999999 * edges.length * maxLength,
+    minSize / 3);
   const overlap = gap === 0;
   const turnAxes = idealTurnAxes(sourceNode, targetNode);
   const sourcePorts = graph.ports.get(sourceNode.id) ?? [];
@@ -42,6 +77,24 @@ function searchSingleEdge(graph: OVGFlatRoutingGraph, sourceNode: OVGFlatNode,
   const targetKeys = new Set(targetPorts.map(key));
   const blockedSource = new Set([...sourceKeys].filter((point) => targetKeys.has(point)));
   const blockedTarget = blockedSource;
+  const usedSource = new Set<string>(), usedTarget = new Set<string>();
+  const duplicateSource = new Set<string>(), duplicateTarget = new Set<string>();
+  for (const route of routeState.routes) {
+    if (route.edge.from === sourceNode.id && route.edge.to === targetNode.id) {
+      duplicateSource.add(key(route.nodes[1]!));
+      duplicateTarget.add(key(route.nodes[route.nodes.length - 2]!));
+    }
+    for (const routeNode of route.nodes) {
+      if (routeNode.owners?.some((owner) => owner.node === sourceNode.id)) {
+        usedSource.add(key(routeNode));
+      }
+      if (routeNode.owners?.some((owner) => owner.node === targetNode.id)) {
+        usedTarget.add(key(routeNode));
+      }
+    }
+  }
+  const symmetricalSource = symmetricalPortKeys(sourceNode, usedSource);
+  const symmetricalTarget = symmetricalPortKeys(targetNode, usedTarget);
 
   const contexts = new Map<OVGSweepVertex, SearchContext>();
   const verticalHops = new Map<OVGSweepVertex, OVGSweepVertex>();
@@ -59,7 +112,8 @@ function searchSingleEdge(graph: OVGFlatRoutingGraph, sourceNode: OVGFlatNode,
     if (current === target) {
       const path = bestRoute(source, target, contexts, verticalHops, horizontalHops,
         turnAxes, turnCost);
-      return { points: path.map((point) => ({ x: point.x, y: point.y })), cost: distance };
+      return { points: path.map((point) => ({ x: point.x, y: point.y })),
+        cost: distance, routeNodes: path };
     }
     const last = (fromHorizontal ? horizontalHops : verticalHops).get(current);
     for (const edge of graph.incident.get(current) ?? []) {
@@ -81,19 +135,40 @@ function searchSingleEdge(graph: OVGFlatRoutingGraph, sourceNode: OVGFlatNode,
 
       let step: number;
       if (current === source) {
-        step = 1;
+        step = duplicateSource.has(key(adjacent)) ? 10_000_000 : 1;
         const owner = adjacent.owners?.find((item) => item.node === sourceNode.id);
-        step += owner?.center ? 1 : nonCenterPortCost;
+        step += owner?.center
+          ? symmetricalSource.has(key(adjacent)) ? 0 : 1 : nonCenterPortCost;
       } else {
         step = edge.distance;
       }
       if (sharesOwner(current, adjacent)) step += turnCost * 4;
       if (adjacent === target) {
-        step = 1;
+        step = duplicateTarget.has(key(current)) ? 10_000_000 : 1;
         const owner = current.owners?.find((item) => item.node === targetNode.id);
-        if (owner) step += owner.center ? 1 : nonCenterPortCost;
+        if (owner) step += owner.center
+          ? symmetricalTarget.has(key(current)) ? 0 : 1 : nonCenterPortCost;
       } else if (adjacent.center) {
         step = 10_000_000;
+      } else {
+        const onCurrent = current !== source && current !== target
+          ? routeState.routesAt(current) : [];
+        const onAdjacent = current !== source && current !== target
+          ? routeState.routesAt(adjacent).length > 0 : false;
+        const overlapped = current !== source && current !== target
+          ? routeState.overlapping(edge) : [];
+        const prohibited = overlapped.length > 0 && !canOverlapRoutes(
+          sourceNode.id, targetNode.id, overlapped)
+          || current !== source && !onCurrent.length && !onAdjacent
+            && routeState.hasNearby(edge);
+        if (prohibited) {
+          step = 10_000_000;
+        } else {
+          const crossing = onCurrent.length > 0 && !onAdjacent
+            && !canOverlapRoutes(sourceNode.id, targetNode.id, onCurrent)
+            || current !== source && routeState.intersects(edge);
+          if (crossing) step += crossingCost;
+        }
       }
 
       if (last && adjacent !== target && current !== source && last !== source) {
@@ -209,13 +284,36 @@ function validPortStep(direction: OVGPortDirection, port: Point,
 function sharesOwner(a: OVGSweepVertex, b: OVGSweepVertex): boolean {
   return Boolean(a.owners?.some((owner) => b.owners?.some((other) => other.node === owner.node)));
 }
+function canOverlapRoutes(source: string, target: string,
+  routes: readonly RouteRecord[]): boolean {
+  if (!routes.length) return true;
+  const edges = [{ from: source, to: target }, ...routes.map((route) => route.edge)];
+  return [source, target, ...routes.flatMap((route) => [route.edge.from, route.edge.to])]
+    .some((node) => edges.every((edge) => edge.from === node || edge.to === node));
+}
 function key(point: Point): string { return `${point.x},${point.y}`; }
+function symmetricalPortKeys(node: OVGFlatNode, used: ReadonlySet<string>): Set<string> {
+  const ports = ovgPortGroups(node).flat();
+  const mirrors = shapePortPolicy(node.shape, node.numColumns).mirrors ?? {};
+  const result = new Set<string>();
+  for (const [index, mirrored] of Object.entries(mirrors)) {
+    if (mirrored === undefined) continue;
+    const point = ports[Number(index)], mirror = ports[mirrored];
+    if (point && mirror && used.has(key(mirror))) result.add(key(point));
+  }
+  return result;
+}
 function intervalGap(a: number, ab: number, b: number, bb: number): number {
   return ab < b ? b - ab : bb < a ? a - bb : 0;
 }
 function boxGap(a: OVGFlatNode, b: OVGFlatNode): number {
   return Math.hypot(intervalGap(a.x, a.x + a.width, b.x, b.x + b.width),
     intervalGap(a.y, a.y + a.height, b.y, b.y + b.height));
+}
+function edgeSortDistance(a: OVGFlatNode, b: OVGFlatNode): number {
+  const centerX = Math.abs((a.x + a.width / 2) - (b.x + b.width / 2)) / (a.width + b.width);
+  const centerY = Math.abs((a.y + a.height / 2) - (b.y + b.height / 2)) / (a.height + b.height);
+  return boxGap(a, b) + 0.05 * Math.min(centerX, centerY);
 }
 function distanceToBox(point: Point, box: OVGFlatNode): number {
   return Math.hypot(Math.max(box.x - point.x, point.x - box.x - box.width, 0),

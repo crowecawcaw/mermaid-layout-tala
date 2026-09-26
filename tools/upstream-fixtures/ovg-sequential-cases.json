@@ -1,0 +1,116 @@
+[
+  {
+    "name": "fan-out",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 80, "width": 80, "height": 50 },
+      { "id": "b", "x": 230, "y": 0, "width": 80, "height": 50 },
+      { "id": "c", "x": 230, "y": 160, "width": 80, "height": 50 }
+    ],
+    "edges": [
+      { "id": "ab", "from": "a", "to": "b" },
+      { "id": "ac", "from": "a", "to": "c" }
+    ]
+  },
+  {
+    "name": "converging",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 80, "height": 50 },
+      { "id": "b", "x": 0, "y": 180, "width": 80, "height": 50 },
+      { "id": "c", "x": 260, "y": 90, "width": 80, "height": 50 }
+    ],
+    "edges": [
+      { "id": "ac", "from": "a", "to": "c" },
+      { "id": "bc", "from": "b", "to": "c" }
+    ]
+  },
+  {
+    "name": "chain",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 80, "height": 50 },
+      { "id": "b", "x": 230, "y": 0, "width": 80, "height": 50 },
+      { "id": "c", "x": 460, "y": 0, "width": 80, "height": 50 }
+    ],
+    "edges": [
+      { "id": "ab", "from": "a", "to": "b" },
+      { "id": "bc", "from": "b", "to": "c" }
+    ]
+  },
+  {
+    "name": "crossing",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 80, "height": 50 },
+      { "id": "b", "x": 0, "y": 180, "width": 80, "height": 50 },
+      { "id": "c", "x": 280, "y": 0, "width": 80, "height": 50 },
+      { "id": "d", "x": 280, "y": 180, "width": 80, "height": 50 }
+    ],
+    "edges": [
+      { "id": "ad", "from": "a", "to": "d" },
+      { "id": "bc", "from": "b", "to": "c" }
+    ]
+  },
+  {
+    "name": "parallel",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 80, "height": 50 },
+      { "id": "b", "x": 250, "y": 0, "width": 80, "height": 50 }
+    ],
+    "edges": [
+      { "id": "ab1", "from": "a", "to": "b" },
+      { "id": "ab2", "from": "a", "to": "b" }
+    ]
+  },
+  {
+    "name": "fan-three",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 120, "width": 80, "height": 50 },
+      { "id": "b", "x": 260, "y": 0, "width": 80, "height": 50 },
+      { "id": "c", "x": 260, "y": 120, "width": 80, "height": 50 },
+      { "id": "d", "x": 260, "y": 240, "width": 80, "height": 50 }
+    ],
+    "edges": [
+      { "id": "ab", "from": "a", "to": "b" },
+      { "id": "ac", "from": "a", "to": "c" },
+      { "id": "ad", "from": "a", "to": "d" }
+    ]
+  },
+  {
+    "name": "parallel-three",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 80, "height": 50 },
+      { "id": "b", "x": 250, "y": 0, "width": 80, "height": 50 }
+    ],
+    "edges": [
+      { "id": "ab1", "from": "a", "to": "b" },
+      { "id": "ab2", "from": "a", "to": "b" },
+      { "id": "ab3", "from": "a", "to": "b" }
+    ]
+  },
+  {
+    "name": "crossing-three",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 80, "height": 50 },
+      { "id": "b", "x": 0, "y": 180, "width": 80, "height": 50 },
+      { "id": "c", "x": 280, "y": 0, "width": 80, "height": 50 },
+      { "id": "d", "x": 280, "y": 180, "width": 80, "height": 50 }
+    ],
+    "edges": [
+      { "id": "ad", "from": "a", "to": "d" },
+      { "id": "bc", "from": "b", "to": "c" },
+      { "id": "ac", "from": "a", "to": "c" }
+    ]
+  },
+  {
+    "name": "chain-three",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 80, "height": 50 },
+      { "id": "b", "x": 220, "y": 0, "width": 80, "height": 50 },
+      { "id": "c", "x": 440, "y": 0, "width": 80, "height": 50 },
+      { "id": "d", "x": 660, "y": 0, "width": 80, "height": 50 }
+    ],
+    "edges": [
+      { "id": "ab", "from": "a", "to": "b" },
+      { "id": "bc", "from": "b", "to": "c" },
+      { "id": "cd", "from": "c", "to": "d" }
+    ]
+  }
+]
