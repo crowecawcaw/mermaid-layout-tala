@@ -3,6 +3,7 @@ import { GoRandom } from './go-rng.js';
 import { TalaGraph } from './graph.js';
 import { initializeByGraphDistance } from './graph-distance.js';
 import { initializeNodes } from './initialize-nodes.js';
+import { joinDistancedClusters } from './join-distanced-clusters.js';
 import { SizedOptimizer } from './sized-optimizer.js';
 import { SizelessOptimizer } from './sizeless-optimizer.js';
 
@@ -57,9 +58,11 @@ export function placeOrdinaryNodes(graph: TalaGraph, seed: number,
       compact({ axis: compactionAxis, includeSizes: true, factor });
       compactionAxis = opposite(compactionAxis);
       trace?.('sized-compaction', i, graph);
+      joinDistancedClusters(graph);
     }
     temp *= cooling;
   }
+  joinDistancedClusters(graph);
   for (let i = 0; i < 10; i++) {
     if (!sized.optimize(0)) break;
     trace?.('final', i, graph);

@@ -37,8 +37,9 @@
             </div>
             <p class="example-description" id="example-description"></p>
             <div class="layout-options" id="tala-options">
-              <div class="options-heading"><strong>TALA spacing</strong><span>Adjust the diagram's density</span></div>
-              <div class="spacing-controls">
+              <div class="options-heading"><strong>TALA options</strong><span>Choose placement and seeds</span></div>
+              <div class="field placement-control"><label for="tala-placement">Placement</label><select id="tala-placement"><option value="tala">TypeScript TALA · ordinary graphs</option><option value="layered">Layered adapter · spacing controls</option></select></div>
+              <div class="spacing-controls" id="spacing-controls" hidden>
                 <div class="spacing-control"><div class="spacing-label"><label for="node-spacing">Node gap</label><output id="node-spacing-value" for="node-spacing">44 px</output></div><input id="node-spacing" type="range" min="16" max="160" step="4" value="44" /></div>
                 <div class="spacing-control"><div class="spacing-label"><label for="rank-spacing">Layer gap</label><output id="rank-spacing-value" for="rank-spacing">64 px</output></div><input id="rank-spacing" type="range" min="16" max="200" step="4" value="64" /></div>
               </div>

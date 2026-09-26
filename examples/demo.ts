@@ -14,6 +14,8 @@ const description = document.querySelector<HTMLElement>('#example-description')!
 const downloadButton = document.querySelector<HTMLButtonElement>('#download')!;
 const renderButton = document.querySelector<HTMLButtonElement>('#render')!;
 const talaOptions = document.querySelector<HTMLElement>('#tala-options')!;
+const placementSelect = document.querySelector<HTMLSelectElement>('#tala-placement')!;
+const spacingControls = document.querySelector<HTMLElement>('#spacing-controls')!;
 const nodeSpacing = document.querySelector<HTMLInputElement>('#node-spacing')!;
 const rankSpacing = document.querySelector<HTMLInputElement>('#rank-spacing')!;
 const nodeSpacingValue = document.querySelector<HTMLOutputElement>('#node-spacing-value')!;
@@ -79,7 +81,14 @@ function render(): void {
         throw new Error('Layout seeds must be comma separated integers.');
       }
       const flowchartOptions = layout === 'tala'
-        ? { htmlLabels: false, nodeSpacing: nodeSpacing.valueAsNumber, rankSpacing: rankSpacing.valueAsNumber, talaSeeds: seeds }
+        ? {
+            htmlLabels: false,
+            talaPlacement: placementSelect.value,
+            talaSeeds: seeds,
+            ...(placementSelect.value === 'layered'
+              ? { nodeSpacing: nodeSpacing.valueAsNumber, rankSpacing: rankSpacing.valueAsNumber }
+              : {}),
+          }
         : { htmlLabels: false };
       mermaid.initialize({
         startOnLoad: false,
@@ -143,6 +152,10 @@ exampleSelect.addEventListener('change', () => {
 
 layoutSelect.addEventListener('change', () => {
   talaOptions.hidden = layoutSelect.value !== 'tala';
+  render();
+});
+placementSelect.addEventListener('change', () => {
+  spacingControls.hidden = placementSelect.value !== 'layered';
   render();
 });
 directionSelect.addEventListener('change', () => {

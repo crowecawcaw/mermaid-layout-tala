@@ -1,9 +1,9 @@
 # Mermaid TALA Layout
 
 An experimental TypeScript layout loader for Mermaid 12 flowcharts. It ports
-TALA's weighted DAG rank assignment from D2 and adds nested container layout,
-deterministic seed attempts, layer ordering, component placement, and
-obstacle-aware orthogonal routes.
+TALA's ordinary graph placement and weighted DAG rank assignment from D2, and
+adds nested container layout, deterministic seed attempts, and obstacle-aware
+orthogonal routes.
 
 ![A left-to-right flowchart arranged by the TALA-derived layout](./docs/tala-layout-example.svg)
 
@@ -48,15 +48,17 @@ flowchart LR
 The current port supports measured flowchart nodes, nested subgraphs and their
 directions, all four root directions (`TB`, `BT`, `LR`, `RL`), connected
 components, parallel links, cycles, self loops, deterministic seed selection,
-and routes around nodes and unrelated containers. Node and rank spacing are
-specific to this Mermaid adapter. `talaSeeds` accepts up to 16 distinct safe
+and routes around nodes and unrelated containers. Flat connected components
+use translated TALA ordinary placement by default. Set `talaPlacement` to
+`'layered'` to use the earlier Mermaid adapter placement; its node and rank
+spacing controls are specific to that mode. `talaSeeds` accepts up to 16 distinct safe
 integers, with `[1, 2, 3]` as the default. Mermaid's direction declaration
 sets direction; it is not a separate TALA option.
 
 This is still a subset of upstream TALA. The upstream engine has many additional
-placement and refinement stages for trees, hubs, clusters, symmetry, packing,
-edge channels, shape borders, and labels. Its placement and scoring are not yet
-ported exactly, so this package should not be treated as layout-equivalent to
+placement and refinement stages for compound graphs, trees, clusters, packing,
+edge channels, shape borders, and labels. The ordinary placement stage matches
+pinned upstream fixtures; the complete engine does not, so this package should not be treated as layout-equivalent to
 the D2 implementation.
 See [port status](./PORT_STATUS.md) for the remaining upstream areas.
 

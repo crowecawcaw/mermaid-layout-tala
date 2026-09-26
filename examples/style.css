@@ -44,6 +44,7 @@ h2 { margin: 0; color: #253d33; font-size: 19px; letter-spacing: -.03em; }
 .options-heading strong { color: #416550; font-size: 12px; }
 .options-heading span { color: #8a9a8c; font-size: 11px; }
 .spacing-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.spacing-controls[hidden] { display: none; }
 .spacing-label { margin-bottom: 5px; color: #627767; font-size: 11px; }
 .spacing-label output { color: #38664a; font-weight: 750; font-variant-numeric: tabular-nums; }
 .spacing-control input { display: block; width: 100%; margin: 0; accent-color: #2d6a4f; }

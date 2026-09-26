@@ -1,7 +1,29 @@
 import { describe, expect, it } from 'vitest';
 import { layoutFlowchart } from '../src/layout.js';
+import { TalaGraph } from '../src/tala/graph.js';
+import { placeOrdinaryNodes } from '../src/tala/ordinary-placement.js';
 
 describe('Mermaid flowchart layout slice', () => {
+  it('uses translated ordinary placement for flat components by default', () => {
+    const nodes = ['A', 'B', 'C', 'D'].map((id) => ({ id, width: 60, height: 40 }));
+    const edges = [
+      { id: 'ab', from: 'A', to: 'B' },
+      { id: 'ac', from: 'A', to: 'C' },
+      { id: 'bd', from: 'B', to: 'D' },
+      { id: 'cd', from: 'C', to: 'D' },
+    ];
+    const graph = TalaGraph.fromFlowchart(nodes, edges, 'TB');
+    placeOrdinaryNodes(graph, 1);
+    const actual = layoutFlowchart(nodes, edges, { seeds: [1] });
+    const reference = graph.nodes[0]!;
+    const placed = actual.nodes.find((node) => node.id === reference.id)!;
+    for (const node of graph.nodes) {
+      const result = actual.nodes.find((candidate) => candidate.id === node.id)!;
+      expect(result.x - placed.x).toBe(node.topLeft!.x - reference.topLeft!.x);
+      expect(result.y - placed.y).toBe(node.topLeft!.y - reference.topLeft!.y);
+    }
+  });
+
   it('uses deterministic layout seeds and rejects invalid lists', () => {
     const nodes = ['A', 'B', 'C', 'D', 'E', 'F'].map((id) => ({ id, width: 50, height: 30 }));
     const edges = ['B', 'C', 'D', 'E', 'F'].map((id) => ({ id: `A${id}`, from: 'A', to: id }));

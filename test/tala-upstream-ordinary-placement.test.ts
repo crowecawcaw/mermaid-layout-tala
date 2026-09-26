@@ -15,8 +15,8 @@ interface Fixture {
   error?: string;
 }
 
-const fixtures = JSON.parse(readFileSync(
-  new URL('../tools/upstream-fixtures/placement-expected.json', import.meta.url), 'utf8')) as Fixture[];
+const fixtures = ['placement-expected.json', 'placement-random-expected.json'].flatMap((name) =>
+  JSON.parse(readFileSync(new URL(`../tools/upstream-fixtures/${name}`, import.meta.url), 'utf8')) as Fixture[]);
 
 describe('ordinary placement stage against pinned upstream TALA', () => {
   for (const fixture of fixtures) {

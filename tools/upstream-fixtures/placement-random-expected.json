@@ -1,0 +1,2867 @@
+[
+  {
+    "name": "random-01",
+    "seed": 13,
+    "direction": "RL",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 20,
+        "height": 50
+      },
+      {
+        "id": "b",
+        "width": 25,
+        "height": 45
+      },
+      {
+        "id": "c",
+        "width": 60,
+        "height": 60
+      },
+      {
+        "id": "d",
+        "width": 50,
+        "height": 40
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "d",
+        "directed": false
+      },
+      {
+        "from": "d",
+        "to": "c",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "initial": {
+      "a": {
+        "x": 4,
+        "y": 4
+      },
+      "b": {
+        "x": 3,
+        "y": 4
+      },
+      "c": {
+        "x": 4,
+        "y": 5
+      },
+      "d": {
+        "x": 5,
+        "y": 5
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 90,
+        "y": -30
+      },
+      "b": {
+        "x": 90,
+        "y": 90
+      },
+      "c": {
+        "x": -30,
+        "y": -60
+      },
+      "d": {
+        "x": -30,
+        "y": 60
+      }
+    }
+  },
+  {
+    "name": "random-02",
+    "seed": 9,
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 55,
+        "height": 50
+      },
+      {
+        "id": "b",
+        "width": 55,
+        "height": 45
+      },
+      {
+        "id": "c",
+        "width": 65,
+        "height": 65
+      },
+      {
+        "id": "d",
+        "width": 30,
+        "height": 55
+      },
+      {
+        "id": "e",
+        "width": 35,
+        "height": 30
+      },
+      {
+        "id": "f",
+        "width": 60,
+        "height": 50
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": false
+      },
+      {
+        "from": "a",
+        "to": "d",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "e",
+        "directed": true
+      },
+      {
+        "from": "e",
+        "to": "f",
+        "directed": false
+      }
+    ],
+    "cellSize": 65,
+    "initial": {
+      "a": {
+        "x": 6,
+        "y": 6
+      },
+      "b": {
+        "x": 7,
+        "y": 6
+      },
+      "c": {
+        "x": 5,
+        "y": 6
+      },
+      "d": {
+        "x": 6,
+        "y": 7
+      },
+      "e": {
+        "x": 6,
+        "y": 5
+      },
+      "f": {
+        "x": 7,
+        "y": 5
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 0,
+        "y": 0
+      },
+      "b": {
+        "x": 130,
+        "y": 0
+      },
+      "c": {
+        "x": -130,
+        "y": 0
+      },
+      "d": {
+        "x": 0,
+        "y": -130
+      },
+      "e": {
+        "x": 0,
+        "y": 130
+      },
+      "f": {
+        "x": 130,
+        "y": 130
+      }
+    }
+  },
+  {
+    "name": "random-03",
+    "seed": 5,
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 65,
+        "height": 55
+      },
+      {
+        "id": "b",
+        "width": 25,
+        "height": 30
+      },
+      {
+        "id": "c",
+        "width": 60,
+        "height": 25
+      },
+      {
+        "id": "d",
+        "width": 25,
+        "height": 25
+      },
+      {
+        "id": "e",
+        "width": 55,
+        "height": 20
+      },
+      {
+        "id": "f",
+        "width": 30,
+        "height": 40
+      },
+      {
+        "id": "g",
+        "width": 65,
+        "height": 50
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": false
+      },
+      {
+        "from": "a",
+        "to": "d",
+        "directed": false
+      },
+      {
+        "from": "a",
+        "to": "e",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "f",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "g",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "d",
+        "directed": false
+      }
+    ],
+    "cellSize": 30,
+    "initial": {
+      "a": {
+        "x": 7,
+        "y": 7
+      },
+      "b": {
+        "x": 7,
+        "y": 6
+      },
+      "c": {
+        "x": 6,
+        "y": 6
+      },
+      "d": {
+        "x": 7,
+        "y": 5
+      },
+      "e": {
+        "x": 8,
+        "y": 7
+      },
+      "f": {
+        "x": 8,
+        "y": 6
+      },
+      "g": {
+        "x": 6,
+        "y": 7
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 240,
+        "y": -30
+      },
+      "b": {
+        "x": 330,
+        "y": 90
+      },
+      "c": {
+        "x": 330,
+        "y": 0
+      },
+      "d": {
+        "x": 240,
+        "y": 90
+      },
+      "e": {
+        "x": 120,
+        "y": 0
+      },
+      "f": {
+        "x": 420,
+        "y": 90
+      },
+      "g": {
+        "x": 240,
+        "y": -150
+      }
+    }
+  },
+  {
+    "name": "random-04",
+    "seed": 10,
+    "direction": "",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 25,
+        "height": 60
+      },
+      {
+        "id": "b",
+        "width": 35,
+        "height": 50
+      },
+      {
+        "id": "c",
+        "width": 65,
+        "height": 40
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": true
+      }
+    ],
+    "cellSize": 65,
+    "initial": {
+      "a": {
+        "x": 3,
+        "y": 3
+      },
+      "b": {
+        "x": 3,
+        "y": 4
+      },
+      "c": {
+        "x": 4,
+        "y": 4
+      }
+    },
+    "positions": {
+      "a": {
+        "x": -130,
+        "y": 130
+      },
+      "b": {
+        "x": -130,
+        "y": 260
+      },
+      "c": {
+        "x": -130,
+        "y": 390
+      }
+    }
+  },
+  {
+    "name": "random-05",
+    "seed": 11,
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 40
+      },
+      {
+        "id": "b",
+        "width": 35,
+        "height": 45
+      },
+      {
+        "id": "c",
+        "width": 50,
+        "height": 25
+      },
+      {
+        "id": "d",
+        "width": 45,
+        "height": 30
+      },
+      {
+        "id": "e",
+        "width": 50,
+        "height": 55
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "d",
+        "directed": false
+      },
+      {
+        "from": "d",
+        "to": "e",
+        "directed": true
+      },
+      {
+        "from": "c",
+        "to": "a",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "e",
+        "directed": true
+      }
+    ],
+    "cellSize": 55,
+    "initial": {
+      "a": {
+        "x": 5,
+        "y": 5
+      },
+      "b": {
+        "x": 5,
+        "y": 6
+      },
+      "c": {
+        "x": 4,
+        "y": 5
+      },
+      "d": {
+        "x": 6,
+        "y": 4
+      },
+      "e": {
+        "x": 6,
+        "y": 5
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 110,
+        "y": 55
+      },
+      "b": {
+        "x": 220,
+        "y": 55
+      },
+      "c": {
+        "x": 110,
+        "y": -55
+      },
+      "d": {
+        "x": 220,
+        "y": 165
+      },
+      "e": {
+        "x": 110,
+        "y": 165
+      }
+    }
+  },
+  {
+    "name": "random-06",
+    "seed": 5,
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 35,
+        "height": 40
+      },
+      {
+        "id": "b",
+        "width": 35,
+        "height": 60
+      },
+      {
+        "id": "c",
+        "width": 50,
+        "height": 25
+      },
+      {
+        "id": "d",
+        "width": 45,
+        "height": 40
+      },
+      {
+        "id": "e",
+        "width": 45,
+        "height": 45
+      },
+      {
+        "id": "f",
+        "width": 20,
+        "height": 25
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "d",
+        "directed": true
+      },
+      {
+        "from": "d",
+        "to": "e",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "f",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "f",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "initial": {
+      "a": {
+        "x": 6,
+        "y": 6
+      },
+      "b": {
+        "x": 6,
+        "y": 7
+      },
+      "c": {
+        "x": 7,
+        "y": 6
+      },
+      "d": {
+        "x": 5,
+        "y": 7
+      },
+      "e": {
+        "x": 5,
+        "y": 8
+      },
+      "f": {
+        "x": 6,
+        "y": 8
+      }
+    },
+    "positions": {
+      "a": {
+        "x": -1230,
+        "y": 780
+      },
+      "b": {
+        "x": -1230,
+        "y": 570
+      },
+      "c": {
+        "x": -1200,
+        "y": 900
+      },
+      "d": {
+        "x": -1110,
+        "y": 540
+      },
+      "e": {
+        "x": -1110,
+        "y": 660
+      },
+      "f": {
+        "x": -1200,
+        "y": 690
+      }
+    }
+  },
+  {
+    "name": "random-07",
+    "seed": 4,
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 25,
+        "height": 60
+      },
+      {
+        "id": "b",
+        "width": 35,
+        "height": 45
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 30
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": false
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "initial": {
+      "a": {
+        "x": 3,
+        "y": 3
+      },
+      "b": {
+        "x": 3,
+        "y": 4
+      },
+      "c": {
+        "x": 3,
+        "y": 5
+      }
+    },
+    "positions": {
+      "a": {
+        "x": -540,
+        "y": 960
+      },
+      "b": {
+        "x": -450,
+        "y": 1020
+      },
+      "c": {
+        "x": -450,
+        "y": 930
+      }
+    }
+  },
+  {
+    "name": "random-08",
+    "seed": 5,
+    "direction": "RL",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 35,
+        "height": 25
+      },
+      {
+        "id": "b",
+        "width": 20,
+        "height": 25
+      },
+      {
+        "id": "c",
+        "width": 35,
+        "height": 60
+      },
+      {
+        "id": "d",
+        "width": 55,
+        "height": 55
+      },
+      {
+        "id": "e",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "f",
+        "width": 55,
+        "height": 55
+      },
+      {
+        "id": "g",
+        "width": 35,
+        "height": 25
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": false
+      },
+      {
+        "from": "b",
+        "to": "d",
+        "directed": true
+      },
+      {
+        "from": "d",
+        "to": "e",
+        "directed": false
+      },
+      {
+        "from": "a",
+        "to": "f",
+        "directed": true
+      },
+      {
+        "from": "f",
+        "to": "g",
+        "directed": false
+      },
+      {
+        "from": "c",
+        "to": "e",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "initial": {
+      "a": {
+        "x": 7,
+        "y": 7
+      },
+      "b": {
+        "x": 6,
+        "y": 7
+      },
+      "c": {
+        "x": 8,
+        "y": 7
+      },
+      "d": {
+        "x": 5,
+        "y": 7
+      },
+      "e": {
+        "x": 7,
+        "y": 6
+      },
+      "f": {
+        "x": 7,
+        "y": 8
+      },
+      "g": {
+        "x": 6,
+        "y": 8
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 210,
+        "y": 120
+      },
+      "b": {
+        "x": 210,
+        "y": 30
+      },
+      "c": {
+        "x": 180,
+        "y": 210
+      },
+      "d": {
+        "x": 60,
+        "y": 30
+      },
+      "e": {
+        "x": 60,
+        "y": 210
+      },
+      "f": {
+        "x": 90,
+        "y": 120
+      },
+      "g": {
+        "x": -30,
+        "y": 120
+      }
+    }
+  },
+  {
+    "name": "random-09",
+    "seed": 8,
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 50
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 45
+      },
+      {
+        "id": "c",
+        "width": 30,
+        "height": 40
+      },
+      {
+        "id": "d",
+        "width": 40,
+        "height": 50
+      },
+      {
+        "id": "e",
+        "width": 45,
+        "height": 40
+      },
+      {
+        "id": "f",
+        "width": 55,
+        "height": 50
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "d",
+        "directed": true
+      },
+      {
+        "from": "d",
+        "to": "e",
+        "directed": true
+      },
+      {
+        "from": "d",
+        "to": "f",
+        "directed": true
+      }
+    ],
+    "cellSize": 55,
+    "initial": {
+      "a": {
+        "x": 7,
+        "y": 8
+      },
+      "b": {
+        "x": 6,
+        "y": 6
+      },
+      "c": {
+        "x": 6,
+        "y": 10
+      },
+      "d": {
+        "x": 6,
+        "y": 4
+      },
+      "e": {
+        "x": 4,
+        "y": 4
+      },
+      "f": {
+        "x": 7,
+        "y": 3
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 0,
+        "y": 165
+      },
+      "b": {
+        "x": 0,
+        "y": 275
+      },
+      "c": {
+        "x": 110,
+        "y": 165
+      },
+      "d": {
+        "x": 110,
+        "y": 275
+      },
+      "e": {
+        "x": 110,
+        "y": 385
+      },
+      "f": {
+        "x": 220,
+        "y": 275
+      }
+    }
+  },
+  {
+    "name": "random-10",
+    "seed": 15,
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 20,
+        "height": 55
+      },
+      {
+        "id": "b",
+        "width": 60,
+        "height": 50
+      },
+      {
+        "id": "c",
+        "width": 60,
+        "height": 65
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "initial": {
+      "a": {
+        "x": 3,
+        "y": 3
+      },
+      "b": {
+        "x": 3,
+        "y": 2
+      },
+      "c": {
+        "x": 4,
+        "y": 3
+      }
+    },
+    "positions": {
+      "a": {
+        "x": -120,
+        "y": -570
+      },
+      "b": {
+        "x": -150,
+        "y": -690
+      },
+      "c": {
+        "x": -240,
+        "y": -570
+      }
+    }
+  },
+  {
+    "name": "random-11",
+    "seed": 4,
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 25,
+        "height": 30
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 40
+      },
+      {
+        "id": "c",
+        "width": 50,
+        "height": 20
+      },
+      {
+        "id": "d",
+        "width": 60,
+        "height": 60
+      },
+      {
+        "id": "e",
+        "width": 45,
+        "height": 60
+      },
+      {
+        "id": "f",
+        "width": 65,
+        "height": 20
+      },
+      {
+        "id": "g",
+        "width": 40,
+        "height": 60
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": false
+      },
+      {
+        "from": "b",
+        "to": "d",
+        "directed": true
+      },
+      {
+        "from": "d",
+        "to": "e",
+        "directed": true
+      },
+      {
+        "from": "c",
+        "to": "f",
+        "directed": true
+      },
+      {
+        "from": "d",
+        "to": "g",
+        "directed": true
+      },
+      {
+        "from": "g",
+        "to": "c",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "initial": {
+      "a": {
+        "x": 9,
+        "y": 8
+      },
+      "b": {
+        "x": 7,
+        "y": 9
+      },
+      "c": {
+        "x": 9,
+        "y": 6
+      },
+      "d": {
+        "x": 5,
+        "y": 8
+      },
+      "e": {
+        "x": 3,
+        "y": 8
+      },
+      "f": {
+        "x": 9,
+        "y": 4
+      },
+      "g": {
+        "x": 7,
+        "y": 6
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 210,
+        "y": 450
+      },
+      "b": {
+        "x": 300,
+        "y": 420
+      },
+      "c": {
+        "x": 90,
+        "y": 450
+      },
+      "d": {
+        "x": 240,
+        "y": 300
+      },
+      "e": {
+        "x": 360,
+        "y": 300
+      },
+      "f": {
+        "x": 90,
+        "y": 540
+      },
+      "g": {
+        "x": 120,
+        "y": 330
+      }
+    }
+  },
+  {
+    "name": "random-12",
+    "seed": 7,
+    "direction": "",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 45,
+        "height": 35
+      },
+      {
+        "id": "b",
+        "width": 55,
+        "height": 45
+      },
+      {
+        "id": "c",
+        "width": 55,
+        "height": 50
+      },
+      {
+        "id": "d",
+        "width": 40,
+        "height": 45
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": false
+      },
+      {
+        "from": "b",
+        "to": "d",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": true
+      }
+    ],
+    "cellSize": 55,
+    "initial": {
+      "a": {
+        "x": 4,
+        "y": 4
+      },
+      "b": {
+        "x": 3,
+        "y": 4
+      },
+      "c": {
+        "x": 4,
+        "y": 5
+      },
+      "d": {
+        "x": 3,
+        "y": 5
+      }
+    },
+    "positions": {
+      "a": {
+        "x": -935,
+        "y": 55
+      },
+      "b": {
+        "x": -935,
+        "y": -55
+      },
+      "c": {
+        "x": -825,
+        "y": 55
+      },
+      "d": {
+        "x": -935,
+        "y": -165
+      }
+    }
+  },
+  {
+    "name": "random-13",
+    "seed": 12,
+    "direction": "RL",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 35
+      },
+      {
+        "id": "b",
+        "width": 25,
+        "height": 20
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 50,
+    "initial": {
+      "a": {
+        "x": 2,
+        "y": 2
+      },
+      "b": {
+        "x": 1,
+        "y": 2
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 0,
+        "y": 150
+      },
+      "b": {
+        "x": -100,
+        "y": 150
+      }
+    }
+  },
+  {
+    "name": "random-14",
+    "seed": 4,
+    "direction": "RL",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 65,
+        "height": 65
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 60
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 50
+      },
+      {
+        "id": "d",
+        "width": 65,
+        "height": 35
+      },
+      {
+        "id": "e",
+        "width": 40,
+        "height": 25
+      },
+      {
+        "id": "f",
+        "width": 40,
+        "height": 30
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "d",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "e",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "f",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "initial": {
+      "a": {
+        "x": 5,
+        "y": 5
+      },
+      "b": {
+        "x": 7,
+        "y": 7
+      },
+      "c": {
+        "x": 7,
+        "y": 9
+      },
+      "d": {
+        "x": 3,
+        "y": 6
+      },
+      "e": {
+        "x": 5,
+        "y": 3
+      },
+      "f": {
+        "x": 9,
+        "y": 6
+      }
+    },
+    "positions": {
+      "a": {
+        "x": -480,
+        "y": 240
+      },
+      "b": {
+        "x": -330,
+        "y": 240
+      },
+      "c": {
+        "x": -330,
+        "y": 360
+      },
+      "d": {
+        "x": -630,
+        "y": 300
+      },
+      "e": {
+        "x": -600,
+        "y": 240
+      },
+      "f": {
+        "x": -330,
+        "y": 150
+      }
+    }
+  },
+  {
+    "name": "random-15",
+    "seed": 7,
+    "direction": "RL",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 20,
+        "height": 35
+      },
+      {
+        "id": "b",
+        "width": 55,
+        "height": 45
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 55,
+    "initial": {
+      "a": {
+        "x": 2,
+        "y": 2
+      },
+      "b": {
+        "x": 1,
+        "y": 2
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 2035,
+        "y": -1210
+      },
+      "b": {
+        "x": 1870,
+        "y": -1210
+      }
+    }
+  },
+  {
+    "name": "random-16",
+    "seed": 3,
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 65,
+        "height": 45
+      },
+      {
+        "id": "b",
+        "width": 35,
+        "height": 25
+      },
+      {
+        "id": "c",
+        "width": 35,
+        "height": 25
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": true
+      }
+    ],
+    "cellSize": 65,
+    "initial": {
+      "a": {
+        "x": 3,
+        "y": 3
+      },
+      "b": {
+        "x": 3,
+        "y": 2
+      },
+      "c": {
+        "x": 4,
+        "y": 3
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 0,
+        "y": 130
+      },
+      "b": {
+        "x": 0,
+        "y": 260
+      },
+      "c": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  },
+  {
+    "name": "random-17",
+    "seed": 2,
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 35,
+        "height": 55
+      },
+      {
+        "id": "b",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "c",
+        "width": 35,
+        "height": 45
+      },
+      {
+        "id": "d",
+        "width": 25,
+        "height": 60
+      },
+      {
+        "id": "e",
+        "width": 55,
+        "height": 50
+      },
+      {
+        "id": "f",
+        "width": 60,
+        "height": 55
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": false
+      },
+      {
+        "from": "a",
+        "to": "d",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "e",
+        "directed": false
+      },
+      {
+        "from": "c",
+        "to": "f",
+        "directed": true
+      },
+      {
+        "from": "d",
+        "to": "f",
+        "directed": true
+      }
+    ],
+    "cellSize": 60,
+    "initial": {
+      "a": {
+        "x": 6,
+        "y": 7
+      },
+      "b": {
+        "x": 8,
+        "y": 5
+      },
+      "c": {
+        "x": 5,
+        "y": 8
+      },
+      "d": {
+        "x": 4,
+        "y": 6
+      },
+      "e": {
+        "x": 8,
+        "y": 3
+      },
+      "f": {
+        "x": 5,
+        "y": 6
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 240,
+        "y": 420
+      },
+      "b": {
+        "x": 240,
+        "y": 540
+      },
+      "c": {
+        "x": 120,
+        "y": 420
+      },
+      "d": {
+        "x": 240,
+        "y": 300
+      },
+      "e": {
+        "x": 240,
+        "y": 660
+      },
+      "f": {
+        "x": 120,
+        "y": 300
+      }
+    }
+  },
+  {
+    "name": "random-18",
+    "seed": 9,
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 45
+      },
+      {
+        "id": "b",
+        "width": 20,
+        "height": 55
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 50
+      },
+      {
+        "id": "d",
+        "width": 35,
+        "height": 65
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": false
+      },
+      {
+        "from": "c",
+        "to": "d",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "initial": {
+      "a": {
+        "x": 4,
+        "y": 4
+      },
+      "b": {
+        "x": 4,
+        "y": 5
+      },
+      "c": {
+        "x": 4,
+        "y": 6
+      },
+      "d": {
+        "x": 4,
+        "y": 7
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 150,
+        "y": 150
+      },
+      "b": {
+        "x": 180,
+        "y": 270
+      },
+      "c": {
+        "x": 180,
+        "y": 390
+      },
+      "d": {
+        "x": 180,
+        "y": 510
+      }
+    }
+  },
+  {
+    "name": "random-19",
+    "seed": 14,
+    "direction": "RL",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 60
+      },
+      {
+        "id": "b",
+        "width": 35,
+        "height": 35
+      },
+      {
+        "id": "c",
+        "width": 55,
+        "height": 50
+      },
+      {
+        "id": "d",
+        "width": 60,
+        "height": 55
+      },
+      {
+        "id": "e",
+        "width": 55,
+        "height": 60
+      },
+      {
+        "id": "f",
+        "width": 60,
+        "height": 50
+      },
+      {
+        "id": "g",
+        "width": 55,
+        "height": 30
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "d",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "e",
+        "directed": false
+      },
+      {
+        "from": "e",
+        "to": "f",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "g",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": true
+      }
+    ],
+    "cellSize": 60,
+    "initial": {
+      "a": {
+        "x": 8,
+        "y": 8
+      },
+      "b": {
+        "x": 6,
+        "y": 7
+      },
+      "c": {
+        "x": 8,
+        "y": 9
+      },
+      "d": {
+        "x": 6,
+        "y": 10
+      },
+      "e": {
+        "x": 5,
+        "y": 5
+      },
+      "f": {
+        "x": 5,
+        "y": 3
+      },
+      "g": {
+        "x": 10,
+        "y": 7
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 360,
+        "y": 240
+      },
+      "b": {
+        "x": 360,
+        "y": 360
+      },
+      "c": {
+        "x": 480,
+        "y": 300
+      },
+      "d": {
+        "x": 360,
+        "y": 120
+      },
+      "e": {
+        "x": 240,
+        "y": 300
+      },
+      "f": {
+        "x": 120,
+        "y": 300
+      },
+      "g": {
+        "x": 240,
+        "y": 240
+      }
+    }
+  },
+  {
+    "name": "random-20",
+    "seed": 15,
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 65,
+        "height": 40
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 35
+      },
+      {
+        "id": "c",
+        "width": 30,
+        "height": 55
+      },
+      {
+        "id": "d",
+        "width": 45,
+        "height": 65
+      },
+      {
+        "id": "e",
+        "width": 20,
+        "height": 45
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": false
+      },
+      {
+        "from": "a",
+        "to": "d",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "e",
+        "directed": false
+      },
+      {
+        "from": "e",
+        "to": "d",
+        "directed": false
+      }
+    ],
+    "cellSize": 30,
+    "initial": {
+      "a": {
+        "x": 5,
+        "y": 5
+      },
+      "b": {
+        "x": 6,
+        "y": 5
+      },
+      "c": {
+        "x": 4,
+        "y": 5
+      },
+      "d": {
+        "x": 5,
+        "y": 6
+      },
+      "e": {
+        "x": 4,
+        "y": 6
+      }
+    },
+    "positions": {
+      "a": {
+        "x": -90,
+        "y": -60
+      },
+      "b": {
+        "x": 60,
+        "y": -60
+      },
+      "c": {
+        "x": -180,
+        "y": -60
+      },
+      "d": {
+        "x": -90,
+        "y": 60
+      },
+      "e": {
+        "x": -180,
+        "y": 30
+      }
+    }
+  },
+  {
+    "name": "random-21",
+    "seed": 15,
+    "direction": "",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 20
+      },
+      {
+        "id": "b",
+        "width": 25,
+        "height": 30
+      },
+      {
+        "id": "c",
+        "width": 65,
+        "height": 40
+      },
+      {
+        "id": "d",
+        "width": 60,
+        "height": 50
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "d",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "initial": {
+      "a": {
+        "x": 4,
+        "y": 4
+      },
+      "b": {
+        "x": 3,
+        "y": 4
+      },
+      "c": {
+        "x": 3,
+        "y": 5
+      },
+      "d": {
+        "x": 3,
+        "y": 3
+      }
+    },
+    "positions": {
+      "a": {
+        "x": -90,
+        "y": 270
+      },
+      "b": {
+        "x": -180,
+        "y": 270
+      },
+      "c": {
+        "x": -210,
+        "y": 150
+      },
+      "d": {
+        "x": -210,
+        "y": 360
+      }
+    }
+  },
+  {
+    "name": "random-22",
+    "seed": 11,
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 60,
+        "height": 55
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 30
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ],
+    "cellSize": 60,
+    "initial": {
+      "a": {
+        "x": 2,
+        "y": 2
+      },
+      "b": {
+        "x": 2,
+        "y": 1
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 180,
+        "y": -60
+      },
+      "b": {
+        "x": 180,
+        "y": -180
+      }
+    }
+  },
+  {
+    "name": "random-23",
+    "seed": 8,
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 45,
+        "height": 40
+      },
+      {
+        "id": "b",
+        "width": 55,
+        "height": 60
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 65
+      },
+      {
+        "id": "d",
+        "width": 45,
+        "height": 65
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": false
+      },
+      {
+        "from": "b",
+        "to": "d",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "initial": {
+      "a": {
+        "x": 6,
+        "y": 5
+      },
+      "b": {
+        "x": 4,
+        "y": 4
+      },
+      "c": {
+        "x": 2,
+        "y": 5
+      },
+      "d": {
+        "x": 4,
+        "y": 2
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 90,
+        "y": 60
+      },
+      "b": {
+        "x": 210,
+        "y": 60
+      },
+      "c": {
+        "x": 330,
+        "y": 60
+      },
+      "d": {
+        "x": 210,
+        "y": 180
+      }
+    }
+  },
+  {
+    "name": "random-24",
+    "seed": 14,
+    "direction": "",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 20
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 60
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 50
+      },
+      {
+        "id": "d",
+        "width": 25,
+        "height": 35
+      },
+      {
+        "id": "e",
+        "width": 40,
+        "height": 55
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "d",
+        "directed": true
+      },
+      {
+        "from": "c",
+        "to": "e",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "initial": {
+      "a": {
+        "x": 5,
+        "y": 6
+      },
+      "b": {
+        "x": 6,
+        "y": 8
+      },
+      "c": {
+        "x": 5,
+        "y": 4
+      },
+      "d": {
+        "x": 3,
+        "y": 6
+      },
+      "e": {
+        "x": 6,
+        "y": 2
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 180,
+        "y": 180
+      },
+      "b": {
+        "x": 180,
+        "y": 60
+      },
+      "c": {
+        "x": 180,
+        "y": 270
+      },
+      "d": {
+        "x": 270,
+        "y": 180
+      },
+      "e": {
+        "x": 180,
+        "y": 390
+      }
+    }
+  },
+  {
+    "name": "random-25",
+    "seed": 13,
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 30,
+        "height": 30
+      },
+      {
+        "id": "b",
+        "width": 45,
+        "height": 20
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 35
+      },
+      {
+        "id": "d",
+        "width": 25,
+        "height": 25
+      },
+      {
+        "id": "e",
+        "width": 45,
+        "height": 55
+      },
+      {
+        "id": "f",
+        "width": 60,
+        "height": 50
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": true
+      },
+      {
+        "from": "c",
+        "to": "d",
+        "directed": true
+      },
+      {
+        "from": "c",
+        "to": "e",
+        "directed": true
+      },
+      {
+        "from": "e",
+        "to": "f",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "initial": {
+      "a": {
+        "x": 6,
+        "y": 6
+      },
+      "b": {
+        "x": 7,
+        "y": 6
+      },
+      "c": {
+        "x": 8,
+        "y": 6
+      },
+      "d": {
+        "x": 9,
+        "y": 6
+      },
+      "e": {
+        "x": 8,
+        "y": 5
+      },
+      "f": {
+        "x": 9,
+        "y": 5
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 210,
+        "y": -30
+      },
+      "b": {
+        "x": 300,
+        "y": -30
+      },
+      "c": {
+        "x": 420,
+        "y": -30
+      },
+      "d": {
+        "x": 420,
+        "y": -120
+      },
+      "e": {
+        "x": 540,
+        "y": -30
+      },
+      "f": {
+        "x": 660,
+        "y": -30
+      }
+    }
+  },
+  {
+    "name": "random-26",
+    "seed": 14,
+    "direction": "",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 60
+      },
+      {
+        "id": "b",
+        "width": 30,
+        "height": 45
+      },
+      {
+        "id": "c",
+        "width": 25,
+        "height": 45
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": true
+      }
+    ],
+    "cellSize": 60,
+    "initial": {
+      "a": {
+        "x": 3,
+        "y": 3
+      },
+      "b": {
+        "x": 3,
+        "y": 4
+      },
+      "c": {
+        "x": 4,
+        "y": 4
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 480,
+        "y": -60
+      },
+      "b": {
+        "x": 480,
+        "y": 60
+      },
+      "c": {
+        "x": 480,
+        "y": 180
+      }
+    }
+  },
+  {
+    "name": "random-27",
+    "seed": 11,
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 25
+      },
+      {
+        "id": "b",
+        "width": 60,
+        "height": 45
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 35
+      },
+      {
+        "id": "d",
+        "width": 25,
+        "height": 40
+      },
+      {
+        "id": "e",
+        "width": 60,
+        "height": 25
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "d",
+        "directed": true
+      },
+      {
+        "from": "c",
+        "to": "e",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "initial": {
+      "a": {
+        "x": 5,
+        "y": 5
+      },
+      "b": {
+        "x": 6,
+        "y": 5
+      },
+      "c": {
+        "x": 7,
+        "y": 5
+      },
+      "d": {
+        "x": 5,
+        "y": 6
+      },
+      "e": {
+        "x": 8,
+        "y": 5
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 360,
+        "y": 180
+      },
+      "b": {
+        "x": 390,
+        "y": 60
+      },
+      "c": {
+        "x": 510,
+        "y": 60
+      },
+      "d": {
+        "x": 480,
+        "y": 180
+      },
+      "e": {
+        "x": 600,
+        "y": 60
+      }
+    }
+  },
+  {
+    "name": "random-28",
+    "seed": 1,
+    "direction": "TB",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 55,
+        "height": 25
+      },
+      {
+        "id": "b",
+        "width": 35,
+        "height": 45
+      },
+      {
+        "id": "c",
+        "width": 25,
+        "height": 35
+      },
+      {
+        "id": "d",
+        "width": 20,
+        "height": 65
+      },
+      {
+        "id": "e",
+        "width": 60,
+        "height": 50
+      },
+      {
+        "id": "f",
+        "width": 20,
+        "height": 20
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": false
+      },
+      {
+        "from": "b",
+        "to": "d",
+        "directed": true
+      },
+      {
+        "from": "d",
+        "to": "e",
+        "directed": true
+      },
+      {
+        "from": "e",
+        "to": "f",
+        "directed": true
+      },
+      {
+        "from": "d",
+        "to": "c",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "initial": {
+      "a": {
+        "x": 6,
+        "y": 6
+      },
+      "b": {
+        "x": 6,
+        "y": 7
+      },
+      "c": {
+        "x": 6,
+        "y": 8
+      },
+      "d": {
+        "x": 5,
+        "y": 7
+      },
+      "e": {
+        "x": 5,
+        "y": 8
+      },
+      "f": {
+        "x": 5,
+        "y": 9
+      }
+    },
+    "positions": {
+      "a": {
+        "x": -60,
+        "y": 30
+      },
+      "b": {
+        "x": -60,
+        "y": 120
+      },
+      "c": {
+        "x": -150,
+        "y": 210
+      },
+      "d": {
+        "x": -60,
+        "y": 240
+      },
+      "e": {
+        "x": -60,
+        "y": 390
+      },
+      "f": {
+        "x": -30,
+        "y": 510
+      }
+    }
+  },
+  {
+    "name": "random-29",
+    "seed": 3,
+    "direction": "BT",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 20,
+        "height": 25
+      },
+      {
+        "id": "b",
+        "width": 55,
+        "height": 35
+      },
+      {
+        "id": "c",
+        "width": 35,
+        "height": 45
+      },
+      {
+        "id": "d",
+        "width": 35,
+        "height": 45
+      },
+      {
+        "id": "e",
+        "width": 65,
+        "height": 55
+      },
+      {
+        "id": "f",
+        "width": 60,
+        "height": 40
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": false
+      },
+      {
+        "from": "c",
+        "to": "d",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "e",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "f",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "e",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "d",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "initial": {
+      "a": {
+        "x": 6,
+        "y": 6
+      },
+      "b": {
+        "x": 6,
+        "y": 5
+      },
+      "c": {
+        "x": 5,
+        "y": 7
+      },
+      "d": {
+        "x": 5,
+        "y": 6
+      },
+      "e": {
+        "x": 6,
+        "y": 4
+      },
+      "f": {
+        "x": 7,
+        "y": 6
+      }
+    },
+    "positions": {
+      "a": {
+        "x": 0,
+        "y": -240
+      },
+      "b": {
+        "x": -30,
+        "y": -360
+      },
+      "c": {
+        "x": 90,
+        "y": -390
+      },
+      "d": {
+        "x": 90,
+        "y": -270
+      },
+      "e": {
+        "x": 0,
+        "y": -480
+      },
+      "f": {
+        "x": -120,
+        "y": -240
+      }
+    }
+  },
+  {
+    "name": "random-30",
+    "seed": 5,
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 50,
+        "height": 60
+      },
+      {
+        "id": "b",
+        "width": 55,
+        "height": 20
+      },
+      {
+        "id": "c",
+        "width": 35,
+        "height": 55
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": true
+      }
+    ],
+    "cellSize": 30,
+    "initial": {
+      "a": {
+        "x": 3,
+        "y": 3
+      },
+      "b": {
+        "x": 4,
+        "y": 3
+      },
+      "c": {
+        "x": 5,
+        "y": 3
+      }
+    },
+    "positions": {
+      "a": {
+        "x": -570,
+        "y": -900
+      },
+      "b": {
+        "x": -450,
+        "y": -870
+      },
+      "c": {
+        "x": -330,
+        "y": -900
+      }
+    }
+  }
+]

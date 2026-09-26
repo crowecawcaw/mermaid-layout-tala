@@ -47,6 +47,18 @@ package as `ts_placement_fixture_test.go`, set `TALA_TS_PLACEMENT_INPUT` and
 go test ./d2layouts/d2talalayout/internal/placement -run '^TestTSOrdinaryPlacementFixtures$' -count=1
 ```
 
-These fixtures cover 12 connected ordinary graphs and compare final node
-coordinates exactly. They do not cover compound structures, labels, edge
-routing, or bin packing.
+The pairs are `placement-cases.json` / `placement-expected.json` and
+`placement-random-cases.json` / `placement-random-expected.json`. Run
+`node placement-random-cases.mjs` to reproduce the latter inputs. Together
+they cover 42 connected ordinary graphs and compare final node coordinates
+exactly. They do not cover compound structures, labels, edge routing, or bin
+packing.
+
+`join_fixture_test.go` is another oracle in the upstream `internal/grouping`
+package. Copy it there as `ts_join_fixture_test.go`, set `TALA_TS_JOIN_INPUT`
+and `TALA_TS_JOIN_OUTPUT` to absolute paths for `join-cases.json` and
+`join-expected.json`, then run:
+
+```powershell
+go test ./d2layouts/d2talalayout/internal/grouping -run '^TestTSOrdinaryJoinFixtures$' -count=1
+```

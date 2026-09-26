@@ -35,4 +35,25 @@ describe('TALA ordinary-node initialization', () => {
     expect(graph.nodes[2]!.topLeft).toEqual({ x: Math.ceil(300 / (graph.cellSize * 3)), y: 0 });
     expect(graph.nodes.every((node) => node.topLeft)).toBe(true);
   });
+
+  it('does not treat an undirected edge as an incoming arrow', () => {
+    const dimensions = [[65, 55], [25, 30], [60, 25], [25, 25], [55, 20], [30, 40], [65, 50]];
+    const graph = TalaGraph.fromFlowchart(
+      'abcdefg'.split('').map((id, index) => ({ id, width: dimensions[index]![0]!, height: dimensions[index]![1]! })),
+      [
+        { id: 'ab', from: 'a', to: 'b', directed: false },
+        { id: 'bc', from: 'b', to: 'c', directed: false },
+        { id: 'ad', from: 'a', to: 'd', directed: false },
+        { id: 'ae', from: 'a', to: 'e' },
+        { id: 'bf', from: 'b', to: 'f' },
+        { id: 'ag', from: 'a', to: 'g' },
+        { id: 'bd', from: 'b', to: 'd', directed: false },
+      ], 'BT',
+    );
+    initializeNodes(graph);
+    expect(Object.fromEntries(graph.nodes.map((node) => [node.id, node.topLeft]))).toEqual({
+      a: { x: 7, y: 7 }, b: { x: 7, y: 6 }, c: { x: 6, y: 6 },
+      d: { x: 7, y: 5 }, e: { x: 8, y: 7 }, f: { x: 8, y: 6 }, g: { x: 6, y: 7 },
+    });
+  });
 });

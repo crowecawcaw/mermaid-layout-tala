@@ -3,6 +3,7 @@ import { routeGraphEdges } from './route.js';
 import { TalaGraph } from './tala/graph.js';
 import { addHubs } from './tala/proximity.js';
 import { countNonSharedCrossings } from './tala/crossings.js';
+import { placeOrdinaryNodes } from './tala/ordinary-placement.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
@@ -25,6 +26,7 @@ export interface LayoutEdge {
 
 export interface LayoutOptions {
   direction?: LayoutDirection;
+  strategy?: 'tala' | 'layered';
   nodeSpacing?: number;
   rankSpacing?: number;
   orderingPasses?: number;
@@ -89,7 +91,7 @@ export function layoutFlowchart(
       ? layoutCompoundFlowchart(nodes, edges, options, seed)
       : layoutFlatFlowchart(nodes, edges, options, seed);
     attempt.applyResult(candidate);
-    const score = scoreLayout(candidate);
+    const score = scoreLayout(candidate, options.direction ?? 'TB');
     if (!selectedScore || score.penalty < selectedScore.penalty
       || (score.penalty === selectedScore.penalty && score.area <= selectedScore.area)) {
       selected = candidate;
@@ -138,7 +140,12 @@ function layoutFlatFlowchart(
           to: edge.to,
           weight: edge.weight,
         } satisfies RankEdge)));
-    const localNodes = positionComponent(component, weightedDag, ranks, nodeSpacing, rankSpacing, passes, direction, seed);
+    const useOrdinary = options.strategy === 'tala'
+      || options.strategy !== 'layered' && options.nodeSpacing === undefined
+        && options.rankSpacing === undefined && options.orderingPasses === undefined;
+    const localNodes = useOrdinary && component.length > 1 && component.every((node) => !node.isGroup)
+      ? positionOrdinaryComponent(component, componentEdges, ranks, direction, seed)
+      : positionComponent(component, weightedDag, ranks, nodeSpacing, rankSpacing, passes, direction, seed);
     for (const node of localNodes) allPositions.set(node.id, node);
     componentBounds.push(bounds(localNodes));
   }
@@ -151,9 +158,10 @@ function layoutFlatFlowchart(
     const box = componentBounds[i]!;
     const alongX = direction === 'TB' || direction === 'BT';
     const shift = alongX ? componentOffset - box.minX : componentOffset - box.minY;
+    const rankShift = alongX ? -box.minY : -box.minX;
     for (const node of local) {
-      if (alongX) node.x += shift;
-      else node.y += shift;
+      if (alongX) { node.x += shift; node.y += rankShift; }
+      else { node.y += shift; node.x += rankShift; }
     }
     componentOffset += (alongX ? box.width : box.height) + rankSpacing;
   }
@@ -161,6 +169,33 @@ function layoutFlatFlowchart(
   const positionedNodes = nodes.map((node) => allPositions.get(node.id)!);
   const positionedEdges = routeGraphEdges(positionedNodes, edges, direction);
   return { nodes: positionedNodes, edges: positionedEdges };
+}
+
+function positionOrdinaryComponent(nodes: readonly LayoutNode[], edges: readonly LayoutEdge[],
+  ranks: ReadonlyMap<string, number>, direction: LayoutDirection, seed: number): PositionedNode[] {
+  const graph = TalaGraph.fromFlowchart(nodes.map((node) => ({ ...node, parentId: undefined })), edges, direction);
+  placeOrdinaryNodes(graph, seed);
+  const crossAxis = direction === 'TB' || direction === 'BT' ? 'x' : 'y';
+  const orderById = new Map<string, number>();
+  const byRank = new Map<number, typeof graph.nodes>();
+  for (const node of graph.nodes) {
+    const rank = ranks.get(node.id) ?? 0;
+    const row = byRank.get(rank) ?? [];
+    row.push(node);
+    byRank.set(rank, row);
+  }
+  for (const row of byRank.values()) {
+    row.sort((a, b) => a.topLeft![crossAxis] - b.topLeft![crossAxis] || compareText(a.id, b.id));
+    row.forEach((node, index) => orderById.set(node.id, index));
+  }
+  const inputById = new Map(nodes.map((node) => [node.id, node]));
+  return graph.nodes.map((node) => ({
+    ...inputById.get(node.id)!,
+    x: node.topLeft!.x + node.width / 2,
+    y: node.topLeft!.y + node.height / 2,
+    rank: ranks.get(node.id) ?? 0,
+    order: orderById.get(node.id)!,
+  }));
 }
 
 /** Place each container from the inside out, then lay out its siblings as nodes.
@@ -436,9 +471,18 @@ function seededOrder(id: string, seed: number): number {
   return hash;
 }
 
-function scoreLayout(result: LayoutResult): { penalty: number; area: number } {
+function scoreLayout(result: LayoutResult, direction: LayoutDirection): { penalty: number; area: number } {
   let penalty = 0;
+  const positions = new Map(result.nodes.map((node) => [node.id, node]));
   for (const edge of result.edges) {
+    if (edge.directed !== false) {
+      const from = positions.get(edge.from), to = positions.get(edge.to);
+      if (from && to) {
+        const progress = direction === 'TB' ? to.y - from.y : direction === 'BT' ? from.y - to.y
+          : direction === 'LR' ? to.x - from.x : from.x - to.x;
+        if (progress <= 0) penalty += 1000 - progress;
+      }
+    }
     penalty += Math.max(0, edge.points.length - 2) * 0.5;
     for (let i = 1; i < edge.points.length; i++) {
       const previous = edge.points[i - 1]!, current = edge.points[i]!;

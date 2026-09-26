@@ -39,7 +39,8 @@ export function initializeNodes(graph: TalaGraph): void {
     const maxX = x + distance + 2;
     const minY = fixed.length ? Math.max(y - distance - 2, 0) : y - distance - 2;
     const maxY = y + distance + 2;
-    const target = node.edges.reduce((balance, edge) => balance + (edge.to === node ? 1 : -1), 0) > 0;
+    const target = node.edges.reduce((balance, edge) => edge.directed
+      ? balance + (edge.to === node ? 1 : -1) : balance, 0) > 0;
     let bestCost = Infinity;
     let best: { x: number; y: number } | undefined;
     for (let px = target ? maxX : minX; target ? px >= minX : px <= maxX; px += target ? -1 : 1) {

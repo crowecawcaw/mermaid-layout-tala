@@ -51,8 +51,9 @@ describe('Mermaid adapter', () => {
 
     expect(transforms.get('A')).toMatch(/^translate\(/);
     expect(transforms.get('B')).toMatch(/^translate\(/);
-    expect(routedEdges[0]?.points).toHaveLength(3);
-    expect(new Set(routedEdges[0]?.points?.map(({ x, y }) => `${x},${y}`)).size).toBe(3);
+    const points = routedEdges[0]?.points ?? [];
+    expect(points.length).toBeGreaterThanOrEqual(2);
+    expect(new Set(points.map(({ x, y }) => `${x},${y}`)).size).toBe(points.length);
     expect(helpers.positionEdgeLabel).toHaveBeenCalledOnce();
   });
 });

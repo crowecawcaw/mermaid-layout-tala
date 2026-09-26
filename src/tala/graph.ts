@@ -1,6 +1,6 @@
 import type { LayoutDirection, LayoutEdge, LayoutNode, LayoutResult, Point } from '../layout.js';
 import { distanceBetweenBoxes } from './placement-geometry.js';
-import { ConnectedNodeGap } from './geometry-policy.js';
+import { ConnectedNodeGap, CrossingCostWeight } from './geometry-policy.js';
 
 /** Mutable TALA graph records. References are private to one layout attempt. */
 export class TalaNode {
@@ -74,6 +74,7 @@ export class TalaGraph {
   readonly hubs = new Map<TalaNode, TalaNode[]>();
   cellSize = 10;
   private turnCostCache = 0;
+  private crossingCostCache = 0;
 
   /** Port of layoutgraph.Graph.TurnCost's lazy cost cache. */
   turnCost(): number {
@@ -95,6 +96,24 @@ export class TalaGraph {
 
   halveTurnCost(): void { this.turnCostCache /= 2; }
   resetTurnCost(): void { this.turnCostCache = 0; }
+
+  /** Port of layoutgraph.Graph.CrossingCost's lazy geometry cache. */
+  crossingCost(): number {
+    if (this.crossingCostCache !== 0) return this.crossingCostCache;
+    let longest = 0;
+    let hasPositionedEdge = false;
+    for (const edge of this.edges) {
+      if (!edge.from.topLeft || !edge.to.topLeft) continue;
+      hasPositionedEdge = true;
+      longest = Math.max(longest, distanceBetweenBoxes(
+        { topLeft: edge.from.topLeft, width: edge.from.width, height: edge.from.height },
+        { topLeft: edge.to.topLeft, width: edge.to.width, height: edge.to.height },
+      ));
+    }
+    this.crossingCostCache = hasPositionedEdge
+      ? CrossingCostWeight * this.edges.length * Math.max(ConnectedNodeGap, longest) : 0;
+    return this.crossingCostCache;
+  }
 
   static fromFlowchart(nodes: readonly LayoutNode[], edges: readonly LayoutEdge[], direction?: LayoutDirection): TalaGraph {
     const graph = new TalaGraph();
@@ -165,6 +184,7 @@ export class TalaGraph {
     const copy = TalaGraph.fromFlowchart(this.toLayoutNodes(), this.toLayoutEdges(), this.directions.get(null));
     copy.cellSize = this.cellSize;
     copy.turnCostCache = this.turnCostCache;
+    copy.crossingCostCache = this.crossingCostCache;
     const oldById = new Map(this.nodes.map((node) => [node.id, node]));
     for (const node of copy.nodes) {
       const previous = oldById.get(node.id)!;

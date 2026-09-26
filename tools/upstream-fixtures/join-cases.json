@@ -1,0 +1,342 @@
+[
+  {
+    "name": "random-10-after-compaction-90",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 20,
+        "height": 55,
+        "x": 0,
+        "y": -120
+      },
+      {
+        "id": "b",
+        "width": 60,
+        "height": 50,
+        "x": -30,
+        "y": -240
+      },
+      {
+        "id": "c",
+        "width": 60,
+        "height": 65,
+        "x": -150,
+        "y": -120
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "c",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "random-27-after-compaction-108",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 25,
+        "x": 270,
+        "y": 270
+      },
+      {
+        "id": "b",
+        "width": 60,
+        "height": 45,
+        "x": 300,
+        "y": 150
+      },
+      {
+        "id": "c",
+        "width": 20,
+        "height": 35,
+        "x": 450,
+        "y": 150
+      },
+      {
+        "id": "d",
+        "width": 25,
+        "height": 40,
+        "x": 270,
+        "y": 360
+      },
+      {
+        "id": "e",
+        "width": 60,
+        "height": 25,
+        "x": 540,
+        "y": 150
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "d",
+        "directed": true
+      },
+      {
+        "from": "c",
+        "to": "e",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "random-03-after-compaction-144",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 65,
+        "height": 55,
+        "x": 420,
+        "y": 120
+      },
+      {
+        "id": "b",
+        "width": 25,
+        "height": 30,
+        "x": 330,
+        "y": 90
+      },
+      {
+        "id": "c",
+        "width": 60,
+        "height": 25,
+        "x": 270,
+        "y": 0
+      },
+      {
+        "id": "d",
+        "width": 25,
+        "height": 25,
+        "x": 330,
+        "y": 180
+      },
+      {
+        "id": "e",
+        "width": 55,
+        "height": 20,
+        "x": 420,
+        "y": 30
+      },
+      {
+        "id": "f",
+        "width": 30,
+        "height": 40,
+        "x": 210,
+        "y": 90
+      },
+      {
+        "id": "g",
+        "width": 65,
+        "height": 50,
+        "x": 180,
+        "y": 150
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": false
+      },
+      {
+        "from": "a",
+        "to": "d",
+        "directed": false
+      },
+      {
+        "from": "a",
+        "to": "e",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "f",
+        "directed": true
+      },
+      {
+        "from": "a",
+        "to": "g",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "d",
+        "directed": false
+      }
+    ]
+  },
+  {
+    "name": "far-directed-pair",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 30,
+        "x": 400,
+        "y": 0
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "far-fixed-pair",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 0,
+        "fixedTopLeft": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 30,
+        "x": 400,
+        "y": 0
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "three-spaced-chain",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 50,
+        "height": 40,
+        "x": 400,
+        "y": 0
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 30,
+        "x": 800,
+        "y": 0
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": true
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "nearby-cycle",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "b",
+        "width": 40,
+        "height": 30,
+        "x": 100,
+        "y": 0
+      },
+      {
+        "id": "c",
+        "width": 40,
+        "height": 30,
+        "x": 100,
+        "y": 100
+      },
+      {
+        "id": "d",
+        "width": 40,
+        "height": 30,
+        "x": 0,
+        "y": 100
+      }
+    ],
+    "edges": [
+      {
+        "from": "a",
+        "to": "b",
+        "directed": false
+      },
+      {
+        "from": "b",
+        "to": "c",
+        "directed": false
+      },
+      {
+        "from": "c",
+        "to": "d",
+        "directed": false
+      },
+      {
+        "from": "d",
+        "to": "a",
+        "directed": false
+      }
+    ]
+  }
+]

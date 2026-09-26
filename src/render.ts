@@ -61,6 +61,7 @@ export async function render(
   const direction = normalizeDirection(data.direction);
   const flowchartConfig = data.config.flowchart;
   const talaSeeds = (flowchartConfig as (typeof flowchartConfig & { talaSeeds?: number[] }) | undefined)?.talaSeeds;
+  const talaPlacement = (flowchartConfig as (typeof flowchartConfig & { talaPlacement?: 'tala' | 'layered' }) | undefined)?.talaPlacement;
   const result = layoutFlowchart(
     data.nodes.map((node) => {
       const measured = nodesById[node.id]!;
@@ -78,6 +79,7 @@ export async function render(
       ...(edgeLabelBounds.has(edge.id) ? { labelBBox: edgeLabelBounds.get(edge.id)! } : {}) })),
     {
       direction,
+      strategy: talaPlacement ?? 'tala',
       ...(flowchartConfig?.nodeSpacing !== undefined ? { nodeSpacing: flowchartConfig.nodeSpacing } : {}),
       ...(flowchartConfig?.rankSpacing !== undefined ? { rankSpacing: flowchartConfig.rankSpacing } : {}),
       ...(talaSeeds !== undefined ? { seeds: talaSeeds } : {}),

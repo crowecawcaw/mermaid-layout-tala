@@ -2,6 +2,7 @@ import type { Point } from '../layout.js';
 import { GoRandom } from './go-rng.js';
 import { TalaGraph, TalaNode } from './graph.js';
 import { doesOverlapAt } from './overlap.js';
+import { countGraphEdgeCrossings } from './crossings.js';
 import { distanceBetweenBoxes, sizedOrientation } from './placement-geometry.js';
 import { closestSizedUnoccupiedDistance, sizedPlacementPoints } from './sized-candidates.js';
 import { sizedNodeEdgeLength } from './sized-cost.js';
@@ -239,7 +240,8 @@ export class SizedOptimizer {
   }
 
   private graphScore(): number {
-    return this.graph.nodes.reduce((sum, node) => sum + this.score(node), 0);
+    return this.graph.nodes.reduce((sum, node) => sum + this.score(node), 0)
+      + this.graph.crossingCost() * countGraphEdgeCrossings(this.graph);
   }
 
   private fixedOrigin(): Point | undefined {
