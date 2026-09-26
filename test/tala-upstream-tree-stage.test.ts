@@ -15,7 +15,7 @@ interface Result {
 }
 const cases = JSON.parse(readFileSync(new URL('../tools/upstream-fixtures/full-tree-random-cases.json', import.meta.url), 'utf8')) as Case[];
 const expected = JSON.parse(readFileSync(new URL('../tools/upstream-fixtures/full-tree-random-stage-expected.json', import.meta.url), 'utf8')) as Result[];
-const exact = new Set([0, 1, 4, 5, 7, 8, 9, 10, 11, 15, 16, 20, 23]);
+const exact = new Set([0, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 16, 17, 19, 20, 23]);
 
 describe('upstream tree placement stage', () => {
   for (const index of exact) {

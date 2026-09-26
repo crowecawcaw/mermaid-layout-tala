@@ -1,0 +1,1012 @@
+[
+  {
+    "name": "tree-random-0",
+    "remaining": [
+      "A"
+    ],
+    "trees": [
+      {
+        "sentinel": "A",
+        "roots": [
+          {
+            "id": "B",
+            "children": []
+          },
+          {
+            "id": "D",
+            "children": [
+              {
+                "id": "H",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "E",
+            "children": [
+              {
+                "id": "G",
+                "children": []
+              },
+              {
+                "id": "I",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "C",
+            "children": [
+              {
+                "id": "F",
+                "children": [
+                  {
+                    "id": "J",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-1",
+    "remaining": [
+      "A"
+    ],
+    "trees": [
+      {
+        "sentinel": "A",
+        "roots": [
+          {
+            "id": "B",
+            "children": []
+          },
+          {
+            "id": "C",
+            "children": [
+              {
+                "id": "F",
+                "children": [
+                  {
+                    "id": "G",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "D",
+            "children": [
+              {
+                "id": "E",
+                "children": []
+              },
+              {
+                "id": "H",
+                "children": [
+                  {
+                    "id": "I",
+                    "children": [
+                      {
+                        "id": "J",
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-2",
+    "remaining": [
+      "A"
+    ],
+    "trees": [
+      {
+        "sentinel": "A",
+        "roots": [
+          {
+            "id": "F",
+            "children": []
+          },
+          {
+            "id": "G",
+            "children": []
+          },
+          {
+            "id": "B",
+            "children": [
+              {
+                "id": "D",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "C",
+            "children": [
+              {
+                "id": "E",
+                "children": []
+              },
+              {
+                "id": "H",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-3",
+    "remaining": [
+      "D"
+    ],
+    "trees": [
+      {
+        "sentinel": "D",
+        "roots": [
+          {
+            "id": "A",
+            "children": [
+              {
+                "id": "B",
+                "children": []
+              },
+              {
+                "id": "C",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "E",
+            "children": [
+              {
+                "id": "F",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-4",
+    "remaining": [
+      "A"
+    ],
+    "trees": [
+      {
+        "sentinel": "A",
+        "roots": [
+          {
+            "id": "F",
+            "children": []
+          },
+          {
+            "id": "B",
+            "children": [
+              {
+                "id": "H",
+                "children": []
+              },
+              {
+                "id": "D",
+                "children": [
+                  {
+                    "id": "J",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "C",
+            "children": [
+              {
+                "id": "E",
+                "children": [
+                  {
+                    "id": "G",
+                    "children": [
+                      {
+                        "id": "I",
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-5",
+    "remaining": [
+      "A"
+    ],
+    "trees": [
+      {
+        "sentinel": "A",
+        "roots": [
+          {
+            "id": "C",
+            "children": []
+          },
+          {
+            "id": "B",
+            "children": [
+              {
+                "id": "D",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-6",
+    "remaining": [
+      "C"
+    ],
+    "trees": [
+      {
+        "sentinel": "C",
+        "roots": [
+          {
+            "id": "G",
+            "children": []
+          },
+          {
+            "id": "A",
+            "children": [
+              {
+                "id": "B",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "D",
+            "children": [
+              {
+                "id": "H",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "E",
+            "children": [
+              {
+                "id": "F",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-7",
+    "remaining": [
+      "A"
+    ],
+    "trees": [
+      {
+        "sentinel": "A",
+        "roots": [
+          {
+            "id": "B",
+            "children": [
+              {
+                "id": "G",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "D",
+            "children": [
+              {
+                "id": "E",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "C",
+            "children": [
+              {
+                "id": "F",
+                "children": [
+                  {
+                    "id": "H",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-8",
+    "remaining": [
+      "A"
+    ],
+    "trees": [
+      {
+        "sentinel": "A",
+        "roots": [
+          {
+            "id": "D",
+            "children": []
+          },
+          {
+            "id": "G",
+            "children": []
+          },
+          {
+            "id": "B",
+            "children": [
+              {
+                "id": "F",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "C",
+            "children": [
+              {
+                "id": "E",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-9",
+    "remaining": [
+      "A"
+    ],
+    "trees": [
+      {
+        "sentinel": "A",
+        "roots": [
+          {
+            "id": "B",
+            "children": []
+          },
+          {
+            "id": "C",
+            "children": [
+              {
+                "id": "D",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "E",
+            "children": [
+              {
+                "id": "F",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-10",
+    "remaining": [
+      "A"
+    ],
+    "trees": [
+      {
+        "sentinel": "A",
+        "roots": [
+          {
+            "id": "C",
+            "children": []
+          },
+          {
+            "id": "J",
+            "children": []
+          },
+          {
+            "id": "D",
+            "children": [
+              {
+                "id": "E",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "F",
+            "children": [
+              {
+                "id": "G",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "children": [
+              {
+                "id": "H",
+                "children": [
+                  {
+                    "id": "I",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-11",
+    "remaining": [
+      "A"
+    ],
+    "trees": [
+      {
+        "sentinel": "A",
+        "roots": [
+          {
+            "id": "B",
+            "children": [
+              {
+                "id": "D",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "C",
+            "children": [
+              {
+                "id": "E",
+                "children": []
+              },
+              {
+                "id": "F",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "G",
+            "children": [
+              {
+                "id": "H",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-12",
+    "remaining": [
+      "B"
+    ],
+    "trees": [
+      {
+        "sentinel": "B",
+        "roots": [
+          {
+            "id": "I",
+            "children": []
+          },
+          {
+            "id": "A",
+            "children": [
+              {
+                "id": "C",
+                "children": []
+              },
+              {
+                "id": "D",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "E",
+            "children": [
+              {
+                "id": "H",
+                "children": []
+              },
+              {
+                "id": "F",
+                "children": [
+                  {
+                    "id": "G",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-13",
+    "remaining": [
+      "B"
+    ],
+    "trees": [
+      {
+        "sentinel": "B",
+        "roots": [
+          {
+            "id": "E",
+            "children": []
+          },
+          {
+            "id": "A",
+            "children": [
+              {
+                "id": "C",
+                "children": [
+                  {
+                    "id": "F",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "D",
+            "children": [
+              {
+                "id": "G",
+                "children": [
+                  {
+                    "id": "H",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-14",
+    "remaining": [
+      "A"
+    ],
+    "trees": [
+      {
+        "sentinel": "A",
+        "roots": [
+          {
+            "id": "F",
+            "children": []
+          },
+          {
+            "id": "B",
+            "children": [
+              {
+                "id": "H",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "C",
+            "children": [
+              {
+                "id": "D",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "E",
+            "children": [
+              {
+                "id": "G",
+                "children": []
+              },
+              {
+                "id": "I",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-15",
+    "remaining": [
+      "A"
+    ],
+    "trees": [
+      {
+        "sentinel": "A",
+        "roots": [
+          {
+            "id": "B",
+            "children": []
+          },
+          {
+            "id": "D",
+            "children": []
+          },
+          {
+            "id": "C",
+            "children": [
+              {
+                "id": "E",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-16",
+    "remaining": [
+      "A"
+    ],
+    "trees": [
+      {
+        "sentinel": "A",
+        "roots": [
+          {
+            "id": "D",
+            "children": [
+              {
+                "id": "J",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "children": [
+              {
+                "id": "F",
+                "children": [
+                  {
+                    "id": "H",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "C",
+            "children": [
+              {
+                "id": "E",
+                "children": []
+              },
+              {
+                "id": "G",
+                "children": [
+                  {
+                    "id": "I",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-17",
+    "remaining": [
+      "B"
+    ],
+    "trees": [
+      {
+        "sentinel": "B",
+        "roots": [
+          {
+            "id": "A",
+            "children": [
+              {
+                "id": "C",
+                "children": [
+                  {
+                    "id": "D",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "E",
+            "children": [
+              {
+                "id": "F",
+                "children": [
+                  {
+                    "id": "G",
+                    "children": []
+                  },
+                  {
+                    "id": "H",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-18",
+    "remaining": [
+      "A"
+    ],
+    "trees": [
+      {
+        "sentinel": "A",
+        "roots": [
+          {
+            "id": "B",
+            "children": [
+              {
+                "id": "F",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "C",
+            "children": [
+              {
+                "id": "D",
+                "children": []
+              },
+              {
+                "id": "I",
+                "children": []
+              },
+              {
+                "id": "E",
+                "children": [
+                  {
+                    "id": "J",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "id": "G",
+                "children": [
+                  {
+                    "id": "H",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-19",
+    "remaining": [
+      "C"
+    ],
+    "trees": [
+      {
+        "sentinel": "C",
+        "roots": [
+          {
+            "id": "A",
+            "children": [
+              {
+                "id": "B",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "D",
+            "children": [
+              {
+                "id": "E",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "F",
+            "children": [
+              {
+                "id": "G",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-20",
+    "remaining": [
+      "A"
+    ],
+    "trees": [
+      {
+        "sentinel": "A",
+        "roots": [
+          {
+            "id": "B",
+            "children": []
+          },
+          {
+            "id": "C",
+            "children": [
+              {
+                "id": "D",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-21",
+    "remaining": [
+      "A"
+    ],
+    "trees": [
+      {
+        "sentinel": "A",
+        "roots": [
+          {
+            "id": "B",
+            "children": [
+              {
+                "id": "D",
+                "children": []
+              },
+              {
+                "id": "F",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "C",
+            "children": [
+              {
+                "id": "E",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-22",
+    "remaining": [
+      "A"
+    ],
+    "trees": [
+      {
+        "sentinel": "A",
+        "roots": [
+          {
+            "id": "B",
+            "children": []
+          },
+          {
+            "id": "C",
+            "children": [
+              {
+                "id": "D",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tree-random-23",
+    "remaining": [
+      "A"
+    ],
+    "trees": [
+      {
+        "sentinel": "A",
+        "roots": [
+          {
+            "id": "F",
+            "children": []
+          },
+          {
+            "id": "B",
+            "children": [
+              {
+                "id": "D",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "C",
+            "children": [
+              {
+                "id": "E",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

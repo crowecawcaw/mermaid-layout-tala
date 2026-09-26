@@ -1,4 +1,5 @@
 import type { LayoutDirection, LayoutEdge, LayoutNode, PositionedNode } from '../layout.js';
+import { extractFlatTrees, type ExtractedTree } from './tree-extraction.js';
 
 // The ordinary arborescence branch of upstream trees: a branching root owns
 // its descendants, siblings have a 50-unit gap, and levels have a 100-unit gap.
@@ -8,8 +9,8 @@ const parentSpacing = 100;
 const goRound = (value: number) => value < 0 ? -Math.round(-value) : Math.round(value);
 
 export function placeSimpleTree(nodes: readonly LayoutNode[], edges: readonly LayoutEdge[],
-  direction: LayoutDirection, ranks: ReadonlyMap<string, number>): PositionedNode[] | undefined {
-  if (nodes.length < 3 || edges.length !== nodes.length - 1 || nodes.some((node) => node.isGroup)) return;
+  direction: LayoutDirection, ranks: ReadonlyMap<string, number>, allowChain = false): PositionedNode[] | undefined {
+  if (nodes.length < (allowChain ? 2 : 3) || edges.length !== nodes.length - 1 || nodes.some((node) => node.isGroup)) return;
   const byId = new Map(nodes.map((node) => [node.id, node]));
   const incoming = new Map(nodes.map((node) => [node.id, 0]));
   let children = new Map(nodes.map((node) => [node.id, [] as string[]]));
@@ -20,8 +21,17 @@ export function placeSimpleTree(nodes: readonly LayoutNode[], edges: readonly La
   }
   const roots = nodes.filter((node) => incoming.get(node.id) === 0);
   if (roots.length !== 1 || nodes.some((node) => incoming.get(node.id)! > 1)) return;
-  if (![...children.values()].some((list) => list.length > 1)) return;
+  if (!allowChain && ![...children.values()].some((list) => list.length > 1)) return;
   const root = roots[0]!;
+  if (!allowChain) {
+    const extracted = extractFlatTrees(nodes, edges);
+    if (extracted.remaining.length === 1 && extracted.remaining[0] !== root.id
+      && extracted.trees.length === 1) {
+      const split = placeSplitTree(nodes, edges, direction, ranks, extracted.remaining[0]!,
+        extracted.trees[0]!.roots);
+      if (split) return split;
+    }
+  }
   // Upstream extracts leaves in rounds and appends each fringe node when it
   // attaches to its sentinel. This orders a deep branch after a shallow leaf.
   const ordered = new Map(nodes.map((node) => [node.id, [] as string[]]));
@@ -185,4 +195,56 @@ export function placeSimpleTree(nodes: readonly LayoutNode[], edges: readonly La
     rank: ranks.get(node.id) ?? levels.get(node.id)!,
     order: crossOrder.get(node.id)!,
   }));
+}
+
+function placeSplitTree(nodes: readonly LayoutNode[], edges: readonly LayoutEdge[],
+  direction: LayoutDirection, ranks: ReadonlyMap<string, number>, sentinel: string,
+  roots: readonly ExtractedTree[]): PositionedNode[] | undefined {
+  const opposite: Record<LayoutDirection, LayoutDirection> = { TB: 'BT', BT: 'TB', LR: 'RL', RL: 'LR' };
+  const byId = new Map(nodes.map((node) => [node.id, node]));
+  const groups = new Map<'out' | 'in', ExtractedTree[]>([['out', []], ['in', []]]);
+  for (const root of roots) {
+    const edge = edges.find((edge) => edge.from === sentinel && edge.to === root.id
+      || edge.to === sentinel && edge.from === root.id);
+    if (!edge || edge.directed === false) return;
+    groups.get(edge.from === sentinel ? 'out' : 'in')!.push(root);
+  }
+  if (!groups.get('out')!.length || !groups.get('in')!.length) return;
+  const placed = new Map<string, PositionedNode>();
+  for (const [side, sideRoots] of groups) {
+    const ids = new Set<string>([sentinel]);
+    const orientedEdges: LayoutEdge[] = [];
+    const collect = (tree: ExtractedTree, parent: string): void => {
+      ids.add(tree.id);
+      orientedEdges.push({ id: `${parent}:${tree.id}`, from: parent, to: tree.id, directed: true });
+      for (const child of tree.children) collect(child, tree.id);
+    };
+    for (const tree of sideRoots) collect(tree, sentinel);
+    const local = placeSimpleTree(nodes.filter((node) => ids.has(node.id)), orientedEdges,
+      side === 'out' ? direction : opposite[direction], ranks, true);
+    if (!local) return;
+    const localRoot = local.find((node) => node.id === sentinel)!;
+    const root = byId.get(sentinel)!;
+    for (const node of local) {
+      const x = node.x - localRoot.x + root.width / 2;
+      let y = node.y - localRoot.y + root.height / 2;
+      // Upstream constructs the rightward incoming branch from its leftward
+      // canonical tree, reflecting sibling order across the root's center.
+      if (side === 'in' && direction === 'RL') y = root.height - y;
+      placed.set(node.id, { ...node, x, y });
+    }
+  }
+  if (placed.size !== nodes.length) return;
+  const horizontal = direction === 'LR' || direction === 'RL';
+  const rows = new Map<number, PositionedNode[]>();
+  for (const node of placed.values()) {
+    const row = rows.get(node.rank) ?? [];
+    row.push(node);
+    rows.set(node.rank, row);
+  }
+  for (const row of rows.values()) {
+    row.sort((a, b) => horizontal ? a.y - b.y : a.x - b.x);
+    row.forEach((node, index) => { node.order = index; });
+  }
+  return nodes.map((node) => placed.get(node.id)!);
 }
