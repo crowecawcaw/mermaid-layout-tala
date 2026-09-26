@@ -1,4 +1,6 @@
 import type { LayoutDirection, LayoutEdge, Point, PositionedEdge, PositionedNode } from './layout.js';
+import { centerPort, shapePortPolicy, shapePorts, tableColumnPortIndex,
+  type PortSide } from './tala/shape-ports.js';
 
 type Side = 'N' | 'S' | 'E' | 'W';
 type Axis = 0 | 1 | 2;
@@ -36,7 +38,7 @@ export function routeGraphEdges(
     const treePoints = canonicalTreePaths.get(edge.id);
     const points = treePoints ?? (source.id === target.id
       ? selfLoop(source, offset)
-      : routeBetween(source, target, nodes, byId, direction, offset));
+      : routeBetween(edge, source, target, nodes, byId, direction, offset));
     const compact = treePoints ? points : normalize(points);
     const middle = chooseLabelPoint(compact, edge, nodes);
     return { ...edge, points: compact, x: middle.x, y: middle.y };
@@ -44,6 +46,7 @@ export function routeGraphEdges(
 }
 
 function routeBetween(
+  edge: LayoutEdge,
   source: PositionedNode,
   target: PositionedNode,
   nodes: readonly PositionedNode[],
@@ -66,11 +69,16 @@ function routeBetween(
   // A route may touch an endpoint boundary only at its chosen port. Keep both
   // endpoint interiors unavailable to the visibility search.
   obstacles.push(rect(source, CLEARANCE), rect(target, CLEARANCE));
-  const pairs = portPairs(source, target, direction);
+  const tableSides = edge.fromTableColumnIndex !== undefined || edge.toTableColumnIndex !== undefined
+    ? facingTableSides(source, target) : undefined;
+  const pairs: Array<[Side, Side, number]> = tableSides
+    ? [[tableSides[0], tableSides[1], 0]] : portPairs(source, target, direction);
   let best: { points: Point[]; cost: number } | undefined;
   for (const [startSide, endSide, preference] of pairs) {
-    const start = port(source, startSide, offset);
-    const end = port(target, endSide, offset);
+    const start = port(source, startSide, offset,
+      tableSides ? edge.fromTableColumnIndex : undefined);
+    const end = port(target, endSide, offset,
+      tableSides ? edge.toTableColumnIndex : undefined);
     if (insideAny(start.outer, obstacles) || insideAny(end.outer, obstacles)) continue;
     const path = searchGrid(start.outer, end.outer, obstacles);
     if (!path) continue;
@@ -78,7 +86,13 @@ function routeBetween(
     const cost = routeCost(points) + preference;
     if (!best || cost < best.cost) best = { points, cost };
   }
-  return best?.points ?? fallback(source, target, direction, offset);
+  return best?.points ?? fallback(source, target, direction, offset, edge, tableSides);
+}
+
+function facingTableSides(source: PositionedNode, target: PositionedNode): [Side, Side] | undefined {
+  if (source.x + source.width / 2 < target.x - target.width / 2) return ['E', 'W'];
+  if (target.x + target.width / 2 < source.x - source.width / 2) return ['W', 'E'];
+  return undefined;
 }
 
 function portPairs(source: PositionedNode, target: PositionedNode, direction: LayoutDirection): Array<[Side, Side, number]> {
@@ -105,17 +119,34 @@ function portPairs(source: PositionedNode, target: PositionedNode, direction: La
   });
 }
 
-function port(node: PositionedNode, side: Side, offset: number): Port {
+function port(node: PositionedNode, side: Side, offset: number, columnIndex?: number): Port {
   const xOffset = clamp(offset, -node.width / 2 + 2, node.width / 2 - 2);
   const yOffset = clamp(offset, -node.height / 2 + 2, node.height / 2 - 2);
-  const point = side === 'N' ? { x: node.x + xOffset, y: node.y - node.height / 2 }
+  const portSide: PortSide = side === 'N' ? 'top' : side === 'S' ? 'bottom'
+    : side === 'E' ? 'right' : 'left';
+  let columnPoint: Point | undefined;
+  if (columnIndex !== undefined && (portSide === 'left' || portSide === 'right')) {
+    const policy = shapePortPolicy(node.shape, node.numColumns);
+    const index = node.shape?.toLowerCase() === 'table'
+      ? tableColumnPortIndex(node.numColumns ?? 0, portSide, columnIndex)
+      : policy.indices[portSide][columnIndex];
+    if (index !== undefined) columnPoint = shapePorts(node.shape,
+      { x: node.x - node.width / 2, y: node.y - node.height / 2 },
+      node.width, node.height, node.numColumns)[index];
+  }
+  const shapeCenter = offset === 0 ? centerPort(node.shape, portSide,
+    { x: node.x - node.width / 2, y: node.y - node.height / 2 },
+    node.width, node.height, node.numColumns) : undefined;
+  const point = columnPoint ?? shapeCenter ?? (side === 'N' ? { x: node.x + xOffset, y: node.y - node.height / 2 }
     : side === 'S' ? { x: node.x + xOffset, y: node.y + node.height / 2 }
     : side === 'E' ? { x: node.x + node.width / 2, y: node.y + yOffset }
-    : { x: node.x - node.width / 2, y: node.y + yOffset };
-  const outer = side === 'N' ? { x: point.x, y: point.y - CLEARANCE }
-    : side === 'S' ? { x: point.x, y: point.y + CLEARANCE }
-    : side === 'E' ? { x: point.x + CLEARANCE, y: point.y }
-    : { x: point.x - CLEARANCE, y: point.y };
+    : { x: node.x - node.width / 2, y: node.y + yOffset });
+  // The center of a nonrectangular shape can be recessed inside its box.
+  // Start the visibility search beyond the entire endpoint box.
+  const outer = side === 'N' ? { x: point.x, y: node.y - node.height / 2 - CLEARANCE }
+    : side === 'S' ? { x: point.x, y: node.y + node.height / 2 + CLEARANCE }
+    : side === 'E' ? { x: node.x + node.width / 2 + CLEARANCE, y: point.y }
+    : { x: node.x - node.width / 2 - CLEARANCE, y: point.y };
   return { point, outer, side };
 }
 
@@ -209,11 +240,19 @@ function routeCost(points: readonly Point[]): number {
   return cost;
 }
 
-function fallback(source: PositionedNode, target: PositionedNode, direction: LayoutDirection, offset: number): Point[] {
+function fallback(source: PositionedNode, target: PositionedNode, direction: LayoutDirection,
+  offset: number, edge: LayoutEdge, tableSides?: [Side, Side]): Point[] {
   const vertical = direction === 'TB' || direction === 'BT';
-  const start = port(source, vertical ? (target.y >= source.y ? 'S' : 'N') : (target.x >= source.x ? 'E' : 'W'), offset);
-  const end = port(target, vertical ? (target.y >= source.y ? 'N' : 'S') : (target.x >= source.x ? 'W' : 'E'), offset);
-  return vertical
+  const startSide = tableSides?.[0] ?? (vertical ? (target.y >= source.y ? 'S' : 'N')
+    : (target.x >= source.x ? 'E' : 'W'));
+  const endSide = tableSides?.[1] ?? (vertical ? (target.y >= source.y ? 'N' : 'S')
+    : (target.x >= source.x ? 'W' : 'E'));
+  const start = port(source, startSide, offset, tableSides ? edge.fromTableColumnIndex : undefined);
+  const end = port(target, endSide, offset, tableSides ? edge.toTableColumnIndex : undefined);
+  return tableSides ? [start.point, start.outer,
+    { x: (start.outer.x + end.outer.x) / 2, y: start.outer.y },
+    { x: (start.outer.x + end.outer.x) / 2, y: end.outer.y }, end.outer, end.point]
+    : vertical
     ? [start.point, start.outer, { x: start.outer.x, y: (start.outer.y + end.outer.y) / 2 }, { x: end.outer.x, y: (start.outer.y + end.outer.y) / 2 }, end.outer, end.point]
     : [start.point, start.outer, { x: (start.outer.x + end.outer.x) / 2, y: start.outer.y }, { x: (start.outer.x + end.outer.x) / 2, y: end.outer.y }, end.outer, end.point];
 }

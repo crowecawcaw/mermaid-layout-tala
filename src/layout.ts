@@ -23,6 +23,7 @@ export interface LayoutNode extends RankNode {
   labelPositionFixed?: boolean | undefined;
   dir?: LayoutDirection | undefined;
   shape?: string | undefined;
+  numColumns?: number | undefined;
   aspectRatio1?: boolean | undefined;
   fontSize?: number | undefined;
   fixedTopLeft?: Point | undefined;
@@ -34,6 +35,8 @@ export interface LayoutEdge {
   id: string;
   from: string;
   to: string;
+  fromTableColumnIndex?: number | undefined;
+  toTableColumnIndex?: number | undefined;
   directed?: boolean;
   labelBBox?: { width: number; height: number };
 }

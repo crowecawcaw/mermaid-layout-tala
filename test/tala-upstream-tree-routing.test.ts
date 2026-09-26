@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { canonicalTreePaths } from '../src/tala/tree-routing.js';
+import { canonicalTreePath, canonicalTreePaths } from '../src/tala/tree-routing.js';
 import type { TreeExtraction } from '../src/tala/tree-extraction.js';
 import { layoutFlowchart, type LayoutDirection, type PositionedNode } from '../src/layout.js';
 
@@ -21,6 +21,15 @@ const expected = read('full-tree-random-expected.json') as Expected[];
 const extraction = read('full-tree-random-extraction-expected.json') as TreeExtraction[];
 
 describe('upstream center-port tree routes', () => {
+  it('starts and ends at shape-specific ports', () => {
+    const source: PositionedNode = { id: 'source', x: 50, y: 40,
+      width: 100, height: 80, shape: 'Parallelogram', rank: 0, order: 0 };
+    const target: PositionedNode = { id: 'target', x: 250, y: 40,
+      width: 100, height: 80, shape: 'Diamond', rank: 1, order: 0 };
+    const route = canonicalTreePath(source, target, 'LR');
+    expect(route[0]).toEqual({ x: 87, y: 40 });
+    expect(route.at(-1)).toEqual({ x: 200, y: 40 });
+  });
   for (const [index, input] of cases.entries()) {
     it(`matches all routes in ${input.name}`, () => {
       const output = expected[index]!;

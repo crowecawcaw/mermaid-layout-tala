@@ -1,6 +1,7 @@
 import type { LayoutDirection, LayoutEdge, LayoutNode, LayoutResult, Point } from '../layout.js';
 import { distanceBetweenBoxes } from './placement-geometry.js';
 import { ConnectedNodeGap, CrossingCostWeight } from './geometry-policy.js';
+import { shapePortPolicy } from './shape-ports.js';
 
 /** Mutable TALA graph records. References are private to one layout attempt. */
 export class TalaNode {
@@ -13,6 +14,7 @@ export class TalaNode {
   readonly isGroup: boolean;
   readonly direction: LayoutDirection | undefined;
   readonly shape: string | undefined;
+  readonly numColumns: number;
   readonly aspectRatio1: boolean;
   readonly fontSize: number | undefined;
   readonly desiredWidth: number | undefined;
@@ -35,6 +37,7 @@ export class TalaNode {
     this.isGroup = input.isGroup ?? false;
     this.direction = input.dir;
     this.shape = input.shape;
+    this.numColumns = input.numColumns ?? 0;
     this.aspectRatio1 = input.aspectRatio1 ?? false;
     this.fontSize = input.fontSize;
     this.desiredWidth = input.desiredWidth;
@@ -64,6 +67,8 @@ export class TalaEdge {
   readonly id: string;
   from: TalaNode;
   to: TalaNode;
+  readonly fromTableColumnIndex: number | undefined;
+  readonly toTableColumnIndex: number | undefined;
   readonly labelBBox: { width: number; height: number } | undefined;
   readonly directed: boolean;
   points: Point[] = [];
@@ -74,6 +79,8 @@ export class TalaEdge {
     this.id = input.id;
     this.from = from;
     this.to = to;
+    this.fromTableColumnIndex = input.fromTableColumnIndex;
+    this.toTableColumnIndex = input.toTableColumnIndex;
     this.labelBBox = input.labelBBox ? { ...input.labelBBox } : undefined;
     this.directed = input.directed ?? true;
     from.edges.push(this);
@@ -138,6 +145,9 @@ export class TalaGraph {
       if (!Number.isFinite(input.width) || input.width <= 0 || !Number.isFinite(input.height) || input.height <= 0) {
         throw new Error(`node ${input.id} must have finite positive dimensions`);
       }
+      if (input.numColumns !== undefined && (!Number.isSafeInteger(input.numColumns) || input.numColumns < 0)) {
+        throw new Error(`node ${input.id} must have a nonnegative integer number of columns`);
+      }
       if (input.fixedTopLeft && (!Number.isFinite(input.fixedTopLeft.x)
         || !Number.isFinite(input.fixedTopLeft.y))) {
         throw new Error(`node ${input.id} must have a finite fixed origin`);
@@ -175,6 +185,14 @@ export class TalaGraph {
       edgeIds.add(input.id);
       const from = byId.get(input.from), to = byId.get(input.to);
       if (!from || !to) throw new Error(`edge ${input.id} references a missing node`);
+      for (const [node, index] of [[from, input.fromTableColumnIndex], [to, input.toTableColumnIndex]] as const) {
+        const available = node.shape?.toLowerCase() === 'table'
+          ? node.numColumns || 1 : shapePortPolicy(node.shape, node.numColumns).indices.left.length;
+        if (index !== undefined && (!Number.isSafeInteger(index) || index < 0
+          || index >= available)) {
+          throw new Error(`edge ${input.id} has an invalid table column index`);
+        }
+      }
       graph.edges.push(new TalaEdge(input, from, to));
     }
     graph.computeCellSize();
@@ -236,6 +254,7 @@ export class TalaGraph {
         labelPositionFixed: node.labelPositionFixed } : {}),
       ...(node.direction ? { dir: node.direction } : {}),
       ...(node.shape ? { shape: node.shape } : {}),
+      ...(node.numColumns ? { numColumns: node.numColumns } : {}),
       ...(node.aspectRatio1 ? { aspectRatio1: true } : {}),
       ...(node.fontSize !== undefined ? { fontSize: node.fontSize } : {}),
       ...(node.fixedTopLeft ? { fixedTopLeft: { ...node.fixedTopLeft } } : {}),
@@ -247,6 +266,8 @@ export class TalaGraph {
   toLayoutEdges(): LayoutEdge[] {
     return this.edges.map((edge) => ({
       id: edge.id, from: edge.from.id, to: edge.to.id,
+      ...(edge.fromTableColumnIndex !== undefined ? { fromTableColumnIndex: edge.fromTableColumnIndex } : {}),
+      ...(edge.toTableColumnIndex !== undefined ? { toTableColumnIndex: edge.toTableColumnIndex } : {}),
       ...(edge.directed ? {} : { directed: false }),
       ...(edge.labelBBox ? { labelBBox: { ...edge.labelBBox } } : {}),
     }));

@@ -21,6 +21,16 @@ absolute `label-policy-expected.json` path, then run
 `go test ./d2layouts/d2talalayout/internal/labeling -run '^TestTSLabelPolicies$' -count=1`.
 The TypeScript parity test is `test/tala-upstream-label-policy.test.ts`.
 
+`shape-ports-oracle_test.go` records snap-point percentages, side and diagonal
+indices, center and mirror maps, and coordinates at a 101 × 83 box for all 23
+shapes and table row counts 0, 1, 3, and 5. Copy it into the pinned checkout's
+`internal/nodeshape` package as `ts_shape_ports_fixture_test.go`, set
+`TALA_TS_SHAPE_PORTS_OUTPUT` to the absolute `shape-ports-expected.json` path,
+then run `go test ./d2layouts/d2talalayout/internal/nodeshape -run '^TestTSShapePortPolicies$' -count=1`.
+Run `node tools/upstream-fixtures/generate-shape-port-data.mjs` to regenerate
+the compact production policy data. The TypeScript parity test is
+`test/tala-upstream-shape-ports.test.ts`.
+
 Place `main.go` at
 `d2layouts/d2talalayout/cmd/ts-fixtures/main.go` within a checkout of that
 revision. From the D2 repository root, build the command and run it against

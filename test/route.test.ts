@@ -28,6 +28,32 @@ describe('orthogonal graph router', () => {
     expect(crossesInterior(route!.points, nodes[2]!)).toBe(false);
     expect(route!.points[0]!.x).toBe(30);
   });
+
+  it('uses a recessed shape port and clears the endpoint box', () => {
+    const nodes = [
+      { ...node('source', 0, 0, 100, 80), shape: 'Parallelogram' },
+      node('target', 250, 0, 100, 80),
+    ];
+    const [route] = routeGraphEdges(nodes, [{ id: 'edge', from: 'source', to: 'target' }], 'LR');
+    expect(route!.points[0]).toEqual({ x: 37, y: 0 });
+    expect(route!.points.at(-1)).toEqual({ x: 200, y: 0 });
+    expect(route!.points.some((point) => point.x >= 62)).toBe(true);
+  });
+
+  it('routes between explicit table rows on facing sides', () => {
+    const nodes = [
+      { ...node('source', 50, 60, 100, 120), shape: 'Table', numColumns: 3 },
+      { ...node('target', 350, 60, 100, 120), shape: 'Table', numColumns: 3 },
+    ];
+    const [forward] = routeGraphEdges(nodes, [{ id: 'forward', from: 'source', to: 'target',
+      fromTableColumnIndex: 0, toTableColumnIndex: 2 }], 'TB');
+    expect(forward!.points[0]).toEqual({ x: 100, y: 45 });
+    expect(forward!.points.at(-1)).toEqual({ x: 300, y: 105 });
+    const [reverse] = routeGraphEdges(nodes, [{ id: 'reverse', from: 'target', to: 'source',
+      fromTableColumnIndex: 2, toTableColumnIndex: 0 }], 'TB');
+    expect(reverse!.points[0]).toEqual({ x: 300, y: 105 });
+    expect(reverse!.points.at(-1)).toEqual({ x: 100, y: 45 });
+  });
 });
 
 function crossesInterior(points: readonly { x: number; y: number }[], obstacle: PositionedNode): boolean {
