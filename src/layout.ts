@@ -5,6 +5,7 @@ import { addHubs } from './tala/proximity.js';
 import { countNonSharedCrossings } from './tala/crossings.js';
 import { placeOrdinaryNodes } from './tala/ordinary-placement.js';
 import { placeSimpleTree } from './tala/simple-tree.js';
+import { prescaleNodes } from './tala/prescale.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
@@ -15,6 +16,9 @@ export interface LayoutNode extends RankNode {
   isGroup?: boolean | undefined;
   labelBBox?: { width: number; height: number } | undefined;
   dir?: LayoutDirection | undefined;
+  aspectRatio1?: boolean | undefined;
+  desiredWidth?: number | undefined;
+  desiredHeight?: number | undefined;
 }
 
 export interface LayoutEdge {
@@ -74,10 +78,15 @@ export function layoutFlowchart(
   options: LayoutOptions = {}
 ): LayoutResult {
   const seeds = normalizeSeeds(options.seeds ?? [1, 2, 3]);
+  const useTala = options.strategy === 'tala'
+    || options.strategy !== 'layered' && options.nodeSpacing === undefined
+      && options.rankSpacing === undefined && options.orderingPasses === undefined;
+  const sourceNodes = useTala && inputNodes.every((node) => !node.isGroup)
+    ? prescaleNodes(inputNodes, inputEdges) : inputNodes;
   // Mermaid's parser order is not a placement constraint. Normalize only at
   // the adapter boundary; the TALA graph retains caller order like upstream.
   const graph = TalaGraph.fromFlowchart(
-    [...inputNodes].sort((a, b) => compareText(a.id, b.id)),
+    [...sourceNodes].sort((a, b) => compareText(a.id, b.id)),
     [...inputEdges].sort((a, b) => compareText(a.id, b.id)),
     options.direction ?? 'TB'
   );

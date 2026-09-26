@@ -7,6 +7,7 @@ type NodeWithPosition = LayoutData['nodes'][number] & {
   width?: number;
   height?: number;
   domElement?: { attr(name: string, value: string): unknown };
+  svgElement?: SVGGraphicsElement;
 };
 
 /** Mermaid's external-layout entry point. It follows the public loader contract. */
@@ -47,6 +48,7 @@ export async function render(
     nodeWithPosition.width = box.width;
     nodeWithPosition.height = box.height;
     nodeWithPosition.domElement = element;
+    nodeWithPosition.svgElement = svgNode;
   }));
 
   const edgeLabelBounds = new Map<string, { width: number; height: number }>();
@@ -88,6 +90,11 @@ export async function render(
   const positionedEdges = new Map(result.edges.map((edge) => [edge.id, edge]));
   for (const positioned of result.nodes) {
     const node = nodesById[positioned.id]!;
+    if (!node.isGroup && node.svgElement && node.width && node.height
+      && (node.width !== positioned.width || node.height !== positioned.height)) {
+      resizeRenderedNode(node.svgElement, node.width, node.height,
+        positioned.width, positioned.height);
+    }
     node.x = positioned.x;
     node.y = positioned.y;
     node.width = positioned.width;
@@ -117,6 +124,29 @@ export async function render(
     );
     helpers.positionEdgeLabel(edgeWithPath, paths);
   }));
+}
+
+/** Grow Mermaid's shape without stretching its label when TALA prescales a node. */
+function resizeRenderedNode(element: SVGGraphicsElement, oldWidth: number, oldHeight: number,
+  width: number, height: number): void {
+  const xScale = width / oldWidth, yScale = height / oldHeight;
+  for (const child of Array.from(element.children)) {
+    if (!(child instanceof SVGGraphicsElement) || child.classList.contains('label')) continue;
+    if (child instanceof SVGRectElement && !child.classList.contains('label')) {
+      const x = Number(child.getAttribute('x') ?? 0), y = Number(child.getAttribute('y') ?? 0);
+      const rectWidth = Number(child.getAttribute('width') ?? 0);
+      const rectHeight = Number(child.getAttribute('height') ?? 0);
+      if (rectWidth > 0 && rectHeight > 0) {
+        child.setAttribute('x', String(x * xScale));
+        child.setAttribute('y', String(y * yScale));
+        child.setAttribute('width', String(rectWidth * xScale));
+        child.setAttribute('height', String(rectHeight * yScale));
+        continue;
+      }
+    }
+    const transform = child.getAttribute('transform') ?? '';
+    child.setAttribute('transform', `${transform} scale(${xScale} ${yScale})`.trim());
+  }
 }
 
 function normalizeDirection(value: unknown): LayoutDirection {

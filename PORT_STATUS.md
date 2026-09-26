@@ -8,7 +8,7 @@ that engine yet.
 | Upstream area | TypeScript status |
 | --- | --- |
 | Weighted DAG ranker | Ported in `src/rank.ts` with translated fixtures and tests. |
-| Input graph and shape geometry | Independent mutable graph records, input order, container ownership, adjacency, clone isolation, ordinary component splitting, and fixed-node component grouping are ported in `src/tala`. Upstream compound topology mutations and shape policies remain unported. |
+| Input graph and shape geometry | Independent mutable graph records, input order, container ownership, adjacency, clone isolation, ordinary component splitting, and fixed-node component grouping are ported in `src/tala`. The edge-port prescale rule is ported for ordinary flat graphs, and the Mermaid renderer grows the node outline to match. Upstream compound topology mutations and other shape policies remain unported. |
 | Nested containers and direction | Supported by a Mermaid-specific recursive layout in `src/layout.ts`; placement differs from upstream. |
 | Seed attempts | Independent mutable graph clones and deterministic ordering attempts are implemented. Upstream crossing evaluation is ported; random placement and full label scoring remain unported. |
 | Tree, hierarchy, hub, proximity, cluster, and sequence discovery | Upstream `AddHubs` discovery and a bounded ordinary rooted-tree geometry branch are ported. Branching arborescences match completed upstream node geometry in six pinned tree cases, including all four directions, unequal node sizes, and two levels. General tree extraction, hierarchy discovery and placement, and other grouping algorithms remain unported. Ordinary connected components use translated TALA placement by default; nested containers still use the adapter's recursive placement. |
@@ -25,9 +25,9 @@ that nine-of-ten comparison.
 
 A separate set of 24 generated branching trees exercises deeper and uneven
 structures. The TypeScript geometry now matches the upstream node-placement
-stage on 12 of them, and matches the completed pipeline on 8. The remaining
+stage on 13 of them, and matches the completed pipeline on 8. The remaining
 cases include tree partitions and orientation choices that are not yet ported,
-prescaling that changes node sizes, and post-route `Dejitter` moves.
+single-unit rounding differences, and post-route `Dejitter` moves.
 
 The current playground defaults to the translated ordinary placement stage
 for flat components. Its optional layered setting uses the previous adapter
