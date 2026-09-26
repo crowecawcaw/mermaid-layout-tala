@@ -1,0 +1,11 @@
+[
+  {"name":"horizontal","nodes":[{"id":"a","x":0,"y":0,"width":80,"height":40},{"id":"b","x":220,"y":10,"width":70,"height":50}]},
+  {"name":"vertical","nodes":[{"id":"a","x":10,"y":0,"width":90,"height":45},{"id":"b","x":0,"y":190,"width":70,"height":65}]},
+  {"name":"down-right","nodes":[{"id":"a","x":-60,"y":-20,"width":85,"height":35},{"id":"b","x":160,"y":160,"width":75,"height":55}]},
+  {"name":"up-left","nodes":[{"id":"a","x":220,"y":210,"width":63,"height":57},{"id":"b","x":10,"y":0,"width":81,"height":39}]},
+  {"name":"overlap","nodes":[{"id":"a","x":0,"y":0,"width":80,"height":40},{"id":"b","x":40,"y":20,"width":80,"height":40}]},
+  {"name":"touching","nodes":[{"id":"a","x":0,"y":0,"width":80,"height":40},{"id":"b","x":80,"y":0,"width":80,"height":40}]},
+  {"name":"odd-centers","nodes":[{"id":"a","x":-17,"y":7,"width":79,"height":47},{"id":"b","x":135,"y":-19,"width":93,"height":61}]},
+  {"name":"diagonal-blocker","nodes":[{"id":"a","x":-60,"y":-20,"width":85,"height":35},{"id":"b","x":160,"y":160,"width":75,"height":55},{"id":"c","x":65,"y":65,"width":65,"height":55}]},
+  {"name":"touching-third","nodes":[{"id":"a","x":0,"y":0,"width":80,"height":40},{"id":"b","x":180,"y":130,"width":80,"height":40},{"id":"c","x":80,"y":0,"width":80,"height":40}]}
+]

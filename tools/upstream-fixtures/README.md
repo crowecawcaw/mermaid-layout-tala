@@ -5,6 +5,16 @@ node placement costs. The browser and published package do not use this harness.
 
 Source revision: `bf33790338b9854cb2a34418e69c17f9abf8de4b`.
 
+`ovg-candidate-oracle_test.go` records upstream OVG port, perimeter, halfway,
+and port-grid intersection candidate points for `ovg-candidate-cases.json`.
+Copy it into the
+pinned checkout's `internal/routing` package as
+`ts_ovg_candidate_oracle_test.go`. Set `TALA_TS_OVG_CANDIDATE_INPUT` and
+`TALA_TS_OVG_CANDIDATE_OUTPUT` to absolute paths for the case file and
+`ovg-candidate-expected.json`, then run
+`go test ./d2layouts/d2talalayout/internal/routing -run '^TestTSOVGCandidateFixtures$' -count=1`.
+The TypeScript parity test is `test/tala-upstream-ovg-candidates.test.ts`.
+
 `hierarchy-stage-oracle_test.go` records the graph after upstream
 `PreprocessHierarchies`. Copy it into the pinned checkout's `internal/engine`
 package as `ts_hierarchy_stage_oracle_test.go`. Set

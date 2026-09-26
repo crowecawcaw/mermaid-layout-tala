@@ -21,5 +21,13 @@ for (const [index, input] of cases.entries()) {
     return { id: node.id, dx, dy, dw: placed.width - node.width, dh: placed.height - node.height };
   });
   const exactNodes = deviations.filter((node) => Object.entries(node).every(([key, value]) => key === 'id' || value === 0)).length;
-  process.stdout.write(`${input.name}: ${exactNodes}/${input.nodes.length} exact relative node geometries; ${JSON.stringify(deviations)}\n`);
+  const originX = actualAnchor.x - actualAnchor.width / 2 - anchor.x;
+  const originY = actualAnchor.y - actualAnchor.height / 2 - anchor.y;
+  const routeDeviations = (target.edges ?? []).flatMap((edge) => {
+    const placed = actual.edges.find((candidate) => candidate.id === edge.id);
+    const points = placed?.points.map((point) => ({ x: point.x - originX, y: point.y - originY }));
+    return JSON.stringify(points) === JSON.stringify(edge.points) ? [] : [edge.id];
+  });
+  const routes = `${(target.edges ?? []).length - routeDeviations.length}/${(target.edges ?? []).length}`;
+  process.stdout.write(`${input.name}: ${exactNodes}/${input.nodes.length} exact relative node geometries, ${routes} exact routes; ${JSON.stringify(deviations)}; route differences ${JSON.stringify(routeDeviations)}\n`);
 }
