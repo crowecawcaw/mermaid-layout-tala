@@ -1,0 +1,62 @@
+[
+  {
+    "name": "one-container-chain", "direction": "TB", "seed": 1,
+    "nodes": [
+      {"id":"G","width":160,"height":110,"isGroup":true},
+      {"id":"A","width":80,"height":40,"parentId":"G"},
+      {"id":"B","width":80,"height":40,"parentId":"G"},
+      {"id":"X","width":80,"height":40}
+    ],
+    "edges": [
+      {"id":"ab","from":"A","to":"B","directed":true},
+      {"id":"bx","from":"B","to":"X","directed":true}
+    ]
+  },
+  {
+    "name": "two-container-links", "direction": "LR", "seed": 1,
+    "nodes": [
+      {"id":"Left","width":180,"height":130,"isGroup":true},
+      {"id":"A","width":70,"height":35,"parentId":"Left"},
+      {"id":"B","width":70,"height":35,"parentId":"Left"},
+      {"id":"Right","width":180,"height":130,"isGroup":true},
+      {"id":"C","width":70,"height":35,"parentId":"Right"},
+      {"id":"D","width":70,"height":35,"parentId":"Right"}
+    ],
+    "edges": [
+      {"id":"ab","from":"A","to":"B","directed":true},
+      {"id":"bc","from":"B","to":"C","directed":true},
+      {"id":"cd","from":"C","to":"D","directed":true}
+    ]
+  },
+  {
+    "name": "nested-container", "direction": "TB", "seed": 2,
+    "nodes": [
+      {"id":"Cloud","width":260,"height":210,"isGroup":true},
+      {"id":"API","width":180,"height":130,"isGroup":true,"parentId":"Cloud"},
+      {"id":"Gateway","width":70,"height":35,"parentId":"API"},
+      {"id":"Service","width":70,"height":35,"parentId":"API"},
+      {"id":"Database","width":80,"height":50,"parentId":"Cloud"},
+      {"id":"Client","width":70,"height":35}
+    ],
+    "edges": [
+      {"id":"cg","from":"Client","to":"Gateway","directed":true},
+      {"id":"gs","from":"Gateway","to":"Service","directed":true},
+      {"id":"sd","from":"Service","to":"Database","directed":true}
+    ]
+  },
+  {
+    "name": "directioned-container", "direction": "LR", "seed": 3,
+    "nodes": [
+      {"id":"Group","width":190,"height":160,"isGroup":true,"dir":"TB"},
+      {"id":"A","width":70,"height":35,"parentId":"Group"},
+      {"id":"B","width":70,"height":35,"parentId":"Group"},
+      {"id":"C","width":70,"height":35,"parentId":"Group"},
+      {"id":"Outside","width":70,"height":35}
+    ],
+    "edges": [
+      {"id":"ab","from":"A","to":"B","directed":true},
+      {"id":"bc","from":"B","to":"C","directed":true},
+      {"id":"co","from":"C","to":"Outside","directed":true}
+    ]
+  }
+]

@@ -15,9 +15,12 @@ import (
 )
 
 type inputNode struct {
-	ID     string  `json:"id"`
-	Width  float64 `json:"width"`
-	Height float64 `json:"height"`
+	ID        string  `json:"id"`
+	Width     float64 `json:"width"`
+	Height    float64 `json:"height"`
+	ParentID  string  `json:"parentId"`
+	IsGroup   bool    `json:"isGroup"`
+	Direction string  `json:"dir"`
 }
 type inputEdge struct {
 	ID       string `json:"id"`
@@ -73,9 +76,21 @@ func run(input inputCase) (outputCase, error) {
 	nodes := make(map[string]*layoutgraph.Node, len(input.Nodes))
 	for index, item := range input.Nodes {
 		node := layoutgraph.NewNode(layoutgraph.EntityID(index+1), item.Width, item.Height)
+		if item.IsGroup {
+			node.SetContainer(true)
+		}
 		graph.AddNodeUnchecked(node)
-		graph.AddNodeToContainer(nil, node)
 		nodes[item.ID] = node
+	}
+	for _, item := range input.Nodes {
+		parent := nodes[item.ParentID]
+		if item.ParentID != "" && parent == nil {
+			return outputCase{}, fmt.Errorf("missing parent for %s", item.ID)
+		}
+		graph.AddNodeToContainer(parent, nodes[item.ID])
+		if item.Direction != "" {
+			graph.Directions[nodes[item.ID]] = direction(item.Direction)
+		}
 	}
 	edgeIDs := make(map[string]layoutgraph.EntityID, len(input.Edges))
 	for index, item := range input.Edges {

@@ -12,6 +12,7 @@ import { placeFlatClusters } from './tala/flat-cluster-placement.js';
 import { placeFlatSequences } from './tala/flat-sequence-placement.js';
 import { sequenceDefiningEdges } from './tala/sequence-topology.js';
 import { simplifyEdgeRoutes } from './tala/edge-simplify.js';
+import { projectContainerEdges } from './tala/container-topology.js';
 import { prepareNodeLabels } from './tala/label-policy.js';
 import { normalizeLayoutResult } from './tala/normalize.js';
 
@@ -277,23 +278,14 @@ function layoutCompoundFlowchart(
   for (const edge of inputEdges) {
     if (!byId.has(edge.from) || !byId.has(edge.to)) throw new Error(`edge ${edge.id} references a missing node`);
   }
+  const projectionGraph = TalaGraph.fromFlowchart(nodes, inputEdges, options.direction ?? 'TB');
+  const projectionById = new Map(projectionGraph.nodes.map((node) => [node.id, node]));
   const children = new Map<string | undefined, LayoutNode[]>();
   for (const node of nodes) {
     const siblings = children.get(node.parentId) ?? [];
     siblings.push(node);
     children.set(node.parentId, siblings);
   }
-  const childUnder = (id: string, parentId: string | undefined): string | undefined => {
-    const visited = new Set<string>();
-    let current = byId.get(id);
-    while (current) {
-      if (visited.has(current.id)) throw new Error('cyclic container hierarchy');
-      visited.add(current.id);
-      if (current.parentId === parentId) return current.id;
-      current = current.parentId ? byId.get(current.parentId) : undefined;
-    }
-    return undefined;
-  };
   interface Scope { width: number; height: number; positioned: PositionedNode[] }
   const active = new Set<string>();
   const placeScope = (parentId: string | undefined, direction: LayoutDirection): Scope => {
@@ -305,22 +297,27 @@ function layoutCompoundFlowchart(
     const nested = new Map<string, Scope>();
     const measured = siblingNodes.map((node) => {
       if (!node.isGroup) return node;
-      const childScope = placeScope(node.id, node.dir ?? direction);
+      // Upstream gives an unspecified container no inherited direction.
+      // Its ordinary interior placement starts on the horizontal axis; an
+      // authored container direction still takes precedence.
+      const childScope = placeScope(node.id, node.dir ?? 'LR');
       nested.set(node.id, childScope);
       return { ...node, width: childScope.width, height: childScope.height };
     });
-    const projected: LayoutEdge[] = [];
-    for (const edge of inputEdges) {
-      const from = childUnder(edge.from, parentId);
-      const to = childUnder(edge.to, parentId);
-      if (from && to && from !== to) projected.push({ id: edge.id, from, to });
-    }
+    const projection = projectContainerEdges(projectionGraph,
+      parentId ? projectionById.get(parentId)! : null);
+    const projected: LayoutEdge[] = projection.projected.map((edge) => ({
+      id: edge.id, from: edge.from.id, to: edge.to.id,
+    }));
+    projection.restore();
     const flat = layoutFlatFlowchart(measured, projected, { ...options, direction }, seed);
     const box = bounds(flat.nodes);
     const group = parentId ? byId.get(parentId)! : undefined;
-    const padding = 32;
-    const topPadding = group ? Math.max(48, (group.labelBBox?.height ?? 0) + 28) : 0;
-    const width = group ? Math.max(box.width + 2 * padding, (group.labelBBox?.width ?? group.width) + 2 * padding) : box.width;
+    const padding = 60;
+    const topPadding = group ? Math.max(60, (group.labelBBox?.height ?? 0) + 28) : 0;
+    const width = group ? Math.max(box.width + 2 * padding,
+      group.desiredWidth ?? 0,
+      group.labelBBox ? group.labelBBox.width + 2 * padding : 0) : box.width;
     const height = group ? Math.max(box.height + topPadding + padding, topPadding + padding) : box.height;
     const shiftX = group ? -box.minX + (width - box.width) / 2 - width / 2 : 0;
     const shiftY = group ? -box.minY + topPadding - height / 2 : 0;
