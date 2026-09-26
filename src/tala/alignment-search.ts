@@ -1,6 +1,6 @@
 import { AxisAlignmentTolerance } from './geometry-policy.js';
 import { ordinaryAlignmentDeltas } from './alignment-deltas.js';
-import { attemptAxisShift } from './alignment-shift.js';
+import { attemptAxisShift, overlapPairs } from './alignment-shift.js';
 import type { TalaEdge, TalaGraph, TalaNode } from './graph.js';
 
 export interface AxisAlignmentOptions {
@@ -19,6 +19,7 @@ interface Candidate {
 export function alignAxesPass(graph: TalaGraph, score: (graph: TalaGraph) => number,
   options: AxisAlignmentOptions = {}): boolean {
   let changed = false;
+  const existingOverlaps = overlapPairs(graph);
   const fixed = graph.nodes.filter((node) => node.fixedTopLeft);
   const excluded = [...fixed, ...(options.excludedNodes ?? [])];
   for (const edge of graph.edges) {
@@ -34,9 +35,10 @@ export function alignAxesPass(graph: TalaGraph, score: (graph: TalaGraph) => num
       const attempts: [number, number][] = [[0, sign * deltas.y], [sign * deltas.x, 0]];
       for (const [dx, dy] of attempts) {
         if (dx === 0 && dy === 0) continue;
-        const previous = nodes.map((node) => ({ node, topLeft: node.topLeft
-          ? { ...node.topLeft } : undefined, x: node.x, y: node.y }));
-        if (attemptAxisShift(graph, edge, nodes, dx, dy)) {
+        const previous = graph.nodes.map((node) => ({ node, topLeft: node.topLeft
+          ? { ...node.topLeft } : undefined, width: node.width,
+        height: node.height, x: node.x, y: node.y }));
+        if (attemptAxisShift(graph, edge, nodes, dx, dy, existingOverlaps)) {
           const candidateScore = score(graph);
           // tryMove chooses the later X attempt when both attempts tie.
           if (candidateScore <= bestScore) {
@@ -48,17 +50,16 @@ export function alignAxesPass(graph: TalaGraph, score: (graph: TalaGraph) => num
         }
         for (const old of previous) {
           old.node.topLeft = old.topLeft;
+          old.node.width = old.width;
+          old.node.height = old.height;
           old.node.x = old.x;
           old.node.y = old.y;
         }
       }
     }
     if (best) {
-      for (const node of best.nodes) {
-        node.topLeft = { x: node.topLeft!.x + best.dx, y: node.topLeft!.y + best.dy };
-        if (node.x !== undefined) node.x += best.dx;
-        if (node.y !== undefined) node.y += best.dy;
-      }
+      if (!attemptAxisShift(graph, edge, best.nodes, best.dx, best.dy, existingOverlaps))
+        throw new Error('accepted alignment move became invalid');
       changed = true;
     }
   }

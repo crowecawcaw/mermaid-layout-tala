@@ -96,6 +96,28 @@ describe('upstream AlignAxes shift validity', () => {
     expect(attemptAxisShift(graph, graph.edges[0]!, [graph.nodes[0]!], 0, 80)).toBe(false);
     expect(graph.nodes[0]!.topLeft).toEqual({ x: 0, y: 0 });
   });
+
+  it('rejects a newly introduced connected-node clearance violation', () => {
+    const graph = TalaGraph.fromFlowchart([
+      { id: 'A', width: 70, height: 35 },
+      { id: 'B', width: 70, height: 35 },
+    ], [{ id: 'ab', from: 'A', to: 'B' }]);
+    graph.nodes[0]!.topLeft = { x: 0, y: 0 };
+    graph.nodes[1]!.topLeft = { x: 140, y: 0 };
+    expect(attemptAxisShift(graph, graph.edges[0]!, [graph.nodes[0]!], 46, 0)).toBe(false);
+    expect(graph.nodes[0]!.topLeft).toEqual({ x: 0, y: 0 });
+  });
+
+  it('keeps movable nodes inside the fixed-origin boundary', () => {
+    const graph = TalaGraph.fromFlowchart([
+      { id: 'Fixed', width: 70, height: 35, fixedTopLeft: { x: 0, y: 0 } },
+      { id: 'Moving', width: 70, height: 35 },
+    ], [{ id: 'fm', from: 'Fixed', to: 'Moving' }]);
+    graph.nodes[0]!.topLeft = { x: 100, y: 100 };
+    graph.nodes[1]!.topLeft = { x: 250, y: 100 };
+    expect(attemptAxisShift(graph, graph.edges[0]!, [graph.nodes[1]!], -160, 0)).toBe(false);
+    expect(graph.nodes[1]!.topLeft).toEqual({ x: 250, y: 100 });
+  });
 });
 
 describe('upstream AlignAxes candidate order', () => {

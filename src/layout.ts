@@ -290,6 +290,7 @@ function layoutCompoundFlowchart(
 ): LayoutResult {
   const nodes = [...inputNodes].sort((a, b) => compareText(a.id, b.id));
   const byId = new Map(nodes.map((node) => [node.id, node]));
+  const edgeById = new Map(inputEdges.map((edge) => [edge.id, edge]));
   if (byId.size !== nodes.length) throw new Error('duplicate node ID');
   for (const node of nodes) {
     if (node.parentId && !byId.get(node.parentId)?.isGroup) throw new Error(`invalid parent for ${node.id}`);
@@ -354,7 +355,7 @@ function layoutCompoundFlowchart(
       if (replacements.from || replacements.to) endpointReplacements.set(abduction.edge.id, replacements);
     }
     const projected: LayoutEdge[] = projection.projected.map((edge) => ({
-      id: edge.id, from: edge.from.id, to: edge.to.id,
+      ...edgeById.get(edge.id)!, from: edge.from.id, to: edge.to.id,
     }));
     projection.restore();
     // Upstream only records an interior direction when the container declares

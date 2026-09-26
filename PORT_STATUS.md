@@ -45,15 +45,19 @@ ownership error, now fixed, and a missing ordinary `BalanceSymmetry` stage,
 ported against its upstream stage trace. The ordinary placement path now runs
 upstream's `direct` mirror after placement, including original descendant
 endpoints for projected edges; this fixes the vertical orientation of the
-multiple-boundary-edge case. That case still diverges in `AlignAxes`: upstream
-moves the entire container while the current port moves interior nodes. The
+multiple-boundary-edge case. Its public placement still enters `AlignAxes` with
+a different external-node position. Given identical stage geometry, the port
+now matches both pinned upstream container translations. In the public output
+Group, A, C, and X now match; B differs by one unit and Y by 50 units. The
 empty-container fixture still differs in packing positions, and the diamond
 fixture still differs after placement. These three remain diagnostic cases.
 The ordinary-endpoint `AlignAxes` delta calculation, ordinary-container
 connected-set traversal, non-center-port penalty, and equal-size peer-container
 alignment cost are ported. The stage's shift validity check now applies the
-upstream graph-size and center-line obstruction rules, and accepts the exact
-connected move in the pinned compound stage trace. The ordinary-endpoint
+upstream graph-size, center-line obstruction, and newly introduced overlap
+rules, including connected-node clearance. It refits ordinary containers before
+scoring and accepts the exact connected moves in two pinned compound stage
+traces. The ordinary-endpoint
 candidate search is ported as a pass that accepts a graph scoring callback,
 including upstream's Y-before-X tie order. The ordinary graph-level edge
 score now combines per-node costs, symmetry, and straight-edge crossings.
