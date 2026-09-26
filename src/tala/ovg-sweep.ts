@@ -16,11 +16,14 @@ export type OVGPortDirection = 'top' | 'bottom' | 'left' | 'right' | 'none';
 export interface OVGSweepPortOwner {
   node: string;
   directions: OVGPortDirection[];
+  center?: boolean;
 }
 export interface OVGSweepVertex extends Point {
   owners?: OVGSweepPortOwner[];
   center?: boolean;
   tunnel?: boolean;
+  nearPortOwners?: string[];
+  index?: number;
 }
 export interface OVGSweepEdge { from: Point; to: Point }
 

@@ -3,11 +3,12 @@ import type { OVGFlatEdge, OVGFlatNode } from './ovg-build.js';
 import type { OVGSweepEdge, OVGSweepVertex } from './ovg-sweep.js';
 
 interface Range { start: number; end: number }
+export interface OVGTunnelEdge extends OVGSweepEdge { fromOwner: string; toOwner: string }
 
 /** Ordinary flat-node branch of routing/tunnel.go's buildTunnels. Mutates the
  * OVG vertices, as upstream addTunnels does, and returns its pre-sweep edges. */
 export function addFlatOVGTunnels(nodes: readonly OVGFlatNode[],
-  edges: readonly OVGFlatEdge[], vertices: OVGSweepVertex[]): OVGSweepEdge[] {
+  edges: readonly OVGFlatEdge[], vertices: OVGSweepVertex[]): OVGTunnelEdge[] {
   const byId = new Map(nodes.map((node) => [node.id, node]));
   const occupied = new Map(vertices.map((vertex) => [`${vertex.x},${vertex.y}`, vertex]));
   const addEntry = (point: Point, owner: string): OVGSweepVertex => {
@@ -24,7 +25,7 @@ export function addFlatOVGTunnels(nodes: readonly OVGFlatNode[],
     vertex.tunnel = true;
     return vertex;
   };
-  const result: OVGSweepEdge[] = [];
+  const result: OVGTunnelEdge[] = [];
   const visited = new Set<string>();
   for (const node of nodes) {
     if (node.shape?.toLowerCase() === 'table') continue;
@@ -89,7 +90,8 @@ export function addFlatOVGTunnels(nodes: readonly OVGFlatNode[],
             ? { x: node.x > other.x ? other.x + other.width : other.x, y: coordinate }
             : { x: coordinate, y: node.y > other.y ? other.y + other.height : other.y };
           const a = addEntry(first, node.id), b = addEntry(second, other.id);
-          result.push({ from: { x: a.x, y: a.y }, to: { x: b.x, y: b.y } });
+          result.push({ from: { x: a.x, y: a.y }, to: { x: b.x, y: b.y },
+            fromOwner: node.id, toOwner: other.id });
           remaining--;
         }
       }

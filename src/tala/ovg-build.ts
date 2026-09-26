@@ -1,16 +1,17 @@
 import type { Point } from '../layout.js';
 import { ovgCandidatePoints, ovgPortGridIntersections, ovgPortGroups,
   type OVGCandidateNode } from './ovg-candidates.js';
+import { shapePortPolicy } from './shape-ports.js';
 import { connectOVGSweepNodes, type OVGPortDirection, type OVGSweepEdge,
   type OVGSweepVertex } from './ovg-sweep.js';
-import { addFlatOVGTunnels } from './ovg-tunnels.js';
+import { addFlatOVGTunnels, type OVGTunnelEdge } from './ovg-tunnels.js';
 
 export interface OVGFlatNode extends OVGCandidateNode { id: string }
 export interface OVGFlatEdge { from: string; to: string }
 
 export function buildFlatOVG(nodes: readonly OVGFlatNode[],
   edges: readonly OVGFlatEdge[]): { vertices: OVGSweepVertex[];
-  tunnelEdges: OVGSweepEdge[]; sweepEdges: OVGSweepEdge[]; edges: OVGSweepEdge[] } {
+  tunnelEdges: OVGTunnelEdge[]; sweepEdges: OVGSweepEdge[]; edges: OVGSweepEdge[] } {
   const vertices = buildFlatOVGVertices(nodes, edges);
   const tunnelEdges = addFlatOVGTunnels(nodes, edges, vertices);
   const sweepEdges = connectOVGSweepNodes(nodes, vertices);
@@ -51,6 +52,10 @@ export function buildFlatOVGVertices(nodes: readonly OVGFlatNode[],
         if (!owner.directions.includes(sides[i]!)) owner.directions.push(sides[i]!);
         nodePorts.push(vertex);
       }
+    }
+    for (const index of shapePortPolicy(node.shape, node.numColumns).centers ?? []) {
+      const owner = nodePorts[index]?.owners?.find((item) => item.node === node.id);
+      if (owner) owner.center = true;
     }
     ports.set(node.id, nodePorts);
   }

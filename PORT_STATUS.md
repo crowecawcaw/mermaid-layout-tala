@@ -117,6 +117,10 @@ visibility filtering, boundary stages, tunnel entries, and sweep for flat
 graphs. Its full OVG vertex and edge sets match all nine pinned upstream
 graphs. This graph construction is not yet integrated into the public router;
 OVG path search, route cleanup, and hierarchical graph construction remain.
+The post-sweep center connections, isolated-vertex removal, near-port flags,
+and per-vertex indices now match all nine upstream final OVG fixtures in
+`src/tala/ovg-finalize.ts`. The route search's stable indexed priority queue
+is translated in `src/tala/priority-queue.ts`.
 
 A separate set of 24 generated branching trees exercises deeper and uneven
 structures. The TypeScript geometry matches the upstream node-placement stage

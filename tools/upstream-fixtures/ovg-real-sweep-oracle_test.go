@@ -25,6 +25,7 @@ type tsRealSweepCase struct {
 type tsRealSweepOwner struct {
     Node string `json:"node"`
     Directions []string `json:"directions"`
+    Center bool `json:"center,omitempty"`
 }
 type tsRealSweepVertex struct {
     X float64 `json:"x"`
@@ -32,6 +33,7 @@ type tsRealSweepVertex struct {
     Owners []tsRealSweepOwner `json:"owners,omitempty"`
     Center bool `json:"center,omitempty"`
     Tunnel bool `json:"tunnel,omitempty"`
+    Near []string `json:"near,omitempty"`
 }
 type tsRealSweepOutput struct {
     Name string `json:"name"`
@@ -40,6 +42,8 @@ type tsRealSweepOutput struct {
     PreTunnelCount int `json:"preTunnelCount"`
     TunnelEdges [][4]float64 `json:"tunnelEdges"`
     Edges [][4]float64 `json:"edges"`
+    CenterEdges [][4]float64 `json:"centerEdges"`
+    FinalVertices []tsRealSweepVertex `json:"finalVertices"`
 }
 
 func TestTSOVGRealSweepFixtures(t *testing.T) {
@@ -85,7 +89,7 @@ func TestTSOVGRealSweepFixtures(t *testing.T) {
             item := tsRealSweepVertex{X: vertex.X, Y: vertex.Y, Center: vertex.IsNodeCenter,
                 Tunnel: vertex.IsTunnel}
             for owner, metadata := range vertex.portOwners() {
-                o := tsRealSweepOwner{Node: ids[owner], Directions: make([]string, 0)}
+                o := tsRealSweepOwner{Node: ids[owner], Directions: make([]string, 0), Center: metadata.isCenterPort}
                 for _, direction := range []struct{ value geo.Orientation; label string }{
                     {geo.Top, "top"}, {geo.Bottom, "bottom"}, {geo.Left, "left"},
                     {geo.Right, "right"}, {geo.NONE, "none"},
@@ -121,6 +125,41 @@ func TestTSOVGRealSweepFixtures(t *testing.T) {
             }
             return false
         })
+        beforeCenters := len(ovg.Edges)
+        if err := ovg.connectPortsToCenter(guard); err != nil { t.Fatal(err) }
+        output.CenterEdges = make([][4]float64, 0, len(ovg.Edges)-beforeCenters)
+        for _, edge := range ovg.Edges[beforeCenters:] {
+            a, b := edge.From.Point, edge.To.Point
+            if a.X > b.X || (a.X == b.X && a.Y > b.Y) { a, b = b, a }
+            output.CenterEdges = append(output.CenterEdges, [4]float64{a.X, a.Y, b.X, b.Y})
+        }
+        sort.Slice(output.CenterEdges, func(i,j int) bool {
+            for k := 0; k < 4; k++ {
+                if output.CenterEdges[i][k] != output.CenterEdges[j][k] { return output.CenterEdges[i][k] < output.CenterEdges[j][k] }
+            }
+            return false
+        })
+        if err := ovg.removeIsolatedNodes(guard); err != nil { t.Fatal(err) }
+        if err := ovg.flagNodesNearPorts(guard); err != nil { t.Fatal(err) }
+        output.FinalVertices = make([]tsRealSweepVertex, 0, len(ovg.Nodes))
+        for _, vertex := range ovg.Nodes {
+            item := tsRealSweepVertex{X: vertex.X, Y: vertex.Y, Center: vertex.IsNodeCenter,
+                Tunnel: vertex.IsTunnel}
+            for owner, metadata := range vertex.portOwners() {
+                o := tsRealSweepOwner{Node: ids[owner], Directions: make([]string, 0), Center: metadata.isCenterPort}
+                for _, direction := range []struct{ value geo.Orientation; label string }{
+                    {geo.Top, "top"}, {geo.Bottom, "bottom"}, {geo.Left, "left"},
+                    {geo.Right, "right"}, {geo.NONE, "none"},
+                } {
+                    if metadata.directions.has(direction.value) { o.Directions = append(o.Directions, direction.label) }
+                }
+                item.Owners = append(item.Owners, o)
+            }
+            sort.Slice(item.Owners, func(i, j int) bool { return item.Owners[i].Node < item.Owners[j].Node })
+            for owner := range vertex.IsNearPort { item.Near = append(item.Near, ids[owner]) }
+            sort.Strings(item.Near)
+            output.FinalVertices = append(output.FinalVertices, item)
+        }
         outputs = append(outputs, output)
     }
     encoded, err := json.MarshalIndent(outputs, "", "  ")
