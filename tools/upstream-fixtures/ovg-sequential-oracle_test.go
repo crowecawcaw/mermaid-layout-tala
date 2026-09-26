@@ -43,6 +43,7 @@ type tsSequentialOutput struct {
     TotalCost float64 `json:"totalCost"`
     Flavors []tsSequentialFlavor `json:"flavors"`
     SelectedFlavor string `json:"selectedFlavor"`
+    FinalRoutes []tsSequentialRoute `json:"finalRoutes"`
 }
 type tsSequentialFlavor struct {
     Name string `json:"name"`
@@ -146,6 +147,15 @@ func TestTSOVGSequentialFixtures(t *testing.T) {
                 bestCost = result.Distance
                 output.SelectedFlavor = string(flavor)
             }
+        }
+        if _, err := routeEdges(context.Background(), g, nil); err != nil { t.Fatal(err) }
+        output.FinalRoutes = make([]tsSequentialRoute, 0, len(g.Edges))
+        for _, edge := range g.Edges {
+            item := tsSequentialRoute{ID: edgeIDs[edge], Points: make([][2]float64, 0)}
+            for _, point := range edge.Points {
+                item.Points = append(item.Points, [2]float64{point.X, point.Y})
+            }
+            output.FinalRoutes = append(output.FinalRoutes, item)
         }
         outputs = append(outputs, output)
     }

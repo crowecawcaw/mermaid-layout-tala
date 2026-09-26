@@ -6,6 +6,7 @@ import type { OVGFlatNode } from '../src/tala/ovg-build.js';
 interface Case { name: string; nodes: OVGFlatNode[];
   edges: Array<{ id: string; from: string; to: string }> }
 interface Output { name: string; selectedFlavor: string;
+  finalRoutes: Array<{ id: string; points: [number, number][] }>;
   flavors: Array<{ name: string;
     routes: Array<{ id: string; segmentPoints: [number, number][] }> }> }
 const read = (file: string) => JSON.parse(readFileSync(new URL(
@@ -20,10 +21,9 @@ describe('public flat router uses the selected Go OVG route flavor', () => {
       rank: 0, order: 0 }));
     const routes = routeGraphEdges(nodes, input.edges, 'TB', new Map(), true);
     const oracle = expected.find((item) => item.name === input.name)!;
-    const selected = oracle.flavors.find((item) => item.name === oracle.selectedFlavor)!;
-    for (const route of selected.routes) {
+    for (const route of oracle.finalRoutes) {
       expect(routes.find((item) => item.id === route.id)!.points.map(({ x, y }) => [x, y]))
-        .toEqual(route.segmentPoints);
+        .toEqual(route.points);
     }
   });
 });

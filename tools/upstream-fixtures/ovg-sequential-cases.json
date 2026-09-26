@@ -112,5 +112,27 @@
       { "id": "bc", "from": "b", "to": "c" },
       { "id": "cd", "from": "c", "to": "d" }
     ]
+  },
+  {
+    "name": "parallel-reversed",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 80, "height": 50 },
+      { "id": "b", "x": 250, "y": 0, "width": 80, "height": 50 }
+    ],
+    "edges": [
+      { "id": "ab", "from": "a", "to": "b" },
+      { "id": "ba", "from": "b", "to": "a" }
+    ]
+  },
+  {
+    "name": "parallel-vertical",
+    "nodes": [
+      { "id": "a", "x": 0, "y": 0, "width": 80, "height": 50 },
+      { "id": "b", "x": 0, "y": 250, "width": 80, "height": 50 }
+    ],
+    "edges": [
+      { "id": "ab1", "from": "a", "to": "b" },
+      { "id": "ab2", "from": "a", "to": "b" }
+    ]
   }
 ]

@@ -7,6 +7,7 @@ import { shapePortPolicy } from './shape-ports.js';
 import { TalaPriorityQueue, type TalaQueueEntry } from './priority-queue.js';
 import { OVGRouteState, type OVGRecordedRoute } from './ovg-route-state.js';
 import { slingshotFlatOVG } from './ovg-slingshot.js';
+import { reorderFlatOVGRoutes } from './ovg-reorder.js';
 
 interface SearchContext {
   verticalDistance: number;
@@ -69,6 +70,7 @@ export function generateBestFlatOVGRoutes(nodes: readonly OVGFlatNode[],
     }
   }
   if (!best) throw lastError ?? new Error('no OVG route flavor succeeded');
+  reorderFlatOVGRoutes(nodes, edges, best.routes);
   return best;
 }
 
@@ -223,7 +225,9 @@ function searchSingleEdge(graph: OVGFlatRoutingGraph,
           ? routeState.routesAt(adjacent).length > 0 : false;
         const overlapped = current !== source && current !== target
           ? routeState.overlapping(edge) : [];
-        const prohibited = overlapped.length > 0 && !canOverlapRoutes(
+        const prohibited = overlapped.some((route) => adjacent.tunnel
+          && isEntireColinear(route.nodes, adjacent, current))
+          || overlapped.length > 0 && !canOverlapRoutes(
           sourceNode.id, targetNode.id, overlapped)
           || current !== source && !onCurrent.length && !onAdjacent
             && routeState.hasNearby(edge);
@@ -356,6 +360,21 @@ function canOverlapRoutes(source: string, target: string,
   const edges = [{ from: source, to: target }, ...routes.map((route) => route.edge)];
   return [source, target, ...routes.flatMap((route) => [route.edge.from, route.edge.to])]
     .some((node) => edges.every((edge) => edge.from === node || edge.to === node));
+}
+function isEntireColinear(route: readonly OVGSweepVertex[], from: Point, to: Point): boolean {
+  const horizontal = from.y === to.y, vertical = from.x === to.x;
+  if (!horizontal && !vertical) return false;
+  const min = horizontal ? Math.min(from.x, to.x) : Math.min(from.y, to.y);
+  const max = horizontal ? Math.max(from.x, to.x) : Math.max(from.y, to.y);
+  for (let i = 1; i < route.length - 2; i++) {
+    const a = route[i]!, b = route[i + 1]!;
+    if (horizontal ? a.y !== from.y || b.y !== from.y
+      : a.x !== from.x || b.x !== from.x) return false;
+    const low = horizontal ? Math.min(a.x, b.x) : Math.min(a.y, b.y);
+    const high = horizontal ? Math.max(a.x, b.x) : Math.max(a.y, b.y);
+    if (low < min || high > max) return false;
+  }
+  return true;
 }
 function key(point: Point): string { return `${point.x},${point.y}`; }
 function symmetricalPortKeys(node: OVGFlatNode, used: ReadonlySet<string>): Set<string> {
