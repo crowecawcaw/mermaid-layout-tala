@@ -13,7 +13,7 @@ that engine yet.
 | Seed attempts | Independent mutable graph clones and deterministic ordering attempts are implemented. Upstream crossing evaluation is ported; random placement and full label scoring remain unported. |
 | Tree, hierarchy, hub, proximity, cluster, and sequence discovery | Upstream `AddHubs` discovery, flat tree leaf peeling, sibling cluster discovery, and connected `Step` sequence-run discovery are ported. Tree extraction matches 24 pinned generated trees; flat sibling clustering matches five upstream cases. Tree geometry follows upstream's orientation transforms, level placement, sibling spacing, and edge-label clearance. Incoming and outgoing branches are placed around their junction. Cluster vessel resizing, member arrangement, temporary graph installation, edge abduction, and restoration are ported. The topology matches four upstream clustered fixtures, and geometry matches four independent vessel fixtures. The flat cluster placement branch matches completed upstream geometry in the diamond and three-way parallel fan. The compound post-placement path now retains clustered sibling vessels through its alignment and spacing passes. Step sequence vessel sizing, wedge overlap, temporary topology, external-edge abduction, and member arrangement are ported for flat components; the public flat TALA path now places such runs through vessels. Upstream remembered-sequence lifecycle and routing remain unported. General compound grouping, cluster rotation, hierarchy discovery and placement, and other grouping algorithms remain unported. Ordinary connected components use translated TALA placement by default; nested containers still use the adapter's recursive placement. |
 | General placement, symmetry, compaction, and bin packing | The ordinary-node initializer, Go-compatible random stream, sizeless and sized optimizers, spatial swaps, quarter-turn transposes, compaction, distance-cluster joining, and placement stage are translated. The graph direction mirror matches 24 upstream tree-stage fixtures. Sized scoring includes upstream flow continuity and ordered obstruction handling; transpose scoring includes straight-edge crossings and cached crossing cost. Placement costs match 54 pinned upstream fixtures, compaction matches 65 fixtures, distance-cluster joining matches 7 fixtures, and the complete ordinary placement stage matches 12 curated plus 30 generated graphs exactly. The public flat-tree path now runs the ordinary `GapNormalization` pass between placement and routing, excluding tree members as upstream does. Its speculative moves reject newly introduced clearance overlaps. Public results without fixed nodes normalize using node bounds, routed points, and available label bounds. Measured container proxies can use the ordinary stage, but full compound placement, herd behavior, bin packing, and the other upstream placement branches remain unported. |
-| Edge routing | The center-port, S-shaped tree route kernel is ported for inward and outward branches and matches all edges in 24 pinned upstream tree fixtures; it now uses shape-specific center ports. The tree-sentinel branch of upstream `Dejitter` moves nodes to straighten short bends, checks sign flips, route obstructions, overlap, and symmetry, and reroutes accepted moves. The visibility-grid router uses shape-specific center ports for zero-offset edges, handles recessed ports, and honors explicit table row endpoints on horizontally separated nodes. TALA's five-point self-loop router, loop extents, and loop label positions match five upstream fixtures and run in the public routing path. The upstream safe four-bend simplification stage is ported and runs after public routing; nine upstream obstruction and transpose cases pass. The straight-segment and ordinary bent-route endpoint branches of `BalanceEdgeSegments` are ported. General edge routing still uses the visibility grid; upstream route graph, general port selection, channel refinements, and the other route cleanup stages remain unported. |
+| Edge routing | The center-port, S-shaped tree route kernel is ported for inward and outward branches and matches all edges in 24 pinned upstream tree fixtures; it now uses shape-specific center ports. The tree-sentinel branch of upstream `Dejitter` moves nodes to straighten short bends, checks sign flips, route obstructions, overlap, and symmetry, and reroutes accepted moves. The visibility-grid router uses shape-specific center ports for zero-offset edges, handles recessed ports, and honors explicit table row endpoints on horizontally separated nodes. Shorter edges route first, and reused ports respect arrowhead compatibility in the pinned flat cases. TALA's five-point self-loop router, loop extents, and loop label positions match five upstream fixtures and run in the public routing path. The upstream safe four-bend simplification stage is ported and runs after public routing; nine upstream obstruction and transpose cases pass. The straight-segment and ordinary bent-route endpoint branches of `BalanceEdgeSegments` are ported. General edge routing still uses the visibility grid; upstream route graph, general port selection, channel refinements, and the other route cleanup stages remain unported. |
 | Labels | The node-label default and full position preference tranches match upstream for all 23 shapes, as ordinary nodes and containers. Edge labels are measured and placed on a selected route segment; actual node/icon positioning and upstream label optimization remain unported. |
 | Validation and resource limits | Basic input validation exists. Upstream graph invariants and work budgets remain unported. |
 
@@ -31,15 +31,18 @@ and the public path now matches all six final node boxes. The straight-route
 branch of `BalanceEdgeSegments` now uses upstream's floored distribution in
 an odd-size overlap corridor; linked and nested examples match every final
 route point. The general segment-balancing stage remains unported.
-The one-edge branch of upstream `TransposeAll` now runs on public compound
-graphs. A pinned nested-container stage fixture verifies that it rotates a
-leaf branch around its neighbor, rounds after each quarter-turn, and refits
-both containing boxes to the exact upstream geometry. The public compound
+The one- and two-edge ordinary branches of upstream `TransposeAll` now run
+on public graphs. Three pinned bridge fixtures match the complete Go
+`TransposeAll` stage. Rotation trials use upstream's graph-level placement
+score, including symmetry and crossing terms. A pinned nested-container stage
+fixture verifies that the one-edge branch rotates a leaf around its neighbor,
+rounds after each quarter-turn, and refits both containing boxes to the exact
+upstream geometry. The public compound
 placement now retains each projected edge's original descendant geometry
 while scoring sized candidates and finding neighbor medians. Combined with
 unconstrained interior directions and the transpose stage, all six nested
-node boxes match upstream. The two-edge transpose branch and full compound
-placement transactions remain unported.
+node boxes match upstream. Container-aware reachability in the two-edge
+transpose branch and full compound placement transactions remain unported.
 The expanded oracle adds six compound patterns. It exposes an interior cluster
 ownership error, now fixed, and a missing ordinary `BalanceSymmetry` stage,
 ported against its upstream stage trace. The ordinary placement path now runs
@@ -84,10 +87,10 @@ Container abduction scoring, table-column costs, tree-edge exclusions, complete
 gap and equidistance branches, and general compound placement remain incomplete.
 
 The complete Go pipeline oracle now covers ten small flat graphs. Relative
-node positions and sizes match exactly in all ten: a chain, a cycle, six rooted
-trees, two disconnected chains, and a diamond. Upstream treats the diamond's
-middle pair as a temporary cluster, which the TypeScript port now does too.
-Edge routes and labels are not included in that comparison.
+node positions, sizes, and complete edge routes match exactly in all ten: a
+chain, a cycle, six rooted trees, two disconnected chains, and a diamond.
+Upstream treats the diamond's middle pair as a temporary cluster, which the
+TypeScript port now does too. Labels are not included in that comparison.
 
 A separate set of 24 generated branching trees exercises deeper and uneven
 structures. The TypeScript geometry matches the upstream node-placement stage

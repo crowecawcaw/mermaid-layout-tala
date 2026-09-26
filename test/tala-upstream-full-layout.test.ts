@@ -12,6 +12,7 @@ interface Case {
 interface Expected {
   name: string;
   nodes: Array<{ id: string; x: number; y: number; width: number; height: number }>;
+  edges: Array<{ id: string; points: Array<{ x: number; y: number }> }>;
 }
 const inputs = JSON.parse(readFileSync(new URL('../tools/upstream-fixtures/full-layout-cases.json', import.meta.url), 'utf8')) as Case[];
 const outputs = JSON.parse(readFileSync(new URL('../tools/upstream-fixtures/full-layout-expected.json', import.meta.url), 'utf8')) as Expected[];
@@ -23,7 +24,7 @@ const exactCases = new Set([
 describe('completed upstream graph geometry', () => {
   for (const [index, input] of inputs.entries()) {
     if (!exactCases.has(input.name)) continue;
-    it(`${input.name} matches relative node positions and sizes`, () => {
+    it(`${input.name} matches relative nodes and complete routes`, () => {
       const output = outputs[index]!;
       expect(output.name).toBe(input.name);
       const result = layoutFlowchart(input.nodes, input.edges, {
@@ -37,6 +38,13 @@ describe('completed upstream graph geometry', () => {
         expect(actual.height).toBe(node.height);
         expect(actual.x - actual.width / 2 - actualReference.x + actualReference.width / 2).toBe(node.x - reference.x);
         expect(actual.y - actual.height / 2 - actualReference.y + actualReference.height / 2).toBe(node.y - reference.y);
+      }
+      const dx = actualReference.x - actualReference.width / 2 - reference.x;
+      const dy = actualReference.y - actualReference.height / 2 - reference.y;
+      for (const edge of output.edges) {
+        const route = result.edges.find((candidate) => candidate.id === edge.id)!;
+        expect(route.points.map((point) => ({ x: point.x - dx, y: point.y - dy })))
+          .toEqual(edge.points);
       }
     });
   }

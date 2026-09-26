@@ -114,8 +114,7 @@ then pass the case JSON on stdin to `go run ./d2layouts/d2talalayout/cmd/ts-full
 Its output is `full-layout-expected.json`. After `npm run build`, run
 `node tools/upstream-fixtures/compare-full.mjs` from this repository to show
 relative geometry differences. The test `tala-upstream-full-layout.test.ts`
-pins the nine cases whose node geometry matches; edge routes are still outside
-that assertion.
+pins all ten cases with exact relative node geometry and complete edge routes.
 
 The same oracle reads `compound-expanded-cases.json` and produces
 `compound-expanded-expected.json`. It creates empty container entries in the
@@ -130,8 +129,8 @@ Run `node full-tree-random-cases.mjs` to regenerate 24 deeper branching-tree
 cases. `full-tree-random-expected.json` records complete upstream results for
 them. Compare with `node tools/upstream-fixtures/compare-full.mjs
 ./full-tree-random-cases.json ./full-tree-random-expected.json`. These generated
-cases currently expose the missing general tree pipeline; they are diagnostic
-inputs, not parity assertions.
+cases match relative node geometry and complete route points through the
+public TypeScript layout entry point.
 
 `node-placement-oracle_test.go` records the upstream graph immediately after
 the `NodePlacement` pipeline stage. Copy it into the pinned checkout's
@@ -149,6 +148,12 @@ edge-labeled trees with exact relative node geometry at that stage. Later
 routing refinements can still move nodes, so the completed-layout fixture is a
 separate check. The labeled inputs and oracle results are in
 `labeled-tree-cases.json` and `labeled-tree-stage-expected.json`.
+
+`transpose-oracle_test.go` records three ordinary bridge graphs after
+upstream `TransposeAll`. Copy it into the pinned checkout's
+`internal/placement` package as `ts_transpose_oracle_test.go`, then run
+`go test ./d2layouts/d2talalayout/internal/placement -run '^TestTSTransposeAllBridgeFixtures$' -count=1 -v`.
+The exact coordinates are asserted in `test/tala-upstream-transpose.test.ts`.
 For tree preprocessing, the same `node-placement-oracle_test.go` harness has
 `TestTSTreeExtractionFixtures`. Copy it into the pinned upstream engine package
 and run with `TALA_TS_TREE_EXTRACTION_INPUT` pointing to

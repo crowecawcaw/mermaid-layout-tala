@@ -7,6 +7,7 @@ type Side = 'N' | 'S' | 'E' | 'W';
 type Axis = 0 | 1 | 2;
 interface Rect { left: number; right: number; top: number; bottom: number }
 interface Port { point: Point; outer: Point; side: Side }
+type OccupiedPorts = Map<string, Map<string, string[]>>;
 
 const CLEARANCE = 12;
 const BEND_COST = 24;
@@ -43,20 +44,36 @@ export function routeGraphEdges(
     if (loops) for (const [id, points] of routeNodeLoops(node, loops)) loopPaths.set(id, points);
   }
 
-  return [...edges].sort((a, b) => compareText(a.id, b.id)).map((edge) => {
+  const occupied: OccupiedPorts = new Map();
+  const routeOrder = [...edges].sort((a, b) => {
+    const distance = (edge: LayoutEdge) => {
+      const from = byId.get(edge.from)!, to = byId.get(edge.to)!;
+      const dx = Math.max(0, Math.abs(from.x - to.x) - (from.width + to.width) / 2);
+      const dy = Math.max(0, Math.abs(from.y - to.y) - (from.height + to.height) / 2);
+      return Math.hypot(dx, dy);
+    };
+    return distance(a) - distance(b) || compareText(a.id, b.id);
+  });
+  const routed = routeOrder.map((edge) => {
     const source = byId.get(edge.from)!;
     const target = byId.get(edge.to)!;
     const offset = offsets.get(edge.id) ?? 0;
     const treePoints = canonicalTreePaths.get(edge.id);
     const loopPoints = loopPaths.get(edge.id);
-    const points = treePoints ?? loopPoints ?? routeBetween(edge, source, target, nodes, byId, direction, offset);
+    const points = treePoints ?? loopPoints ?? routeBetween(edge, source, target, nodes, byId,
+      direction, offset, occupied);
     const compact = treePoints || loopPoints ? points : normalize(points);
+    if (compact.length >= 2) {
+      recordPort(occupied, source.id, compact[0]!, endpointArrow(edge, true));
+      recordPort(occupied, target.id, compact.at(-1)!, endpointArrow(edge, false));
+    }
     const loopLabel = loopPoints && edge.labelBBox
       ? outsideTopCenterLoopLabelBox(loopPoints, edge.labelBBox) : undefined;
     const middle = loopLabel ? { x: loopLabel.x + loopLabel.width / 2,
       y: loopLabel.y + loopLabel.height / 2 } : chooseLabelPoint(compact, edge, nodes);
     return { ...edge, points: compact, x: middle.x, y: middle.y };
   });
+  return routed.sort((a, b) => compareText(a.id, b.id));
 }
 
 function routeBetween(
@@ -66,7 +83,8 @@ function routeBetween(
   nodes: readonly PositionedNode[],
   byId: Map<string, PositionedNode>,
   direction: LayoutDirection,
-  offset: number
+  offset: number,
+  occupied: OccupiedPorts
 ): Point[] {
   const traversableAncestors = new Set([source.id, target.id]);
   for (const endpoint of [source, target]) {
@@ -95,7 +113,12 @@ function routeBetween(
       const x = Math.round((left + right) / 2);
       const a = { x, y: upper.y + upper.height / 2 };
       const b = { x, y: lower.y - lower.height / 2 };
-      if (!segmentBlocked(a, b, otherObstacles)) return source === upper ? [a, b] : [b, a];
+      const from = source === upper ? a : b, to = source === upper ? b : a;
+      if (!segmentBlocked(a, b, otherObstacles)
+        && occupiedPortCost(occupied, source, from, endpointArrow(edge, true)) === 0
+        && occupiedPortCost(occupied, target, to, endpointArrow(edge, false)) === 0) {
+        return [from, to];
+      }
     }
   }
   const obstacles = [...otherObstacles];
@@ -112,14 +135,42 @@ function routeBetween(
       tableSides ? edge.fromTableColumnIndex : undefined);
     const end = port(target, endSide, offset,
       tableSides ? edge.toTableColumnIndex : undefined);
+    const startCost = occupiedPortCost(occupied, source, start.point, endpointArrow(edge, true));
+    const endCost = occupiedPortCost(occupied, target, end.point, endpointArrow(edge, false));
+    if (!Number.isFinite(startCost) || !Number.isFinite(endCost)) continue;
     if (insideAny(start.outer, obstacles) || insideAny(end.outer, obstacles)) continue;
     const path = searchGrid(start.outer, end.outer, obstacles, startSide, endSide);
     if (!path) continue;
     const points = [start.point, ...path, end.point];
-    const cost = routeCost(points) + preference;
+    const cost = routeCost(points) + preference + startCost + endCost;
     if (!best || cost < best.cost) best = { points, cost };
   }
   return best?.points ?? fallback(source, target, direction, offset, edge, tableSides);
+}
+
+function pointKey(point: Point): string { return `${point.x},${point.y}`; }
+
+function endpointArrow(edge: LayoutEdge, source: boolean): string {
+  const specified = source ? edge.sourceArrowhead : edge.targetArrowhead;
+  if (specified !== undefined) return specified === '' ? 'none' : specified.toLowerCase();
+  return source || edge.directed === false ? 'none' : 'triangle';
+}
+
+function recordPort(occupied: OccupiedPorts, nodeId: string, point: Point, arrow: string): void {
+  const ports = occupied.get(nodeId) ?? new Map<string, string[]>();
+  const key = pointKey(point);
+  const arrows = ports.get(key) ?? [];
+  arrows.push(arrow);
+  ports.set(key, arrows);
+  occupied.set(nodeId, ports);
+}
+
+function occupiedPortCost(occupied: OccupiedPorts, node: PositionedNode,
+  point: Point, arrow: string): number {
+  const arrows = occupied.get(node.id)?.get(pointKey(point));
+  if (!arrows?.length) return 0;
+  if (arrows.some((other) => other !== arrow)) return Infinity;
+  return Math.max(node.width, node.height) / 2;
 }
 
 function facingTableSides(source: PositionedNode, target: PositionedNode): [Side, Side] | undefined {

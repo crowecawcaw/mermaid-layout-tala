@@ -1,46 +1,60 @@
 import type { Point } from '../layout.js';
 import { TalaGraph, TalaNode } from './graph.js';
 import { sizedOrientation } from './placement-geometry.js';
-import { sizedNodeEdgeLength } from './sized-cost.js';
+import { ordinaryPlacementEdgeLength } from './placement-edge-length.js';
 import { wrapContainers } from './equidistance.js';
 
 const precision = 1e-6;
 
-/** The one-edge branch of placement.transpose, run in graph order. A leaf's
- * reachable side turns around its neighbor and enclosing boxes are refitted
- * for each trial, as in TransposeAll's AffectContainers transaction. */
-export function transposeLeaves(graph: TalaGraph): boolean {
+/** Port of the ordinary one- and two-edge branches of TransposeAll. The
+ * smaller side of a two-edge bridge rotates around the larger side. */
+export function transposeAll(graph: TalaGraph): boolean {
   graph.computeCellSize();
   let changed = false;
   for (const node of graph.nodes) {
-    if (!node.topLeft || node.fixedTopLeft || node.edges.length !== 1) continue;
-    const center = node.adjacent(node.edges[0]!);
-    if (!center.topLeft || node.isDescendantOf(center) || center.isDescendantOf(node)
-      || isDiagonal(sizedOrientation(node, center))) continue;
-    const moving = reachableSide(node, center);
-    if (moving.some((item) => item.fixedTopLeft)) continue;
-    const before = snapshot(graph);
-    let bestScore = edgeLength(graph);
-    let bestTurn = 0;
-    for (let turn = 1; turn <= 3; turn++) {
-      restore(before);
-      for (const item of moving) moveWithChildren(item, rotate(item, center, turn));
-      wrapContainers(graph);
-      if (!validSiblingGeometry(graph)) continue;
-      const score = edgeLength(graph);
-      if (score < bestScore - precision) {
-        bestScore = score;
-        bestTurn = turn;
-      }
-    }
-    restore(before);
-    if (bestTurn > 0) {
-      for (const item of moving) moveWithChildren(item, rotate(item, center, bestTurn));
-      wrapContainers(graph);
-      changed = true;
-    }
+    changed = transposeNode(graph, node) || changed;
   }
   return changed;
+}
+
+/** Single candidate operation, matching upstream's transpose call. */
+export function transposeNode(graph: TalaGraph, node: TalaNode): boolean {
+  if (!node.topLeft || node.fixedTopLeft || node.edges.length < 1
+    || node.edges.length > 2) return false;
+  const neighbors = node.edges.map((edge) => node.adjacent(edge));
+  if (neighbors.some((neighbor) => !neighbor.topLeft || node.isDescendantOf(neighbor)
+    || neighbor.isDescendantOf(node) || isDiagonal(sizedOrientation(node, neighbor)))) return false;
+  let center = neighbors[0]!;
+  if (neighbors.length === 2) {
+    const a = neighbors[0]!, b = neighbors[1]!;
+    const sideA = reachableSide(a, node);
+    if (sideA.includes(b)) return false;
+    const sideB = reachableSide(b, node);
+    if (sideA.length < sideB.length) center = b;
+  }
+  const moving = reachableSide(node, center);
+  if (moving.some((item) => item.fixedTopLeft)) return false;
+  const before = snapshot(graph);
+  let bestScore = edgeLength(graph);
+  let bestTurn = 0;
+  for (let turn = 1; turn <= 3; turn++) {
+    restore(before);
+    for (const item of moving) moveWithChildren(item, rotate(item, center, turn));
+    wrapContainers(graph);
+    if (!validSiblingGeometry(graph)) continue;
+    const score = edgeLength(graph);
+    if (score < bestScore - precision) {
+      bestScore = score;
+      bestTurn = turn;
+    }
+  }
+  restore(before);
+  if (bestTurn > 0) {
+    for (const item of moving) moveWithChildren(item, rotate(item, center, bestTurn));
+    wrapContainers(graph);
+    return true;
+  }
+  return false;
 }
 
 function reachableSide(start: TalaNode, blocked: TalaNode): TalaNode[] {
@@ -59,8 +73,7 @@ function reachableSide(start: TalaNode, blocked: TalaNode): TalaNode[] {
 }
 
 function edgeLength(graph: TalaGraph): number {
-  const turnCost = graph.turnCost();
-  return graph.nodes.reduce((sum, node) => sum + sizedNodeEdgeLength(node, graph, turnCost, true), 0);
+  return ordinaryPlacementEdgeLength(graph);
 }
 
 function rotate(node: TalaNode, center: TalaNode, times: number): Point {

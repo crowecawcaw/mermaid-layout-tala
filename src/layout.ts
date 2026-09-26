@@ -22,7 +22,7 @@ import { ordinaryPlacementEdgeLength } from './tala/placement-edge-length.js';
 import { containerAlignmentCost } from './tala/container-alignment-cost.js';
 import { normalizeGaps } from './tala/gap-normalization.js';
 import { equidistance } from './tala/equidistance.js';
-import { transposeLeaves } from './tala/transpose.js';
+import { transposeAll } from './tala/transpose.js';
 import { balanceStraightSegments } from './tala/edge-balance.js';
 import { balanceSymmetry } from './tala/balance-symmetry.js';
 import { directOrdinaryGraph } from './tala/direct.js';
@@ -473,7 +473,7 @@ function layoutCompoundFlowchart(
       + containerAlignmentCost(graph);
     let changed = false;
     try {
-      changed = transposeLeaves(alignmentGraph);
+      changed = transposeAll(alignmentGraph);
       changed = alignAxesPass(alignmentGraph, alignmentScore) || changed;
       changed = normalizeGaps(alignmentGraph) || changed;
       changed = alignAxesPass(alignmentGraph, alignmentScore) || changed;
