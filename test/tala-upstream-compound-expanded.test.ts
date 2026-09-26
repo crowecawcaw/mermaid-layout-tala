@@ -34,7 +34,8 @@ describe('expanded compound pipeline oracle', () => {
     const oracle = expected.find((item) => item.name === input.name)!;
     const actual = layoutFlowchart(input.nodes, input.edges,
       { strategy: 'tala', direction: input.direction, seeds: [input.seed] });
-    expect(actual.nodes.map((node) => ({ id: node.id,
+    const byId = new Map(actual.nodes.map((node) => [node.id, node]));
+    expect(oracle.nodes.map(({ id }) => byId.get(id)!).map((node) => ({ id: node.id,
       x: node.x - node.width / 2, y: node.y - node.height / 2,
       width: node.width, height: node.height }))).toEqual(oracle.nodes);
     for (const edge of actual.edges) {
@@ -42,22 +43,18 @@ describe('expanded compound pipeline oracle', () => {
     }
   });
 
-  it('packs the empty nested container and connected siblings like upstream', () => {
+  it('matches complete upstream output for the empty nested container', () => {
     const input = cases.find((item) => item.name === 'empty-nested-container')!;
     const oracle = expected.find((item) => item.name === input.name)!;
     const actual = layoutFlowchart(input.nodes, input.edges,
       { strategy: 'tala', direction: input.direction, seeds: [input.seed] });
     const byId = new Map(actual.nodes.map((node) => [node.id, node]));
-    for (const expectedNode of oracle.nodes.filter((node) => node.id !== 'X')) {
-      const node = byId.get(expectedNode.id)!;
-      expect({ id: node.id, x: node.x - node.width / 2, y: node.y - node.height / 2,
-        width: node.width, height: node.height }).toEqual(expectedNode);
+    expect(oracle.nodes.map(({ id }) => byId.get(id)!).map((node) => ({ id: node.id,
+      x: node.x - node.width / 2, y: node.y - node.height / 2,
+      width: node.width, height: node.height }))).toEqual(oracle.nodes);
+    for (const edge of actual.edges) {
+      expect(edge.points).toEqual(oracle.edges.find((item) => item.id === edge.id)!.points);
     }
-    const x = byId.get('X')!;
-    const expectedX = oracle.nodes.find((node) => node.id === 'X')!;
-    expect({ y: x.y - x.height / 2, width: x.width, height: x.height })
-      .toEqual({ y: expectedX.y, width: expectedX.width, height: expectedX.height });
-    expect((x.x - x.width / 2) - expectedX.x).toBe(-12);
   });
 
   it('matches complete upstream output for a clustered container diamond', () => {

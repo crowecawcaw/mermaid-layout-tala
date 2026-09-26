@@ -77,9 +77,28 @@ function routeBetween(
       parentId = byId.get(parentId)?.parentId;
     }
   }
-  const obstacles = nodes
+  const otherObstacles = nodes
     .filter((node) => !traversableAncestors.has(node.id))
     .map((node) => rect(node, CLEARANCE));
+  // Tala's straight-route attempt can share a port coordinate inside the
+  // overlap of two facing rectangular walls. Center ports alone would add
+  // two bends when the boxes are slightly offset on the cross axis.
+  if (offset === 0 && edge.fromTableColumnIndex === undefined
+    && edge.toTableColumnIndex === undefined
+    && (!source.shape || source.shape === 'rectangle')
+    && (!target.shape || target.shape === 'rectangle')) {
+    const left = Math.max(source.x - source.width / 2, target.x - target.width / 2);
+    const right = Math.min(source.x + source.width / 2, target.x + target.width / 2);
+    const upper = source.y < target.y ? source : target;
+    const lower = upper === source ? target : source;
+    if (left < right && upper.y + upper.height / 2 < lower.y - lower.height / 2) {
+      const x = Math.round((left + right) / 2);
+      const a = { x, y: upper.y + upper.height / 2 };
+      const b = { x, y: lower.y - lower.height / 2 };
+      if (!segmentBlocked(a, b, otherObstacles)) return source === upper ? [a, b] : [b, a];
+    }
+  }
+  const obstacles = [...otherObstacles];
   // A route may touch an endpoint boundary only at its chosen port. Keep both
   // endpoint interiors unavailable to the visibility search.
   obstacles.push(rect(source, CLEARANCE), rect(target, CLEARANCE));

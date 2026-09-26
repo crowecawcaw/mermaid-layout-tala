@@ -10,6 +10,10 @@ const MaxGraphSize = 30_000;
 export function attemptAxisShift(graph: TalaGraph, edge: TalaEdge,
   nodes: readonly TalaNode[], dx: number, dy: number,
   existingOverlaps = overlapPairs(graph)): boolean {
+  // The upstream transaction wraps every container after a speculative move.
+  // Wrapping an empty container produces non-finite bounds, so its containment
+  // check rejects the candidate and restores the prior graph state.
+  if (graph.nodes.some((node) => node.isGroup && node.children.length === 0)) return false;
   const originals = graph.nodes.map((node) => ({ node, topLeft: node.topLeft
     ? { ...node.topLeft } : undefined, width: node.width, height: node.height,
     x: node.x, y: node.y }));
