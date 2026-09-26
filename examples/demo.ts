@@ -12,6 +12,11 @@ const status = document.querySelector<HTMLElement>('#status')!;
 const description = document.querySelector<HTMLElement>('#example-description')!;
 const downloadButton = document.querySelector<HTMLButtonElement>('#download')!;
 const renderButton = document.querySelector<HTMLButtonElement>('#render')!;
+const talaOptions = document.querySelector<HTMLElement>('#tala-options')!;
+const nodeSpacing = document.querySelector<HTMLInputElement>('#node-spacing')!;
+const rankSpacing = document.querySelector<HTMLInputElement>('#rank-spacing')!;
+const nodeSpacingValue = document.querySelector<HTMLOutputElement>('#node-spacing-value')!;
+const rankSpacingValue = document.querySelector<HTMLOutputElement>('#rank-spacing-value')!;
 
 let renderVersion = 0;
 let renderQueue = Promise.resolve();
@@ -42,6 +47,7 @@ function render(): void {
     preview.replaceChildren();
     renderedSvg = '';
     downloadButton.disabled = true;
+    talaOptions.hidden = true;
     setStatus('Enter Mermaid syntax to see a diagram.');
     return;
   }
@@ -57,9 +63,12 @@ function render(): void {
         layout,
         theme: 'default',
         securityLevel: 'strict',
-        flowchart: { htmlLabels: false, nodeSpacing: 44, rankSpacing: 64 },
+        flowchart: layout === 'tala'
+          ? { htmlLabels: false, nodeSpacing: nodeSpacing.valueAsNumber, rankSpacing: rankSpacing.valueAsNumber }
+          : { htmlLabels: false },
       });
-      await mermaid.parse(diagram);
+      const parsed = await mermaid.parse(diagram);
+      const isFlowchart = parsed.diagramType.startsWith('flowchart');
       const result = await mermaid.render(renderId, diagram);
       if (version !== renderVersion) return;
 
@@ -67,7 +76,12 @@ function render(): void {
       result.bindFunctions?.(preview);
       renderedSvg = result.svg;
       downloadButton.disabled = false;
-      setStatus(`Rendered with ${layout.toUpperCase()}.`);
+      talaOptions.hidden = layout !== 'tala' || !isFlowchart;
+      setStatus(isFlowchart
+        ? `Rendered with ${layout.toUpperCase()}.`
+        : parsed.diagramType.startsWith('architecture')
+          ? "Rendered with Mermaid's native architecture layout. TALA applies to flowcharts."
+          : 'Rendered diagram. Layout selection depends on the Mermaid diagram type.');
     } catch (error) {
       // Mermaid may leave its temporary error diagram in the document.
       document.getElementById(`d${renderId}`)?.remove();
@@ -98,7 +112,16 @@ exampleSelect.addEventListener('change', () => {
   selectExample(Number(exampleSelect.value));
 });
 
-layoutSelect.addEventListener('change', render);
+layoutSelect.addEventListener('change', () => {
+  talaOptions.hidden = layoutSelect.value !== 'tala';
+  render();
+});
+for (const [input, output] of [[nodeSpacing, nodeSpacingValue], [rankSpacing, rankSpacingValue]] as const) {
+  input.addEventListener('input', () => {
+    output.value = `${input.value} px`;
+    scheduleRender();
+  });
+}
 source.addEventListener('input', () => {
   exampleSelect.value = '';
   description.textContent = 'Your own Mermaid diagram.';

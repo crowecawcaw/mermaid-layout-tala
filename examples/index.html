@@ -35,6 +35,13 @@
               <div class="field"><label for="layout">Layout engine</label><select id="layout"><option value="tala">TALA · experimental</option><option value="elk">ELK · Mermaid built-in</option><option value="dagre">Dagre · Mermaid built-in</option></select></div>
             </div>
             <p class="example-description" id="example-description"></p>
+            <div class="layout-options" id="tala-options">
+              <div class="options-heading"><strong>TALA spacing</strong><span>Adjust the diagram's density</span></div>
+              <div class="spacing-controls">
+                <div class="spacing-control"><div class="spacing-label"><label for="node-spacing">Node gap</label><output id="node-spacing-value" for="node-spacing">44 px</output></div><input id="node-spacing" type="range" min="16" max="160" step="4" value="44" /></div>
+                <div class="spacing-control"><div class="spacing-label"><label for="rank-spacing">Layer gap</label><output id="rank-spacing-value" for="rank-spacing">64 px</output></div><input id="rank-spacing" type="range" min="16" max="200" step="4" value="64" /></div>
+              </div>
+            </div>
             <label class="visually-hidden" for="source">Mermaid source</label>
             <textarea id="source" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" aria-describedby="editor-help"></textarea>
             <div class="editor-footer"><span id="editor-help">Changes render automatically.</span><button id="render" class="primary-button" type="button">Render graph <span aria-hidden="true">↗</span></button></div>

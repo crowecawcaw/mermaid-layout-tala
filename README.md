@@ -6,7 +6,9 @@ component placement, and orthogonal edge routes.
 
 ![A left-to-right flowchart arranged by the TALA-derived layout](./docs/tala-layout-example.svg)
 
-Try the [interactive playground](https://crowecawcaw.github.io/mermaid-layout-tala/) to edit Mermaid flowcharts and compare TALA with Mermaid's ELK and Dagre layouts. It includes eight selectable examples.
+Try the [interactive playground](https://crowecawcaw.github.io/mermaid-layout-tala/) to edit Mermaid flowcharts and compare TALA with Mermaid's ELK and Dagre layouts. It includes nine selectable examples, including a cloud architecture topology, and controls for TALA's node and layer spacing.
+
+The architecture example uses flowchart syntax because this port does not yet lay out Mermaid's `architecture-beta` diagrams or subgraph containers.
 
 ## Install
 

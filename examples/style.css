@@ -37,6 +37,15 @@ h2 { margin: 0; color: #253d33; font-size: 19px; letter-spacing: -.03em; }
 .field select { width: 100%; min-height: 42px; padding: 0 31px 0 12px; border: 1px solid #d5dfd5; border-radius: 6px; background: #f8faf7; color: #2f493b; font-size: 13px; }
 .field select:focus, textarea:focus, button:focus-visible, a:focus-visible { outline: 2px solid #458b67; outline-offset: 2px; }
 .example-description { min-height: 20px; margin: 14px 23px 12px; color: #7c897f; font-size: 12px; }
+.layout-options { margin: 0 23px 16px; padding: 13px 15px 14px; border: 1px solid #dce7db; border-radius: 7px; background: #f5f9f4; }
+.options-heading, .spacing-label { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.options-heading { margin-bottom: 12px; }
+.options-heading strong { color: #416550; font-size: 12px; }
+.options-heading span { color: #8a9a8c; font-size: 11px; }
+.spacing-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.spacing-label { margin-bottom: 5px; color: #627767; font-size: 11px; }
+.spacing-label output { color: #38664a; font-weight: 750; font-variant-numeric: tabular-nums; }
+.spacing-control input { display: block; width: 100%; margin: 0; accent-color: #2d6a4f; }
 textarea { display: block; flex: 1; width: calc(100% - 46px); min-height: 380px; margin: 0 23px; padding: 17px 19px; resize: vertical; border: 1px solid #d8e2d7; border-radius: 7px; background: #f7f9f6; color: #29423a; font: 13px/1.7 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; tab-size: 2; }
 .editor-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 23px; color: #839085; font-size: 12px; }
 .primary-button, .secondary-button { display: inline-flex; align-items: center; justify-content: center; gap: 14px; min-height: 38px; padding: 0 14px; border: 1px solid transparent; border-radius: 6px; font-size: 12px; font-weight: 750; white-space: nowrap; }
@@ -72,6 +81,9 @@ textarea { display: block; flex: 1; width: calc(100% - 46px); min-height: 380px;
   .panel-hint { display: none; }
   .editor-controls { grid-template-columns: 1fr; padding: 16px 16px 0; }
   .example-description { margin: 13px 16px 10px; }
+  .layout-options { margin: 0 16px 14px; }
+  .spacing-controls { gap: 12px; }
+  .options-heading span { display: none; }
   textarea { width: calc(100% - 32px); min-height: 280px; margin: 0 16px; padding: 13px; font-size: 12px; }
   .editor-footer { padding: 15px 16px; }
   .preview { min-height: 320px; padding: 14px; }

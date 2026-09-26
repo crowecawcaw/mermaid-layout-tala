@@ -1,5 +1,22 @@
 export const examples = [
   {
+    title: 'Cloud architecture',
+    description: 'An architecture topology in flowchart syntax, so TALA can lay it out.',
+    source: `flowchart TB
+  clients[Web and mobile clients] --> cdn[CDN]
+  cdn --> gateway[API gateway]
+  gateway --> identity[Identity service]
+  gateway --> catalog[Catalog service]
+  gateway --> orders[Order service]
+  identity --> users[(User database)]
+  catalog --> products[(Product database)]
+  orders --> orderdb[(Order database)]
+  orders --> events[Event queue]
+  events --> worker[Background worker]
+  worker --> storage[(Object storage)]
+  events --> analytics[Analytics pipeline]`,
+  },
+  {
     title: 'Request flow',
     description: 'A decision, branching paths, a join, and a retry loop.',
     source: `flowchart TD
