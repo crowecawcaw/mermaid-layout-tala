@@ -21,6 +21,14 @@ Step sequence defining edges are now suppressed in the public result. A
 three-step public layout matches the pinned upstream engine's final normalized
 node geometry; remembered-sequence lifecycle is still absent.
 
+The compound oracle includes a stage trace for a container with an internal
+chain and one outgoing edge. Upstream completes its inner container geometry
+during `NodePlacement`; it then aligns the outgoing node with the connected
+child at `AlignAxes`. The TypeScript inner geometry matches that fixture, but
+the outgoing-node alignment and later compound adjustments are still absent.
+The ordinary-endpoint `AlignAxes` delta calculation is ported and matches the
+stage trace; its candidate search and accepted movement are still absent.
+
 The complete Go pipeline oracle now covers ten small flat graphs. Relative
 node positions and sizes match exactly in all ten: a chain, a cycle, six rooted
 trees, two disconnected chains, and a diamond. Upstream treats the diamond's
