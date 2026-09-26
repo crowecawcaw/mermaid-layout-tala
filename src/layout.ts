@@ -1,5 +1,8 @@
 import { rankDag, type RankEdge, type RankNode } from './rank.js';
 import { routeGraphEdges } from './route.js';
+import { TalaGraph } from './tala/graph.js';
+import { addHubs } from './tala/proximity.js';
+import { countNonSharedCrossings } from './tala/crossings.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
@@ -67,12 +70,18 @@ export function layoutFlowchart(
   options: LayoutOptions = {}
 ): LayoutResult {
   const seeds = normalizeSeeds(options.seeds ?? [1, 2, 3]);
+  const graph = TalaGraph.fromFlowchart(inputNodes, inputEdges, options.direction ?? 'TB');
   let selected: LayoutResult | undefined;
   let selectedScore: { penalty: number; area: number } | undefined;
   for (const seed of seeds) {
-    const candidate = inputNodes.some((node) => node.isGroup)
-      ? layoutCompoundFlowchart(inputNodes, inputEdges, options, seed)
-      : layoutFlatFlowchart(inputNodes, inputEdges, options, seed);
+    const attempt = graph.clone();
+    addHubs(attempt);
+    const nodes = attempt.toLayoutNodes();
+    const edges = attempt.toLayoutEdges();
+    const candidate = nodes.some((node) => node.isGroup)
+      ? layoutCompoundFlowchart(nodes, edges, options, seed)
+      : layoutFlatFlowchart(nodes, edges, options, seed);
+    attempt.applyResult(candidate);
     const score = scoreLayout(candidate);
     if (!selectedScore || score.penalty < selectedScore.penalty
       || (score.penalty === selectedScore.penalty && score.area <= selectedScore.area)) {
@@ -422,30 +431,16 @@ function seededOrder(id: string, seed: number): number {
 
 function scoreLayout(result: LayoutResult): { penalty: number; area: number } {
   let penalty = 0;
-  for (const edge of result.edges) penalty += Math.max(0, edge.points.length - 2) * 0.5;
-  for (let i = 0; i < result.edges.length; i++) {
-    const first = result.edges[i]!;
-    for (let j = i + 1; j < result.edges.length; j++) {
-      const second = result.edges[j]!;
-      if (first.from === second.from || first.from === second.to || first.to === second.from || first.to === second.to) continue;
-      for (let a = 1; a < first.points.length; a++) {
-        for (let b = 1; b < second.points.length; b++) {
-          const p = first.points[a - 1]!, q = first.points[a]!;
-          const r = second.points[b - 1]!, s = second.points[b]!;
-          if (p.x === q.x && r.y === s.y
-            && between(r.y, p.y, q.y) && between(p.x, r.x, s.x)) penalty++;
-          if (p.y === q.y && r.x === s.x
-            && between(r.x, p.x, q.x) && between(p.y, r.y, s.y)) penalty++;
-        }
-      }
+  for (const edge of result.edges) {
+    penalty += Math.max(0, edge.points.length - 2) * 0.5;
+    for (let i = 1; i < edge.points.length; i++) {
+      const previous = edge.points[i - 1]!, current = edge.points[i]!;
+      if (previous.x !== current.x && previous.y !== current.y) penalty += 3;
     }
   }
+  penalty += countNonSharedCrossings(result.edges);
   const box = bounds(result.nodes);
   return { penalty, area: box.width * box.height };
-}
-
-function between(value: number, a: number, b: number): boolean {
-  return value > Math.min(a, b) && value < Math.max(a, b);
 }
 
 function finiteSpacing(value: number, name: string): number {

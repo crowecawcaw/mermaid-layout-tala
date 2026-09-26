@@ -8,11 +8,11 @@ that engine yet.
 | Upstream area | TypeScript status |
 | --- | --- |
 | Weighted DAG ranker | Ported in `src/rank.ts` with translated fixtures and tests. |
-| Input graph and shape geometry | Mermaid node measurements adapted; upstream graph ownership, topology mutations, and shape policies remain unported. |
+| Input graph and shape geometry | Independent mutable graph records, container ownership, adjacency, and clone isolation are ported in `src/tala/graph.ts`. Upstream topology mutations and shape policies remain unported. |
 | Nested containers and direction | Supported by a Mermaid-specific recursive layout in `src/layout.ts`; placement differs from upstream. |
-| Seed attempts | Deterministic ordering attempts and score selection implemented; random placement and exact upstream quality scoring remain unported. |
-| Tree, hierarchy, hub, proximity, cluster, and sequence discovery | Upstream algorithms remain unported. The adapter applies layered placement to all connected components. |
-| General placement, symmetry, compaction, and bin packing | Upstream algorithms remain unported. |
+| Seed attempts | Independent mutable graph clones and deterministic ordering attempts are implemented. Upstream crossing evaluation is ported; random placement and full label scoring remain unported. |
+| Tree, hierarchy, hub, proximity, cluster, and sequence discovery | Upstream `AddHubs` is ported. The other algorithms remain unported. The adapter still applies layered placement to all connected components. |
+| General placement, symmetry, compaction, and bin packing | The even-seed graph-distance initializer is ported and tested, but not connected to the renderer because its required annealing and compaction stages remain unported. |
 | Edge routing | Visibility-grid routing avoids node interiors; upstream route graph, port policies, channel refinements, and route cleanup remain unported. |
 | Labels | Edge labels are measured and placed on a selected route segment; upstream label optimization remains unported. |
 | Validation and resource limits | Basic input validation exists. Upstream graph invariants and work budgets remain unported. |
