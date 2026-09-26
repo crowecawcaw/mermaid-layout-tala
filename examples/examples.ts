@@ -1,5 +1,31 @@
 export const examples = [
   {
+    title: 'Nested cloud architecture',
+    description: 'An architecture diagram with nested application, data, and edge containers.',
+    source: `flowchart LR
+  user[Users] --> cdn[CDN]
+  subgraph cloud[Cloud platform]
+    direction LR
+    subgraph app[Application tier]
+      gateway[API gateway] --> auth[Auth service]
+      gateway --> orders[Order service]
+      gateway --> catalog[Catalog service]
+    end
+    subgraph data[Data tier]
+      users[(Users DB)]
+      orderdb[(Orders DB)]
+      products[(Product DB)]
+    end
+    auth --> users
+    orders --> orderdb
+    catalog --> products
+  end
+  cdn --> gateway
+  orders --> queue[Event queue]
+  queue --> worker[Background worker]
+  worker --> storage[(Object storage)]`,
+  },
+  {
     title: 'Cloud architecture',
     description: 'An architecture topology in flowchart syntax, so TALA can lay it out.',
     source: `flowchart TB
