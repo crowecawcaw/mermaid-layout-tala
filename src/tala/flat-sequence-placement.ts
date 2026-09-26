@@ -1,16 +1,22 @@
 import type { LayoutDirection, LayoutEdge, LayoutNode, PositionedNode } from '../layout.js';
 import { TalaGraph } from './graph.js';
 import { placeOrdinaryNodes } from './ordinary-placement.js';
-import { activateSequences, identifySequences } from './sequence-topology.js';
+import { activateSequences, identifySequences, sequenceDefiningEdges } from './sequence-topology.js';
+
+export interface FlatSequencePlacement {
+  nodes: PositionedNode[];
+  definingEdgeIds: Set<string>;
+}
 
 /** Place flat Step runs through the same temporary vessels as upstream TALA. */
 export function placeFlatSequences(nodes: readonly LayoutNode[], edges: readonly LayoutEdge[],
   direction: LayoutDirection, seed: number,
-  ranks: ReadonlyMap<string, number>): PositionedNode[] | undefined {
+  ranks: ReadonlyMap<string, number>): FlatSequencePlacement | undefined {
   if (!nodes.some((node) => node.shape?.toLowerCase() === 'step')) return;
   const graph = TalaGraph.fromFlowchart(nodes.map((node) => ({ ...node, parentId: undefined })),
     edges, direction);
   if (identifySequences(graph, null).length === 0) return;
+  const definingEdgeIds = new Set(sequenceDefiningEdges(graph));
   const active = activateSequences(graph);
   const activeIds = new Set(graph.nodes.map((node) => node.id));
   const projectedEdges = graph.toLayoutEdges().filter((edge) =>
@@ -50,5 +56,5 @@ export function placeFlatSequences(nodes: readonly LayoutNode[], edges: readonly
     row.sort((a, b) => horizontal ? a.y - b.y : a.x - b.x);
     row.forEach((node, index) => { node.order = index; });
   }
-  return nodes.map((node) => result.get(node.id)!);
+  return { nodes: nodes.map((node) => result.get(node.id)!), definingEdgeIds };
 }

@@ -17,6 +17,10 @@ that engine yet.
 | Labels | The node-label default and full position preference tranches match upstream for all 23 shapes, as ordinary nodes and containers. Edge labels are measured and placed on a selected route segment; actual node/icon positioning and upstream label optimization remain unported. |
 | Validation and resource limits | Basic input validation exists. Upstream graph invariants and work budgets remain unported. |
 
+Step sequence defining edges are now suppressed in the public result. A
+three-step public layout matches the pinned upstream engine's final normalized
+node geometry; remembered-sequence lifecycle is still absent.
+
 The complete Go pipeline oracle now covers ten small flat graphs. Relative
 node positions and sizes match exactly in all ten: a chain, a cycle, six rooted
 trees, two disconnected chains, and a diamond. Upstream treats the diamond's

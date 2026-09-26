@@ -159,6 +159,7 @@ function layoutFlatFlowchart(
     || options.strategy !== 'layered' && options.nodeSpacing === undefined
       && options.rankSpacing === undefined && options.orderingPasses === undefined;
   const allPositions = new Map<string, PositionedNode>();
+  const sequenceDefiningEdgeIds = new Set<string>();
   const treeComponents: Array<{ ids: Set<string>; edges: LayoutEdge[]; extraction: TreeExtraction }> = [];
   const componentBounds: Array<ReturnType<typeof bounds>> = [];
   for (const component of components) {
@@ -174,8 +175,10 @@ function layoutFlatFlowchart(
           to: edge.to,
           weight: edge.weight,
         } satisfies RankEdge)));
-    const sequence = useOrdinary && !hasFixed && component.every((node) => !node.isGroup)
+    const sequencePlacement = useOrdinary && !hasFixed && component.every((node) => !node.isGroup)
       ? placeFlatSequences(component, componentEdges, direction, seed, ranks) : undefined;
+    const sequence = sequencePlacement?.nodes;
+    for (const id of sequencePlacement?.definingEdgeIds ?? []) sequenceDefiningEdgeIds.add(id);
     const tree = useOrdinary && !sequence && !hasFixed
       ? placeSimpleTree(component, componentEdges, direction, ranks) : undefined;
     if (tree) treeComponents.push({ ids: componentIds, edges: componentEdges,
@@ -220,7 +223,13 @@ function layoutFlatFlowchart(
       component.edges, direction, component.extraction);
     if (paths) for (const [edgeId, points] of paths) treePaths.set(edgeId, points);
   }
-  const positionedEdges = routeGraphEdges(positionedNodes, edges, direction, treePaths);
+  const routedEdges = routeGraphEdges(positionedNodes,
+    edges.filter((edge) => !sequenceDefiningEdgeIds.has(edge.id)), direction, treePaths);
+  const positionedEdges = [...routedEdges, ...edges.filter((edge) => sequenceDefiningEdgeIds.has(edge.id))
+    .map((edge) => {
+      const { labelBBox: _labelBBox, ...withoutLabel } = edge;
+      return { ...withoutLabel, points: [] as Point[], x: 0, y: 0 };
+    })].sort((a, b) => compareText(a.id, b.id));
   return { nodes: positionedNodes, edges: positionedEdges };
 }
 
@@ -528,6 +537,7 @@ function scoreLayout(result: LayoutResult, direction: LayoutDirection): { penalt
   let penalty = 0;
   const positions = new Map(result.nodes.map((node) => [node.id, node]));
   for (const edge of result.edges) {
+    if (edge.points.length === 0) continue;
     if (edge.directed !== false) {
       const from = positions.get(edge.from), to = positions.get(edge.to);
       if (from && to) {

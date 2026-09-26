@@ -99,7 +99,14 @@ describe('upstream Step sequence rules', () => {
     ], [{ id: 'ab', from: 'A', to: 'B' }, { id: 'bc', from: 'B', to: 'C' }],
     { strategy: 'tala', seeds: [1] });
     const [a, b, c] = ['A', 'B', 'C'].map((id) => result.nodes.find((node) => node.id === id)!);
-    expect([a.height, b.height, c.height]).toEqual([a.height, a.height, a.height]);
+    // Pinned D2 TALA engine at bf337903: final normalized node boxes are
+    // A=(0,0 70x30), B=(35,0 40x30), C=(40,0 80x30), with both edges consumed.
+    expect(result.nodes.map((node) => [node.id, node.x - node.width / 2,
+      node.y - node.height / 2, node.width, node.height]))
+      .toEqual([['A', 0, 0, 70, 30], ['B', 35, 0, 40, 30], ['C', 40, 0, 80, 30]]);
+    expect(result.edges.map((edge) => [edge.id, edge.points])).toEqual([
+      ['ab', []], ['bc', []],
+    ]);
     expect(a.y - a.height / 2).toBe(b.y - b.height / 2);
     expect(b.y - b.height / 2).toBe(c.y - c.height / 2);
     expect(b.x - b.width / 2 - (a.x - a.width / 2)).toBe(sequenceAdvance(a.width));

@@ -52,8 +52,10 @@ export async function render(
   }));
 
   const edgeLabelBounds = new Map<string, { width: number; height: number }>();
+  const edgeLabelElements = new Map<string, Awaited<ReturnType<typeof helpers.insertEdgeLabel>>>();
   await Promise.all(data.edges.map(async (edge) => {
     const element = await helpers.insertEdgeLabel(edgeLabels, edge);
+    edgeLabelElements.set(edge.id, element);
     if (edge.label) {
       const box = element.getBBox();
       edgeLabelBounds.set(edge.id, { width: box.width, height: box.height });
@@ -113,6 +115,10 @@ export async function render(
     if (!startNode || !endNode) return;
     const path = positionedEdges.get(edge.id);
     if (!path) return;
+    if (path.points.length < 2) {
+      edgeLabelElements.get(edge.id)?.remove();
+      return;
+    }
     const edgeWithPath = { ...edge, points: path.points, x: path.x, y: path.y };
     const paths = helpers.insertEdge(
       edgePaths,
