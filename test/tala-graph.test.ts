@@ -11,6 +11,11 @@ describe('TALA graph model', () => {
     expect(graph.nodes.map((node) => node.id)).toEqual(['z', 'a']);
     expect(graph.edges.map((edge) => edge.id)).toEqual(['second', 'first']);
     expect(graph.clone().nodes.map((node) => node.id)).toEqual(['z', 'a']);
+    graph.nodes[0]!.fixedTopLeft = { x: 120, y: 80 };
+    const fixedClone = graph.clone();
+    expect(fixedClone.nodes[0]!.fixedTopLeft).toEqual({ x: 120, y: 80 });
+    fixedClone.nodes[0]!.fixedTopLeft!.x = 0;
+    expect(graph.nodes[0]!.fixedTopLeft!.x).toBe(120);
   });
 
   it('computes upstream placement cell size from node dimensions', () => {

@@ -39,4 +39,17 @@ describe('TALA sizeless placement', () => {
     expect(graph.nodes[0]!.topLeft).not.toEqual(graph.nodes[1]!.topLeft);
     expect(Math.abs(graph.nodes[0]!.topLeft!.x - graph.nodes[1]!.topLeft!.x)).toBeLessThan(before);
   });
+
+  it('does not move fixed anchors', () => {
+    const graph = TalaGraph.fromFlowchart(
+      ['a', 'b'].map((id) => ({ id, width: 40, height: 20 })),
+      [{ id: 'ab', from: 'a', to: 'b' }], 'TB'
+    );
+    graph.nodes[0]!.fixedTopLeft = { x: 0, y: 0 };
+    graph.nodes[0]!.topLeft = { x: 0, y: 0 };
+    graph.nodes[1]!.topLeft = { x: 4, y: 0 };
+    const score = (node: typeof graph.nodes[number]) => Math.abs(node.topLeft!.x);
+    new SizelessOptimizer(graph, new GoRandom(1), score).optimize(0);
+    expect(graph.nodes[0]!.topLeft).toEqual({ x: 0, y: 0 });
+  });
 });

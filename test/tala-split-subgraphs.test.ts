@@ -21,4 +21,14 @@ describe('TALA ordinary subgraph splitting', () => {
   it('returns no components for an empty graph', () => {
     expect(splitOrdinarySubgraphs(TalaGraph.fromFlowchart([], [], 'TB'))).toEqual([]);
   });
+
+  it('puts disconnected fixed nodes in the first subgraph', () => {
+    const graph = TalaGraph.fromFlowchart(
+      ['a', 'b', 'c', 'd'].map((id) => ({ id, width: 40, height: 20 })),
+      [{ id: 'ab', from: 'a', to: 'b' }, { id: 'cd', from: 'c', to: 'd' }], 'TB'
+    );
+    graph.nodes[0]!.fixedTopLeft = { x: 0, y: 0 };
+    graph.nodes[2]!.fixedTopLeft = { x: 200, y: 0 };
+    expect(splitOrdinarySubgraphs(graph).map((part) => part.nodes.map((node) => node.id))).toEqual([['a', 'b', 'c', 'd']]);
+  });
 });

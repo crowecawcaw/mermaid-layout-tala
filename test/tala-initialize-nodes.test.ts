@@ -22,4 +22,17 @@ describe('TALA ordinary-node initialization', () => {
     );
     expect(() => initializeNodes(graph)).toThrow('connected component');
   });
+
+  it('anchors multiple fixed components on the compact grid', () => {
+    const graph = TalaGraph.fromFlowchart(
+      ['a', 'b', 'c', 'd'].map((id) => ({ id, width: 40, height: 20 })),
+      [{ id: 'ab', from: 'a', to: 'b' }, { id: 'cd', from: 'c', to: 'd' }], 'TB'
+    );
+    graph.nodes[0]!.fixedTopLeft = { x: 0, y: 0 };
+    graph.nodes[2]!.fixedTopLeft = { x: 300, y: 0 };
+    initializeNodes(graph);
+    expect(graph.nodes[0]!.topLeft).toEqual({ x: 0, y: 0 });
+    expect(graph.nodes[2]!.topLeft).toEqual({ x: Math.ceil(300 / (graph.cellSize * 3)), y: 0 });
+    expect(graph.nodes.every((node) => node.topLeft)).toBe(true);
+  });
 });

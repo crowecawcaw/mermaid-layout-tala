@@ -14,6 +14,7 @@ export class TalaNode {
   x: number | undefined;
   y: number | undefined;
   topLeft: Point | undefined;
+  fixedTopLeft: Point | undefined;
 
   constructor(input: LayoutNode) {
     this.id = input.id;
@@ -143,6 +144,7 @@ export class TalaGraph {
       node.x = previous.x;
       node.y = previous.y;
       node.topLeft = previous.topLeft ? { ...previous.topLeft } : undefined;
+      node.fixedTopLeft = previous.fixedTopLeft ? { ...previous.fixedTopLeft } : undefined;
     }
     const edgeById = new Map(this.edges.map((edge) => [edge.id, edge]));
     for (const edge of copy.edges) {

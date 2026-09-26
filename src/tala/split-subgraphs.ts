@@ -7,9 +7,16 @@ export function splitOrdinarySubgraphs(graph: TalaGraph): TalaGraph[] {
   if (graph.nodes.some((node) => node.parent)) throw new Error('container subgraph splitting is not ported');
   const added = new Set<TalaNode>();
   const components: TalaGraph[] = [];
-  for (const start of graph.nodes) {
-    if (added.has(start)) continue;
+  const fixed = graph.nodes.filter((node) => node.fixedTopLeft);
+  const makeComponent = (): TalaGraph => {
     const component = new TalaGraph();
+    component.directions.set(null, graph.directions.get(null) ?? 'TB');
+    component.containers.set(null, component.nodes);
+    components.push(component);
+    return component;
+  };
+  const addReachable = (start: TalaNode, component: TalaGraph): void => {
+    if (added.has(start)) return;
     const queue = [start];
     added.add(start);
     for (let index = 0; index < queue.length; index++) {
@@ -23,9 +30,14 @@ export function splitOrdinarySubgraphs(graph: TalaGraph): TalaGraph[] {
         }
       }
     }
-    component.directions.set(null, graph.directions.get(null) ?? 'TB');
-    component.containers.set(null, component.nodes);
-    components.push(component);
+  };
+  if (fixed.length > 0) {
+    const first = makeComponent();
+    for (const node of fixed) addReachable(node, first);
+  }
+  for (const start of graph.nodes) {
+    if (added.has(start)) continue;
+    addReachable(start, makeComponent());
   }
   const belonging = new Map<TalaNode, TalaGraph>();
   for (const component of components) for (const node of component.nodes) belonging.set(node, component);

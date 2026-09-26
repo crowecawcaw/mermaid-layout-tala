@@ -7,7 +7,7 @@ import { TalaGraph } from './graph.js';
  */
 export function initializeByGraphDistance(graph: TalaGraph): boolean {
   const n = graph.nodes.length;
-  if (n < 4 || n > 64 || graph.edges.length > 256) return false;
+  if (n < 4 || n > 64 || graph.edges.length > 256 || graph.nodes.some((node) => node.fixedTopLeft)) return false;
   const index = new Map(graph.nodes.map((node, i) => [node, i]));
   const distances = Array.from({ length: n }, (_, i) => Array.from({ length: n }, (_, j) => i === j ? 0 : Infinity));
   for (const edge of graph.edges) {

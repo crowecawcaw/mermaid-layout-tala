@@ -62,7 +62,7 @@ export class SizelessOptimizer {
 
   constructor(private readonly graph: TalaGraph, private readonly random: GoRandom,
     private readonly score: (node: TalaNode) => number) {
-    this.movable = graph.nodes.filter((node) => node.edges.length > 0);
+    this.movable = graph.nodes.filter((node) => node.edges.length > 0 && !node.fixedTopLeft);
     this.resetOccupied();
   }
 
