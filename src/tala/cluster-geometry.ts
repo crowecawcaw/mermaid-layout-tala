@@ -1,7 +1,14 @@
 import type { Point } from '../layout.js';
-import { TalaNode } from './graph.js';
+import { TalaNode, type TalaEdge } from './graph.js';
 
 export type ClusterArrangement = 'Row' | 'Column';
+export interface ClusterEdgeAbduction {
+  edge: TalaEdge;
+  originallyFrom?: TalaNode;
+  originallyTo?: TalaNode;
+  currentFrom: TalaNode;
+  currentTo: TalaNode;
+}
 const goRound = (value: number) => value < 0 ? -Math.round(-value) : Math.round(value);
 
 function moveWithChildren(node: TalaNode, x: number, y: number): void {
@@ -28,6 +35,7 @@ export class TalaCluster {
   desiredArrangement: ClusterArrangement;
   padding: number;
   fixedSize: boolean;
+  readonly edgeAbductions: ClusterEdgeAbduction[] = [];
 
   constructor(vessel: TalaNode, nodes: TalaNode[], arrangement: ClusterArrangement,
     padding: number, fixedSize: boolean) {

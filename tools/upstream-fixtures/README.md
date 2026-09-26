@@ -120,3 +120,11 @@ vessels. Copy it into the pinned upstream engine package as
 `ts_cluster_geometry_fixture_test.go`; set `TALA_TS_CLUSTER_GEOMETRY_INPUT` to
 `cluster-geometry-cases.json` and `TALA_TS_CLUSTER_GEOMETRY_OUTPUT` to
 `cluster-geometry-expected.json`, then run `TestTSClusterGeometryFixtures`.
+
+`TestTSClusterTopologyFixtures` in `node-placement-oracle_test.go` records the
+temporary graph nodes, rewritten edges, and edge-abduction records immediately
+after `PreprocessClusters`. Set `TALA_TS_CLUSTER_TOPOLOGY_INPUT` to
+`flat-cluster-cases.json` and `TALA_TS_CLUSTER_TOPOLOGY_OUTPUT` to
+`flat-cluster-topology-expected.json` before running it in the pinned upstream
+engine package. The tree-leaves case has no cluster and remains in tree
+preprocessing, so the topology parity test checks the other four cases.

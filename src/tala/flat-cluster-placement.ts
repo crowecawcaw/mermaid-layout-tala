@@ -1,8 +1,8 @@
 import type { LayoutDirection, LayoutEdge, LayoutNode, PositionedNode } from '../layout.js';
-import { TalaGraph, TalaNode } from './graph.js';
+import { TalaGraph } from './graph.js';
 import { placeOrdinaryNodes } from './ordinary-placement.js';
 import { discoverFlatClusters } from './flat-clusters.js';
-import { TalaCluster } from './cluster-geometry.js';
+import { activateFlatClusters } from './cluster-topology.js';
 
 /** The flat ordinary placement path after sibling clusters become vessels. */
 export function placeFlatClusters(nodes: readonly LayoutNode[], edges: readonly LayoutEdge[],
@@ -21,24 +21,22 @@ export function placeFlatClusters(nodes: readonly LayoutNode[], edges: readonly 
   discovery.clusters.forEach((cluster, index) => {
     for (const member of cluster.nodes) vesselFor.set(member, vesselIds[index]!);
   });
-  const graphNodes: LayoutNode[] = [
-    ...nodes.filter((node) => !vesselFor.has(node.id)),
-    ...discovery.clusters.map((cluster, index) => ({
-      id: vesselIds[index]!, width: cluster.width, height: cluster.height,
-    })),
-  ];
-  const graphEdges = edges.map((edge) => ({ ...edge,
-    from: vesselFor.get(edge.from) ?? edge.from,
-    to: vesselFor.get(edge.to) ?? edge.to,
-  }));
-  if (graphEdges.some((edge) => edge.from === edge.to)) return;
+  if (edges.some((edge) => vesselFor.get(edge.from) === vesselFor.get(edge.to)
+    && vesselFor.has(edge.from))) return;
   // The vessel's long axis is the branch axis. Place its neighbors across
   // the short axis so a parallel fan does not become an extremely tall chain.
   const arrangement = discovery.clusters.length === 1 ? discovery.clusters[0]!.arrangement : undefined;
   const placementDirection: LayoutDirection = arrangement === 'Column'
     ? direction === 'RL' ? 'RL' : 'LR'
     : arrangement === 'Row' ? direction === 'BT' ? 'BT' : 'TB' : direction;
-  const graph = TalaGraph.fromFlowchart(graphNodes, graphEdges, placementDirection);
+  const graph = TalaGraph.fromFlowchart(nodes, edges, placementDirection);
+  const active = activateFlatClusters(graph, discovery.clusters.map((cluster, index) => ({
+    nodes: cluster.nodes, arrangement: cluster.arrangement, padding: cluster.padding,
+    vesselId: vesselIds[index]!,
+  })));
+  graph.computeCellSize();
+  const graphNodes = graph.toLayoutNodes();
+  const graphEdges = graph.toLayoutEdges();
   placeOrdinaryNodes(graph, seed);
   const positions = new Map(graph.nodes.map((node) => [node.id, node.topLeft!]));
   const horizontal = placementDirection === 'LR' || placementDirection === 'RL';
@@ -67,12 +65,11 @@ export function placeFlatClusters(nodes: readonly LayoutNode[], edges: readonly 
       : horizontal ? point.y + cluster.height / 2 : point.x + cluster.width / 2;
     const vesselX = horizontal ? point.x : Math.round(crossCenter - cluster.width / 2);
     const vesselY = horizontal ? Math.round(crossCenter - cluster.height / 2) : point.y;
-    const fixedSize = cluster.nodes.some((id) => byId.get(id)!.aspectRatio1);
-    const members = cluster.nodes.map((id) => new TalaNode(byId.get(id)!));
-    const vesselNode = new TalaNode({ id: vessel, width: cluster.width, height: cluster.height });
+    const activeCluster = active.clusters[index]!;
+    const vesselNode = activeCluster.vessel;
     vesselNode.topLeft = { x: vesselX, y: vesselY };
-    new TalaCluster(vesselNode, members, cluster.arrangement, cluster.padding, fixedSize).syncGeometry();
-    for (const [memberIndex, member] of members.entries()) {
+    activeCluster.syncGeometry();
+    for (const [memberIndex, member] of activeCluster.nodes.entries()) {
       const source = byId.get(member.id)!;
       const point = member.topLeft!;
       placed.set(member.id, { ...source, width: member.width, height: member.height,
@@ -90,5 +87,6 @@ export function placeFlatClusters(nodes: readonly LayoutNode[], edges: readonly 
     row.sort((a, b) => horizontal ? a.y - b.y : a.x - b.x);
     row.forEach((node, index) => { node.order = index; });
   }
+  active.restore();
   return nodes.map((node) => placed.get(node.id)!);
 }

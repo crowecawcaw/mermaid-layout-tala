@@ -55,8 +55,8 @@ export class TalaNode {
 
 export class TalaEdge {
   readonly id: string;
-  readonly from: TalaNode;
-  readonly to: TalaNode;
+  from: TalaNode;
+  to: TalaNode;
   readonly labelBBox: { width: number; height: number } | undefined;
   readonly directed: boolean;
   points: Point[] = [];

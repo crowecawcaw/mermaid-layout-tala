@@ -20,11 +20,12 @@ type tsPlacementNode struct {
 	Height float64 `json:"height"`
 }
 type tsPlacementEdge struct {
-	From     string `json:"from"`
-	To       string `json:"to"`
-	Directed bool   `json:"directed"`
+	ID        string `json:"id"`
+	From      string `json:"from"`
+	To        string `json:"to"`
+	Directed  bool   `json:"directed"`
 	LabelBBox struct {
-		Width float64 `json:"width"`
+		Width  float64 `json:"width"`
 		Height float64 `json:"height"`
 	} `json:"labelBBox"`
 }
@@ -260,6 +261,118 @@ func TestTSClusterExtractionFixtures(t *testing.T) {
 				output.Clusters = append(output.Clusters, record)
 			} else {
 				output.Remaining = append(output.Remaining, names[node.ID])
+			}
+		}
+		outputs = append(outputs, output)
+	}
+	encoded, err := json.MarshalIndent(outputs, "", "  ")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(outputPath, append(encoded, '\n'), 0644); err != nil {
+		t.Fatal(err)
+	}
+}
+
+type tsTopologyNode struct {
+	ID     string  `json:"id"`
+	Width  float64 `json:"width"`
+	Height float64 `json:"height"`
+}
+type tsTopologyEdge struct {
+	ID   string `json:"id"`
+	From string `json:"from"`
+	To   string `json:"to"`
+}
+type tsTopologyAbduction struct {
+	Vessel         string `json:"vessel"`
+	Edge           string `json:"edge"`
+	OriginallyFrom string `json:"originallyFrom,omitempty"`
+	OriginallyTo   string `json:"originallyTo,omitempty"`
+	CurrentFrom    string `json:"currentFrom"`
+	CurrentTo      string `json:"currentTo"`
+}
+type tsTopologyOutput struct {
+	Name       string                `json:"name"`
+	Nodes      []tsTopologyNode      `json:"nodes"`
+	Edges      []tsTopologyEdge      `json:"edges"`
+	Abductions []tsTopologyAbduction `json:"abductions"`
+}
+
+func TestTSClusterTopologyFixtures(t *testing.T) {
+	inputPath, outputPath := os.Getenv("TALA_TS_CLUSTER_TOPOLOGY_INPUT"), os.Getenv("TALA_TS_CLUSTER_TOPOLOGY_OUTPUT")
+	if inputPath == "" || outputPath == "" {
+		t.Skip("set fixture paths")
+	}
+	data, err := os.ReadFile(inputPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var cases []tsPlacementCase
+	if err := json.Unmarshal(data, &cases); err != nil {
+		t.Fatal(err)
+	}
+	outputs := make([]tsTopologyOutput, 0, len(cases))
+	for _, input := range cases {
+		graph := layoutgraph.NewGraph()
+		graph.Directions[nil] = tsPlacementDirection(input.Direction)
+		nodes := make(map[string]*layoutgraph.Node, len(input.Nodes))
+		labels := make(map[*layoutgraph.Node]string)
+		for index, item := range input.Nodes {
+			node := layoutgraph.NewNode(layoutgraph.EntityID(index+1), item.Width, item.Height)
+			graph.AddNodeUnchecked(node)
+			graph.AddNodeToContainer(nil, node)
+			nodes[item.ID] = node
+			labels[node] = item.ID
+		}
+		edgeLabels := make(map[*layoutgraph.Edge]string)
+		inputEdges := make([]*layoutgraph.Edge, 0, len(input.Edges))
+		for index, item := range input.Edges {
+			edge := graph.Connect(nodes[item.From], nodes[item.To])
+			edge.ID = layoutgraph.EntityID(index + 1)
+			if item.Directed {
+				edge.TargetArrowhead = layoutgraph.TriangleArrowhead
+			}
+			edge.MinWidth = int(item.LabelBBox.Width)
+			edge.MinHeight = int(item.LabelBBox.Height)
+			edgeLabels[edge] = item.ID
+			if item.ID == "" {
+				edgeLabels[edge] = fmt.Sprintf("e%d", index+1)
+			}
+			inputEdges = append(inputEdges, edge)
+		}
+		pipeline := newPipeline(graph, input.Seed, false)
+		pipeline.stages = defaultPipelineStages[:6]
+		if err := pipeline.runAllStages(context.Background()); err != nil {
+			t.Fatalf("%s: %v", input.Name, err)
+		}
+		output := tsTopologyOutput{Name: input.Name, Nodes: []tsTopologyNode{}, Edges: []tsTopologyEdge{}, Abductions: []tsTopologyAbduction{}}
+		vesselIndex := 0
+		for _, node := range graph.Nodes {
+			if graph.Clusters[node] != nil {
+				labels[node] = fmt.Sprintf("__tala_cluster_%d", vesselIndex)
+				vesselIndex++
+			}
+			output.Nodes = append(output.Nodes, tsTopologyNode{ID: labels[node], Width: node.Width, Height: node.Height})
+		}
+		for _, edge := range inputEdges {
+			output.Edges = append(output.Edges, tsTopologyEdge{ID: edgeLabels[edge], From: labels[edge.From], To: labels[edge.To]})
+		}
+		for _, vessel := range graph.Nodes {
+			cluster := graph.Clusters[vessel]
+			if cluster == nil {
+				continue
+			}
+			for _, abduction := range cluster.EdgeAbductions {
+				entry := tsTopologyAbduction{Vessel: labels[vessel], Edge: edgeLabels[abduction.Edge],
+					CurrentFrom: labels[abduction.CurrentFrom], CurrentTo: labels[abduction.CurrentTo]}
+				if abduction.OriginallyFrom != nil {
+					entry.OriginallyFrom = labels[abduction.OriginallyFrom]
+				}
+				if abduction.OriginallyTo != nil {
+					entry.OriginallyTo = labels[abduction.OriginallyTo]
+				}
+				output.Abductions = append(output.Abductions, entry)
 			}
 		}
 		outputs = append(outputs, output)

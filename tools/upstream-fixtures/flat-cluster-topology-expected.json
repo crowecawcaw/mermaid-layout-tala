@@ -1,0 +1,366 @@
+[
+  {
+    "name": "diamond-lr",
+    "nodes": [
+      {
+        "id": "A",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "D",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "__tala_cluster_0",
+        "width": 80,
+        "height": 100
+      }
+    ],
+    "edges": [
+      {
+        "id": "ab",
+        "from": "A",
+        "to": "__tala_cluster_0"
+      },
+      {
+        "id": "ac",
+        "from": "A",
+        "to": "__tala_cluster_0"
+      },
+      {
+        "id": "bd",
+        "from": "__tala_cluster_0",
+        "to": "D"
+      },
+      {
+        "id": "cd",
+        "from": "__tala_cluster_0",
+        "to": "D"
+      }
+    ],
+    "abductions": [
+      {
+        "vessel": "__tala_cluster_0",
+        "edge": "ab",
+        "originallyTo": "B",
+        "currentFrom": "A",
+        "currentTo": "__tala_cluster_0"
+      },
+      {
+        "vessel": "__tala_cluster_0",
+        "edge": "ac",
+        "originallyTo": "C",
+        "currentFrom": "A",
+        "currentTo": "__tala_cluster_0"
+      },
+      {
+        "vessel": "__tala_cluster_0",
+        "edge": "bd",
+        "originallyFrom": "B",
+        "currentFrom": "__tala_cluster_0",
+        "currentTo": "D"
+      },
+      {
+        "vessel": "__tala_cluster_0",
+        "edge": "cd",
+        "originallyFrom": "C",
+        "currentFrom": "__tala_cluster_0",
+        "currentTo": "D"
+      }
+    ]
+  },
+  {
+    "name": "triple-diamond-tb",
+    "nodes": [
+      {
+        "id": "A",
+        "width": 90,
+        "height": 40
+      },
+      {
+        "id": "E",
+        "width": 90,
+        "height": 40
+      },
+      {
+        "id": "__tala_cluster_0",
+        "width": 90,
+        "height": 190
+      }
+    ],
+    "edges": [
+      {
+        "id": "ab",
+        "from": "A",
+        "to": "__tala_cluster_0"
+      },
+      {
+        "id": "ac",
+        "from": "A",
+        "to": "__tala_cluster_0"
+      },
+      {
+        "id": "ad",
+        "from": "A",
+        "to": "__tala_cluster_0"
+      },
+      {
+        "id": "be",
+        "from": "__tala_cluster_0",
+        "to": "E"
+      },
+      {
+        "id": "ce",
+        "from": "__tala_cluster_0",
+        "to": "E"
+      },
+      {
+        "id": "de",
+        "from": "__tala_cluster_0",
+        "to": "E"
+      }
+    ],
+    "abductions": [
+      {
+        "vessel": "__tala_cluster_0",
+        "edge": "ab",
+        "originallyTo": "B",
+        "currentFrom": "A",
+        "currentTo": "__tala_cluster_0"
+      },
+      {
+        "vessel": "__tala_cluster_0",
+        "edge": "ac",
+        "originallyTo": "C",
+        "currentFrom": "A",
+        "currentTo": "__tala_cluster_0"
+      },
+      {
+        "vessel": "__tala_cluster_0",
+        "edge": "ad",
+        "originallyTo": "D",
+        "currentFrom": "A",
+        "currentTo": "__tala_cluster_0"
+      },
+      {
+        "vessel": "__tala_cluster_0",
+        "edge": "be",
+        "originallyFrom": "B",
+        "currentFrom": "__tala_cluster_0",
+        "currentTo": "E"
+      },
+      {
+        "vessel": "__tala_cluster_0",
+        "edge": "ce",
+        "originallyFrom": "C",
+        "currentFrom": "__tala_cluster_0",
+        "currentTo": "E"
+      },
+      {
+        "vessel": "__tala_cluster_0",
+        "edge": "de",
+        "originallyFrom": "D",
+        "currentFrom": "__tala_cluster_0",
+        "currentTo": "E"
+      }
+    ]
+  },
+  {
+    "name": "parallel-twins",
+    "nodes": [
+      {
+        "id": "A",
+        "width": 120,
+        "height": 120
+      },
+      {
+        "id": "D",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "__tala_cluster_0",
+        "width": 260,
+        "height": 120
+      }
+    ],
+    "edges": [
+      {
+        "id": "ab1",
+        "from": "A",
+        "to": "__tala_cluster_0"
+      },
+      {
+        "id": "ab2",
+        "from": "A",
+        "to": "__tala_cluster_0"
+      },
+      {
+        "id": "ac1",
+        "from": "A",
+        "to": "__tala_cluster_0"
+      },
+      {
+        "id": "ac2",
+        "from": "A",
+        "to": "__tala_cluster_0"
+      },
+      {
+        "id": "bd",
+        "from": "__tala_cluster_0",
+        "to": "D"
+      },
+      {
+        "id": "cd",
+        "from": "__tala_cluster_0",
+        "to": "D"
+      }
+    ],
+    "abductions": [
+      {
+        "vessel": "__tala_cluster_0",
+        "edge": "ab1",
+        "originallyTo": "B",
+        "currentFrom": "A",
+        "currentTo": "__tala_cluster_0"
+      },
+      {
+        "vessel": "__tala_cluster_0",
+        "edge": "ab2",
+        "originallyTo": "B",
+        "currentFrom": "A",
+        "currentTo": "__tala_cluster_0"
+      },
+      {
+        "vessel": "__tala_cluster_0",
+        "edge": "ac1",
+        "originallyTo": "C",
+        "currentFrom": "A",
+        "currentTo": "__tala_cluster_0"
+      },
+      {
+        "vessel": "__tala_cluster_0",
+        "edge": "ac2",
+        "originallyTo": "C",
+        "currentFrom": "A",
+        "currentTo": "__tala_cluster_0"
+      },
+      {
+        "vessel": "__tala_cluster_0",
+        "edge": "bd",
+        "originallyFrom": "B",
+        "currentFrom": "__tala_cluster_0",
+        "currentTo": "D"
+      },
+      {
+        "vessel": "__tala_cluster_0",
+        "edge": "cd",
+        "originallyFrom": "C",
+        "currentFrom": "__tala_cluster_0",
+        "currentTo": "D"
+      }
+    ]
+  },
+  {
+    "name": "opposing-neighbors",
+    "nodes": [
+      {
+        "id": "B",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "C",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "__tala_cluster_0",
+        "width": 80,
+        "height": 100
+      }
+    ],
+    "edges": [
+      {
+        "id": "ab",
+        "from": "__tala_cluster_0",
+        "to": "B"
+      },
+      {
+        "id": "ca",
+        "from": "C",
+        "to": "__tala_cluster_0"
+      },
+      {
+        "id": "bd",
+        "from": "B",
+        "to": "__tala_cluster_0"
+      },
+      {
+        "id": "dc",
+        "from": "__tala_cluster_0",
+        "to": "C"
+      }
+    ],
+    "abductions": [
+      {
+        "vessel": "__tala_cluster_0",
+        "edge": "ab",
+        "originallyFrom": "A",
+        "currentFrom": "__tala_cluster_0",
+        "currentTo": "B"
+      },
+      {
+        "vessel": "__tala_cluster_0",
+        "edge": "ca",
+        "originallyTo": "A",
+        "currentFrom": "C",
+        "currentTo": "__tala_cluster_0"
+      },
+      {
+        "vessel": "__tala_cluster_0",
+        "edge": "bd",
+        "originallyTo": "D",
+        "currentFrom": "B",
+        "currentTo": "__tala_cluster_0"
+      },
+      {
+        "vessel": "__tala_cluster_0",
+        "edge": "dc",
+        "originallyFrom": "D",
+        "currentFrom": "__tala_cluster_0",
+        "currentTo": "C"
+      }
+    ]
+  },
+  {
+    "name": "tree-leaves",
+    "nodes": [
+      {
+        "id": "A",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "edges": [
+      {
+        "id": "ab",
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "id": "ac",
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "id": "ad",
+        "from": "A",
+        "to": "D"
+      }
+    ],
+    "abductions": []
+  }
+]
