@@ -13,6 +13,14 @@ inputs in `prescale-cases.json`. Copy it into the pinned checkout's
 `go test ./d2layouts/d2talalayout/internal/engine -run '^TestTSPrescaleFixtures$' -count=1`.
 The TypeScript parity test is `test/tala-upstream-prescale.test.ts`.
 
+`label-policy-oracle_test.go` records all four node-label preference tranches
+and the default for each of TALA's 23 shapes, with and without container
+status. Copy it into the pinned checkout's `internal/labeling` package as
+`ts_label_policy_fixture_test.go`, set `TALA_TS_LABEL_POLICY_OUTPUT` to the
+absolute `label-policy-expected.json` path, then run
+`go test ./d2layouts/d2talalayout/internal/labeling -run '^TestTSLabelPolicies$' -count=1`.
+The TypeScript parity test is `test/tala-upstream-label-policy.test.ts`.
+
 Place `main.go` at
 `d2layouts/d2talalayout/cmd/ts-fixtures/main.go` within a checkout of that
 revision. From the D2 repository root, build the command and run it against

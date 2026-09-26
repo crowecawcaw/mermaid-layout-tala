@@ -8,6 +8,8 @@ export class TalaNode {
   width: number;
   height: number;
   readonly labelBBox: { width: number; height: number } | undefined;
+  readonly labelPosition: string | undefined;
+  readonly labelPositionFixed: boolean;
   readonly isGroup: boolean;
   readonly direction: LayoutDirection | undefined;
   readonly shape: string | undefined;
@@ -28,6 +30,8 @@ export class TalaNode {
     this.width = input.width;
     this.height = input.height;
     this.labelBBox = input.labelBBox ? { ...input.labelBBox } : undefined;
+    this.labelPosition = input.labelPosition;
+    this.labelPositionFixed = input.labelPositionFixed ?? input.labelPosition !== undefined;
     this.isGroup = input.isGroup ?? false;
     this.direction = input.dir;
     this.shape = input.shape;
@@ -228,6 +232,8 @@ export class TalaGraph {
       ...(node.parent ? { parentId: node.parent.id } : {}),
       ...(node.isGroup ? { isGroup: true } : {}),
       ...(node.labelBBox ? { labelBBox: { ...node.labelBBox } } : {}),
+      ...(node.labelPosition ? { labelPosition: node.labelPosition,
+        labelPositionFixed: node.labelPositionFixed } : {}),
       ...(node.direction ? { dir: node.direction } : {}),
       ...(node.shape ? { shape: node.shape } : {}),
       ...(node.aspectRatio1 ? { aspectRatio1: true } : {}),

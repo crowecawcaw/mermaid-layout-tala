@@ -1,0 +1,1624 @@
+[
+  {
+    "shape": "Square",
+    "container": false,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER",
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      []
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "Square",
+    "container": true,
+    "tranches": [
+      [
+        "INSIDE_TOP_CENTER",
+        "OUTSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      []
+    ],
+    "default": "INSIDE_TOP_CENTER"
+  },
+  {
+    "shape": "RealSquare",
+    "container": false,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER",
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      []
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "RealSquare",
+    "container": true,
+    "tranches": [
+      [
+        "INSIDE_TOP_CENTER",
+        "OUTSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      []
+    ],
+    "default": "INSIDE_TOP_CENTER"
+  },
+  {
+    "shape": "Parallelogram",
+    "container": false,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT"
+      ],
+      [
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ]
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "Parallelogram",
+    "container": true,
+    "tranches": [
+      [
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "INSIDE_TOP_CENTER",
+        "OUTSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ]
+    ],
+    "default": "OUTSIDE_TOP_RIGHT"
+  },
+  {
+    "shape": "Document",
+    "container": false,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER",
+        "INSIDE_TOP_CENTER",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT"
+      ],
+      [
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT",
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT"
+      ],
+      [
+        "INSIDE_BOTTOM_CENTER",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      [
+        "OUTSIDE_BOTTOM_CENTER",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT"
+      ]
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "Document",
+    "container": true,
+    "tranches": [
+      [
+        "INSIDE_TOP_CENTER",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT"
+      ],
+      [
+        "OUTSIDE_BOTTOM_CENTER",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT"
+      ]
+    ],
+    "default": "INSIDE_TOP_CENTER"
+  },
+  {
+    "shape": "Cylinder",
+    "container": false,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER",
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      []
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "Cylinder",
+    "container": true,
+    "tranches": [
+      [
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      []
+    ],
+    "default": "OUTSIDE_TOP_CENTER"
+  },
+  {
+    "shape": "Queue",
+    "container": false,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER",
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "INSIDE_MIDDLE_RIGHT",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_BOTTOM_LEFT"
+      ],
+      [
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ]
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "Queue",
+    "container": true,
+    "tranches": [
+      [
+        "INSIDE_TOP_CENTER",
+        "OUTSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "INSIDE_TOP_LEFT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_LEFT"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ]
+    ],
+    "default": "INSIDE_TOP_CENTER"
+  },
+  {
+    "shape": "Page",
+    "container": false,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT"
+      ],
+      [
+        "INSIDE_TOP_CENTER",
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      [
+        "INSIDE_TOP_RIGHT",
+        "OUTSIDE_RIGHT_TOP"
+      ]
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "Page",
+    "container": true,
+    "tranches": [
+      [
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "INSIDE_TOP_CENTER",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      [
+        "OUTSIDE_RIGHT_TOP",
+        "INSIDE_TOP_RIGHT"
+      ]
+    ],
+    "default": "INSIDE_BOTTOM_CENTER"
+  },
+  {
+    "shape": "Package",
+    "container": false,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER",
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_CENTER",
+        "OUTSIDE_BOTTOM_LEFT"
+      ],
+      [
+        "INSIDE_MIDDLE_RIGHT",
+        "INSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT"
+      ],
+      [
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      [
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_RIGHT_TOP"
+      ]
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "Package",
+    "container": true,
+    "tranches": [
+      [
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "OUTSIDE_BOTTOM_LEFT",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "INSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      [
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_RIGHT_TOP"
+      ]
+    ],
+    "default": "INSIDE_TOP_CENTER"
+  },
+  {
+    "shape": "Step",
+    "container": false,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_BOTTOM_LEFT"
+      ],
+      [
+        "INSIDE_TOP_LEFT",
+        "INSIDE_BOTTOM_LEFT",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ]
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "Step",
+    "container": true,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "INSIDE_TOP_CENTER",
+        "OUTSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_BOTTOM_LEFT"
+      ],
+      [
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ]
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "Callout",
+    "container": false,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER",
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT"
+      ],
+      [
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_RIGHT_TOP"
+      ],
+      [
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ]
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "Callout",
+    "container": true,
+    "tranches": [
+      [
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT",
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_RIGHT_TOP"
+      ],
+      [
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ]
+    ],
+    "default": "INSIDE_TOP_CENTER"
+  },
+  {
+    "shape": "StoredData",
+    "container": false,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER",
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "INSIDE_MIDDLE_RIGHT",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_RIGHT"
+      ],
+      [
+        "INSIDE_MIDDLE_LEFT",
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_BOTTOM_LEFT"
+      ],
+      [
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ]
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "StoredData",
+    "container": true,
+    "tranches": [
+      [
+        "INSIDE_TOP_CENTER",
+        "OUTSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_LEFT_MIDDLE",
+        "INSIDE_MIDDLE_LEFT"
+      ],
+      [
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ]
+    ],
+    "default": "INSIDE_TOP_CENTER"
+  },
+  {
+    "shape": "Person",
+    "container": false,
+    "tranches": [
+      [
+        "OUTSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT"
+      ],
+      [
+        "INSIDE_MIDDLE_CENTER",
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      [
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_RIGHT_TOP"
+      ]
+    ],
+    "default": "OUTSIDE_BOTTOM_CENTER"
+  },
+  {
+    "shape": "Person",
+    "container": true,
+    "tranches": [
+      [
+        "OUTSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT"
+      ],
+      [
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_BOTTOM",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_RIGHT_TOP",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ]
+    ],
+    "default": "OUTSIDE_BOTTOM_CENTER"
+  },
+  {
+    "shape": "C4Person",
+    "container": false,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT"
+      ],
+      [
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ]
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "C4Person",
+    "container": true,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ]
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "Diamond",
+    "container": false,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT",
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE"
+      ],
+      [
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ]
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "Diamond",
+    "container": true,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "INSIDE_TOP_CENTER",
+        "OUTSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ]
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "Oval",
+    "container": false,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER",
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE"
+      ],
+      [
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ]
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "Oval",
+    "container": true,
+    "tranches": [
+      [
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT"
+      ]
+    ],
+    "default": "OUTSIDE_TOP_CENTER"
+  },
+  {
+    "shape": "Circle",
+    "container": false,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER",
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ]
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "Circle",
+    "container": true,
+    "tranches": [
+      [
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ]
+    ],
+    "default": "OUTSIDE_TOP_CENTER"
+  },
+  {
+    "shape": "Hexagon",
+    "container": false,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER",
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ]
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "Hexagon",
+    "container": true,
+    "tranches": [
+      [
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ]
+    ],
+    "default": "OUTSIDE_TOP_CENTER"
+  },
+  {
+    "shape": "Cloud",
+    "container": false,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER",
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_RIGHT_TOP"
+      ]
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "Cloud",
+    "container": true,
+    "tranches": [
+      [
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_RIGHT_TOP"
+      ]
+    ],
+    "default": "INSIDE_TOP_CENTER"
+  },
+  {
+    "shape": "Table",
+    "container": false,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER",
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      []
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "Table",
+    "container": true,
+    "tranches": [
+      [
+        "INSIDE_TOP_CENTER",
+        "OUTSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      []
+    ],
+    "default": "INSIDE_TOP_CENTER"
+  },
+  {
+    "shape": "Class",
+    "container": false,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER",
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      []
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "Class",
+    "container": true,
+    "tranches": [
+      [
+        "INSIDE_TOP_CENTER",
+        "OUTSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      []
+    ],
+    "default": "INSIDE_TOP_CENTER"
+  },
+  {
+    "shape": "Text",
+    "container": false,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER",
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      []
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "Text",
+    "container": true,
+    "tranches": [
+      [
+        "INSIDE_TOP_CENTER",
+        "OUTSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      []
+    ],
+    "default": "INSIDE_TOP_CENTER"
+  },
+  {
+    "shape": "Code",
+    "container": false,
+    "tranches": [
+      [
+        "INSIDE_MIDDLE_CENTER",
+        "INSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT",
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      []
+    ],
+    "default": "INSIDE_MIDDLE_CENTER"
+  },
+  {
+    "shape": "Code",
+    "container": true,
+    "tranches": [
+      [
+        "INSIDE_TOP_CENTER",
+        "OUTSIDE_TOP_CENTER",
+        "INSIDE_BOTTOM_CENTER",
+        "OUTSIDE_BOTTOM_CENTER",
+        "INSIDE_TOP_LEFT",
+        "INSIDE_TOP_RIGHT",
+        "INSIDE_BOTTOM_LEFT",
+        "INSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_CENTER"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "INSIDE_MIDDLE_LEFT",
+        "INSIDE_MIDDLE_RIGHT"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      []
+    ],
+    "default": "INSIDE_TOP_CENTER"
+  },
+  {
+    "shape": "Image",
+    "container": false,
+    "tranches": [
+      [
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      []
+    ],
+    "default": "OUTSIDE_TOP_CENTER"
+  },
+  {
+    "shape": "Image",
+    "container": true,
+    "tranches": [
+      [
+        "OUTSIDE_TOP_CENTER",
+        "OUTSIDE_BOTTOM_CENTER"
+      ],
+      [
+        "OUTSIDE_LEFT_MIDDLE",
+        "OUTSIDE_RIGHT_MIDDLE"
+      ],
+      [
+        "OUTSIDE_TOP_LEFT",
+        "OUTSIDE_TOP_RIGHT",
+        "OUTSIDE_BOTTOM_LEFT",
+        "OUTSIDE_BOTTOM_RIGHT",
+        "OUTSIDE_LEFT_TOP",
+        "OUTSIDE_LEFT_BOTTOM",
+        "OUTSIDE_RIGHT_TOP",
+        "OUTSIDE_RIGHT_BOTTOM"
+      ],
+      []
+    ],
+    "default": "OUTSIDE_TOP_CENTER"
+  }
+]

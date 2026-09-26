@@ -9,6 +9,7 @@ import { extractFlatTrees, type TreeExtraction } from './tala/tree-extraction.js
 import { canonicalTreePaths } from './tala/tree-routing.js';
 import { prescaleNodes } from './tala/prescale.js';
 import { placeFlatClusters } from './tala/flat-cluster-placement.js';
+import { prepareNodeLabels } from './tala/label-policy.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
@@ -18,6 +19,8 @@ export interface LayoutNode extends RankNode {
   parentId?: string | undefined;
   isGroup?: boolean | undefined;
   labelBBox?: { width: number; height: number } | undefined;
+  labelPosition?: string | undefined;
+  labelPositionFixed?: boolean | undefined;
   dir?: LayoutDirection | undefined;
   shape?: string | undefined;
   aspectRatio1?: boolean | undefined;
@@ -87,7 +90,8 @@ export function layoutFlowchart(
   const useTala = options.strategy === 'tala'
     || options.strategy !== 'layered' && options.nodeSpacing === undefined
       && options.rankSpacing === undefined && options.orderingPasses === undefined;
-  const sourceNodes = useTala ? prescaleNodes(inputNodes, inputEdges) : inputNodes;
+  const sourceNodes = useTala
+    ? prepareNodeLabels(prescaleNodes(inputNodes, inputEdges)) : inputNodes;
   // Mermaid's parser order is not a placement constraint. Normalize only at
   // the adapter boundary; the TALA graph retains caller order like upstream.
   const graph = TalaGraph.fromFlowchart(
