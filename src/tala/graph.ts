@@ -2,6 +2,7 @@ import type { LayoutDirection, LayoutEdge, LayoutNode, LayoutResult, Point } fro
 import { distanceBetweenBoxes } from './placement-geometry.js';
 import { ConnectedNodeGap, CrossingCostWeight } from './geometry-policy.js';
 import { shapePortPolicy } from './shape-ports.js';
+import { computeLoopOffsets, type LoopOffsets } from './loop-routing.js';
 
 /** Mutable TALA graph records. References are private to one layout attempt. */
 export class TalaNode {
@@ -26,6 +27,7 @@ export class TalaNode {
   y: number | undefined;
   topLeft: Point | undefined;
   fixedTopLeft: Point | undefined;
+  loopOffsets: LoopOffsets | undefined;
 
   constructor(input: LayoutNode) {
     this.id = input.id;
@@ -69,8 +71,12 @@ export class TalaEdge {
   to: TalaNode;
   readonly fromTableColumnIndex: number | undefined;
   readonly toTableColumnIndex: number | undefined;
+  readonly minWidth: number;
+  readonly minHeight: number;
   readonly labelBBox: { width: number; height: number } | undefined;
   readonly directed: boolean;
+  readonly sourceArrowhead: string | undefined;
+  readonly targetArrowhead: string | undefined;
   points: Point[] = [];
   labelX: number | undefined;
   labelY: number | undefined;
@@ -81,8 +87,17 @@ export class TalaEdge {
     this.to = to;
     this.fromTableColumnIndex = input.fromTableColumnIndex;
     this.toTableColumnIndex = input.toTableColumnIndex;
+    this.minWidth = input.minWidth ?? 0;
+    this.minHeight = input.minHeight ?? 0;
     this.labelBBox = input.labelBBox ? { ...input.labelBBox } : undefined;
-    this.directed = input.directed ?? true;
+    const hasSourceArrow = input.sourceArrowhead !== undefined
+      && input.sourceArrowhead !== '' && input.sourceArrowhead !== 'none';
+    const hasTargetArrow = input.targetArrowhead === undefined
+      ? input.sourceArrowhead === undefined && input.directed !== false
+      : input.targetArrowhead !== '' && input.targetArrowhead !== 'none';
+    this.directed = input.directed ?? (hasSourceArrow !== hasTargetArrow);
+    this.sourceArrowhead = input.sourceArrowhead;
+    this.targetArrowhead = input.targetArrowhead;
     from.edges.push(this);
     if (to !== from) to.edges.push(this);
   }
@@ -185,6 +200,10 @@ export class TalaGraph {
       edgeIds.add(input.id);
       const from = byId.get(input.from), to = byId.get(input.to);
       if (!from || !to) throw new Error(`edge ${input.id} references a missing node`);
+      if (input.minWidth !== undefined && (!Number.isSafeInteger(input.minWidth) || input.minWidth < 0)
+        || input.minHeight !== undefined && (!Number.isSafeInteger(input.minHeight) || input.minHeight < 0)) {
+        throw new Error(`edge ${input.id} must have nonnegative integer minimum dimensions`);
+      }
       for (const [node, index] of [[from, input.fromTableColumnIndex], [to, input.toTableColumnIndex]] as const) {
         const available = node.shape?.toLowerCase() === 'table'
           ? node.numColumns || 1 : shapePortPolicy(node.shape, node.numColumns).indices.left.length;
@@ -194,6 +213,20 @@ export class TalaGraph {
         }
       }
       graph.edges.push(new TalaEdge(input, from, to));
+    }
+    const loops = new Map<string, LayoutEdge[]>();
+    for (const edge of edges) if (edge.from === edge.to) {
+      const list = loops.get(edge.from) ?? [];
+      list.push(edge);
+      loops.set(edge.from, list);
+    }
+    for (const node of graph.nodes) {
+      const nodeLoops = loops.get(node.id);
+      if (!nodeLoops) continue;
+      node.loopOffsets = computeLoopOffsets({ id: node.id,
+        width: node.width, height: node.height, shape: node.shape,
+        numColumns: node.numColumns, x: node.width / 2, y: node.height / 2,
+        rank: 0, order: 0 }, nodeLoops);
     }
     graph.computeCellSize();
     return graph;
@@ -268,7 +301,11 @@ export class TalaGraph {
       id: edge.id, from: edge.from.id, to: edge.to.id,
       ...(edge.fromTableColumnIndex !== undefined ? { fromTableColumnIndex: edge.fromTableColumnIndex } : {}),
       ...(edge.toTableColumnIndex !== undefined ? { toTableColumnIndex: edge.toTableColumnIndex } : {}),
+      ...(edge.minWidth ? { minWidth: edge.minWidth } : {}),
+      ...(edge.minHeight ? { minHeight: edge.minHeight } : {}),
       ...(edge.directed ? {} : { directed: false }),
+      ...(edge.sourceArrowhead !== undefined ? { sourceArrowhead: edge.sourceArrowhead } : {}),
+      ...(edge.targetArrowhead !== undefined ? { targetArrowhead: edge.targetArrowhead } : {}),
       ...(edge.labelBBox ? { labelBBox: { ...edge.labelBBox } } : {}),
     }));
   }

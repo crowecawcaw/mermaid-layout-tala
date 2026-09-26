@@ -1,6 +1,7 @@
 import type { LayoutDirection, LayoutEdge, Point, PositionedEdge, PositionedNode } from './layout.js';
 import { centerPort, shapePortPolicy, shapePorts, tableColumnPortIndex,
   type PortSide } from './tala/shape-ports.js';
+import { outsideTopCenterLoopLabelBox, routeNodeLoops } from './tala/loop-routing.js';
 
 type Side = 'N' | 'S' | 'E' | 'W';
 type Axis = 0 | 1 | 2;
@@ -30,17 +31,30 @@ export function routeGraphEdges(
     group.sort((a, b) => compareText(a.id, b.id));
     group.forEach((edge, index) => offsets.set(edge.id, (index - (group.length - 1) / 2) * 10));
   }
+  const loopPaths = new Map<string, Point[]>();
+  const loopsByNode = new Map<string, LayoutEdge[]>();
+  for (const edge of edges) if (edge.from === edge.to) {
+    const list = loopsByNode.get(edge.from) ?? [];
+    list.push(edge);
+    loopsByNode.set(edge.from, list);
+  }
+  for (const node of nodes) {
+    const loops = loopsByNode.get(node.id);
+    if (loops) for (const [id, points] of routeNodeLoops(node, loops)) loopPaths.set(id, points);
+  }
 
   return [...edges].sort((a, b) => compareText(a.id, b.id)).map((edge) => {
     const source = byId.get(edge.from)!;
     const target = byId.get(edge.to)!;
     const offset = offsets.get(edge.id) ?? 0;
     const treePoints = canonicalTreePaths.get(edge.id);
-    const points = treePoints ?? (source.id === target.id
-      ? selfLoop(source, offset)
-      : routeBetween(edge, source, target, nodes, byId, direction, offset));
-    const compact = treePoints ? points : normalize(points);
-    const middle = chooseLabelPoint(compact, edge, nodes);
+    const loopPoints = loopPaths.get(edge.id);
+    const points = treePoints ?? loopPoints ?? routeBetween(edge, source, target, nodes, byId, direction, offset);
+    const compact = treePoints || loopPoints ? points : normalize(points);
+    const loopLabel = loopPoints && edge.labelBBox
+      ? outsideTopCenterLoopLabelBox(loopPoints, edge.labelBBox) : undefined;
+    const middle = loopLabel ? { x: loopLabel.x + loopLabel.width / 2,
+      y: loopLabel.y + loopLabel.height / 2 } : chooseLabelPoint(compact, edge, nodes);
     return { ...edge, points: compact, x: middle.x, y: middle.y };
   });
 }
@@ -255,13 +269,6 @@ function fallback(source: PositionedNode, target: PositionedNode, direction: Lay
     : vertical
     ? [start.point, start.outer, { x: start.outer.x, y: (start.outer.y + end.outer.y) / 2 }, { x: end.outer.x, y: (start.outer.y + end.outer.y) / 2 }, end.outer, end.point]
     : [start.point, start.outer, { x: (start.outer.x + end.outer.x) / 2, y: start.outer.y }, { x: (start.outer.x + end.outer.x) / 2, y: end.outer.y }, end.outer, end.point];
-}
-
-function selfLoop(node: PositionedNode, offset: number): Point[] {
-  const start = port(node, 'E', Math.min(-8, offset));
-  const end = port(node, 'E', Math.max(8, offset));
-  const x = node.x + node.width / 2 + Math.max(28, Math.abs(offset) + 18);
-  return [start.point, { x, y: start.point.y }, { x, y: end.point.y }, end.point];
 }
 
 function normalize(points: Point[]): Point[] {

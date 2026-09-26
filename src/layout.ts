@@ -10,6 +10,7 @@ import { canonicalTreePaths } from './tala/tree-routing.js';
 import { prescaleNodes } from './tala/prescale.js';
 import { placeFlatClusters } from './tala/flat-cluster-placement.js';
 import { prepareNodeLabels } from './tala/label-policy.js';
+import { normalizeLayoutResult } from './tala/normalize.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
@@ -37,7 +38,11 @@ export interface LayoutEdge {
   to: string;
   fromTableColumnIndex?: number | undefined;
   toTableColumnIndex?: number | undefined;
+  minWidth?: number | undefined;
+  minHeight?: number | undefined;
   directed?: boolean;
+  sourceArrowhead?: string | undefined;
+  targetArrowhead?: string | undefined;
   labelBBox?: { width: number; height: number };
 }
 
@@ -109,9 +114,10 @@ export function layoutFlowchart(
     addHubs(attempt);
     const nodes = attempt.toLayoutNodes();
     const edges = attempt.toLayoutEdges();
-    const candidate = nodes.some((node) => node.isGroup)
+    const placed = nodes.some((node) => node.isGroup)
       ? layoutCompoundFlowchart(nodes, edges, options, seed)
       : layoutFlatFlowchart(nodes, edges, options, seed);
+    const candidate = useTala ? normalizeLayoutResult(placed) : placed;
     attempt.applyResult(candidate);
     const score = scoreLayout(candidate, options.direction ?? 'TB');
     if (!selectedScore || score.penalty < selectedScore.penalty

@@ -31,6 +31,23 @@ Run `node tools/upstream-fixtures/generate-shape-port-data.mjs` to regenerate
 the compact production policy data. The TypeScript parity test is
 `test/tala-upstream-shape-ports.test.ts`.
 
+`loop-oracle_test.go` records self-loop routes and reserved loop extents for
+`loop-cases.json`, including labels, multiple arrowhead categories, and table
+row ports. Copy it into the pinned checkout's `internal/loops` package as
+`ts_loop_fixture_test.go`, set `TALA_TS_LOOP_INPUT` and `TALA_TS_LOOP_OUTPUT` to
+absolute paths for `loop-cases.json` and `loop-expected.json`, then run
+`go test ./d2layouts/d2talalayout/internal/loops -run '^TestTSLoopRoutes$' -count=1`.
+The TypeScript parity test is `test/tala-upstream-loops.test.ts`.
+
+`node-gap-oracle_test.go` records upstream `layoutgraph.Node.deltaTo` for
+ordinary, table, loop, label, and explicit edge-minimum cases. Copy it into
+the pinned checkout's `internal/layoutgraph` package as
+`ts_node_gap_fixture_test.go`, set `TALA_TS_NODE_GAP_INPUT` and
+`TALA_TS_NODE_GAP_OUTPUT` to absolute paths for `node-gap-cases.json` and
+`node-gap-expected.json`, then run
+`go test ./d2layouts/d2talalayout/internal/layoutgraph -run '^TestTSNodeGapFixtures$' -count=1`.
+The TypeScript parity test is `test/tala-upstream-node-gap.test.ts`.
+
 Place `main.go` at
 `d2layouts/d2talalayout/cmd/ts-fixtures/main.go` within a checkout of that
 revision. From the D2 repository root, build the command and run it against

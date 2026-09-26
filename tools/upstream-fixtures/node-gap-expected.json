@@ -1,0 +1,34 @@
+[
+  {
+    "name": "ordinary-unconnected",
+    "delta": 20
+  },
+  {
+    "name": "connected-minimum-width",
+    "delta": 145
+  },
+  {
+    "name": "table-horizontal",
+    "delta": 120
+  },
+  {
+    "name": "table-vertical",
+    "delta": 20
+  },
+  {
+    "name": "loop-right-face",
+    "delta": 125
+  },
+  {
+    "name": "loop-diagonal-face",
+    "delta": 125
+  },
+  {
+    "name": "fixed-outside-labels",
+    "delta": 130
+  },
+  {
+    "name": "candidate-orientation-changes-gap",
+    "delta": 20
+  }
+]

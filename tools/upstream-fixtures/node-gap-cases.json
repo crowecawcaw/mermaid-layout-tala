@@ -1,0 +1,57 @@
+[
+  {
+    "name": "ordinary-unconnected",
+    "first": { "width": 80, "height": 50, "x": 0, "y": 0 },
+    "second": { "width": 80, "height": 50, "x": 180, "y": 0 },
+    "candidate": { "x": 0, "y": 0 }
+  },
+  {
+    "name": "connected-minimum-width",
+    "first": { "width": 80, "height": 50, "x": 0, "y": 0 },
+    "second": { "width": 80, "height": 50, "x": 180, "y": 0 },
+    "edge": { "minWidth": 145, "minHeight": 75 },
+    "candidate": { "x": 0, "y": 0 }
+  },
+  {
+    "name": "table-horizontal",
+    "first": { "shape": "Table", "width": 80, "height": 50, "x": 0, "y": 0 },
+    "second": { "width": 80, "height": 50, "x": 180, "y": 0 },
+    "candidate": { "x": 0, "y": 0 }
+  },
+  {
+    "name": "table-vertical",
+    "first": { "shape": "Table", "width": 80, "height": 50, "x": 0, "y": 0 },
+    "second": { "width": 80, "height": 50, "x": 0, "y": 180 },
+    "candidate": { "x": 0, "y": 0 }
+  },
+  {
+    "name": "loop-right-face",
+    "first": { "width": 80, "height": 50, "x": 0, "y": 0,
+      "loopOffsets": { "left": 40, "right": 80, "top": 30, "bottom": 0 } },
+    "second": { "width": 80, "height": 50, "x": 180, "y": 0,
+      "loopOffsets": { "left": 25, "right": 0, "top": 0, "bottom": 0 } },
+    "candidate": { "x": 0, "y": 0 }
+  },
+  {
+    "name": "loop-diagonal-face",
+    "first": { "width": 80, "height": 50, "x": 0, "y": 0,
+      "loopOffsets": { "left": 40, "right": 80, "top": 30, "bottom": 0 } },
+    "second": { "width": 80, "height": 50, "x": 180, "y": 180,
+      "loopOffsets": { "left": 25, "right": 0, "top": 0, "bottom": 45 } },
+    "candidate": { "x": 0, "y": 0 }
+  },
+  {
+    "name": "fixed-outside-labels",
+    "first": { "width": 80, "height": 50, "x": 0, "y": 0,
+      "labelBBox": { "width": 70, "height": 30 }, "labelPosition": "OUTSIDE_RIGHT_MIDDLE" },
+    "second": { "width": 80, "height": 50, "x": 180, "y": 0,
+      "labelBBox": { "width": 40, "height": 20 }, "labelPosition": "OUTSIDE_LEFT_MIDDLE" },
+    "candidate": { "x": 0, "y": 0 }
+  },
+  {
+    "name": "candidate-orientation-changes-gap",
+    "first": { "shape": "Table", "width": 80, "height": 50, "x": 0, "y": 0 },
+    "second": { "width": 80, "height": 50, "x": 180, "y": 0 },
+    "candidate": { "x": 180, "y": -150 }
+  }
+]
