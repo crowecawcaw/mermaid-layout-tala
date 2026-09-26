@@ -20,6 +20,7 @@ import { ordinaryPlacementEdgeLength } from './tala/placement-edge-length.js';
 import { containerAlignmentCost } from './tala/container-alignment-cost.js';
 import { normalizeGaps } from './tala/gap-normalization.js';
 import { equidistance } from './tala/equidistance.js';
+import { transposeLeaves } from './tala/transpose.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
@@ -142,7 +143,8 @@ function layoutFlatFlowchart(
   inputNodes: readonly LayoutNode[],
   inputEdges: readonly LayoutEdge[],
   options: LayoutOptions = {},
-  seed = 1
+  seed = 1,
+  constrainDirection = true
 ): LayoutResult {
   const direction = options.direction ?? 'TB';
   const nodeSpacing = finiteSpacing(options.nodeSpacing ?? 48, 'nodeSpacing');
@@ -198,7 +200,7 @@ function layoutFlatFlowchart(
         y: component[0]!.fixedTopLeft!.y + component[0]!.height / 2,
         rank: 0, order: 0 }] : undefined;
     const localNodes = sequence ?? tree ?? cluster ?? fixedSingleton ?? (useOrdinary && component.length > 1
-      ? positionOrdinaryComponent(component, componentEdges, ranks, direction, seed)
+      ? positionOrdinaryComponent(component, componentEdges, ranks, direction, seed, constrainDirection)
       : positionComponent(component, weightedDag, ranks, nodeSpacing, rankSpacing, passes, direction, seed));
     for (const node of localNodes) allPositions.set(node.id, node);
     componentBounds.push(bounds(localNodes));
@@ -237,8 +239,10 @@ function layoutFlatFlowchart(
 }
 
 function positionOrdinaryComponent(nodes: readonly LayoutNode[], edges: readonly LayoutEdge[],
-  ranks: ReadonlyMap<string, number>, direction: LayoutDirection, seed: number): PositionedNode[] {
-  const graph = TalaGraph.fromFlowchart(nodes.map((node) => ({ ...node, parentId: undefined })), edges, direction);
+  ranks: ReadonlyMap<string, number>, direction: LayoutDirection, seed: number,
+  constrainDirection = true): PositionedNode[] {
+  const graph = TalaGraph.fromFlowchart(nodes.map((node) => ({ ...node, parentId: undefined })),
+    edges, constrainDirection ? direction : undefined);
   placeOrdinaryNodes(graph, seed);
   const crossAxis = direction === 'TB' || direction === 'BT' ? 'x' : 'y';
   const orderById = new Map<string, number>();
@@ -315,7 +319,10 @@ function layoutCompoundFlowchart(
       id: edge.id, from: edge.from.id, to: edge.to.id,
     }));
     projection.restore();
-    const flat = layoutFlatFlowchart(measured, projected, { ...options, direction }, seed);
+    // Upstream only records an interior direction when the container declares
+    // one. The LR axis below is a presentation fallback for ranks and packing.
+    const flat = layoutFlatFlowchart(measured, projected, { ...options, direction }, seed,
+      parentId === undefined || byId.get(parentId)?.dir !== undefined);
     const box = bounds(flat.nodes);
     const group = parentId ? byId.get(parentId)! : undefined;
     const padding = 60;
@@ -355,7 +362,8 @@ function layoutCompoundFlowchart(
     }
     const alignmentScore = (graph: TalaGraph) => ordinaryPlacementEdgeLength(graph)
       + containerAlignmentCost(graph);
-    let changed = alignAxesPass(alignmentGraph, alignmentScore);
+    let changed = transposeLeaves(alignmentGraph);
+    changed = alignAxesPass(alignmentGraph, alignmentScore) || changed;
     changed = normalizeGaps(alignmentGraph) || changed;
     changed = alignAxesPass(alignmentGraph, alignmentScore) || changed;
     changed = equidistance(alignmentGraph) || changed;
