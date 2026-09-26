@@ -21,7 +21,7 @@
             <h1>Give your graph <em>room to flow.</em></h1>
             <p class="lede">Write Mermaid flowchart syntax, compare layout engines, and see the result right here. TALA is selected by default.</p>
           </div>
-          <div class="intro-note"><span class="note-symbol" aria-hidden="true">✳</span><span>TALA is experimental and currently supports flowcharts without subgraphs.</span></div>
+          <div class="intro-note"><span class="note-symbol" aria-hidden="true">✳</span><span>The TypeScript TALA port supports Mermaid flowcharts with nested subgraphs.</span></div>
         </div>
 
         <div class="workspace">
@@ -31,8 +31,9 @@
               <span class="panel-hint">Ctrl / ⌘ + Enter to render</span>
             </div>
             <div class="editor-controls">
-              <div class="field"><label for="example">Example</label><select id="example"><option value="">Custom diagram</option></select></div>
+              <div class="field example-field"><label for="example">Example</label><select id="example"><option value="">Custom diagram</option></select></div>
               <div class="field"><label for="layout">Layout engine</label><select id="layout"><option value="tala">TALA · experimental</option><option value="elk">ELK · Mermaid built-in</option><option value="dagre">Dagre · Mermaid built-in</option></select></div>
+              <div class="field"><label for="direction">Direction</label><select id="direction"><option value="TB">Top to bottom</option><option value="BT">Bottom to top</option><option value="LR">Left to right</option><option value="RL">Right to left</option></select></div>
             </div>
             <p class="example-description" id="example-description"></p>
             <div class="layout-options" id="tala-options">
@@ -41,6 +42,7 @@
                 <div class="spacing-control"><div class="spacing-label"><label for="node-spacing">Node gap</label><output id="node-spacing-value" for="node-spacing">44 px</output></div><input id="node-spacing" type="range" min="16" max="160" step="4" value="44" /></div>
                 <div class="spacing-control"><div class="spacing-label"><label for="rank-spacing">Layer gap</label><output id="rank-spacing-value" for="rank-spacing">64 px</output></div><input id="rank-spacing" type="range" min="16" max="200" step="4" value="64" /></div>
               </div>
+              <div class="seed-control"><label for="tala-seeds">Layout seeds</label><input id="tala-seeds" type="text" inputmode="numeric" value="1, 2, 3" aria-describedby="seed-help" /><span id="seed-help">Comma separated integers; TALA chooses the best result.</span></div>
             </div>
             <label class="visually-hidden" for="source">Mermaid source</label>
             <textarea id="source" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" aria-describedby="editor-help"></textarea>
@@ -52,6 +54,7 @@
               <div><p class="panel-kicker">02 / OUTPUT</p><h2 id="preview-title">Live preview</h2></div>
               <button id="download" class="secondary-button" type="button" disabled>Download SVG <span aria-hidden="true">↓</span></button>
             </div>
+            <div class="preview-toolbar"><label for="preview-zoom">Zoom</label><input id="preview-zoom" type="range" min="50" max="300" step="25" value="100" /><output id="preview-zoom-value" for="preview-zoom">Fit</output><button id="preview-fit" type="button">Fit</button></div>
             <div class="preview" id="preview" aria-label="Rendered Mermaid diagram"></div>
             <div class="preview-footer"><span class="status-dot" aria-hidden="true"></span><span id="status" role="status" aria-live="polite">Rendering…</span></div>
           </section>

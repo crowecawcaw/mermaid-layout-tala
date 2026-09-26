@@ -2,6 +2,47 @@ import { describe, expect, it } from 'vitest';
 import { layoutFlowchart } from '../src/layout.js';
 
 describe('Mermaid flowchart layout slice', () => {
+  it('uses deterministic layout seeds and rejects invalid lists', () => {
+    const nodes = ['A', 'B', 'C', 'D', 'E', 'F'].map((id) => ({ id, width: 50, height: 30 }));
+    const edges = ['B', 'C', 'D', 'E', 'F'].map((id) => ({ id: `A${id}`, from: 'A', to: id }));
+    const order = (seed: number) => layoutFlowchart(nodes, edges, { seeds: [seed] }).nodes
+      .filter((node) => node.rank === 1).sort((a, b) => a.x - b.x).map((node) => node.id).join('');
+    expect(order(1)).toBe(order(1));
+    expect(order(1)).not.toBe(order(5));
+    expect(() => layoutFlowchart(nodes, edges, { seeds: [] })).toThrow('at least one seed');
+    expect(() => layoutFlowchart(nodes, edges, { seeds: [1.5] })).toThrow('safe integers');
+  });
+
+  it('places nested subgraphs around their contents', () => {
+    const result = layoutFlowchart(
+      [
+        { id: 'cloud', width: 100, height: 30, isGroup: true, labelBBox: { width: 100, height: 30 }, dir: 'LR' },
+        { id: 'api', width: 80, height: 30, isGroup: true, parentId: 'cloud', labelBBox: { width: 80, height: 30 } },
+        { id: 'data', width: 80, height: 30, isGroup: true, parentId: 'cloud', labelBBox: { width: 80, height: 30 } },
+        { id: 'gateway', width: 80, height: 40, parentId: 'api' },
+        { id: 'service', width: 80, height: 40, parentId: 'api' },
+        { id: 'store', width: 80, height: 40, parentId: 'data' },
+        { id: 'client', width: 80, height: 40 },
+      ],
+      [
+        { id: 'incoming', from: 'client', to: 'gateway' },
+        { id: 'request', from: 'gateway', to: 'service' },
+        { id: 'persist', from: 'service', to: 'store' },
+      ],
+      { direction: 'LR' }
+    );
+    const byId = new Map(result.nodes.map((node) => [node.id, node]));
+    for (const [childId, parentId] of [['api', 'cloud'], ['data', 'cloud'], ['gateway', 'api'], ['service', 'api'], ['store', 'data']] as const) {
+      const child = byId.get(childId)!;
+      const parent = byId.get(parentId)!;
+      expect(child.x - child.width / 2).toBeGreaterThan(parent.x - parent.width / 2);
+      expect(child.x + child.width / 2).toBeLessThan(parent.x + parent.width / 2);
+      expect(child.y - child.height / 2).toBeGreaterThan(parent.y - parent.height / 2);
+      expect(child.y + child.height / 2).toBeLessThan(parent.y + parent.height / 2);
+    }
+    expect(byId.get('api')!.x).toBeLessThan(byId.get('data')!.x);
+  });
+
   it('uses hierarchy ranks and measured node sizes', () => {
     const result = layoutFlowchart(
       [

@@ -33,6 +33,7 @@ h2 { margin: 0; color: #253d33; font-size: 19px; letter-spacing: -.03em; }
 .panel-hint { color: #89948a; font-size: 11px; white-space: nowrap; }
 .editor-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 20px 23px 0; }
 .field { min-width: 0; }
+.example-field { grid-column: 1 / -1; }
 .field label { display: block; margin-bottom: 8px; color: #506358; font-size: 11px; font-weight: 750; text-transform: uppercase; letter-spacing: .08em; }
 .field select { width: 100%; min-height: 42px; padding: 0 31px 0 12px; border: 1px solid #d5dfd5; border-radius: 6px; background: #f8faf7; color: #2f493b; font-size: 13px; }
 .field select:focus, textarea:focus, button:focus-visible, a:focus-visible { outline: 2px solid #458b67; outline-offset: 2px; }
@@ -46,6 +47,9 @@ h2 { margin: 0; color: #253d33; font-size: 19px; letter-spacing: -.03em; }
 .spacing-label { margin-bottom: 5px; color: #627767; font-size: 11px; }
 .spacing-label output { color: #38664a; font-weight: 750; font-variant-numeric: tabular-nums; }
 .spacing-control input { display: block; width: 100%; margin: 0; accent-color: #2d6a4f; }
+.seed-control { display: grid; grid-template-columns: auto minmax(80px, 1fr); align-items: center; column-gap: 12px; row-gap: 4px; margin-top: 15px; color: #627767; font-size: 11px; }
+.seed-control input { min-width: 0; padding: 6px 8px; border: 1px solid #d5dfd5; border-radius: 5px; background: #fff; color: #29423a; font: 12px ui-monospace, SFMono-Regular, Consolas, monospace; }
+.seed-control span { grid-column: 2; color: #8a9a8c; }
 textarea { display: block; flex: 1; width: calc(100% - 46px); min-height: 380px; margin: 0 23px; padding: 17px 19px; resize: vertical; border: 1px solid #d8e2d7; border-radius: 7px; background: #f7f9f6; color: #29423a; font: 13px/1.7 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; tab-size: 2; }
 .editor-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 23px; color: #839085; font-size: 12px; }
 .primary-button, .secondary-button { display: inline-flex; align-items: center; justify-content: center; gap: 14px; min-height: 38px; padding: 0 14px; border: 1px solid transparent; border-radius: 6px; font-size: 12px; font-weight: 750; white-space: nowrap; }
@@ -55,7 +59,11 @@ textarea { display: block; flex: 1; width: calc(100% - 46px); min-height: 380px;
 .secondary-button:not(:disabled):hover { background: #e9f2e8; }
 .secondary-button:disabled { cursor: not-allowed; opacity: .55; }
 .preview { display: grid; flex: 1; place-items: center; min-height: 480px; overflow: auto; padding: 32px; background-color: #fbfcfa; background-image: radial-gradient(#dae4d9 0.7px, transparent 0.7px); background-size: 19px 19px; }
-.preview svg { display: block; max-width: 100%; height: auto; }
+.preview svg { display: block; height: auto; }
+.preview-toolbar { display: flex; align-items: center; justify-content: flex-end; gap: 10px; min-height: 42px; padding: 5px 23px; border-bottom: 1px solid #e7ebe4; color: #667b6d; font-size: 11px; }
+.preview-toolbar input { width: min(140px, 26vw); accent-color: #2d6a4f; }
+.preview-toolbar output { min-width: 38px; font-variant-numeric: tabular-nums; }
+.preview-toolbar button { padding: 3px 8px; border: 1px solid #d7e2d8; border-radius: 5px; background: #f7faf6; color: #477359; font-size: 11px; }
 .preview-footer { display: flex; align-items: center; gap: 9px; min-height: 54px; padding: 11px 23px; border-top: 1px solid #e7ebe4; color: #708276; font-size: 12px; }
 .status-dot { flex: none; width: 7px; height: 7px; border-radius: 50%; background: #64a77a; }
 #status.error { color: #af3f3f; white-space: pre-wrap; overflow-wrap: anywhere; }
@@ -87,6 +95,7 @@ textarea { display: block; flex: 1; width: calc(100% - 46px); min-height: 380px;
   textarea { width: calc(100% - 32px); min-height: 280px; margin: 0 16px; padding: 13px; font-size: 12px; }
   .editor-footer { padding: 15px 16px; }
   .preview { min-height: 320px; padding: 14px; }
+  .preview-toolbar { padding: 5px 16px; }
   .preview-footer { padding: 10px 16px; }
   .site-footer { align-items: flex-start; flex-direction: column; gap: 8px; padding: 22px 0; }
 }

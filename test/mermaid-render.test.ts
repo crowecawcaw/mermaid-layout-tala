@@ -33,6 +33,7 @@ describe('Mermaid render integration', () => {
       'flowchart TD\n  A[Start] --> B[Finish]\n  A --> C[Review]\n  B --> D[Done]\n  C --> D',
       'flowchart LR\n  A[Client] -->|primary| B[Gateway]\n  A -->|retry| B\n  B --> C[Service]\n  C --> B\n  C --> C',
       'flowchart RL\n  A[Webhook] --> B[Queue]\n  B --> C[Normalize]\n  C -->|valid| D[Store]\n  C -->|invalid| E[Dead letter]',
+      'flowchart LR\n  subgraph cloud[Cloud]\n    direction TB\n    subgraph api[API tier]\n      gateway[Gateway] --> service[Service]\n    end\n    service --> database[(Database)]\n  end\n  client[Client] --> gateway\n  database --> analytics[Analytics]',
     ];
     for (const [index, source] of diagrams.entries()) {
       const result = await mermaid.render(`tala-layout-smoke-${index}`, source);

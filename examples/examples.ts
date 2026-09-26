@@ -17,6 +17,31 @@ export const examples = [
   events --> analytics[Analytics pipeline]`,
   },
   {
+    title: 'Nested cloud architecture',
+    description: 'Nested API and data tiers, external clients, and cross-container traffic.',
+    source: `flowchart LR
+  clients[Web and mobile clients] --> cdn[CDN]
+  subgraph cloud[Cloud platform]
+    direction LR
+    subgraph api[API tier]
+      direction TB
+      gateway[API gateway] --> auth[Identity service]
+      gateway --> orders[Order service]
+    end
+    subgraph data[Data tier]
+      direction TB
+      users[(User database)]
+      orderdb[(Order database)]
+      events[Event queue]
+    end
+    auth --> users
+    orders --> orderdb
+    orders --> events
+  end
+  cdn --> gateway
+  events --> worker[Background worker]`,
+  },
+  {
     title: 'Request flow',
     description: 'A decision, branching paths, a join, and a retry loop.',
     source: `flowchart TD

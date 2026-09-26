@@ -1,16 +1,22 @@
 import { rankDag, type RankEdge, type RankNode } from './rank.js';
+import { routeGraphEdges } from './route.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
 export interface LayoutNode extends RankNode {
   width: number;
   height: number;
+  parentId?: string | undefined;
+  isGroup?: boolean | undefined;
+  labelBBox?: { width: number; height: number } | undefined;
+  dir?: LayoutDirection | undefined;
 }
 
 export interface LayoutEdge {
   id: string;
   from: string;
   to: string;
+  labelBBox?: { width: number; height: number };
 }
 
 export interface LayoutOptions {
@@ -18,6 +24,7 @@ export interface LayoutOptions {
   nodeSpacing?: number;
   rankSpacing?: number;
   orderingPasses?: number;
+  seeds?: readonly number[];
 }
 
 export interface Point {
@@ -51,15 +58,36 @@ interface WeightedEdge extends LayoutEdge {
  * TALA-derived layered layout for Mermaid flowcharts.
  *
  * The rank assignment is ported from TALA's weighted DAG network-simplex
- * ranker. This smaller adapter adds stable barycenter sweeps, variable-size
- * node spacing, component separation, and boundary-to-boundary orthogonal
- * paths. It does not implement TALA's grouping, general placement, or
- * obstacle-aware edge routing stages.
+ * ranker. The Mermaid adapter also places nested containers, tests
+ * deterministic ordering seeds, and routes around node obstacles.
  */
 export function layoutFlowchart(
   inputNodes: readonly LayoutNode[],
   inputEdges: readonly LayoutEdge[],
   options: LayoutOptions = {}
+): LayoutResult {
+  const seeds = normalizeSeeds(options.seeds ?? [1, 2, 3]);
+  let selected: LayoutResult | undefined;
+  let selectedScore: { penalty: number; area: number } | undefined;
+  for (const seed of seeds) {
+    const candidate = inputNodes.some((node) => node.isGroup)
+      ? layoutCompoundFlowchart(inputNodes, inputEdges, options, seed)
+      : layoutFlatFlowchart(inputNodes, inputEdges, options, seed);
+    const score = scoreLayout(candidate);
+    if (!selectedScore || score.penalty < selectedScore.penalty
+      || (score.penalty === selectedScore.penalty && score.area <= selectedScore.area)) {
+      selected = candidate;
+      selectedScore = score;
+    }
+  }
+  return selected!;
+}
+
+function layoutFlatFlowchart(
+  inputNodes: readonly LayoutNode[],
+  inputEdges: readonly LayoutEdge[],
+  options: LayoutOptions = {},
+  seed = 1
 ): LayoutResult {
   const direction = options.direction ?? 'TB';
   const nodeSpacing = finiteSpacing(options.nodeSpacing ?? 48, 'nodeSpacing');
@@ -94,7 +122,7 @@ export function layoutFlowchart(
           to: edge.to,
           weight: edge.weight,
         } satisfies RankEdge)));
-    const localNodes = positionComponent(component, weightedDag, ranks, nodeSpacing, rankSpacing, passes, direction);
+    const localNodes = positionComponent(component, weightedDag, ranks, nodeSpacing, rankSpacing, passes, direction, seed);
     for (const node of localNodes) allPositions.set(node.id, node);
     componentBounds.push(bounds(localNodes));
   }
@@ -115,26 +143,94 @@ export function layoutFlowchart(
   }
 
   const positionedNodes = nodes.map((node) => allPositions.get(node.id)!);
-  const edgeGroups = new Map<string, LayoutEdge[]>();
-  for (const edge of edges) {
-    const key = `${edge.from}\u0000${edge.to}`;
-    const group = edgeGroups.get(key) ?? [];
-    group.push(edge);
-    edgeGroups.set(key, group);
-  }
-  const parallelOffset = new Map<string, number>();
-  for (const [key, group] of edgeGroups) {
-    group.forEach((edge, i) => parallelOffset.set(edge.id, (i - (group.length - 1) / 2) * 10));
-  }
-  const positionedEdges = edges.map((edge) => {
-    const source = allPositions.get(edge.from)!;
-    const target = allPositions.get(edge.to)!;
-    const offset = parallelOffset.get(edge.id) ?? 0;
-    const points = normalizeRoute(routeEdge(source, target, direction, offset));
-    const middle = points[Math.floor(points.length / 2)]!;
-    return { ...edge, points, x: middle.x, y: middle.y };
-  });
+  const positionedEdges = routeGraphEdges(positionedNodes, edges, direction);
   return { nodes: positionedNodes, edges: positionedEdges };
+}
+
+/** Place each container from the inside out, then lay out its siblings as nodes.
+ * TALA's container pass also treats a compound node as one obstacle during
+ * parent placement. This keeps nested groups and their labels inside their
+ * boundaries while edges between groups still affect the parent hierarchy. */
+function layoutCompoundFlowchart(
+  inputNodes: readonly LayoutNode[],
+  inputEdges: readonly LayoutEdge[],
+  options: LayoutOptions,
+  seed: number
+): LayoutResult {
+  const nodes = [...inputNodes].sort((a, b) => compareText(a.id, b.id));
+  const byId = new Map(nodes.map((node) => [node.id, node]));
+  if (byId.size !== nodes.length) throw new Error('duplicate node ID');
+  for (const node of nodes) {
+    if (node.parentId && !byId.get(node.parentId)?.isGroup) throw new Error(`invalid parent for ${node.id}`);
+    if (node.parentId === node.id) throw new Error(`cyclic parent for ${node.id}`);
+  }
+  for (const edge of inputEdges) {
+    if (!byId.has(edge.from) || !byId.has(edge.to)) throw new Error(`edge ${edge.id} references a missing node`);
+  }
+  const children = new Map<string | undefined, LayoutNode[]>();
+  for (const node of nodes) {
+    const siblings = children.get(node.parentId) ?? [];
+    siblings.push(node);
+    children.set(node.parentId, siblings);
+  }
+  const childUnder = (id: string, parentId: string | undefined): string | undefined => {
+    const visited = new Set<string>();
+    let current = byId.get(id);
+    while (current) {
+      if (visited.has(current.id)) throw new Error('cyclic container hierarchy');
+      visited.add(current.id);
+      if (current.parentId === parentId) return current.id;
+      current = current.parentId ? byId.get(current.parentId) : undefined;
+    }
+    return undefined;
+  };
+  interface Scope { width: number; height: number; positioned: PositionedNode[] }
+  const active = new Set<string>();
+  const placeScope = (parentId: string | undefined, direction: LayoutDirection): Scope => {
+    if (parentId) {
+      if (active.has(parentId)) throw new Error('cyclic container hierarchy');
+      active.add(parentId);
+    }
+    const siblingNodes = children.get(parentId) ?? [];
+    const nested = new Map<string, Scope>();
+    const measured = siblingNodes.map((node) => {
+      if (!node.isGroup) return node;
+      const childScope = placeScope(node.id, node.dir ?? direction);
+      nested.set(node.id, childScope);
+      return { ...node, width: childScope.width, height: childScope.height };
+    });
+    const projected: LayoutEdge[] = [];
+    for (const edge of inputEdges) {
+      const from = childUnder(edge.from, parentId);
+      const to = childUnder(edge.to, parentId);
+      if (from && to && from !== to) projected.push({ id: edge.id, from, to });
+    }
+    const flat = layoutFlatFlowchart(measured, projected, { ...options, direction }, seed);
+    const box = bounds(flat.nodes);
+    const group = parentId ? byId.get(parentId)! : undefined;
+    const padding = 32;
+    const topPadding = group ? Math.max(48, (group.labelBBox?.height ?? 0) + 28) : 0;
+    const width = group ? Math.max(box.width + 2 * padding, (group.labelBBox?.width ?? group.width) + 2 * padding) : box.width;
+    const height = group ? Math.max(box.height + topPadding + padding, topPadding + padding) : box.height;
+    const shiftX = group ? -box.minX + (width - box.width) / 2 - width / 2 : 0;
+    const shiftY = group ? -box.minY + topPadding - height / 2 : 0;
+    const positioned: PositionedNode[] = [];
+    for (const placed of flat.nodes) {
+      const outer = { ...placed, x: placed.x + shiftX, y: placed.y + shiftY };
+      positioned.push(outer);
+      const inner = nested.get(placed.id);
+      if (inner) {
+        for (const descendant of inner.positioned) {
+          positioned.push({ ...descendant, x: descendant.x + outer.x, y: descendant.y + outer.y });
+        }
+      }
+    }
+    if (parentId) active.delete(parentId);
+    return { width, height, positioned };
+  };
+  const placed = placeScope(undefined, options.direction ?? 'TB').positioned;
+  const edges = routeGraphEdges(placed, inputEdges, options.direction ?? 'TB');
+  return { nodes: placed, edges };
 }
 
 function makeAcyclic(nodes: readonly LayoutNode[], edges: readonly LayoutEdge[]): WeightedEdge[] {
@@ -209,12 +305,13 @@ function positionComponent(
   nodeSpacing: number,
   rankSpacing: number,
   passes: number,
-  direction: LayoutDirection
+  direction: LayoutDirection,
+  seed: number
 ): PositionedNode[] {
   const maxRank = Math.max(0, ...ranks.values());
   const layers: string[][] = Array.from({ length: maxRank + 1 }, () => []);
   for (const node of nodes) layers[ranks.get(node.id) ?? 0]!.push(node.id);
-  for (const layer of layers) layer.sort(compareText);
+  for (const layer of layers) layer.sort((a, b) => seededOrder(a, seed) - seededOrder(b, seed) || compareText(a, b));
   const order = new Map<string, number>();
   const saveOrder = (layer: string[]) => layer.forEach((id, index) => order.set(id, index));
   layers.forEach(saveOrder);
@@ -291,91 +388,6 @@ function positionComponent(
   return result;
 }
 
-function routeEdge(source: PositionedNode, target: PositionedNode, direction: LayoutDirection, offset: number): Point[] {
-  if (source.id === target.id) {
-    const x = source.x + source.width / 2;
-    const y = source.y;
-    const upper = y - Math.min(8, source.height / 4);
-    const lower = y + Math.min(8, source.height / 4);
-    const outside = source.x + source.width / 2 + Math.max(28, Math.abs(offset) + 18);
-    return [
-      { x, y: upper },
-      { x: outside, y: upper },
-      { x: outside, y: lower },
-      { x, y: lower },
-    ];
-  }
-  const dx = target.x - source.x;
-  const dy = target.y - source.y;
-  const start = rectIntersection(source, dx, dy);
-  const end = rectIntersection(target, -dx, -dy);
-  const vertical = direction === 'TB' || direction === 'BT';
-  if (vertical) {
-    const startLane = shiftAlongBoundary(source, start, offset, true);
-    const endLane = shiftAlongBoundary(target, end, offset, true);
-    const midY = (start.y + end.y) / 2;
-    return [
-      start,
-      startLane,
-      { x: startLane.x, y: midY },
-      { x: endLane.x, y: midY },
-      endLane,
-      end,
-    ];
-  }
-  const startLane = shiftAlongBoundary(source, start, offset, false);
-  const endLane = shiftAlongBoundary(target, end, offset, false);
-  const midX = (start.x + end.x) / 2;
-  return [
-    start,
-    startLane,
-    { x: midX, y: startLane.y },
-    { x: midX, y: endLane.y },
-    endLane,
-    end,
-  ];
-}
-
-/**
- * Mermaid's edge renderer rounds orthogonal corners by looking at adjacent
- * segments. Repeated points make those segments zero length and produce NaN
- * coordinates, so remove them before handing routes to Mermaid. Keep an
- * interior point on straight routes because Mermaid clips the first and last
- * points against the node boundaries.
- */
-function normalizeRoute(points: Point[]): Point[] {
-  const compact = points.filter((point, index) => {
-    if (index === 0) return true;
-    const previous = points[index - 1]!;
-    return point.x !== previous.x || point.y !== previous.y;
-  });
-  if (compact.length === 2) {
-    const [start, end] = compact as [Point, Point];
-    compact.splice(1, 0, { x: (start.x + end.x) / 2, y: (start.y + end.y) / 2 });
-  }
-  return compact;
-}
-
-function shiftAlongBoundary(node: PositionedNode, point: Point, offset: number, verticalRoute: boolean): Point {
-  if (offset === 0) return point;
-  const onHorizontalSide = Math.abs(Math.abs(point.y - node.y) - node.height / 2) < 1e-7;
-  const tangentIsX = verticalRoute ? onHorizontalSide : !onHorizontalSide;
-  if (tangentIsX) {
-    const limit = Math.max(0, node.width / 2 - 2);
-    return { x: node.x + clamp(point.x - node.x + offset, -limit, limit), y: point.y };
-  }
-  const limit = Math.max(0, node.height / 2 - 2);
-  return { x: point.x, y: node.y + clamp(point.y - node.y + offset, -limit, limit) };
-}
-
-function rectIntersection(node: PositionedNode, dx: number, dy: number): Point {
-  if (dx === 0 && dy === 0) return { x: node.x, y: node.y };
-  const sx = dx === 0 ? Number.POSITIVE_INFINITY : node.width / 2 / Math.abs(dx);
-  const sy = dy === 0 ? Number.POSITIVE_INFINITY : node.height / 2 / Math.abs(dy);
-  const scale = Math.min(sx, sy);
-  return { x: node.x + dx * scale, y: node.y + dy * scale };
-}
-
 function bounds(nodes: readonly PositionedNode[]) {
   if (nodes.length === 0) return { minX: 0, minY: 0, width: 0, height: 0 };
   const minX = Math.min(...nodes.map((node) => node.x - node.width / 2));
@@ -385,10 +397,60 @@ function bounds(nodes: readonly PositionedNode[]) {
   return { minX, minY, width: maxX - minX, height: maxY - minY };
 }
 
+function normalizeSeeds(seeds: readonly number[]): number[] {
+  if (seeds.length === 0) throw new Error('TALA requires at least one seed');
+  if (seeds.length > 64) throw new Error('TALA accepts at most 64 seed entries');
+  const unique: number[] = [];
+  const seen = new Set<number>();
+  for (const seed of seeds) {
+    if (!Number.isSafeInteger(seed)) throw new Error('TALA seeds must be safe integers');
+    if (seen.has(seed)) continue;
+    seen.add(seed);
+    unique.push(seed);
+    if (unique.length > 16) throw new Error('TALA supports at most 16 unique seeds');
+  }
+  return unique;
+}
+
+function seededOrder(id: string, seed: number): number {
+  let hash = (seed ^ 0x811c9dc5) >>> 0;
+  for (let i = 0; i < id.length; i++) {
+    hash = Math.imul(hash ^ id.charCodeAt(i), 0x01000193) >>> 0;
+  }
+  return hash;
+}
+
+function scoreLayout(result: LayoutResult): { penalty: number; area: number } {
+  let penalty = 0;
+  for (const edge of result.edges) penalty += Math.max(0, edge.points.length - 2) * 0.5;
+  for (let i = 0; i < result.edges.length; i++) {
+    const first = result.edges[i]!;
+    for (let j = i + 1; j < result.edges.length; j++) {
+      const second = result.edges[j]!;
+      if (first.from === second.from || first.from === second.to || first.to === second.from || first.to === second.to) continue;
+      for (let a = 1; a < first.points.length; a++) {
+        for (let b = 1; b < second.points.length; b++) {
+          const p = first.points[a - 1]!, q = first.points[a]!;
+          const r = second.points[b - 1]!, s = second.points[b]!;
+          if (p.x === q.x && r.y === s.y
+            && between(r.y, p.y, q.y) && between(p.x, r.x, s.x)) penalty++;
+          if (p.y === q.y && r.x === s.x
+            && between(r.x, p.x, q.x) && between(p.y, r.y, s.y)) penalty++;
+        }
+      }
+    }
+  }
+  const box = bounds(result.nodes);
+  return { penalty, area: box.width * box.height };
+}
+
+function between(value: number, a: number, b: number): boolean {
+  return value > Math.min(a, b) && value < Math.max(a, b);
+}
+
 function finiteSpacing(value: number, name: string): number {
   if (!Number.isFinite(value) || value < 0) throw new Error(`${name} must be a finite nonnegative number`);
   return value;
 }
 
-function clamp(value: number, min: number, max: number): number { return Math.max(min, Math.min(max, value)); }
 function compareText(a: string, b: string): number { return a < b ? -1 : a > b ? 1 : 0; }

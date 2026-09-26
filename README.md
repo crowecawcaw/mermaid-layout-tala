@@ -1,14 +1,15 @@
 # Mermaid TALA Layout
 
 An experimental TypeScript layout loader for Mermaid 12 flowcharts. It ports
-TALA's weighted DAG rank assignment from D2 and adds layer ordering, spacing,
-component placement, and orthogonal edge routes.
+TALA's weighted DAG rank assignment from D2 and adds nested container layout,
+deterministic seed attempts, layer ordering, component placement, and
+obstacle-aware orthogonal routes.
 
 ![A left-to-right flowchart arranged by the TALA-derived layout](./docs/tala-layout-example.svg)
 
-Try the [interactive playground](https://crowecawcaw.github.io/mermaid-layout-tala/) to edit Mermaid flowcharts and compare TALA with Mermaid's ELK and Dagre layouts. It includes nine selectable examples, including a cloud architecture topology, and controls for TALA's node and layer spacing.
+Try the [interactive playground](https://crowecawcaw.github.io/mermaid-layout-tala/) to edit Mermaid flowcharts and compare the TypeScript layout with Mermaid's ELK and Dagre layouts. It includes ten selectable examples, including nested cloud architecture, and controls for direction, layout seeds, spacing, and preview zoom.
 
-The architecture example uses flowchart syntax because this port does not yet lay out Mermaid's `architecture-beta` diagrams or subgraph containers.
+The architecture examples use flowchart syntax. Mermaid's `architecture-beta` diagram type has its own renderer and does not use this flowchart layout loader.
 
 ## Install
 
@@ -23,10 +24,11 @@ import mermaid from 'mermaid';
 import talaLayouts from 'mermaid-layout-tala';
 
 mermaid.registerLayoutLoaders(talaLayouts);
+const flowchart = { htmlLabels: false, talaSeeds: [1, 2, 3] };
 mermaid.initialize({
   startOnLoad: true,
   layout: 'tala',
-  flowchart: { htmlLabels: false },
+  flowchart,
 });
 ```
 
@@ -43,13 +45,19 @@ flowchart LR
 
 ## Scope
 
-The current port supports measured rectangular flowchart nodes, all four
-directions (`TB`, `BT`, `LR`, `RL`), connected components, parallel links,
-cycles, and self loops. Subgraph containers are not supported yet. Several
-stages from D2's full TALA implementation are also outside this port, including
-container placement, label-aware optimization, seed scoring, and obstacle
-avoiding edge routing. Treat the layout as experimental while those pieces are
-incomplete.
+The current port supports measured flowchart nodes, nested subgraphs and their
+directions, all four root directions (`TB`, `BT`, `LR`, `RL`), connected
+components, parallel links, cycles, self loops, deterministic seed selection,
+and routes around nodes and unrelated containers. Node and rank spacing are
+specific to this Mermaid adapter. `talaSeeds` accepts up to 16 distinct safe
+integers, with `[1, 2, 3]` as the default. Mermaid's direction declaration
+sets direction; it is not a separate TALA option.
+
+This is still a subset of upstream TALA. The upstream engine has many additional
+placement and refinement stages for trees, hubs, clusters, symmetry, packing,
+edge channels, shape borders, and labels. Its placement and scoring are not yet
+ported exactly, so this package should not be treated as layout-equivalent to
+the D2 implementation.
 
 ## Development
 
