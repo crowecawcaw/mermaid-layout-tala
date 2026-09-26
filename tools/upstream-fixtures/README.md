@@ -19,3 +19,16 @@ Run `node random-cases.mjs` to reproduce the varied inputs. The Go program
 records the sizeless and sized `NodeEdgeLength` results, `NodeSymmetry`, cell
 size, and the halved turn cost seen by sized placement. The TypeScript test
 compares those results to the port.
+
+`compaction_fixture_test.go` is a separate oracle in the upstream
+`internal/placement` package. Copy it there as `ts_compaction_fixture_test.go`.
+Set `TALA_TS_COMPACTION_INPUT` and `TALA_TS_COMPACTION_OUTPUT` to absolute paths
+for one input/output pair, then run:
+
+```powershell
+go test ./d2layouts/d2talalayout/internal/placement -run '^TestTSCompactionFixtures$' -count=1
+```
+
+The pairs are `compaction-cases.json` / `compaction-expected.json` and
+`compaction-random-cases.json` / `compaction-random-expected.json`. Run
+`node compaction-random-cases.mjs` to reproduce the latter inputs.
