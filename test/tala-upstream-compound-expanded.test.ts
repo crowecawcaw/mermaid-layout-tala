@@ -29,6 +29,24 @@ describe('expanded compound pipeline oracle', () => {
     });
   }
 
+  it('matches upstream node boxes and route shapes in the multiple-boundary graph', () => {
+    const input = cases.find((item) => item.name === 'multiple-boundary-edges')!;
+    const oracle = expected.find((item) => item.name === input.name)!;
+    const actual = layoutFlowchart(input.nodes, input.edges,
+      { strategy: 'tala', direction: input.direction, seeds: [input.seed] });
+    expect(actual.nodes.map((node) => ({ id: node.id,
+      x: node.x - node.width / 2, y: node.y - node.height / 2,
+      width: node.width, height: node.height }))).toEqual(oracle.nodes);
+    for (const edge of actual.edges.filter((item) => item.id !== 'ax')) {
+      expect(edge.points).toEqual(oracle.edges.find((item) => item.id === edge.id)!.points);
+    }
+    const ax = actual.edges.find((item) => item.id === 'ax')!.points;
+    const expectedAx = oracle.edges.find((item) => item.id === 'ax')!.points;
+    expect(ax.map((point) => point.x)).toEqual(expectedAx.map((point) => point.x));
+    expect(ax[0]!.y).toBe(expectedAx[0]!.y);
+    expect(ax.slice(1).map((point) => point.y - expectedAx[1]!.y)).toEqual([1, 1]);
+  });
+
   it('preserves the authored dimensions of an empty nested container', () => {
     const input = cases.find((item) => item.name === 'empty-nested-container')!;
     const oracle = expected.find((item) => item.name === input.name)!;

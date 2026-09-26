@@ -16,6 +16,10 @@ export function sizedMedianToNeighbors(node: TalaNode, graph: TalaGraph): Point 
   const neighbors = node.edges.map((edge) => graph.endpointFor(edge,
     edge.from === node ? 'to' : 'from')).filter((other) => other.topLeft);
   if (neighbors.length === 0) throw new Error(`node ${node.id} has no positioned neighbors`);
+  return sizedMedian(neighbors, graph.cellSize);
+}
+
+function sizedMedian(neighbors: readonly TalaNode[], cellSize: number): Point {
   const compare = (a: TalaNode, b: TalaNode): number => a.id < b.id ? -1 : a.id > b.id ? 1 : 0;
   const byX = [...neighbors].sort((a, b) =>
     a.topLeft!.x + a.width / 2 - b.topLeft!.x - b.width / 2 || compare(a, b));
@@ -28,7 +32,7 @@ export function sizedMedianToNeighbors(node: TalaNode, graph: TalaGraph): Point 
     x = (x + byX[middle - 1]!.topLeft!.x + byX[middle - 1]!.width / 2) / 2;
     y = (y + byY[middle - 1]!.topLeft!.y + byY[middle - 1]!.height / 2) / 2;
   }
-  return { x: x / graph.cellSize, y: y / graph.cellSize };
+  return { x: x / cellSize, y: y / cellSize };
 }
 
 /** Ordinary-node sized placement control flow, including spatial swaps and
@@ -43,7 +47,8 @@ export class SizedOptimizer {
       - nodeSymmetry(node, graph) * graph.cellSize * node.edges.length);
   }
 
-  medianPoint(node: TalaNode, temp: number): Point {
+  medianPoint(node: TalaNode, temp: number,
+    protrudingChildren: readonly TalaNode[] = this.protrudingChildren(node)): Point {
     if (!Number.isFinite(temp) || temp < 0) throw new RangeError('invalid temperature');
     if (!node.topLeft) throw new Error(`node ${node.id} is unpositioned`);
     const cell = this.graph.cellSize;
@@ -57,6 +62,11 @@ export class SizedOptimizer {
     }
     x += -temp * width + this.random.float64() * (2 * temp * width);
     y += -temp * height + this.random.float64() * (2 * temp * height);
+    if (protrudingChildren.length) {
+      const childrenMedian = sizedMedian(protrudingChildren, cell);
+      x -= childrenMedian.x - node.topLeft.x / cell;
+      y -= childrenMedian.y - node.topLeft.y / cell;
+    }
     if (origin) {
       x = Math.max(x, origin.x / cell);
       y = Math.max(y, origin.y / cell);
@@ -76,9 +86,11 @@ export class SizedOptimizer {
         if (!node.topLeft) throw new Error(`node ${node.id} is unpositioned`);
         if (node.fixedTopLeft || node.edges.length === 0) continue;
         if (node.width > 100 * this.graph.cellSize || node.height > 100 * this.graph.cellSize) continue;
-        const median = this.medianPoint(node, temp);
-        const distance = closestSizedUnoccupiedDistance(this.graph, node, median, true, origin);
-        const points = sizedPlacementPoints(this.graph, node, median, distance, true, origin);
+        const protrudingChildren = this.protrudingChildren(node);
+        const minimizingSelf = protrudingChildren.length === 0;
+        const median = this.medianPoint(node, temp, protrudingChildren);
+        const distance = closestSizedUnoccupiedDistance(this.graph, node, median, minimizingSelf, origin);
+        const points = sizedPlacementPoints(this.graph, node, median, distance, minimizingSelf, origin);
         this.random.shuffle(points);
         const moved = this.moveNodeToBest(node, points, temp === 0, origin);
         if (moved) changed = true;
@@ -97,6 +109,17 @@ export class SizedOptimizer {
       for (const [node, position] of snapshot) node.topLeft = position ? { ...position } : undefined;
       throw error;
     }
+  }
+
+  /** Child endpoints whose edges were temporarily abducted to this container. */
+  private protrudingChildren(node: TalaNode): TalaNode[] {
+    const children: TalaNode[] = [];
+    for (const edge of this.graph.edges) {
+      const replacement = this.graph.edgeEndpointReplacements.get(edge.id);
+      if (edge.from === node && replacement?.from) children.push(this.graph.endpointFor(edge, 'from'));
+      if (edge.to === node && replacement?.to) children.push(this.graph.endpointFor(edge, 'to'));
+    }
+    return children;
   }
 
   /** Ordinary-node branch of sizedOptimizer.moveNodeToBest. */

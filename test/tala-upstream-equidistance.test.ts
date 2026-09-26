@@ -33,4 +33,30 @@ describe('placement.Equidistance against upstream compound stage', () => {
       { id: 'D', x: 940, y: 60, width: 70, height: 35 },
     ]);
   });
+
+  it('leaves diagonal side branches out of the connected move', () => {
+    const graph = TalaGraph.fromFlowchart([
+      { id: 'Group', width: 470, height: 155, isGroup: true },
+      { id: 'A', width: 70, height: 35, parentId: 'Group' },
+      { id: 'B', width: 70, height: 35, parentId: 'Group' },
+      { id: 'C', width: 70, height: 35, parentId: 'Group' },
+      { id: 'X', width: 70, height: 35 },
+      { id: 'Y', width: 70, height: 35 },
+    ], [
+      { id: 'ab', from: 'A', to: 'B', directed: true },
+      { id: 'bc', from: 'B', to: 'C', directed: true },
+      { id: 'ax', from: 'A', to: 'X', directed: true },
+      { id: 'cx', from: 'C', to: 'X', directed: true },
+      { id: 'cy', from: 'C', to: 'Y', directed: true },
+    ], 'LR');
+    const positions: Array<[number, number]> = [
+      [-234, 7], [-174, 67], [-34, 67], [106, 67], [-34, 233], [296, 67],
+    ];
+    graph.nodes.forEach((node, index) => {
+      const [x, y] = positions[index]!;
+      node.topLeft = { x, y };
+    });
+    expect(equidistance(graph)).toBe(false);
+    expect(graph.nodes.map((node) => node.topLeft)).toEqual(positions.map(([x, y]) => ({ x, y })));
+  });
 });

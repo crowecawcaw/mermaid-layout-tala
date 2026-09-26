@@ -94,7 +94,7 @@ function routeBetween(
     const end = port(target, endSide, offset,
       tableSides ? edge.toTableColumnIndex : undefined);
     if (insideAny(start.outer, obstacles) || insideAny(end.outer, obstacles)) continue;
-    const path = searchGrid(start.outer, end.outer, obstacles);
+    const path = searchGrid(start.outer, end.outer, obstacles, startSide, endSide);
     if (!path) continue;
     const points = [start.point, ...path, end.point];
     const cost = routeCost(points) + preference;
@@ -121,8 +121,10 @@ function portPairs(source: PositionedNode, target: PositionedNode, direction: La
     [...primary, 0],
     [...naturalX, Math.abs(dx) >= Math.abs(dy) ? 8 : 28],
     [...naturalY, Math.abs(dy) >= Math.abs(dx) ? 8 : 28],
-    [naturalX[0], naturalY[1], 36],
-    [naturalY[0], naturalX[1], 36],
+    // Let total route length and turns decide mixed-side ports. A fixed
+    // penalty here can override the shorter one-turn route.
+    [naturalX[0], naturalY[1], 0],
+    [naturalY[0], naturalX[1], 0],
   ];
   const seen = new Set<string>();
   return candidates.filter(([a, b]) => {
@@ -164,7 +166,8 @@ function port(node: PositionedNode, side: Side, offset: number, columnIndex?: nu
   return { point, outer, side };
 }
 
-function searchGrid(start: Point, end: Point, obstacles: readonly Rect[]): Point[] | undefined {
+function searchGrid(start: Point, end: Point, obstacles: readonly Rect[],
+  startSide: Side, endSide: Side): Point[] | undefined {
   const xs = uniqueSorted([start.x, end.x, (start.x + end.x) / 2,
     ...obstacles.flatMap((box) => [box.left, box.right]),
     Math.min(start.x, end.x, ...obstacles.map((box) => box.left)) - CLEARANCE,
@@ -187,18 +190,27 @@ function searchGrid(start: Point, end: Point, obstacles: readonly Rect[]): Point
   if (blocked[vertex(sx, sy)] || blocked[goal]) return undefined;
   const distances = new Float64Array(columns * rows * 3).fill(Infinity);
   const previous = new Int32Array(distances.length).fill(-1);
-  const startState = vertex(sx, sy) * 3;
+  // Include the short segments between each port and the visibility grid in
+  // turn scoring, including the final turn into the target port.
+  const sideAxis = (side: Side): Axis => side === 'N' || side === 'S' ? 2 : 1;
+  const startState = vertex(sx, sy) * 3 + sideAxis(startSide);
   distances[startState] = 0;
   const heap = new MinHeap();
   heap.push(startState, 0);
   let terminal = -1;
+  let terminalCost = Infinity;
   while (heap.length) {
     const item = heap.pop()!;
     const state = item.state;
     if (item.cost !== distances[state]) continue;
     const at = Math.floor(state / 3);
-    if (at === goal) { terminal = state; break; }
     const axis = (state % 3) as Axis;
+    if (item.cost > terminalCost) break;
+    if (at === goal) {
+      const cost = item.cost + (axis !== sideAxis(endSide) ? BEND_COST : 0);
+      if (cost < terminalCost) { terminal = state; terminalCost = cost; }
+      continue;
+    }
     const x = at % columns, y = Math.floor(at / columns);
     for (const [nx, ny, nextAxis] of [[x - 1, y, 1], [x + 1, y, 1], [x, y - 1, 2], [x, y + 1, 2]] as const) {
       if (nx < 0 || ny < 0 || nx >= columns || ny >= rows) continue;

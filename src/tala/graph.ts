@@ -143,6 +143,12 @@ export interface EdgeEndpointReplacements {
   to?: EdgeEndpointReplacement;
 }
 
+export interface ProjectedChildGeometry {
+  original: LayoutNode;
+  offsetX: number;
+  offsetY: number;
+}
+
 export class TalaGraph {
   readonly nodes: TalaNode[] = [];
   readonly edges: TalaEdge[] = [];
@@ -150,6 +156,7 @@ export class TalaGraph {
   readonly directions = new Map<TalaNode | null, LayoutDirection>();
   readonly hubs = new Map<TalaNode, TalaNode[]>();
   readonly edgeEndpointReplacements = new Map<string, EdgeEndpointReplacements>();
+  readonly projectedChildren = new Map<string, ProjectedChildGeometry[]>();
   cellSize = 10;
   private turnCostCache = 0;
   private crossingCostCache = 0;
@@ -167,6 +174,19 @@ export class TalaGraph {
     original.topLeft = { x: proxy.topLeft.x + replacement.offsetX,
       y: proxy.topLeft.y + replacement.offsetY };
     return original;
+  }
+
+  /** Positioned direct children retained as obstacles while their container
+   * is represented by one node in the current placement subgraph. */
+  projectedChildrenFor(container: TalaNode): TalaNode[] {
+    if (!container.topLeft) return [];
+    return (this.projectedChildren.get(container.id) ?? []).map(({ original, offsetX, offsetY }) => {
+      const child = new TalaNode(original);
+      child.parent = container;
+      child.topLeft = { x: container.topLeft!.x + offsetX,
+        y: container.topLeft!.y + offsetY };
+      return child;
+    });
   }
 
   /** Port of layoutgraph.Graph.TurnCost's lazy cost cache. */
@@ -333,6 +353,19 @@ export class TalaGraph {
     copy.cellSize = this.cellSize;
     copy.turnCostCache = this.turnCostCache;
     copy.crossingCostCache = this.crossingCostCache;
+    for (const [id, replacements] of this.edgeEndpointReplacements) {
+      const copyEndpoint = (value: EdgeEndpointReplacement | undefined): EdgeEndpointReplacement | undefined =>
+        value && { ...value, original: { ...value.original,
+          labelBBox: value.original.labelBBox ? { ...value.original.labelBBox } : undefined } };
+      const copied: EdgeEndpointReplacements = {};
+      const from = copyEndpoint(replacements.from), to = copyEndpoint(replacements.to);
+      if (from) copied.from = from;
+      if (to) copied.to = to;
+      copy.edgeEndpointReplacements.set(id, copied);
+    }
+    for (const [id, children] of this.projectedChildren) copy.projectedChildren.set(id,
+      children.map(({ original, offsetX, offsetY }) => ({ original: { ...original,
+        labelBBox: original.labelBBox ? { ...original.labelBBox } : undefined }, offsetX, offsetY })));
     const oldById = new Map(this.nodes.map((node) => [node.id, node]));
     for (const node of copy.nodes) {
       const previous = oldById.get(node.id)!;

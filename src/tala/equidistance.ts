@@ -1,6 +1,7 @@
 import { ContainerPadding } from './geometry-policy.js';
 import { TalaGraph, TalaNode } from './graph.js';
 import { ordinaryPlacementEdgeLength } from './placement-edge-length.js';
+import { sizedOrientation } from './placement-geometry.js';
 
 type Axis = 'x' | 'y';
 const precision = 0.0001;
@@ -128,10 +129,9 @@ function reachableSideBranches(node: TalaNode, back: TalaNode, front: TalaNode,
   for (const edge of node.edges) {
     const adjacent = node.adjacent(edge);
     if (excluded.has(adjacent) || !adjacent.topLeft) continue;
-    const crossAxis = axis === 'x' ? 'y' : 'x';
-    const separated = end(adjacent, crossAxis) < node.topLeft![crossAxis]
-      || adjacent.topLeft[crossAxis] > end(node, crossAxis);
-    if (!separated) continue;
+    const orientation = sizedOrientation(adjacent, node);
+    if (axis === 'x' ? orientation !== 'Top' && orientation !== 'Bottom'
+      : orientation !== 'Left' && orientation !== 'Right') continue;
     for (const reached of adjacent.connectedNodes([...excluded], graph)) {
       if (!seen.has(reached)) { seen.add(reached); result.push(reached); }
     }

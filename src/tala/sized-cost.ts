@@ -57,7 +57,7 @@ export function sizedNodeEdgeLength(owner: TalaNode, graph: TalaGraph,
     let cornerABlocked = false, cornerBBlocked = false;
     for (let blockerIndex = 0; blockerIndex < blockers.length; blockerIndex++) {
       const blocker = blockers[blockerIndex]!;
-      if (blocker === node || blocker === other || !blocker.topLeft) continue;
+      if (blocker.id === node.id || blocker.id === other.id || !blocker.topLeft) continue;
       if (node.isDescendantOf(blocker) || other.isDescendantOf(blocker)
         || blocker.isDescendantOf(node) || blocker.isDescendantOf(other)) continue;
       if (diagonal) {
@@ -94,6 +94,7 @@ function obstructionNodes(first: TalaNode, second: TalaNode, graph: TalaGraph): 
     while (!seenContainers.has(container)) {
       seenContainers.add(container);
       result.push(...(graph.containers.get(container) ?? []));
+      if (container) result.push(...graph.projectedChildrenFor(container));
       if (!container) break;
       container = container.parent;
     }

@@ -45,12 +45,18 @@ ownership error, now fixed, and a missing ordinary `BalanceSymmetry` stage,
 ported against its upstream stage trace. The ordinary placement path now runs
 upstream's `direct` mirror after placement, including original descendant
 endpoints for projected edges; this fixes the vertical orientation of the
-multiple-boundary-edge case. Its public placement still enters `AlignAxes` with
-a different external-node position. Given identical stage geometry, the port
-now matches both pinned upstream container translations. In the public output
-Group, A, C, and X now match; B differs by one unit and Y by 50 units. The
+multiple-boundary-edge case. The projected root placement now matches the
+upstream stage exactly: the sized optimizer centers a container using its
+protruding child endpoints and scores interior sibling boxes as route
+obstacles. Given identical stage geometry, the port also matches both pinned
+upstream container translations. Equidistance now excludes diagonal side
+branches from connected moves. The public multiple-boundary graph matches all
+six node boxes and four of five routes; its `ax` route still differs. The
+visibility-grid search now accounts for turns at both endpoint ports. It
+chooses the upstream `ax` source side and bend coordinate, leaving only a
+one-pixel target-center rounding difference in that route. The
 empty-container fixture still differs in packing positions, and the diamond
-fixture still differs after placement. These three remain diagnostic cases.
+fixture still differs after placement. These remain diagnostic cases.
 The ordinary-endpoint `AlignAxes` delta calculation, ordinary-container
 connected-set traversal, non-center-port penalty, and equal-size peer-container
 alignment cost are ported. The stage's shift validity check now applies the

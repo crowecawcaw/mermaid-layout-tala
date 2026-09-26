@@ -9,7 +9,12 @@ export function nodeSymmetry(node: TalaNode, graph: TalaGraph): number {
 
 function scoreNode(node: TalaNode, graph: TalaGraph, checkNeighbors: boolean): number {
   if (!node.topLeft) return 0;
-  const neighbors = [...new Set(node.edges.map((edge) => node.adjacent(edge)))]
+  const byId = new Map<string, TalaNode>();
+  for (const edge of node.edges) {
+    const other = graph.endpointFor(edge, edge.from === node ? 'to' : 'from');
+    if (!byId.has(other.id)) byId.set(other.id, other);
+  }
+  const neighbors = [...byId.values()]
     .filter((other) => other.topLeft && distanceBetweenBoxes(
       { topLeft: node.topLeft!, width: node.width, height: node.height },
       { topLeft: other.topLeft!, width: other.width, height: other.height },
@@ -88,6 +93,9 @@ function obstructed(center: TalaNode, first: TalaNode, second: TalaNode, graph: 
   ]);
   for (const other of candidates) {
     if (other === center || other === first || other === second || !other.topLeft) continue;
+    if (center.isDescendantOf(other) || first.isDescendantOf(other)
+      || second.isDescendantOf(other) || other.isDescendantOf(center)
+      || other.isDescendantOf(first) || other.isDescendantOf(second)) continue;
     if (segmentIntersectsBox(start, firstEnd, other) || segmentIntersectsBox(start, secondEnd, other)) return true;
   }
   return false;
