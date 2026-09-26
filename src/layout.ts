@@ -148,6 +148,7 @@ function layoutFlatFlowchart(
   const treeComponents: Array<{ ids: Set<string>; edges: LayoutEdge[]; extraction: TreeExtraction }> = [];
   const componentBounds: Array<ReturnType<typeof bounds>> = [];
   for (const component of components) {
+    const hasFixed = component.some((node) => node.fixedTopLeft !== undefined);
     const componentIds = new Set(component.map((node) => node.id));
     const componentEdges = edges.filter((edge) => componentIds.has(edge.from) && componentIds.has(edge.to));
     const weightedDag = makeAcyclic(component, componentEdges);
@@ -159,12 +160,17 @@ function layoutFlatFlowchart(
           to: edge.to,
           weight: edge.weight,
         } satisfies RankEdge)));
-    const tree = useOrdinary ? placeSimpleTree(component, componentEdges, direction, ranks) : undefined;
+    const tree = useOrdinary && !hasFixed
+      ? placeSimpleTree(component, componentEdges, direction, ranks) : undefined;
     if (tree) treeComponents.push({ ids: componentIds, edges: componentEdges,
       extraction: extractFlatTrees(component, componentEdges) });
-    const cluster = useOrdinary && !tree && component.every((node) => !node.isGroup)
+    const cluster = useOrdinary && !tree && !hasFixed && component.every((node) => !node.isGroup)
       ? placeFlatClusters(component, componentEdges, direction, seed, ranks) : undefined;
-    const localNodes = tree ?? cluster ?? (useOrdinary && component.length > 1 && component.every((node) => !node.isGroup)
+    const fixedSingleton = useOrdinary && component.length === 1 && component[0]!.fixedTopLeft
+      ? [{ ...component[0]!, x: component[0]!.fixedTopLeft!.x + component[0]!.width / 2,
+        y: component[0]!.fixedTopLeft!.y + component[0]!.height / 2,
+        rank: 0, order: 0 }] : undefined;
+    const localNodes = tree ?? cluster ?? fixedSingleton ?? (useOrdinary && component.length > 1 && component.every((node) => !node.isGroup)
       ? positionOrdinaryComponent(component, componentEdges, ranks, direction, seed)
       : positionComponent(component, weightedDag, ranks, nodeSpacing, rankSpacing, passes, direction, seed));
     for (const node of localNodes) allPositions.set(node.id, node);
@@ -173,11 +179,15 @@ function layoutFlatFlowchart(
 
   // Pack weakly connected components along the cross axis, which is the least
   // surprising direction for both tall and wide flowcharts.
-  let componentOffset = 0;
+  const alongX = direction === 'TB' || direction === 'BT';
+  const fixedBoxes = componentBounds.filter((_, index) => components[index]!
+    .some((node) => node.fixedTopLeft !== undefined));
+  let componentOffset = fixedBoxes.length === 0 ? 0 : Math.max(0, ...fixedBoxes.map((box) =>
+    alongX ? box.minX + box.width : box.minY + box.height)) + (useOrdinary ? 20 : rankSpacing);
   for (let i = 0; i < components.length; i++) {
     const local = components[i]!.map((node) => allPositions.get(node.id)!);
     const box = componentBounds[i]!;
-    const alongX = direction === 'TB' || direction === 'BT';
+    if (components[i]!.some((node) => node.fixedTopLeft !== undefined)) continue;
     const shift = alongX ? componentOffset - box.minX : componentOffset - box.minY;
     const rankShift = alongX ? -box.minY : -box.minX;
     for (const node of local) {

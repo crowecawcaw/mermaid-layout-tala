@@ -134,6 +134,10 @@ export class TalaGraph {
       if (!Number.isFinite(input.width) || input.width <= 0 || !Number.isFinite(input.height) || input.height <= 0) {
         throw new Error(`node ${input.id} must have finite positive dimensions`);
       }
+      if (input.fixedTopLeft && (!Number.isFinite(input.fixedTopLeft.x)
+        || !Number.isFinite(input.fixedTopLeft.y))) {
+        throw new Error(`node ${input.id} must have a finite fixed origin`);
+      }
       const node = new TalaNode(input);
       graph.nodes.push(node);
       byId.set(node.id, node);
