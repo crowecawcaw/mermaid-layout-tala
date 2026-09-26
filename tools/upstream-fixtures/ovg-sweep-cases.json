@@ -1,0 +1,59 @@
+[
+  {
+    "name": "open-grid",
+    "obstacles": [],
+    "vertices": [
+      { "x": 0, "y": 0 }, { "x": 50, "y": 0 }, { "x": 100, "y": 0 },
+      { "x": 0, "y": 100 }, { "x": 50, "y": 100 }, { "x": 100, "y": 100 }
+    ]
+  },
+  {
+    "name": "box-blocks-middle-line",
+    "obstacles": [{ "id": "a", "x": 40, "y": 40, "width": 20, "height": 20 }],
+    "vertices": [
+      { "x": 0, "y": 50 }, { "x": 40, "y": 50, "owners": [{ "node": "a", "directions": ["left"] }] },
+      { "x": 60, "y": 50, "owners": [{ "node": "a", "directions": ["right"] }] },
+      { "x": 100, "y": 50 }, { "x": 0, "y": 30 }, { "x": 100, "y": 30 }
+    ]
+  },
+  {
+    "name": "facing-and-reversed-ports",
+    "obstacles": [
+      { "id": "a", "x": 0, "y": 0, "width": 40, "height": 40 },
+      { "id": "b", "x": 100, "y": 0, "width": 40, "height": 40 }
+    ],
+    "vertices": [
+      { "x": 0, "y": 20, "owners": [{ "node": "a", "directions": ["left"] }] },
+      { "x": 40, "y": 20, "owners": [{ "node": "a", "directions": ["right"] }] },
+      { "x": 100, "y": 20, "owners": [{ "node": "b", "directions": ["left"] }] },
+      { "x": 140, "y": 20, "owners": [{ "node": "b", "directions": ["right"] }] },
+      { "x": 0, "y": -20 }, { "x": 40, "y": -20 }, { "x": 100, "y": -20 }, { "x": 140, "y": -20 }
+    ]
+  },
+  {
+    "name": "shared-port-owners",
+    "obstacles": [
+      { "id": "a", "x": 0, "y": 0, "width": 40, "height": 40 },
+      { "id": "b", "x": 40, "y": 0, "width": 40, "height": 40 }
+    ],
+    "vertices": [
+      { "x": 0, "y": 20, "owners": [{ "node": "a", "directions": ["left"] }] },
+      { "x": 40, "y": 20, "owners": [
+        { "node": "a", "directions": ["right"] }, { "node": "b", "directions": ["left"] }
+      ] },
+      { "x": 80, "y": 20, "owners": [{ "node": "b", "directions": ["right"] }] },
+      { "x": 40, "y": -20 }, { "x": 40, "y": 60 }
+    ]
+  },
+  {
+    "name": "center-and-tunnel",
+    "obstacles": [{ "id": "a", "x": 100, "y": 100, "width": 20, "height": 20 }],
+    "vertices": [
+      { "x": 0, "y": 0, "center": true },
+      { "x": 20, "y": 0 },
+      { "x": 40, "y": 0, "owners": [{ "node": "a", "directions": ["left"] }] },
+      { "x": 60, "y": 0, "tunnel": true },
+      { "x": 80, "y": 0 }
+    ]
+  }
+]

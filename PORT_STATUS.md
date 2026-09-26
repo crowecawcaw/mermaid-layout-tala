@@ -108,6 +108,14 @@ geometry. For the two curated branched workflows, only 5/8 and 3/8 routes
 match the complete Go output. This isolates the next major integration gap:
 the upstream OVG router and its later route cleanup passes.
 
+The ordinary-node OVG visibility sweep from `routing/ovg.go` is translated in
+`src/tala/ovg-sweep.ts`. It matches five focused Go sweep fixtures and nine
+complete flat OVG builds when supplied the Go build's pre-sweep vertices,
+including the obstacle, port-direction, touching-port, and tunnel cases.
+The translated candidate-point and visibility-sweep stages are not yet
+assembled into the public router; vertex construction, tunnel creation, OVG
+path search, and route cleanup remain to be ported.
+
 A separate set of 24 generated branching trees exercises deeper and uneven
 structures. The TypeScript geometry matches the upstream node-placement stage
 on all 24, plus four edge-labeled tree fixtures. The stage tests call the tree
