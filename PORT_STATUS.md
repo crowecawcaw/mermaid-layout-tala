@@ -95,8 +95,9 @@ the pinned Go placement stage. The ordinary sibling branch of `SwapStuff`
 also matches a pinned three-child stage. During parent placement, symmetry
 scoring follows an abducted edge into the original child topology, recovering
 Go's 2/3 alignment reward for a chain endpoint. The three-child
-top-to-bottom case now matches five of six final node boxes; the last differs
-by three pixels, and four routes still differ. Most four-child cases and
+top-to-bottom case now matches all six final node boxes after the compound
+`Equidistance` pass reproduces Go's ordered child and container moves. Four
+routes still differ. Most four-child cases and
 other compound directions remain unmatched.
 
 The complete Go pipeline oracle now covers ten small flat graphs. Relative

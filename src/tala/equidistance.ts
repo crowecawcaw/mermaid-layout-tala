@@ -89,10 +89,9 @@ function trialMove(graph: TalaGraph, nodes: readonly TalaNode[], axis: Axis,
 }
 
 function translateWithChildren(nodes: readonly TalaNode[], axis: Axis, delta: number): void {
-  const moved = new Set<TalaNode>();
+  // Go moves each requested node with its children in order. If a child and
+  // its container are both requested, that child receives both moves.
   const move = (node: TalaNode): void => {
-    if (moved.has(node)) return;
-    moved.add(node);
     if (node.topLeft) node.topLeft = { ...node.topLeft,
       [axis]: node.topLeft[axis] + delta };
     for (const child of node.children) move(child);
