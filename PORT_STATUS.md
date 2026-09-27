@@ -13,7 +13,7 @@ that engine yet.
 | Seed attempts | Independent mutable graph clones and deterministic ordering attempts are implemented. Upstream crossing evaluation is ported; random placement and full label scoring remain unported. |
 | Tree, hierarchy, hub, proximity, cluster, and sequence discovery | Upstream `AddHubs` discovery, flat tree leaf peeling, sibling cluster discovery, connected `Step` sequence-run discovery, and automatic flat hierarchy discovery are ported. Tree extraction matches 24 pinned generated trees; flat sibling clustering matches five upstream cases. Tree geometry follows upstream's orientation transforms, level placement, sibling spacing, and edge-label clearance. Incoming and outgoing branches are placed around their junction. Flat hierarchy discovery includes source and sink checks, weighted duplicate merging, undirected edge expansion, and feedback arc reversal. Placement includes breadth-first component ordering, seeded shuffling, long-edge dummy vertices, crossing minimization, global sifting, level spacing, and four-direction Brandes–Kopf alignment. Twelve pinned layered graphs, including cross-level edges, varied sizes, and all four directions, match upstream's `PreprocessHierarchies` node geometry exactly, as do six mixed-direction and parallel-edge cases. Cluster vessel resizing, member arrangement, temporary graph installation, edge abduction, and restoration are ported. The topology matches four upstream clustered fixtures, and geometry matches four independent vessel fixtures. The flat cluster placement branch matches completed upstream geometry in the diamond and three-way parallel fan. The compound post-placement path now retains clustered sibling vessels through its alignment and spacing passes. Step sequence vessel sizing, wedge overlap, temporary topology, external-edge abduction, and member arrangement are ported for flat components; the public flat TALA path now places such runs through vessels. Upstream remembered-sequence lifecycle and routing remain unported. Hierarchy table columns, nested containers, fixed members, and general compound grouping remain unported. Ordinary connected components use translated TALA placement by default; nested containers still use the adapter's recursive placement. |
 | General placement, symmetry, compaction, and bin packing | The ordinary-node initializer, Go-compatible random stream, sizeless and sized optimizers, spatial swaps, quarter-turn transposes, compaction, distance-cluster joining, and placement stage are translated. The graph direction mirror matches 24 upstream tree-stage fixtures. Sized scoring includes upstream flow continuity, ordered obstruction handling, near-node distance, and common-uncle axis penalties; transpose scoring includes straight-edge crossings and cached crossing cost. Placement costs match 54 pinned upstream fixtures, compaction matches 65 fixtures, distance-cluster joining matches 7 fixtures, and the complete ordinary placement stage matches 12 curated plus 32 special and generated graphs exactly. The public flat-tree path now runs the ordinary `GapNormalization` pass between placement and routing, excluding tree members as upstream does. Its speculative moves reject newly introduced clearance overlaps. Public results without fixed nodes normalize using node bounds, routed points, and available label bounds. Measured container proxies can use the ordinary stage, but full compound placement, herd behavior, bin packing, and the other upstream placement branches remain unported. |
-| Edge routing | The center-port, S-shaped tree route kernel is ported for inward and outward branches and matches all edges in 24 pinned upstream tree fixtures; it now uses shape-specific center ports. The tree-sentinel branch of upstream `Dejitter` moves nodes to straighten short bends, checks sign flips, route obstructions, overlap, and symmetry, and reroutes accepted moves. The visibility-grid router uses shape-specific center ports for zero-offset edges, handles recessed ports, and honors explicit table row endpoints on horizontally separated nodes. Shorter edges route first, and reused ports respect arrowhead compatibility in the pinned flat cases. TALA's five-point self-loop router, loop extents, and loop label positions match five upstream fixtures and run in the public routing path. The upstream safe four-bend simplification stage is ported and runs after public routing; nine upstream obstruction and transpose cases pass. The straight-segment and ordinary bent-route endpoint branches of `BalanceEdgeSegments` are ported, alongside the ordinary compound range/distribution core. OVG candidate construction, search, slingshot, flavor selection, and route reassignment now feed the public TALA path for eligible flat and compound graphs. Shape-border tracing matches 1,104 Go cases across all 23 shapes and runs on those public OVG routes; 26 Go final-routing cases pass. Unsupported graphs still use the visibility grid; hierarchy OVG construction, general port selection, channel refinements, and other route cleanup stages remain unported. |
+| Edge routing | The center-port, S-shaped tree route kernel is ported for inward and outward branches and matches all edges in 24 pinned upstream tree fixtures; it now uses shape-specific center ports. The ordinary-node branch of upstream `Dejitter` moves nodes to straighten short bends, checks sign flips, route obstructions, overlap, and symmetry, refits affected containers, and reroutes accepted moves. The visibility-grid router uses shape-specific center ports for zero-offset edges, handles recessed ports, and honors explicit table row endpoints on horizontally separated nodes. Shorter edges route first, and reused ports respect arrowhead compatibility in the pinned flat cases. TALA's five-point self-loop router, loop extents, and loop label positions match five upstream fixtures and run in the public routing path. The upstream safe four-bend simplification stage is ported and runs after public routing; nine upstream obstruction and transpose cases pass. The straight-segment and ordinary bent-route endpoint branches of `BalanceEdgeSegments` are ported, alongside the ordinary compound range/distribution core. OVG candidate construction, search, slingshot, flavor selection, and route reassignment now feed the public TALA path for eligible flat and compound graphs. Shape-border tracing matches 1,104 Go cases across all 23 shapes and runs on those public OVG routes; 26 Go final-routing cases pass. Unsupported graphs still use the visibility grid; hierarchy OVG construction, general port selection, channel refinements, and other route cleanup stages remain unported. |
 | Labels | The node-label default and full position preference tranches match upstream for all 23 shapes, as ordinary nodes and containers. Edge labels are measured and placed on a selected route segment; actual node/icon positioning and upstream label optimization remain unported. |
 | Validation and resource limits | Basic input validation exists. Upstream graph invariants and work budgets remain unported. |
 
@@ -98,8 +98,7 @@ scoring follows an abducted edge into the original child topology, recovering
 Go's 2/3 alignment reward for a chain endpoint. The three-child
 top-to-bottom case now matches all six final node boxes after the compound
 `Equidistance` pass reproduces Go's ordered child and container moves. Four
-routes still differ. Most four-child cases and
-other compound directions remain unmatched. Initializing an ordinary component
+routes now match after compound OVG routing and balancing. Initializing an ordinary component
 now traverses near-linked siblings in upstream breadth-first order. The pinned
 four-child near/common-uncle placement fixture consequently matches Go's full
 ordinary stage.
@@ -110,8 +109,8 @@ Go's edge-then-near breadth-first node order, and the parent direction mirror
 also transforms nested descendant coordinates. The compound gap pass now
 evaluates the forward move and reverse symmetry recovery before validating
 overlap and wrapping the container. A pinned Go stage fixture verifies all
-seven boxes after `GapNormalization`. The completed public result still differs
-by one pixel after Go's route-dependent `Dejitter`, and all six routes differ.
+seven boxes after `GapNormalization`. Compound `Dejitter` now reproduces the
+one-pixel move, refits the container, and reroutes all six edges exactly.
 The right-to-left two-child case previously diverged at `TransposeAll`:
 upstream selects the owning container as the moving unit and rejects the
 rotation because it would also carry a stationary child. The TypeScript
@@ -122,11 +121,11 @@ compound graph after initial placement. Its alignment scorer follows Go's
 container-depth grouping when counting ray crossings, and `Equidistance`
 rejects a solo move that introduces a sibling-clearance overlap. Two pinned
 Go stage fixtures cover the resulting alignment and spacing moves. Final
-routes and the route-dependent `Dejitter` adjustments still differ.
+routes and the route-dependent `Dejitter` adjustments now match.
 Carrying the same near relations through the full compound scorer also gives
 exact final node boxes for the three and four-child bottom-to-top cases and
 the three-child right-to-left case. The generated oracle now pins these node
-geometries; compound routes remain partially unmatched.
+geometries; all twelve generated compound routes now match.
 
 The complete Go pipeline oracle now covers ten small flat graphs. Relative
 node positions, sizes, and complete edge routes match exactly in all ten: a
@@ -212,7 +211,7 @@ range/distribution core matches all four Go balancing stages and runs for
 compound public routes. Its route-order guard and crossing-removal fallback
 match nine upstream direction and reversal fixtures. Go's fixed-port interior
 pass and other branches of its 687-line postprocessor remain unported. The expanded
-public comparison now has seven generated compound chains with exact complete
+public comparison now has all twelve generated compound chains with exact complete
 node and route outputs, including three-, four-, and reversed-direction cases.
 
 A separate set of 24 generated branching trees exercises deeper and uneven
@@ -242,12 +241,7 @@ runtime has no Go or D2 dependency; the harness is for port validation only.
 Twelve generated compound chain cases now provide a wider complete-pipeline
 comparison across four directions and two to four children. The Go
 `GapNormalization` branch that pulls a child toward its padded container wall
-is translated and matches the upward and downward stage traces. The complete
-top-down, left-to-right, and right-to-left two-child cases, plus the top-down
-three-child, bottom-up three- and four-child, and right-to-left three-child
-cases, match all node geometry
-and route points. The bottom-up two-child case has a one-pixel node
-difference introduced after placement by route-dependent `Dejitter`.
-Additional three- and four-child cases now match upstream geometry through
-placement and alignment as described above; final routes and remaining
-route-dependent adjustments still need work.
+is translated and matches the upward and downward stage traces. All twelve
+cases match the complete Go node geometry and route points. In particular,
+route-dependent `Dejitter` moves interior children by one pixel, refits the
+container from its current children, and reroutes affected edges.

@@ -7,10 +7,10 @@ import { nodeSymmetry } from './symmetry.js';
 const JitterThreshold = 80;
 const SignFlipPadding = 5;
 
-/** The tree-sentinel branch of placement.Dejitter. Accepted candidates update
+/** The ordinary-node branch of placement.Dejitter. Accepted candidates update
  * their incident routes before the next candidate is considered. */
 export function dejitterTreeRoutes(nodes: PositionedNode[], edges: PositionedEdge[],
-  sentinelIds: ReadonlySet<string>): boolean {
+  sentinelIds: ReadonlySet<string>, resizeContainers = false): boolean {
   const graph = TalaGraph.fromFlowchart(nodes, edges);
   const byNode = new Map(nodes.map((node) => [node.id, node]));
   for (const node of graph.nodes) {
@@ -91,6 +91,7 @@ export function dejitterTreeRoutes(nodes: PositionedNode[], edges: PositionedEdg
       }
       edge.points = from ? [edge.points[0]!, ...edge.points.slice(3)]
         : [...edge.points.slice(0, -3), edge.points.at(-1)!];
+      if (resizeContainers) refitContainersForPadding(graph);
       changed = true;
     }
   }
@@ -98,8 +99,32 @@ export function dejitterTreeRoutes(nodes: PositionedNode[], edges: PositionedEdg
     const placed = byNode.get(node.id)!;
     placed.x = node.topLeft!.x + node.width / 2;
     placed.y = node.topLeft!.y + node.height / 2;
+    placed.width = node.width;
+    placed.height = node.height;
   }
   return changed;
+}
+
+function refitContainersForPadding(graph: TalaGraph): void {
+  const depth = (node: TalaNode): number => {
+    let result = 0;
+    for (let parent = node.parent; parent; parent = parent.parent) result++;
+    return result;
+  };
+  const groups = graph.nodes.filter((node) => node.isGroup && node.topLeft)
+    .sort((a, b) => depth(b) - depth(a));
+  for (const group of groups) {
+    const children = graph.nodes.filter((node) => node.parent === group && node.topLeft);
+    if (!children.length) continue;
+    const topPadding = Math.max(60, (group.labelBBox?.height ?? 0) + 28);
+    const left = Math.min(...children.map((node) => node.topLeft!.x - 60));
+    const top = Math.min(...children.map((node) => node.topLeft!.y - topPadding));
+    const right = Math.max(...children.map((node) => node.topLeft!.x + node.width + 60));
+    const bottom = Math.max(...children.map((node) => node.topLeft!.y + node.height + 60));
+    group.topLeft = { x: left, y: top };
+    group.width = right - left;
+    group.height = bottom - top;
+  }
 }
 
 function nearSegmentVertical(edge: TalaEdge, node: TalaNode): boolean {

@@ -3437,6 +3437,1029 @@
     ]
   },
   {
+    "name": "chain-LR-3",
+    "stages": [
+      {
+        "index": 21,
+        "stage": "EdgeRouting",
+        "nodes": {
+          "Group": [
+            1187,
+            996,
+            420,
+            159
+          ],
+          "Input": [
+            1000,
+            1054,
+            75,
+            43
+          ],
+          "N0": [
+            1247,
+            1059,
+            58,
+            32
+          ],
+          "N1": [
+            1477,
+            1056,
+            70,
+            39
+          ],
+          "N2": [
+            1329,
+            1059,
+            82,
+            32
+          ],
+          "Output": [
+            1288,
+            1220,
+            82,
+            38
+          ]
+        },
+        "features": {
+          "Group": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "Input": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "N0": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "N1": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "N2": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "Output": [
+            false,
+            false,
+            false,
+            false
+          ]
+        },
+        "nears": {
+          "N0": [
+            "N2"
+          ],
+          "N2": [
+            "N0"
+          ]
+        },
+        "nodeOrder": [
+          "Group",
+          "N0",
+          "N1",
+          "N2",
+          "Input",
+          "Output"
+        ],
+        "edgeOrder": [
+          "entry",
+          "chain1",
+          "chain2",
+          "exit",
+          "bypass"
+        ],
+        "edges": {
+          "bypass": [
+            [
+              1262,
+              1091
+            ],
+            [
+              1262,
+              1239
+            ],
+            [
+              1288,
+              1239
+            ]
+          ],
+          "chain1": [
+            [
+              1276,
+              1059
+            ],
+            [
+              1276,
+              976
+            ],
+            [
+              1512,
+              976
+            ],
+            [
+              1512,
+              1056
+            ]
+          ],
+          "chain2": [
+            [
+              1477,
+              1076
+            ],
+            [
+              1444,
+              1076
+            ],
+            [
+              1444,
+              1075
+            ],
+            [
+              1411,
+              1075
+            ]
+          ],
+          "entry": [
+            [
+              1075,
+              1076
+            ],
+            [
+              1161,
+              1076
+            ],
+            [
+              1161,
+              1075
+            ],
+            [
+              1247,
+              1075
+            ]
+          ],
+          "exit": [
+            [
+              1350,
+              1091
+            ],
+            [
+              1350,
+              1220
+            ]
+          ]
+        }
+      },
+      {
+        "index": 23,
+        "stage": "Dejitter",
+        "nodes": {
+          "Group": [
+            1187,
+            995,
+            420,
+            159
+          ],
+          "Input": [
+            1000,
+            1054,
+            75,
+            43
+          ],
+          "N0": [
+            1247,
+            1060,
+            58,
+            32
+          ],
+          "N1": [
+            1477,
+            1055,
+            70,
+            39
+          ],
+          "N2": [
+            1329,
+            1059,
+            82,
+            32
+          ],
+          "Output": [
+            1288,
+            1220,
+            82,
+            38
+          ]
+        },
+        "features": {
+          "Group": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "Input": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "N0": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "N1": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "N2": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "Output": [
+            false,
+            false,
+            false,
+            false
+          ]
+        },
+        "nears": {
+          "N0": [
+            "N2"
+          ],
+          "N2": [
+            "N0"
+          ]
+        },
+        "nodeOrder": [
+          "Group",
+          "N0",
+          "N1",
+          "N2",
+          "Input",
+          "Output"
+        ],
+        "edgeOrder": [
+          "entry",
+          "chain1",
+          "chain2",
+          "exit",
+          "bypass"
+        ],
+        "edges": {
+          "bypass": [
+            [
+              1262,
+              1092
+            ],
+            [
+              1262,
+              1239
+            ],
+            [
+              1288,
+              1239
+            ]
+          ],
+          "chain1": [
+            [
+              1276,
+              1060
+            ],
+            [
+              1276,
+              976
+            ],
+            [
+              1512,
+              976
+            ],
+            [
+              1512,
+              1055
+            ]
+          ],
+          "chain2": [
+            [
+              1477,
+              1075
+            ],
+            [
+              1411,
+              1075
+            ]
+          ],
+          "entry": [
+            [
+              1075,
+              1076
+            ],
+            [
+              1247,
+              1076
+            ]
+          ],
+          "exit": [
+            [
+              1350,
+              1091
+            ],
+            [
+              1350,
+              1220
+            ]
+          ]
+        }
+      },
+      {
+        "index": 24,
+        "stage": "EdgeRouting",
+        "nodes": {
+          "Group": [
+            1187,
+            995,
+            420,
+            159
+          ],
+          "Input": [
+            1000,
+            1054,
+            75,
+            43
+          ],
+          "N0": [
+            1247,
+            1060,
+            58,
+            32
+          ],
+          "N1": [
+            1477,
+            1055,
+            70,
+            39
+          ],
+          "N2": [
+            1329,
+            1059,
+            82,
+            32
+          ],
+          "Output": [
+            1288,
+            1220,
+            82,
+            38
+          ]
+        },
+        "features": {
+          "Group": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "Input": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "N0": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "N1": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "N2": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "Output": [
+            false,
+            false,
+            false,
+            false
+          ]
+        },
+        "nears": {
+          "N0": [
+            "N2"
+          ],
+          "N2": [
+            "N0"
+          ]
+        },
+        "nodeOrder": [
+          "Group",
+          "N0",
+          "N1",
+          "N2",
+          "Input",
+          "Output"
+        ],
+        "edgeOrder": [
+          "entry",
+          "chain1",
+          "chain2",
+          "exit",
+          "bypass"
+        ],
+        "edges": {
+          "bypass": [
+            [
+              1262,
+              1092
+            ],
+            [
+              1262,
+              1239
+            ],
+            [
+              1288,
+              1239
+            ]
+          ],
+          "chain1": [
+            [
+              1276,
+              1060
+            ],
+            [
+              1276,
+              975
+            ],
+            [
+              1512,
+              975
+            ],
+            [
+              1512,
+              1055
+            ]
+          ],
+          "chain2": [
+            [
+              1477,
+              1075
+            ],
+            [
+              1411,
+              1075
+            ]
+          ],
+          "entry": [
+            [
+              1075,
+              1076
+            ],
+            [
+              1247,
+              1076
+            ]
+          ],
+          "exit": [
+            [
+              1350,
+              1091
+            ],
+            [
+              1350,
+              1220
+            ]
+          ]
+        }
+      },
+      {
+        "index": 27,
+        "stage": "StraightEdgesFallback",
+        "nodes": {
+          "Group": [
+            1187,
+            995,
+            420,
+            159
+          ],
+          "Input": [
+            1000,
+            1054,
+            75,
+            43
+          ],
+          "N0": [
+            1247,
+            1060,
+            58,
+            32
+          ],
+          "N1": [
+            1477,
+            1055,
+            70,
+            39
+          ],
+          "N2": [
+            1329,
+            1059,
+            82,
+            32
+          ],
+          "Output": [
+            1288,
+            1220,
+            82,
+            38
+          ]
+        },
+        "features": {
+          "Group": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "Input": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "N0": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "N1": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "N2": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "Output": [
+            false,
+            false,
+            false,
+            false
+          ]
+        },
+        "nears": {
+          "N0": [
+            "N2"
+          ],
+          "N2": [
+            "N0"
+          ]
+        },
+        "nodeOrder": [
+          "Group",
+          "N0",
+          "N1",
+          "N2",
+          "Input",
+          "Output"
+        ],
+        "edgeOrder": [
+          "entry",
+          "chain1",
+          "chain2",
+          "exit",
+          "bypass"
+        ],
+        "edges": {
+          "bypass": [
+            [
+              1262,
+              1092
+            ],
+            [
+              1262,
+              1239
+            ],
+            [
+              1288,
+              1239
+            ]
+          ],
+          "chain1": [
+            [
+              1276,
+              1060
+            ],
+            [
+              1276,
+              975
+            ],
+            [
+              1512,
+              975
+            ],
+            [
+              1512,
+              1055
+            ]
+          ],
+          "chain2": [
+            [
+              1477,
+              1075
+            ],
+            [
+              1411,
+              1075
+            ]
+          ],
+          "entry": [
+            [
+              1075,
+              1076
+            ],
+            [
+              1247,
+              1076
+            ]
+          ],
+          "exit": [
+            [
+              1350,
+              1091
+            ],
+            [
+              1350,
+              1220
+            ]
+          ]
+        }
+      },
+      {
+        "index": 28,
+        "stage": "BalanceEdgeSegments",
+        "nodes": {
+          "Group": [
+            1187,
+            995,
+            420,
+            159
+          ],
+          "Input": [
+            1000,
+            1054,
+            75,
+            43
+          ],
+          "N0": [
+            1247,
+            1060,
+            58,
+            32
+          ],
+          "N1": [
+            1477,
+            1055,
+            70,
+            39
+          ],
+          "N2": [
+            1329,
+            1059,
+            82,
+            32
+          ],
+          "Output": [
+            1288,
+            1220,
+            82,
+            38
+          ]
+        },
+        "features": {
+          "Group": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "Input": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "N0": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "N1": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "N2": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "Output": [
+            false,
+            false,
+            false,
+            false
+          ]
+        },
+        "nears": {
+          "N0": [
+            "N2"
+          ],
+          "N2": [
+            "N0"
+          ]
+        },
+        "nodeOrder": [
+          "Group",
+          "N0",
+          "N1",
+          "N2",
+          "Input",
+          "Output"
+        ],
+        "edgeOrder": [
+          "entry",
+          "chain1",
+          "chain2",
+          "exit",
+          "bypass"
+        ],
+        "edges": {
+          "bypass": [
+            [
+              1267,
+              1092
+            ],
+            [
+              1267,
+              1239
+            ],
+            [
+              1288,
+              1239
+            ]
+          ],
+          "chain1": [
+            [
+              1286,
+              1060
+            ],
+            [
+              1286,
+              935
+            ],
+            [
+              1512,
+              935
+            ],
+            [
+              1512,
+              1055
+            ]
+          ],
+          "chain2": [
+            [
+              1477,
+              1075
+            ],
+            [
+              1411,
+              1075
+            ]
+          ],
+          "entry": [
+            [
+              1075,
+              1076
+            ],
+            [
+              1247,
+              1076
+            ]
+          ],
+          "exit": [
+            [
+              1349,
+              1091
+            ],
+            [
+              1349,
+              1220
+            ]
+          ]
+        }
+      },
+      {
+        "index": 36,
+        "stage": "Normalize",
+        "nodes": {
+          "Group": [
+            187,
+            60,
+            420,
+            159
+          ],
+          "Input": [
+            0,
+            119,
+            75,
+            43
+          ],
+          "N0": [
+            247,
+            125,
+            58,
+            32
+          ],
+          "N1": [
+            477,
+            120,
+            70,
+            39
+          ],
+          "N2": [
+            329,
+            124,
+            82,
+            32
+          ],
+          "Output": [
+            288,
+            285,
+            82,
+            38
+          ]
+        },
+        "features": {
+          "Group": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "Input": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "N0": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "N1": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "N2": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "Output": [
+            false,
+            false,
+            false,
+            false
+          ]
+        },
+        "nears": {
+          "N0": [
+            "N2"
+          ],
+          "N2": [
+            "N0"
+          ]
+        },
+        "nodeOrder": [
+          "Group",
+          "N0",
+          "N1",
+          "N2",
+          "Input",
+          "Output"
+        ],
+        "edgeOrder": [
+          "entry",
+          "chain1",
+          "chain2",
+          "exit",
+          "bypass"
+        ],
+        "edges": {
+          "bypass": [
+            [
+              267,
+              157
+            ],
+            [
+              267,
+              304
+            ],
+            [
+              288,
+              304
+            ]
+          ],
+          "chain1": [
+            [
+              286,
+              125
+            ],
+            [
+              286,
+              0
+            ],
+            [
+              512,
+              0
+            ],
+            [
+              512,
+              120
+            ]
+          ],
+          "chain2": [
+            [
+              477,
+              140
+            ],
+            [
+              411,
+              140
+            ]
+          ],
+          "entry": [
+            [
+              75,
+              141
+            ],
+            [
+              247,
+              141
+            ]
+          ],
+          "exit": [
+            [
+              349,
+              156
+            ],
+            [
+              349,
+              285
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "chain-RL-3",
     "stages": [
       {

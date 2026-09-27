@@ -614,8 +614,15 @@ function layoutCompoundFlowchart(
     const original = TalaGraph.fromFlowchart(nodes, inputEdges, options.direction ?? 'TB');
     for (const id of sequenceDefiningEdges(original)) consumed.add(id);
   }
-  const edges = routeWithConsumedEdges(placed, inputEdges, options.direction ?? 'TB', consumed,
+  let edges = routeWithConsumedEdges(placed, inputEdges, options.direction ?? 'TB', consumed,
     new Map(), useTala, useTala);
+  if (useTala && rootScope.clusters.length === 0 && consumed.size === 0) {
+    const eligible = new Set(placed.filter((node) => !node.isGroup).map((node) => node.id));
+    if (dejitterTreeRoutes(placed, edges, eligible, true)) {
+      edges = routeWithConsumedEdges(placed, inputEdges, options.direction ?? 'TB', consumed,
+        new Map(), useTala, useTala);
+    }
+  }
   return { nodes: placed, edges };
 }
 

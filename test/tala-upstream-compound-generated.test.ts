@@ -14,8 +14,7 @@ const cases = read('compound-generated-cases.json') as Case[];
 const expected = read('compound-generated-expected.json') as Expected[];
 
 describe('generated compound graphs against complete Go pipeline', () => {
-  for (const name of ['chain-TB-2', 'chain-TB-3', 'chain-BT-3', 'chain-BT-4',
-    'chain-LR-2', 'chain-RL-2', 'chain-RL-3']) it(name, () => {
+  for (const name of cases.map((item) => item.name)) it(name, () => {
     const input = cases.find((item) => item.name === name)!;
     const oracle = expected.find((item) => item.name === name)!;
     const actual = layoutFlowchart(input.nodes, input.edges,

@@ -55,7 +55,8 @@ func TestTSCompoundRouteStages(t *testing.T) {
     outputs := make([]tsRouteStageOutput, 0)
     for _, input := range inputs {
         if input.Name != "chain-TB-3" && input.Name != "chain-BT-4" &&
-            input.Name != "chain-RL-3" && input.Name != "chain-TB-4" { continue }
+            input.Name != "chain-RL-3" && input.Name != "chain-TB-4" &&
+            input.Name != "chain-LR-3" { continue }
         g := layoutgraph.NewGraph()
         switch input.Direction {
         case "TB": g.Directions[nil] = geo.Bottom
