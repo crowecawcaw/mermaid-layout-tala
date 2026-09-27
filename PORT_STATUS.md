@@ -209,8 +209,9 @@ leaving an endpoints' shared container. Eligible compound graphs now use this
 OVG path in the public router. A four-case pipeline trace pins route geometry
 through `EdgeRouting`, `Dejitter`, and `BalanceEdgeSegments`. The translated
 range/distribution core matches all four Go balancing stages and runs for
-compound public routes. Go's crossing/order guard, fixed-port interior pass,
-and other branches of its 687-line postprocessor remain unported. The expanded
+compound public routes. Its route-order guard and crossing-removal fallback
+match nine upstream direction and reversal fixtures. Go's fixed-port interior
+pass and other branches of its 687-line postprocessor remain unported. The expanded
 public comparison now has six generated compound chains with exact complete
 node and route outputs, including three-, four-, and reversed-direction cases.
 

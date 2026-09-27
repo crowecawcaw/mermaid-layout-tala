@@ -24,7 +24,8 @@ export function balanceRouteRanges(nodes: readonly PositionedNode[],
   for (const moveX of [true, false]) {
     const walls = nodeWalls(nodes, moveX);
     const segments = edgeSegments(regular, moveX);
-    const locked = [...walls, ...edgeSegments(special, moveX)];
+    const specialSegments = edgeSegments(special, moveX);
+    const locked = [...walls, ...specialSegments];
     const done = new Set<Segment>();
     while (done.size < segments.length) {
       const ranges = new Map<string, { range: Range; segments: Segment[] }>();
@@ -63,15 +64,28 @@ export function balanceRouteRanges(nodes: readonly PositionedNode[],
         const increment = Math.floor((narrow.range.ceil - narrow.range.floor)
           / (distinct.length + 1));
         if (increment > 0) {
+          const proposed = batch.map((item) => coordinate(item.start, moveX));
           let index = 0;
           for (let i = 0; i < batch.length;) {
             const old = coordinate(batch[i]!.start, moveX);
             const next = narrow.range.floor + ++index * increment;
             while (i < batch.length
               && Math.abs(coordinate(batch[i]!.start, moveX) - old) <= 1) {
-              setCoordinate(batch[i]!.start, moveX, next);
-              setCoordinate(batch[i]!.end, moveX, next);
+              proposed[i] = next;
               i++;
+            }
+          }
+          const batchSet = new Set(batch);
+          const ordinaryOrder = balanceOrder(batch, batchSet, segments, proposed, moveX);
+          const specialOrder = balanceOrder(batch, batchSet, specialSegments, proposed, moveX);
+          const order = ordinaryOrder === 'contact' || specialOrder === 'contact'
+            ? 'contact' : ordinaryOrder === 'reversed' || specialOrder === 'reversed'
+              ? 'reversed' : 'preserved';
+          if (order === 'preserved' || order === 'reversed'
+            && reversalRemovesCrossings(edges, batch, proposed, moveX)) {
+            for (let i = 0; i < batch.length; i++) {
+              setCoordinate(batch[i]!.start, moveX, proposed[i]!);
+              setCoordinate(batch[i]!.end, moveX, proposed[i]!);
             }
           }
         }
@@ -82,6 +96,108 @@ export function balanceRouteRanges(nodes: readonly PositionedNode[],
   return edges.map((edge) => ({ ...edge, points: edge.points.filter((point, index) =>
     index === 0 || point.x !== edge.points[index - 1]!.x
       || point.y !== edge.points[index - 1]!.y) }));
+}
+
+function balanceOrder(batch: readonly Segment[], batchSet: ReadonlySet<Segment>,
+  others: readonly Segment[], proposed: readonly number[], moveX: boolean):
+  'preserved' | 'reversed' | 'contact' {
+  let status: 'preserved' | 'reversed' = 'preserved';
+  for (const other of others) {
+    if (batchSet.has(other)) continue;
+    for (let i = 0; i < batch.length; i++) {
+      const segment = batch[i]!;
+      if (segment.edge === other.edge) continue;
+      const old = coordinate(segment.start, moveX);
+      const next = proposed[i]!;
+      if (next === old) continue;
+      const position = coordinate(other.start, moveX);
+      const start = coordinate(segment.start, !moveX);
+      const end = coordinate(segment.end, !moveX);
+      const otherStart = coordinate(other.start, !moveX);
+      const otherEnd = coordinate(other.end, !moveX);
+      if (Math.max(start, end) < Math.min(otherStart, otherEnd)
+        || Math.max(otherStart, otherEnd) < Math.min(start, end)) continue;
+      if (old === position || next === position) return 'contact';
+      if ((old < position) !== (next < position)) status = 'reversed';
+    }
+  }
+  return status;
+}
+
+function reversalRemovesCrossings(edges: readonly PositionedEdge[],
+  batch: readonly Segment[], proposed: readonly number[], moveX: boolean): boolean {
+  const moved = new Map<Point, Point>();
+  for (let i = 0; i < batch.length; i++) {
+    for (const point of [batch[i]!.start, batch[i]!.end]) {
+      const replacement = { ...point };
+      setCoordinate(replacement, moveX, proposed[i]!);
+      const earlier = moved.get(point);
+      if (earlier && (earlier.x !== replacement.x || earlier.y !== replacement.y)) return false;
+      moved.set(point, replacement);
+    }
+  }
+  const candidate = edges.map((edge) => ({ ...edge,
+    points: edge.points.map((point) => moved.get(point) ?? point) }));
+  const affected = edges.map((_edge, index) => index).filter((index) =>
+    edges[index]!.points.some((point, i) => candidate[index]!.points[i]!.x !== point.x
+      || candidate[index]!.points[i]!.y !== point.y));
+  for (const i of affected) {
+    const points = candidate[i]!.points;
+    for (let a = 0; a + 1 < points.length; a++) {
+      const first = points[a]!, second = points[a + 1]!;
+      if (first.x !== second.x && first.y !== second.y) return false;
+    }
+  }
+  let improved = false;
+  const visited = new Set<string>();
+  for (const i of affected) for (let j = 0; j < edges.length; j++) {
+    if (i === j) continue;
+    const key = `${Math.min(i, j)},${Math.max(i, j)}`;
+    if (visited.has(key)) continue;
+    visited.add(key);
+    const before = edgePairCrossings(edges[i]!, edges[j]!);
+    const after = edgePairCrossings(candidate[i]!, candidate[j]!);
+    if (after > before) return false;
+    if (after < before) improved = true;
+    for (let a = 0; a + 1 < edges[i]!.points.length; a++) {
+      for (let b = 0; b + 1 < edges[j]!.points.length; b++) {
+        const original = collinearOverlap(edges[i]!.points[a]!, edges[i]!.points[a + 1]!,
+          edges[j]!.points[b]!, edges[j]!.points[b + 1]!);
+        const next = collinearOverlap(candidate[i]!.points[a]!, candidate[i]!.points[a + 1]!,
+          candidate[j]!.points[b]!, candidate[j]!.points[b + 1]!);
+        if (original === 0 && next > 0) return false;
+      }
+    }
+  }
+  return improved;
+}
+
+function edgePairCrossings(first: PositionedEdge, second: PositionedEdge): number {
+  let result = 0;
+  for (let i = 0; i + 1 < first.points.length; i++) for (let j = 0;
+    j + 1 < second.points.length; j++) {
+    const a = first.points[i]!, b = first.points[i + 1]!;
+    const c = second.points[j]!, d = second.points[j + 1]!;
+    if (a.x === b.x && c.y === d.y && a.x !== c.x && a.x !== d.x
+      && c.y !== a.y && c.y !== b.y
+      && Math.min(a.y, b.y) < c.y && c.y < Math.max(a.y, b.y)
+      && Math.min(c.x, d.x) < a.x && a.x < Math.max(c.x, d.x)) result++;
+    if (a.y === b.y && c.x === d.x && a.y !== c.y && a.y !== d.y
+      && c.x !== a.x && c.x !== b.x
+      && Math.min(a.x, b.x) < c.x && c.x < Math.max(a.x, b.x)
+      && Math.min(c.y, d.y) < a.y && a.y < Math.max(c.y, d.y)) result++;
+  }
+  return result;
+}
+
+function collinearOverlap(a: Point, b: Point, c: Point, d: Point): number {
+  if (a.x === b.x && c.x === d.x && a.x === c.x) return Math.max(0,
+    Math.min(Math.max(a.y, b.y), Math.max(c.y, d.y))
+      - Math.max(Math.min(a.y, b.y), Math.min(c.y, d.y)));
+  if (a.y === b.y && c.y === d.y && a.y === c.y) return Math.max(0,
+    Math.min(Math.max(a.x, b.x), Math.max(c.x, d.x))
+      - Math.max(Math.min(a.x, b.x), Math.min(c.x, d.x)));
+  return 0;
 }
 
 function coordinate(point: Point, moveX: boolean): number {
