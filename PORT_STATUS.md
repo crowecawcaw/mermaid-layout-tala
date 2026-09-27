@@ -212,7 +212,7 @@ range/distribution core matches all four Go balancing stages and runs for
 compound public routes. Its route-order guard and crossing-removal fallback
 match nine upstream direction and reversal fixtures. Go's fixed-port interior
 pass and other branches of its 687-line postprocessor remain unported. The expanded
-public comparison now has six generated compound chains with exact complete
+public comparison now has seven generated compound chains with exact complete
 node and route outputs, including three-, four-, and reversed-direction cases.
 
 A separate set of 24 generated branching trees exercises deeper and uneven
@@ -244,7 +244,8 @@ comparison across four directions and two to four children. The Go
 `GapNormalization` branch that pulls a child toward its padded container wall
 is translated and matches the upward and downward stage traces. The complete
 top-down, left-to-right, and right-to-left two-child cases, plus the top-down
-three-child and bottom-up three- and four-child cases, match all node geometry
+three-child, bottom-up three- and four-child, and right-to-left three-child
+cases, match all node geometry
 and route points. The bottom-up two-child case has a one-pixel node
 difference introduced after placement by route-dependent `Dejitter`.
 Additional three- and four-child cases now match upstream geometry through

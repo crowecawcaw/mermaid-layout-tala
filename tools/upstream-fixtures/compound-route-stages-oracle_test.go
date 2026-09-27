@@ -35,6 +35,7 @@ type tsRouteStageSnapshot struct {
     Stage string `json:"stage"`
     Nodes map[string][4]float64 `json:"nodes"`
     Features map[string][4]bool `json:"features"`
+    Nears map[string][]string `json:"nears"`
     NodeOrder []string `json:"nodeOrder"`
     EdgeOrder []string `json:"edgeOrder"`
     Edges map[string][][2]float64 `json:"edges"`
@@ -93,6 +94,7 @@ func TestTSCompoundRouteStages(t *testing.T) {
                     index != 28 && index != 36 { return nil }
                 snapshot := tsRouteStageSnapshot{Index: index, Stage: name,
                     Nodes: make(map[string][4]float64), Features: make(map[string][4]bool),
+                    Nears: make(map[string][]string),
                     Edges: make(map[string][][2]float64)}
                 for _, item := range input.Nodes {
                     node := byID[item.ID]
@@ -102,6 +104,14 @@ func TestTSCompoundRouteStages(t *testing.T) {
                     _, sequence := g.Sequences[node]
                     snapshot.Features[item.ID] = [4]bool{tree, node.Hierarchy != nil,
                         node.Cluster != nil, sequence}
+                    for _, near := range node.OrderedNears() {
+                        for _, other := range input.Nodes {
+                            if near == byID[other.ID] {
+                                snapshot.Nears[item.ID] = append(snapshot.Nears[item.ID], other.ID)
+                                break
+                            }
+                        }
+                    }
                 }
                 for _, node := range g.Nodes {
                     for _, item := range input.Nodes {

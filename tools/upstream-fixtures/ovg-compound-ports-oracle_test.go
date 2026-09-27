@@ -25,6 +25,7 @@ type tsCompoundPortCase struct {
     Name string `json:"name"`
     Nodes []tsCompoundPortNode `json:"nodes"`
     Edges []tsCompoundPortEdge `json:"edges"`
+    NearPairs [][2]string `json:"nearPairs"`
 }
 type tsCompoundPortOutput struct {
     Name string `json:"name"`
@@ -79,6 +80,7 @@ func TestTSCompoundOVGPorts(t *testing.T) {
             edge := g.Connect(byID[item.From], byID[item.To])
             if item.Directed { edge.TargetArrowhead = layoutgraph.TriangleArrowhead }
         }
+        for _, pair := range input.NearPairs { byID[pair[0]].AddNear(byID[pair[1]]) }
         guard, err := newOVGBuildGuard(context.Background(), defaultOVGBuildLimits())
         if err != nil { t.Fatal(err) }
         ovg := newBuildOVG(g.Nodes, guard)
