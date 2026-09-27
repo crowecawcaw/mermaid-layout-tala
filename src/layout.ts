@@ -30,6 +30,7 @@ import { balanceSymmetry } from './tala/balance-symmetry.js';
 import { directOrdinaryGraph, type DirectionTransforms } from './tala/direct.js';
 import { combineSubgraphs } from './tala/combine-subgraphs.js';
 import { dejitterTreeRoutes } from './tala/dejitter.js';
+import { swapEdgePortsOnSameSide } from './tala/swap-edge-ports.js';
 import { discoverFlatHierarchy, placeFlatHierarchy } from './tala/hierarchy-flat.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
@@ -309,7 +310,11 @@ function layoutFlatFlowchart(
     && inputNodes.every((node) => !node.parentId && !node.isGroup)) {
     dejitterTreeRoutes(positionedNodes, positionedEdges, hierarchyNodeIds);
     positionedEdges = routeWithConsumedEdges(positionedNodes, edges, direction,
-      sequenceDefiningEdgeIds, treePaths, true, useOrdinary, routingHierarchy);
+      sequenceDefiningEdgeIds, treePaths, false, useOrdinary, routingHierarchy);
+    if (routingHierarchy) {
+      positionedEdges = swapEdgePortsOnSameSide(positionedNodes, positionedEdges);
+      positionedEdges = balanceRouteRanges(positionedNodes, positionedEdges);
+    }
   }
   return { nodes: positionedNodes, edges: positionedEdges };
 }
@@ -657,8 +662,7 @@ function routeWithConsumedEdges(nodes: readonly PositionedNode[], edges: readonl
     const { labelBBox: _labelBBox, ...withoutLabel } = edge;
     return { ...withoutLabel, points: [] as Point[], x: 0, y: 0 };
   });
-  const balanced = hierarchyLevels && balanceStraight ? balanceRouteRanges(nodes, routed)
-    : balanceStraight ? nodes.some((node) => node.parentId || node.isGroup)
+  const balanced = balanceStraight ? nodes.some((node) => node.parentId || node.isGroup)
       ? balanceRouteRanges(nodes, routed) : balanceStraightSegments(nodes, routed) : routed;
   return [...balanced, ...hidden].sort((a, b) => compareText(a.id, b.id));
 }

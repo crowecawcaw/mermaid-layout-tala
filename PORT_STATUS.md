@@ -142,10 +142,10 @@ insertion order, including reflected and transposed directions. The public
 router uses those vertices for single flat hierarchies, then balances after
 `Dejitter`. Upstream's hierarchy-only top-down/left-right route order makes
 the first OVG routing stage match all twelve generated DAGs edge for edge.
-The range-balancing stage matches nine of twelve given the Go rerouted paths.
-Six generated DAGs and three mixed-edge fixtures now match all completed Go
-node boxes and routes. The remaining cases expose range-balancing differences
-and the unported `NudgeEdgeChannels` stage.
+The same-side `SwapEdgePorts` branch and subsequent range-balancing stage each
+match all twelve Go stage traces. Eight generated DAGs and three mixed-edge
+fixtures now match all completed Go node boxes and routes. The remaining
+generated cases expose the unported `NudgeEdgeChannels` stage.
 The DAG preparation branch now expands undirected edges, reverses feedback
 arcs, and merges repeated edges with rank weights. Six mixed-direction and
 parallel-edge fixtures match upstream's hierarchy stage. Four also match

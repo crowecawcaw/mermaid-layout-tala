@@ -28,6 +28,7 @@ type tsHierarchyRouteSnapshot struct {
     Nodes map[string][4]float64 `json:"nodes"`
     Levels map[string]int `json:"levels"`
     EdgeOrder []string `json:"edgeOrder"`
+    Aliases [][]string `json:"aliases"`
     Edges map[string][][2]float64 `json:"edges"`
 }
 type tsHierarchyRouteOutput struct {
@@ -72,6 +73,7 @@ func TestTSHierarchyRouteStages(t *testing.T) {
             p.stages[i] = pipelineStage{name: name, run: func(p *pipeline, ctx context.Context) error {
                 if err := original(p, ctx); err != nil { return err }
                 if index != 20 && index != 21 && index != 23 && index != 24 &&
+                    index != 25 && index != 26 && index != 27 &&
                     index != 28 && index != 30 && index != 31 && index != 34 &&
                     index != 35 && index != 36 { return nil }
                 snapshot := tsHierarchyRouteSnapshot{Index: index, Stage: name,
@@ -89,6 +91,11 @@ func TestTSHierarchyRouteStages(t *testing.T) {
                     for _, point := range edge.Points { points = append(points, [2]float64{point.X, point.Y}) }
                     snapshot.Edges[edgeIDs[edge]] = points
                 }
+                pointers := make(map[*geo.Point][]string)
+                for _, edge := range g.Edges { for index, point := range edge.Points {
+                    pointers[point] = append(pointers[point], edgeIDs[edge]+":"+string(rune('A'+index)))
+                }}
+                for _, ids := range pointers { if len(ids) > 1 { snapshot.Aliases = append(snapshot.Aliases, ids) } }
                 output.Stages = append(output.Stages, snapshot)
                 return nil
             }}

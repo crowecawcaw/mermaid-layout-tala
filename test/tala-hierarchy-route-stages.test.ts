@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { routeGraphEdges } from '../src/route.js';
 import { balanceRouteRanges } from '../src/tala/edge-balance-ranges.js';
+import { swapEdgePortsOnSameSide } from '../src/tala/swap-edge-ports.js';
 import type { LayoutDirection, LayoutEdge, PositionedNode } from '../src/layout.js';
 
 const read = (name: string) => JSON.parse(readFileSync(new URL(
@@ -26,11 +27,23 @@ describe('hierarchy route stages against Go', () => {
       .map((point) => [point.x, point.y])).toEqual(routed.edges[edge.id]);
   });
 
-  for (const name of ['layered-1', 'layered-2', 'layered-3', 'layered-4',
-    'layered-6', 'layered-7', 'layered-8', 'layered-9', 'layered-10']) it(`${name} balances all routes`, () => {
-    const input = cases.find((item) => item.name === name)!;
-    const oracle = expected.find((item) => item.name === name)!;
-    const routed = oracle.stages.find((stage) => stage.index === 24)!;
+  for (const input of cases) it(`${input.name} swaps same-side ports`, () => {
+    const oracle = expected.find((item) => item.name === input.name)!;
+    const routed = oracle.stages.find((stage) => stage.index === 25)!;
+    const swapped = oracle.stages.find((stage) => stage.index === 26)!;
+    const nodes: PositionedNode[] = Object.entries(routed.nodes).map(([id,
+      [x, y, width, height]]) => ({ id, x: x + width / 2, y: y + height / 2,
+      width, height, rank: routed.levels[id]!, order: 0 }));
+    const edges = input.edges.map((edge) => ({ ...edge, points: routed.edges[edge.id]!
+      .map(([x, y]) => ({ x, y })), x: 0, y: 0 }));
+    const actual = swapEdgePortsOnSameSide(nodes, edges);
+    for (const edge of input.edges) expect(actual.find((item) => item.id === edge.id)!.points
+      .map((point) => [point.x, point.y])).toEqual(swapped.edges[edge.id]);
+  });
+
+  for (const input of cases) it(`${input.name} balances all routes`, () => {
+    const oracle = expected.find((item) => item.name === input.name)!;
+    const routed = oracle.stages.find((stage) => stage.index === 27)!;
     const balanced = oracle.stages.find((stage) => stage.index === 28)!;
     const nodes: PositionedNode[] = Object.entries(routed.nodes).map(([id,
       [x, y, width, height]]) => ({ id, x: x + width / 2, y: y + height / 2,
