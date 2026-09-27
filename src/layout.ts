@@ -26,7 +26,7 @@ import { transposeAll } from './tala/transpose.js';
 import { swapStage } from './tala/swap-stage.js';
 import { balanceStraightSegments } from './tala/edge-balance.js';
 import { balanceSymmetry } from './tala/balance-symmetry.js';
-import { directOrdinaryGraph } from './tala/direct.js';
+import { directOrdinaryGraph, type DirectionTransforms } from './tala/direct.js';
 import { combineSubgraphs } from './tala/combine-subgraphs.js';
 import { dejitterTreeRoutes } from './tala/dejitter.js';
 import { discoverFlatHierarchy, placeFlatHierarchy } from './tala/hierarchy-flat.js';
@@ -159,7 +159,8 @@ function layoutFlatFlowchart(
   placedClusters?: PlacedCluster[],
   nearPairs: readonly (readonly [string, string])[] = [],
   commonUncleGroups: readonly (readonly string[])[] = [],
-  originalSymmetryEdges: readonly LayoutEdge[] = []
+  originalSymmetryEdges: readonly LayoutEdge[] = [],
+  mirrors?: Map<string, DirectionTransforms>
 ): LayoutResult {
   const direction = options.direction ?? 'TB';
   const nodeSpacing = finiteSpacing(options.nodeSpacing ?? 48, 'nodeSpacing');
@@ -227,7 +228,7 @@ function layoutFlatFlowchart(
         constrainDirection, endpointReplacements, projectedChildren,
         nearPairs.filter(([a, b]) => componentIds.has(a) && componentIds.has(b)),
         commonUncleGroups.filter((group) => group.every((id) => componentIds.has(id))),
-        originalSymmetryEdges)
+        originalSymmetryEdges, mirrors)
       : positionComponent(component, weightedDag, ranks, nodeSpacing, rankSpacing, passes, direction, seed));
     for (const node of localNodes) allPositions.set(node.id, node);
     componentBounds.push(bounds(localNodes));
@@ -305,7 +306,8 @@ function positionOrdinaryComponent(nodes: readonly LayoutNode[], edges: readonly
   projectedChildren: ReadonlyMap<string, readonly ProjectedChildGeometry[]> = new Map(),
   nearPairs: readonly (readonly [string, string])[] = [],
   commonUncleGroups: readonly (readonly string[])[] = [],
-  originalSymmetryEdges: readonly LayoutEdge[] = []): PositionedNode[] {
+  originalSymmetryEdges: readonly LayoutEdge[] = [],
+  mirrors?: Map<string, DirectionTransforms>): PositionedNode[] {
   const graph = TalaGraph.fromFlowchart(nodes.map((node) => ({ ...node, parentId: undefined })),
     edges, constrainDirection ? direction : undefined);
   for (const edge of edges) {
@@ -329,10 +331,39 @@ function positionOrdinaryComponent(nodes: readonly LayoutNode[], edges: readonly
       if (!previous || previous.length < siblings.length) graph.commonUncleSiblings.set(sibling, siblings);
     }
   }
+  if (nearPairs.length > 0) {
+    // SplitSubgraphs stores nodes in reachability order: incident edges first,
+    // then ordered near siblings. That order drives both optimizers' shuffles.
+    const ordered: typeof graph.nodes = [];
+    const seen = new Set<typeof graph.nodes[number]>();
+    for (const start of graph.nodes) {
+      if (seen.has(start)) continue;
+      const queue = [start];
+      seen.add(start);
+      for (let i = 0; i < queue.length; i++) {
+        const current = queue[i]!;
+        ordered.push(current);
+        for (const edge of current.edges) {
+          const adjacent = current.adjacent(edge);
+          if (!seen.has(adjacent)) { seen.add(adjacent); queue.push(adjacent); }
+        }
+        for (const near of [...current.nears].sort((a, b) => compareText(a.id, b.id))) {
+          if (seen.has(near)) continue;
+          seen.add(near);
+          queue.push(near);
+        }
+      }
+    }
+    graph.nodes.splice(0, graph.nodes.length, ...ordered);
+  }
   // Graph.abductEdges returns a present slice even when no edges were
   // projected. Upstream transpose uses its presence to select local moves.
   placeOrdinaryNodes(graph, seed, undefined, true);
-  directOrdinaryGraph(graph, constrainDirection ? direction : undefined);
+  directOrdinaryGraph(graph, constrainDirection ? direction : undefined, (transform) => {
+    if (transform.mirrorX || transform.mirrorY) {
+      for (const node of graph.nodes) if (node.isGroup) mirrors?.set(node.id, transform);
+    }
+  });
   const crossAxis = direction === 'TB' || direction === 'BT' ? 'x' : 'y';
   const orderById = new Map<string, number>();
   const byRank = new Map<number, typeof graph.nodes>();
@@ -478,9 +509,11 @@ function layoutCompoundFlowchart(
     // Upstream only records an interior direction when the container declares
     // one. The LR axis below is a presentation fallback for ranks and packing.
     const localClusters: PlacedCluster[] = [];
+    const mirrors = new Map<string, DirectionTransforms>();
     const flat = layoutFlatFlowchart(measured, projected, { ...options, direction }, seed,
       parentId === undefined || byId.get(parentId)?.dir !== undefined,
-      endpointReplacements, projectedChildren, localClusters, nearPairs, commonUncleGroups, inputEdges);
+      endpointReplacements, projectedChildren, localClusters, nearPairs, commonUncleGroups,
+      inputEdges, mirrors);
     const box = bounds(flat.nodes);
     const group = parentId ? byId.get(parentId)! : undefined;
     const padding = 60;
@@ -497,8 +530,11 @@ function layoutCompoundFlowchart(
       positioned.push(outer);
       const inner = nested.get(placed.id);
       if (inner) {
+        const mirror = mirrors.get(placed.id);
         for (const descendant of inner.positioned) {
-          positioned.push({ ...descendant, x: descendant.x + outer.x, y: descendant.y + outer.y });
+          positioned.push({ ...descendant,
+            x: outer.x + (mirror?.mirrorX ? -descendant.x : descendant.x),
+            y: outer.y + (mirror?.mirrorY ? -descendant.y : descendant.y) });
         }
       }
     }

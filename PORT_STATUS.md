@@ -101,8 +101,16 @@ routes still differ. Most four-child cases and
 other compound directions remain unmatched. Initializing an ordinary component
 now traverses near-linked siblings in upstream breadth-first order. The pinned
 four-child near/common-uncle placement fixture consequently matches Go's full
-ordinary stage; the public compound case still has a seven-pixel interior
-offset and a different parent placement.
+ordinary stage.
+
+The four-child top-to-bottom chain now reaches the exact Go geometry through
+the final pre-routing alignment stage. Its interior ordinary initializer uses
+Go's edge-then-near breadth-first node order, and the parent direction mirror
+also transforms nested descendant coordinates. The compound gap pass now
+evaluates the forward move and reverse symmetry recovery before validating
+overlap and wrapping the container. A pinned Go stage fixture verifies all
+seven boxes after `GapNormalization`. The completed public result still differs
+by one pixel after Go's route-dependent `Dejitter`, and all six routes differ.
 
 The complete Go pipeline oracle now covers ten small flat graphs. Relative
 node positions, sizes, and complete edge routes match exactly in all ten: a

@@ -88,18 +88,26 @@ function reduceGapToNeighbors(node: TalaNode, graph: TalaGraph, axis: Axis,
   const existingOverlaps = overlapPairs(graph);
   const original = geometrySnapshot(graph);
   moveConnected(connected, axis, delta);
-  wrapContainers(graph);
-  if (!validGeometry(graph) || introducesOverlap(graph, existingOverlaps)) {
-    restore(original); return false;
-  }
   const movedCost = ordinaryPlacementEdgeLength(graph, graph.turnCost(), false);
   if (recoverSymmetry) {
     const afterFirst = geometrySnapshot(graph);
-    if (reduceGapToNeighbors(node, graph, axis, direction === 1 ? -1 : 1, false)) {
+    const opposite = direction === 1 ? -1 : 1;
+    const recoveredNeighbors = reduceGapToNeighbors(node, graph, axis, opposite, false);
+    const recoveredSide = reduceGapToContainerSide(node, graph, axis, opposite);
+    if (recoveredNeighbors || recoveredSide) {
       const recoveredCost = ordinaryPlacementEdgeLength(graph, graph.turnCost(), false);
-      if (recoveredCost < movedCost - 0.0001 && recoveredCost < baseline - 0.0001) return true;
+      if (recoveredCost < movedCost - 0.0001 && recoveredCost < baseline - 0.0001) {
+        wrapContainers(graph);
+        if (validGeometry(graph) && !introducesOverlap(graph, existingOverlaps)) return true;
+      }
     }
     restore(afterFirst);
+  }
+  wrapContainers(graph);
+  // The first half of a paired move may overlap nodes. Upstream validates the
+  // transaction only after the reverse symmetry candidate has also run.
+  if (!validGeometry(graph) || introducesOverlap(graph, existingOverlaps)) {
+    restore(original); return false;
   }
   if (movedCost < baseline - 0.0001) return true;
   restore(original);

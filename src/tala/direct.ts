@@ -57,7 +57,8 @@ export function directionTransforms(nodes: readonly PositionedBox[], edges: read
 
 /** placement.direct for an ordinary temporary subgraph. Projected edges use
  * their original descendant endpoints when counting dominant directions. */
-export function directOrdinaryGraph(graph: TalaGraph, direction?: LayoutDirection): boolean {
+export function directOrdinaryGraph(graph: TalaGraph, direction?: LayoutDirection,
+  onTransform?: (transforms: DirectionTransforms) => void): boolean {
   if (graph.nodes.some((node) => node.fixedTopLeft)) return false;
   const boxes: PositionedBox[] = [];
   const edges: LayoutEdge[] = [];
@@ -73,6 +74,7 @@ export function directOrdinaryGraph(graph: TalaGraph, direction?: LayoutDirectio
     edges.push({ id: edge.id, from: fromId, to: toId, directed: edge.directed });
   }
   const transforms = directionTransforms(boxes, edges, direction);
+  onTransform?.(transforms);
   if (!transforms.mirrorX && !transforms.mirrorY) return false;
   for (const node of graph.nodes) {
     node.topLeft = {
