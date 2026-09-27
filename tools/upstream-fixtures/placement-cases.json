@@ -70,5 +70,11 @@
     "nodes": [{"id":"N0","width":58,"height":32},{"id":"N1","width":70,"height":39},{"id":"N2","width":82,"height":32}],
     "edges": [{"from":"N0","to":"N1","directed":true},{"from":"N1","to":"N2","directed":true}],
     "nears": [["N0","N2"]], "commonUncleGroups": [["N0","N2"]]
+  },
+  {
+    "name": "near-common-uncle-chain-three-empty-abductions", "seed": 4, "direction": "", "emptyAbductions": true,
+    "nodes": [{"id":"N0","width":58,"height":32},{"id":"N1","width":70,"height":39},{"id":"N2","width":82,"height":32}],
+    "edges": [{"from":"N0","to":"N1","directed":true},{"from":"N1","to":"N2","directed":true}],
+    "nears": [["N0","N2"]], "commonUncleGroups": [["N0","N2"]]
   }
 ]

@@ -40,11 +40,12 @@ function sizedMedian(neighbors: readonly TalaNode[], cellSize: number): Point {
  * quarter-turn transposes. Compound movement and hub escape remain separate. */
 export class SizedOptimizer {
   private readonly score: (node: TalaNode) => number;
+  private readonly turnCost: number;
 
   constructor(private readonly graph: TalaGraph, private readonly random: GoRandom,
-    score?: (node: TalaNode) => number) {
-    const turnCost = graph.turnCost();
-    this.score = score ?? ((node) => sizedNodeEdgeLength(node, graph, turnCost)
+    score?: (node: TalaNode) => number, private readonly edgeAbductionsPresent = false) {
+    this.turnCost = graph.turnCost();
+    this.score = score ?? ((node) => sizedNodeEdgeLength(node, graph, this.turnCost)
       - nodeSymmetry(node, graph) * graph.cellSize * node.edges.length);
   }
 
@@ -217,7 +218,7 @@ export class SizedOptimizer {
     if (adjacent.length === 1) {
       center = adjacent[0]!;
       if (isDiagonal(sizedOrientation(node, center))) return false;
-      moving = this.reachable(node, new Set([center]));
+      moving = this.edgeAbductionsPresent ? [node] : this.reachable(node, new Set([center]));
     } else {
       const [a, b] = adjacent as [TalaNode, TalaNode];
       if (this.reachable(a, new Set([node])).includes(b)) return false;
@@ -225,17 +226,20 @@ export class SizedOptimizer {
       const sideA = this.reachable(a, new Set([node]));
       const sideB = this.reachable(b, new Set([node]));
       center = sideA.length >= sideB.length ? a : b;
-      moving = this.reachable(node, new Set([center]));
+      moving = this.edgeAbductionsPresent
+        ? [...(center === a ? sideB : sideA), node]
+        : this.reachable(node, new Set([center]));
     }
     if (moving.some((n) => n.fixedTopLeft)) return false;
     const original = new Map(moving.map((n) => [n, { ...n.topLeft! }]));
-    const currentCost = this.graphScore();
+    const currentCost = this.transposeScore(node);
     let bestCost = currentCost;
     let bestRotation = 0;
     for (let rotations = 1; rotations <= 3; rotations++) {
-      for (const [n, position] of original) n.topLeft = rotateAround(n, position, center, rotations);
+      for (const [n, position] of original) n.topLeft = rotateAround(n, position, center, rotations,
+        this.edgeAbductionsPresent ? this.graph.cellSize : undefined);
       if (this.graph.nodes.every((n) => !this.overlapsExcept(n, n.topLeft!))) {
-        const cost = this.graphScore();
+        const cost = this.transposeScore(node);
         if (cost < bestCost - precision) {
           bestCost = cost;
           bestRotation = rotations;
@@ -243,7 +247,8 @@ export class SizedOptimizer {
       }
     }
     for (const [n, position] of original) n.topLeft = bestRotation
-      ? rotateAround(n, position, center, bestRotation) : position;
+      ? rotateAround(n, position, center, bestRotation,
+        this.edgeAbductionsPresent ? this.graph.cellSize : undefined) : position;
     return bestRotation !== 0;
   }
 
@@ -269,6 +274,12 @@ export class SizedOptimizer {
       + this.graph.crossingCost() * countGraphEdgeCrossings(this.graph);
   }
 
+  private transposeScore(node: TalaNode): number {
+    if (!this.edgeAbductionsPresent) return this.graphScore();
+    return [node, ...node.edges.map((edge) => node.adjacent(edge))].reduce((sum, current) =>
+      sum + sizedNodeEdgeLength(current, this.graph, this.turnCost), 0);
+  }
+
   private fixedOrigin(): Point | undefined {
     const fixed = this.graph.nodes.find((node) => node.fixedTopLeft && node.topLeft);
     if (!fixed) return undefined;
@@ -286,7 +297,8 @@ function isDiagonal(orientation: string): boolean {
     || orientation === 'BottomLeft' || orientation === 'BottomRight';
 }
 
-function rotateAround(node: TalaNode, position: Point, center: TalaNode, times: number): Point {
+function rotateAround(node: TalaNode, position: Point, center: TalaNode, times: number,
+  cellSize?: number): Point {
   const cx = center.topLeft!.x + center.width / 2;
   const cy = center.topLeft!.y + center.height / 2;
   let point = position;
@@ -294,6 +306,8 @@ function rotateAround(node: TalaNode, position: Point, center: TalaNode, times: 
     const x = point.x + node.width / 2 - cx;
     const y = point.y + node.height / 2 - cy;
     point = { x: goRound(-y + cx - node.width / 2), y: goRound(x + cy - node.height / 2) };
+    if (cellSize) point = { x: goRound(point.x / cellSize) * cellSize,
+      y: goRound(point.y / cellSize) * cellSize };
   }
   return point;
 }

@@ -159,6 +159,8 @@ export class TalaGraph {
   readonly commonUncleSiblings = new Map<TalaNode, TalaNode[]>();
   readonly edgeEndpointReplacements = new Map<string, EdgeEndpointReplacements>();
   readonly projectedChildren = new Map<string, ProjectedChildGeometry[]>();
+  /** Original topology used when scoring temporarily projected container children. */
+  originalSymmetryEdges: readonly LayoutEdge[] = [];
   cellSize = 10;
   private turnCostCache = 0;
   private crossingCostCache = 0;
@@ -368,6 +370,7 @@ export class TalaGraph {
     for (const [id, children] of this.projectedChildren) copy.projectedChildren.set(id,
       children.map(({ original, offsetX, offsetY }) => ({ original: { ...original,
         labelBBox: original.labelBBox ? { ...original.labelBBox } : undefined }, offsetX, offsetY })));
+    copy.originalSymmetryEdges = this.originalSymmetryEdges;
     const oldById = new Map(this.nodes.map((node) => [node.id, node]));
     for (const node of copy.nodes) {
       const previous = oldById.get(node.id)!;

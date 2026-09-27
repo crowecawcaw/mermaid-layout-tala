@@ -88,12 +88,16 @@ gap and equidistance branches, and general compound placement remain incomplete.
 
 The generated compound oracle now covers twelve more container chains with two,
 three, and four children in all four directions. The two-child top-to-bottom and
-left-to-right cases match all node boxes and routes. The three- and four-child
-cases reveal a compound sized-optimizer mismatch. An isolated Go placement
-fixture confirms that the TypeScript near-node and common-uncle costs match
-Go, but the same child graph takes a different path when Go places it inside
-the full compound graph. The port now supplies those proximity hints to
-compound children; the compound placement context still needs translation.
+left-to-right cases match all node boxes and routes. The placement port now
+distinguishes Go's nil edge-abduction slice from a present empty slice when
+evaluating local quarter-turn transposes. Its three-child interior matches
+the pinned Go placement stage. The ordinary sibling branch of `SwapStuff`
+also matches a pinned three-child stage. During parent placement, symmetry
+scoring follows an abducted edge into the original child topology, recovering
+Go's 2/3 alignment reward for a chain endpoint. The three-child
+top-to-bottom case now matches five of six final node boxes; the last differs
+by three pixels, and four routes still differ. Most four-child cases and
+other compound directions remain unmatched.
 
 The complete Go pipeline oracle now covers ten small flat graphs. Relative
 node positions, sizes, and complete edge routes match exactly in all ten: a

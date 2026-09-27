@@ -12,6 +12,7 @@ interface Fixture {
   edges: { from: string; to: string; directed: boolean }[];
   nears?: [string, string][];
   commonUncleGroups?: string[][];
+  emptyAbductions?: boolean;
   cellSize: number;
   positions?: Record<string, { x: number; y: number }>;
   error?: string;
@@ -37,9 +38,10 @@ describe('ordinary placement stage against pinned upstream TALA', () => {
         const siblings = group.map((id) => byId.get(id)!);
         for (const node of siblings) graph.commonUncleSiblings.set(node, siblings);
       }
-      if (fixture.error) expect(() => placeOrdinaryNodes(graph, fixture.seed)).toThrow(fixture.error);
+      if (fixture.error) expect(() => placeOrdinaryNodes(graph, fixture.seed,
+        undefined, fixture.emptyAbductions)).toThrow(fixture.error);
       else {
-        placeOrdinaryNodes(graph, fixture.seed);
+        placeOrdinaryNodes(graph, fixture.seed, undefined, fixture.emptyAbductions);
         for (const node of graph.nodes) expect(node.topLeft).toEqual(fixture.positions![node.id]);
       }
     }, 30000);

@@ -9,7 +9,8 @@ import { SizelessOptimizer } from './sizeless-optimizer.js';
 
 /** The ordinary-node branch of placement.placeNodesOrthogonally. */
 export function placeOrdinaryNodes(graph: TalaGraph, seed: number,
-  trace?: (stage: string, iteration: number, graph: TalaGraph) => void): void {
+  trace?: (stage: string, iteration: number, graph: TalaGraph) => void,
+  edgeAbductionsPresent = false): void {
   if (graph.nodes.length < 2) throw new Error('ordinary placement requires at least two nodes');
   if (graph.nodes.some((node) => node.isGroup && node.children.length > 0)) {
     throw new Error('compound placement with attached children is not ported');
@@ -51,7 +52,7 @@ export function placeOrdinaryNodes(graph: TalaGraph, seed: number,
   graph.turnCost();
   graph.halveTurnCost();
 
-  const sized = new SizedOptimizer(graph, random);
+  const sized = new SizedOptimizer(graph, random, undefined, edgeAbductionsPresent);
   for (let i = Math.trunc(count / 2) + 1; i < count; i++) {
     sized.optimize(temp);
     trace?.('sized', i, graph);

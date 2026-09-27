@@ -10,9 +10,20 @@ export function nodeSymmetry(node: TalaNode, graph: TalaGraph): number {
 function scoreNode(node: TalaNode, graph: TalaGraph, checkNeighbors: boolean): number {
   if (!node.topLeft) return 0;
   const byId = new Map<string, TalaNode>();
-  for (const edge of node.edges) {
-    const other = graph.endpointFor(edge, edge.from === node ? 'to' : 'from');
-    if (!byId.has(other.id)) byId.set(other.id, other);
+  if (graph.nodes.includes(node)) {
+    for (const edge of node.edges) {
+      const other = graph.endpointFor(edge, edge.from === node ? 'to' : 'from');
+      if (!byId.has(other.id)) byId.set(other.id, other);
+    }
+  } else {
+    // A projected endpoint is a real child in Go's graph. Restore its
+    // original adjacency so neighboring symmetry sees edges within the box.
+    for (const edge of graph.originalSymmetryEdges) {
+      const otherId = edge.from === node.id ? edge.to : edge.to === node.id ? edge.from : undefined;
+      if (!otherId || byId.has(otherId)) continue;
+      const other = originalNeighbor(graph, otherId);
+      if (other) byId.set(otherId, other);
+    }
   }
   const neighbors = [...byId.values()]
     .filter((other) => other.topLeft && distanceBetweenBoxes(
@@ -57,6 +68,23 @@ function scoreNode(node: TalaNode, graph: TalaGraph, checkNeighbors: boolean): n
     });
   }
   return score / neighbors.length;
+}
+
+function originalNeighbor(graph: TalaGraph, id: string): TalaNode | undefined {
+  const ordinary = graph.nodes.find((node) => node.id === id);
+  if (ordinary) return ordinary;
+  for (const [containerId, children] of graph.projectedChildren) {
+    const child = children.find((item) => item.original.id === id);
+    if (!child) continue;
+    const container = graph.nodes.find((node) => node.id === containerId);
+    if (!container?.topLeft) return;
+    const result = new TalaNode(child.original);
+    result.parent = container;
+    result.topLeft = { x: container.topLeft.x + child.offsetX,
+      y: container.topLeft.y + child.offsetY };
+    return result;
+  }
+  return;
 }
 
 function mirrored(first: TalaNode, second: TalaNode, xAxis: boolean, axis: number, tolerance: number): boolean {

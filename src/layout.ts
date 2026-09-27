@@ -23,6 +23,7 @@ import { containerAlignmentCost } from './tala/container-alignment-cost.js';
 import { normalizeGaps } from './tala/gap-normalization.js';
 import { equidistance } from './tala/equidistance.js';
 import { transposeAll } from './tala/transpose.js';
+import { swapStage } from './tala/swap-stage.js';
 import { balanceStraightSegments } from './tala/edge-balance.js';
 import { balanceSymmetry } from './tala/balance-symmetry.js';
 import { directOrdinaryGraph } from './tala/direct.js';
@@ -157,7 +158,8 @@ function layoutFlatFlowchart(
   projectedChildren: ReadonlyMap<string, readonly ProjectedChildGeometry[]> = new Map(),
   placedClusters?: PlacedCluster[],
   nearPairs: readonly (readonly [string, string])[] = [],
-  commonUncleGroups: readonly (readonly string[])[] = []
+  commonUncleGroups: readonly (readonly string[])[] = [],
+  originalSymmetryEdges: readonly LayoutEdge[] = []
 ): LayoutResult {
   const direction = options.direction ?? 'TB';
   const nodeSpacing = finiteSpacing(options.nodeSpacing ?? 48, 'nodeSpacing');
@@ -224,7 +226,8 @@ function layoutFlatFlowchart(
       ? positionOrdinaryComponent(component, componentEdges, ranks, direction, seed,
         constrainDirection, endpointReplacements, projectedChildren,
         nearPairs.filter(([a, b]) => componentIds.has(a) && componentIds.has(b)),
-        commonUncleGroups.filter((group) => group.every((id) => componentIds.has(id))))
+        commonUncleGroups.filter((group) => group.every((id) => componentIds.has(id))),
+        originalSymmetryEdges)
       : positionComponent(component, weightedDag, ranks, nodeSpacing, rankSpacing, passes, direction, seed));
     for (const node of localNodes) allPositions.set(node.id, node);
     componentBounds.push(bounds(localNodes));
@@ -301,7 +304,8 @@ function positionOrdinaryComponent(nodes: readonly LayoutNode[], edges: readonly
   endpointReplacements: ReadonlyMap<string, EdgeEndpointReplacements> = new Map(),
   projectedChildren: ReadonlyMap<string, readonly ProjectedChildGeometry[]> = new Map(),
   nearPairs: readonly (readonly [string, string])[] = [],
-  commonUncleGroups: readonly (readonly string[])[] = []): PositionedNode[] {
+  commonUncleGroups: readonly (readonly string[])[] = [],
+  originalSymmetryEdges: readonly LayoutEdge[] = []): PositionedNode[] {
   const graph = TalaGraph.fromFlowchart(nodes.map((node) => ({ ...node, parentId: undefined })),
     edges, constrainDirection ? direction : undefined);
   for (const edge of edges) {
@@ -309,6 +313,7 @@ function positionOrdinaryComponent(nodes: readonly LayoutNode[], edges: readonly
     if (replacements) graph.edgeEndpointReplacements.set(edge.id, replacements);
   }
   for (const [id, children] of projectedChildren) graph.projectedChildren.set(id, [...children]);
+  graph.originalSymmetryEdges = originalSymmetryEdges;
   const nodesById = new Map(graph.nodes.map((node) => [node.id, node]));
   for (const [a, b] of nearPairs) {
     const first = nodesById.get(a), second = nodesById.get(b);
@@ -324,7 +329,9 @@ function positionOrdinaryComponent(nodes: readonly LayoutNode[], edges: readonly
       if (!previous || previous.length < siblings.length) graph.commonUncleSiblings.set(sibling, siblings);
     }
   }
-  placeOrdinaryNodes(graph, seed);
+  // Graph.abductEdges returns a present slice even when no edges were
+  // projected. Upstream transpose uses its presence to select local moves.
+  placeOrdinaryNodes(graph, seed, undefined, true);
   directOrdinaryGraph(graph, constrainDirection ? direction : undefined);
   const crossAxis = direction === 'TB' || direction === 'BT' ? 'x' : 'y';
   const orderById = new Map<string, number>();
@@ -391,6 +398,10 @@ function layoutCompoundFlowchart(
       active.delete(parentId);
       return { width: empty.width, height: empty.height, positioned: [], clusters: [] };
     }
+    // Go abducts the current scope's boundary edges before placing nested
+    // containers. Keep that projection active throughout the recursive pass.
+    const projection = projectContainerEdges(projectionGraph,
+      parentId ? projectionById.get(parentId)! : null);
     const nested = new Map<string, Scope>();
     const measured = siblingNodes.map((node) => {
       if (!node.isGroup) return node;
@@ -401,8 +412,6 @@ function layoutCompoundFlowchart(
       nested.set(node.id, childScope);
       return { ...node, width: childScope.width, height: childScope.height };
     });
-    const projection = projectContainerEdges(projectionGraph,
-      parentId ? projectionById.get(parentId)! : null);
     const endpointReplacements = new Map<string, EdgeEndpointReplacements>();
     const projectedChildren = new Map<string, ProjectedChildGeometry[]>();
     for (const [id, scope] of nested) {
@@ -471,7 +480,7 @@ function layoutCompoundFlowchart(
     const localClusters: PlacedCluster[] = [];
     const flat = layoutFlatFlowchart(measured, projected, { ...options, direction }, seed,
       parentId === undefined || byId.get(parentId)?.dir !== undefined,
-      endpointReplacements, projectedChildren, localClusters, nearPairs, commonUncleGroups);
+      endpointReplacements, projectedChildren, localClusters, nearPairs, commonUncleGroups, inputEdges);
     const box = bounds(flat.nodes);
     const group = parentId ? byId.get(parentId)! : undefined;
     const padding = 60;
@@ -532,7 +541,8 @@ function layoutCompoundFlowchart(
       + containerAlignmentCost(graph);
     let changed = false;
     try {
-      changed = transposeAll(alignmentGraph);
+      changed = swapStage(alignmentGraph);
+      changed = transposeAll(alignmentGraph) || changed;
       changed = alignAxesPass(alignmentGraph, alignmentScore) || changed;
       changed = normalizeGaps(alignmentGraph) || changed;
       changed = alignAxesPass(alignmentGraph, alignmentScore) || changed;

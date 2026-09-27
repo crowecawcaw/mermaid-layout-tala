@@ -22,6 +22,7 @@ type tsPlacementCase struct {
     Edges []tsPlacementEdge `json:"edges"`
     Nears [][2]string `json:"nears,omitempty"`
     CommonUncleGroups [][]string `json:"commonUncleGroups,omitempty"`
+    EmptyAbductions bool `json:"emptyAbductions,omitempty"`
 }
 type tsPlacementPoint struct { X float64 `json:"x"`; Y float64 `json:"y"` }
 type tsPlacementResult struct {
@@ -87,7 +88,9 @@ func TestTSOrdinaryPlacementFixtures(t *testing.T) {
             nodes[input.ID].TopLeft = nil
         }
         rng := rand.New(rand.NewSource(c.Seed))
-        if err := placeNodesOrthogonally(context.Background(), root, g, nil, rng, nil, c.Seed); err != nil {
+        var abductions []*layoutgraph.EdgeAbduction
+        if c.EmptyAbductions { abductions = []*layoutgraph.EdgeAbduction{} }
+        if err := placeNodesOrthogonally(context.Background(), root, g, abductions, rng, nil, c.Seed); err != nil {
             out.Error = err.Error()
         } else {
             out.Positions = make(map[string]tsPlacementPoint)
