@@ -135,14 +135,14 @@ TypeScript port now does too. Labels are not included in that comparison.
 
 The flat hierarchy fixture adds two branched workflows and twelve generated
 layered DAGs. Their node boxes match the upstream hierarchy stage exactly,
-including four cases with cross-level edges. Nine of twelve generated cases
-match completed upstream node geometry; three still differ by 1–4 pixels after
-the route-dependent `Dejitter` stage. Hierarchy edge routes are not yet exact.
+including four cases with cross-level edges. All twelve generated cases
+match completed upstream node geometry after the ordinary hierarchy-member
+`Dejitter` pass. Hierarchy edge routes are not yet exact.
 The DAG preparation branch now expands undirected edges, reverses feedback
 arcs, and merges repeated edges with rank weights. Six mixed-direction and
 parallel-edge fixtures match upstream's hierarchy stage. Four also match
 completed node geometry; two single-feedback-edge cases still have
-route-dependent `Dejitter` differences.
+route-dependent `Dejitter` differences with the current router.
 
 The route comparison helper now reports edge-path parity as well as node
 geometry. For the two curated branched workflows, only 5/8 and 3/8 routes

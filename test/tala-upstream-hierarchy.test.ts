@@ -83,8 +83,7 @@ describe('pinned upstream flat hierarchy placement', () => {
     });
   }
 
-  for (const input of generated.filter((item) => !['layered-4', 'layered-8', 'layered-12']
-    .includes(item.name))) {
+  for (const input of generated) {
     it(`${input.name} matches completed Go node geometry through the public API`, () => {
       const oracle = generatedCompleted.find((item) => item.name === input.name)!;
       const result = layoutFlowchart(input.nodes, input.edges, {

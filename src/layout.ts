@@ -188,6 +188,7 @@ function layoutFlatFlowchart(
   const allPositions = new Map<string, PositionedNode>();
   const sequenceDefiningEdgeIds = new Set<string>();
   const treeComponents: Array<{ ids: Set<string>; edges: LayoutEdge[]; extraction: TreeExtraction }> = [];
+  const hierarchyNodeIds = new Set<string>();
   const componentBounds: Array<ReturnType<typeof bounds>> = [];
   for (const component of components) {
     const hasFixed = component.some((node) => node.fixedTopLeft !== undefined);
@@ -217,6 +218,7 @@ function layoutFlatFlowchart(
       ? discoverFlatHierarchy(component, componentEdges, direction) : undefined;
     const hierarchy = hierarchyLevels
       ? placeFlatHierarchy(component, componentEdges, hierarchyLevels, direction, seed) : undefined;
+    if (hierarchy) for (const node of component) hierarchyNodeIds.add(node.id);
     const cluster = useOrdinary && !hasNears && !sequence && !tree && !hierarchy && !hasFixed && component.every((node) => !node.isGroup)
       ? placeFlatClusters(component, componentEdges, direction, seed, ranks,
         constrainDirection, placedClusters) : undefined;
@@ -293,6 +295,12 @@ function layoutFlatFlowchart(
     const sentinels = new Set(treeComponents.flatMap((component) => component.extraction.remaining));
     if (dejitterTreeRoutes(positionedNodes, positionedEdges, sentinels)) {
       updateTreePaths();
+      positionedEdges = routeWithConsumedEdges(positionedNodes, edges, direction,
+        sequenceDefiningEdgeIds, treePaths, false, useOrdinary);
+    }
+  } else if (useOrdinary && hierarchyNodeIds.size > 0
+    && inputNodes.every((node) => !node.parentId && !node.isGroup)) {
+    if (dejitterTreeRoutes(positionedNodes, positionedEdges, hierarchyNodeIds)) {
       positionedEdges = routeWithConsumedEdges(positionedNodes, edges, direction,
         sequenceDefiningEdgeIds, treePaths, false, useOrdinary);
     }
