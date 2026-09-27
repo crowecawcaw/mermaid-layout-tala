@@ -86,13 +86,15 @@ export class SizedOptimizer {
       for (const index of indices) {
         const node = this.graph.nodes[index]!;
         if (!node.topLeft) throw new Error(`node ${node.id} is unpositioned`);
-        if (node.fixedTopLeft || (node.edges.length === 0 && node.nears.size === 0)) continue;
+        if (node.fixedTopLeft || (node.edges.length === 0 && node.nears.size === 0
+          && !node.herdAssignment)) continue;
         if (node.width > 100 * this.graph.cellSize || node.height > 100 * this.graph.cellSize) continue;
         const protrudingChildren = this.protrudingChildren(node);
         const minimizingSelf = protrudingChildren.length === 0;
         const median = this.medianPoint(node, temp, protrudingChildren);
         const distance = closestSizedUnoccupiedDistance(this.graph, node, median, minimizingSelf, origin);
         const points = sizedPlacementPoints(this.graph, node, median, distance, minimizingSelf, origin);
+        if (node.herdAssignment) points.push({ ...node.topLeft });
         this.random.shuffle(points);
         const moved = this.moveNodeToBest(node, points, temp === 0, origin);
         if (moved) changed = true;

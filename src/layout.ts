@@ -33,6 +33,7 @@ import { dejitterTreeRoutes } from './tala/dejitter.js';
 import { swapAllEdgePorts } from './tala/swap-edge-ports.js';
 import { nudgeEdgeChannels } from './tala/nudge-channels.js';
 import { discoverFlatHierarchy, placeFlatHierarchy } from './tala/hierarchy-flat.js';
+import { assignHerds, type HerdAssignment, type HerdGroup, type HerdSide } from './tala/herding.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
@@ -163,7 +164,8 @@ function layoutFlatFlowchart(
   nearPairs: readonly (readonly [string, string])[] = [],
   commonUncleGroups: readonly (readonly string[])[] = [],
   originalSymmetryEdges: readonly LayoutEdge[] = [],
-  mirrors?: Map<string, DirectionTransforms>
+  mirrors?: Map<string, DirectionTransforms>,
+  herdOrientations: ReadonlyMap<string, HerdSide> = new Map()
 ): LayoutResult {
   const direction = options.direction ?? 'TB';
   const nodeSpacing = finiteSpacing(options.nodeSpacing ?? 48, 'nodeSpacing');
@@ -237,7 +239,7 @@ function layoutFlatFlowchart(
         constrainDirection, endpointReplacements, projectedChildren,
         nearPairs.filter(([a, b]) => componentIds.has(a) && componentIds.has(b)),
         commonUncleGroups.filter((group) => group.every((id) => componentIds.has(id))),
-        originalSymmetryEdges, mirrors)
+        originalSymmetryEdges, mirrors, herdOrientations)
       : positionComponent(component, weightedDag, ranks, nodeSpacing, rankSpacing, passes, direction, seed));
     for (const node of localNodes) allPositions.set(node.id, node);
     componentBounds.push(bounds(localNodes));
@@ -329,7 +331,8 @@ function positionOrdinaryComponent(nodes: readonly LayoutNode[], edges: readonly
   nearPairs: readonly (readonly [string, string])[] = [],
   commonUncleGroups: readonly (readonly string[])[] = [],
   originalSymmetryEdges: readonly LayoutEdge[] = [],
-  mirrors?: Map<string, DirectionTransforms>): PositionedNode[] {
+  mirrors?: Map<string, DirectionTransforms>,
+  herdOrientations: ReadonlyMap<string, HerdSide> = new Map()): PositionedNode[] {
   const graph = TalaGraph.fromFlowchart(nodes.map((node) => ({ ...node, parentId: undefined })),
     edges, constrainDirection ? direction : undefined);
   for (const edge of edges) {
@@ -339,6 +342,11 @@ function positionOrdinaryComponent(nodes: readonly LayoutNode[], edges: readonly
   for (const [id, children] of projectedChildren) graph.projectedChildren.set(id, [...children]);
   graph.originalSymmetryEdges = originalSymmetryEdges;
   const nodesById = new Map(graph.nodes.map((node) => [node.id, node]));
+  for (const [id, orientation] of herdOrientations) {
+    const node = nodesById.get(id);
+    if (node) node.herdAssignment = { orientation, val: 0,
+      sameSidePaired: new Set(), oppositeSidePaired: new Set() };
+  }
   for (const [a, b] of nearPairs) {
     const first = nodesById.get(a), second = nodesById.get(b);
     if (!first || !second) continue;
@@ -441,6 +449,8 @@ function layoutCompoundFlowchart(
   interface Scope { width: number; height: number; positioned: PositionedNode[];
     clusters: PlacedCluster[]; nearPairs: Array<readonly [string, string]> }
   const active = new Set<string>();
+  const herdAssignments = new Map<string, HerdAssignment>();
+  const placedContainerSizes = new Map<string, { width: number; height: number }>();
   const placeScope = (parentId: string | undefined, direction: LayoutDirection): Scope => {
     if (parentId) {
       if (active.has(parentId)) throw new Error('cyclic container hierarchy');
@@ -450,6 +460,7 @@ function layoutCompoundFlowchart(
     if (parentId && siblingNodes.length === 0) {
       const empty = byId.get(parentId)!;
       active.delete(parentId);
+      placedContainerSizes.set(parentId, { width: empty.width, height: empty.height });
       return { width: empty.width, height: empty.height, positioned: [],
         clusters: [], nearPairs: [] };
     }
@@ -500,6 +511,8 @@ function layoutCompoundFlowchart(
       ...edgeById.get(edge.id)!, from: edge.from.id, to: edge.to.id,
     }));
     const commonUncles = new Map<string, Set<string>>();
+    const herdUncles = new Map<string, Set<string>>();
+    const cousinsByUncle = new Map<string, Map<string, string[]>>();
     if (parentId) {
       const directChild = (id: string): string | undefined => {
         let current = byId.get(id);
@@ -511,14 +524,33 @@ function layoutCompoundFlowchart(
         if (from && !to) {
           const siblings = commonUncles.get(edge.to) ?? new Set<string>();
           siblings.add(from); commonUncles.set(edge.to, siblings);
+          const uncle = byId.get(edge.to)?.parentId;
+          if (uncle && byId.get(uncle)?.isGroup) {
+            const herd = herdUncles.get(uncle) ?? new Set<string>();
+            herd.add(from); herdUncles.set(uncle, herd);
+            const cousins = cousinsByUncle.get(uncle) ?? new Map<string, string[]>();
+            const connected = cousins.get(from) ?? [];
+            connected.push(edge.to); cousins.set(from, connected);
+            cousinsByUncle.set(uncle, cousins);
+          }
         } else if (to && !from) {
           const siblings = commonUncles.get(edge.from) ?? new Set<string>();
           siblings.add(to); commonUncles.set(edge.from, siblings);
+          const uncle = byId.get(edge.from)?.parentId;
+          if (uncle && byId.get(uncle)?.isGroup) {
+            const herd = herdUncles.get(uncle) ?? new Set<string>();
+            herd.add(to); herdUncles.set(uncle, herd);
+            const cousins = cousinsByUncle.get(uncle) ?? new Map<string, string[]>();
+            const connected = cousins.get(to) ?? [];
+            connected.push(edge.from); cousins.set(to, connected);
+            cousinsByUncle.set(uncle, cousins);
+          }
         }
       }
     }
     const nearPairs: Array<readonly [string, string]> = [];
     const commonUncleGroups: string[][] = [];
+    const localHerdOrientations = new Map<string, HerdSide>();
     for (const siblings of commonUncles.values()) {
       const ids = [...siblings].sort(compareText);
       if (ids.length >= 2) commonUncleGroups.push(ids);
@@ -529,6 +561,26 @@ function layoutCompoundFlowchart(
         if (!nearPairs.some(([x, y]) => x === a && y === b)) nearPairs.push([a, b]);
       }
     }
+    const herdGroups: HerdGroup[] = [];
+    for (const [uncle, siblings] of herdUncles) {
+      const ids = [...siblings].sort(compareText);
+      if (ids.length < 2) continue;
+      if (!commonUncleGroups.some((group) => group.length === ids.length
+        && group.every((id, index) => id === ids[index]))) commonUncleGroups.push(ids);
+      const size = placedContainerSizes.get(uncle) ?? byId.get(uncle)!;
+      herdGroups.push({ uncle, nodes: ids, cousins: cousinsByUncle.get(uncle)!,
+        uncleWidth: size.width, uncleHeight: size.height,
+        unclePlaced: placedContainerSizes.has(uncle) });
+      for (let i = 0; i < ids.length; i++) for (let j = i + 1; j < ids.length; j++) {
+        const a = ids[i]!, b = ids[j]!;
+        if (projected.some((edge) => edge.from === a && edge.to === b
+          || edge.from === b && edge.to === a)) continue;
+        if (!nearPairs.some(([x, y]) => x === a && y === b)) nearPairs.push([a, b]);
+      }
+    }
+    for (const [id, side] of assignHerds(herdGroups, herdAssignments)) {
+      localHerdOrientations.set(id, side);
+    }
     projection.restore();
     // Upstream only records an interior direction when the container declares
     // one. The LR axis below is a presentation fallback for ranks and packing.
@@ -537,7 +589,7 @@ function layoutCompoundFlowchart(
     const flat = layoutFlatFlowchart(measured, projected, { ...options, direction }, seed,
       parentId === undefined || byId.get(parentId)?.dir !== undefined,
       endpointReplacements, projectedChildren, localClusters, nearPairs, commonUncleGroups,
-      inputEdges, mirrors);
+      inputEdges, mirrors, localHerdOrientations);
     const box = bounds(flat.nodes);
     const group = parentId ? byId.get(parentId)! : undefined;
     const padding = 60;
@@ -562,7 +614,10 @@ function layoutCompoundFlowchart(
         }
       }
     }
-    if (parentId) active.delete(parentId);
+    if (parentId) {
+      active.delete(parentId);
+      placedContainerSizes.set(parentId, { width, height });
+    }
     return { width, height, positioned,
       nearPairs: [...nested.values()].flatMap((scope) => scope.nearPairs).concat(nearPairs),
       clusters: [...nested.values()].flatMap((scope) => scope.clusters).concat(localClusters) };

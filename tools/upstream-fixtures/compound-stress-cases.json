@@ -1,0 +1,1354 @@
+[
+  {
+    "name": "sibling-fan-TB",
+    "direction": "TB",
+    "seed": 1,
+    "nodes": [
+      {
+        "id": "Cloud",
+        "width": 300,
+        "height": 200,
+        "isGroup": true
+      },
+      {
+        "id": "API",
+        "width": 190,
+        "height": 150,
+        "parentId": "Cloud",
+        "isGroup": true
+      },
+      {
+        "id": "Worker",
+        "width": 190,
+        "height": 150,
+        "parentId": "Cloud",
+        "isGroup": true
+      },
+      {
+        "id": "A",
+        "width": 80,
+        "height": 40,
+        "parentId": "API"
+      },
+      {
+        "id": "B",
+        "width": 90,
+        "height": 35,
+        "parentId": "API"
+      },
+      {
+        "id": "C",
+        "width": 70,
+        "height": 50,
+        "parentId": "API"
+      },
+      {
+        "id": "D",
+        "width": 75,
+        "height": 40,
+        "parentId": "Worker"
+      },
+      {
+        "id": "E",
+        "width": 85,
+        "height": 45,
+        "parentId": "Worker"
+      },
+      {
+        "id": "Client",
+        "width": 90,
+        "height": 45
+      },
+      {
+        "id": "DB",
+        "width": 90,
+        "height": 55
+      }
+    ],
+    "edges": [
+      {
+        "id": "ca",
+        "from": "Client",
+        "to": "A",
+        "directed": true
+      },
+      {
+        "id": "ab",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "ac",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "bd",
+        "from": "B",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "ce",
+        "from": "C",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "de",
+        "from": "D",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "ed",
+        "from": "E",
+        "to": "DB",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "sibling-fan-BT",
+    "direction": "BT",
+    "seed": 2,
+    "nodes": [
+      {
+        "id": "Cloud",
+        "width": 300,
+        "height": 200,
+        "isGroup": true
+      },
+      {
+        "id": "API",
+        "width": 190,
+        "height": 150,
+        "parentId": "Cloud",
+        "isGroup": true
+      },
+      {
+        "id": "Worker",
+        "width": 190,
+        "height": 150,
+        "parentId": "Cloud",
+        "isGroup": true
+      },
+      {
+        "id": "A",
+        "width": 80,
+        "height": 40,
+        "parentId": "API"
+      },
+      {
+        "id": "B",
+        "width": 90,
+        "height": 35,
+        "parentId": "API"
+      },
+      {
+        "id": "C",
+        "width": 70,
+        "height": 50,
+        "parentId": "API"
+      },
+      {
+        "id": "D",
+        "width": 75,
+        "height": 40,
+        "parentId": "Worker"
+      },
+      {
+        "id": "E",
+        "width": 85,
+        "height": 45,
+        "parentId": "Worker"
+      },
+      {
+        "id": "Client",
+        "width": 90,
+        "height": 45
+      },
+      {
+        "id": "DB",
+        "width": 90,
+        "height": 55
+      }
+    ],
+    "edges": [
+      {
+        "id": "ca",
+        "from": "Client",
+        "to": "A",
+        "directed": true
+      },
+      {
+        "id": "ab",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "ac",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "bd",
+        "from": "B",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "ce",
+        "from": "C",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "de",
+        "from": "D",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "ed",
+        "from": "E",
+        "to": "DB",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "sibling-fan-LR",
+    "direction": "LR",
+    "seed": 3,
+    "nodes": [
+      {
+        "id": "Cloud",
+        "width": 300,
+        "height": 200,
+        "isGroup": true
+      },
+      {
+        "id": "API",
+        "width": 190,
+        "height": 150,
+        "parentId": "Cloud",
+        "isGroup": true
+      },
+      {
+        "id": "Worker",
+        "width": 190,
+        "height": 150,
+        "parentId": "Cloud",
+        "isGroup": true
+      },
+      {
+        "id": "A",
+        "width": 80,
+        "height": 40,
+        "parentId": "API"
+      },
+      {
+        "id": "B",
+        "width": 90,
+        "height": 35,
+        "parentId": "API"
+      },
+      {
+        "id": "C",
+        "width": 70,
+        "height": 50,
+        "parentId": "API"
+      },
+      {
+        "id": "D",
+        "width": 75,
+        "height": 40,
+        "parentId": "Worker"
+      },
+      {
+        "id": "E",
+        "width": 85,
+        "height": 45,
+        "parentId": "Worker"
+      },
+      {
+        "id": "Client",
+        "width": 90,
+        "height": 45
+      },
+      {
+        "id": "DB",
+        "width": 90,
+        "height": 55
+      }
+    ],
+    "edges": [
+      {
+        "id": "ca",
+        "from": "Client",
+        "to": "A",
+        "directed": true
+      },
+      {
+        "id": "ab",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "ac",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "bd",
+        "from": "B",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "ce",
+        "from": "C",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "de",
+        "from": "D",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "ed",
+        "from": "E",
+        "to": "DB",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "sibling-fan-RL",
+    "direction": "RL",
+    "seed": 1,
+    "nodes": [
+      {
+        "id": "Cloud",
+        "width": 300,
+        "height": 200,
+        "isGroup": true
+      },
+      {
+        "id": "API",
+        "width": 190,
+        "height": 150,
+        "parentId": "Cloud",
+        "isGroup": true
+      },
+      {
+        "id": "Worker",
+        "width": 190,
+        "height": 150,
+        "parentId": "Cloud",
+        "isGroup": true
+      },
+      {
+        "id": "A",
+        "width": 80,
+        "height": 40,
+        "parentId": "API"
+      },
+      {
+        "id": "B",
+        "width": 90,
+        "height": 35,
+        "parentId": "API"
+      },
+      {
+        "id": "C",
+        "width": 70,
+        "height": 50,
+        "parentId": "API"
+      },
+      {
+        "id": "D",
+        "width": 75,
+        "height": 40,
+        "parentId": "Worker"
+      },
+      {
+        "id": "E",
+        "width": 85,
+        "height": 45,
+        "parentId": "Worker"
+      },
+      {
+        "id": "Client",
+        "width": 90,
+        "height": 45
+      },
+      {
+        "id": "DB",
+        "width": 90,
+        "height": 55
+      }
+    ],
+    "edges": [
+      {
+        "id": "ca",
+        "from": "Client",
+        "to": "A",
+        "directed": true
+      },
+      {
+        "id": "ab",
+        "from": "A",
+        "to": "B",
+        "directed": true
+      },
+      {
+        "id": "ac",
+        "from": "A",
+        "to": "C",
+        "directed": true
+      },
+      {
+        "id": "bd",
+        "from": "B",
+        "to": "D",
+        "directed": true
+      },
+      {
+        "id": "ce",
+        "from": "C",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "de",
+        "from": "D",
+        "to": "E",
+        "directed": true
+      },
+      {
+        "id": "ed",
+        "from": "E",
+        "to": "DB",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "nested-branch-TB",
+    "direction": "TB",
+    "seed": 2,
+    "nodes": [
+      {
+        "id": "System",
+        "width": 320,
+        "height": 230,
+        "isGroup": true
+      },
+      {
+        "id": "Front",
+        "width": 190,
+        "height": 150,
+        "parentId": "System",
+        "isGroup": true
+      },
+      {
+        "id": "Back",
+        "width": 210,
+        "height": 170,
+        "parentId": "System",
+        "isGroup": true
+      },
+      {
+        "id": "Auth",
+        "width": 150,
+        "height": 110,
+        "parentId": "Back",
+        "isGroup": true
+      },
+      {
+        "id": "UI",
+        "width": 90,
+        "height": 50,
+        "parentId": "Front"
+      },
+      {
+        "id": "Gateway",
+        "width": 90,
+        "height": 45,
+        "parentId": "Front"
+      },
+      {
+        "id": "Token",
+        "width": 70,
+        "height": 35,
+        "parentId": "Auth"
+      },
+      {
+        "id": "Policy",
+        "width": 70,
+        "height": 35,
+        "parentId": "Auth"
+      },
+      {
+        "id": "Queue",
+        "width": 90,
+        "height": 45,
+        "parentId": "Back"
+      },
+      {
+        "id": "Store",
+        "width": 90,
+        "height": 50,
+        "parentId": "Back"
+      },
+      {
+        "id": "Browser",
+        "width": 85,
+        "height": 45
+      },
+      {
+        "id": "Ops",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "edges": [
+      {
+        "id": "bu",
+        "from": "Browser",
+        "to": "UI",
+        "directed": true
+      },
+      {
+        "id": "ug",
+        "from": "UI",
+        "to": "Gateway",
+        "directed": true
+      },
+      {
+        "id": "gt",
+        "from": "Gateway",
+        "to": "Token",
+        "directed": true
+      },
+      {
+        "id": "gp",
+        "from": "Gateway",
+        "to": "Policy",
+        "directed": true
+      },
+      {
+        "id": "tq",
+        "from": "Token",
+        "to": "Queue",
+        "directed": true
+      },
+      {
+        "id": "pq",
+        "from": "Policy",
+        "to": "Queue",
+        "directed": true
+      },
+      {
+        "id": "qs",
+        "from": "Queue",
+        "to": "Store",
+        "directed": true
+      },
+      {
+        "id": "os",
+        "from": "Ops",
+        "to": "Store",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "nested-branch-BT",
+    "direction": "BT",
+    "seed": 3,
+    "nodes": [
+      {
+        "id": "System",
+        "width": 320,
+        "height": 230,
+        "isGroup": true
+      },
+      {
+        "id": "Front",
+        "width": 190,
+        "height": 150,
+        "parentId": "System",
+        "isGroup": true
+      },
+      {
+        "id": "Back",
+        "width": 210,
+        "height": 170,
+        "parentId": "System",
+        "isGroup": true
+      },
+      {
+        "id": "Auth",
+        "width": 150,
+        "height": 110,
+        "parentId": "Back",
+        "isGroup": true
+      },
+      {
+        "id": "UI",
+        "width": 90,
+        "height": 50,
+        "parentId": "Front"
+      },
+      {
+        "id": "Gateway",
+        "width": 90,
+        "height": 45,
+        "parentId": "Front"
+      },
+      {
+        "id": "Token",
+        "width": 70,
+        "height": 35,
+        "parentId": "Auth"
+      },
+      {
+        "id": "Policy",
+        "width": 70,
+        "height": 35,
+        "parentId": "Auth"
+      },
+      {
+        "id": "Queue",
+        "width": 90,
+        "height": 45,
+        "parentId": "Back"
+      },
+      {
+        "id": "Store",
+        "width": 90,
+        "height": 50,
+        "parentId": "Back"
+      },
+      {
+        "id": "Browser",
+        "width": 85,
+        "height": 45
+      },
+      {
+        "id": "Ops",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "edges": [
+      {
+        "id": "bu",
+        "from": "Browser",
+        "to": "UI",
+        "directed": true
+      },
+      {
+        "id": "ug",
+        "from": "UI",
+        "to": "Gateway",
+        "directed": true
+      },
+      {
+        "id": "gt",
+        "from": "Gateway",
+        "to": "Token",
+        "directed": true
+      },
+      {
+        "id": "gp",
+        "from": "Gateway",
+        "to": "Policy",
+        "directed": true
+      },
+      {
+        "id": "tq",
+        "from": "Token",
+        "to": "Queue",
+        "directed": true
+      },
+      {
+        "id": "pq",
+        "from": "Policy",
+        "to": "Queue",
+        "directed": true
+      },
+      {
+        "id": "qs",
+        "from": "Queue",
+        "to": "Store",
+        "directed": true
+      },
+      {
+        "id": "os",
+        "from": "Ops",
+        "to": "Store",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "nested-branch-LR",
+    "direction": "LR",
+    "seed": 1,
+    "nodes": [
+      {
+        "id": "System",
+        "width": 320,
+        "height": 230,
+        "isGroup": true
+      },
+      {
+        "id": "Front",
+        "width": 190,
+        "height": 150,
+        "parentId": "System",
+        "isGroup": true
+      },
+      {
+        "id": "Back",
+        "width": 210,
+        "height": 170,
+        "parentId": "System",
+        "isGroup": true
+      },
+      {
+        "id": "Auth",
+        "width": 150,
+        "height": 110,
+        "parentId": "Back",
+        "isGroup": true
+      },
+      {
+        "id": "UI",
+        "width": 90,
+        "height": 50,
+        "parentId": "Front"
+      },
+      {
+        "id": "Gateway",
+        "width": 90,
+        "height": 45,
+        "parentId": "Front"
+      },
+      {
+        "id": "Token",
+        "width": 70,
+        "height": 35,
+        "parentId": "Auth"
+      },
+      {
+        "id": "Policy",
+        "width": 70,
+        "height": 35,
+        "parentId": "Auth"
+      },
+      {
+        "id": "Queue",
+        "width": 90,
+        "height": 45,
+        "parentId": "Back"
+      },
+      {
+        "id": "Store",
+        "width": 90,
+        "height": 50,
+        "parentId": "Back"
+      },
+      {
+        "id": "Browser",
+        "width": 85,
+        "height": 45
+      },
+      {
+        "id": "Ops",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "edges": [
+      {
+        "id": "bu",
+        "from": "Browser",
+        "to": "UI",
+        "directed": true
+      },
+      {
+        "id": "ug",
+        "from": "UI",
+        "to": "Gateway",
+        "directed": true
+      },
+      {
+        "id": "gt",
+        "from": "Gateway",
+        "to": "Token",
+        "directed": true
+      },
+      {
+        "id": "gp",
+        "from": "Gateway",
+        "to": "Policy",
+        "directed": true
+      },
+      {
+        "id": "tq",
+        "from": "Token",
+        "to": "Queue",
+        "directed": true
+      },
+      {
+        "id": "pq",
+        "from": "Policy",
+        "to": "Queue",
+        "directed": true
+      },
+      {
+        "id": "qs",
+        "from": "Queue",
+        "to": "Store",
+        "directed": true
+      },
+      {
+        "id": "os",
+        "from": "Ops",
+        "to": "Store",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "nested-branch-RL",
+    "direction": "RL",
+    "seed": 2,
+    "nodes": [
+      {
+        "id": "System",
+        "width": 320,
+        "height": 230,
+        "isGroup": true
+      },
+      {
+        "id": "Front",
+        "width": 190,
+        "height": 150,
+        "parentId": "System",
+        "isGroup": true
+      },
+      {
+        "id": "Back",
+        "width": 210,
+        "height": 170,
+        "parentId": "System",
+        "isGroup": true
+      },
+      {
+        "id": "Auth",
+        "width": 150,
+        "height": 110,
+        "parentId": "Back",
+        "isGroup": true
+      },
+      {
+        "id": "UI",
+        "width": 90,
+        "height": 50,
+        "parentId": "Front"
+      },
+      {
+        "id": "Gateway",
+        "width": 90,
+        "height": 45,
+        "parentId": "Front"
+      },
+      {
+        "id": "Token",
+        "width": 70,
+        "height": 35,
+        "parentId": "Auth"
+      },
+      {
+        "id": "Policy",
+        "width": 70,
+        "height": 35,
+        "parentId": "Auth"
+      },
+      {
+        "id": "Queue",
+        "width": 90,
+        "height": 45,
+        "parentId": "Back"
+      },
+      {
+        "id": "Store",
+        "width": 90,
+        "height": 50,
+        "parentId": "Back"
+      },
+      {
+        "id": "Browser",
+        "width": 85,
+        "height": 45
+      },
+      {
+        "id": "Ops",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "edges": [
+      {
+        "id": "bu",
+        "from": "Browser",
+        "to": "UI",
+        "directed": true
+      },
+      {
+        "id": "ug",
+        "from": "UI",
+        "to": "Gateway",
+        "directed": true
+      },
+      {
+        "id": "gt",
+        "from": "Gateway",
+        "to": "Token",
+        "directed": true
+      },
+      {
+        "id": "gp",
+        "from": "Gateway",
+        "to": "Policy",
+        "directed": true
+      },
+      {
+        "id": "tq",
+        "from": "Token",
+        "to": "Queue",
+        "directed": true
+      },
+      {
+        "id": "pq",
+        "from": "Policy",
+        "to": "Queue",
+        "directed": true
+      },
+      {
+        "id": "qs",
+        "from": "Queue",
+        "to": "Store",
+        "directed": true
+      },
+      {
+        "id": "os",
+        "from": "Ops",
+        "to": "Store",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "grouped-tree-TB",
+    "direction": "TB",
+    "seed": 3,
+    "nodes": [
+      {
+        "id": "Group",
+        "width": 250,
+        "height": 180,
+        "isGroup": true
+      },
+      {
+        "id": "Root",
+        "width": 90,
+        "height": 45,
+        "parentId": "Group"
+      },
+      {
+        "id": "Left",
+        "width": 80,
+        "height": 40,
+        "parentId": "Group"
+      },
+      {
+        "id": "Right",
+        "width": 80,
+        "height": 40,
+        "parentId": "Group"
+      },
+      {
+        "id": "Leaf1",
+        "width": 70,
+        "height": 35,
+        "parentId": "Group"
+      },
+      {
+        "id": "Leaf2",
+        "width": 70,
+        "height": 35,
+        "parentId": "Group"
+      },
+      {
+        "id": "Input",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "Output",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "edges": [
+      {
+        "id": "ir",
+        "from": "Input",
+        "to": "Root",
+        "directed": true
+      },
+      {
+        "id": "rl",
+        "from": "Root",
+        "to": "Left",
+        "directed": true
+      },
+      {
+        "id": "rr",
+        "from": "Root",
+        "to": "Right",
+        "directed": true
+      },
+      {
+        "id": "ll",
+        "from": "Left",
+        "to": "Leaf1",
+        "directed": true
+      },
+      {
+        "id": "r2",
+        "from": "Right",
+        "to": "Leaf2",
+        "directed": true
+      },
+      {
+        "id": "lo",
+        "from": "Leaf1",
+        "to": "Output",
+        "directed": true
+      },
+      {
+        "id": "ro",
+        "from": "Leaf2",
+        "to": "Output",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "grouped-tree-BT",
+    "direction": "BT",
+    "seed": 1,
+    "nodes": [
+      {
+        "id": "Group",
+        "width": 250,
+        "height": 180,
+        "isGroup": true
+      },
+      {
+        "id": "Root",
+        "width": 90,
+        "height": 45,
+        "parentId": "Group"
+      },
+      {
+        "id": "Left",
+        "width": 80,
+        "height": 40,
+        "parentId": "Group"
+      },
+      {
+        "id": "Right",
+        "width": 80,
+        "height": 40,
+        "parentId": "Group"
+      },
+      {
+        "id": "Leaf1",
+        "width": 70,
+        "height": 35,
+        "parentId": "Group"
+      },
+      {
+        "id": "Leaf2",
+        "width": 70,
+        "height": 35,
+        "parentId": "Group"
+      },
+      {
+        "id": "Input",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "Output",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "edges": [
+      {
+        "id": "ir",
+        "from": "Input",
+        "to": "Root",
+        "directed": true
+      },
+      {
+        "id": "rl",
+        "from": "Root",
+        "to": "Left",
+        "directed": true
+      },
+      {
+        "id": "rr",
+        "from": "Root",
+        "to": "Right",
+        "directed": true
+      },
+      {
+        "id": "ll",
+        "from": "Left",
+        "to": "Leaf1",
+        "directed": true
+      },
+      {
+        "id": "r2",
+        "from": "Right",
+        "to": "Leaf2",
+        "directed": true
+      },
+      {
+        "id": "lo",
+        "from": "Leaf1",
+        "to": "Output",
+        "directed": true
+      },
+      {
+        "id": "ro",
+        "from": "Leaf2",
+        "to": "Output",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "grouped-tree-LR",
+    "direction": "LR",
+    "seed": 2,
+    "nodes": [
+      {
+        "id": "Group",
+        "width": 250,
+        "height": 180,
+        "isGroup": true
+      },
+      {
+        "id": "Root",
+        "width": 90,
+        "height": 45,
+        "parentId": "Group"
+      },
+      {
+        "id": "Left",
+        "width": 80,
+        "height": 40,
+        "parentId": "Group"
+      },
+      {
+        "id": "Right",
+        "width": 80,
+        "height": 40,
+        "parentId": "Group"
+      },
+      {
+        "id": "Leaf1",
+        "width": 70,
+        "height": 35,
+        "parentId": "Group"
+      },
+      {
+        "id": "Leaf2",
+        "width": 70,
+        "height": 35,
+        "parentId": "Group"
+      },
+      {
+        "id": "Input",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "Output",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "edges": [
+      {
+        "id": "ir",
+        "from": "Input",
+        "to": "Root",
+        "directed": true
+      },
+      {
+        "id": "rl",
+        "from": "Root",
+        "to": "Left",
+        "directed": true
+      },
+      {
+        "id": "rr",
+        "from": "Root",
+        "to": "Right",
+        "directed": true
+      },
+      {
+        "id": "ll",
+        "from": "Left",
+        "to": "Leaf1",
+        "directed": true
+      },
+      {
+        "id": "r2",
+        "from": "Right",
+        "to": "Leaf2",
+        "directed": true
+      },
+      {
+        "id": "lo",
+        "from": "Leaf1",
+        "to": "Output",
+        "directed": true
+      },
+      {
+        "id": "ro",
+        "from": "Leaf2",
+        "to": "Output",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "grouped-tree-RL",
+    "direction": "RL",
+    "seed": 3,
+    "nodes": [
+      {
+        "id": "Group",
+        "width": 250,
+        "height": 180,
+        "isGroup": true
+      },
+      {
+        "id": "Root",
+        "width": 90,
+        "height": 45,
+        "parentId": "Group"
+      },
+      {
+        "id": "Left",
+        "width": 80,
+        "height": 40,
+        "parentId": "Group"
+      },
+      {
+        "id": "Right",
+        "width": 80,
+        "height": 40,
+        "parentId": "Group"
+      },
+      {
+        "id": "Leaf1",
+        "width": 70,
+        "height": 35,
+        "parentId": "Group"
+      },
+      {
+        "id": "Leaf2",
+        "width": 70,
+        "height": 35,
+        "parentId": "Group"
+      },
+      {
+        "id": "Input",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "Output",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "edges": [
+      {
+        "id": "ir",
+        "from": "Input",
+        "to": "Root",
+        "directed": true
+      },
+      {
+        "id": "rl",
+        "from": "Root",
+        "to": "Left",
+        "directed": true
+      },
+      {
+        "id": "rr",
+        "from": "Root",
+        "to": "Right",
+        "directed": true
+      },
+      {
+        "id": "ll",
+        "from": "Left",
+        "to": "Leaf1",
+        "directed": true
+      },
+      {
+        "id": "r2",
+        "from": "Right",
+        "to": "Leaf2",
+        "directed": true
+      },
+      {
+        "id": "lo",
+        "from": "Leaf1",
+        "to": "Output",
+        "directed": true
+      },
+      {
+        "id": "ro",
+        "from": "Leaf2",
+        "to": "Output",
+        "directed": true
+      }
+    ]
+  }
+]

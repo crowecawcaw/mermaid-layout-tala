@@ -53,6 +53,7 @@ export function placeOrdinaryNodes(graph: TalaGraph, seed: number,
   graph.halveTurnCost();
 
   const sized = new SizedOptimizer(graph, random, undefined, edgeAbductionsPresent);
+  syncHerdFences(graph);
   for (let i = Math.trunc(count / 2) + 1; i < count; i++) {
     sized.optimize(temp);
     trace?.('sized', i, graph);
@@ -62,10 +63,12 @@ export function placeOrdinaryNodes(graph: TalaGraph, seed: number,
       compactionAxis = opposite(compactionAxis);
       trace?.('sized-compaction', i, graph);
       joinDistancedClusters(graph);
+      syncHerdFences(graph);
     }
     temp *= cooling;
   }
   joinDistancedClusters(graph);
+  syncHerdFences(graph);
   for (let i = 0; i < 10; i++) {
     if (!sized.optimize(0)) break;
     trace?.('final', i, graph);
@@ -74,6 +77,22 @@ export function placeOrdinaryNodes(graph: TalaGraph, seed: number,
   for (const node of graph.nodes) {
     if (Object.is(node.topLeft!.x, -0)) node.topLeft!.x = 0;
     if (Object.is(node.topLeft!.y, -0)) node.topLeft!.y = 0;
+  }
+}
+
+/** Upstream proximity.SyncHerdFences for an ordinary placement subgraph. */
+export function syncHerdFences(graph: TalaGraph): void {
+  const positioned = graph.nodes.filter((node) => node.topLeft);
+  if (positioned.length === 0) return;
+  const left = Math.min(...positioned.map((node) => node.topLeft!.x));
+  const top = Math.min(...positioned.map((node) => node.topLeft!.y));
+  const right = Math.max(...positioned.map((node) => node.topLeft!.x + node.width));
+  const bottom = Math.max(...positioned.map((node) => node.topLeft!.y + node.height));
+  for (const node of graph.nodes) {
+    if (!node.herdAssignment || node.fixedTopLeft) continue;
+    node.herdAssignment.val = node.herdAssignment.orientation === 'Top' ? top
+      : node.herdAssignment.orientation === 'Bottom' ? bottom
+      : node.herdAssignment.orientation === 'Left' ? left : right;
   }
 }
 

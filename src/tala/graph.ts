@@ -3,6 +3,7 @@ import { distanceBetweenBoxes } from './placement-geometry.js';
 import { ConnectedNodeGap, CrossingCostWeight } from './geometry-policy.js';
 import { shapePortPolicy } from './shape-ports.js';
 import { computeLoopOffsets, type LoopOffsets } from './loop-routing.js';
+import type { HerdAssignment } from './herding.js';
 
 /** Mutable TALA graph records. References are private to one layout attempt. */
 export class TalaNode {
@@ -24,6 +25,7 @@ export class TalaNode {
   readonly children: TalaNode[] = [];
   readonly edges: TalaEdge[] = [];
   readonly nears = new Set<TalaNode>();
+  herdAssignment: HerdAssignment | undefined;
   x: number | undefined;
   y: number | undefined;
   topLeft: Point | undefined;
@@ -378,6 +380,9 @@ export class TalaGraph {
       node.y = previous.y;
       node.topLeft = previous.topLeft ? { ...previous.topLeft } : undefined;
       node.fixedTopLeft = previous.fixedTopLeft ? { ...previous.fixedTopLeft } : undefined;
+      node.herdAssignment = previous.herdAssignment ? { ...previous.herdAssignment,
+        sameSidePaired: new Set(previous.herdAssignment.sameSidePaired),
+        oppositeSidePaired: new Set(previous.herdAssignment.oppositeSidePaired) } : undefined;
       for (const near of previous.nears) {
         const copiedNear = copy.nodes.find((candidate) => candidate.id === near.id);
         if (copiedNear) node.nears.add(copiedNear);

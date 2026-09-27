@@ -95,6 +95,15 @@ export function sizedNodeEdgeLength(owner: TalaNode, graph: TalaGraph,
     }
     total += nearest;
   }
+  if (owner.herdAssignment) {
+    const { orientation, val } = owner.herdAssignment;
+    const topLeft = owner.topLeft;
+    const distance = orientation === 'Bottom' ? val - (topLeft.y + owner.height)
+      : orientation === 'Top' ? topLeft.y - val
+      : orientation === 'Left' ? topLeft.x - val
+      : val - (topLeft.x + owner.width);
+    total += distance >= 0 ? distance : graph.cellSize - distance;
+  }
   const siblings = graph.commonUncleSiblings.get(owner);
   if (siblings) total += graph.cellSize * (1 - axisScore(siblings)) * (siblings.length - 1);
   return total + flowContinuityCost(owner, turnCost);
@@ -118,7 +127,8 @@ function obstructionNodes(first: TalaNode, second: TalaNode, graph: TalaGraph): 
 
 /** Upstream placementcost.flowContinuityCost for ordinary directed edges. */
 export function flowContinuityCost(node: TalaNode, turnCost: number): number {
-  if (!node.topLeft || node.isGroup || node.edges.length < 2 || node.edges.length > 8) return 0;
+  if (!node.topLeft || node.isGroup || node.herdAssignment
+    || node.edges.length < 2 || node.edges.length > 8) return 0;
   const rays = new Map<TalaNode, { x: number; y: number; directions: number }>();
   const cx = node.topLeft.x + node.width / 2;
   const cy = node.topLeft.y + node.height / 2;

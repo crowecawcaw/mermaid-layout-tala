@@ -6,11 +6,17 @@ import { layoutFlowchart } from '../../build/src/layout.js';
 const cases = JSON.parse(readFileSync(new URL(process.argv[2] ?? './full-layout-cases.json', import.meta.url), 'utf8'));
 const expected = JSON.parse(readFileSync(new URL(process.argv[3] ?? './full-layout-expected.json', import.meta.url), 'utf8'));
 for (const [index, input] of cases.entries()) {
-  const actual = layoutFlowchart(input.nodes, input.edges, {
-    direction: input.direction,
-    strategy: 'tala',
-    seeds: [input.seed],
-  });
+  let actual;
+  try {
+    actual = layoutFlowchart(input.nodes, input.edges, {
+      direction: input.direction,
+      strategy: 'tala',
+      seeds: [input.seed],
+    });
+  } catch (error) {
+    process.stdout.write(`${input.name}: ERROR ${error instanceof Error ? error.stack : error}\n`);
+    continue;
+  }
   const target = expected[index];
   const anchor = target.nodes[0];
   const actualAnchor = actual.nodes.find((node) => node.id === anchor.id);
