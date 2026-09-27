@@ -98,7 +98,11 @@ Go's 2/3 alignment reward for a chain endpoint. The three-child
 top-to-bottom case now matches all six final node boxes after the compound
 `Equidistance` pass reproduces Go's ordered child and container moves. Four
 routes still differ. Most four-child cases and
-other compound directions remain unmatched.
+other compound directions remain unmatched. Initializing an ordinary component
+now traverses near-linked siblings in upstream breadth-first order. The pinned
+four-child near/common-uncle placement fixture consequently matches Go's full
+ordinary stage; the public compound case still has a seven-pixel interior
+offset and a different parent placement.
 
 The complete Go pipeline oracle now covers ten small flat graphs. Relative
 node positions, sizes, and complete edge routes match exactly in all ten: a

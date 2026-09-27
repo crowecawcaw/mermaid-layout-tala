@@ -74,6 +74,11 @@ function reachableBreadthFirst(start: TalaNode): TalaNode[] {
         queue.push(adjacent);
       }
     }
+    for (const near of [...node.nears].sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0)) {
+      if (near.parent !== start.parent || visited.has(near)) continue;
+      visited.add(near);
+      queue.push(near);
+    }
   }
   return queue;
 }
