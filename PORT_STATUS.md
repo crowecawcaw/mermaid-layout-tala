@@ -87,8 +87,9 @@ Container abduction scoring, table-column costs, tree-edge exclusions, complete
 gap and equidistance branches, and general compound placement remain incomplete.
 
 The generated compound oracle now covers twelve more container chains with two,
-three, and four children in all four directions. The two-child top-to-bottom and
-left-to-right cases match all node boxes and routes. The placement port now
+three, and four children in all four directions. The two-child top-to-bottom,
+left-to-right, and right-to-left cases match all node boxes and routes. The
+placement port now
 distinguishes Go's nil edge-abduction slice from a present empty slice when
 evaluating local quarter-turn transposes. Its three-child interior matches
 the pinned Go placement stage. The ordinary sibling branch of `SwapStuff`
@@ -111,6 +112,10 @@ evaluates the forward move and reverse symmetry recovery before validating
 overlap and wrapping the container. A pinned Go stage fixture verifies all
 seven boxes after `GapNormalization`. The completed public result still differs
 by one pixel after Go's route-dependent `Dejitter`, and all six routes differ.
+The right-to-left two-child case previously diverged at `TransposeAll`:
+upstream selects the owning container as the moving unit and rejects the
+rotation because it would also carry a stationary child. The TypeScript
+container-aware selection now reproduces that stage and its final routes.
 
 The complete Go pipeline oracle now covers ten small flat graphs. Relative
 node positions, sizes, and complete edge routes match exactly in all ten: a

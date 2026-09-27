@@ -32,7 +32,15 @@ export function transposeNode(graph: TalaGraph, node: TalaNode): boolean {
     const sideB = reachableSide(b, node);
     if (sideA.length < sideB.length) center = b;
   }
-  const moving = reachableSide(node, center);
+  // With no edge abduction, Go rotates the direct child of the nearest
+  // shared container, not the original endpoint. Rotating that container
+  // would also carry a stationary neighbor inside it, so reject that case.
+  const other = neighbors.length === 2
+    ? neighbors.find((neighbor) => neighbor !== center)! : center;
+  const ancestor = sharedAncestor(node, other);
+  const start = directChildWithin(node, ancestor);
+  const moving = reachableSide(start, center);
+  if (moving.some((item) => center.isDescendantOf(item))) return false;
   if (moving.some((item) => item.fixedTopLeft)) return false;
   const before = snapshot(graph);
   let bestScore = edgeLength(graph);
@@ -70,6 +78,21 @@ function reachableSide(start: TalaNode, blocked: TalaNode): TalaNode[] {
     }
   }
   return result;
+}
+
+function sharedAncestor(first: TalaNode, second: TalaNode): TalaNode | null {
+  const ancestors = new Set<TalaNode>();
+  for (let current = first.parent; current; current = current.parent) ancestors.add(current);
+  for (let current = second.parent; current; current = current.parent) {
+    if (ancestors.has(current)) return current;
+  }
+  return null;
+}
+
+function directChildWithin(node: TalaNode, ancestor: TalaNode | null): TalaNode {
+  let current = node;
+  while (current.parent !== ancestor && current.parent) current = current.parent;
+  return current;
 }
 
 function edgeLength(graph: TalaGraph): number {
