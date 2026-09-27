@@ -15,7 +15,8 @@ export function buildFlatOVG(nodes: readonly OVGFlatNode[],
   tunnelEdges: OVGTunnelEdge[]; sweepEdges: OVGSweepEdge[]; edges: OVGSweepEdge[] } {
   const vertices = buildFlatOVGVertices(nodes, edges);
   const tunnelEdges = addFlatOVGTunnels(nodes, edges, vertices);
-  const sweepEdges = connectOVGSweepNodes(nodes, vertices);
+  const sweepEdges = connectOVGSweepNodes(nodes.map((node) => ({ ...node,
+    container: node.isGroup === true })), vertices);
   return { vertices, tunnelEdges, sweepEdges, edges: [...tunnelEdges, ...sweepEdges] };
 }
 
@@ -66,7 +67,7 @@ export function buildFlatOVGVertices(nodes: readonly OVGFlatNode[],
   // port-clearance and two-owner visibility checks.
   for (const point of ovgPortGridIntersections(nodes)) add(point);
 
-  const near = (point: Point): boolean => nodes.some((box) =>
+  const near = (point: Point): boolean => nodes.some((box) => !box.isGroup &&
     box.x - 20 <= point.x && point.x <= box.x + box.width + 20
     && box.y - 20 <= point.y && point.y <= box.y + box.height + 20);
   const intersects = (box: OVGFlatNode, from: Point, to: Point): boolean => {
@@ -84,7 +85,8 @@ export function buildFlatOVGVertices(nodes: readonly OVGFlatNode[],
         aligned = true;
         if (port.x === point.x && (port.x === owner.x || port.x === owner.x + owner.width)) continue;
         if (port.y === point.y && (port.y === owner.y || port.y === owner.y + owner.height)) continue;
-        if (nodes.every((blocker) => blocker.id === owner.id || !intersects(blocker, port, point))) {
+        if (nodes.every((blocker) => blocker.id === owner.id || blocker.isGroup
+          || !intersects(blocker, port, point))) {
           return true;
         }
       }
@@ -126,6 +128,13 @@ export function buildFlatOVGVertices(nodes: readonly OVGFlatNode[],
 
   const allPortKeys = new Map([...ports].map(([id, list]) =>
     [id, new Set(list.map((port) => `${port.x},${port.y}`))]));
+  const isDescendantOf = (node: OVGFlatNode, ancestor: OVGFlatNode): boolean => {
+    if (node.id === ancestor.id) return true;
+    for (let parentId = node.parentId; parentId; parentId = byId.get(parentId)?.parentId) {
+      if (parentId === ancestor.id) return true;
+    }
+    return false;
+  };
   const passesAllowingPort = (box: OVGFlatNode, from: Point, to: Point,
     direction: OVGPortDirection): boolean => {
     const outward = direction === 'top' && from.x === to.x && from.y > to.y
@@ -149,7 +158,8 @@ export function buildFlatOVGVertices(nodes: readonly OVGFlatNode[],
             { x: tl.x - 20 * i, y: port.y }, { x: br.x + 20 * i, y: port.y },
           ];
           for (const point of boundary) {
-            if (nodes.some((box) => passesAllowingPort(box, port, point, direction))) continue;
+            if (nodes.some((box) => passesAllowingPort(box, port, point, direction)
+              && !(box.isGroup && isDescendantOf(node, box)))) continue;
             if (!near(point)) { add(point); added = true; }
           }
         }

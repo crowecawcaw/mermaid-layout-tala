@@ -81,6 +81,24 @@ export function completeFlatOVG(nodes: readonly OVGFlatNode[],
   graph.edges.push(...centerEdges);
   const vertices = graph.vertices.filter((vertex) => (adjacent.get(vertex)?.length ?? 0) > 0);
 
+  // mapNodesToContainer uses the deepest containing group, including its
+  // boundary. Route search uses this ownership to avoid unrelated containers
+  // and to price a path that leaves its endpoints' shared container.
+  const byId = new Map(nodes.map((node) => [node.id, node]));
+  const depth = (node: OVGFlatNode): number => {
+    let result = 0;
+    for (let parent = node.parentId; parent; parent = byId.get(parent)?.parentId) result++;
+    return result;
+  };
+  const containers = nodes.filter((node) => node.isGroup)
+    .sort((a, b) => depth(b) - depth(a));
+  for (const vertex of vertices) {
+    const owner = containers.find((node) => node.x <= vertex.x
+      && vertex.x <= node.x + node.width && node.y <= vertex.y
+      && vertex.y <= node.y + node.height);
+    if (owner) vertex.containerId = owner.id;
+  }
+
   for (const [owner, nodePorts] of ports) for (const port of nodePorts) {
     const seen = new Set<OVGSweepVertex>([port]);
     const queue = (adjacent.get(port) ?? []).filter((vertex) =>

@@ -132,6 +132,17 @@ function searchSingleEdge(graph: OVGFlatRoutingGraph,
   target: OVGSweepVertex): SearchInternal {
   const gap = boxGap(sourceNode, targetNode);
   const byId = new Map(nodes.map((node) => [node.id, node]));
+  const descendantOf = (nodeId: string | undefined, ancestorId: string | undefined): boolean => {
+    if (!nodeId || !ancestorId) return false;
+    for (let id: string | undefined = nodeId; id; id = byId.get(id)?.parentId) {
+      if (id === ancestorId) return true;
+    }
+    return false;
+  };
+  const sourceContainer = sourceNode.parentId;
+  const targetContainer = targetNode.parentId;
+  const endpointsRelated = descendantOf(sourceNode.id, targetNode.id)
+    || descendantOf(targetNode.id, sourceNode.id);
   const maxLength = Math.max(60, ...edges.map((edge) =>
     boxGap(byId.get(edge.from)!, byId.get(edge.to)!)));
   const turnCost = 0.125 * edges.length * maxLength;
@@ -198,6 +209,12 @@ function searchSingleEdge(graph: OVGFlatRoutingGraph,
         if (!someDirection(targetPort.directions, (direction) =>
           validPortStep(direction, adjacent, current, overlap))) continue;
       }
+      if (current !== source && adjacent !== target
+        && !adjacent.owners?.some((owner) => owner.node === sourceNode.id
+          || owner.node === targetNode.id)
+        && adjacent.containerId
+        && !descendantOf(sourceContainer, adjacent.containerId)
+        && !descendantOf(targetContainer, adjacent.containerId)) continue;
       if (adjacent !== target && current !== source
         && adjacent.x !== current.x && adjacent.y !== current.y) continue;
       if (adjacent.owners?.some((owner) => owner.node === sourceNode.id)
@@ -212,6 +229,9 @@ function searchSingleEdge(graph: OVGFlatRoutingGraph,
       } else {
         step = edge.distance;
       }
+      if (sourceContainer && sourceContainer === targetContainer && !endpointsRelated
+        && adjacent.containerId !== sourceContainer
+        && current.containerId !== adjacent.containerId) step += turnCost * 4;
       if (sharesOwner(current, adjacent)) step += turnCost * 4;
       if (adjacent === target) {
         step = duplicateTarget.has(key(current)) ? 10_000_000 : 1;

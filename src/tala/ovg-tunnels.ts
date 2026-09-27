@@ -56,6 +56,8 @@ export function addFlatOVGTunnels(nodes: readonly OVGFlatNode[],
       }];
       for (const blocker of nodes) {
         if (blocker.id === node.id || blocker.id === other.id) continue;
+        if (relatedByContainment(blocker, node, byId)
+          || relatedByContainment(blocker, other, byId)) continue;
         if (blocksEntireSpan(blocker, node, other, horizontal)) { ranges = []; break; }
         const between = horizontal
           ? node.x < blocker.x && blocker.x < other.x
@@ -100,6 +102,17 @@ export function addFlatOVGTunnels(nodes: readonly OVGFlatNode[],
     }
   }
   return result;
+}
+
+function relatedByContainment(a: OVGFlatNode, b: OVGFlatNode,
+  byId: ReadonlyMap<string, OVGFlatNode>): boolean {
+  const descendantOf = (child: OVGFlatNode, ancestor: OVGFlatNode): boolean => {
+    for (let parent = child.parentId; parent; parent = byId.get(parent)?.parentId) {
+      if (parent === ancestor.id) return true;
+    }
+    return false;
+  };
+  return descendantOf(a, b) || descendantOf(b, a);
 }
 
 function blocksEntireSpan(blocker: OVGFlatNode, a: OVGFlatNode, b: OVGFlatNode,

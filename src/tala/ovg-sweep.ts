@@ -9,6 +9,7 @@ export interface OVGSweepObstacle {
   width: number;
   height: number;
   container?: boolean;
+  parentId?: string;
   fixedOverlap?: boolean;
 }
 
@@ -23,6 +24,7 @@ export interface OVGSweepVertex extends Point {
   center?: boolean;
   tunnel?: boolean;
   nearPortOwners?: string[];
+  containerId?: string;
   index?: number;
 }
 export interface OVGSweepEdge { from: Point; to: Point }
@@ -32,6 +34,7 @@ export function connectOVGSweepNodes(obstacles: readonly OVGSweepObstacle[],
   const horizontal = new Map<number, OVGSweepVertex[]>();
   const vertical = new Map<number, OVGSweepVertex[]>();
   const ports = new Map<string, Set<string>>();
+  const obstaclesById = new Map(obstacles.map((node) => [node.id, node]));
   for (const vertex of vertices) {
     for (const owner of vertex.owners ?? []) {
       let points = ports.get(owner.node);
@@ -55,7 +58,7 @@ export function connectOVGSweepNodes(obstacles: readonly OVGSweepObstacle[],
       let searchStart = 0;
       for (let i = 0; i < sorted.length - 1; i++) {
         const from = sorted[i]!, to = sorted[i + 1]!;
-        if (misdirectedPortPair(from, to, isHorizontal)) continue;
+        if (misdirectedPortPair(from, to, isHorizontal, obstaclesById)) continue;
         let clear = true;
         for (let j = searchStart; j < candidates.length; j++) {
           const box = candidates[j]!;
@@ -90,14 +93,25 @@ function push(map: Map<number, OVGSweepVertex[]>, key: number, vertex: OVGSweepV
 function pointKey(point: Point): string { return `${point.x},${point.y}`; }
 
 function misdirectedPortPair(from: OVGSweepVertex, to: OVGSweepVertex,
-  horizontal: boolean): boolean {
+  horizontal: boolean, obstacles: ReadonlyMap<string, OVGSweepObstacle>): boolean {
   if (!from.owners?.length || !to.owners?.length) return false;
   for (const first of from.owners) for (const second of to.owners) {
     if (first.node === second.node) return false;
+    if (isDescendant(first.node, second.node, obstacles)
+      || isDescendant(second.node, first.node, obstacles)) return false;
     if (first.directions.includes(horizontal ? 'right' : 'bottom')
       && second.directions.includes(horizontal ? 'left' : 'top')) return false;
   }
   return true;
+}
+
+function isDescendant(nodeId: string, ancestorId: string,
+  obstacles: ReadonlyMap<string, OVGSweepObstacle>): boolean {
+  for (let parent = obstacles.get(nodeId)?.parentId; parent;
+    parent = obstacles.get(parent)?.parentId) {
+    if (parent === ancestorId) return true;
+  }
+  return false;
 }
 
 function passesThroughAllowingPorts(box: OVGSweepObstacle, from: OVGSweepVertex,

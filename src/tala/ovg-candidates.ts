@@ -9,6 +9,8 @@ export interface OVGCandidateNode {
   height: number;
   shape?: string;
   numColumns?: number;
+  isGroup?: boolean;
+  parentId?: string;
 }
 
 interface NodePorts { groups: Point[][]; all: Point[] }
@@ -49,7 +51,7 @@ function portIntersections(nodes: readonly OVGCandidateNode[],
     if (portSets.some((ports) => ports.all.some((port) =>
       port.x === x && Math.abs(port.y - y) <= 20
       || port.y === y && Math.abs(port.x - x) <= 20))) continue;
-    if (nodes.some((node) => pointNearNode(candidate, node, 20))) continue;
+    if (nodes.some((node) => !node.isGroup && pointNearNode(candidate, node, 20))) continue;
     const alignedOwners = nodes.map((_node, index) => index).filter((index) =>
       portSets[index]!.all.some((port) => port.x === x || port.y === y));
     let visibleOwners = 0;
@@ -59,7 +61,7 @@ function portIntersections(nodes: readonly OVGCandidateNode[],
         if (port.x !== x && port.y !== y) return false;
         if (port.x === x && (port.x === owner.x || port.x === owner.x + owner.width)) return false;
         if (port.y === y && (port.y === owner.y || port.y === owner.y + owner.height)) return false;
-        return nodes.every((blocker, blockerIndex) => blockerIndex === index
+        return nodes.every((blocker, blockerIndex) => blockerIndex === index || blocker.isGroup
           || !segmentPassesThroughNode(port, candidate, blocker));
       });
       if (visible) visibleOwners++;

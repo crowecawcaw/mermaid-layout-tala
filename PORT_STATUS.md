@@ -198,6 +198,14 @@ construction, postprocessing, and full resource accounting are ported.
 The TypeScript OVG construction now enforces upstream's one-million
 intersection-candidate, 200,000-node, and 500,000-edge limits. Its separate
 work-unit budgets and atomic cancellation behavior remain unported.
+For two generated compound chains, a new Go routing oracle pins the container
+ports, port-grid intersections, boundary vertices, tunnel edges, visibility
+sweep, completed OVG counts, and all three ordinary route flavors. The
+TypeScript stages match their vertex and edge coordinates, selected path
+points, and route costs exactly. This includes ancestor port connections,
+container-aware tunnel blockers, and Go's penalty for leaving an endpoints'
+shared container. The public compound path still uses the older visibility
+router until compound route cleanup and broader cases are verified.
 
 A separate set of 24 generated branching trees exercises deeper and uneven
 structures. The TypeScript geometry matches the upstream node-placement stage
@@ -227,9 +235,9 @@ Twelve generated compound chain cases now provide a wider complete-pipeline
 comparison across four directions and two to four children. The Go
 `GapNormalization` branch that pulls a child toward its padded container wall
 is translated and matches the upward and downward stage traces. The complete
-top-down and left-to-right two-child cases match all node geometry and route
-points. The bottom-up two-child case has a one-pixel node difference introduced
-after placement by route-dependent `Dejitter`. The remaining generated cases
-diverge at `NodePlacement`: the upstream engine uses a different interior
-ordering for three and four children, so the recursive scope placement still
-needs to carry more of the original compound topology into preprocessing.
+top-down, left-to-right, and right-to-left two-child cases match all node
+geometry and route points. The bottom-up two-child case has a one-pixel node
+difference introduced after placement by route-dependent `Dejitter`.
+Additional three- and four-child cases now match upstream geometry through
+placement and alignment as described above; final routes and remaining
+route-dependent adjustments still need work.
