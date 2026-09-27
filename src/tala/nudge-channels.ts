@@ -277,14 +277,23 @@ function segmentsIntersect(a: Point, b: Point, c: Point, d: Point): boolean {
   return (abC < 0) !== (abD < 0) && (cdA < 0) !== (cdB < 0);
 }
 function segmentClear(nodes: readonly PositionedNode[], edge: PositionedEdge, a: Point, b: Point): boolean {
+  const byId = new Map(nodes.map((node) => [node.id, node]));
+  const isAncestor = (ancestor: string, member: string): boolean => {
+    for (let parent = byId.get(member)?.parentId; parent; parent = byId.get(parent)?.parentId)
+      if (parent === ancestor) return true;
+    return false;
+  };
   for (const node of nodes) {
-    if (node.id === edge.from || node.id === edge.to) continue;
+    if (node.id !== edge.from && node.id !== edge.to
+      && (isAncestor(node.id, edge.from) || isAncestor(node.id, edge.to))) continue;
     const left = node.x - node.width / 2, right = left + node.width;
     const top = node.y - node.height / 2, bottom = top + node.height;
-    if (a.x === b.x && a.x > left && a.x < right
-      && Math.max(a.y, b.y) > top && Math.min(a.y, b.y) < bottom) return false;
-    if (a.y === b.y && a.y > top && a.y < bottom
-      && Math.max(a.x, b.x) > left && Math.min(a.x, b.x) < right) return false;
+    if (a.x === b.x && a.x > left + epsilon && a.x < right - epsilon
+      && Math.max(a.y, b.y) > top + epsilon
+      && Math.min(a.y, b.y) < bottom - epsilon) return false;
+    if (a.y === b.y && a.y > top + epsilon && a.y < bottom - epsilon
+      && Math.max(a.x, b.x) > left + epsilon
+      && Math.min(a.x, b.x) < right - epsilon) return false;
   }
   return true;
 }

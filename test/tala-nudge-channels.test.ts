@@ -45,7 +45,19 @@ describe('TALA channel nudging', () => {
     const nodes = [node('container', 0, 200, 200, 300),
       node('from', 50, 300, 50, 50), node('to', 400, 300, 50, 50),
       node('ceiling', 0, 0, 500, 169)];
+    nodes[1]!.parentId = 'container';
     const route = edge('gap', [[75, 300], [75, 179], [425, 179], [425, 300]]);
     expect(nudgeEdgeChannels(nodes, [route])[0]!.points[1]!.y).toBe(179);
+  });
+
+  it('shortens a route while retaining a comfortable node gap', () => {
+    const nodes = [node('container', 0, 200, 200, 300),
+      node('from', 50, 300, 50, 50), node('to', 400, 300, 50, 50),
+      node('ceiling', 0, 0, 500, 130)];
+    nodes[1]!.parentId = 'container';
+    const route = edge('gap', [[75, 300], [75, 140], [425, 140], [425, 300]]);
+    const result = nudgeEdgeChannels(nodes, [route])[0]!;
+    expect(result.points[1]!.y).toBeGreaterThan(140);
+    expect(200 - result.points[1]!.y).toBeGreaterThanOrEqual(40 - 1e-6);
   });
 });
