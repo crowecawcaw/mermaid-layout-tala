@@ -147,6 +147,11 @@ match all twelve Go stage traces. All twelve generated DAGs and six mixed-edge
 fixtures match completed Go node boxes and routes. The mixed-edge traces also
 pin the Go crossing rule at a route bend, which permits a balancing move in the
 source-arrow feedback case.
+The adjacent-side `SwapEdgePorts` branch now follows Go's port exchange,
+intersection offset, rollback, and local S-to-L refinement for longer routes.
+A pinned Go case exercises the accepted rewrite and another checks rollback.
+Go's straight-tunnel refinement for three- and four-point routes remains
+unported.
 The DAG preparation branch now expands undirected edges, reverses feedback
 arcs, and merges repeated edges with rank weights. Six mixed-direction and
 parallel-edge fixtures match upstream's hierarchy stage and complete output.

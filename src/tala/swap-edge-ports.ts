@@ -2,9 +2,8 @@ import type { Point, PositionedEdge, PositionedNode } from '../layout.js';
 
 type Side = 'top' | 'bottom' | 'left' | 'right';
 
-/** The same-side branch of routing.SwapAllEdgePorts. It uncrosses the first
- * two legs at a node by exchanging two compatible ports and approach lanes. */
-export function swapEdgePortsOnSameSide(nodes: readonly PositionedNode[],
+/** Port of routing.SwapAllEdgePorts for ordinary orthogonal routes. */
+export function swapAllEdgePorts(nodes: readonly PositionedNode[],
   inputEdges: readonly PositionedEdge[]): PositionedEdge[] {
   const edges = inputEdges.map((edge) => ({ ...edge,
     points: edge.points.map((point) => ({ ...point })) }));
@@ -52,8 +51,98 @@ export function swapEdgePortsOnSameSide(nodes: readonly PositionedNode[],
         }
       }
     }
+    const topBottom = [...sides.get('top') ?? [], ...sides.get('bottom') ?? []];
+    const leftRight = [...sides.get('left') ?? [], ...sides.get('right') ?? []];
+    for (const a of topBottom) for (const b of leftRight) {
+      if (a.points.length <= 2) break;
+      if (b.points.length <= 2 || !canSwap(a, b, node.id, ports)) continue;
+      const [a1, a2, a3] = pointsAt(a, node.id);
+      const [b1, b2, b3] = pointsAt(b, node.id);
+      const intersection = orthogonalIntersection(a2, a3, b2, b3);
+      if (!intersection) continue;
+      const aBefore = a.points.map((point) => ({ ...point }));
+      const bBefore = b.points.map((point) => ({ ...point }));
+      swapPoints(a1, b1); swapPoints(a2, b2);
+      const aInsert = { ...intersection };
+      a.points.splice(a.from === node.id ? 2 : a.points.length - 2, 0, aInsert);
+      if (aInsert.x === a2.x) { aInsert.x += 2.5; a2.x += 2.5; }
+      else { aInsert.y -= 2.5; a2.y -= 2.5; }
+      const bInsert = { ...intersection };
+      b.points.splice(b.from === node.id ? 2 : b.points.length - 2, 0, bInsert);
+      if (bInsert.x === b2.x) { bInsert.x += 2.5; b2.x += 2.5; }
+      else { bInsert.y -= 2.5; b2.y -= 2.5; }
+      const aImproved = refineAfterAdjacentSwap(nodes, a);
+      const bImproved = refineAfterAdjacentSwap(nodes, b);
+      if (!aImproved && !bImproved) {
+        a.points = aBefore; b.points = bBefore;
+      }
+    }
   }
   return edges;
+}
+
+function orthogonalIntersection(a: Point, b: Point, c: Point, d: Point): Point | undefined {
+  const between = (value: number, first: number, last: number) =>
+    Math.min(first, last) <= value && value <= Math.max(first, last);
+  if (a.y === b.y && c.x === d.x && between(c.x, a.x, b.x)
+    && between(a.y, c.y, d.y)) return { x: c.x, y: a.y };
+  if (a.x === b.x && c.y === d.y && between(a.x, c.x, d.x)
+    && between(c.y, a.y, b.y)) return { x: a.x, y: c.y };
+  return undefined;
+}
+
+function swapPoints(a: Point, b: Point): void {
+  [a.x, b.x] = [b.x, a.x];
+  [a.y, b.y] = [b.y, a.y];
+}
+
+function refineAfterAdjacentSwap(nodes: readonly PositionedNode[], edge: PositionedEdge): boolean {
+  if (edge.from === edge.to || edge.points.length <= 2
+    || edge.fromTableColumnIndex !== undefined || edge.toTableColumnIndex !== undefined) return false;
+  // Go attempts a straight tunnel first for complete three- and four-point
+  // routes. The safe local S-to-L rewrite applies to a longer first section.
+  if (edge.points.length <= 4) return false;
+  const first = edge.points.slice(0, 4);
+  if (isUShaped(first)) return false;
+  const bend = first[0]!.x === first[1]!.x
+    ? { x: first[1]!.x, y: first[3]!.y }
+    : { x: first[3]!.x, y: first[1]!.y };
+  if (!clearRefinement(nodes, edge, first[0]!, bend, first[3]!)) return false;
+  edge.points.splice(1, 3, bend);
+  return true;
+}
+
+function isUShaped(points: readonly Point[]): boolean {
+  if (points.length !== 4) return false;
+  if (points[0]!.x === points[1]!.x) return points[1]!.y === points[2]!.y
+    && Math.sign(points[0]!.y - points[1]!.y)
+      === Math.sign(points[3]!.y - points[2]!.y);
+  return points[1]!.x === points[2]!.x
+    && Math.sign(points[0]!.x - points[1]!.x)
+      === Math.sign(points[3]!.x - points[2]!.x);
+}
+
+function clearRefinement(nodes: readonly PositionedNode[], edge: PositionedEdge,
+  a: Point, bend: Point, d: Point): boolean {
+  const byId = new Map(nodes.map((node) => [node.id, node]));
+  const parentOfEndpoint = (containerId: string, endpointId: string): boolean => {
+    for (let id = byId.get(endpointId)?.parentId; id; id = byId.get(id)?.parentId)
+      if (id === containerId) return true;
+    return false;
+  };
+  for (const node of nodes) {
+    if (node.id === edge.from || node.id === edge.to
+      || parentOfEndpoint(node.id, edge.from) || parentOfEndpoint(node.id, edge.to)) continue;
+    const left = node.x - node.width / 2 - 10, right = node.x + node.width / 2 + 10;
+    const top = node.y - node.height / 2 - 10, bottom = node.y + node.height / 2 + 10;
+    const blocked = (p: Point, q: Point): boolean => p.x === q.x
+      ? left <= p.x && p.x <= right && Math.max(p.y, q.y) >= top
+        && Math.min(p.y, q.y) <= bottom
+      : top <= p.y && p.y <= bottom && Math.max(p.x, q.x) >= left
+        && Math.min(p.x, q.x) <= right;
+    if (blocked(a, bend) || blocked(bend, d)) return false;
+  }
+  return true;
 }
 
 function pointsAt(edge: PositionedEdge, nodeId: string): [Point, Point, Point] {

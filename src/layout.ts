@@ -30,7 +30,7 @@ import { balanceSymmetry } from './tala/balance-symmetry.js';
 import { directOrdinaryGraph, type DirectionTransforms } from './tala/direct.js';
 import { combineSubgraphs } from './tala/combine-subgraphs.js';
 import { dejitterTreeRoutes } from './tala/dejitter.js';
-import { swapEdgePortsOnSameSide } from './tala/swap-edge-ports.js';
+import { swapAllEdgePorts } from './tala/swap-edge-ports.js';
 import { nudgeEdgeChannels } from './tala/nudge-channels.js';
 import { discoverFlatHierarchy, placeFlatHierarchy } from './tala/hierarchy-flat.js';
 
@@ -313,7 +313,7 @@ function layoutFlatFlowchart(
     positionedEdges = routeWithConsumedEdges(positionedNodes, edges, direction,
       sequenceDefiningEdgeIds, treePaths, false, useOrdinary, routingHierarchy);
     if (routingHierarchy) {
-      positionedEdges = swapEdgePortsOnSameSide(positionedNodes, positionedEdges);
+      positionedEdges = swapAllEdgePorts(positionedNodes, positionedEdges);
       positionedEdges = balanceRouteRanges(positionedNodes, positionedEdges);
       positionedEdges = nudgeEdgeChannels(positionedNodes, positionedEdges);
     }

@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { routeGraphEdges } from '../src/route.js';
 import { balanceRouteRanges } from '../src/tala/edge-balance-ranges.js';
-import { swapEdgePortsOnSameSide } from '../src/tala/swap-edge-ports.js';
+import { swapAllEdgePorts } from '../src/tala/swap-edge-ports.js';
 import { nudgeEdgeChannels } from '../src/tala/nudge-channels.js';
 import { dejitterTreeRoutes } from '../src/tala/dejitter.js';
 import type { LayoutDirection, LayoutEdge, PositionedNode } from '../src/layout.js';
@@ -27,7 +27,7 @@ describe('hierarchy route stages against Go', () => {
       width, height, rank: before.levels[id]!, order: 0 }));
     const edges = input.edges.map((edge) => ({ ...edge, points: before.edges[edge.id]!
       .map(([x, y]) => ({ x, y })), x: 0, y: 0 }));
-    const actual = swapEdgePortsOnSameSide(nodes, edges);
+    const actual = swapAllEdgePorts(nodes, edges);
     for (const edge of input.edges) expect(actual.find((item) => item.id === edge.id)!.points
       .map((point) => [point.x, point.y])).toEqual(after.edges[edge.id]);
   });
@@ -117,7 +117,7 @@ describe('hierarchy route stages against Go', () => {
       width, height, rank: routed.levels[id]!, order: 0 }));
     const edges = input.edges.map((edge) => ({ ...edge, points: routed.edges[edge.id]!
       .map(([x, y]) => ({ x, y })), x: 0, y: 0 }));
-    const actual = swapEdgePortsOnSameSide(nodes, edges);
+    const actual = swapAllEdgePorts(nodes, edges);
     for (const edge of input.edges) expect(actual.find((item) => item.id === edge.id)!.points
       .map((point) => [point.x, point.y])).toEqual(swapped.edges[edge.id]);
   });
