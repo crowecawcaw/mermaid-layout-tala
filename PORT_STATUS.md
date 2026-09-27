@@ -148,10 +148,10 @@ fixtures match completed Go node boxes and routes. The mixed-edge traces also
 pin the Go crossing rule at a route bend, which permits a balancing move in the
 source-arrow feedback case.
 The adjacent-side `SwapEdgePorts` branch now follows Go's port exchange,
-intersection offset, rollback, and local S-to-L refinement for longer routes.
-A pinned Go case exercises the accepted rewrite and another checks rollback.
-Go's straight-tunnel refinement for three- and four-point routes remains
-unported.
+intersection offset, rollback, local S-to-L refinement, and straight-tunnel
+refinement for short routes. Two pinned Go cases exercise both accepted
+rewrites, and a short case checks rollback. Compound-specific tunnel geometry
+and the broader `refineEdge` stage still need parity coverage.
 The DAG preparation branch now expands undirected edges, reverses feedback
 arcs, and merges repeated edges with rank weights. Six mixed-direction and
 parallel-edge fixtures match upstream's hierarchy stage and complete output.

@@ -71,8 +71,8 @@ export function swapAllEdgePorts(nodes: readonly PositionedNode[],
       b.points.splice(b.from === node.id ? 2 : b.points.length - 2, 0, bInsert);
       if (bInsert.x === b2.x) { bInsert.x += 2.5; b2.x += 2.5; }
       else { bInsert.y -= 2.5; b2.y -= 2.5; }
-      const aImproved = refineAfterAdjacentSwap(nodes, a);
-      const bImproved = refineAfterAdjacentSwap(nodes, b);
+      const aImproved = refineAfterAdjacentSwap(nodes, edges, a);
+      const bImproved = refineAfterAdjacentSwap(nodes, edges, b);
       if (!aImproved && !bImproved) {
         a.points = aBefore; b.points = bBefore;
       }
@@ -96,11 +96,14 @@ function swapPoints(a: Point, b: Point): void {
   [a.y, b.y] = [b.y, a.y];
 }
 
-function refineAfterAdjacentSwap(nodes: readonly PositionedNode[], edge: PositionedEdge): boolean {
+function refineAfterAdjacentSwap(nodes: readonly PositionedNode[], edges: readonly PositionedEdge[],
+  edge: PositionedEdge): boolean {
   if (edge.from === edge.to || edge.points.length <= 2
     || edge.fromTableColumnIndex !== undefined || edge.toTableColumnIndex !== undefined) return false;
-  // Go attempts a straight tunnel first for complete three- and four-point
-  // routes. The safe local S-to-L rewrite applies to a longer first section.
+  if (edge.points.length === 3 && isLShaped(edge.points)
+    || edge.points.length === 4 && !isUShaped(edge.points)) {
+    return makeStraightTunnel(nodes, edges, edge);
+  }
   if (edge.points.length <= 4) return false;
   const first = edge.points.slice(0, 4);
   if (isUShaped(first)) return false;
@@ -110,6 +113,94 @@ function refineAfterAdjacentSwap(nodes: readonly PositionedNode[], edge: Positio
   if (!clearRefinement(nodes, edge, first[0]!, bend, first[3]!)) return false;
   edge.points.splice(1, 3, bend);
   return true;
+}
+
+function isLShaped(points: readonly Point[]): boolean {
+  if (points.length !== 3) return false;
+  const vertical = points[0]!.x === points[1]!.x;
+  const horizontal = points[1]!.y === points[2]!.y;
+  return vertical === horizontal;
+}
+
+function makeStraightTunnel(nodes: readonly PositionedNode[], edges: readonly PositionedEdge[],
+  edge: PositionedEdge): boolean {
+  const byId = new Map(nodes.map((node) => [node.id, node]));
+  const from = byId.get(edge.from), to = byId.get(edge.to);
+  if (!from || !to) return false;
+  const box = (node: PositionedNode) => ({ id: node.id, parentId: node.parentId,
+    left: node.x - node.width / 2, top: node.y - node.height / 2,
+    right: node.x + node.width / 2, bottom: node.y + node.height / 2 });
+  const a = box(from), b = box(to);
+  const horizontal = a.top <= b.bottom && a.bottom >= b.top;
+  const vertical = a.left <= b.right && a.right >= b.left;
+  if (!horizontal && !vertical) return false;
+  type Range = { start: number; end: number };
+  let ranges: Range[] = [{ start: horizontal ? Math.max(a.top, b.top)
+    : Math.max(a.left, b.left), end: horizontal ? Math.min(a.bottom, b.bottom)
+      : Math.min(a.right, b.right) }];
+  const related = (first: PositionedNode, second: PositionedNode): boolean => {
+    const ancestor = (child: PositionedNode, parent: PositionedNode): boolean => {
+      for (let id = child.parentId; id; id = byId.get(id)?.parentId)
+        if (id === parent.id) return true;
+      return false;
+    };
+    return ancestor(first, second) || ancestor(second, first);
+  };
+  for (const node of nodes) {
+    if (node.id === from.id || node.id === to.id || related(node, from) || related(node, to)) continue;
+    const blocker = box(node);
+    const blocked = horizontal
+      ? (blocker.left >= a.right && blocker.right <= b.left
+        || blocker.left >= b.right && blocker.right <= a.left)
+        && blocker.top <= Math.max(a.top, b.top)
+        && blocker.bottom >= Math.min(a.bottom, b.bottom)
+      : (blocker.top >= a.bottom && blocker.bottom <= b.top
+        || blocker.top >= b.bottom && blocker.bottom <= a.top)
+        && blocker.left <= Math.max(a.left, b.left)
+        && blocker.right >= Math.min(a.right, b.right);
+    if (blocked) return false;
+    const between = horizontal ? (a.left < blocker.left && blocker.left < b.left
+      || b.left < blocker.left && blocker.left < a.left)
+      : (a.top < blocker.top && blocker.top < b.top
+        || b.top < blocker.top && blocker.top < a.top);
+    if (!between) continue;
+    const start = horizontal ? blocker.top : blocker.left;
+    const end = horizontal ? blocker.bottom : blocker.right;
+    const next: Range[] = [];
+    for (const range of ranges) {
+      if (start <= range.start && end >= range.end) continue;
+      if (start > range.start && end < range.end) {
+        next.push({ start: range.start, end: start }, { start: end, end: range.end });
+      } else if (start <= range.start && end < range.end && end > range.start) {
+        next.push({ start: end, end: range.end });
+      } else if (start > range.start && end >= range.end && start < range.end) {
+        next.push({ start: range.start, end: start });
+      } else next.push(range);
+    }
+    ranges = next;
+  }
+  const occupied = new Set<string>();
+  for (const route of edges) {
+    if (route.from === from.id || route.to === from.id) {
+      const point = route.from === from.id ? route.points[0] : route.points.at(-1);
+      if (point) occupied.add(`${point.x},${point.y}`);
+    }
+    if (route.from === to.id || route.to === to.id) {
+      const point = route.from === to.id ? route.points[0] : route.points.at(-1);
+      if (point) occupied.add(`${point.x},${point.y}`);
+    }
+  }
+  const source = edge.points[0]!, target = edge.points.at(-1)!;
+  for (const range of ranges) for (let value = range.start + 5;
+    value <= range.end - 5; value += 5) {
+    const nextSource = horizontal ? { x: source.x, y: value } : { x: value, y: source.y };
+    const nextTarget = horizontal ? { x: target.x, y: value } : { x: value, y: target.y };
+    if (occupied.has(`${nextSource.x},${nextSource.y}`)
+      || occupied.has(`${nextTarget.x},${nextTarget.y}`)) continue;
+    edge.points = [nextSource, nextTarget];
+    return true;
+  }
+  return false;
 }
 
 function isUShaped(points: readonly Point[]): boolean {

@@ -36,4 +36,20 @@ describe('TALA adjacent-side port swaps', () => {
     ];
     expect(swapAllEdgePorts(nodes, edges)).toEqual(edges);
   });
+
+  it('matches Go when an adjacent swap opens a straight tunnel', () => {
+    const tunnelNodes: PositionedNode[] = [nodes[0]!,
+      { ...nodes[1]!, x: 130, y: -100 },
+      { ...nodes[2]!, x: 150, y: -135 }];
+    const edges = [
+      route('a', 'a', [[50, 0], [50, -50], [160, -50]]),
+      route('b', 'b', [[100, 50], [150, 50], [150, -100]]),
+    ];
+    const result = swapAllEdgePorts(tunnelNodes, edges);
+    expect(result[0]!.points).toEqual([{ x: 85, y: 50 }, { x: 85, y: -50 }]);
+    expect(result[1]!.points).toEqual([
+      { x: 50, y: 0 }, { x: 50, y: -52.5 },
+      { x: 150, y: -52.5 }, { x: 150, y: -100 },
+    ]);
+  });
 });
