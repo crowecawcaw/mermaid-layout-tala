@@ -116,6 +116,17 @@ The right-to-left two-child case previously diverged at `TransposeAll`:
 upstream selects the owning container as the moving unit and rejects the
 rotation because it would also carry a stationary child. The TypeScript
 container-aware selection now reproduces that stage and its final routes.
+The three-child left-to-right case now matches all node boxes through the
+final pre-routing alignment. Near-linked siblings remain attached to the
+compound graph after initial placement. Its alignment scorer follows Go's
+container-depth grouping when counting ray crossings, and `Equidistance`
+rejects a solo move that introduces a sibling-clearance overlap. Two pinned
+Go stage fixtures cover the resulting alignment and spacing moves. Final
+routes and the route-dependent `Dejitter` adjustments still differ.
+Carrying the same near relations through the full compound scorer also gives
+exact final node boxes for the three and four-child bottom-to-top cases and
+the three-child right-to-left case. The generated oracle now pins these node
+geometries; compound routes remain partially unmatched.
 
 The complete Go pipeline oracle now covers ten small flat graphs. Relative
 node positions, sizes, and complete edge routes match exactly in all ten: a

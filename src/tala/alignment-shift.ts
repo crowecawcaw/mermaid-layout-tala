@@ -1,7 +1,8 @@
 import type { TalaEdge, TalaGraph, TalaNode } from './graph.js';
 import { segmentIntersectsBox } from './sized-cost.js';
 import { wrapContainers } from './equidistance.js';
-import { doesOverlapAt } from './overlap.js';
+import { introducesOverlap, overlapPairs } from './overlap.js';
+export { introducesOverlap, overlapPairs } from './overlap.js';
 
 const MaxGraphSize = 30_000;
 
@@ -35,54 +36,6 @@ export function attemptAxisShift(graph: TalaGraph, edge: TalaEdge,
     node.y = y;
   }
   return valid;
-}
-
-/** Existing overlap exceptions are captured when upstream creates the stage
- * transaction. Later candidates may retain those pairs, but not add new ones. */
-export interface OverlapPairs {
-  padded: ReadonlySet<string>;
-  exact: ReadonlySet<string>;
-}
-
-export function overlapPairs(graph: TalaGraph): OverlapPairs {
-  const padded = new Set<string>(), exact = new Set<string>();
-  for (let i = 0; i < graph.nodes.length; i++) {
-    for (let j = i + 1; j < graph.nodes.length; j++) {
-      const first = graph.nodes[i]!, second = graph.nodes[j]!;
-      const key = `${i}:${j}`;
-      if (overlaps(first, second)) padded.add(key);
-      if (exactOverlap(first, second)) exact.add(key);
-    }
-  }
-  return { padded, exact };
-}
-
-export function introducesOverlap(graph: TalaGraph, existing: OverlapPairs): boolean {
-  for (let i = 0; i < graph.nodes.length; i++) {
-    for (let j = i + 1; j < graph.nodes.length; j++) {
-      const first = graph.nodes[i]!, second = graph.nodes[j]!;
-      const key = `${i}:${j}`;
-      if (!existing.padded.has(key) && overlaps(first, second)) return true;
-      if (existing.padded.has(key) && !existing.exact.has(key)
-        && exactOverlap(first, second)) return true;
-    }
-  }
-  return false;
-}
-
-function exactOverlap(first: TalaNode, second: TalaNode): boolean {
-  if (!first.topLeft || !second.topLeft) return false;
-  return first.topLeft.x < second.topLeft.x + second.width
-    && first.topLeft.x + first.width > second.topLeft.x
-    && first.topLeft.y < second.topLeft.y + second.height
-    && first.topLeft.y + first.height > second.topLeft.y;
-}
-
-function overlaps(first: TalaNode, second: TalaNode): boolean {
-  if (!first.topLeft || !second.topLeft || first.isDescendantOf(second)
-    || second.isDescendantOf(first)) return false;
-  return doesOverlapAt(first, second, first.topLeft)
-    || doesOverlapAt(second, first, second.topLeft);
 }
 
 function preservesFixedOrigins(originals: readonly { node: TalaNode; topLeft: { x: number; y: number } | undefined }[]): boolean {

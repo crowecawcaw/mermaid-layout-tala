@@ -1,6 +1,6 @@
 import type { Point } from '../layout.js';
 import { ConnectedNodeGap, NodeGap, TableNodeGap } from './geometry-policy.js';
-import type { TalaNode } from './graph.js';
+import type { TalaGraph, TalaNode } from './graph.js';
 import type { Orientation } from './placement-geometry.js';
 
 /** Upstream layoutgraph.Node.deltaTo, including ordinary label and loop spacing. */
@@ -43,6 +43,53 @@ export function doesOverlapAt(first: TalaNode, second: TalaNode, position: Point
     && position.x + first.width + delta > second.topLeft.x
     && position.y < second.topLeft.y + second.height + delta
     && position.y + first.height + delta > second.topLeft.y;
+}
+
+/** Existing clearance and exact-overlap pairs allowed by a speculative stage. */
+export interface OverlapPairs {
+  padded: ReadonlySet<string>;
+  exact: ReadonlySet<string>;
+}
+
+export function overlapPairs(graph: TalaGraph): OverlapPairs {
+  const padded = new Set<string>(), exact = new Set<string>();
+  for (let i = 0; i < graph.nodes.length; i++) {
+    for (let j = i + 1; j < graph.nodes.length; j++) {
+      const first = graph.nodes[i]!, second = graph.nodes[j]!;
+      const key = `${i}:${j}`;
+      if (overlaps(first, second)) padded.add(key);
+      if (exactOverlap(first, second)) exact.add(key);
+    }
+  }
+  return { padded, exact };
+}
+
+export function introducesOverlap(graph: TalaGraph, existing: OverlapPairs): boolean {
+  for (let i = 0; i < graph.nodes.length; i++) {
+    for (let j = i + 1; j < graph.nodes.length; j++) {
+      const first = graph.nodes[i]!, second = graph.nodes[j]!;
+      const key = `${i}:${j}`;
+      if (!existing.padded.has(key) && overlaps(first, second)) return true;
+      if (existing.padded.has(key) && !existing.exact.has(key)
+        && exactOverlap(first, second)) return true;
+    }
+  }
+  return false;
+}
+
+function exactOverlap(first: TalaNode, second: TalaNode): boolean {
+  if (!first.topLeft || !second.topLeft) return false;
+  return first.topLeft.x < second.topLeft.x + second.width
+    && first.topLeft.x + first.width > second.topLeft.x
+    && first.topLeft.y < second.topLeft.y + second.height
+    && first.topLeft.y + first.height > second.topLeft.y;
+}
+
+function overlaps(first: TalaNode, second: TalaNode): boolean {
+  if (!first.topLeft || !second.topLeft || first.isDescendantOf(second)
+    || second.isDescendantOf(first)) return false;
+  return doesOverlapAt(first, second, first.topLeft)
+    || doesOverlapAt(second, first, second.topLeft);
 }
 
 interface Margin { top: number; left: number; bottom: number; right: number }

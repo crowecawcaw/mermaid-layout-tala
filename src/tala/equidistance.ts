@@ -2,6 +2,7 @@ import { ContainerPadding } from './geometry-policy.js';
 import { TalaGraph, TalaNode } from './graph.js';
 import { ordinaryPlacementEdgeLength } from './placement-edge-length.js';
 import { sizedOrientation } from './placement-geometry.js';
+import { introducesOverlap, overlapPairs } from './overlap.js';
 
 type Axis = 'x' | 'y';
 const precision = 0.0001;
@@ -75,11 +76,13 @@ function equidistanceNode(original: TalaNode, graph: TalaGraph, axis: Axis): boo
 
 function trialMove(graph: TalaGraph, nodes: readonly TalaNode[], axis: Axis,
   delta: number, baseline: number): number | undefined {
+  const existingOverlaps = overlapPairs(graph);
   const before = graph.nodes.map((node) => ({ node, topLeft: node.topLeft
     ? { ...node.topLeft } : undefined, width: node.width, height: node.height }));
   translateWithChildren(nodes, axis, delta);
   wrapContainers(graph);
-  const cost = validGeometry(graph) ? ordinaryPlacementEdgeLength(graph) : Infinity;
+  const cost = validGeometry(graph) && !introducesOverlap(graph, existingOverlaps)
+    ? ordinaryPlacementEdgeLength(graph) : Infinity;
   for (const old of before) {
     old.node.topLeft = old.topLeft;
     old.node.width = old.width;

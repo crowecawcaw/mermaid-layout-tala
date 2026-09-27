@@ -1,5 +1,5 @@
 import type { Point, PositionedEdge } from '../layout.js';
-import type { TalaGraph } from './graph.js';
+import type { TalaGraph, TalaNode } from './graph.js';
 
 /** Port of placementcost.GraphEdgeCrossings for placement's straight center rays. */
 export function countGraphEdgeCrossings(graph: TalaGraph): number {
@@ -7,15 +7,25 @@ export function countGraphEdgeCrossings(graph: TalaGraph): number {
   for (let i = 0; i < graph.edges.length; i++) {
     const first = graph.edges[i]!;
     if (!first.from.topLeft || !first.to.topLeft) continue;
+    const firstLevel = containerLevel(first.from);
+    if (firstLevel !== containerLevel(first.to)) continue;
     for (let j = i + 1; j < graph.edges.length; j++) {
       const second = graph.edges[j]!;
       if (!second.from.topLeft || !second.to.topLeft) continue;
+      if (containerLevel(second.from) !== firstLevel
+        || containerLevel(second.to) !== firstLevel) continue;
       if (first.from === second.from || first.from === second.to
         || first.to === second.from || first.to === second.to) continue;
       if (segmentCrosses(center(first.from), center(first.to), center(second.from), center(second.to))) crossings++;
     }
   }
   return crossings;
+}
+
+function containerLevel(node: TalaNode): number {
+  let level = 0;
+  for (let parent = node.parent; parent; parent = parent.parent) level++;
+  return level;
 }
 
 function center(node: { topLeft: Point | undefined; width: number; height: number }): Point {

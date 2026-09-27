@@ -416,7 +416,8 @@ function layoutCompoundFlowchart(
     siblings.push(node);
     children.set(node.parentId, siblings);
   }
-  interface Scope { width: number; height: number; positioned: PositionedNode[]; clusters: PlacedCluster[] }
+  interface Scope { width: number; height: number; positioned: PositionedNode[];
+    clusters: PlacedCluster[]; nearPairs: Array<readonly [string, string]> }
   const active = new Set<string>();
   const placeScope = (parentId: string | undefined, direction: LayoutDirection): Scope => {
     if (parentId) {
@@ -427,7 +428,8 @@ function layoutCompoundFlowchart(
     if (parentId && siblingNodes.length === 0) {
       const empty = byId.get(parentId)!;
       active.delete(parentId);
-      return { width: empty.width, height: empty.height, positioned: [], clusters: [] };
+      return { width: empty.width, height: empty.height, positioned: [],
+        clusters: [], nearPairs: [] };
     }
     // Go abducts the current scope's boundary edges before placing nested
     // containers. Keep that projection active throughout the recursive pass.
@@ -540,6 +542,7 @@ function layoutCompoundFlowchart(
     }
     if (parentId) active.delete(parentId);
     return { width, height, positioned,
+      nearPairs: [...nested.values()].flatMap((scope) => scope.nearPairs).concat(nearPairs),
       clusters: [...nested.values()].flatMap((scope) => scope.clusters).concat(localClusters) };
   };
   const rootScope = placeScope(undefined, options.direction ?? 'TB');
@@ -550,6 +553,11 @@ function layoutCompoundFlowchart(
   if (useTala && !inputEdges.some((edge) => edge.fromTableColumnIndex !== undefined
     || edge.toTableColumnIndex !== undefined)) {
     const alignmentGraph = TalaGraph.fromFlowchart(placed, inputEdges, options.direction ?? 'TB');
+    const alignmentById = new Map(alignmentGraph.nodes.map((node) => [node.id, node]));
+    for (const [firstId, secondId] of rootScope.nearPairs) {
+      const first = alignmentById.get(firstId), second = alignmentById.get(secondId);
+      if (first && second) { first.nears.add(second); second.nears.add(first); }
+    }
     const placedById = new Map(placed.map((node) => [node.id, node]));
     for (const node of alignmentGraph.nodes) {
       const positioned = placedById.get(node.id)!;
