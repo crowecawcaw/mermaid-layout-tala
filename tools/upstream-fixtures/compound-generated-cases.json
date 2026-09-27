@@ -1,0 +1,854 @@
+[
+  {
+    "name": "chain-TB-2",
+    "direction": "TB",
+    "seed": 3,
+    "nodes": [
+      {
+        "id": "Group",
+        "width": 205,
+        "height": 155,
+        "isGroup": true
+      },
+      {
+        "id": "N0",
+        "parentId": "Group",
+        "width": 58,
+        "height": 32
+      },
+      {
+        "id": "N1",
+        "parentId": "Group",
+        "width": 70,
+        "height": 39
+      },
+      {
+        "id": "Input",
+        "width": 75,
+        "height": 43
+      },
+      {
+        "id": "Output",
+        "width": 82,
+        "height": 38
+      }
+    ],
+    "edges": [
+      {
+        "id": "entry",
+        "from": "Input",
+        "to": "N0",
+        "directed": true
+      },
+      {
+        "id": "chain1",
+        "from": "N0",
+        "to": "N1",
+        "directed": true
+      },
+      {
+        "id": "exit",
+        "from": "N1",
+        "to": "Output",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "chain-TB-3",
+    "direction": "TB",
+    "seed": 4,
+    "nodes": [
+      {
+        "id": "Group",
+        "width": 215,
+        "height": 170,
+        "isGroup": true
+      },
+      {
+        "id": "N0",
+        "parentId": "Group",
+        "width": 58,
+        "height": 32
+      },
+      {
+        "id": "N1",
+        "parentId": "Group",
+        "width": 70,
+        "height": 39
+      },
+      {
+        "id": "N2",
+        "parentId": "Group",
+        "width": 82,
+        "height": 32
+      },
+      {
+        "id": "Input",
+        "width": 75,
+        "height": 43
+      },
+      {
+        "id": "Output",
+        "width": 82,
+        "height": 38
+      }
+    ],
+    "edges": [
+      {
+        "id": "entry",
+        "from": "Input",
+        "to": "N0",
+        "directed": true
+      },
+      {
+        "id": "chain1",
+        "from": "N0",
+        "to": "N1",
+        "directed": true
+      },
+      {
+        "id": "chain2",
+        "from": "N1",
+        "to": "N2",
+        "directed": true
+      },
+      {
+        "id": "exit",
+        "from": "N2",
+        "to": "Output",
+        "directed": true
+      },
+      {
+        "id": "bypass",
+        "from": "N0",
+        "to": "Output",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "chain-TB-4",
+    "direction": "TB",
+    "seed": 5,
+    "nodes": [
+      {
+        "id": "Group",
+        "width": 225,
+        "height": 185,
+        "isGroup": true
+      },
+      {
+        "id": "N0",
+        "parentId": "Group",
+        "width": 58,
+        "height": 32
+      },
+      {
+        "id": "N1",
+        "parentId": "Group",
+        "width": 70,
+        "height": 39
+      },
+      {
+        "id": "N2",
+        "parentId": "Group",
+        "width": 82,
+        "height": 32
+      },
+      {
+        "id": "N3",
+        "parentId": "Group",
+        "width": 58,
+        "height": 39
+      },
+      {
+        "id": "Input",
+        "width": 75,
+        "height": 43
+      },
+      {
+        "id": "Output",
+        "width": 82,
+        "height": 38
+      }
+    ],
+    "edges": [
+      {
+        "id": "entry",
+        "from": "Input",
+        "to": "N0",
+        "directed": true
+      },
+      {
+        "id": "chain1",
+        "from": "N0",
+        "to": "N1",
+        "directed": true
+      },
+      {
+        "id": "chain2",
+        "from": "N1",
+        "to": "N2",
+        "directed": true
+      },
+      {
+        "id": "chain3",
+        "from": "N2",
+        "to": "N3",
+        "directed": true
+      },
+      {
+        "id": "exit",
+        "from": "N3",
+        "to": "Output",
+        "directed": true
+      },
+      {
+        "id": "bypass",
+        "from": "N0",
+        "to": "Output",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "chain-BT-2",
+    "direction": "BT",
+    "seed": 3,
+    "nodes": [
+      {
+        "id": "Group",
+        "width": 205,
+        "height": 155,
+        "isGroup": true
+      },
+      {
+        "id": "N0",
+        "parentId": "Group",
+        "width": 58,
+        "height": 32
+      },
+      {
+        "id": "N1",
+        "parentId": "Group",
+        "width": 70,
+        "height": 39
+      },
+      {
+        "id": "Input",
+        "width": 75,
+        "height": 43
+      },
+      {
+        "id": "Output",
+        "width": 82,
+        "height": 38
+      }
+    ],
+    "edges": [
+      {
+        "id": "entry",
+        "from": "Input",
+        "to": "N0",
+        "directed": true
+      },
+      {
+        "id": "chain1",
+        "from": "N0",
+        "to": "N1",
+        "directed": true
+      },
+      {
+        "id": "exit",
+        "from": "N1",
+        "to": "Output",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "chain-BT-3",
+    "direction": "BT",
+    "seed": 4,
+    "nodes": [
+      {
+        "id": "Group",
+        "width": 215,
+        "height": 170,
+        "isGroup": true
+      },
+      {
+        "id": "N0",
+        "parentId": "Group",
+        "width": 58,
+        "height": 32
+      },
+      {
+        "id": "N1",
+        "parentId": "Group",
+        "width": 70,
+        "height": 39
+      },
+      {
+        "id": "N2",
+        "parentId": "Group",
+        "width": 82,
+        "height": 32
+      },
+      {
+        "id": "Input",
+        "width": 75,
+        "height": 43
+      },
+      {
+        "id": "Output",
+        "width": 82,
+        "height": 38
+      }
+    ],
+    "edges": [
+      {
+        "id": "entry",
+        "from": "Input",
+        "to": "N0",
+        "directed": true
+      },
+      {
+        "id": "chain1",
+        "from": "N0",
+        "to": "N1",
+        "directed": true
+      },
+      {
+        "id": "chain2",
+        "from": "N1",
+        "to": "N2",
+        "directed": true
+      },
+      {
+        "id": "exit",
+        "from": "N2",
+        "to": "Output",
+        "directed": true
+      },
+      {
+        "id": "bypass",
+        "from": "N0",
+        "to": "Output",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "chain-BT-4",
+    "direction": "BT",
+    "seed": 5,
+    "nodes": [
+      {
+        "id": "Group",
+        "width": 225,
+        "height": 185,
+        "isGroup": true
+      },
+      {
+        "id": "N0",
+        "parentId": "Group",
+        "width": 58,
+        "height": 32
+      },
+      {
+        "id": "N1",
+        "parentId": "Group",
+        "width": 70,
+        "height": 39
+      },
+      {
+        "id": "N2",
+        "parentId": "Group",
+        "width": 82,
+        "height": 32
+      },
+      {
+        "id": "N3",
+        "parentId": "Group",
+        "width": 58,
+        "height": 39
+      },
+      {
+        "id": "Input",
+        "width": 75,
+        "height": 43
+      },
+      {
+        "id": "Output",
+        "width": 82,
+        "height": 38
+      }
+    ],
+    "edges": [
+      {
+        "id": "entry",
+        "from": "Input",
+        "to": "N0",
+        "directed": true
+      },
+      {
+        "id": "chain1",
+        "from": "N0",
+        "to": "N1",
+        "directed": true
+      },
+      {
+        "id": "chain2",
+        "from": "N1",
+        "to": "N2",
+        "directed": true
+      },
+      {
+        "id": "chain3",
+        "from": "N2",
+        "to": "N3",
+        "directed": true
+      },
+      {
+        "id": "exit",
+        "from": "N3",
+        "to": "Output",
+        "directed": true
+      },
+      {
+        "id": "bypass",
+        "from": "N0",
+        "to": "Output",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "chain-LR-2",
+    "direction": "LR",
+    "seed": 3,
+    "nodes": [
+      {
+        "id": "Group",
+        "width": 205,
+        "height": 155,
+        "isGroup": true
+      },
+      {
+        "id": "N0",
+        "parentId": "Group",
+        "width": 58,
+        "height": 32
+      },
+      {
+        "id": "N1",
+        "parentId": "Group",
+        "width": 70,
+        "height": 39
+      },
+      {
+        "id": "Input",
+        "width": 75,
+        "height": 43
+      },
+      {
+        "id": "Output",
+        "width": 82,
+        "height": 38
+      }
+    ],
+    "edges": [
+      {
+        "id": "entry",
+        "from": "Input",
+        "to": "N0",
+        "directed": true
+      },
+      {
+        "id": "chain1",
+        "from": "N0",
+        "to": "N1",
+        "directed": true
+      },
+      {
+        "id": "exit",
+        "from": "N1",
+        "to": "Output",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "chain-LR-3",
+    "direction": "LR",
+    "seed": 4,
+    "nodes": [
+      {
+        "id": "Group",
+        "width": 215,
+        "height": 170,
+        "isGroup": true
+      },
+      {
+        "id": "N0",
+        "parentId": "Group",
+        "width": 58,
+        "height": 32
+      },
+      {
+        "id": "N1",
+        "parentId": "Group",
+        "width": 70,
+        "height": 39
+      },
+      {
+        "id": "N2",
+        "parentId": "Group",
+        "width": 82,
+        "height": 32
+      },
+      {
+        "id": "Input",
+        "width": 75,
+        "height": 43
+      },
+      {
+        "id": "Output",
+        "width": 82,
+        "height": 38
+      }
+    ],
+    "edges": [
+      {
+        "id": "entry",
+        "from": "Input",
+        "to": "N0",
+        "directed": true
+      },
+      {
+        "id": "chain1",
+        "from": "N0",
+        "to": "N1",
+        "directed": true
+      },
+      {
+        "id": "chain2",
+        "from": "N1",
+        "to": "N2",
+        "directed": true
+      },
+      {
+        "id": "exit",
+        "from": "N2",
+        "to": "Output",
+        "directed": true
+      },
+      {
+        "id": "bypass",
+        "from": "N0",
+        "to": "Output",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "chain-LR-4",
+    "direction": "LR",
+    "seed": 5,
+    "nodes": [
+      {
+        "id": "Group",
+        "width": 225,
+        "height": 185,
+        "isGroup": true
+      },
+      {
+        "id": "N0",
+        "parentId": "Group",
+        "width": 58,
+        "height": 32
+      },
+      {
+        "id": "N1",
+        "parentId": "Group",
+        "width": 70,
+        "height": 39
+      },
+      {
+        "id": "N2",
+        "parentId": "Group",
+        "width": 82,
+        "height": 32
+      },
+      {
+        "id": "N3",
+        "parentId": "Group",
+        "width": 58,
+        "height": 39
+      },
+      {
+        "id": "Input",
+        "width": 75,
+        "height": 43
+      },
+      {
+        "id": "Output",
+        "width": 82,
+        "height": 38
+      }
+    ],
+    "edges": [
+      {
+        "id": "entry",
+        "from": "Input",
+        "to": "N0",
+        "directed": true
+      },
+      {
+        "id": "chain1",
+        "from": "N0",
+        "to": "N1",
+        "directed": true
+      },
+      {
+        "id": "chain2",
+        "from": "N1",
+        "to": "N2",
+        "directed": true
+      },
+      {
+        "id": "chain3",
+        "from": "N2",
+        "to": "N3",
+        "directed": true
+      },
+      {
+        "id": "exit",
+        "from": "N3",
+        "to": "Output",
+        "directed": true
+      },
+      {
+        "id": "bypass",
+        "from": "N0",
+        "to": "Output",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "chain-RL-2",
+    "direction": "RL",
+    "seed": 3,
+    "nodes": [
+      {
+        "id": "Group",
+        "width": 205,
+        "height": 155,
+        "isGroup": true
+      },
+      {
+        "id": "N0",
+        "parentId": "Group",
+        "width": 58,
+        "height": 32
+      },
+      {
+        "id": "N1",
+        "parentId": "Group",
+        "width": 70,
+        "height": 39
+      },
+      {
+        "id": "Input",
+        "width": 75,
+        "height": 43
+      },
+      {
+        "id": "Output",
+        "width": 82,
+        "height": 38
+      }
+    ],
+    "edges": [
+      {
+        "id": "entry",
+        "from": "Input",
+        "to": "N0",
+        "directed": true
+      },
+      {
+        "id": "chain1",
+        "from": "N0",
+        "to": "N1",
+        "directed": true
+      },
+      {
+        "id": "exit",
+        "from": "N1",
+        "to": "Output",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "chain-RL-3",
+    "direction": "RL",
+    "seed": 4,
+    "nodes": [
+      {
+        "id": "Group",
+        "width": 215,
+        "height": 170,
+        "isGroup": true
+      },
+      {
+        "id": "N0",
+        "parentId": "Group",
+        "width": 58,
+        "height": 32
+      },
+      {
+        "id": "N1",
+        "parentId": "Group",
+        "width": 70,
+        "height": 39
+      },
+      {
+        "id": "N2",
+        "parentId": "Group",
+        "width": 82,
+        "height": 32
+      },
+      {
+        "id": "Input",
+        "width": 75,
+        "height": 43
+      },
+      {
+        "id": "Output",
+        "width": 82,
+        "height": 38
+      }
+    ],
+    "edges": [
+      {
+        "id": "entry",
+        "from": "Input",
+        "to": "N0",
+        "directed": true
+      },
+      {
+        "id": "chain1",
+        "from": "N0",
+        "to": "N1",
+        "directed": true
+      },
+      {
+        "id": "chain2",
+        "from": "N1",
+        "to": "N2",
+        "directed": true
+      },
+      {
+        "id": "exit",
+        "from": "N2",
+        "to": "Output",
+        "directed": true
+      },
+      {
+        "id": "bypass",
+        "from": "N0",
+        "to": "Output",
+        "directed": true
+      }
+    ]
+  },
+  {
+    "name": "chain-RL-4",
+    "direction": "RL",
+    "seed": 5,
+    "nodes": [
+      {
+        "id": "Group",
+        "width": 225,
+        "height": 185,
+        "isGroup": true
+      },
+      {
+        "id": "N0",
+        "parentId": "Group",
+        "width": 58,
+        "height": 32
+      },
+      {
+        "id": "N1",
+        "parentId": "Group",
+        "width": 70,
+        "height": 39
+      },
+      {
+        "id": "N2",
+        "parentId": "Group",
+        "width": 82,
+        "height": 32
+      },
+      {
+        "id": "N3",
+        "parentId": "Group",
+        "width": 58,
+        "height": 39
+      },
+      {
+        "id": "Input",
+        "width": 75,
+        "height": 43
+      },
+      {
+        "id": "Output",
+        "width": 82,
+        "height": 38
+      }
+    ],
+    "edges": [
+      {
+        "id": "entry",
+        "from": "Input",
+        "to": "N0",
+        "directed": true
+      },
+      {
+        "id": "chain1",
+        "from": "N0",
+        "to": "N1",
+        "directed": true
+      },
+      {
+        "id": "chain2",
+        "from": "N1",
+        "to": "N2",
+        "directed": true
+      },
+      {
+        "id": "chain3",
+        "from": "N2",
+        "to": "N3",
+        "directed": true
+      },
+      {
+        "id": "exit",
+        "from": "N3",
+        "to": "Output",
+        "directed": true
+      },
+      {
+        "id": "bypass",
+        "from": "N0",
+        "to": "Output",
+        "directed": true
+      }
+    ]
+  }
+]

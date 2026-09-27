@@ -180,3 +180,14 @@ until those tests pass.
 `tools/upstream-fixtures` contains the Go oracle harness, inputs, and recorded
 outputs used by `test/tala-upstream-placement-cost.test.ts`. The TypeScript
 runtime has no Go or D2 dependency; the harness is for port validation only.
+
+Twelve generated compound chain cases now provide a wider complete-pipeline
+comparison across four directions and two to four children. The Go
+`GapNormalization` branch that pulls a child toward its padded container wall
+is translated and matches the upward and downward stage traces. The complete
+top-down and left-to-right two-child cases match all node geometry and route
+points. The bottom-up two-child case has a one-pixel node difference introduced
+after placement by route-dependent `Dejitter`. The remaining generated cases
+diverge at `NodePlacement`: the upstream engine uses a different interior
+ordering for three and four children, so the recursive scope placement still
+needs to carry more of the original compound topology into preprocessing.

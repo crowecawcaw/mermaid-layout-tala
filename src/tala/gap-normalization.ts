@@ -4,6 +4,7 @@ import { TalaGraph, TalaNode } from './graph.js';
 import { ordinaryPlacementEdgeLength } from './placement-edge-length.js';
 import { wrapContainers } from './equidistance.js';
 import { introducesOverlap, overlapPairs } from './alignment-shift.js';
+import { ContainerPadding } from './geometry-policy.js';
 
 type Axis = 'x' | 'y';
 type Direction = 1 | -1;
@@ -24,12 +25,46 @@ export function normalizeGaps(graph: TalaGraph, excludedNodes: ReadonlySet<strin
         for (const node of ordered) {
           if (excludedNodes.has(node.id)) continue;
           changed = reduceGapToNeighbors(node, graph, axis, direction, true) || changed;
+          changed = reduceGapToContainerSide(node, graph, axis, direction) || changed;
         }
       }
     }
   }
   graph.resetTurnCost();
   return changed;
+}
+
+/** The second half of upstream reduceGapToNeighbors: pull an endpoint toward
+ * its own container wall when its nearest neighbor is outside that container. */
+function reduceGapToContainerSide(node: TalaNode, graph: TalaGraph, axis: Axis,
+  direction: Direction): boolean {
+  const adjacent = nearestConnectedAhead(node, axis, direction);
+  if (!adjacent || !node.parent || node.parent === adjacent.parent
+    || node.fixedTopLeft || !node.topLeft || !node.parent.topLeft) return false;
+  const container = node.parent;
+  const padding = axis === 'y' && direction === -1
+    ? Math.max(ContainerPadding, (container.labelBBox?.height ?? 0) + 28)
+    : ContainerPadding;
+  const gap = direction === 1
+    ? end(container, axis) - end(node, axis)
+    : node.topLeft[axis] - container.topLeft![axis];
+  const delta = (gap - padding) * direction;
+  if (gap <= largeGapThreshold * graph.cellSize || delta === 0) return false;
+  const original = geometrySnapshot(graph);
+  const existingOverlaps = overlapPairs(graph);
+  const baseline = ordinaryPlacementEdgeLength(graph, graph.turnCost(), false);
+  for (const member of graph.nodes) {
+    if (member !== node && !member.isDescendantOf(node)) continue;
+    if (member.topLeft) member.topLeft = { ...member.topLeft,
+      [axis]: member.topLeft[axis] + delta };
+  }
+  if (!validGeometry(graph) || introducesOverlap(graph, existingOverlaps)) {
+    restore(original); return false;
+  }
+  const movedCost = ordinaryPlacementEdgeLength(graph, graph.turnCost(), false);
+  if (movedCost < baseline - 0.0001) return true;
+  restore(original);
+  return false;
 }
 
 function reduceGapToNeighbors(node: TalaNode, graph: TalaGraph, axis: Axis,

@@ -147,6 +147,11 @@ pins all ten cases with exact relative node geometry and complete edge routes.
 The same oracle reads `compound-expanded-cases.json` and produces
 `compound-expanded-expected.json`. It creates empty container entries in the
 Go graph so empty nested groups match the production adapter's input model.
+`node compound-generated-cases.mjs` generates twelve additional compound
+chains. Run the same oracle with `compound-generated-cases.json` on stdin to
+regenerate `compound-generated-expected.json`, then use `compare-full.mjs` to
+inspect relative node and route parity. The two-child top-down and
+left-to-right cases are pinned as exact public-layout tests.
 `compound-expanded-stage-oracle_test.go` can be copied into the pinned
 upstream `internal/engine` package. Set `TALA_TS_COMPOUND_CASES` to the absolute
 case-file path and `TALA_TS_COMPOUND_NAME` to one case name, then run
