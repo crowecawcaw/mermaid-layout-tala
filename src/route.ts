@@ -24,16 +24,18 @@ export function routeGraphEdges(
 ): PositionedEdge[] {
   if (edges.length === 0) return [];
   if (useOVG && canonicalTreePaths.size === 0
-    && nodes.every((node) => !node.parentId && !node.isGroup
-    && supportsShapeBorderTrace(node.shape))
+    && nodes.every((node) => supportsShapeBorderTrace(node.shape))
     && edges.every((edge) => edge.from !== edge.to
       && edge.fromTableColumnIndex === undefined && edge.toTableColumnIndex === undefined)) {
     const ovgNodes = nodes.map((node) => ({ id: node.id,
       x: node.x - node.width / 2, y: node.y - node.height / 2,
       width: node.width, height: node.height,
+      ...(node.parentId ? { parentId: node.parentId } : {}),
+      ...(node.isGroup ? { isGroup: true } : {}),
       ...(node.shape ? { shape: node.shape } : {}),
       ...(node.numColumns !== undefined ? { numColumns: node.numColumns } : {}) }));
-    const result = generateBestFlatOVGRoutes(ovgNodes, edges);
+    const result = generateBestFlatOVGRoutes(ovgNodes, edges.map((edge) => ({
+      ...edge, directed: edge.directed !== false })));
     const byNode = new Map(ovgNodes.map((node) => [node.id, node]));
     return result.routes.map((route) => {
       const edge = edges.find((candidate) => candidate.id === route.id)!;

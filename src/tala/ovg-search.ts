@@ -38,7 +38,7 @@ export function searchFlatOVGSingleEdge(nodes: readonly OVGFlatNode[],
   if (!sourceNode || !targetNode || !source || !target) throw new Error('unknown route endpoint');
   const routeState = new OVGRouteState<OVGFlatEdge>(graph);
   const result = searchSingleEdge(graph, nodes, [{ from: fromId, to: toId }], routeState,
-    sourceNode, targetNode, source, target);
+    sourceNode, targetNode, { from: fromId, to: toId }, source, target);
   return { points: result.points, cost: result.cost };
 }
 
@@ -103,7 +103,7 @@ function routeSequential(nodes: readonly OVGFlatNode[],
     const slingshot = useSlingshot
       ? slingshotFlatOVG(graph, nodes, edges, routeState, edge) : undefined;
     const result = slingshot ?? searchSingleEdge(graph, nodes, edges, routeState, from, to,
-      graph.centers.get(from.id)!, graph.centers.get(to.id)!);
+      edge, graph.centers.get(from.id)!, graph.centers.get(to.id)!);
     routeState.addRoute({ edge, nodes: result.routeNodes });
     return { id: edge.id, points: result.points, cost: result.cost,
       segmentPoints: createSegmentEndpoints(result.routeNodes) };
@@ -128,7 +128,7 @@ function copyPoint(point: Point): Point { return { x: point.x, y: point.y }; }
 function searchSingleEdge(graph: OVGFlatRoutingGraph,
   nodes: readonly OVGFlatNode[], edges: readonly OVGFlatEdge[],
   routeState: OVGRouteState<OVGFlatEdge>, sourceNode: OVGFlatNode,
-  targetNode: OVGFlatNode, source: OVGSweepVertex,
+  targetNode: OVGFlatNode, currentEdge: OVGFlatEdge, source: OVGSweepVertex,
   target: OVGSweepVertex): SearchInternal {
   const gap = boxGap(sourceNode, targetNode);
   const byId = new Map(nodes.map((node) => [node.id, node]));
@@ -250,14 +250,14 @@ function searchSingleEdge(graph: OVGFlatRoutingGraph,
         const prohibited = overlapped.some((route) => adjacent.tunnel
           && isEntireColinear(route.nodes, adjacent, current))
           || overlapped.length > 0 && !canOverlapRoutes(
-          sourceNode.id, targetNode.id, overlapped)
+          currentEdge, overlapped)
           || current !== source && !onCurrent.length && !onAdjacent
             && routeState.hasNearby(edge);
         if (prohibited) {
           step = 10_000_000;
         } else {
           const crossing = onCurrent.length > 0 && !onAdjacent
-            && !canOverlapRoutes(sourceNode.id, targetNode.id, onCurrent)
+            && !canOverlapRoutes(currentEdge, onCurrent)
             || current !== source && routeState.intersects(edge);
           if (crossing) step += crossingCost;
         }
@@ -376,12 +376,23 @@ function validPortStep(direction: OVGPortDirection, port: Point,
 function sharesOwner(a: OVGSweepVertex, b: OVGSweepVertex): boolean {
   return Boolean(a.owners?.some((owner) => b.owners?.some((other) => other.node === owner.node)));
 }
-function canOverlapRoutes(source: string, target: string,
+function canOverlapRoutes(edge: OVGFlatEdge,
   routes: readonly RouteRecord[]): boolean {
   if (!routes.length) return true;
-  const edges = [{ from: source, to: target }, ...routes.map((route) => route.edge)];
-  return [source, target, ...routes.flatMap((route) => [route.edge.from, route.edge.to])]
-    .some((node) => edges.every((edge) => edge.from === node || edge.to === node));
+  const arrowheads = (item: OVGFlatEdge): string =>
+    `${item.sourceArrowhead ?? ''}\0${item.targetArrowhead
+      ?? (item.directed ? 'triangle' : '')}`;
+  const currentArrowheads = arrowheads(edge);
+  if (edge.directed || edge.targetArrowhead) return routes.every((route) =>
+    (route.edge.directed || route.edge.targetArrowhead)
+    && arrowheads(route.edge) === currentArrowheads
+    && (edge.from === route.edge.from || edge.to === route.edge.to));
+  if (routes.some((route) => route.edge.directed || route.edge.targetArrowhead
+    || arrowheads(route.edge) !== currentArrowheads)) return false;
+  const all = [edge, ...routes.map((route) => route.edge)];
+  return [edge.from, edge.to, ...routes.flatMap((route) =>
+    [route.edge.from, route.edge.to])]
+    .some((node) => all.every((item) => item.from === node || item.to === node));
 }
 function isEntireColinear(route: readonly OVGSweepVertex[], from: Point, to: Point): boolean {
   const horizontal = from.y === to.y, vertical = from.x === to.x;

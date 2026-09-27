@@ -6,7 +6,8 @@ import { buildFlatOVGVertices } from '../src/tala/ovg-build.js';
 import { connectOVGSweepNodes } from '../src/tala/ovg-sweep.js';
 import { addFlatOVGTunnels } from '../src/tala/ovg-tunnels.js';
 import { completeFlatOVG } from '../src/tala/ovg-finalize.js';
-import { generateFlatOVGRoutes, type OVGRouteFlavor } from '../src/tala/ovg-search.js';
+import { generateBestFlatOVGRoutes, generateFlatOVGRoutes,
+  type OVGRouteFlavor } from '../src/tala/ovg-search.js';
 
 interface Node extends OVGCandidateNode { id: string }
 interface Case { name: string; nodes: Node[]; edges: Array<{ from: string; to: string }> }
@@ -17,7 +18,8 @@ interface Expected { name: string; ports: Array<[number, number]>;
   afterTunnels: Array<[number, number]>;
   fullVertexCount: number; fullEdgeCount: number;
   routeFlavors: Array<{ name: OVGRouteFlavor; cost: number;
-    routes: Array<{ index: number; points: Array<[number, number]> }> }> }
+    routes: Array<{ index: number; points: Array<[number, number]> }> }>;
+  finalRoutes: Array<{ index: number; points: Array<[number, number]> }> }
 const read = (file: string) => JSON.parse(readFileSync(new URL(
   `../tools/upstream-fixtures/${file}`, import.meta.url), 'utf8'));
 const cases = read('compound-ovg-port-cases.json') as Case[];
@@ -66,5 +68,9 @@ describe('compound OVG ports and grid intersections against Go', () => {
         points: route.segmentPoints.map((point): [number, number] => [point.x, point.y]) })))
         .toEqual(flavor.routes);
     }
+    const best = generateBestFlatOVGRoutes(input.nodes, routingEdges);
+    expect(best.routes.map((route) => ({ index: Number(route.id.slice(1)),
+      points: route.segmentPoints.map((point): [number, number] => [point.x, point.y]) }))
+      .sort((a, b) => a.index - b.index)).toEqual(oracle.finalRoutes);
   });
 });

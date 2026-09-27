@@ -8,7 +8,8 @@ import { addFlatOVGTunnels, type OVGTunnelEdge } from './ovg-tunnels.js';
 import { assertOVGCount, MAX_OVG_NODES } from './ovg-limits.js';
 
 export interface OVGFlatNode extends OVGCandidateNode { id: string }
-export interface OVGFlatEdge { from: string; to: string }
+export interface OVGFlatEdge { from: string; to: string; directed?: boolean | undefined;
+  sourceArrowhead?: string | undefined; targetArrowhead?: string | undefined }
 
 export function buildFlatOVG(nodes: readonly OVGFlatNode[],
   edges: readonly OVGFlatEdge[]): { vertices: OVGSweepVertex[];

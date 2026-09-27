@@ -20,7 +20,7 @@ type tsCompoundPortNode struct {
     Width float64 `json:"width"`
     Height float64 `json:"height"`
 }
-type tsCompoundPortEdge struct { From string `json:"from"`; To string `json:"to"` }
+type tsCompoundPortEdge struct { From string `json:"from"`; To string `json:"to"`; Directed bool `json:"directed"` }
 type tsCompoundPortCase struct {
     Name string `json:"name"`
     Nodes []tsCompoundPortNode `json:"nodes"`
@@ -38,6 +38,7 @@ type tsCompoundPortOutput struct {
     FullVertexCount int `json:"fullVertexCount"`
     FullEdgeCount int `json:"fullEdgeCount"`
     RouteFlavors []tsCompoundRouteFlavor `json:"routeFlavors"`
+    FinalRoutes []tsCompoundRoute `json:"finalRoutes"`
 }
 type tsCompoundRouteFlavor struct {
     Name string `json:"name"`
@@ -74,7 +75,10 @@ func TestTSCompoundOVGPorts(t *testing.T) {
                 g.Containers[byID[item.ID]] = []*layoutgraph.Node{}
             }
         }
-        for _, edge := range input.Edges { g.Connect(byID[edge.From], byID[edge.To]) }
+        for _, item := range input.Edges {
+            edge := g.Connect(byID[item.From], byID[item.To])
+            if item.Directed { edge.TargetArrowhead = layoutgraph.TriangleArrowhead }
+        }
         guard, err := newOVGBuildGuard(context.Background(), defaultOVGBuildLimits())
         if err != nil { t.Fatal(err) }
         ovg := newBuildOVG(g.Nodes, guard)
@@ -148,6 +152,12 @@ func TestTSCompoundOVGPorts(t *testing.T) {
                 item.Routes = append(item.Routes, path)
             }
             output.RouteFlavors = append(output.RouteFlavors, item)
+        }
+        if _, err := routeEdges(context.Background(), g, nil); err != nil { t.Fatal(err) }
+        for i, edge := range g.Edges {
+            route := tsCompoundRoute{Index: i, Points: make([][2]float64, 0)}
+            for _, point := range edge.Points { route.Points = append(route.Points, [2]float64{point.X, point.Y}) }
+            output.FinalRoutes = append(output.FinalRoutes, route)
         }
         outputs = append(outputs, output)
     }

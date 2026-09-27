@@ -25,6 +25,7 @@ import { equidistance } from './tala/equidistance.js';
 import { transposeAll } from './tala/transpose.js';
 import { swapStage } from './tala/swap-stage.js';
 import { balanceStraightSegments } from './tala/edge-balance.js';
+import { balanceRouteRanges } from './tala/edge-balance-ranges.js';
 import { balanceSymmetry } from './tala/balance-symmetry.js';
 import { directOrdinaryGraph, type DirectionTransforms } from './tala/direct.js';
 import { combineSubgraphs } from './tala/combine-subgraphs.js';
@@ -634,7 +635,8 @@ function routeWithConsumedEdges(nodes: readonly PositionedNode[], edges: readonl
     const { labelBBox: _labelBBox, ...withoutLabel } = edge;
     return { ...withoutLabel, points: [] as Point[], x: 0, y: 0 };
   });
-  const balanced = balanceStraight ? balanceStraightSegments(nodes, routed) : routed;
+  const balanced = balanceStraight ? nodes.some((node) => node.parentId || node.isGroup)
+    ? balanceRouteRanges(nodes, routed) : balanceStraightSegments(nodes, routed) : routed;
   return [...balanced, ...hidden].sort((a, b) => compareText(a.id, b.id));
 }
 
