@@ -37,12 +37,38 @@ export function ovgPortGridIntersections(nodes: readonly OVGCandidateNode[]): Po
   return portIntersections(nodes, nodes.map(ports));
 }
 
+export function ovgPortGridIntersectionsWithPorts(nodes: readonly OVGCandidateNode[],
+  portGroups: readonly (readonly (readonly Point[])[])[]): Point[] {
+  return portIntersections(nodes, portGroups.map((groups) => ({
+    groups: groups.map((group) => [...group]), all: groups.flatMap((group) => [...group]),
+  })));
+}
+
 /** The port-grid cross section of addNodesIntersections, with upstream's
  * port clearance, node clearance, and two-owner visibility checks. */
 function portIntersections(nodes: readonly OVGCandidateNode[],
   portSets: readonly NodePorts[]): Point[] {
   const xs = [...new Set(portSets.flatMap((ports) => ports.all.map((point) => point.x)))].sort((a, b) => a - b);
   const ys = [...new Set(portSets.flatMap((ports) => ports.all.map((point) => point.y)))].sort((a, b) => a - b);
+  return coordinateIntersections(nodes, portSets, xs, ys);
+}
+
+/** addIntersections on an explicit coordinate grid, used by hierarchy levels. */
+export function ovgCoordinateIntersections(nodes: readonly OVGCandidateNode[],
+  xs: readonly number[], ys: readonly number[]): Point[] {
+  return coordinateIntersections(nodes, nodes.map(ports), xs, ys);
+}
+
+export function ovgCoordinateIntersectionsWithPorts(nodes: readonly OVGCandidateNode[],
+  portGroups: readonly (readonly (readonly Point[])[])[],
+  xs: readonly number[], ys: readonly number[]): Point[] {
+  return coordinateIntersections(nodes, portGroups.map((groups) => ({
+    groups: groups.map((group) => [...group]), all: groups.flatMap((group) => [...group]),
+  })), xs, ys);
+}
+
+function coordinateIntersections(nodes: readonly OVGCandidateNode[],
+  portSets: readonly NodePorts[], xs: readonly number[], ys: readonly number[]): Point[] {
   assertOVGCount('intersection candidate count', xs.length * ys.length,
     MAX_OVG_INTERSECTION_CANDIDATES);
   const result: Point[] = [];

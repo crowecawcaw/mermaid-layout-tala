@@ -6,19 +6,51 @@ import { connectOVGSweepNodes, type OVGPortDirection, type OVGSweepEdge,
   type OVGSweepVertex } from './ovg-sweep.js';
 import { addFlatOVGTunnels, type OVGTunnelEdge } from './ovg-tunnels.js';
 import { assertOVGCount, MAX_OVG_NODES } from './ovg-limits.js';
+import { buildHierarchyOVGVertices } from './ovg-hierarchy.js';
+import type { LayoutDirection } from '../layout.js';
 
 export interface OVGFlatNode extends OVGCandidateNode { id: string }
 export interface OVGFlatEdge { from: string; to: string; directed?: boolean | undefined;
   sourceArrowhead?: string | undefined; targetArrowhead?: string | undefined }
+export interface OVGHierarchyInput { levels: ReadonlyMap<string, number>;
+  direction: LayoutDirection }
 
 export function buildFlatOVG(nodes: readonly OVGFlatNode[],
-  edges: readonly OVGFlatEdge[]): { vertices: OVGSweepVertex[];
+  edges: readonly OVGFlatEdge[], hierarchy?: OVGHierarchyInput): { vertices: OVGSweepVertex[];
   tunnelEdges: OVGTunnelEdge[]; sweepEdges: OVGSweepEdge[]; edges: OVGSweepEdge[] } {
-  const vertices = buildFlatOVGVertices(nodes, edges);
+  const vertices = hierarchy && hierarchy.levels.size === nodes.length
+    ? buildAllHierarchyOVGVertices(nodes, edges, hierarchy) : buildFlatOVGVertices(nodes, edges);
   const tunnelEdges = addFlatOVGTunnels(nodes, edges, vertices);
   const sweepEdges = connectOVGSweepNodes(nodes.map((node) => ({ ...node,
     container: node.isGroup === true })), vertices);
   return { vertices, tunnelEdges, sweepEdges, edges: [...tunnelEdges, ...sweepEdges] };
+}
+
+function buildAllHierarchyOVGVertices(nodes: readonly OVGFlatNode[],
+  edges: readonly OVGFlatEdge[], hierarchy: OVGHierarchyInput): OVGSweepVertex[] {
+  const vertices: OVGSweepVertex[] = buildHierarchyOVGVertices(nodes, edges,
+    hierarchy.levels, hierarchy.direction).map((point) => ({ ...point }));
+  const occupied = new Map(vertices.map((vertex) => [`${vertex.x},${vertex.y}`, vertex]));
+  const sides: OVGPortDirection[] = ['top', 'left', 'bottom', 'right'];
+  for (const node of nodes) {
+    const nodePorts: OVGSweepVertex[] = [];
+    for (const [index, group] of ovgPortGroups(node).entries()) for (const point of group) {
+      const vertex = occupied.get(`${point.x},${point.y}`);
+      if (!vertex) throw new Error(`missing hierarchy port for ${node.id}`);
+      let owner = vertex.owners?.find((item) => item.node === node.id);
+      if (!owner) {
+        owner = { node: node.id, directions: [] };
+        (vertex.owners ??= []).push(owner);
+      }
+      if (!owner.directions.includes(sides[index]!)) owner.directions.push(sides[index]!);
+      nodePorts.push(vertex);
+    }
+    for (const index of shapePortPolicy(node.shape, node.numColumns).centers ?? []) {
+      const owner = nodePorts[index]?.owners?.find((item) => item.node === node.id);
+      if (owner) owner.center = true;
+    }
+  }
+  return vertices;
 }
 
 /** The ordinary flat-graph vertex stages of routing/ovg.go through

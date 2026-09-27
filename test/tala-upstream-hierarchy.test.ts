@@ -83,6 +83,51 @@ describe('pinned upstream flat hierarchy placement', () => {
     });
   }
 
+  for (const input of generated.filter((item) => ['layered-1', 'layered-2',
+    'layered-3', 'layered-8', 'layered-9', 'layered-10']
+    .includes(item.name))) {
+    it(`${input.name} matches the complete Go node and route output`, () => {
+      const oracle = generatedCompleted.find((item) => item.name === input.name)! as
+        typeof generatedCompleted[number] & { edges: Array<{ id: string;
+          points: Array<{ x: number; y: number }> }> };
+      const result = layoutFlowchart(input.nodes, input.edges, {
+        strategy: 'tala', direction: input.direction, seeds: [input.seed],
+      });
+      const anchor = result.nodes.find((node) => node.id === oracle.nodes[0]!.id)!;
+      const dx = anchor.x - anchor.width / 2 - oracle.nodes[0]!.x;
+      const dy = anchor.y - anchor.height / 2 - oracle.nodes[0]!.y;
+      expect(oracle.nodes.map((node) => {
+        const placed = result.nodes.find((candidate) => candidate.id === node.id)!;
+        return { id: node.id, x: placed.x - placed.width / 2 - dx,
+          y: placed.y - placed.height / 2 - dy,
+          width: placed.width, height: placed.height };
+      })).toEqual(oracle.nodes);
+      expect(oracle.edges.map((edge) => ({ id: edge.id,
+        points: result.edges.find((candidate) => candidate.id === edge.id)!.points.map((point) => ({
+          x: point.x - dx, y: point.y - dy,
+        })) }))).toEqual(oracle.edges);
+    });
+  }
+
+  for (const input of mixed.filter((item) => ['parallel-edges',
+    'undirected-cross-edge', 'two-feedback-edges'].includes(item.name))) {
+    it(`${input.name} matches the complete Go edge routes`, () => {
+      const oracle = mixedCompleted.find((item) => item.name === input.name)! as
+        typeof mixedCompleted[number] & { edges: Array<{ id: string;
+          points: Array<{ x: number; y: number }> }> };
+      const result = layoutFlowchart(input.nodes, input.edges, {
+        strategy: 'tala', direction: input.direction, seeds: [input.seed],
+      });
+      const anchor = result.nodes.find((node) => node.id === oracle.nodes[0]!.id)!;
+      const dx = anchor.x - anchor.width / 2 - oracle.nodes[0]!.x;
+      const dy = anchor.y - anchor.height / 2 - oracle.nodes[0]!.y;
+      expect(oracle.edges.map((edge) => ({ id: edge.id,
+        points: result.edges.find((candidate) => candidate.id === edge.id)!.points.map((point) => ({
+          x: point.x - dx, y: point.y - dy,
+        })) }))).toEqual(oracle.edges);
+    });
+  }
+
   for (const input of generated) {
     it(`${input.name} matches completed Go node geometry through the public API`, () => {
       const oracle = generatedCompleted.find((item) => item.name === input.name)!;

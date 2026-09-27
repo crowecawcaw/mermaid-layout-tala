@@ -1,5 +1,6 @@
 import type { Point } from '../layout.js';
-import { buildFlatOVG, type OVGFlatEdge, type OVGFlatNode } from './ovg-build.js';
+import { buildFlatOVG, type OVGFlatEdge, type OVGFlatNode,
+  type OVGHierarchyInput } from './ovg-build.js';
 import { ovgPortGroups } from './ovg-candidates.js';
 import type { OVGSweepEdge, OVGSweepVertex } from './ovg-sweep.js';
 import { assertOVGCount, MAX_OVG_EDGES, MAX_OVG_NODES } from './ovg-limits.js';
@@ -21,8 +22,8 @@ export interface OVGFlatRoutingEdge {
 /** Flat-graph post-sweep stages of routing/ovg.go: connectPortsToCenter,
  * removeIsolatedNodes, flagNodesNearPorts, and vertex indexing. */
 export function completeFlatOVG(nodes: readonly OVGFlatNode[],
-  inputEdges: readonly OVGFlatEdge[]): OVGFlatRoutingGraph {
-  const graph = buildFlatOVG(nodes, inputEdges);
+  inputEdges: readonly OVGFlatEdge[], hierarchy?: OVGHierarchyInput): OVGFlatRoutingGraph {
+  const graph = buildFlatOVG(nodes, inputEdges, hierarchy);
   const occupied = new Map(graph.vertices.map((vertex) => [key(vertex), vertex]));
   const adjacent = new Map<OVGSweepVertex, OVGSweepVertex[]>();
   const incident = new Map<OVGSweepVertex, OVGFlatRoutingEdge[]>();

@@ -1,5 +1,5 @@
 import type { Point } from '../layout.js';
-import type { OVGFlatEdge, OVGFlatNode } from './ovg-build.js';
+import type { OVGFlatEdge, OVGFlatNode, OVGHierarchyInput } from './ovg-build.js';
 import { completeFlatOVG, type OVGFlatRoutingGraph } from './ovg-finalize.js';
 import type { OVGPortDirection, OVGSweepVertex } from './ovg-sweep.js';
 import { ovgPortGroups } from './ovg-candidates.js';
@@ -48,19 +48,23 @@ export function searchFlatOVGSequential(nodes: readonly OVGFlatNode[],
 }
 
 export function generateFlatOVGRoutes(nodes: readonly OVGFlatNode[],
-  edges: readonly OVGSequentialEdge[], flavor: OVGRouteFlavor = 'ShortestToLongest'
+  edges: readonly OVGSequentialEdge[], flavor: OVGRouteFlavor = 'ShortestToLongest',
+  hierarchy?: OVGHierarchyInput
 ): OVGSequentialRoute[] {
-  return routeSequential(nodes, edges, true, flavor);
+  return routeSequential(nodes, edges, true, flavor,
+    completeFlatOVG(nodes, edges, hierarchy));
 }
 
 /** Go's ordinary route coordinator tries three stable edge orders and chooses
  * the first one within geometric precision of the minimum total cost. */
 export function generateBestFlatOVGRoutes(nodes: readonly OVGFlatNode[],
-  edges: readonly OVGSequentialEdge[]): OVGFlavorResult {
-  const graph = completeFlatOVG(nodes, edges);
+  edges: readonly OVGSequentialEdge[], hierarchy?: OVGHierarchyInput): OVGFlavorResult {
+  const graph = completeFlatOVG(nodes, edges, hierarchy);
   let best: OVGFlavorResult | undefined;
   let lastError: unknown;
-  for (const flavor of ['ShortestToLongest', 'LongestToShortest', 'Default'] as const) {
+  const flavors: readonly OVGRouteFlavor[] = hierarchy?.levels.size === nodes.length
+    ? ['TopDownLeftRight'] : ['ShortestToLongest', 'LongestToShortest', 'Default'];
+  for (const flavor of flavors) {
     let routes: OVGSequentialRoute[];
     try { routes = routeSequential(nodes, edges, true, flavor, graph); }
     catch (error) { lastError = error; continue; }

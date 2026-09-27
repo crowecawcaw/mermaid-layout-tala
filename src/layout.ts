@@ -189,6 +189,7 @@ function layoutFlatFlowchart(
   const sequenceDefiningEdgeIds = new Set<string>();
   const treeComponents: Array<{ ids: Set<string>; edges: LayoutEdge[]; extraction: TreeExtraction }> = [];
   const hierarchyNodeIds = new Set<string>();
+  const hierarchyLevelsForRouting = new Map<string, number>();
   const componentBounds: Array<ReturnType<typeof bounds>> = [];
   for (const component of components) {
     const hasFixed = component.some((node) => node.fixedTopLeft !== undefined);
@@ -218,7 +219,10 @@ function layoutFlatFlowchart(
       ? discoverFlatHierarchy(component, componentEdges, direction) : undefined;
     const hierarchy = hierarchyLevels
       ? placeFlatHierarchy(component, componentEdges, hierarchyLevels, direction, seed) : undefined;
-    if (hierarchy) for (const node of component) hierarchyNodeIds.add(node.id);
+    if (hierarchy) for (const node of component) {
+      hierarchyNodeIds.add(node.id);
+      hierarchyLevelsForRouting.set(node.id, hierarchyLevels!.get(node.id)!);
+    }
     const cluster = useOrdinary && !hasNears && !sequence && !tree && !hierarchy && !hasFixed && component.every((node) => !node.isGroup)
       ? placeFlatClusters(component, componentEdges, direction, seed, ranks,
         constrainDirection, placedClusters) : undefined;
@@ -289,21 +293,23 @@ function layoutFlatFlowchart(
     }
   };
   updateTreePaths();
+  const routingHierarchy = components.length === 1
+    && hierarchyLevelsForRouting.size === positionedNodes.length
+    ? hierarchyLevelsForRouting : undefined;
   let positionedEdges = routeWithConsumedEdges(positionedNodes, edges, direction,
-    sequenceDefiningEdgeIds, treePaths, false, useOrdinary);
+    sequenceDefiningEdgeIds, treePaths, false, useOrdinary, routingHierarchy);
   if (useOrdinary && treeComponents.length > 0) {
     const sentinels = new Set(treeComponents.flatMap((component) => component.extraction.remaining));
     if (dejitterTreeRoutes(positionedNodes, positionedEdges, sentinels)) {
       updateTreePaths();
       positionedEdges = routeWithConsumedEdges(positionedNodes, edges, direction,
-        sequenceDefiningEdgeIds, treePaths, false, useOrdinary);
+        sequenceDefiningEdgeIds, treePaths, false, useOrdinary, routingHierarchy);
     }
   } else if (useOrdinary && hierarchyNodeIds.size > 0
     && inputNodes.every((node) => !node.parentId && !node.isGroup)) {
-    if (dejitterTreeRoutes(positionedNodes, positionedEdges, hierarchyNodeIds)) {
-      positionedEdges = routeWithConsumedEdges(positionedNodes, edges, direction,
-        sequenceDefiningEdgeIds, treePaths, false, useOrdinary);
-    }
+    dejitterTreeRoutes(positionedNodes, positionedEdges, hierarchyNodeIds);
+    positionedEdges = routeWithConsumedEdges(positionedNodes, edges, direction,
+      sequenceDefiningEdgeIds, treePaths, true, useOrdinary, routingHierarchy);
   }
   return { nodes: positionedNodes, edges: positionedEdges };
 }
@@ -637,9 +643,10 @@ function layoutCompoundFlowchart(
 function routeWithConsumedEdges(nodes: readonly PositionedNode[], edges: readonly LayoutEdge[],
   direction: LayoutDirection, consumed: ReadonlySet<string>,
   canonicalTreePaths: ReadonlyMap<string, Point[]> = new Map(),
-  balanceStraight = false, useOVG = false): PositionedEdge[] {
+  balanceStraight = false, useOVG = false,
+  hierarchyLevels?: ReadonlyMap<string, number>): PositionedEdge[] {
   const initialRoutes = routeGraphEdges(nodes, edges.filter((edge) => !consumed.has(edge.id)),
-    direction, canonicalTreePaths, useOVG);
+    direction, canonicalTreePaths, useOVG, hierarchyLevels);
   const beforeById = new Map(initialRoutes.map((edge) => [edge.id, edge]));
   const routed = simplifyEdgeRoutes(nodes, initialRoutes).map((edge) => {
     if (edge.points.length === beforeById.get(edge.id)!.points.length) return edge;
@@ -650,8 +657,9 @@ function routeWithConsumedEdges(nodes: readonly PositionedNode[], edges: readonl
     const { labelBBox: _labelBBox, ...withoutLabel } = edge;
     return { ...withoutLabel, points: [] as Point[], x: 0, y: 0 };
   });
-  const balanced = balanceStraight ? nodes.some((node) => node.parentId || node.isGroup)
-    ? balanceRouteRanges(nodes, routed) : balanceStraightSegments(nodes, routed) : routed;
+  const balanced = hierarchyLevels && balanceStraight ? balanceRouteRanges(nodes, routed)
+    : balanceStraight ? nodes.some((node) => node.parentId || node.isGroup)
+      ? balanceRouteRanges(nodes, routed) : balanceStraightSegments(nodes, routed) : routed;
   return [...balanced, ...hidden].sort((a, b) => compareText(a.id, b.id));
 }
 

@@ -20,7 +20,8 @@ export function routeGraphEdges(
   edges: readonly LayoutEdge[],
   direction: LayoutDirection,
   canonicalTreePaths: ReadonlyMap<string, Point[]> = new Map(),
-  useOVG = false
+  useOVG = false,
+  hierarchyLevels?: ReadonlyMap<string, number>
 ): PositionedEdge[] {
   if (edges.length === 0) return [];
   if (useOVG && canonicalTreePaths.size === 0
@@ -35,7 +36,8 @@ export function routeGraphEdges(
       ...(node.shape ? { shape: node.shape } : {}),
       ...(node.numColumns !== undefined ? { numColumns: node.numColumns } : {}) }));
     const result = generateBestFlatOVGRoutes(ovgNodes, edges.map((edge) => ({
-      ...edge, directed: edge.directed !== false })));
+      ...edge, directed: edge.directed !== false })),
+      hierarchyLevels ? { levels: hierarchyLevels, direction } : undefined);
     const byNode = new Map(ovgNodes.map((node) => [node.id, node]));
     return result.routes.map((route) => {
       const edge = edges.find((candidate) => candidate.id === route.id)!;
