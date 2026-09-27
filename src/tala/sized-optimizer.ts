@@ -13,8 +13,9 @@ const precision = 1e-6;
 /** Port of placement.optimizerMedianToNeighbors with IncludeNodeSizes=true for
  * ordinary nodes. The result is expressed in cell units, like upstream. */
 export function sizedMedianToNeighbors(node: TalaNode, graph: TalaGraph): Point {
-  const neighbors = node.edges.map((edge) => graph.endpointFor(edge,
+  const connected = node.edges.map((edge) => graph.endpointFor(edge,
     edge.from === node ? 'to' : 'from')).filter((other) => other.topLeft);
+  const neighbors = connected.length ? connected : [...node.nears].filter((near) => near.topLeft);
   if (neighbors.length === 0) throw new Error(`node ${node.id} has no positioned neighbors`);
   return sizedMedian(neighbors, graph.cellSize);
 }
@@ -84,7 +85,7 @@ export class SizedOptimizer {
       for (const index of indices) {
         const node = this.graph.nodes[index]!;
         if (!node.topLeft) throw new Error(`node ${node.id} is unpositioned`);
-        if (node.fixedTopLeft || node.edges.length === 0) continue;
+        if (node.fixedTopLeft || (node.edges.length === 0 && node.nears.size === 0)) continue;
         if (node.width > 100 * this.graph.cellSize || node.height > 100 * this.graph.cellSize) continue;
         const protrudingChildren = this.protrudingChildren(node);
         const minimizingSelf = protrudingChildren.length === 0;

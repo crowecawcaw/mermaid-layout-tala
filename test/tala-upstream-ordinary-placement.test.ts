@@ -10,6 +10,8 @@ interface Fixture {
   direction: string;
   nodes: { id: string; width: number; height: number }[];
   edges: { from: string; to: string; directed: boolean }[];
+  nears?: [string, string][];
+  commonUncleGroups?: string[][];
   cellSize: number;
   positions?: Record<string, { x: number; y: number }>;
   error?: string;
@@ -26,6 +28,15 @@ describe('ordinary placement stage against pinned upstream TALA', () => {
         fixture.direction ? fixture.direction as LayoutDirection : undefined,
       );
       expect(graph.cellSize).toBe(fixture.cellSize);
+      const byId = new Map(graph.nodes.map((node) => [node.id, node]));
+      for (const [a, b] of fixture.nears ?? []) {
+        byId.get(a)!.nears.add(byId.get(b)!);
+        byId.get(b)!.nears.add(byId.get(a)!);
+      }
+      for (const group of fixture.commonUncleGroups ?? []) {
+        const siblings = group.map((id) => byId.get(id)!);
+        for (const node of siblings) graph.commonUncleSiblings.set(node, siblings);
+      }
       if (fixture.error) expect(() => placeOrdinaryNodes(graph, fixture.seed)).toThrow(fixture.error);
       else {
         placeOrdinaryNodes(graph, fixture.seed);

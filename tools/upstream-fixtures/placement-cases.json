@@ -58,5 +58,17 @@
     "name": "seven-node-branch", "seed": 10, "direction": "TB",
     "nodes": [{"id":"a","width":40,"height":30},{"id":"b","width":40,"height":30},{"id":"c","width":40,"height":30},{"id":"d","width":40,"height":30},{"id":"e","width":40,"height":30},{"id":"f","width":40,"height":30},{"id":"g","width":40,"height":30}],
     "edges": [{"from":"a","to":"b","directed":true},{"from":"a","to":"c","directed":true},{"from":"b","to":"d","directed":true},{"from":"b","to":"e","directed":true},{"from":"c","to":"f","directed":true},{"from":"c","to":"g","directed":true}]
+  },
+  {
+    "name": "near-compound-chain-three", "seed": 4, "direction": "",
+    "nodes": [{"id":"N0","width":58,"height":32},{"id":"N1","width":70,"height":39},{"id":"N2","width":82,"height":32}],
+    "edges": [{"from":"N0","to":"N1","directed":true},{"from":"N1","to":"N2","directed":true}],
+    "nears": [["N0","N2"]]
+  },
+  {
+    "name": "near-common-uncle-chain-three", "seed": 4, "direction": "",
+    "nodes": [{"id":"N0","width":58,"height":32},{"id":"N1","width":70,"height":39},{"id":"N2","width":82,"height":32}],
+    "edges": [{"from":"N0","to":"N1","directed":true},{"from":"N1","to":"N2","directed":true}],
+    "nears": [["N0","N2"]], "commonUncleGroups": [["N0","N2"]]
   }
 ]

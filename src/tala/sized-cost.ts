@@ -1,6 +1,8 @@
 import type { Point } from '../layout.js';
 import { TalaGraph, TalaNode } from './graph.js';
-import { SideEdgeSpacing, compassAxisDelta, compassDelta, directionCompass, distanceToPoint, placementDistance, sizedOrientation, type Orientation } from './placement-geometry.js';
+import { axisScore } from './axis-score.js';
+import { SideEdgeSpacing, compassAxisDelta, compassDelta, directionCompass,
+  distanceBetweenBoxes, distanceToPoint, placementDistance, sizedOrientation, type Orientation } from './placement-geometry.js';
 
 /** The sized phase halves TALA's cached turn cost after sizeless placement. */
 export function sizedTurnCost(graph: TalaGraph): number {
@@ -83,6 +85,18 @@ export function sizedNodeEdgeLength(owner: TalaNode, graph: TalaGraph,
     }
     total += distance;
   }
+  if (owner.nears.size > 0) {
+    let nearest = Infinity;
+    for (const near of owner.nears) {
+      if (!near.topLeft) { nearest = 0; continue; }
+      nearest = Math.min(nearest, distanceBetweenBoxes(
+        { topLeft: owner.topLeft, width: owner.width, height: owner.height },
+        { topLeft: near.topLeft, width: near.width, height: near.height }));
+    }
+    total += nearest;
+  }
+  const siblings = graph.commonUncleSiblings.get(owner);
+  if (siblings) total += graph.cellSize * (1 - axisScore(siblings)) * (siblings.length - 1);
   return total + flowContinuityCost(owner, turnCost);
 }
 

@@ -23,6 +23,7 @@ export class TalaNode {
   parent: TalaNode | null = null;
   readonly children: TalaNode[] = [];
   readonly edges: TalaEdge[] = [];
+  readonly nears = new Set<TalaNode>();
   x: number | undefined;
   y: number | undefined;
   topLeft: Point | undefined;
@@ -155,6 +156,7 @@ export class TalaGraph {
   readonly containers = new Map<TalaNode | null, TalaNode[]>();
   readonly directions = new Map<TalaNode | null, LayoutDirection>();
   readonly hubs = new Map<TalaNode, TalaNode[]>();
+  readonly commonUncleSiblings = new Map<TalaNode, TalaNode[]>();
   readonly edgeEndpointReplacements = new Map<string, EdgeEndpointReplacements>();
   readonly projectedChildren = new Map<string, ProjectedChildGeometry[]>();
   cellSize = 10;
@@ -373,6 +375,10 @@ export class TalaGraph {
       node.y = previous.y;
       node.topLeft = previous.topLeft ? { ...previous.topLeft } : undefined;
       node.fixedTopLeft = previous.fixedTopLeft ? { ...previous.fixedTopLeft } : undefined;
+      for (const near of previous.nears) {
+        const copiedNear = copy.nodes.find((candidate) => candidate.id === near.id);
+        if (copiedNear) node.nears.add(copiedNear);
+      }
     }
     const edgeById = new Map(this.edges.map((edge) => [edge.id, edge]));
     for (const edge of copy.edges) {
@@ -384,6 +390,11 @@ export class TalaGraph {
     for (const [hub, spokes] of this.hubs) {
       const cloneHub = copy.nodes.find((node) => node.id === hub.id)!;
       copy.hubs.set(cloneHub, spokes.map((spoke) => copy.nodes.find((node) => node.id === spoke.id)!));
+    }
+    for (const [node, siblings] of this.commonUncleSiblings) {
+      const copied = copy.nodes.find((candidate) => candidate.id === node.id)!;
+      copy.commonUncleSiblings.set(copied, siblings.map((sibling) =>
+        copy.nodes.find((candidate) => candidate.id === sibling.id)!));
     }
     return copy;
   }

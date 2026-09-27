@@ -7,7 +7,8 @@ const positionKey = (point: Point): string => `${point.x},${point.y}`;
 
 /** Port of placement.medianToNeighbors for the non-sized phase. */
 export function medianToNeighbors(node: TalaNode): Point {
-  const neighbors = node.edges.map((edge) => node.adjacent(edge)).filter((adjacent) => adjacent.topLeft);
+  const connected = node.edges.map((edge) => node.adjacent(edge)).filter((adjacent) => adjacent.topLeft);
+  const neighbors = connected.length ? connected : [...node.nears].filter((near) => near.topLeft);
   if (neighbors.length === 0) throw new Error(`node ${node.id} has no positioned neighbors`);
   const byX = [...neighbors].sort((a, b) => a.topLeft!.x - b.topLeft!.x || compareId(a, b));
   const byY = [...neighbors].sort((a, b) => a.topLeft!.y - b.topLeft!.y || compareId(a, b));
@@ -65,7 +66,8 @@ export class SizelessOptimizer {
   constructor(private readonly graph: TalaGraph, private readonly random: GoRandom,
     score?: (node: TalaNode) => number) {
     this.score = score ?? ((node) => sizelessNodeEdgeLength(node, graph));
-    this.movable = graph.nodes.filter((node) => node.edges.length > 0 && !node.fixedTopLeft);
+    this.movable = graph.nodes.filter((node) => (node.edges.length > 0 || node.nears.size > 0)
+      && !node.fixedTopLeft);
     this.resetOccupied();
   }
 

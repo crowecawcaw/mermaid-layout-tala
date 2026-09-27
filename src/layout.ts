@@ -155,7 +155,9 @@ function layoutFlatFlowchart(
   constrainDirection = true,
   endpointReplacements: ReadonlyMap<string, EdgeEndpointReplacements> = new Map(),
   projectedChildren: ReadonlyMap<string, readonly ProjectedChildGeometry[]> = new Map(),
-  placedClusters?: PlacedCluster[]
+  placedClusters?: PlacedCluster[],
+  nearPairs: readonly (readonly [string, string])[] = [],
+  commonUncleGroups: readonly (readonly string[])[] = []
 ): LayoutResult {
   const direction = options.direction ?? 'TB';
   const nodeSpacing = finiteSpacing(options.nodeSpacing ?? 48, 'nodeSpacing');
@@ -196,21 +198,22 @@ function layoutFlatFlowchart(
           to: edge.to,
           weight: edge.weight,
         } satisfies RankEdge)));
-    const sequencePlacement = useOrdinary && !hasFixed && component.every((node) => !node.isGroup)
+    const hasNears = nearPairs.some(([a, b]) => componentIds.has(a) && componentIds.has(b));
+    const sequencePlacement = useOrdinary && !hasNears && !hasFixed && component.every((node) => !node.isGroup)
       ? placeFlatSequences(component, componentEdges, direction, seed, ranks) : undefined;
     const sequence = sequencePlacement?.nodes;
     for (const id of sequencePlacement?.definingEdgeIds ?? []) sequenceDefiningEdgeIds.add(id);
-    const tree = useOrdinary && !sequence && !hasFixed && component.every((node) => !node.isGroup)
+    const tree = useOrdinary && !hasNears && !sequence && !hasFixed && component.every((node) => !node.isGroup)
       ? placeSimpleTree(component, componentEdges, direction, ranks) : undefined;
     if (tree) treeComponents.push({ ids: componentIds, edges: componentEdges,
       extraction: extractFlatTrees(component, componentEdges) });
-    const hierarchyLevels = useOrdinary && !sequence && !tree && !hasFixed
+    const hierarchyLevels = useOrdinary && !hasNears && !sequence && !tree && !hasFixed
       && component.every((node) => !node.isGroup)
       && extractFlatTrees(component, componentEdges).remaining.length === component.length
       ? discoverFlatHierarchy(component, componentEdges, direction) : undefined;
     const hierarchy = hierarchyLevels
       ? placeFlatHierarchy(component, componentEdges, hierarchyLevels, direction, seed) : undefined;
-    const cluster = useOrdinary && !sequence && !tree && !hierarchy && !hasFixed && component.every((node) => !node.isGroup)
+    const cluster = useOrdinary && !hasNears && !sequence && !tree && !hierarchy && !hasFixed && component.every((node) => !node.isGroup)
       ? placeFlatClusters(component, componentEdges, direction, seed, ranks,
         constrainDirection, placedClusters) : undefined;
     const fixedSingleton = useOrdinary && component.length === 1 && component[0]!.fixedTopLeft
@@ -219,7 +222,9 @@ function layoutFlatFlowchart(
         rank: 0, order: 0 }] : undefined;
     const localNodes = sequence ?? tree ?? hierarchy ?? cluster ?? fixedSingleton ?? (useOrdinary && component.length > 1
       ? positionOrdinaryComponent(component, componentEdges, ranks, direction, seed,
-        constrainDirection, endpointReplacements, projectedChildren)
+        constrainDirection, endpointReplacements, projectedChildren,
+        nearPairs.filter(([a, b]) => componentIds.has(a) && componentIds.has(b)),
+        commonUncleGroups.filter((group) => group.every((id) => componentIds.has(id))))
       : positionComponent(component, weightedDag, ranks, nodeSpacing, rankSpacing, passes, direction, seed));
     for (const node of localNodes) allPositions.set(node.id, node);
     componentBounds.push(bounds(localNodes));
@@ -294,7 +299,9 @@ function positionOrdinaryComponent(nodes: readonly LayoutNode[], edges: readonly
   ranks: ReadonlyMap<string, number>, direction: LayoutDirection, seed: number,
   constrainDirection = true,
   endpointReplacements: ReadonlyMap<string, EdgeEndpointReplacements> = new Map(),
-  projectedChildren: ReadonlyMap<string, readonly ProjectedChildGeometry[]> = new Map()): PositionedNode[] {
+  projectedChildren: ReadonlyMap<string, readonly ProjectedChildGeometry[]> = new Map(),
+  nearPairs: readonly (readonly [string, string])[] = [],
+  commonUncleGroups: readonly (readonly string[])[] = []): PositionedNode[] {
   const graph = TalaGraph.fromFlowchart(nodes.map((node) => ({ ...node, parentId: undefined })),
     edges, constrainDirection ? direction : undefined);
   for (const edge of edges) {
@@ -302,6 +309,21 @@ function positionOrdinaryComponent(nodes: readonly LayoutNode[], edges: readonly
     if (replacements) graph.edgeEndpointReplacements.set(edge.id, replacements);
   }
   for (const [id, children] of projectedChildren) graph.projectedChildren.set(id, [...children]);
+  const nodesById = new Map(graph.nodes.map((node) => [node.id, node]));
+  for (const [a, b] of nearPairs) {
+    const first = nodesById.get(a), second = nodesById.get(b);
+    if (!first || !second) continue;
+    first.nears.add(second);
+    second.nears.add(first);
+  }
+  for (const group of commonUncleGroups) {
+    const siblings = group.map((id) => nodesById.get(id)).filter((node) => node !== undefined);
+    if (siblings.length < 2) continue;
+    for (const sibling of siblings) {
+      const previous = graph.commonUncleSiblings.get(sibling);
+      if (!previous || previous.length < siblings.length) graph.commonUncleSiblings.set(sibling, siblings);
+    }
+  }
   placeOrdinaryNodes(graph, seed);
   directOrdinaryGraph(graph, constrainDirection ? direction : undefined);
   const crossAxis = direction === 'TB' || direction === 'BT' ? 'x' : 'y';
@@ -413,13 +435,43 @@ function layoutCompoundFlowchart(
     const projected: LayoutEdge[] = projection.projected.map((edge) => ({
       ...edgeById.get(edge.id)!, from: edge.from.id, to: edge.to.id,
     }));
+    const commonUncles = new Map<string, Set<string>>();
+    if (parentId) {
+      const directChild = (id: string): string | undefined => {
+        let current = byId.get(id);
+        while (current && current.parentId !== parentId) current = byId.get(current.parentId ?? '');
+        return current?.id;
+      };
+      for (const edge of inputEdges) {
+        const from = directChild(edge.from), to = directChild(edge.to);
+        if (from && !to) {
+          const siblings = commonUncles.get(edge.to) ?? new Set<string>();
+          siblings.add(from); commonUncles.set(edge.to, siblings);
+        } else if (to && !from) {
+          const siblings = commonUncles.get(edge.from) ?? new Set<string>();
+          siblings.add(to); commonUncles.set(edge.from, siblings);
+        }
+      }
+    }
+    const nearPairs: Array<readonly [string, string]> = [];
+    const commonUncleGroups: string[][] = [];
+    for (const siblings of commonUncles.values()) {
+      const ids = [...siblings].sort(compareText);
+      if (ids.length >= 2) commonUncleGroups.push(ids);
+      for (let i = 0; i < ids.length; i++) for (let j = i + 1; j < ids.length; j++) {
+        const a = ids[i]!, b = ids[j]!;
+        if (projected.some((edge) => edge.from === a && edge.to === b
+          || edge.from === b && edge.to === a)) continue;
+        if (!nearPairs.some(([x, y]) => x === a && y === b)) nearPairs.push([a, b]);
+      }
+    }
     projection.restore();
     // Upstream only records an interior direction when the container declares
     // one. The LR axis below is a presentation fallback for ranks and packing.
     const localClusters: PlacedCluster[] = [];
     const flat = layoutFlatFlowchart(measured, projected, { ...options, direction }, seed,
       parentId === undefined || byId.get(parentId)?.dir !== undefined,
-      endpointReplacements, projectedChildren, localClusters);
+      endpointReplacements, projectedChildren, localClusters, nearPairs, commonUncleGroups);
     const box = bounds(flat.nodes);
     const group = parentId ? byId.get(parentId)! : undefined;
     const padding = 60;

@@ -895,5 +895,149 @@
         "y": 280
       }
     }
+  },
+  {
+    "name": "near-compound-chain-three",
+    "seed": 4,
+    "direction": "",
+    "nodes": [
+      {
+        "id": "N0",
+        "width": 58,
+        "height": 32
+      },
+      {
+        "id": "N1",
+        "width": 70,
+        "height": 39
+      },
+      {
+        "id": "N2",
+        "width": 82,
+        "height": 32
+      }
+    ],
+    "edges": [
+      {
+        "from": "N0",
+        "to": "N1",
+        "directed": true
+      },
+      {
+        "from": "N1",
+        "to": "N2",
+        "directed": true
+      }
+    ],
+    "nears": [
+      [
+        "N0",
+        "N2"
+      ]
+    ],
+    "cellSize": 82,
+    "initial": {
+      "N0": {
+        "x": 3,
+        "y": 3
+      },
+      "N1": {
+        "x": 3,
+        "y": 4
+      },
+      "N2": {
+        "x": 4,
+        "y": 4
+      }
+    },
+    "positions": {
+      "N0": {
+        "x": 5084,
+        "y": -4346
+      },
+      "N1": {
+        "x": 5248,
+        "y": -4346
+      },
+      "N2": {
+        "x": 5166,
+        "y": -4182
+      }
+    }
+  },
+  {
+    "name": "near-common-uncle-chain-three",
+    "seed": 4,
+    "direction": "",
+    "nodes": [
+      {
+        "id": "N0",
+        "width": 58,
+        "height": 32
+      },
+      {
+        "id": "N1",
+        "width": 70,
+        "height": 39
+      },
+      {
+        "id": "N2",
+        "width": 82,
+        "height": 32
+      }
+    ],
+    "edges": [
+      {
+        "from": "N0",
+        "to": "N1",
+        "directed": true
+      },
+      {
+        "from": "N1",
+        "to": "N2",
+        "directed": true
+      }
+    ],
+    "nears": [
+      [
+        "N0",
+        "N2"
+      ]
+    ],
+    "commonUncleGroups": [
+      [
+        "N0",
+        "N2"
+      ]
+    ],
+    "cellSize": 82,
+    "initial": {
+      "N0": {
+        "x": 3,
+        "y": 3
+      },
+      "N1": {
+        "x": 3,
+        "y": 4
+      },
+      "N2": {
+        "x": 4,
+        "y": 4
+      }
+    },
+    "positions": {
+      "N0": {
+        "x": 2706,
+        "y": -3444
+      },
+      "N1": {
+        "x": 2870,
+        "y": -3444
+      },
+      "N2": {
+        "x": 2706,
+        "y": -3362
+      }
+    }
   }
 ]

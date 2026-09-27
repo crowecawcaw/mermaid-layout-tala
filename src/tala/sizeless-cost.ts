@@ -1,5 +1,7 @@
 import { TalaGraph, TalaNode } from './graph.js';
-import { compassAxisDelta, compassDelta, directionCompass, placementDistance, sizelessOrientation, type Orientation } from './placement-geometry.js';
+import { axisScore } from './axis-score.js';
+import { compassAxisDelta, compassDelta, directionCompass, distanceBetweenBoxes,
+  placementDistance, sizelessOrientation, type Orientation } from './placement-geometry.js';
 
 /** Ordinary-node, non-sized branch of placementcost.NodeEdgeLength.
  * The remaining branches handle containers, clusters, nears, and sized costs. */
@@ -28,6 +30,18 @@ export function sizelessNodeEdgeLength(node: TalaNode, graph: TalaGraph): number
     }
     total += distance;
   }
+  if (node.nears.size > 0) {
+    let nearest = Infinity;
+    for (const near of node.nears) {
+      if (!near.topLeft) { nearest = 0; continue; }
+      nearest = Math.min(nearest, distanceBetweenBoxes(
+        { topLeft: node.topLeft, width: 0, height: 0 },
+        { topLeft: near.topLeft, width: 0, height: 0 }));
+    }
+    total += nearest;
+  }
+  const siblings = graph.commonUncleSiblings.get(node);
+  if (siblings) total += (1 - axisScore(siblings)) * (siblings.length - 1);
   return total;
 }
 

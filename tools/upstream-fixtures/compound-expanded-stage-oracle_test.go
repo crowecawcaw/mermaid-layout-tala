@@ -113,6 +113,18 @@ func TestTSExpandedCompoundTrace(t *testing.T) {
 			if err := original(p, ctx); err != nil {
 				return err
 			}
+			if index <= 6 {
+				fmt.Printf("PREPROCESS %02d %s", index, stage.name)
+				for _, item := range input.Nodes {
+					n := byID[item.ID]
+					_, tree := g.NodeToTree[n]
+					_, sequence := g.Sequences[n]
+					fmt.Printf(" %s=[tree:%t hierarchy:%t cluster:%t sequence:%t herd:%t]",
+						item.ID, tree, n.Hierarchy != nil, n.Cluster != nil,
+						sequence, n.HerdAssignment != nil)
+				}
+				fmt.Println()
+			}
 			if index >= 7 {
 				fmt.Printf("STAGE %02d %s", index, stage.name)
 				for _, item := range input.Nodes {
@@ -121,6 +133,15 @@ func TestTSExpandedCompoundTrace(t *testing.T) {
 						fmt.Printf(" %s=(%.0f,%.0f %.0fx%.0f)", item.ID,
 							n.TopLeft.X, n.TopLeft.Y, n.Width, n.Height)
 					}
+					if index == 7 && len(n.Nears) > 0 {
+						fmt.Printf(" %s.nears=", item.ID)
+						for _, near := range n.OrderedNears() {
+							for _, named := range input.Nodes {
+								if byID[named.ID] == near { fmt.Printf("%s,", named.ID) }
+							}
+						}
+					}
+					if index == 7 && n.HerdAssignment != nil { fmt.Printf(" %s.herd=%v", item.ID, n.HerdAssignment) }
 				}
 				fmt.Println()
 			}

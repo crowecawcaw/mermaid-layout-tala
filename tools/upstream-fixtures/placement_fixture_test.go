@@ -20,6 +20,8 @@ type tsPlacementCase struct {
     Direction string `json:"direction"`
     Nodes []tsPlacementNode `json:"nodes"`
     Edges []tsPlacementEdge `json:"edges"`
+    Nears [][2]string `json:"nears,omitempty"`
+    CommonUncleGroups [][]string `json:"commonUncleGroups,omitempty"`
 }
 type tsPlacementPoint struct { X float64 `json:"x"`; Y float64 `json:"y"` }
 type tsPlacementResult struct {
@@ -40,16 +42,27 @@ func TestTSOrdinaryPlacementFixtures(t *testing.T) {
     results := make([]tsPlacementResult, 0, len(cases))
     for _, c := range cases {
         g := layoutgraph.NewGraph()
+        var root *layoutgraph.Node
         nodes := make(map[string]*layoutgraph.Node)
         for i, input := range c.Nodes {
             n := layoutgraph.NewNode(layoutgraph.EntityID(i+1), input.Width, input.Height)
             g.AddNodeUnchecked(n)
-            g.AddNodeToContainer(nil, n)
+            g.AddNodeToContainer(root, n)
             nodes[input.ID] = n
         }
         for _, input := range c.Edges {
             e := g.Connect(nodes[input.From], nodes[input.To])
             if input.Directed { e.TargetArrowhead = layoutgraph.TriangleArrowhead }
+        }
+        for _, pair := range c.Nears {
+            nodes[pair[0]].Nears[nodes[pair[1]]] = struct{}{}
+            nodes[pair[1]].Nears[nodes[pair[0]]] = struct{}{}
+        }
+        for _, group := range c.CommonUncleGroups {
+            siblings := make(layoutgraph.Nodes, 0, len(group))
+            for _, id := range group { siblings = append(siblings, nodes[id]) }
+            if g.CommonUncleSiblings == nil { g.CommonUncleSiblings = make(map[*layoutgraph.Node]layoutgraph.Nodes) }
+            for _, sibling := range siblings { g.CommonUncleSiblings[sibling] = siblings }
         }
         switch c.Direction {
         case "TB": g.Directions[nil] = geo.Bottom
@@ -74,7 +87,7 @@ func TestTSOrdinaryPlacementFixtures(t *testing.T) {
             nodes[input.ID].TopLeft = nil
         }
         rng := rand.New(rand.NewSource(c.Seed))
-        if err := placeNodesOrthogonally(context.Background(), nil, g, nil, rng, nil, c.Seed); err != nil {
+        if err := placeNodesOrthogonally(context.Background(), root, g, nil, rng, nil, c.Seed); err != nil {
             out.Error = err.Error()
         } else {
             out.Positions = make(map[string]tsPlacementPoint)
