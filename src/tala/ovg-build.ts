@@ -19,11 +19,28 @@ export function buildFlatOVG(nodes: readonly OVGFlatNode[],
   edges: readonly OVGFlatEdge[], hierarchy?: OVGHierarchyInput): { vertices: OVGSweepVertex[];
   tunnelEdges: OVGTunnelEdge[]; sweepEdges: OVGSweepEdge[]; edges: OVGSweepEdge[] } {
   const vertices = hierarchy && hierarchy.levels.size === nodes.length
-    ? buildAllHierarchyOVGVertices(nodes, edges, hierarchy) : buildFlatOVGVertices(nodes, edges);
+    ? buildAllHierarchyOVGVertices(nodes, edges, hierarchy)
+    : hierarchy && hierarchy.levels.size > 0
+      ? buildMixedHierarchyOVGVertices(nodes, edges, hierarchy)
+      : buildFlatOVGVertices(nodes, edges);
   const tunnelEdges = addFlatOVGTunnels(nodes, edges, vertices);
   const sweepEdges = connectOVGSweepNodes(nodes.map((node) => ({ ...node,
     container: node.isGroup === true })), vertices);
   return { vertices, tunnelEdges, sweepEdges, edges: [...tunnelEdges, ...sweepEdges] };
+}
+
+/** The mixed branch of buildOVGFromGraph: keep the hierarchy's dedicated
+ * lanes while connecting them to the ordinary nodes' visibility grid. */
+function buildMixedHierarchyOVGVertices(nodes: readonly OVGFlatNode[],
+  edges: readonly OVGFlatEdge[], hierarchy: OVGHierarchyInput): OVGSweepVertex[] {
+  const hierarchyNodes = nodes.filter((node) => hierarchy.levels.has(node.id));
+  const hierarchyEdges = edges.filter((edge) => hierarchy.levels.has(edge.from)
+    && hierarchy.levels.has(edge.to));
+  const hierarchyVertices = buildAllHierarchyOVGVertices(hierarchyNodes, hierarchyEdges,
+    { levels: hierarchy.levels, direction: hierarchy.direction });
+  return buildFlatOVGVertices(nodes,
+    edges.filter((edge) => !hierarchyEdges.includes(edge)),
+    { hierarchyIds: new Set(hierarchy.levels.keys()), hierarchyVertices });
 }
 
 function buildAllHierarchyOVGVertices(nodes: readonly OVGFlatNode[],
@@ -56,7 +73,8 @@ function buildAllHierarchyOVGVertices(nodes: readonly OVGFlatNode[],
 /** The ordinary flat-graph vertex stages of routing/ovg.go through
  * addCornerNodes. Tunnels and hierarchical vertices are later stages. */
 export function buildFlatOVGVertices(nodes: readonly OVGFlatNode[],
-  edges: readonly OVGFlatEdge[]): OVGSweepVertex[] {
+  edges: readonly OVGFlatEdge[], mixed?: { hierarchyIds: ReadonlySet<string>;
+    hierarchyVertices: readonly OVGSweepVertex[] }): OVGSweepVertex[] {
   const vertices: OVGSweepVertex[] = [];
   const occupied = new Map<string, OVGSweepVertex>();
   const ports = new Map<string, OVGSweepVertex[]>();
@@ -71,11 +89,28 @@ export function buildFlatOVGVertices(nodes: readonly OVGFlatNode[],
     }
     return vertex;
   };
+  const merge = (source: OVGSweepVertex): OVGSweepVertex => {
+    const target = add(source);
+    for (const owner of source.owners ?? []) {
+      let existing = target.owners?.find((item) => item.node === owner.node);
+      if (!existing) {
+        existing = { ...owner, directions: [...owner.directions] };
+        (target.owners ??= []).push(existing);
+      } else {
+        for (const direction of owner.directions) {
+          if (!existing.directions.includes(direction)) existing.directions.push(direction);
+        }
+        if (owner.center) existing.center = true;
+      }
+    }
+    return target;
+  };
 
   // addPorts: each group is top, left, bottom, right. Go canonicalizes
   // touching ports by coordinate and accumulates every owner/direction.
   const sides: OVGPortDirection[] = ['top', 'left', 'bottom', 'right'];
   for (const node of nodes) {
+    if (mixed?.hierarchyIds.has(node.id)) continue;
     const nodePorts: OVGSweepVertex[] = [];
     for (const [i, group] of ovgPortGroups(node).entries()) {
       for (const point of group) {
@@ -96,9 +131,25 @@ export function buildFlatOVGVertices(nodes: readonly OVGFlatNode[],
     ports.set(node.id, nodePorts);
   }
 
+  // Go merges hierarchy ports into the ordinary OVG before taking the
+  // Cartesian product. Its other hierarchy vertices arrive afterward.
+  if (mixed) {
+    for (const vertex of mixed.hierarchyVertices) {
+      if (vertex.owners?.length) merge(vertex);
+    }
+    for (const node of nodes) {
+      if (!mixed.hierarchyIds.has(node.id)) continue;
+      ports.set(node.id, ovgPortGroups(node).flat().map((point) =>
+        occupied.get(`${point.x},${point.y}`)!).filter(Boolean));
+    }
+  }
+
   // addNodesIntersections: candidate generation includes the upstream
   // port-clearance and two-owner visibility checks.
   for (const point of ovgPortGridIntersections(nodes)) add(point);
+  if (mixed) for (const vertex of mixed.hierarchyVertices) {
+    if (!vertex.owners?.length) merge(vertex);
+  }
 
   const near = (point: Point): boolean => nodes.some((box) => !box.isGroup &&
     box.x - 20 <= point.x && point.x <= box.x + box.width + 20

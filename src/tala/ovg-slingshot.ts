@@ -291,8 +291,15 @@ function samePoint(a: Point, b: Point): boolean { return a.x === b.x && a.y === 
 
 function routeHitsOtherNode(nodes: readonly OVGFlatNode[], source: string, target: string,
   from: Point, to: Point): boolean {
-  return nodes.some((node) => node.id !== source && node.id !== target
-    && segmentIntersectsBox(node, from, to));
+  const byId = new Map(nodes.map((node) => [node.id, node]));
+  const isAncestor = (ancestor: string, child: string): boolean => {
+    for (let id: string | undefined = child; id; id = byId.get(id)?.parentId) {
+      if (id === ancestor) return true;
+    }
+    return false;
+  };
+  return nodes.some((node) => !isAncestor(node.id, source)
+    && !isAncestor(node.id, target) && segmentIntersectsBox(node, from, to));
 }
 function segmentIntersectsBox(node: OVGFlatNode, from: Point, to: Point): boolean {
   if (from.x === to.x) return node.x <= from.x && from.x <= node.x + node.width

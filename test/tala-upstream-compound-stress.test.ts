@@ -6,7 +6,8 @@ import { layoutFlowchart, type LayoutDirection, type LayoutEdge,
 interface Case { name: string; direction: LayoutDirection; seed: number;
   nodes: LayoutNode[]; edges: LayoutEdge[] }
 interface Oracle { name: string; nodes: Array<{ id: string; x: number;
-  y: number; width: number; height: number }> }
+  y: number; width: number; height: number }>;
+  edges: Array<{ id: string; points: Array<{ x: number; y: number }> }> }
 const read = (file: string) => JSON.parse(readFileSync(new URL(
   `../tools/upstream-fixtures/${file}`, import.meta.url), 'utf8'));
 const cases = read('compound-stress-cases.json') as Case[];
@@ -29,6 +30,12 @@ describe('compound hierarchy geometry against complete Go pipeline', () => {
           y: placed.y - placed.height / 2 - dy,
           width: placed.width, height: placed.height };
       })).toEqual(oracle.nodes);
+      expect(oracle.edges.map((edge) => {
+        const routed = actual.edges.find((item) => item.id === edge.id)!;
+        return { id: edge.id, points: routed.points.map((point) => ({
+          x: point.x - dx, y: point.y - dy,
+        })) };
+      })).toEqual(oracle.edges);
     });
   }
 });

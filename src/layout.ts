@@ -721,13 +721,16 @@ function layoutCompoundFlowchart(
     const original = TalaGraph.fromFlowchart(nodes, inputEdges, options.direction ?? 'TB');
     for (const id of sequenceDefiningEdges(original)) consumed.add(id);
   }
+  const hierarchyIds = new Set(rootScope.hierarchyIds);
+  const routingHierarchy = hierarchyIds.size ? new Map(placed.filter((node) =>
+    hierarchyIds.has(node.id)).map((node) => [node.id, node.rank])) : undefined;
   let edges = routeWithConsumedEdges(placed, inputEdges, options.direction ?? 'TB', consumed,
-    new Map(), useTala, useTala);
+    new Map(), useTala, useTala, routingHierarchy);
   if (useTala && rootScope.clusters.length === 0 && consumed.size === 0) {
     const eligible = new Set(placed.filter((node) => !node.isGroup).map((node) => node.id));
     if (dejitterTreeRoutes(placed, edges, eligible, true)) {
       edges = routeWithConsumedEdges(placed, inputEdges, options.direction ?? 'TB', consumed,
-        new Map(), useTala, useTala);
+        new Map(), useTala, useTala, routingHierarchy);
     }
   }
   return { nodes: placed, edges };
