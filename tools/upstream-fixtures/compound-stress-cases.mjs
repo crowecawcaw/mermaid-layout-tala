@@ -42,9 +42,12 @@ const patterns = [
       edge('ro', 'Leaf2', 'Output')],
   },
 ];
+const byId = (a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0;
 const cases = patterns.flatMap((pattern, pi) => directions.map((direction, di) => ({
   name: `${pattern.name}-${direction}`, direction, seed: 1 + ((pi + di) % 3),
-  nodes: pattern.nodes, edges: pattern.edges,
+  // The Mermaid adapter canonicalizes IDs at its boundary. The Go oracle
+  // must receive the same order for deterministic tie breaks.
+  nodes: [...pattern.nodes].sort(byId), edges: [...pattern.edges].sort(byId),
 })));
 writeFileSync(new URL('./compound-stress-cases.json', import.meta.url),
   `${JSON.stringify(cases, null, 2)}\n`);

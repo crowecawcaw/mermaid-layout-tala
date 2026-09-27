@@ -27,13 +27,15 @@ function swapOptimize(graph: TalaGraph): boolean {
     - nodeSymmetry(node, graph) * graph.cellSize * node.edges.length;
   let changed = false;
   for (const node of graph.nodes) {
-    if (!node.topLeft || node.fixedTopLeft || node.edges.length === 0 && !hasLeakyEdge(node)) continue;
+    if (!node.topLeft || node.fixedTopLeft || node.inHierarchy
+      || node.edges.length === 0 && !hasLeakyEdge(node)) continue;
     let best: { candidate: TalaNode; smart: boolean; global: number } | undefined;
     const currentGlobal = ordinaryPlacementEdgeLength(graph);
     const currentLocal = measure(node);
     const currentCrossings = countGraphEdgeCrossings(graph);
     for (const candidate of graph.containers.get(node.parent) ?? []) {
-      if (candidate === node || !candidate.topLeft || candidate.fixedTopLeft) continue;
+      if (candidate === node || !candidate.topLeft || candidate.fixedTopLeft
+        || candidate.inHierarchy) continue;
       const plain = trial(node, candidate, false);
       const smart = trial(node, candidate, true);
       const selected = choose(plain, smart);

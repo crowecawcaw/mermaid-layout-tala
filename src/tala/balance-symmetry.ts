@@ -6,7 +6,8 @@ import { wrapContainers } from './equidistance.js';
 export function balanceSymmetry(graph: TalaGraph): boolean {
   let changed = false;
   for (const node of graph.nodes) {
-    if (!node.topLeft || node.isGroup || node.fixedTopLeft || node.edges.length < 2) continue;
+    if (!node.topLeft || node.isGroup || node.fixedTopLeft || node.inHierarchy
+      || node.edges.length < 2) continue;
     const adjacent = new Set<TalaNode>();
     let sameSide = true;
     for (let i = 0; i < node.edges.length - 1; i++) {

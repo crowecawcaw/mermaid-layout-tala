@@ -14,7 +14,7 @@ import { activateFlatClusters } from './tala/cluster-topology.js';
 import { placeFlatSequences } from './tala/flat-sequence-placement.js';
 import { sequenceDefiningEdges } from './tala/sequence-topology.js';
 import { simplifyEdgeRoutes } from './tala/edge-simplify.js';
-import { projectContainerEdges } from './tala/container-topology.js';
+import { projectContainerEdges, type ContainerEdgeAbduction } from './tala/container-topology.js';
 import { prepareNodeLabels } from './tala/label-policy.js';
 import { normalizeLayoutResult } from './tala/normalize.js';
 import { alignAxesPass } from './tala/alignment-search.js';
@@ -34,6 +34,7 @@ import { swapAllEdgePorts } from './tala/swap-edge-ports.js';
 import { nudgeEdgeChannels } from './tala/nudge-channels.js';
 import { discoverFlatHierarchy, placeFlatHierarchy } from './tala/hierarchy-flat.js';
 import { assignHerds, type HerdAssignment, type HerdGroup, type HerdSide } from './tala/herding.js';
+import { placeChildrenOrder } from './tala/children-order.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
@@ -165,7 +166,9 @@ function layoutFlatFlowchart(
   commonUncleGroups: readonly (readonly string[])[] = [],
   originalSymmetryEdges: readonly LayoutEdge[] = [],
   mirrors?: Map<string, DirectionTransforms>,
-  herdOrientations: ReadonlyMap<string, HerdSide> = new Map()
+  herdOrientations: ReadonlyMap<string, HerdSide> = new Map(),
+  hierarchyDirection?: LayoutDirection,
+  placedHierarchyIds?: Set<string>
 ): LayoutResult {
   const direction = options.direction ?? 'TB';
   const nodeSpacing = finiteSpacing(options.nodeSpacing ?? 48, 'nodeSpacing');
@@ -217,14 +220,16 @@ function layoutFlatFlowchart(
       ? placeSimpleTree(component, componentEdges, direction, ranks) : undefined;
     if (tree) treeComponents.push({ ids: componentIds, edges: componentEdges,
       extraction: extractFlatTrees(component, componentEdges) });
-    const hierarchyLevels = useOrdinary && !hasNears && !sequence && !tree && !hasFixed
+    const hierarchyLevels = useOrdinary && !sequence && !tree && !hasFixed
       && component.every((node) => !node.isGroup)
-      && extractFlatTrees(component, componentEdges).remaining.length === component.length
-      ? discoverFlatHierarchy(component, componentEdges, direction) : undefined;
+      && (hasNears || extractFlatTrees(component, componentEdges).remaining.length === component.length)
+      ? discoverFlatHierarchy(component, componentEdges, hierarchyDirection ?? direction) : undefined;
     const hierarchy = hierarchyLevels
-      ? placeFlatHierarchy(component, componentEdges, hierarchyLevels, direction, seed) : undefined;
+      ? placeFlatHierarchy(component, componentEdges, hierarchyLevels,
+        hierarchyDirection ?? direction, seed) : undefined;
     if (hierarchy) for (const node of component) {
       hierarchyNodeIds.add(node.id);
+      placedHierarchyIds?.add(node.id);
       hierarchyLevelsForRouting.set(node.id, hierarchyLevels!.get(node.id)!);
     }
     const cluster = useOrdinary && !hasNears && !sequence && !tree && !hierarchy && !hasFixed && component.every((node) => !node.isGroup)
@@ -447,11 +452,13 @@ function layoutCompoundFlowchart(
     children.set(node.parentId, siblings);
   }
   interface Scope { width: number; height: number; positioned: PositionedNode[];
-    clusters: PlacedCluster[]; nearPairs: Array<readonly [string, string]> }
+    clusters: PlacedCluster[]; nearPairs: Array<readonly [string, string]>;
+    hierarchyIds: string[] }
   const active = new Set<string>();
   const herdAssignments = new Map<string, HerdAssignment>();
   const placedContainerSizes = new Map<string, { width: number; height: number }>();
-  const placeScope = (parentId: string | undefined, direction: LayoutDirection): Scope => {
+  const placeScope = (parentId: string | undefined, direction: LayoutDirection,
+    previousAbductions: readonly ContainerEdgeAbduction[] = []): Scope => {
     if (parentId) {
       if (active.has(parentId)) throw new Error('cyclic container hierarchy');
       active.add(parentId);
@@ -462,20 +469,23 @@ function layoutCompoundFlowchart(
       active.delete(parentId);
       placedContainerSizes.set(parentId, { width: empty.width, height: empty.height });
       return { width: empty.width, height: empty.height, positioned: [],
-        clusters: [], nearPairs: [] };
+        clusters: [], nearPairs: [], hierarchyIds: [] };
     }
     // Go abducts the current scope's boundary edges before placing nested
     // containers. Keep that projection active throughout the recursive pass.
     const projection = projectContainerEdges(projectionGraph,
       parentId ? projectionById.get(parentId)! : null);
     const nested = new Map<string, Scope>();
+    for (const node of placeChildrenOrder(siblingNodes, projection.abductions)) {
+      if (!node.isGroup) continue;
+      nested.set(node.id, placeScope(node.id, node.dir ?? 'LR', projection.abductions));
+    }
     const measured = siblingNodes.map((node) => {
       if (!node.isGroup) return node;
       // Upstream gives an unspecified container no inherited direction.
       // Its ordinary interior placement starts on the horizontal axis; an
       // authored container direction still takes precedence.
-      const childScope = placeScope(node.id, node.dir ?? 'LR');
-      nested.set(node.id, childScope);
+      const childScope = nested.get(node.id)!;
       return { ...node, width: childScope.width, height: childScope.height };
     });
     const endpointReplacements = new Map<string, EdgeEndpointReplacements>();
@@ -524,27 +534,38 @@ function layoutCompoundFlowchart(
         if (from && !to) {
           const siblings = commonUncles.get(edge.to) ?? new Set<string>();
           siblings.add(from); commonUncles.set(edge.to, siblings);
-          const uncle = byId.get(edge.to)?.parentId;
-          if (uncle && byId.get(uncle)?.isGroup) {
-            const herd = herdUncles.get(uncle) ?? new Set<string>();
-            herd.add(from); herdUncles.set(uncle, herd);
-            const cousins = cousinsByUncle.get(uncle) ?? new Map<string, string[]>();
-            const connected = cousins.get(from) ?? [];
-            connected.push(edge.to); cousins.set(from, connected);
-            cousinsByUncle.set(uncle, cousins);
-          }
         } else if (to && !from) {
           const siblings = commonUncles.get(edge.from) ?? new Set<string>();
           siblings.add(to); commonUncles.set(edge.from, siblings);
-          const uncle = byId.get(edge.from)?.parentId;
-          if (uncle && byId.get(uncle)?.isGroup) {
-            const herd = herdUncles.get(uncle) ?? new Set<string>();
-            herd.add(to); herdUncles.set(uncle, herd);
-            const cousins = cousinsByUncle.get(uncle) ?? new Map<string, string[]>();
-            const connected = cousins.get(to) ?? [];
-            connected.push(edge.from); cousins.set(to, connected);
-            cousinsByUncle.set(uncle, cousins);
-          }
+        }
+      }
+      // GroupSheep follows the previous scope's abducted edge back to its
+      // original cousin, climbing until that cousin is a direct child of the
+      // current proxy container. This preserves the correct uncle at depth.
+      const recordCousin = (child: string, originalCousin: string,
+        currentCousin: string | undefined): void => {
+        if (!currentCousin || !byId.get(currentCousin)?.isGroup) return;
+        let cousin = byId.get(originalCousin);
+        while (cousin && cousin.parentId !== currentCousin) {
+          cousin = byId.get(cousin.parentId ?? '');
+        }
+        if (!cousin) return;
+        const herd = herdUncles.get(currentCousin) ?? new Set<string>();
+        herd.add(child); herdUncles.set(currentCousin, herd);
+        const cousins = cousinsByUncle.get(currentCousin) ?? new Map<string, string[]>();
+        const connected = cousins.get(child) ?? [];
+        connected.push(cousin.id); cousins.set(child, connected);
+        cousinsByUncle.set(currentCousin, cousins);
+      };
+      for (const abduction of previousAbductions) {
+        const fromOriginal = abduction.originallyFrom?.id;
+        const toOriginal = abduction.originallyTo?.id;
+        const from = fromOriginal ? directChild(fromOriginal) : undefined;
+        const to = toOriginal ? directChild(toOriginal) : undefined;
+        if (from && !to && toOriginal) {
+          recordCousin(from, toOriginal, abduction.currentTo?.id);
+        } else if (to && !from && fromOriginal) {
+          recordCousin(to, fromOriginal, abduction.currentFrom?.id);
         }
       }
     }
@@ -586,10 +607,14 @@ function layoutCompoundFlowchart(
     // one. The LR axis below is a presentation fallback for ranks and packing.
     const localClusters: PlacedCluster[] = [];
     const mirrors = new Map<string, DirectionTransforms>();
+    const localHierarchyIds = new Set<string>();
+    const hierarchyDirection = parentId && !byId.get(parentId)?.dir
+      && (options.direction === 'LR' || options.direction === 'RL')
+      ? 'TB' : options.direction ?? 'TB';
     const flat = layoutFlatFlowchart(measured, projected, { ...options, direction }, seed,
       parentId === undefined || byId.get(parentId)?.dir !== undefined,
       endpointReplacements, projectedChildren, localClusters, nearPairs, commonUncleGroups,
-      inputEdges, mirrors, localHerdOrientations);
+      inputEdges, mirrors, localHerdOrientations, hierarchyDirection, localHierarchyIds);
     const box = bounds(flat.nodes);
     const group = parentId ? byId.get(parentId)! : undefined;
     const padding = 60;
@@ -620,7 +645,9 @@ function layoutCompoundFlowchart(
     }
     return { width, height, positioned,
       nearPairs: [...nested.values()].flatMap((scope) => scope.nearPairs).concat(nearPairs),
-      clusters: [...nested.values()].flatMap((scope) => scope.clusters).concat(localClusters) };
+      clusters: [...nested.values()].flatMap((scope) => scope.clusters).concat(localClusters),
+      hierarchyIds: [...nested.values()].flatMap((scope) => scope.hierarchyIds)
+        .concat([...localHierarchyIds]) };
   };
   const rootScope = placeScope(undefined, options.direction ?? 'TB');
   const placed = rootScope.positioned;
@@ -631,6 +658,10 @@ function layoutCompoundFlowchart(
     || edge.toTableColumnIndex !== undefined)) {
     const alignmentGraph = TalaGraph.fromFlowchart(placed, inputEdges, options.direction ?? 'TB');
     const alignmentById = new Map(alignmentGraph.nodes.map((node) => [node.id, node]));
+    for (const id of rootScope.hierarchyIds) {
+      const node = alignmentById.get(id);
+      if (node) node.inHierarchy = true;
+    }
     for (const [firstId, secondId] of rootScope.nearPairs) {
       const first = alignmentById.get(firstId), second = alignmentById.get(secondId);
       if (first && second) { first.nears.add(second); second.nears.add(first); }
@@ -665,7 +696,7 @@ function layoutCompoundFlowchart(
       changed = swapStage(alignmentGraph);
       changed = transposeAll(alignmentGraph) || changed;
       changed = alignAxesPass(alignmentGraph, alignmentScore) || changed;
-      changed = normalizeGaps(alignmentGraph) || changed;
+      changed = normalizeGaps(alignmentGraph, new Set(rootScope.hierarchyIds)) || changed;
       changed = alignAxesPass(alignmentGraph, alignmentScore) || changed;
       changed = balanceSymmetry(alignmentGraph) || changed;
       changed = equidistance(alignmentGraph) || changed;

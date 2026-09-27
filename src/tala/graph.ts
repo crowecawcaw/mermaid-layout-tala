@@ -26,6 +26,7 @@ export class TalaNode {
   readonly edges: TalaEdge[] = [];
   readonly nears = new Set<TalaNode>();
   herdAssignment: HerdAssignment | undefined;
+  inHierarchy = false;
   x: number | undefined;
   y: number | undefined;
   topLeft: Point | undefined;
@@ -383,6 +384,7 @@ export class TalaGraph {
       node.herdAssignment = previous.herdAssignment ? { ...previous.herdAssignment,
         sameSidePaired: new Set(previous.herdAssignment.sameSidePaired),
         oppositeSidePaired: new Set(previous.herdAssignment.oppositeSidePaired) } : undefined;
+      node.inHierarchy = previous.inHierarchy;
       for (const near of previous.nears) {
         const copiedNear = copy.nodes.find((candidate) => candidate.id === near.id);
         if (copiedNear) node.nears.add(copiedNear);

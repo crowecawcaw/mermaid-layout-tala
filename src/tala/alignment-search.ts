@@ -23,7 +23,8 @@ export function alignAxesPass(graph: TalaGraph, score: (graph: TalaGraph) => num
   const fixed = graph.nodes.filter((node) => node.fixedTopLeft);
   const excluded = [...fixed, ...(options.excludedNodes ?? [])];
   for (const edge of graph.edges) {
-    if (options.excludedEdges?.has(edge) || edge.fromTableColumnIndex !== undefined
+    if (options.excludedEdges?.has(edge) || edge.from.inHierarchy || edge.to.inHierarchy
+      || edge.fromTableColumnIndex !== undefined
       || edge.toTableColumnIndex !== undefined || isAxisAligned(edge)) continue;
     const deltas = ordinaryAlignmentDeltas(edge);
     let bestScore = score(graph);

@@ -19,7 +19,7 @@ export function transposeAll(graph: TalaGraph): boolean {
 
 /** Single candidate operation, matching upstream's transpose call. */
 export function transposeNode(graph: TalaGraph, node: TalaNode): boolean {
-  if (!node.topLeft || node.fixedTopLeft || node.edges.length < 1
+  if (!node.topLeft || node.fixedTopLeft || node.inHierarchy || node.edges.length < 1
     || node.edges.length > 2) return false;
   const neighbors = node.edges.map((edge) => node.adjacent(edge));
   if (neighbors.some((neighbor) => !neighbor.topLeft || node.isDescendantOf(neighbor)

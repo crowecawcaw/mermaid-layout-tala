@@ -26,7 +26,7 @@ export function equidistance(graph: TalaGraph): boolean {
 }
 
 function equidistanceNode(original: TalaNode, graph: TalaGraph, axis: Axis): boolean {
-  if (!original.topLeft || original.fixedTopLeft) return false;
+  if (!original.topLeft || original.fixedTopLeft || original.inHierarchy) return false;
   let back: TalaNode | undefined, front: TalaNode | undefined;
   for (const edge of original.edges) {
     const adjacent = original.adjacent(edge);

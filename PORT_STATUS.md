@@ -259,12 +259,22 @@ route-dependent `Dejitter` moves interior children by one pixel, refits the
 container from its current children, and reroutes affected edges.
 
 The compound stress oracle adds twelve sibling-fan, nested-branch, and grouped-tree
-cases in all four directions. These currently finish without an exception, but
-none matches the complete Go node geometry or routes. In particular, the
-recursive adapter still differs from Go's general compound placement. Ordinary
+cases in all four directions. These currently finish without an exception.
+The grouped-tree cases match all eight completed Go node boxes in TB, LR, and
+RL; BT matches six of eight. Their routes still differ. The sibling-fan and
+nested-branch cases also remain divergent, so the recursive adapter still
+differs from Go's general compound placement. Ordinary
 herd assignments now reconcile overlapping groups and placed-cousin side
 constraints, with tests translated from Go's conflict cases. The public path
 also applies the upstream sized fence penalty and resynchronizes herd fences
-during optimization. The current GroupSheep extraction covers direct ordinary
-children and external container cousins; deeper abduction and cluster cases
-remain to be translated.
+during optimization. Ordinary `GroupSheep` extraction now follows the previous
+scope's edge abductions to an external cousin's direct containing child;
+cluster and sequence vessel cases remain to be translated. Go's
+`PlaceChildrenOrder` now determines the recursive
+visit order from edge abductions while retaining the original child order in
+the placement graph. The public compound path carries interior hierarchy
+membership into later placement stages. Go skips hierarchy members during
+swap, transpose, alignment, gap normalization, symmetry, and equidistance;
+doing the same restores exact completed node geometry for three grouped-tree
+directions. The canonical stress oracle sorts IDs like the Mermaid adapter, so
+the comparison uses matching input order on both sides.
