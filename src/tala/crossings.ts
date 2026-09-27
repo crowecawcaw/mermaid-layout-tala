@@ -52,7 +52,7 @@ export function countNonSharedCrossings(edges: readonly PositionedEdge[]): numbe
   return crossings;
 }
 
-function countEdgeCrossings(edge: PositionedEdge, other: PositionedEdge): number {
+export function countEdgeCrossings(edge: PositionedEdge, other: PositionedEdge): number {
   let crossings = 0;
   for (let i = 0; i < edge.points.length - 1; i++) {
     for (let j = 0; j < other.points.length - 1; j++) {

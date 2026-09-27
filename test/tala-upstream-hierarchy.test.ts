@@ -83,10 +83,7 @@ describe('pinned upstream flat hierarchy placement', () => {
     });
   }
 
-  for (const input of generated.filter((item) => ['layered-1', 'layered-2',
-    'layered-3', 'layered-8', 'layered-9', 'layered-10',
-    'layered-11', 'layered-12']
-    .includes(item.name))) {
+  for (const input of generated) {
     it(`${input.name} matches the complete Go node and route output`, () => {
       const oracle = generatedCompleted.find((item) => item.name === input.name)! as
         typeof generatedCompleted[number] & { edges: Array<{ id: string;
@@ -110,8 +107,7 @@ describe('pinned upstream flat hierarchy placement', () => {
     });
   }
 
-  for (const input of mixed.filter((item) => ['parallel-edges',
-    'undirected-cross-edge', 'two-feedback-edges'].includes(item.name))) {
+  for (const input of mixed) {
     it(`${input.name} matches the complete Go edge routes`, () => {
       const oracle = mixedCompleted.find((item) => item.name === input.name)! as
         typeof mixedCompleted[number] & { edges: Array<{ id: string;

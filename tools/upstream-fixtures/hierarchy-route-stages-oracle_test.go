@@ -20,6 +20,7 @@ type tsHierarchyRouteCase struct {
     Edges []struct {
         ID string `json:"id"`; From string `json:"from"`; To string `json:"to"`
         Directed bool `json:"directed"`
+        SourceArrowhead string `json:"sourceArrowhead"`
     } `json:"edges"`
 }
 type tsHierarchyRouteSnapshot struct {
@@ -63,6 +64,7 @@ func TestTSHierarchyRouteStages(t *testing.T) {
             edge := g.Connect(byID[item.From], byID[item.To])
             edge.ID = layoutgraph.EntityID(i+1)
             if item.Directed { edge.TargetArrowhead = layoutgraph.TriangleArrowhead }
+            if item.SourceArrowhead == "triangle" { edge.SourceArrowhead = layoutgraph.TriangleArrowhead }
             edgeIDs[edge] = item.ID
         }
         output := tsHierarchyRouteOutput{Name: input.Name}

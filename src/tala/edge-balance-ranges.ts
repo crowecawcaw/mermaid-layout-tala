@@ -1,4 +1,5 @@
 import type { Point, PositionedEdge, PositionedNode } from '../layout.js';
+import { countEdgeCrossings } from './crossings.js';
 
 interface Segment { start: Point; end: Point; edge?: PositionedEdge }
 interface Range { floor: number; ceil: number }
@@ -155,8 +156,8 @@ function reversalRemovesCrossings(edges: readonly PositionedEdge[],
     const key = `${Math.min(i, j)},${Math.max(i, j)}`;
     if (visited.has(key)) continue;
     visited.add(key);
-    const before = edgePairCrossings(edges[i]!, edges[j]!);
-    const after = edgePairCrossings(candidate[i]!, candidate[j]!);
+    const before = countEdgeCrossings(edges[i]!, edges[j]!);
+    const after = countEdgeCrossings(candidate[i]!, candidate[j]!);
     if (after > before) return false;
     if (after < before) improved = true;
     for (let a = 0; a + 1 < edges[i]!.points.length; a++) {
@@ -170,24 +171,6 @@ function reversalRemovesCrossings(edges: readonly PositionedEdge[],
     }
   }
   return improved;
-}
-
-function edgePairCrossings(first: PositionedEdge, second: PositionedEdge): number {
-  let result = 0;
-  for (let i = 0; i + 1 < first.points.length; i++) for (let j = 0;
-    j + 1 < second.points.length; j++) {
-    const a = first.points[i]!, b = first.points[i + 1]!;
-    const c = second.points[j]!, d = second.points[j + 1]!;
-    if (a.x === b.x && c.y === d.y && a.x !== c.x && a.x !== d.x
-      && c.y !== a.y && c.y !== b.y
-      && Math.min(a.y, b.y) < c.y && c.y < Math.max(a.y, b.y)
-      && Math.min(c.x, d.x) < a.x && a.x < Math.max(c.x, d.x)) result++;
-    if (a.y === b.y && c.x === d.x && a.y !== c.y && a.y !== d.y
-      && c.x !== a.x && c.x !== b.x
-      && Math.min(a.x, b.x) < c.x && c.x < Math.max(a.x, b.x)
-      && Math.min(c.y, d.y) < a.y && a.y < Math.max(c.y, d.y)) result++;
-  }
-  return result;
 }
 
 function collinearOverlap(a: Point, b: Point, c: Point, d: Point): number {
