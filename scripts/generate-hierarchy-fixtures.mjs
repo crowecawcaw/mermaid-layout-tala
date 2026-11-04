@@ -24,7 +24,12 @@ execFileSync('git', [
 ]);
 if (head !== pin) throw new Error(`Expected D2 ${pin}; found ${head}`);
 const kind = process.argv[3] ?? 'hierarchy';
-const packages = { hierarchy: 'internal/hierarchy', quality: 'internal/quality', layout: '' };
+const packages = {
+  hierarchy: 'internal/hierarchy',
+  quality: 'internal/quality',
+  layout: '',
+  loops: 'internal/loops',
+};
 if (!(kind in packages)) throw new Error('Fixture kind must be hierarchy, quality, or layout');
 const packagePath = `d2layouts/d2talalayout/${packages[kind]}`;
 const target = resolve(checkout, packagePath, 'typescript_fixture_test.go');

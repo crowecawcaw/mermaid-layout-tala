@@ -3,6 +3,7 @@ import { layoutCompound } from './compound.js';
 import { avoidObstacles, routeMidpoint } from './routing.js';
 import { placeEdgeLabels } from './labeling.js';
 import { normalizeLayout } from './normalize.js';
+import { prescaleNodes, routeLoops } from './loops.js';
 import { GoRandom, getTalaSeeds, normalizeSeeds, type TalaSeed } from './random.js';
 import { compareScores, evaluateLayout, type LayoutScore } from './quality.js';
 import { alignHierarchy, breakLongConnections, connectHierarchy, globalSifting, hierarchyNode, initializeRanks, minimizeCrossings, type Layers } from './hierarchy.js';
@@ -12,6 +13,7 @@ export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 export interface LayoutNode extends RankNode {
   width: number;
   height: number;
+  fixedSize?: boolean;
   parentId?: string;
   isGroup?: boolean;
   direction?: LayoutDirection;
@@ -23,6 +25,8 @@ export interface LayoutEdge {
   id: string;
   from: string;
   to: string;
+  sourceArrowhead?: string;
+  targetArrowhead?: string;
   labelWidth?: number;
   labelHeight?: number;
 }
@@ -107,7 +111,7 @@ function layoutAttempt(
   if (requestedPasses !== undefined && !Number.isFinite(requestedPasses)) throw new Error('orderingPasses must be finite');
   const passes = requestedPasses === undefined ? undefined : Math.max(1, Math.min(16, Math.floor(requestedPasses)));
   finiteSpacing(options.containerPadding ?? 24, 'containerPadding');
-  const nodes = [...inputNodes].sort((a, b) => compareText(a.id, b.id));
+  const nodes = inputNodes.map((node) => ({ ...node })).sort((a, b) => compareText(a.id, b.id));
   if (new Set(nodes.map((node) => node.id)).size !== nodes.length) throw new Error('duplicate node ID');
   for (const node of nodes) {
     if (!Number.isFinite(node.width) || node.width <= 0 || !Number.isFinite(node.height) || node.height <= 0) {
@@ -124,6 +128,7 @@ function layoutAttempt(
     const labelExtent = direction === 'LR' || direction === 'RL' ? edge.labelWidth : edge.labelHeight;
     if (labelExtent) rankSpacing = Math.max(rankSpacing, labelExtent + 16);
   }
+  prescaleNodes(nodes, edges);
   if (nodes.some((node) => node.isGroup || node.parentId !== undefined)) {
     return layoutCompound(nodes, edges, options, (localNodes, localEdges, localOptions) => layoutAttempt(localNodes, localEdges, localOptions, random), routeEdge);
   }
@@ -175,11 +180,13 @@ function layoutAttempt(
   for (const group of edgeGroups.values()) {
     group.forEach((edge, i) => parallelOffset.set(edge.id, (edge.from === edge.to ? i : i - (group.length - 1) / 2) * 10));
   }
+  const loopRoutes = new Map<string, Point[]>();
+  for (const node of positionedNodes) for (const [id, points] of routeLoops(node, edges)) loopRoutes.set(id, points);
   const positionedEdges = edges.map((edge) => {
     const source = allPositions.get(edge.from)!;
     const target = allPositions.get(edge.to)!;
     const offset = parallelOffset.get(edge.id) ?? 0;
-    const points = normalizeRoute(avoidObstacles(routeEdge(source, target, direction, offset), source, target, positionedNodes, offset));
+    const points = normalizeRoute(avoidObstacles(loopRoutes.get(edge.id) ?? routeEdge(source, target, direction, offset), source, target, positionedNodes, offset));
     const middle = routeMidpoint(points);
     return { ...edge, points, x: middle.x, y: middle.y };
   });

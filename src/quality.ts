@@ -119,19 +119,32 @@ export function evaluateLayout(layout: LayoutResult): LayoutScore {
   const byId = new Map(nodes.map((node) => [node.id, node]));
   if (byId.size !== nodes.length) throw new Error('duplicate scoring node ID');
   for (const node of nodes) {
-    if (![node.x, node.y, node.width, node.height].every(Number.isFinite) || node.width <= 0 || node.height <= 0) {
+    if (
+      ![node.x, node.y, node.width, node.height].every(Number.isFinite) ||
+      node.width <= 0 ||
+      node.height <= 0
+    ) {
       throw new Error('scoring nodes require finite positions and positive dimensions');
     }
-    if (node.parentId !== undefined && !byId.get(node.parentId)?.isGroup) throw new Error('invalid scoring parent');
+    if (node.parentId !== undefined && !byId.get(node.parentId)?.isGroup)
+      throw new Error('invalid scoring parent');
     for (const value of [node.labelX, node.labelY, node.labelWidth, node.labelHeight]) {
-      if (value !== undefined && !Number.isFinite(value)) throw new Error('nonfinite scoring label geometry');
+      if (value !== undefined && !Number.isFinite(value))
+        throw new Error('nonfinite scoring label geometry');
     }
-    if ((node.labelWidth ?? 0) < 0 || (node.labelHeight ?? 0) < 0) throw new Error('negative scoring label dimensions');
+    if ((node.labelWidth ?? 0) < 0 || (node.labelHeight ?? 0) < 0)
+      throw new Error('negative scoring label dimensions');
   }
   for (const edge of edges) {
-    if (!byId.has(edge.from) || !byId.has(edge.to)) throw new Error('scoring edge references missing node');
-    if (edge.points.some((point) => !Number.isFinite(point.x) || !Number.isFinite(point.y))) throw new Error('nonfinite scoring route');
-    if ((edge.labelWidth ?? 0) < 0 || (edge.labelHeight ?? 0) < 0 || ![edge.labelWidth ?? 0, edge.labelHeight ?? 0, edge.x, edge.y].every(Number.isFinite)) {
+    if (!byId.has(edge.from) || !byId.has(edge.to))
+      throw new Error('scoring edge references missing node');
+    if (edge.points.some((point) => !Number.isFinite(point.x) || !Number.isFinite(point.y)))
+      throw new Error('nonfinite scoring route');
+    if (
+      (edge.labelWidth ?? 0) < 0 ||
+      (edge.labelHeight ?? 0) < 0 ||
+      ![edge.labelWidth ?? 0, edge.labelHeight ?? 0, edge.x, edge.y].every(Number.isFinite)
+    ) {
       throw new Error('invalid scoring edge label geometry');
     }
   }

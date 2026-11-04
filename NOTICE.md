@@ -10,3 +10,6 @@ and is not included in this package.
 The deterministic random number generator in `src/random.ts` and its seed
 table in `src/random-cooked.ts` are adapted from Go 1.27.1 `math/rand`,
 copyright The Go Authors, under the BSD license reproduced in `LICENSE-GO`.
+
+`src/stable-sort.ts` adapts Go slices stable sorting under `LICENSE-GO`;
+matching its comparison order preserves TALA self-loop ordering semantics.

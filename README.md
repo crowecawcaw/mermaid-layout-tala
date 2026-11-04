@@ -60,7 +60,8 @@ compound alignment, upstream packing, complete label optimization, and the remai
 
 The synchronous `layoutFlowchart(nodes, edges, options)` API is preserved. Nodes
 can specify `parentId`, `isGroup`, `direction`, `labelWidth`, and `labelHeight`;
-edges can specify measured `labelWidth` and `labelHeight`. Container dimensions
+edges can specify measured `labelWidth` and `labelHeight`. Nodes can opt out of upstream edge-density resizing with `fixedSize: true`.
+Container dimensions
 are minimum sizes and expand to fit their children. `containerPadding` defaults
 to 24. Invalid parent references and parent cycles are rejected. The router
 bounds each fallback search to 250,000 grid points and throws if that budget is
@@ -83,7 +84,7 @@ npm test
 ```
 
 `npm run test:parity` compares complete layouts against 36 pinned Go fixtures.
-It currently reports 8/36 matching and exits nonzero for the remaining
+It currently reports 12/36 matching and exits nonzero for the remaining
 differences; this is a full-parity acceptance check, separate from the passing
 regression and stage-differential suite.
 

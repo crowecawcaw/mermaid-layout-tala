@@ -17,7 +17,7 @@ full parity. The prior WebAssembly replacement remains reverted; the public
 | General placement | Layered placement only | Tree, sequence, hub, herd, cluster discovery and placement/refinement stages remain unported |
 | Component packing | Cross-axis packing | Upstream bin packing, aspect-ratio objectives, route extents remain unported |
 | Routing | Native rectangle visibility-grid fallback with bend cost | `routing.test.ts`: obstacles, shortcuts, feedback edges, all directions; upstream OVG, port swapping, channel nudging, route cleanup and shape-specific geometry remain unported |
-| Self/parallel edges | Orthogonal lanes | Local layout tests; upstream reserved loop extents and duplicate-route optimization remain unported |
+| Self/parallel edges | Translated rectangle loop ports, ordering, tracks and edge-density prescaling; native parallel lanes | `loops.test.ts`: 132 exact Go loop fixtures across arrowhead categories, label sizes and fractional dimensions, plus nested-loop containment. All four complete singleton-loop cases match. Nonrectangular ports, full loop extent reservation and duplicate-route optimization remain unported |
 | Edge labels | Measured spacing, arc-length midpoint and greedy collision avoidance | `labeling.test.ts`: parallel labels, node avoidance, all directions; upstream label scoring, icons, arrowhead labels remain unported |
 | Mermaid rendering | Native helper adapter; measured groups, labels and shape clipping | Adapter unit test and real Mermaid integration under jsdom, including nested groups and group endpoints; real-browser playground smoke check performed separately |
 | Seed selection and quality | Go-compatible random stream, isolated attempts, translated penalty/area scoring and exact later-seed tie rule | `random.test.ts`, `seeds.test.ts`, `quality.test.ts`: Go stream fixtures and 100 differential scoring fixtures; icons, arrowhead labels and cluster membership scoring remain outside the adapter model |
@@ -28,7 +28,7 @@ full parity. The prior WebAssembly replacement remains reverted; the public
 1. Expand the pinned full-layout corpus beyond its initial 36 cases. It currently
    covers empty graphs, singletons, chains, diamonds, cycles, loops, parallel
    labels, disconnected components and nested groups in four directions.
-   `npm run test:parity` reports 8/36 matching; this command deliberately exits
+   `npm run test:parity` reports 12/36 matching; this command deliberately exits
    nonzero until full-layout geometry and routes match.
 2. Extend the translated hierarchy stages to compound alignment and table-column
    handling, then integrate upstream general placement stages.
