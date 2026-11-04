@@ -8,17 +8,50 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const upstream = process.argv[2];
 if (!upstream) throw new Error('Usage: node scripts/generate-hierarchy-fixtures.mjs /path/to/d2');
 const checkout = resolve(upstream);
-const head = execFileSync('git', ['-C', checkout, 'rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+const head = execFileSync('git', ['-C', checkout, 'rev-parse', 'HEAD'], {
+  encoding: 'utf8',
+}).trim();
+execFileSync('git', [
+  '-C',
+  checkout,
+  'diff',
+  '--quiet',
+  'HEAD',
+  '--',
+  'd2layouts/d2talalayout',
+  'd2graph',
+  'lib',
+]);
 if (head !== pin) throw new Error(`Expected D2 ${pin}; found ${head}`);
-const target = resolve(checkout, 'd2layouts/d2talalayout/internal/hierarchy/typescript_fixture_test.go');
+const kind = process.argv[3] ?? 'hierarchy';
+const packages = { hierarchy: 'internal/hierarchy', quality: 'internal/quality', layout: '' };
+if (!(kind in packages)) throw new Error('Fixture kind must be hierarchy, quality, or layout');
+const packagePath = `d2layouts/d2talalayout/${packages[kind]}`;
+const target = resolve(checkout, packagePath, 'typescript_fixture_test.go');
 if (existsSync(target)) throw new Error(`Refusing to overwrite ${target}`);
 try {
-  copyFileSync(resolve(root, 'scripts/upstream/hierarchy_fixture_test.go'), target);
-  execFileSync(process.env.TALA_GO ?? 'go', ['test', './d2layouts/d2talalayout/internal/hierarchy', '-run', '^TestExportTypeScriptHierarchyFixtures$', '-count=1'], {
-    cwd: checkout,
-    stdio: 'inherit',
-    env: { ...process.env, TALA_HIERARCHY_FIXTURES: resolve(root, 'test/fixtures/upstream-hierarchy.json') },
-  });
+  copyFileSync(resolve(root, `scripts/upstream/${kind}_fixture_test.go`), target);
+  execFileSync(
+    process.env.TALA_GO ?? 'go',
+    [
+      'test',
+      `./${packagePath}`,
+      '-run',
+      `^TestExportTypeScript${kind[0].toUpperCase()}${kind.slice(1)}Fixtures$`,
+      '-count=1',
+    ],
+    {
+      cwd: checkout,
+      stdio: 'inherit',
+      env: {
+        ...process.env,
+        [`TALA_${kind.toUpperCase()}_FIXTURES`]: resolve(
+          root,
+          `test/fixtures/upstream-${kind}.json`
+        ),
+      },
+    }
+  );
 } finally {
   rmSync(target, { force: true });
 }

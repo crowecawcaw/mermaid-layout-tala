@@ -2,6 +2,9 @@ import { rankDag, type RankEdge, type RankNode } from './rank.js';
 import { layoutCompound } from './compound.js';
 import { avoidObstacles, routeMidpoint } from './routing.js';
 import { placeEdgeLabels } from './labeling.js';
+import { normalizeLayout } from './normalize.js';
+import { GoRandom, getTalaSeeds, normalizeSeeds, type TalaSeed } from './random.js';
+import { compareScores, evaluateLayout, type LayoutScore } from './quality.js';
 import { alignHierarchy, breakLongConnections, connectHierarchy, globalSifting, hierarchyNode, initializeRanks, minimizeCrossings, type Layers } from './hierarchy.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
@@ -30,6 +33,7 @@ export interface LayoutOptions {
   rankSpacing?: number;
   orderingPasses?: number;
   containerPadding?: number;
+  seeds?: readonly TalaSeed[];
 }
 
 export interface Point {
@@ -42,6 +46,8 @@ export interface PositionedNode extends LayoutNode {
   y: number;
   rank: number;
   order: number;
+  labelX?: number;
+  labelY?: number;
 }
 
 export interface PositionedEdge extends LayoutEdge {
@@ -73,6 +79,26 @@ export function layoutFlowchart(
   inputEdges: readonly LayoutEdge[],
   options: LayoutOptions = {}
 ): LayoutResult {
+  const seeds = options.seeds === undefined ? getTalaSeeds() : normalizeSeeds(options.seeds);
+  let best: LayoutResult | undefined;
+  let bestScore: LayoutScore | undefined;
+  let failure: unknown;
+  for (const seed of seeds) {
+    try {
+      const candidate = layoutAttempt(inputNodes, inputEdges, options, new GoRandom(seed));
+      normalizeLayout(candidate);
+      const score = evaluateLayout(candidate);
+      // Upstream deliberately favors the later configured seed on exact ties.
+      if (!bestScore || compareScores(score, bestScore) <= 0) { best = candidate; bestScore = score; }
+    } catch (error) { failure = error; }
+  }
+  if (!best) throw failure;
+  return best;
+}
+
+function layoutAttempt(
+  inputNodes: readonly LayoutNode[], inputEdges: readonly LayoutEdge[], options: LayoutOptions, random: GoRandom
+): LayoutResult {
   const direction = options.direction ?? 'TB';
   if (!['TB', 'BT', 'LR', 'RL'].includes(direction)) throw new Error('invalid layout direction');
   const nodeSpacing = finiteSpacing(options.nodeSpacing ?? 48, 'nodeSpacing');
@@ -99,7 +125,7 @@ export function layoutFlowchart(
     if (labelExtent) rankSpacing = Math.max(rankSpacing, labelExtent + 16);
   }
   if (nodes.some((node) => node.isGroup || node.parentId !== undefined)) {
-    return layoutCompound(nodes, edges, options, layoutFlowchart, routeEdge);
+    return layoutCompound(nodes, edges, options, (localNodes, localEdges, localOptions) => layoutAttempt(localNodes, localEdges, localOptions, random), routeEdge);
   }
 
   const components = connectedComponents(nodes, edges);
@@ -117,7 +143,7 @@ export function layoutFlowchart(
           to: edge.to,
           weight: edge.weight,
         } satisfies RankEdge)));
-    const localNodes = positionComponent(component, weightedDag, ranks, nodeSpacing, rankSpacing, passes, direction);
+    const localNodes = positionComponent(component, weightedDag, ranks, nodeSpacing, rankSpacing, passes, direction, random);
     for (const node of localNodes) allPositions.set(node.id, node);
     componentBounds.push(bounds(localNodes));
   }
@@ -233,14 +259,17 @@ function positionComponent(
   nodeSpacing: number,
   rankSpacing: number,
   passes: number | undefined,
-  direction: LayoutDirection
+  direction: LayoutDirection,
+  random: GoRandom
 ): PositionedNode[] {
   const horizontal = direction === 'LR' || direction === 'RL';
   const nodeById = new Map(nodes.map((node) => [node.id, node]));
   const placement = new Map(nodes.map((node) => [node.id,
     hierarchyNode(node.id, ranks.get(node.id) ?? 0, horizontal ? node.height : node.width)]));
   const layers: Layers = Array.from({ length: Math.max(0, ...ranks.values()) + 1 }, () => []);
-  for (const node of placement.values()) layers[node.level]!.push(node);
+  const initial = [...placement.values()];
+  random.shuffle(initial);
+  for (const node of initial) layers[node.level]!.push(node);
   for (const edge of edges) {
     const source = placement.get(edge.from)!;
     const target = placement.get(edge.to)!;
@@ -249,7 +278,7 @@ function positionComponent(
     target.degree += edge.weight;
   }
   initializeRanks(layers);
-  breakLongConnections([...placement.values()], layers);
+  breakLongConnections(initial, layers);
   minimizeCrossings(layers, passes);
   globalSifting(layers);
   // Alignment's median-neighbor ordering uses the initial ordered geometry.

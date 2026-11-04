@@ -48,14 +48,15 @@ directions (`TB`, `BT`, `LR`, `RL`), nested subgraph containers with local direc
 connected components, parallel links, cycles, and self loops. Rectangle obstacle
 routing prevents routes from crossing unrelated node interiors. Mermaid clips
 endpoints to its rendered shapes. Measured edge labels reserve layer space and
-are placed away from nodes, container titles, and previously placed labels.
+are placed away from nodes, container titles, and previously placed labels. Layout
+runs the default seeds `[1, 2, 3]` using a Go-compatible random stream and selects
+the result by upstream penalty, then area, with later seeds winning exact ties.
 
 **Full upstream TALA parity is not yet achieved.** The weighted DAG ranker has translated upstream correctness coverage, and
 hierarchy ordering/alignment matches 120 Go-generated differential fixtures. Container layout, routing, and
 label placement are native implementations with functional regression tests;
 they do not reproduce upstream coordinates. General placement/refinement,
-compound alignment, upstream packing, complete label optimization, and seed
-scoring remain unported. See the [parity matrix](./test/UPSTREAM-PARITY.md).
+compound alignment, upstream packing, complete label optimization, and the remaining upstream placement/routing stages are still unported. See the [parity matrix](./test/UPSTREAM-PARITY.md).
 
 The synchronous `layoutFlowchart(nodes, edges, options)` API is preserved. Nodes
 can specify `parentId`, `isGroup`, `direction`, `labelWidth`, and `labelHeight`;
@@ -65,6 +66,14 @@ to 24. Invalid parent references and parent cycles are rejected. The router
 bounds each fallback search to 250,000 grid points and throws if that budget is
 exceeded or no route exists. Labels may move away from their route when crowded.
 
+Use `setTalaSeeds([1, 2, 3])` to configure defaults, or pass `seeds` in the direct
+API's options. Seeds accept safe integer numbers or signed 64-bit `bigint`
+values. Up to 64 entries and 16 unique seeds are allowed; duplicates are removed
+in authored order. `getTalaSeeds()` returns an independent copy. `evaluateLayout()`
+returns the penalty and area used for selection. Scoring covers measured node
+and edge labels and rectangle geometry; icons and arrowhead labels remain outside
+the adapter's input model.
+
 ## Development
 
 ```sh
@@ -72,6 +81,11 @@ npm ci
 npm run build
 npm test
 ```
+
+`npm run test:parity` compares complete layouts against 36 pinned Go fixtures.
+It currently reports 8/36 matching and exits nonzero for the remaining
+differences; this is a full-parity acceptance check, separate from the passing
+regression and stage-differential suite.
 
 Run the playground with `npm run demo -- --port 4173`, then open
 <http://127.0.0.1:4173/>. Build the GitHub Pages site with

@@ -1,5 +1,8 @@
 import type { LayoutLoaderDefinition } from 'mermaid';
 
+export { setTalaSeeds, getTalaSeeds, type TalaSeed } from './random.js';
+export { evaluateLayout, type LayoutScore } from './quality.js';
+
 export { rankDag, type RankEdge, type RankNode } from './rank.js';
 export {
   layoutFlowchart,

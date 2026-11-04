@@ -20,15 +20,18 @@ full parity. The prior WebAssembly replacement remains reverted; the public
 | Self/parallel edges | Orthogonal lanes | Local layout tests; upstream reserved loop extents and duplicate-route optimization remain unported |
 | Edge labels | Measured spacing, arc-length midpoint and greedy collision avoidance | `labeling.test.ts`: parallel labels, node avoidance, all directions; upstream label scoring, icons, arrowhead labels remain unported |
 | Mermaid rendering | Native helper adapter; measured groups, labels and shape clipping | Adapter unit test and real Mermaid integration under jsdom, including nested groups and group endpoints; real-browser playground smoke check performed separately |
-| Seed selection and quality | Not implemented | Go random stream, independent attempts, quality penalty/area scoring, later-seed tie rule remain unported |
+| Seed selection and quality | Go-compatible random stream, isolated attempts, translated penalty/area scoring and exact later-seed tie rule | `random.test.ts`, `seeds.test.ts`, `quality.test.ts`: Go stream fixtures and 100 differential scoring fixtures; icons, arrowhead labels and cluster membership scoring remain outside the adapter model |
 | Resource accounting | Ranker checks and bounded routing grid | Upstream aggregate work accounting, cancellation, atomic rollback contracts remain unported |
 
 ## Acceptance work still required
 
-1. Add a pinned Go reference fixture generator for full layout inputs and outputs,
-   including containers, cycles, parallel edges, labels, shapes and multiple seeds.
-2. Translate upstream hierarchy placement and ordering with focused invariant
-   tests before integrating general placement stages.
+1. Expand the pinned full-layout corpus beyond its initial 36 cases. It currently
+   covers empty graphs, singletons, chains, diamonds, cycles, loops, parallel
+   labels, disconnected components and nested groups in four directions.
+   `npm run test:parity` reports 8/36 matching; this command deliberately exits
+   nonzero until full-layout geometry and routes match.
+2. Extend the translated hierarchy stages to compound alignment and table-column
+   handling, then integrate upstream general placement stages.
 3. Port graph ownership, preprocessing, placement, packing, routing, labeling and
    quality stages in their upstream pipeline order. Keep functional fallbacks
    explicitly distinguished from translated algorithms.
@@ -54,3 +57,24 @@ not reimplement those algorithms to manufacture expected results. Fixture
 assertions use upstream spacing (60px siblings, 50px dummies, 60px outer padding).
 The Mermaid adapter retains configurable spacing, so these are stage-level
 comparisons, not a claim of full-pipeline coordinate parity.
+
+## Scoring, randomness and full-layout references
+
+```sh
+TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 quality
+TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 layout
+go run scripts/upstream/random-fixtures.go > test/fixtures/upstream-random.json
+npm run test:parity
+```
+
+Quality fixtures call the Go evaluator on complete rectangular graph records,
+including root container membership. They cover overlapping labels, group
+relationships, shared routes, loops, diagonal crossings and fractional route
+bounds. Random fixtures cross the 607-word generator state boundary for each
+seed and exercise exact signed-64-bit boundary seeds.
+
+Full-layout comparisons use absolute positions and dimensions with tolerance
+`1e-7`. Route comparison removes redundant collinear vertices from both outputs
+but otherwise compares directed geometry exactly. Matching stage fixtures does
+not imply a matching complete engine pipeline. The remaining full-layout
+differences are reported, not hidden behind skips or permissive assertions.

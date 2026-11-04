@@ -1,0 +1,3222 @@
+[
+  {
+    "edges": [],
+    "expected": {
+      "edges": [],
+      "nodes": []
+    },
+    "name": "empty-TB",
+    "nodes": [],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [],
+    "expected": {
+      "edges": [],
+      "nodes": []
+    },
+    "name": "empty-BT",
+    "nodes": [],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [],
+    "expected": {
+      "edges": [],
+      "nodes": []
+    },
+    "name": "empty-LR",
+    "nodes": [],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [],
+    "expected": {
+      "edges": [],
+      "nodes": []
+    },
+    "name": "empty-RL",
+    "nodes": [],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [],
+    "expected": {
+      "edges": [],
+      "nodes": [
+        {
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 15
+        }
+      ]
+    },
+    "name": "singleton-TB",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [],
+    "expected": {
+      "edges": [],
+      "nodes": [
+        {
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 15
+        }
+      ]
+    },
+    "name": "singleton-BT",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [],
+    "expected": {
+      "edges": [],
+      "nodes": [
+        {
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 15
+        }
+      ]
+    },
+    "name": "singleton-LR",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [],
+    "expected": {
+      "edges": [],
+      "nodes": [
+        {
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 15
+        }
+      ]
+    },
+    "name": "singleton-RL",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 30,
+              "y": 30
+            },
+            {
+              "x": 30,
+              "y": 158
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 50,
+              "y": 193
+            },
+            {
+              "x": 50,
+              "y": 320
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 15
+        },
+        {
+          "height": 35,
+          "id": "n1",
+          "width": 70,
+          "x": 35,
+          "y": 175.5
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 40,
+          "y": 340
+        }
+      ]
+    },
+    "name": "chain-TB",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 30,
+              "y": 320
+            },
+            {
+              "x": 30,
+              "y": 198
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 50,
+              "y": 163
+            },
+            {
+              "x": 50,
+              "y": 40
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 335
+        },
+        {
+          "height": 35,
+          "id": "n1",
+          "width": 70,
+          "x": 35,
+          "y": 180.5
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 40,
+          "y": 20
+        }
+      ]
+    },
+    "name": "chain-BT",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 60,
+              "y": 20
+            },
+            {
+              "x": 155,
+              "y": 20
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 225,
+              "y": 19
+            },
+            {
+              "x": 320,
+              "y": 19
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 20
+        },
+        {
+          "height": 35,
+          "id": "n1",
+          "width": 70,
+          "x": 190,
+          "y": 19.5
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 360,
+          "y": 20
+        }
+      ]
+    },
+    "name": "chain-LR",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 320,
+              "y": 20
+            },
+            {
+              "x": 235,
+              "y": 20
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 165,
+              "y": 19
+            },
+            {
+              "x": 80,
+              "y": 19
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 350,
+          "y": 20
+        },
+        {
+          "height": 35,
+          "id": "n1",
+          "width": 70,
+          "x": 200,
+          "y": 19.5
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 40,
+          "y": 20
+        }
+      ]
+    },
+    "name": "chain-RL",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n0",
+        "to": "n2"
+      },
+      {
+        "id": "e2",
+        "from": "n1",
+        "to": "n3"
+      },
+      {
+        "id": "e3",
+        "from": "n2",
+        "to": "n3"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 30,
+              "y": 30
+            },
+            {
+              "x": 30,
+              "y": 110
+            },
+            {
+              "x": 70,
+              "y": 110
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 30,
+              "y": 30
+            },
+            {
+              "x": 30,
+              "y": 170
+            },
+            {
+              "x": 70,
+              "y": 170
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "points": [
+            {
+              "x": 150,
+              "y": 110
+            },
+            {
+              "x": 195,
+              "y": 110
+            },
+            {
+              "x": 195,
+              "y": 152
+            },
+            {
+              "x": 240,
+              "y": 152
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "points": [
+            {
+              "x": 150,
+              "y": 170
+            },
+            {
+              "x": 195,
+              "y": 170
+            },
+            {
+              "x": 195,
+              "y": 152
+            },
+            {
+              "x": 240,
+              "y": 152
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 15
+        },
+        {
+          "height": 40,
+          "id": "n1",
+          "width": 80,
+          "x": 110,
+          "y": 110
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 110,
+          "y": 170
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 285,
+          "y": 157.5
+        }
+      ]
+    },
+    "name": "diamond-TB",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n0",
+        "to": "n2"
+      },
+      {
+        "id": "e2",
+        "from": "n1",
+        "to": "n3"
+      },
+      {
+        "id": "e3",
+        "from": "n2",
+        "to": "n3"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 60,
+              "y": 69
+            },
+            {
+              "x": 120,
+              "y": 69
+            },
+            {
+              "x": 120,
+              "y": 20
+            },
+            {
+              "x": 180,
+              "y": 20
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 60,
+              "y": 69
+            },
+            {
+              "x": 120,
+              "y": 69
+            },
+            {
+              "x": 120,
+              "y": 84
+            },
+            {
+              "x": 180,
+              "y": 84
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "points": [
+            {
+              "x": 260,
+              "y": 24
+            },
+            {
+              "x": 330,
+              "y": 24
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "points": [
+            {
+              "x": 260,
+              "y": 80
+            },
+            {
+              "x": 295,
+              "y": 80
+            },
+            {
+              "x": 295,
+              "y": 24
+            },
+            {
+              "x": 330,
+              "y": 24
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 69
+        },
+        {
+          "height": 40,
+          "id": "n1",
+          "width": 80,
+          "x": 220,
+          "y": 20
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 220,
+          "y": 80
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 375,
+          "y": 31.5
+        }
+      ]
+    },
+    "name": "diamond-BT",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n0",
+        "to": "n2"
+      },
+      {
+        "id": "e2",
+        "from": "n1",
+        "to": "n3"
+      },
+      {
+        "id": "e3",
+        "from": "n2",
+        "to": "n3"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 60,
+              "y": 50
+            },
+            {
+              "x": 97,
+              "y": 50
+            },
+            {
+              "x": 97,
+              "y": 17
+            },
+            {
+              "x": 135,
+              "y": 17
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 60,
+              "y": 50
+            },
+            {
+              "x": 97,
+              "y": 50
+            },
+            {
+              "x": 97,
+              "y": 82
+            },
+            {
+              "x": 135,
+              "y": 82
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "points": [
+            {
+              "x": 215,
+              "y": 20
+            },
+            {
+              "x": 265,
+              "y": 20
+            },
+            {
+              "x": 265,
+              "y": 49
+            },
+            {
+              "x": 315,
+              "y": 49
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "points": [
+            {
+              "x": 215,
+              "y": 80
+            },
+            {
+              "x": 265,
+              "y": 80
+            },
+            {
+              "x": 265,
+              "y": 49
+            },
+            {
+              "x": 315,
+              "y": 49
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 50
+        },
+        {
+          "height": 40,
+          "id": "n1",
+          "width": 80,
+          "x": 175,
+          "y": 20
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 175,
+          "y": 80
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 360,
+          "y": 49.5
+        }
+      ]
+    },
+    "name": "diamond-LR",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n0",
+        "to": "n2"
+      },
+      {
+        "id": "e2",
+        "from": "n1",
+        "to": "n3"
+      },
+      {
+        "id": "e3",
+        "from": "n2",
+        "to": "n3"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 360,
+              "y": 50
+            },
+            {
+              "x": 312,
+              "y": 50
+            },
+            {
+              "x": 312,
+              "y": 20
+            },
+            {
+              "x": 265,
+              "y": 20
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 360,
+              "y": 50
+            },
+            {
+              "x": 312,
+              "y": 50
+            },
+            {
+              "x": 312,
+              "y": 80
+            },
+            {
+              "x": 265,
+              "y": 80
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "points": [
+            {
+              "x": 185,
+              "y": 20
+            },
+            {
+              "x": 137,
+              "y": 20
+            },
+            {
+              "x": 137,
+              "y": 49
+            },
+            {
+              "x": 90,
+              "y": 49
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "points": [
+            {
+              "x": 185,
+              "y": 80
+            },
+            {
+              "x": 137,
+              "y": 80
+            },
+            {
+              "x": 137,
+              "y": 49
+            },
+            {
+              "x": 90,
+              "y": 49
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 390,
+          "y": 50
+        },
+        {
+          "height": 40,
+          "id": "n1",
+          "width": 80,
+          "x": 225,
+          "y": 20
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 225,
+          "y": 80
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 45,
+          "y": 49.5
+        }
+      ]
+    },
+    "name": "diamond-RL",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "id": "e2",
+        "from": "n2",
+        "to": "n0"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 70,
+              "y": 335
+            },
+            {
+              "x": 0,
+              "y": 335
+            },
+            {
+              "x": 0,
+              "y": 17
+            },
+            {
+              "x": 65,
+              "y": 17
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 117,
+              "y": 35
+            },
+            {
+              "x": 117,
+              "y": 158
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "points": [
+            {
+              "x": 100,
+              "y": 198
+            },
+            {
+              "x": 100,
+              "y": 320
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 100,
+          "y": 335
+        },
+        {
+          "height": 35,
+          "id": "n1",
+          "width": 70,
+          "x": 100,
+          "y": 17.5
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 100,
+          "y": 178
+        }
+      ]
+    },
+    "name": "cycle-TB",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "id": "e2",
+        "from": "n2",
+        "to": "n0"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 35,
+              "y": 30
+            },
+            {
+              "x": 35,
+              "y": 320
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 70,
+              "y": 337
+            },
+            {
+              "x": 107,
+              "y": 337
+            },
+            {
+              "x": 107,
+              "y": 195
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "points": [
+            {
+              "x": 86,
+              "y": 155
+            },
+            {
+              "x": 86,
+              "y": 15
+            },
+            {
+              "x": 65,
+              "y": 15
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 35,
+          "y": 15
+        },
+        {
+          "height": 35,
+          "id": "n1",
+          "width": 70,
+          "x": 35,
+          "y": 337.5
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 105,
+          "y": 175
+        }
+      ]
+    },
+    "name": "cycle-BT",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "id": "e2",
+        "from": "n2",
+        "to": "n0"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 350,
+              "y": 65
+            },
+            {
+              "x": 350,
+              "y": 0
+            },
+            {
+              "x": 35,
+              "y": 0
+            },
+            {
+              "x": 35,
+              "y": 62
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 70,
+              "y": 79
+            },
+            {
+              "x": 155,
+              "y": 79
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "points": [
+            {
+              "x": 235,
+              "y": 80
+            },
+            {
+              "x": 320,
+              "y": 80
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 350,
+          "y": 80
+        },
+        {
+          "height": 35,
+          "id": "n1",
+          "width": 70,
+          "x": 35,
+          "y": 79.5
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 195,
+          "y": 80
+        }
+      ]
+    },
+    "name": "cycle-LR",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "id": "e2",
+        "from": "n2",
+        "to": "n0"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 320,
+              "y": 90
+            },
+            {
+              "x": 235,
+              "y": 90
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 165,
+              "y": 89
+            },
+            {
+              "x": 80,
+              "y": 89
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "points": [
+            {
+              "x": 40,
+              "y": 70
+            },
+            {
+              "x": 40,
+              "y": 0
+            },
+            {
+              "x": 350,
+              "y": 0
+            },
+            {
+              "x": 350,
+              "y": 75
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 350,
+          "y": 90
+        },
+        {
+          "height": 35,
+          "id": "n1",
+          "width": 70,
+          "x": 200,
+          "y": 89.5
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 40,
+          "y": 90
+        }
+      ]
+    },
+    "name": "cycle-RL",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n0"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 30,
+              "y": 40
+            },
+            {
+              "x": 0,
+              "y": 40
+            },
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 45,
+              "y": 0
+            },
+            {
+              "x": 45,
+              "y": 30
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 40,
+          "id": "n0",
+          "width": 60,
+          "x": 60,
+          "y": 50
+        }
+      ]
+    },
+    "name": "self-loop-TB",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n0"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 30,
+              "y": 40
+            },
+            {
+              "x": 0,
+              "y": 40
+            },
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 45,
+              "y": 0
+            },
+            {
+              "x": 45,
+              "y": 30
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 40,
+          "id": "n0",
+          "width": 60,
+          "x": 60,
+          "y": 50
+        }
+      ]
+    },
+    "name": "self-loop-BT",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n0"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 30,
+              "y": 40
+            },
+            {
+              "x": 0,
+              "y": 40
+            },
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 45,
+              "y": 0
+            },
+            {
+              "x": 45,
+              "y": 30
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 40,
+          "id": "n0",
+          "width": 60,
+          "x": 60,
+          "y": 50
+        }
+      ]
+    },
+    "name": "self-loop-LR",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n0"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 30,
+              "y": 40
+            },
+            {
+              "x": 0,
+              "y": 40
+            },
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 45,
+              "y": 0
+            },
+            {
+              "x": 45,
+              "y": 30
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 40,
+          "id": "n0",
+          "width": 60,
+          "x": 60,
+          "y": 50
+        }
+      ]
+    },
+    "name": "self-loop-RL",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "labelWidth": 40,
+        "labelHeight": 20
+      },
+      {
+        "id": "e1",
+        "from": "n0",
+        "to": "n1",
+        "labelWidth": 40,
+        "labelHeight": 20
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 46,
+              "y": 120
+            },
+            {
+              "x": 46,
+              "y": 246
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 86,
+              "y": 120
+            },
+            {
+              "x": 86,
+              "y": 246
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 120,
+          "id": "n0",
+          "width": 120,
+          "x": 66,
+          "y": 60
+        },
+        {
+          "height": 123,
+          "id": "n1",
+          "width": 123,
+          "x": 65.5,
+          "y": 307.5
+        }
+      ]
+    },
+    "name": "parallel-TB",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "labelWidth": 40,
+        "labelHeight": 20
+      },
+      {
+        "id": "e1",
+        "from": "n0",
+        "to": "n1",
+        "labelWidth": 40,
+        "labelHeight": 20
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 46,
+              "y": 246
+            },
+            {
+              "x": 46,
+              "y": 123
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 86,
+              "y": 246
+            },
+            {
+              "x": 86,
+              "y": 123
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 120,
+          "id": "n0",
+          "width": 120,
+          "x": 66,
+          "y": 306
+        },
+        {
+          "height": 123,
+          "id": "n1",
+          "width": 123,
+          "x": 65.5,
+          "y": 61.5
+        }
+      ]
+    },
+    "name": "parallel-BT",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "labelWidth": 40,
+        "labelHeight": 20
+      },
+      {
+        "id": "e1",
+        "from": "n0",
+        "to": "n1",
+        "labelWidth": 40,
+        "labelHeight": 20
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 120,
+              "y": 42
+            },
+            {
+              "x": 246,
+              "y": 42
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 120,
+              "y": 82
+            },
+            {
+              "x": 246,
+              "y": 82
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 120,
+          "id": "n0",
+          "width": 120,
+          "x": 60,
+          "y": 62
+        },
+        {
+          "height": 123,
+          "id": "n1",
+          "width": 123,
+          "x": 307.5,
+          "y": 61.5
+        }
+      ]
+    },
+    "name": "parallel-LR",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "labelWidth": 40,
+        "labelHeight": 20
+      },
+      {
+        "id": "e1",
+        "from": "n0",
+        "to": "n1",
+        "labelWidth": 40,
+        "labelHeight": 20
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 246,
+              "y": 42
+            },
+            {
+              "x": 123,
+              "y": 42
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 246,
+              "y": 82
+            },
+            {
+              "x": 123,
+              "y": 82
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 120,
+          "id": "n0",
+          "width": 120,
+          "x": 306,
+          "y": 62
+        },
+        {
+          "height": 123,
+          "id": "n1",
+          "width": 123,
+          "x": 61.5,
+          "y": 61.5
+        }
+      ]
+    },
+    "name": "parallel-RL",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n2",
+        "to": "n3"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 35,
+              "y": 30
+            },
+            {
+              "x": 35,
+              "y": 140
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 135,
+              "y": 40
+            },
+            {
+              "x": 135,
+              "y": 180
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 35,
+          "y": 15
+        },
+        {
+          "height": 35,
+          "id": "n1",
+          "width": 70,
+          "x": 35,
+          "y": 157.5
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 135,
+          "y": 20
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 135,
+          "y": 202.5
+        }
+      ]
+    },
+    "name": "disconnected-TB",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n2",
+        "to": "n3"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 35,
+              "y": 140
+            },
+            {
+              "x": 35,
+              "y": 35
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 135,
+              "y": 180
+            },
+            {
+              "x": 135,
+              "y": 45
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 35,
+          "y": 155
+        },
+        {
+          "height": 35,
+          "id": "n1",
+          "width": 70,
+          "x": 35,
+          "y": 17.5
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 135,
+          "y": 200
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 135,
+          "y": 22.5
+        }
+      ]
+    },
+    "name": "disconnected-BT",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n2",
+        "to": "n3"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 60,
+              "y": 18
+            },
+            {
+              "x": 140,
+              "y": 18
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 80,
+              "y": 78
+            },
+            {
+              "x": 180,
+              "y": 78
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 18
+        },
+        {
+          "height": 35,
+          "id": "n1",
+          "width": 70,
+          "x": 175,
+          "y": 17.5
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 40,
+          "y": 78
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 225,
+          "y": 77.5
+        }
+      ]
+    },
+    "name": "disconnected-LR",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n2",
+        "to": "n3"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 140,
+              "y": 18
+            },
+            {
+              "x": 70,
+              "y": 18
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 180,
+              "y": 78
+            },
+            {
+              "x": 90,
+              "y": 78
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 170,
+          "y": 18
+        },
+        {
+          "height": 35,
+          "id": "n1",
+          "width": 70,
+          "x": 35,
+          "y": 17.5
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 220,
+          "y": 78
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 45,
+          "y": 77.5
+        }
+      ]
+    },
+    "name": "disconnected-RL",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n2",
+        "to": "n3"
+      },
+      {
+        "id": "e1",
+        "from": "n3",
+        "to": "n4"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 200,
+              "y": 143
+            },
+            {
+              "x": 300,
+              "y": 143
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 345,
+              "y": 165
+            },
+            {
+              "x": 345,
+              "y": 285
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 395,
+          "id": "n0",
+          "width": 510,
+          "x": 255,
+          "y": 197.5
+        },
+        {
+          "height": 165,
+          "id": "n1",
+          "width": 390,
+          "x": 255,
+          "y": 142.5
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 160,
+          "y": 143
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 345,
+          "y": 142.5
+        },
+        {
+          "height": 50,
+          "id": "n4",
+          "width": 100,
+          "x": 345,
+          "y": 310
+        }
+      ]
+    },
+    "name": "nested-TB",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30,
+        "isGroup": true
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35,
+        "parentId": "n0",
+        "isGroup": true
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40,
+        "parentId": "n1"
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45,
+        "parentId": "n1"
+      },
+      {
+        "id": "n4",
+        "width": 100,
+        "height": 50,
+        "parentId": "n0"
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n2",
+        "to": "n3"
+      },
+      {
+        "id": "e1",
+        "from": "n3",
+        "to": "n4"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 200,
+              "y": 143
+            },
+            {
+              "x": 300,
+              "y": 143
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 345,
+              "y": 165
+            },
+            {
+              "x": 345,
+              "y": 285
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 395,
+          "id": "n0",
+          "width": 510,
+          "x": 255,
+          "y": 197.5
+        },
+        {
+          "height": 165,
+          "id": "n1",
+          "width": 390,
+          "x": 255,
+          "y": 142.5
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 160,
+          "y": 143
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 345,
+          "y": 142.5
+        },
+        {
+          "height": 50,
+          "id": "n4",
+          "width": 100,
+          "x": 345,
+          "y": 310
+        }
+      ]
+    },
+    "name": "nested-BT",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30,
+        "isGroup": true
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35,
+        "parentId": "n0",
+        "isGroup": true
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40,
+        "parentId": "n1"
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45,
+        "parentId": "n1"
+      },
+      {
+        "id": "n4",
+        "width": 100,
+        "height": 50,
+        "parentId": "n0"
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n2",
+        "to": "n3"
+      },
+      {
+        "id": "e1",
+        "from": "n3",
+        "to": "n4"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 200,
+              "y": 143
+            },
+            {
+              "x": 300,
+              "y": 143
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 345,
+              "y": 165
+            },
+            {
+              "x": 345,
+              "y": 285
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 395,
+          "id": "n0",
+          "width": 510,
+          "x": 255,
+          "y": 197.5
+        },
+        {
+          "height": 165,
+          "id": "n1",
+          "width": 390,
+          "x": 255,
+          "y": 142.5
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 160,
+          "y": 143
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 345,
+          "y": 142.5
+        },
+        {
+          "height": 50,
+          "id": "n4",
+          "width": 100,
+          "x": 345,
+          "y": 310
+        }
+      ]
+    },
+    "name": "nested-LR",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30,
+        "isGroup": true
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35,
+        "parentId": "n0",
+        "isGroup": true
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40,
+        "parentId": "n1"
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45,
+        "parentId": "n1"
+      },
+      {
+        "id": "n4",
+        "width": 100,
+        "height": 50,
+        "parentId": "n0"
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n2",
+        "to": "n3"
+      },
+      {
+        "id": "e1",
+        "from": "n3",
+        "to": "n4"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "points": [
+            {
+              "x": 200,
+              "y": 143
+            },
+            {
+              "x": 300,
+              "y": 143
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "points": [
+            {
+              "x": 345,
+              "y": 165
+            },
+            {
+              "x": 345,
+              "y": 285
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 395,
+          "id": "n0",
+          "width": 510,
+          "x": 255,
+          "y": 197.5
+        },
+        {
+          "height": 165,
+          "id": "n1",
+          "width": 390,
+          "x": 255,
+          "y": 142.5
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 160,
+          "y": 143
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 345,
+          "y": 142.5
+        },
+        {
+          "height": 50,
+          "id": "n4",
+          "width": 100,
+          "x": 345,
+          "y": 310
+        }
+      ]
+    },
+    "name": "nested-RL",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30,
+        "isGroup": true
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35,
+        "parentId": "n0",
+        "isGroup": true
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40,
+        "parentId": "n1"
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45,
+        "parentId": "n1"
+      },
+      {
+        "id": "n4",
+        "width": 100,
+        "height": 50,
+        "parentId": "n0"
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  }
+]
