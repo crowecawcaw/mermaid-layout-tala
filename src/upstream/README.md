@@ -39,3 +39,16 @@ Source quirks are preserved rather than silently corrected: point-set equality
 checks membership without multiplicity, box intersection tests edges rather than
 contained segments, vector angles round through float32, and the quadratic
 Bézier root branch returns after filtering its first root.
+
+`limits/` translates work accounting, overflow checks, cancellation polling and
+guarded shuffle. `Context` supplies the Go cancellation boundary; errors retain
+wrapped causes. Integer counters use bigint to retain signed/unsigned 64-bit
+behavior. Upstream limit/cancellation tests are translated in
+`test/upstream-limits.test.ts`.
+
+`label/label.ts` translates `lib/label/label.go`, including all 37 position values,
+box placement and route placement. Eighty Go-generated cases exercise every
+position and compare exact coordinates, classifications, mirroring and returned
+segment indices. The upstream shadowed result index for outside route labels is
+preserved. These are dependencies of the forthcoming graph and engine port,
+not replacements connected to the current public layout pipeline yet.

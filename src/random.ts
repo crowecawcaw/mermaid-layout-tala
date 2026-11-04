@@ -38,6 +38,14 @@ export class GoRandom {
   int63(): bigint {
     return this.uint64() & 9223372036854775807n;
   }
+  int63n(n: bigint): bigint {
+    if (n <= 0n || n > 9223372036854775807n) throw new Error('invalid argument to Int63n');
+    let value = this.int63();
+    if ((n & (n - 1n)) === 0n) return value & (n - 1n);
+    const maximum = 9223372036854775807n - (9223372036854775808n % n);
+    while (value > maximum) value = this.int63();
+    return value % n;
+  }
   uint32(): number {
     return Number(this.int63() >> 31n);
   }
