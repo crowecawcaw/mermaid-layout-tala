@@ -47,6 +47,10 @@ const packages = {
   treeplacement: 'internal/trees',
   graphbounds: 'internal/layoutgraph',
   proximity: 'internal/proximity',
+  clusters: 'internal/grouping',
+  gosort: 'internal/grouping',
+  sequences: 'internal/grouping',
+  lifecycle: 'internal/grouping',
 };
 if (!(kind in packages)) throw new Error(`Fixture kind must be one of: ${Object.keys(packages).join(', ')}`);
 const packagePath = `d2layouts/d2talalayout/${packages[kind]}`;

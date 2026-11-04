@@ -173,3 +173,27 @@ fixtures compare ordered groups, neighbors, side assignments and pair counts.
 Additional tests cover cancellation during near-set publication, work exhaustion,
 independent propagated records and conflicting orientations. Regenerate
 `proximity`.
+
+`grouping/cluster-discovery.ts` and `clusters.ts` translate indexed sibling
+comparison, arrow signatures, container estimates, seeded arrangement, vessel
+allocation, edge abduction and atomic cluster installation. Two hundred forty
+Go cases compare topology/order, geometry, exact 64-bit vessel IDs, random-stream
+continuation and work counts. Regenerate `clusters`.
+
+`gosort/slice.ts` directly translates Go 1.27.1's unstable `sort.Slice` algorithm,
+including pivot selection, pattern breaking and heap fallback. Five hundred Go
+cases compare the entire resulting permutation and comparison count, including
+equal keys and adversarial orderings. Regenerate `gosort`. Cluster geometry uses
+this implementation where upstream uses unstable sorting.
+
+`grouping/sequences.ts` translates step-run discovery, defining-edge removal,
+vessel creation, remembered-sequence validation, collision-safe IDs and repeated
+installation. One hundred eighty Go fixtures compare both initial grouping and
+cleanup/reinstallation, including parallel edges and narrow steps. Cancellation
+checks restore consumed edges and resized member records. Regenerate `sequences`.
+
+`grouping/lifecycle.ts` translates group cleanup, near-relation redistribution
+and cluster retirement. One hundred Go cases compare cleanup, reset and repeated
+reset, including vessel identity, graph ownership and incident-edge order.
+Regenerate `lifecycle`. Shared Go slice backing views remain a general runtime
+representation limitation described above.
