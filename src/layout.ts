@@ -2,6 +2,7 @@ import { rankDag, type RankEdge, type RankNode } from './rank.js';
 import { layoutCompound } from './compound.js';
 import { avoidObstacles, routeMidpoint } from './routing.js';
 import { placeEdgeLabels } from './labeling.js';
+import { alignHierarchy, breakLongConnections, connectHierarchy, globalSifting, hierarchyNode, initializeRanks, minimizeCrossings, type Layers } from './hierarchy.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
@@ -62,7 +63,7 @@ interface WeightedEdge extends LayoutEdge {
  * TALA-derived layered layout for Mermaid flowcharts.
  *
  * The rank assignment is ported from TALA's weighted DAG network-simplex
- * ranker. This smaller adapter adds stable barycenter sweeps, variable-size
+ * ranker. This smaller adapter adds upstream crossing minimization, sifting and alignment, variable-size
  * node spacing, component separation, and boundary-to-boundary orthogonal
  * paths. Native container placement, obstacle routing, and label placement
  * extend this slice; they do not reproduce the upstream engine pipeline.
@@ -76,9 +77,9 @@ export function layoutFlowchart(
   if (!['TB', 'BT', 'LR', 'RL'].includes(direction)) throw new Error('invalid layout direction');
   const nodeSpacing = finiteSpacing(options.nodeSpacing ?? 48, 'nodeSpacing');
   let rankSpacing = finiteSpacing(options.rankSpacing ?? 64, 'rankSpacing');
-  const requestedPasses = options.orderingPasses ?? 8;
-  if (!Number.isFinite(requestedPasses)) throw new Error('orderingPasses must be finite');
-  const passes = Math.max(1, Math.min(16, Math.floor(requestedPasses)));
+  const requestedPasses = options.orderingPasses;
+  if (requestedPasses !== undefined && !Number.isFinite(requestedPasses)) throw new Error('orderingPasses must be finite');
+  const passes = requestedPasses === undefined ? undefined : Math.max(1, Math.min(16, Math.floor(requestedPasses)));
   finiteSpacing(options.containerPadding ?? 24, 'containerPadding');
   const nodes = [...inputNodes].sort((a, b) => compareText(a.id, b.id));
   if (new Set(nodes.map((node) => node.id)).size !== nodes.length) throw new Error('duplicate node ID');
@@ -231,85 +232,50 @@ function positionComponent(
   ranks: Map<string, number>,
   nodeSpacing: number,
   rankSpacing: number,
-  passes: number,
+  passes: number | undefined,
   direction: LayoutDirection
 ): PositionedNode[] {
-  const maxRank = Math.max(0, ...ranks.values());
-  const layers: string[][] = Array.from({ length: maxRank + 1 }, () => []);
-  for (const node of nodes) layers[ranks.get(node.id) ?? 0]!.push(node.id);
-  for (const layer of layers) layer.sort(compareText);
-  const order = new Map<string, number>();
-  const saveOrder = (layer: string[]) => layer.forEach((id, index) => order.set(id, index));
-  layers.forEach(saveOrder);
-
-  const incoming = new Map(nodes.map((node) => [node.id, [] as WeightedEdge[]]));
-  const outgoing = new Map(nodes.map((node) => [node.id, [] as WeightedEdge[]]));
-  for (const edge of edges) {
-    incoming.get(edge.to)!.push(edge);
-    outgoing.get(edge.from)!.push(edge);
-  }
-  const reorder = (
-    layerIndex: number,
-    adjacentRank: number,
-    adjacent: Map<string, WeightedEdge[]>,
-    neighbor: (edge: WeightedEdge) => string
-  ) => {
-    const layer = layers[layerIndex]!;
-    const stableOrder = new Map(layer.map((id, i) => [id, i]));
-    const barycenter = (id: string) => {
-      const links = adjacent.get(id)!.filter((edge) => ranks.get(neighbor(edge)) === adjacentRank);
-      if (links.length === 0) return order.get(id) ?? 0;
-      let total = 0;
-      let weight = 0;
-      for (const edge of links) {
-        total += (order.get(neighbor(edge)) ?? 0) * edge.weight;
-        weight += edge.weight;
-      }
-      return total / weight;
-    };
-    layer.sort((a, b) => barycenter(a) - barycenter(b) || stableOrder.get(a)! - stableOrder.get(b)! || compareText(a, b));
-    saveOrder(layer);
-  };
-  for (let pass = 0; pass < passes; pass++) {
-    for (let layer = 1; layer < layers.length; layer++) reorder(layer, layer - 1, incoming, (edge) => edge.from);
-    for (let layer = layers.length - 2; layer >= 0; layer--) reorder(layer, layer + 1, outgoing, (edge) => edge.to);
-  }
-
-  const nodeById = new Map(nodes.map((node) => [node.id, node]));
   const horizontal = direction === 'LR' || direction === 'RL';
-  const bandSizes = layers.map((layer) => Math.max(0, ...layer.map((id) => {
-    const node = nodeById.get(id)!;
-    return horizontal ? node.width : node.height;
-  })));
-  const rankCenters: number[] = [];
-  let cursor = 0;
-  for (const bandSize of bandSizes) {
-    rankCenters.push(cursor + bandSize / 2);
-    cursor += bandSize + rankSpacing;
+  const nodeById = new Map(nodes.map((node) => [node.id, node]));
+  const placement = new Map(nodes.map((node) => [node.id,
+    hierarchyNode(node.id, ranks.get(node.id) ?? 0, horizontal ? node.height : node.width)]));
+  const layers: Layers = Array.from({ length: Math.max(0, ...ranks.values()) + 1 }, () => []);
+  for (const node of placement.values()) layers[node.level]!.push(node);
+  for (const edge of edges) {
+    const source = placement.get(edge.from)!;
+    const target = placement.get(edge.to)!;
+    connectHierarchy(source, target);
+    source.degree += edge.weight;
+    target.degree += edge.weight;
   }
-
-  const crossWidths = layers.map((layer) => layer.reduce((sum, id) => {
-    const node = nodeById.get(id)!;
-    return sum + (horizontal ? node.height : node.width);
-  }, 0) + Math.max(0, layer.length - 1) * nodeSpacing);
-  const maxCrossWidth = Math.max(0, ...crossWidths);
+  initializeRanks(layers);
+  breakLongConnections([...placement.values()], layers);
+  minimizeCrossings(layers, passes);
+  globalSifting(layers);
+  // Alignment's median-neighbor ordering uses the initial ordered geometry.
+  for (const layer of layers) {
+    let cursor = 0;
+    for (const node of layer) { node.x = cursor; cursor += node.width + nodeSpacing; }
+  }
+  const crossPositions = alignHierarchy(layers, nodeSpacing, Math.min(50, nodeSpacing));
   const result: PositionedNode[] = [];
-  for (let rank = 0; rank < layers.length; rank++) {
-    const layer = layers[rank]!;
-    let cross = (maxCrossWidth - crossWidths[rank]!) / 2;
-    for (let position = 0; position < layer.length; position++) {
-      const id = layer[position]!;
-      const node = nodeById.get(id)!;
-      const crossSize = horizontal ? node.height : node.width;
-      const crossCenter = cross + crossSize / 2;
-      const along = rankCenters[rank]!;
-      let x = horizontal ? along : crossCenter;
-      let y = horizontal ? crossCenter : along;
+  let along = 0;
+  for (const layer of layers) {
+    const bandSize = Math.max(0, ...layer.filter((node) => !node.dummy).map((node) => {
+      const original = nodeById.get(node.id)!;
+      return horizontal ? original.width : original.height;
+    }));
+    for (const node of layer) {
+      if (node.dummy) continue;
+      const original = nodeById.get(node.id)!;
+      const cross = crossPositions.get(node)! + node.width / 2;
+      let x = horizontal ? along + bandSize / 2 : cross;
+      let y = horizontal ? cross : along + bandSize / 2;
       if (direction === 'BT') y = -y;
       if (direction === 'RL') x = -x;
-      result.push({ ...node, x, y, rank, order: position });
-      cross += crossSize + nodeSpacing;
+      result.push({ ...original, x, y, rank: node.level, order: node.rank });
     }
+    along += bandSize + rankSpacing;
   }
   return result;
 }

@@ -50,11 +50,11 @@ routing prevents routes from crossing unrelated node interiors. Mermaid clips
 endpoints to its rendered shapes. Measured edge labels reserve layer space and
 are placed away from nodes, container titles, and previously placed labels.
 
-**Full upstream TALA parity is not yet achieved.** Only the weighted DAG ranker
-has translated upstream correctness coverage. Container layout, routing, and
+**Full upstream TALA parity is not yet achieved.** The weighted DAG ranker has translated upstream correctness coverage, and
+hierarchy ordering/alignment matches 120 Go-generated differential fixtures. Container layout, routing, and
 label placement are native implementations with functional regression tests;
 they do not reproduce upstream coordinates. General placement/refinement,
-Brandes–Köpf alignment, upstream packing, complete label optimization, and seed
+compound alignment, upstream packing, complete label optimization, and seed
 scoring remain unported. See the [parity matrix](./test/UPSTREAM-PARITY.md).
 
 The synchronous `layoutFlowchart(nodes, edges, options)` API is preserved. Nodes
