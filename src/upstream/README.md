@@ -52,3 +52,16 @@ position and compare exact coordinates, classifications, mirroring and returned
 segment indices. The upstream shadowed result index for outside route labels is
 preserved. These are dependencies of the forthcoming graph and engine port,
 not replacements connected to the current public layout pipeline yet.
+
+`layoutgraph/` now contains the initial graph-owned node, edge, tree, grouping,
+label, icon and hierarchy records, basic topology mutations and shared constants.
+This is a partial graph translation: shape ownership, geometry policies,
+transactions, cloning and the remaining graph operations are still pending.
+
+`trees/geometry.ts` translates the complete upstream tree geometry kernel;
+`trees/layout.ts` currently translates orientation construction and tree edge-label
+placement, and `trees/traversal.ts` translates breadth-first descendants.
+The 320 Go fixtures compare exact coordinates, edge-label state and work counts
+for 80 trees in four orientations, including nested container descendants.
+Discovery, pruning, placement candidate selection and transactional restoration
+remain pending. Regenerate using the fixture generator's `trees` argument.
