@@ -219,3 +219,12 @@ The original 100 Go combination fixtures and 180 richer cases compare output
 node/edge order and coordinates, including nested descendants and fractional
 labels/routes. The node-owned combination preflight has 42 Go differential cases.
 Regenerate `combine` and `combinationpreflight`.
+
+`layoutgraph/ports.ts` translates absolute port coordinates, port-side lookup,
+facing table-column ports and axis alignment. `placementcost/{geometry,axis,
+cluster,flow-continuity}.ts` translate the initial scoring dependencies; the main
+edge-length scorer and symmetry scoring are still pending. Lazy turn/crossing/
+non-center-port cost calculation is translated in `layoutgraph/placement-cost.ts`.
+Four hundred Go cases compare scoring values and compass calculations, and 460
+cases cover all 23 shapes' absolute ports and table-column distances. Regenerate
+`placementgeometry` and `ports`.

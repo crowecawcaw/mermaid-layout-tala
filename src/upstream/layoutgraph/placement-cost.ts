@@ -54,3 +54,43 @@ export class PlacementCostSnapshot {
 export function SnapshotPlacementCosts(graph: Graph): PlacementCostSnapshot {
   return new PlacementCostSnapshot(graph);
 }
+
+// Lazy routing/placement cost values from upstream graph.go.
+import { distanceTo } from './node-spatial.js';
+import { ConnectedNodeGap, CrossingCostWeight } from './geometry-policy.js';
+export function maxEdgeLength(g: Graph): number {
+  let hasLength = false,
+    maxLength = ConnectedNodeGap;
+  for (const n of g.Nodes) {
+    if (n.TopLeft === null) continue;
+    for (const e of n.Edges) {
+      const adjacent = n.Adjacent(e);
+      if (adjacent.TopLeft === null) continue;
+      hasLength = true;
+      maxLength = Math.max(maxLength, distanceTo(n, adjacent, true));
+    }
+  }
+  return hasLength ? maxLength : 0;
+}
+export function TurnCost(g: Graph): number {
+  if (g.turnCost !== 0) return g.turnCost;
+  return (g.turnCost = 0.125 * g.Edges.length * maxEdgeLength(g));
+}
+export function CrossingCost(g: Graph): number {
+  if (g.crossingCost !== 0) return g.crossingCost;
+  return (g.crossingCost =
+    CrossingCostWeight * g.Edges.length * maxEdgeLength(g));
+}
+export function NonCenterPortCost(g: Graph): number {
+  if (g.nonCenterPortCost !== 0) return g.nonCenterPortCost;
+  if (g.Edges.length === 0) return 0;
+  let cost = 0.04287499999999999 * g.Edges.length * maxEdgeLength(g),
+    minSize = Infinity;
+  for (const n of g.Nodes) {
+    if (n.isContainer) continue;
+    minSize = Math.min(minSize, n.Height);
+    minSize = Math.min(minSize, n.Width);
+  }
+  if (minSize !== Infinity) cost = Math.max(cost, minSize / 3);
+  return (g.nonCenterPortCost = cost);
+}

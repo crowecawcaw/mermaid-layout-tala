@@ -56,6 +56,8 @@ const packages = {
   abduction: 'internal/layoutgraph',
   combinationpreflight: 'internal/layoutgraph',
   combine: 'internal/packing',
+  placementgeometry: 'internal/placementcost',
+  ports: 'internal/placementcost',
 };
 if (!(kind in packages)) throw new Error(`Fixture kind must be one of: ${Object.keys(packages).join(', ')}`);
 const packagePath = `d2layouts/d2talalayout/${packages[kind]}`;
