@@ -140,3 +140,17 @@ step advancement and arrangement, and nested synchronization order. Two hundred
 forty Go fixtures include fixed-size clusters, unplaced vessels/members, nested
 container movement and narrow/negative-width sequence steps, with exact work
 counts. Regenerate with `groupgeometry`.
+
+`layoutgraph/transaction.ts`, `bad-state.ts`, `errors.ts` and `placement-cost.ts`
+translate transaction construction, shared request guards, candidate operations,
+container/group synchronization, dirty/full post-state overlap scans, exception
+marking, fixed-position checks, rejection rollback, snapshot refresh and geometry
+trial clones. Placement cost rollback remains separate from ordinary speculative
+rollback, as upstream. Three hundred Go fixtures exercise eight successive
+candidates each, comparing acceptance, committed/restored geometry and snapshots.
+Construction work and non-container commit work compare exactly. Rejected
+container checks have Go-map-order-dependent work counts (confirmed by repeated
+Go runs); those fixtures compare outcomes and geometry instead of a single work
+count. Additional tests cover cancellation, thrown operations, snapshot sharing,
+candidate error causes and disabled/restored placement caches. Regenerate
+`transaction`.

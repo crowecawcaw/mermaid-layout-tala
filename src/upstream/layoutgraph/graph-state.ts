@@ -62,8 +62,8 @@ export class GraphState {
   edgeAbductions = new Map<EdgeAbduction, EdgeAbduction>();
   herds = new Map<HerdAssignment, Snapshot<HerdAssignment>>();
   hierarchies = new Map<Hierarchy, Snapshot<Hierarchy>>();
-  readonly captureTopology: boolean;
-  readonly captureEdgeRoutes: boolean;
+  captureTopology: boolean;
+  captureEdgeRoutes: boolean;
   constructor(options: GraphStateSnapshotOptions) {
     this.captureTopology = options.CaptureTopology;
     this.captureEdgeRoutes = options.CaptureEdgeRoutes;

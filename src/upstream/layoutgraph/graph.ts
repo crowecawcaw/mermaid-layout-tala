@@ -5,7 +5,7 @@ import { Node } from './node.js';
 import { Edge } from './edge.js';
 import type { Cluster, Sequence, Tree } from './records.js';
 export class Graph {
-  edgeLengthCache = new Map<bigint, number>();
+  edgeLengthCache: Map<bigint, number> | null = new Map();
   crossingCost = 0;
   turnCost = 0;
   nonCenterPortCost = 0;

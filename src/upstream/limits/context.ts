@@ -3,6 +3,7 @@ export interface Done {
   readonly closed: boolean;
 }
 export interface Context {
+  Value?(key: symbol): unknown;
   Done(): Done | null;
   Err(): Error | null;
 }
