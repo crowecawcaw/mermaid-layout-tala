@@ -1,0 +1,27 @@
+// Translated Kind values from internal/nodeshape/shape.go at D2 bf337903. MPL-2.0.
+// Copyright Terrastruct Inc. and contributors.
+export enum Kind {
+  Square,
+  RealSquare,
+  Parallelogram,
+  Document,
+  Cylinder,
+  Queue,
+  Page,
+  Package,
+  Step,
+  Callout,
+  StoredData,
+  Person,
+  C4Person,
+  Diamond,
+  Oval,
+  Circle,
+  Hexagon,
+  Cloud,
+  Table,
+  Class,
+  Text,
+  Code,
+  Image,
+}

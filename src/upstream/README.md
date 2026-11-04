@@ -65,3 +65,13 @@ The 320 Go fixtures compare exact coordinates, edge-label state and work counts
 for 80 trees in four orientations, including nested container descendants.
 Discovery, pruning, placement candidate selection and transactional restoration
 remain pending. Regenerate using the fixture generator's `trees` argument.
+
+`trees/discovery.ts` and `trees/preprocess-helpers.ts` translate discovery,
+terminal selection, root merging, chain reversal, pruning, reconnection and
+membership indexing. Two hundred Go cases compare exact retained node/edge
+order, all incidence lists, container membership, tree structure and work counts.
+They cover mixed arrows, parallel/loop edges, tables, fixed nodes, near constraints
+and nested containers. The public `Preprocess` transaction/validation wrapper is
+not connected until its graph snapshot dependencies are translated; these tests
+invoke the same internal stages directly in both languages. Regenerate using
+`discovery` as the generator's final argument.

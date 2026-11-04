@@ -1,5 +1,6 @@
 // Translated portions of internal/layoutgraph/node.go and accessors at D2 bf337903.
 // MPL-2.0. Copyright Terrastruct Inc. and contributors.
+import { Kind } from '../nodeshape/kind.js';
 import { Point } from '../geo/point.js';
 import { Box } from '../geo/box.js';
 import { Orientation } from '../geo/orientation.js';
@@ -17,6 +18,10 @@ import {
   type LongDistanceNeighborRequirements,
 } from './records.js';
 export class Node {
+  shapeType = Kind.Square;
+  IsTable(): boolean {
+    return this.shapeType === Kind.Table;
+  }
   D2ID: string | null = null;
   TopLeft: Point | null = null;
   Edges: Edge[] = [];
