@@ -128,3 +128,15 @@ boundary overlap, negative box dimensions and NaN boundaries. Regenerate `spatia
 including broad-phase padding, exact/padded pair inventories, asymmetric edge
 references, duplicate node pointers and retained-reference limits. Two hundred
 Go cases compare pair sets, errors and exact work counts. Regenerate `overlaps`.
+
+`layoutgraph/node-geometry.ts` and `containment.ts` translate label/icon bounds,
+rounded content boxes, container padding/fitting, fixed-origin lookup, descendant
+movement, and mirror offsets. Two hundred thirty Go fixtures exercise every
+shape and every label position, comparing geometry and exact bound-scan work.
+Regenerate with `nodegeometry`.
+
+`layoutgraph/group-geometry.ts` translates cluster resize/arrangement, sequence
+step advancement and arrangement, and nested synchronization order. Two hundred
+forty Go fixtures include fixed-size clusters, unplaced vessels/members, nested
+container movement and narrow/negative-width sequence steps, with exact work
+counts. Regenerate with `groupgeometry`.
