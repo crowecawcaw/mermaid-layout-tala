@@ -69,9 +69,9 @@ terminal selection, root merging, chain reversal, pruning, reconnection and
 membership indexing. Two hundred Go cases compare exact retained node/edge
 order, all incidence lists, container membership, tree structure and work counts.
 They cover mixed arrows, parallel/loop edges, tables, fixed nodes, near constraints
-and nested containers. The public `Preprocess` transaction/validation wrapper is
-not connected until its graph snapshot dependencies are translated; these tests
-invoke the same internal stages directly in both languages. Regenerate using
+and nested containers. The public `Preprocess` transaction/validation wrapper now uses the translated
+snapshot and rollback logic; these tests compare both the internal stages and
+the wrapper against the Go topology results. Regenerate using
 `discovery` as the generator's final argument.
 
 `nodeshape/` translates all 23 shape policies: port groups, mirrored and center
@@ -103,3 +103,17 @@ depth boundaries; tests also cover cancellation and nil root sentinels. Slice
 capacity metadata supports Go resource accounting; ordinary JS arrays currently
 use their length. Automatic Go backing-array growth/capacity tracking and the
 separate subgraph-combination preflight remain pending. Regenerate `preflight`.
+
+`layoutgraph/{runtime-objects,transaction-snapshot,graph-state}.ts` translates
+runtime ownership inventory, scoped snapshot capture and rollback. Eighty Go
+fixtures compare restored geometry, labels, topology, reference identity and
+exact work counts. Empty Go maps are compared by contents, not their nil header.
+The current JS array representation preserves array/object identity and declared
+capacity metadata; shared Go slice views and hidden spare backing elements still
+need explicit representation. Regenerate with `snapshot`.
+
+`trees/preprocess.ts` completes the upstream validation/snapshot/discovery/pruning
+wrapper. Tests force cancellation after removal, installation and reconnection,
+and interrupt the operation at successive work budgets, checking restored graph,
+container, incidence and route identities. Full transaction commit/overlap
+validation and tree placement remain pending.

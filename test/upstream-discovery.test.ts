@@ -1,3 +1,4 @@
+import { Preprocess } from '../src/upstream/trees/preprocess.js';
 import { describe, expect, it } from 'vitest';
 import fixtures from './fixtures/upstream-discovery.json';
 import { Graph } from '../src/upstream/layoutgraph/graph.js';
@@ -13,8 +14,13 @@ import {
 } from '../src/upstream/trees/discovery.js';
 import { buildNodeToTreeGuarded } from '../src/upstream/trees/preprocess-helpers.js';
 describe('upstream tree discovery and pruning', () => {
-  it.each(fixtures)(
-    'matches exact Go topology and work counts for $name',
+  it.each(
+    fixtures.flatMap((f) => [
+      { ...f, wrapper: false },
+      { ...f, wrapper: true },
+    ]),
+  )(
+    'matches exact Go topology and work counts for $name (wrapper=$wrapper)',
     (f) => {
       const g = new Graph(),
         all = new Map<number, Node>();
@@ -24,7 +30,7 @@ describe('upstream tree discovery and pruning', () => {
         g.AddNodeToContainer(record.parent ? all.get(record.parent)! : null, n);
         if (record.fixed) n.FixedTopLeft = new Point(0, 0);
         if (record.near) n.Nears.add(all.get(1)!);
-        if (record.table) n.shapeType = Kind.Table;
+        if (record.table) n.SetShape('Table');
       }
       for (const record of f.edges) {
         const e = g.Connect(all.get(record.from)!, all.get(record.to)!);
@@ -37,12 +43,15 @@ describe('upstream tree discovery and pruning', () => {
         'discovery fixture',
         MaxEngineWorkUnits,
       );
-      g.Trees = extractTrees(g, guard);
-      guard.Step();
-      guard.Check();
-      putBackNonBranchingTrees(g, guard);
-      buildNodeToTreeGuarded(g, guard);
-      guard.Finish();
+      if (f.wrapper) Preprocess(Background, g);
+      else {
+        g.Trees = extractTrees(g, guard);
+        guard.Step();
+        guard.Check();
+        putBackNonBranchingTrees(g, guard);
+        buildNodeToTreeGuarded(g, guard);
+        guard.Finish();
+      }
       const encode = (t: Tree): unknown => ({
         node: Number(t.Node.ID),
         parent: Number(t.Parent?.Node.ID ?? 0n),
@@ -65,14 +74,21 @@ describe('upstream tree discovery and pruning', () => {
           ]),
         ),
         roots: Object.fromEntries(
-          [...g.Trees].map(([n, roots]) => [String(n.ID), roots.map(encode)]),
+          [...g.Trees].map(([n, roots]) => [
+            String(n?.ID ?? 0n),
+            roots.map(encode),
+          ]),
         ),
         members: Object.fromEntries(
           [...g.NodeToTree].map(([n, t]) => [String(n.ID), Number(t.Node.ID)]),
         ),
         work: String(guard.Used()),
       };
-      expect(actual).toEqual(f.expected);
+      if (f.wrapper) {
+        const { work, ...expected } = f.expected;
+        const { work: _, ...topology } = actual;
+        expect(topology).toEqual(expected);
+      } else expect(actual).toEqual(f.expected);
     },
   );
 });
