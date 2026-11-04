@@ -1,3 +1,4 @@
+import { NewShape } from '../shape/new-shape.js';
 // Translated policy construction from internal/nodeshape/shape.go at D2 bf337903. MPL-2.0.
 // Copyright Terrastruct Inc. and contributors.
 import type { Box } from '../geo/box.js';
@@ -28,53 +29,93 @@ export function NewPolicy(
 ): [ShapePolicy | null, Kind, boolean] {
   switch (typeName) {
     case 'C4Person':
-      return [new ShapeC4Person(box), Kind.C4Person, true];
+      return [
+        new ShapeC4Person(box, NewShape(typeName, box)),
+        Kind.C4Person,
+        true,
+      ];
     case 'Callout':
-      return [new ShapeCallout(box), Kind.Callout, true];
+      return [
+        new ShapeCallout(box, NewShape(typeName, box)),
+        Kind.Callout,
+        true,
+      ];
     case 'Circle':
-      return [new ShapeCircle(box), Kind.Circle, true];
+      return [new ShapeCircle(box, NewShape(typeName, box)), Kind.Circle, true];
     case 'Cloud':
-      return [new ShapeCloud(box), Kind.Cloud, true];
+      return [new ShapeCloud(box, NewShape(typeName, box)), Kind.Cloud, true];
     case 'Cylinder':
-      return [new ShapeCylinder(box), Kind.Cylinder, true];
+      return [
+        new ShapeCylinder(box, NewShape(typeName, box)),
+        Kind.Cylinder,
+        true,
+      ];
     case 'Diamond':
-      return [new ShapeDiamond(box), Kind.Diamond, true];
+      return [
+        new ShapeDiamond(box, NewShape(typeName, box)),
+        Kind.Diamond,
+        true,
+      ];
     case 'Document':
-      return [new ShapeDocument(box), Kind.Document, true];
+      return [
+        new ShapeDocument(box, NewShape(typeName, box)),
+        Kind.Document,
+        true,
+      ];
     case 'Hexagon':
-      return [new ShapeHexagon(box), Kind.Hexagon, true];
+      return [
+        new ShapeHexagon(box, NewShape(typeName, box)),
+        Kind.Hexagon,
+        true,
+      ];
     case 'Image':
-      return [new ShapeImage(box), Kind.Image, true];
+      return [new ShapeImage(box, NewShape(typeName, box)), Kind.Image, true];
     case 'Oval':
-      return [new ShapeOval(box), Kind.Oval, true];
+      return [new ShapeOval(box, NewShape(typeName, box)), Kind.Oval, true];
     case 'Package':
-      return [new ShapePackage(box), Kind.Package, true];
+      return [
+        new ShapePackage(box, NewShape(typeName, box)),
+        Kind.Package,
+        true,
+      ];
     case 'Page':
-      return [new ShapePage(box), Kind.Page, true];
+      return [new ShapePage(box, NewShape(typeName, box)), Kind.Page, true];
     case 'Parallelogram':
-      return [new ShapeParallelogram(box), Kind.Parallelogram, true];
+      return [
+        new ShapeParallelogram(box, NewShape(typeName, box)),
+        Kind.Parallelogram,
+        true,
+      ];
     case 'Person':
-      return [new ShapePerson(box), Kind.Person, true];
+      return [new ShapePerson(box, NewShape(typeName, box)), Kind.Person, true];
     case 'Queue':
-      return [new ShapeQueue(box), Kind.Queue, true];
+      return [new ShapeQueue(box, NewShape(typeName, box)), Kind.Queue, true];
     case 'Square':
-      return [new ShapeSquare(box), Kind.Square, true];
+      return [new ShapeSquare(box, NewShape(typeName, box)), Kind.Square, true];
     case 'Step':
-      return [new ShapeStep(box), Kind.Step, true];
+      return [new ShapeStep(box, NewShape(typeName, box)), Kind.Step, true];
     case 'StoredData':
-      return [new ShapeStoredData(box), Kind.StoredData, true];
+      return [
+        new ShapeStoredData(box, NewShape(typeName, box)),
+        Kind.StoredData,
+        true,
+      ];
     case 'Table':
-      return [new ShapeTable(box), Kind.Table, true];
+      return [new ShapeTable(box, NewShape(typeName, box)), Kind.Table, true];
     case 'RealSquare':
-      return [new ShapeSquare(box), Kind.RealSquare, true];
+      return [
+        new ShapeSquare(box, NewShape(typeName, box)),
+        Kind.RealSquare,
+        true,
+      ];
     case 'Class':
-      return [new ShapeSquare(box), Kind.Class, true];
+      return [new ShapeSquare(box, NewShape(typeName, box)), Kind.Class, true];
     case 'Text':
-      return [new ShapeSquare(box), Kind.Text, true];
+      return [new ShapeSquare(box, NewShape(typeName, box)), Kind.Text, true];
     case 'Code':
-      return [new ShapeSquare(box), Kind.Code, true];
+      return [new ShapeSquare(box, NewShape(typeName, box)), Kind.Code, true];
     case '':
-      return [new ShapeSquare(box), Kind.Square, true];
+      return [new ShapeSquare(box, NewShape(typeName, box)), Kind.Square, true];
     default:
       return [null, Kind.Square, false];
   }

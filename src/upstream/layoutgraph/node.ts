@@ -1,3 +1,6 @@
+import { NewPolicy } from '../nodeshape/new-policy.js';
+import type { ShapePolicy } from '../nodeshape/policy.js';
+import { NumColumns, SetNumColumns } from '../nodeshape/shape_table.js';
 // Translated portions of internal/layoutgraph/node.go and accessors at D2 bf337903.
 // MPL-2.0. Copyright Terrastruct Inc. and contributors.
 import { Kind } from '../nodeshape/kind.js';
@@ -23,7 +26,26 @@ export class Node {
     return this.shapeType === Kind.Table;
   }
   D2ID: string | null = null;
-  TopLeft: Point | null = null;
+  Box: Box;
+  Shape!: ShapePolicy;
+  get TopLeft(): Point | null {
+    return this.Box.TopLeft;
+  }
+  set TopLeft(p: Point | null) {
+    this.Box.TopLeft = p!;
+  }
+  get Width(): number {
+    return this.Box.Width;
+  }
+  set Width(w: number) {
+    this.Box.Width = w;
+  }
+  get Height(): number {
+    return this.Box.Height;
+  }
+  set Height(h: number) {
+    this.Box.Height = h;
+  }
   Edges: Edge[] = [];
   Nears = new Set<Node>();
   Graph: Graph | null = null;
@@ -53,9 +75,28 @@ export class Node {
   >();
   constructor(
     public ID: EntityID,
-    public Width: number,
-    public Height: number,
-  ) {}
+    width: number,
+    height: number,
+  ) {
+    this.Box = new Box(null!, width, height);
+    this.SetShape('');
+  }
+  SetShape(type: string): void {
+    const [shape, kind, ok] = NewPolicy(type, this.Box);
+    if (ok) {
+      this.Shape = shape!;
+      this.shapeType = kind;
+    }
+  }
+  ShapeType(): string {
+    return this.Shape.GetType();
+  }
+  NumColumns(): number {
+    return NumColumns(this.Shape);
+  }
+  SetNumColumns(n: number): void {
+    SetNumColumns(this.Shape, n);
+  }
   Center(): Point {
     return new Point(
       this.TopLeft!.X + this.Width / 2,
@@ -90,8 +131,5 @@ export class Node {
   }
   InitIcon(): void {
     this.Icon = new Icon();
-  }
-  Box(): Box {
-    return new Box(this.TopLeft!, this.Width, this.Height);
   }
 }

@@ -55,16 +55,14 @@ not replacements connected to the current public layout pipeline yet.
 
 `layoutgraph/` now contains the initial graph-owned node, edge, tree, grouping,
 label, icon and hierarchy records, basic topology mutations and shared constants.
-This is a partial graph translation: shape ownership, geometry policies,
-transactions, cloning and the remaining graph operations are still pending.
+This is a partial graph translation: transactions, cloning and the remaining graph operations are still pending.
 
 `trees/geometry.ts` translates the complete upstream tree geometry kernel;
 `trees/layout.ts` currently translates orientation construction and tree edge-label
 placement, and `trees/traversal.ts` translates breadth-first descendants.
 The 320 Go fixtures compare exact coordinates, edge-label state and work counts
 for 80 trees in four orientations, including nested container descendants.
-Discovery, pruning, placement candidate selection and transactional restoration
-remain pending. Regenerate using the fixture generator's `trees` argument.
+Placement candidate selection and transactional restoration remain pending. Regenerate using the fixture generator's `trees` argument.
 
 `trees/discovery.ts` and `trees/preprocess-helpers.ts` translate discovery,
 terminal selection, root merging, chain reversal, pruning, reconnection and
@@ -78,8 +76,14 @@ invoke the same internal stages directly in both languages. Regenerate using
 
 `nodeshape/` translates all 23 shape policies: port groups, mirrored and center
 ports, label preference tiers, and table row ports. Its `NewPolicy` constructor
-currently exposes the policy layer separately while `lib/shape` perimeter and
-sizing dependencies are being translated. The 460 Go differential fixtures
+shares the node box with the translated `lib/shape` perimeter and sizing geometry. The 460 Go differential fixtures
 compare exact values across dimensions and table row counts. Regenerate using
 `shapes`. The typed policy layer does not substitute rectangle geometry for
 missing shape geometry.
+
+`shape/` translates all 23 upstream shape geometries, including fitting, inner
+boxes, padding, border tracing, perimeter curves, SVG path strings and typed path
+commands. `svg/path.ts` translates their `SvgPathContext` dependency. The 480 Go
+differential fixtures compare geometry numerically and SVG commands/strings
+exactly. Regenerate with `shapegeometry`. Node dimensions, positions, shape
+geometry and port policies share the same mutable box, as upstream.
