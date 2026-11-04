@@ -15,7 +15,7 @@ full parity. The prior WebAssembly replacement remains reverted; the public
 | Layer ordering and alignment | Translated crossing minimization, global sifting, long-edge dummy chains and four-direction Brandes–Köpf alignment | `hierarchy.test.ts`: 120 Go-generated differential fixtures (including dummy chains) compare exact layer order and coordinates; four upstream alignment-root contracts. Nested compound alignment and table-column handling remain unported |
 | Nested containers | Native bottom-up child placement and descendant-edge projection | `compound.test.ts`: containment, local/inherited direction, group endpoints, input-order stability, invalid parents; upstream compound admission/placement goldens not ported |
 | General placement | Layered placement only | Tree, sequence, hub, herd, cluster discovery and placement/refinement stages remain unported |
-| Component packing | Cross-axis packing | Upstream bin packing, aspect-ratio objectives, route extents remain unported |
+| Component packing | Translated independent-component candidate placement, area/aspect-ratio objective and route bounds | `packing.test.ts`: 100 exact Go placement fixtures. Fixed nodes, ancestor obstacles, loop margins, large equal-area sort ties and the separate bin-packing phase remain unported |
 | Routing | Native rectangle visibility-grid fallback with bend cost | `routing.test.ts`: obstacles, shortcuts, feedback edges, all directions; upstream OVG, port swapping, channel nudging, route cleanup and shape-specific geometry remain unported |
 | Self/parallel edges | Translated rectangle loop ports, ordering, tracks and edge-density prescaling; native parallel lanes | `loops.test.ts`: 132 exact Go loop fixtures across arrowhead categories, label sizes and fractional dimensions, plus nested-loop containment. All four complete singleton-loop cases match. Nonrectangular ports, full loop extent reservation and duplicate-route optimization remain unported |
 | Edge labels | Measured spacing, arc-length midpoint and greedy collision avoidance | `labeling.test.ts`: parallel labels, node avoidance, all directions; upstream label scoring, icons, arrowhead labels remain unported |
@@ -78,3 +78,8 @@ Full-layout comparisons use absolute positions and dimensions with tolerance
 but otherwise compares directed geometry exactly. Matching stage fixtures does
 not imply a matching complete engine pipeline. The remaining full-layout
 differences are reported, not hidden behind skips or permissive assertions.
+
+Component combination fixtures can be regenerated with the same script using
+`packing` as its final argument. They cover one to seven rectangular subgraphs
+with varying sizes and multiple nodes. Route-bound translation is integrated in
+the adapter; the current Go packing corpus covers node geometry only.

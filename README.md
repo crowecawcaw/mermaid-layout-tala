@@ -56,7 +56,7 @@ the result by upstream penalty, then area, with later seeds winning exact ties.
 hierarchy ordering/alignment matches 120 Go-generated differential fixtures. Container layout, routing, and
 label placement are native implementations with functional regression tests;
 they do not reproduce upstream coordinates. General placement/refinement,
-compound alignment, upstream packing, complete label optimization, and the remaining upstream placement/routing stages are still unported. See the [parity matrix](./test/UPSTREAM-PARITY.md).
+compound alignment, the remaining packing phases, complete label optimization, and the remaining upstream placement/routing stages are still unported. See the [parity matrix](./test/UPSTREAM-PARITY.md).
 
 The synchronous `layoutFlowchart(nodes, edges, options)` API is preserved. Nodes
 can specify `parentId`, `isGroup`, `direction`, `labelWidth`, and `labelHeight`;

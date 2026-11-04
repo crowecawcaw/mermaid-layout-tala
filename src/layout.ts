@@ -2,6 +2,7 @@ import { rankDag, type RankEdge, type RankNode } from './rank.js';
 import { layoutCompound } from './compound.js';
 import { avoidObstacles, routeMidpoint } from './routing.js';
 import { placeEdgeLabels } from './labeling.js';
+import { combineComponents } from './packing.js';
 import { normalizeLayout } from './normalize.js';
 import { prescaleNodes, routeLoops } from './loops.js';
 import { GoRandom, getTalaSeeds, normalizeSeeds, type TalaSeed } from './random.js';
@@ -135,7 +136,7 @@ function layoutAttempt(
 
   const components = connectedComponents(nodes, edges);
   const allPositions = new Map<string, PositionedNode>();
-  const componentBounds: Array<ReturnType<typeof bounds>> = [];
+  const componentNodes = new Map<string, PositionedNode[]>();
   for (const component of components) {
     const componentIds = new Set(component.map((node) => node.id));
     const componentEdges = edges.filter((edge) => componentIds.has(edge.from) && componentIds.has(edge.to));
@@ -150,22 +151,7 @@ function layoutAttempt(
         } satisfies RankEdge)));
     const localNodes = positionComponent(component, weightedDag, ranks, nodeSpacing, rankSpacing, passes, direction, random);
     for (const node of localNodes) allPositions.set(node.id, node);
-    componentBounds.push(bounds(localNodes));
-  }
-
-  // Pack weakly connected components along the cross axis, which is the least
-  // surprising direction for both tall and wide flowcharts.
-  let componentOffset = 0;
-  for (let i = 0; i < components.length; i++) {
-    const local = components[i]!.map((node) => allPositions.get(node.id)!);
-    const box = componentBounds[i]!;
-    const alongX = direction === 'TB' || direction === 'BT';
-    const shift = alongX ? componentOffset - box.minX : componentOffset - box.minY;
-    for (const node of local) {
-      if (alongX) node.x += shift;
-      else node.y += shift;
-    }
-    componentOffset += (alongX ? box.width : box.height) + rankSpacing;
+    for (const node of localNodes) componentNodes.set(node.id, localNodes);
   }
 
   const positionedNodes = nodes.map((node) => allPositions.get(node.id)!);
@@ -186,10 +172,25 @@ function layoutAttempt(
     const source = allPositions.get(edge.from)!;
     const target = allPositions.get(edge.to)!;
     const offset = parallelOffset.get(edge.id) ?? 0;
-    const points = normalizeRoute(avoidObstacles(loopRoutes.get(edge.id) ?? routeEdge(source, target, direction, offset), source, target, positionedNodes, offset));
+    const points = normalizeRoute(avoidObstacles(loopRoutes.get(edge.id) ?? routeEdge(source, target, direction, offset), source, target, componentNodes.get(source.id)!, offset));
     const middle = routeMidpoint(points);
     return { ...edge, points, x: middle.x, y: middle.y };
   });
+  if (components.length > 1) {
+    const localGraphs = components.map((component) => {
+      const localNodes = componentNodes.get(component[0]!.id)!;
+      const localEdges = positionedEdges.filter((edge) => componentNodes.get(edge.from) === localNodes);
+      placeEdgeLabels(localNodes, localEdges);
+      return { nodes: localNodes, edges: localEdges };
+    });
+    combineComponents(localGraphs);
+    // Packing permits interleaving component bounds. Recheck routes against
+    // all nodes after translating the independent component geometry.
+    for (const edge of positionedEdges) {
+      edge.points = normalizeRoute(avoidObstacles(edge.points, allPositions.get(edge.from)!, allPositions.get(edge.to)!, positionedNodes, parallelOffset.get(edge.id) ?? 0));
+      Object.assign(edge, routeMidpoint(edge.points));
+    }
+  }
   placeEdgeLabels(positionedNodes, positionedEdges);
   return { nodes: positionedNodes, edges: positionedEdges };
 }
@@ -399,15 +400,6 @@ function rectIntersection(node: PositionedNode, dx: number, dy: number): Point {
   const sy = dy === 0 ? Number.POSITIVE_INFINITY : node.height / 2 / Math.abs(dy);
   const scale = Math.min(sx, sy);
   return { x: node.x + dx * scale, y: node.y + dy * scale };
-}
-
-function bounds(nodes: readonly PositionedNode[]) {
-  if (nodes.length === 0) return { minX: 0, minY: 0, width: 0, height: 0 };
-  const minX = Math.min(...nodes.map((node) => node.x - node.width / 2));
-  const minY = Math.min(...nodes.map((node) => node.y - node.height / 2));
-  const maxX = Math.max(...nodes.map((node) => node.x + node.width / 2));
-  const maxY = Math.max(...nodes.map((node) => node.y + node.height / 2));
-  return { minX, minY, width: maxX - minX, height: maxY - minY };
 }
 
 function finiteSpacing(value: number, name: string): number {

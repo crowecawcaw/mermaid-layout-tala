@@ -29,8 +29,9 @@ const packages = {
   quality: 'internal/quality',
   layout: '',
   loops: 'internal/loops',
+  packing: 'internal/packing',
 };
-if (!(kind in packages)) throw new Error('Fixture kind must be hierarchy, quality, or layout');
+if (!(kind in packages)) throw new Error(`Fixture kind must be one of: ${Object.keys(packages).join(', ')}`);
 const packagePath = `d2layouts/d2talalayout/${packages[kind]}`;
 const target = resolve(checkout, packagePath, 'typescript_fixture_test.go');
 if (existsSync(target)) throw new Error(`Refusing to overwrite ${target}`);
