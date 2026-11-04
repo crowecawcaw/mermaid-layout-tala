@@ -75,3 +75,11 @@ and nested containers. The public `Preprocess` transaction/validation wrapper is
 not connected until its graph snapshot dependencies are translated; these tests
 invoke the same internal stages directly in both languages. Regenerate using
 `discovery` as the generator's final argument.
+
+`nodeshape/` translates all 23 shape policies: port groups, mirrored and center
+ports, label preference tiers, and table row ports. Its `NewPolicy` constructor
+currently exposes the policy layer separately while `lib/shape` perimeter and
+sizing dependencies are being translated. The 460 Go differential fixtures
+compare exact values across dimensions and table row counts. Regenerate using
+`shapes`. The typed policy layer does not substitute rectangle geometry for
+missing shape geometry.
