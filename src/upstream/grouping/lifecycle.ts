@@ -7,7 +7,7 @@ import {
   sequenceArrangeStepsWithWork,
   unmeteredGroupGeometry,
 } from '../layoutgraph/group-geometry.js';
-import { reconnectEdge } from './clusters.js';
+import { reconnectEdge } from '../layoutgraph/edge-topology.js';
 function filterInPlace<T>(items: T[], keep: (item: T) => boolean): T[] {
   let write = 0;
   for (let read = 0; read < items.length; read++) {

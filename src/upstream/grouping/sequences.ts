@@ -21,7 +21,7 @@ import {
   RollbackGraphState,
 } from '../layoutgraph/graph-state.js';
 import type { GoRandom } from '../../random.js';
-import { reconnectEdge } from './clusters.js';
+import { reconnectEdge } from '../layoutgraph/edge-topology.js';
 export const isActiveSequence = (sequence: Sequence | null): boolean =>
   sequence !== null && sequence.Vessel!.Graph !== null;
 export function identifySequences(

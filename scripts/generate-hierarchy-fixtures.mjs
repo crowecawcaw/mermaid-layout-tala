@@ -51,6 +51,7 @@ const packages = {
   gosort: 'internal/grouping',
   sequences: 'internal/grouping',
   lifecycle: 'internal/grouping',
+  join: 'internal/grouping',
 };
 if (!(kind in packages)) throw new Error(`Fixture kind must be one of: ${Object.keys(packages).join(', ')}`);
 const packagePath = `d2layouts/d2talalayout/${packages[kind]}`;

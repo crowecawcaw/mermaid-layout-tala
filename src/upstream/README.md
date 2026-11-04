@@ -197,3 +197,9 @@ and cluster retirement. One hundred Go cases compare cleanup, reset and repeated
 reset, including vessel identity, graph ownership and incident-edge order.
 Regenerate `lifecycle`. Shared Go slice backing views remain a general runtime
 representation limitation described above.
+
+`grouping/join.ts` and `layoutgraph/distance-clusters.ts` translate distance-island
+discovery, fixed-origin-aware movement and the reverse-order position journal.
+One hundred eighty Go cases compare final positions and exact work counts for
+edge-connected, near-only and fixed-node graphs. Tests also restore shared point
+identities and cancel after actual movement. Regenerate `join`.

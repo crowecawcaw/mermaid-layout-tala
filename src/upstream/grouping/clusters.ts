@@ -5,6 +5,7 @@ import { WorkGuard } from '../limits/work.js';
 import type { Graph } from '../layoutgraph/graph.js';
 import { Node } from '../layoutgraph/node.js';
 import type { Edge } from '../layoutgraph/edge.js';
+import { reconnectEdge } from '../layoutgraph/edge-topology.js';
 import {
   Cluster,
   Tree,
@@ -127,21 +128,6 @@ export function AddCluster(graph: Graph, cluster: Cluster): void {
     node.Container = null;
   }
   graph.Clusters.set(cluster.Vessel!, cluster);
-}
-export function reconnectEdge(
-  edge: Edge,
-  newEndpoint: Node,
-  isTo: boolean,
-): void {
-  if (isTo) {
-    edge.To.RemoveIncidentEdge(edge);
-    newEndpoint.Edges.push(edge);
-    edge.To = newEndpoint;
-  } else {
-    edge.From.RemoveIncidentEdge(edge);
-    newEndpoint.Edges.push(edge);
-    edge.From = newEndpoint;
-  }
 }
 export function abductClusterEdges(
   cluster: Cluster,
