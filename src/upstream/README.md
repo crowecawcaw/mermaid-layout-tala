@@ -87,3 +87,11 @@ commands. `svg/path.ts` translates their `SvgPathContext` dependency. The 480 Go
 differential fixtures compare geometry numerically and SVG commands/strings
 exactly. Regenerate with `shapegeometry`. Node dimensions, positions, shape
 geometry and port policies share the same mutable box, as upstream.
+
+`layoutgraph/clone.ts` translates the complete internal copy stage, preserving
+shared references, independent geometry and labels, active/inactive grouping
+ownership, tree-only records, edge abductions, hierarchy maps and transient state
+resets. Eighty Go differential fixtures compare copied state and exact work
+counts; additional tests check isolation and duplicate record rejection.
+The public `Clone` wrapper still awaits topology preflight validation. Regenerate
+using `cloning`.

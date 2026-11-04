@@ -97,6 +97,23 @@ export class Node {
   SetNumColumns(n: number): void {
     SetNumColumns(this.Shape, n);
   }
+  container(): Node | null {
+    if (this.Cluster !== null && this.Cluster.Vessel!.Graph !== null)
+      return this.Cluster.Vessel!.Container;
+    if (this.Sequence !== null && this.Sequence.Vessel!.Graph !== null)
+      return this.Sequence.Vessel!.Container;
+    return this.Container;
+  }
+  orderedNears(): Node[] {
+    return [...this.Nears].sort((a, b) =>
+      a.ID < b.ID ? -1 : a.ID > b.ID ? 1 : 0,
+    );
+  }
+  AddNear(other: Node | null): void {
+    if (other === null || other === this) return;
+    this.Nears.add(other);
+    other.Nears.add(this);
+  }
   Center(): Point {
     return new Point(
       this.TopLeft!.X + this.Width / 2,

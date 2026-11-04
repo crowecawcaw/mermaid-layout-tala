@@ -5,6 +5,10 @@ import { Node } from './node.js';
 import { Edge } from './edge.js';
 import type { Cluster, Sequence, Tree } from './records.js';
 export class Graph {
+  edgeLengthCache = new Map<bigint, number>();
+  crossingCost = 0;
+  turnCost = 0;
+  nonCenterPortCost = 0;
   IsRootHierarchy = false;
   Nodes: Node[] = [];
   Edges: Edge[] = [];
@@ -63,6 +67,38 @@ export class Graph {
     edge.From.RemoveIncidentEdge(edge);
     edge.To.RemoveIncidentEdge(edge);
     this.Edges = this.Edges.filter((e) => e !== edge);
+  }
+  HubOrder(): Node[] {
+    return sortNodes([...this.Hubs.keys()]);
+  }
+  containerRDFSOrderContext(
+    root: Node | null,
+    guard: { Step(): void },
+  ): Node[] {
+    const order: Node[] = [];
+    if (root !== null && !root.isContainer) return order;
+    const children = this.Containers.get(root) ?? [];
+    for (let i = children.length - 1; i >= 0; i--) {
+      const child = children[i]!;
+      guard.Step();
+      if (child.isContainer) {
+        order.push(...this.containerRDFSOrderContext(child, guard), child);
+        continue;
+      }
+      if (child.isClusterVessel) {
+        const nodes = this.Clusters.get(child)!.Nodes;
+        for (let j = nodes.length - 1; j >= 0; j--) {
+          const clusterNode = nodes[j]!;
+          guard.Step();
+          if (clusterNode.isContainer)
+            order.push(
+              ...this.containerRDFSOrderContext(clusterNode, guard),
+              clusterNode,
+            );
+        }
+      }
+    }
+    return order;
   }
   TreeOrder(): Node[] {
     return sortNodes([...this.Trees.keys()]);
