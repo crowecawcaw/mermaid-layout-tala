@@ -39,6 +39,8 @@ const packages = {
   cloning: 'internal/layoutgraph',
   preflight: 'internal/layoutgraph',
   snapshot: 'internal/layoutgraph',
+  spatial: 'internal/layoutgraph',
+  overlaps: 'internal/layoutgraph',
 };
 if (!(kind in packages)) throw new Error(`Fixture kind must be one of: ${Object.keys(packages).join(', ')}`);
 const packagePath = `d2layouts/d2talalayout/${packages[kind]}`;

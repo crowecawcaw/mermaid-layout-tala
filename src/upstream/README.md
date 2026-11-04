@@ -117,3 +117,14 @@ wrapper. Tests force cancellation after removal, installation and reconnection,
 and interrupt the operation at successive work budgets, checking restored graph,
 container, incidence and route identities. Full transaction commit/overlap
 validation and tree placement remain pending.
+
+`layoutgraph/node-spatial.ts` and `node-spacing.ts` translate spacing clearance,
+fixed label/icon margins, modifier offsets, overlaps, distances, orientation,
+visibility predicates and segment/box clipping. Five hundred Go fixtures compare
+all results and charged edge scans; explicit regressions cover corner tangency,
+boundary overlap, negative box dimensions and NaN boundaries. Regenerate `spatial`.
+
+`layoutgraph/transaction-overlaps.ts` translates the initial overlap sweep,
+including broad-phase padding, exact/padded pair inventories, asymmetric edge
+references, duplicate node pointers and retained-reference limits. Two hundred
+Go cases compare pair sets, errors and exact work counts. Regenerate `overlaps`.
