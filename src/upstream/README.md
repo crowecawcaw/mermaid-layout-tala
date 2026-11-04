@@ -101,8 +101,8 @@ relations, descendant/tree cycle and depth checks, tree ownership and alias
 validation. Forty-two Go cases compare successful and rejected topologies at
 depth boundaries; tests also cover cancellation and nil root sentinels. Slice
 capacity metadata supports Go resource accounting; ordinary JS arrays currently
-use their length. Automatic Go backing-array growth/capacity tracking and the
-separate subgraph-combination preflight remain pending. Regenerate `preflight`.
+use their length. Automatic Go backing-array growth/capacity tracking remains pending. The
+subgraph-combination preflight is translated below. Regenerate `preflight`.
 
 `layoutgraph/{runtime-objects,transaction-snapshot,graph-state}.ts` translates
 runtime ownership inventory, scoped snapshot capture and rollback. Eighty Go
@@ -203,3 +203,19 @@ discovery, fixed-origin-aware movement and the reverse-order position journal.
 One hundred eighty Go cases compare final positions and exact work counts for
 edge-connected, near-only and fixed-node graphs. Tests also restore shared point
 identities and cancel after actual movement. Regenerate `join`.
+
+`layoutgraph/reachability.ts`, `subgraphs.ts` and `edge-abduction.ts` translate
+ordered reachability, temporary graph ownership, subgraph splitting, container
+edge reassignment and restoration. Two hundred forty Go split fixtures compare
+traversal order, component inventories, ownership and work counts; 240 additional
+cases compare edge reassignment, partial-view restoration and reapplication.
+A cancellation test restores near-only nodes outside the original node slice.
+Regenerate `subgraphs` and `abduction`.
+
+`packing/combine.ts` and `combine-snapshot.ts` translate subgraph combination,
+including shared-topology validation, fixed-first placement, exact unstable area
+ordering, ancestor obstacles, routed bounds, route translation and rollback.
+The original 100 Go combination fixtures and 180 richer cases compare output
+node/edge order and coordinates, including nested descendants and fractional
+labels/routes. The node-owned combination preflight has 42 Go differential cases.
+Regenerate `combine` and `combinationpreflight`.

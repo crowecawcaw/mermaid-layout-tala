@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import fixtures from './fixtures/upstream-preflight.json';
+import combinationFixtures from './fixtures/upstream-combinationpreflight.json';
 import { Graph } from '../src/upstream/layoutgraph/graph.js';
 import { Node } from '../src/upstream/layoutgraph/node.js';
 import { Edge } from '../src/upstream/layoutgraph/edge.js';
@@ -11,6 +12,7 @@ import {
 } from '../src/upstream/layoutgraph/records.js';
 import {
   validateEngineGraph,
+  validateCombineNodeTopology,
   setSliceCapacity,
 } from '../src/upstream/layoutgraph/topology-preflight.js';
 import { Clone } from '../src/upstream/layoutgraph/clone.js';
@@ -230,3 +232,17 @@ describe('direct upstream topology preflight', () => {
     expect(copy.Trees.get(null)![0]!.Node).not.toBe(b);
   });
 });
+
+it.each(combinationFixtures)(
+  'matches Go node-owned union preflight $trial',
+  (f) => {
+    const g = build(f.trial);
+    let message = '';
+    try {
+      validateCombineNodeTopology(Background, [g, g]);
+    } catch (error) {
+      message = (error as Error).message;
+    }
+    expect(message).toBe(f.error);
+  },
+);
