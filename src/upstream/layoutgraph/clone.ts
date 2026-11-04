@@ -1,6 +1,9 @@
+import { validateEngineGraph } from './topology-preflight.js';
+import type { Context } from '../limits/context.js';
+import { WorkGuard, MaxEngineWorkUnits } from '../limits/work.js';
 // Translated from internal/layoutgraph/clone.go at D2 bf337903. MPL-2.0.
 // Copyright Terrastruct Inc. and contributors.
-// This is the internal copy stage. The public Clone preflight wrapper is pending.
+
 import { Graph } from './graph.js';
 import { Node } from './node.js';
 import { Edge } from './edge.js';
@@ -17,7 +20,6 @@ import {
 } from './records.js';
 import { Orientation } from '../geo/orientation.js';
 import { FromString, String as PositionString } from '../label/label.js';
-import type { WorkGuard } from '../limits/work.js';
 
 export class GraphCloneState {
   nodesByID = new Map<EntityID, Node>();
@@ -515,4 +517,22 @@ export function canonicalDirection(direction: Orientation): Orientation {
     default:
       return Orientation.NONE;
   }
+}
+
+export function Clone(ctx: Context, source: Graph | null): Graph {
+  const staged = new Graph();
+  cloneInto(ctx, source, staged);
+  return staged;
+}
+export function cloneInto(
+  ctx: Context,
+  source: Graph | null,
+  staged: Graph,
+): void {
+  if (ctx == null) throw new Error('TALA CloneGraph requires a context');
+  if (source === null) throw new Error('cannot clone a nil graph');
+  validateEngineGraph(ctx, 'CloneGraph', source);
+  const guard = new WorkGuard(ctx, 'CloneGraph', MaxEngineWorkUnits);
+  new GraphCloneState(source, staged, guard).copy();
+  guard.Finish();
 }

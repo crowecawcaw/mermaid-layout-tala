@@ -476,12 +476,14 @@ export function isIsolatedTreeGuarded(
 }
 export function buildNodeToTreeGuarded(g: Graph, guard: WorkGuard): void {
   const nodeToTree = new Map<Node, Tree>(),
-    order: Node[] = [];
+    order: (Node | null)[] = [];
   for (const n of g.Trees.keys()) {
     guard.Step();
     order.push(n);
   }
-  order.sort((a, b) => (a.ID < b.ID ? -1 : a.ID > b.ID ? 1 : 0));
+  order.sort((a, b) =>
+    (a?.ID ?? 0n) < (b?.ID ?? 0n) ? -1 : (a?.ID ?? 0n) > (b?.ID ?? 0n) ? 1 : 0,
+  );
   guard.Check();
   for (const sentinel of order) {
     guard.Step();

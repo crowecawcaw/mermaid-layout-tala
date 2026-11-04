@@ -37,6 +37,7 @@ const packages = {
   shapes: 'internal/nodeshape',
   shapegeometry: '../../lib/shape',
   cloning: 'internal/layoutgraph',
+  preflight: 'internal/layoutgraph',
 };
 if (!(kind in packages)) throw new Error(`Fixture kind must be one of: ${Object.keys(packages).join(', ')}`);
 const packagePath = `d2layouts/d2talalayout/${packages[kind]}`;

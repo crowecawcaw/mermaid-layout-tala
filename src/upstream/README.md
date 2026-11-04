@@ -93,5 +93,13 @@ shared references, independent geometry and labels, active/inactive grouping
 ownership, tree-only records, edge abductions, hierarchy maps and transient state
 resets. Eighty Go differential fixtures compare copied state and exact work
 counts; additional tests check isolation and duplicate record rejection.
-The public `Clone` wrapper still awaits topology preflight validation. Regenerate
-using `cloning`.
+The `Clone` wrapper validates the source and publishes only a completed copy.
+Regenerate using `cloning`.
+
+`layoutgraph/topology-preflight.ts` translates engine topology inventory, parent
+relations, descendant/tree cycle and depth checks, tree ownership and alias
+validation. Forty-two Go cases compare successful and rejected topologies at
+depth boundaries; tests also cover cancellation and nil root sentinels. Slice
+capacity metadata supports Go resource accounting; ordinary JS arrays currently
+use their length. Automatic Go backing-array growth/capacity tracking and the
+separate subgraph-combination preflight remain pending. Regenerate `preflight`.

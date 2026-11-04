@@ -15,7 +15,7 @@ export class Graph {
   CellSize = 0;
   Containers = new Map<Node | null, Node[]>();
   Clusters = new Map<Node, Cluster>();
-  Trees = new Map<Node, Tree[]>();
+  Trees = new Map<Node | null, Tree[]>();
   NodeToTree = new Map<Node, Tree>();
   Hubs = new Map<Node, Node[]>();
   Sequences = new Map<Node, Sequence>();
@@ -100,7 +100,7 @@ export class Graph {
     }
     return order;
   }
-  TreeOrder(): Node[] {
+  TreeOrder(): (Node | null)[] {
     return sortNodes([...this.Trees.keys()]);
   }
   ClusterOrder(): Node[] {
@@ -130,6 +130,8 @@ export class Graph {
     );
   }
 }
-function sortNodes(nodes: Node[]): Node[] {
-  return nodes.sort((a, b) => (a.ID < b.ID ? -1 : a.ID > b.ID ? 1 : 0));
+function sortNodes<T extends Node | null>(nodes: T[]): T[] {
+  return nodes.sort((a, b) =>
+    (a?.ID ?? 0n) < (b?.ID ?? 0n) ? -1 : (a?.ID ?? 0n) > (b?.ID ?? 0n) ? 1 : 0,
+  );
 }
