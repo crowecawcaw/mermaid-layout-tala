@@ -23,6 +23,15 @@ full parity. The prior WebAssembly replacement remains reverted; the public
 | Seed selection and quality | Go-compatible random stream, isolated attempts, translated penalty/area scoring and exact later-seed tie rule | `random.test.ts`, `seeds.test.ts`, `quality.test.ts`: Go stream fixtures and 100 differential scoring fixtures; icons, arrowhead labels and cluster membership scoring remain outside the adapter model |
 | Resource accounting | Ranker checks and bounded routing grid | Upstream aggregate work accounting, cancellation, atomic rollback contracts remain unported |
 
+## Direct engine translation
+
+The required destination is now a direct translation of the whole upstream
+engine, preserving its graph model and ordered stages. The earlier native
+placement/routing alternatives are transitional and do not satisfy that goal.
+New source translations live in `src/upstream/`; their status is documented in
+[the translation notes](../src/upstream/README.md). The first shared geometry
+translation has 400 Go differential cases and is not yet wired into the adapter.
+
 ## Acceptance work still required
 
 1. Expand the pinned full-layout corpus beyond its initial 36 cases. It currently
