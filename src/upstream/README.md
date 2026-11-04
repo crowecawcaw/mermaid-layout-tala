@@ -55,14 +55,14 @@ not replacements connected to the current public layout pipeline yet.
 
 `layoutgraph/` now contains the initial graph-owned node, edge, tree, grouping,
 label, icon and hierarchy records, basic topology mutations and shared constants.
-This is a partial graph translation: transactions, cloning and the remaining graph operations are still pending.
+Transactions and cloning are translated below; subgraph combination and additional graph operations remain pending.
 
 `trees/geometry.ts` translates the complete upstream tree geometry kernel;
 `trees/layout.ts` currently translates orientation construction and tree edge-label
 placement, and `trees/traversal.ts` translates breadth-first descendants.
 The 320 Go fixtures compare exact coordinates, edge-label state and work counts
 for 80 trees in four orientations, including nested container descendants.
-Placement candidate selection and transactional restoration remain pending. Regenerate using the fixture generator's `trees` argument.
+Placement candidate selection and transactional restoration are translated in `placement.ts` below. Regenerate geometry fixtures using `trees`.
 
 `trees/discovery.ts` and `trees/preprocess-helpers.ts` translate discovery,
 terminal selection, root merging, chain reversal, pruning, reconnection and
@@ -115,8 +115,7 @@ need explicit representation. Regenerate with `snapshot`.
 `trees/preprocess.ts` completes the upstream validation/snapshot/discovery/pruning
 wrapper. Tests force cancellation after removal, installation and reconnection,
 and interrupt the operation at successive work budgets, checking restored graph,
-container, incidence and route identities. Full transaction commit/overlap
-validation and tree placement remain pending.
+container, incidence and route identities. Transaction commit/overlap validation and tree placement are translated below.
 
 `layoutgraph/node-spatial.ts` and `node-spacing.ts` translate spacing clearance,
 fixed label/icon margins, modifier offsets, overlaps, distances, orientation,
@@ -154,3 +153,15 @@ Go runs); those fixtures compare outcomes and geometry instead of a single work
 count. Additional tests cover cancellation, thrown operations, snapshot sharing,
 candidate error causes and disabled/restored placement caches. Regenerate
 `transaction`.
+
+`trees/placement.ts` completes candidate-side construction, distance/aspect-ratio
+selection, arrowhead/direction grouping, transactional trials and the atomic
+`Place` wrapper. One hundred sixty Go graph fixtures compare final node/edge
+order, coordinates, labels, tree ownership and exact work counts; the same cases
+also exercise the public wrapper. Cancellation and work-limit tests check
+rollback identity. Regenerate `treeplacement`.
+
+`layoutgraph/graph-bounds.ts` and `labelgeom/arrowhead.ts` translate routed-edge,
+arrowhead-label and complete graph bounds. Three hundred forty Go fixtures
+exercise arrowhead combinations, fractional text truncation, route directions,
+and all supported edge-label positions. Regenerate `graphbounds`.
