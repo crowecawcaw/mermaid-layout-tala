@@ -33,6 +33,8 @@ describe('Mermaid render integration', () => {
       'flowchart TD\n  A[Start] --> B[Finish]\n  A --> C[Review]\n  B --> D[Done]\n  C --> D',
       'flowchart LR\n  A[Client] -->|primary| B[Gateway]\n  A -->|retry| B\n  B --> C[Service]\n  C --> B\n  C --> C',
       'flowchart RL\n  A[Webhook] --> B[Queue]\n  B --> C[Normalize]\n  C -->|valid| D[Store]\n  C -->|invalid| E[Dead letter]',
+      'flowchart TB\n client[Client] --> a\n subgraph cloud[Cloud platform]\n subgraph app[Application]\n direction LR\n a[Gateway] --> b[Service]\n end\n b --> db[(Database)]\n end',
+      'flowchart LR\n subgraph group[Services]\n a[Worker]\n end\n client[Client] --> group\n a --> a',
     ];
     for (const [index, source] of diagrams.entries()) {
       const result = await mermaid.render(`tala-layout-smoke-${index}`, source);
@@ -40,6 +42,8 @@ describe('Mermaid render integration', () => {
       expect(result.svg).toContain('edgePaths');
       expect(result.svg).toContain('translate(');
       expect(result.svg).not.toContain('NaN');
+      expect(result.svg).not.toContain('Infinity');
+      if (source.includes('subgraph')) expect(result.svg).toContain('cluster-label');
     }
     expect(talaLoaderCalled).toBe(true);
   });

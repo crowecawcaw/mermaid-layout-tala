@@ -6,9 +6,9 @@ component placement, and orthogonal edge routes.
 
 ![A left-to-right flowchart arranged by the TALA-derived layout](./docs/tala-layout-example.svg)
 
-Try the [interactive playground](https://crowecawcaw.github.io/mermaid-layout-tala/) to edit Mermaid flowcharts and compare TALA with Mermaid's ELK and Dagre layouts. It includes nine selectable examples, including a cloud architecture topology, and controls for TALA's node and layer spacing.
+Try the [interactive playground](https://crowecawcaw.github.io/mermaid-layout-tala/) to edit Mermaid flowcharts and compare TALA with Mermaid's ELK and Dagre layouts. It includes ten selectable examples, including nested cloud architecture, and controls for TALA's node and layer spacing.
 
-The architecture example uses flowchart syntax because this port does not yet lay out Mermaid's `architecture-beta` diagrams or subgraph containers.
+The architecture examples use flowchart subgraphs. Mermaid's `architecture-beta` diagrams still use Mermaid's native renderer.
 
 ## Install
 
@@ -43,13 +43,27 @@ flowchart LR
 
 ## Scope
 
-The current port supports measured rectangular flowchart nodes, all four
-directions (`TB`, `BT`, `LR`, `RL`), connected components, parallel links,
-cycles, and self loops. Subgraph containers are not supported yet. Several
-stages from D2's full TALA implementation are also outside this port, including
-container placement, label-aware optimization, seed scoring, and obstacle
-avoiding edge routing. Treat the layout as experimental while those pieces are
-incomplete.
+The native TypeScript implementation supports measured flowchart nodes, all four
+directions (`TB`, `BT`, `LR`, `RL`), nested subgraph containers with local directions,
+connected components, parallel links, cycles, and self loops. Rectangle obstacle
+routing prevents routes from crossing unrelated node interiors. Mermaid clips
+endpoints to its rendered shapes. Measured edge labels reserve layer space and
+are placed away from nodes, container titles, and previously placed labels.
+
+**Full upstream TALA parity is not yet achieved.** Only the weighted DAG ranker
+has translated upstream correctness coverage. Container layout, routing, and
+label placement are native implementations with functional regression tests;
+they do not reproduce upstream coordinates. General placement/refinement,
+Brandes–Köpf alignment, upstream packing, complete label optimization, and seed
+scoring remain unported. See the [parity matrix](./test/UPSTREAM-PARITY.md).
+
+The synchronous `layoutFlowchart(nodes, edges, options)` API is preserved. Nodes
+can specify `parentId`, `isGroup`, `direction`, `labelWidth`, and `labelHeight`;
+edges can specify measured `labelWidth` and `labelHeight`. Container dimensions
+are minimum sizes and expand to fit their children. `containerPadding` defaults
+to 24. Invalid parent references and parent cycles are rejected. The router
+bounds each fallback search to 250,000 grid points and throws if that budget is
+exceeded or no route exists. Labels may move away from their route when crowded.
 
 ## Development
 

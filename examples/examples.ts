@@ -1,5 +1,22 @@
 export const examples = [
   {
+    title: 'Nested cloud architecture',
+    description: 'Nested containers, cross-container edges, and measured labels.',
+    source: `flowchart TB
+  client[Web client] --> gateway
+  subgraph cloud[Cloud platform]
+    subgraph services[Application services]
+      gateway[API gateway] --> orders[Orders]
+      gateway --> catalog[Catalog]
+    end
+    subgraph persistence[Data services]
+      orders -->|transactions| database[(Database)]
+      catalog --> cache[(Cache)]
+    end
+  end
+  orders -->|events| worker[External worker]`,
+  },
+  {
     title: 'Cloud architecture',
     description: 'An architecture topology in flowchart syntax, so TALA can lay it out.',
     source: `flowchart TB

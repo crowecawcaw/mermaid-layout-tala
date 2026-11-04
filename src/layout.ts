@@ -1,16 +1,26 @@
 import { rankDag, type RankEdge, type RankNode } from './rank.js';
+import { layoutCompound } from './compound.js';
+import { avoidObstacles, routeMidpoint } from './routing.js';
+import { placeEdgeLabels } from './labeling.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
 export interface LayoutNode extends RankNode {
   width: number;
   height: number;
+  parentId?: string;
+  isGroup?: boolean;
+  direction?: LayoutDirection;
+  labelWidth?: number;
+  labelHeight?: number;
 }
 
 export interface LayoutEdge {
   id: string;
   from: string;
   to: string;
+  labelWidth?: number;
+  labelHeight?: number;
 }
 
 export interface LayoutOptions {
@@ -18,6 +28,7 @@ export interface LayoutOptions {
   nodeSpacing?: number;
   rankSpacing?: number;
   orderingPasses?: number;
+  containerPadding?: number;
 }
 
 export interface Point {
@@ -53,8 +64,8 @@ interface WeightedEdge extends LayoutEdge {
  * The rank assignment is ported from TALA's weighted DAG network-simplex
  * ranker. This smaller adapter adds stable barycenter sweeps, variable-size
  * node spacing, component separation, and boundary-to-boundary orthogonal
- * paths. It does not implement TALA's grouping, general placement, or
- * obstacle-aware edge routing stages.
+ * paths. Native container placement, obstacle routing, and label placement
+ * extend this slice; they do not reproduce the upstream engine pipeline.
  */
 export function layoutFlowchart(
   inputNodes: readonly LayoutNode[],
@@ -62,9 +73,13 @@ export function layoutFlowchart(
   options: LayoutOptions = {}
 ): LayoutResult {
   const direction = options.direction ?? 'TB';
+  if (!['TB', 'BT', 'LR', 'RL'].includes(direction)) throw new Error('invalid layout direction');
   const nodeSpacing = finiteSpacing(options.nodeSpacing ?? 48, 'nodeSpacing');
-  const rankSpacing = finiteSpacing(options.rankSpacing ?? 64, 'rankSpacing');
-  const passes = Math.max(1, Math.min(16, Math.floor(options.orderingPasses ?? 8)));
+  let rankSpacing = finiteSpacing(options.rankSpacing ?? 64, 'rankSpacing');
+  const requestedPasses = options.orderingPasses ?? 8;
+  if (!Number.isFinite(requestedPasses)) throw new Error('orderingPasses must be finite');
+  const passes = Math.max(1, Math.min(16, Math.floor(requestedPasses)));
+  finiteSpacing(options.containerPadding ?? 24, 'containerPadding');
   const nodes = [...inputNodes].sort((a, b) => compareText(a.id, b.id));
   if (new Set(nodes.map((node) => node.id)).size !== nodes.length) throw new Error('duplicate node ID');
   for (const node of nodes) {
@@ -77,6 +92,13 @@ export function layoutFlowchart(
   if (new Set(edges.map((edge) => edge.id)).size !== edges.length) throw new Error('duplicate edge ID');
   for (const edge of edges) {
     if (!byId.has(edge.from) || !byId.has(edge.to)) throw new Error(`edge ${edge.id} references a missing node`);
+    finiteSpacing(edge.labelWidth ?? 0, 'labelWidth');
+    finiteSpacing(edge.labelHeight ?? 0, 'labelHeight');
+    const labelExtent = direction === 'LR' || direction === 'RL' ? edge.labelWidth : edge.labelHeight;
+    if (labelExtent) rankSpacing = Math.max(rankSpacing, labelExtent + 16);
+  }
+  if (nodes.some((node) => node.isGroup || node.parentId !== undefined)) {
+    return layoutCompound(nodes, edges, options, layoutFlowchart, routeEdge);
   }
 
   const components = connectedComponents(nodes, edges);
@@ -117,23 +139,24 @@ export function layoutFlowchart(
   const positionedNodes = nodes.map((node) => allPositions.get(node.id)!);
   const edgeGroups = new Map<string, LayoutEdge[]>();
   for (const edge of edges) {
-    const key = `${edge.from}\u0000${edge.to}`;
+    const key = JSON.stringify([edge.from, edge.to]);
     const group = edgeGroups.get(key) ?? [];
     group.push(edge);
     edgeGroups.set(key, group);
   }
   const parallelOffset = new Map<string, number>();
-  for (const [key, group] of edgeGroups) {
-    group.forEach((edge, i) => parallelOffset.set(edge.id, (i - (group.length - 1) / 2) * 10));
+  for (const group of edgeGroups.values()) {
+    group.forEach((edge, i) => parallelOffset.set(edge.id, (edge.from === edge.to ? i : i - (group.length - 1) / 2) * 10));
   }
   const positionedEdges = edges.map((edge) => {
     const source = allPositions.get(edge.from)!;
     const target = allPositions.get(edge.to)!;
     const offset = parallelOffset.get(edge.id) ?? 0;
-    const points = normalizeRoute(routeEdge(source, target, direction, offset));
-    const middle = points[Math.floor(points.length / 2)]!;
+    const points = normalizeRoute(avoidObstacles(routeEdge(source, target, direction, offset), source, target, positionedNodes, offset));
+    const middle = routeMidpoint(points);
     return { ...edge, points, x: middle.x, y: middle.y };
   });
+  placeEdgeLabels(positionedNodes, positionedEdges);
   return { nodes: positionedNodes, edges: positionedEdges };
 }
 
@@ -141,7 +164,7 @@ function makeAcyclic(nodes: readonly LayoutNode[], edges: readonly LayoutEdge[])
   const byPair = new Map<string, WeightedEdge>();
   for (const edge of edges) {
     if (edge.from === edge.to) continue; // Loops are routed after ranking.
-    const key = `${edge.from}\u0000${edge.to}`;
+    const key = JSON.stringify([edge.from, edge.to]);
     const previous = byPair.get(key);
     if (previous) {
       previous.weight++;
@@ -297,7 +320,7 @@ function routeEdge(source: PositionedNode, target: PositionedNode, direction: La
     const y = source.y;
     const upper = y - Math.min(8, source.height / 4);
     const lower = y + Math.min(8, source.height / 4);
-    const outside = source.x + source.width / 2 + Math.max(28, Math.abs(offset) + 18);
+    const outside = source.x + source.width / 2 + Math.max(18, 28 + offset);
     return [
       { x, y: upper },
       { x: outside, y: upper },
@@ -311,8 +334,8 @@ function routeEdge(source: PositionedNode, target: PositionedNode, direction: La
   const end = rectIntersection(target, -dx, -dy);
   const vertical = direction === 'TB' || direction === 'BT';
   if (vertical) {
-    const startLane = shiftAlongBoundary(source, start, offset, true);
-    const endLane = shiftAlongBoundary(target, end, offset, true);
+    const startLane = shiftAlongBoundary(source, start, offset);
+    const endLane = shiftAlongBoundary(target, end, offset);
     const midY = (start.y + end.y) / 2;
     return [
       start,
@@ -323,8 +346,8 @@ function routeEdge(source: PositionedNode, target: PositionedNode, direction: La
       end,
     ];
   }
-  const startLane = shiftAlongBoundary(source, start, offset, false);
-  const endLane = shiftAlongBoundary(target, end, offset, false);
+  const startLane = shiftAlongBoundary(source, start, offset);
+  const endLane = shiftAlongBoundary(target, end, offset);
   const midX = (start.x + end.x) / 2;
   return [
     start,
@@ -356,10 +379,10 @@ function normalizeRoute(points: Point[]): Point[] {
   return compact;
 }
 
-function shiftAlongBoundary(node: PositionedNode, point: Point, offset: number, verticalRoute: boolean): Point {
+function shiftAlongBoundary(node: PositionedNode, point: Point, offset: number): Point {
   if (offset === 0) return point;
   const onHorizontalSide = Math.abs(Math.abs(point.y - node.y) - node.height / 2) < 1e-7;
-  const tangentIsX = verticalRoute ? onHorizontalSide : !onHorizontalSide;
+  const tangentIsX = onHorizontalSide;
   if (tangentIsX) {
     const limit = Math.max(0, node.width / 2 - 2);
     return { x: node.x + clamp(point.x - node.x + offset, -limit, limit), y: point.y };
