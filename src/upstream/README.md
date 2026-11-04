@@ -165,3 +165,11 @@ rollback identity. Regenerate `treeplacement`.
 arrowhead-label and complete graph bounds. Three hundred forty Go fixtures
 exercise arrowhead combinations, fractional text truncation, route directions,
 and all supported edge-label positions. Regenerate `graphbounds`.
+
+`proximity/` translates hub discovery, common-uncle sibling selection, atomic
+near-set replacement, connected herd components, cousin-side intersection,
+viral propagation and herd-fence synchronization. Two hundred Go compound-graph
+fixtures compare ordered groups, neighbors, side assignments and pair counts.
+Additional tests cover cancellation during near-set publication, work exhaustion,
+independent propagated records and conflicting orientations. Regenerate
+`proximity`.
