@@ -427,3 +427,5 @@ cases compare routes, costs and work failures on a controlled visibility graph.
 The complete slingshot optimization, multi-route scenarios, generated-graph
 search and public pipeline integration still need verification/translation.
 Regenerate `routingsearch`.
+Eighty connected two-node cases also match Go search paths and costs using
+fully generated visibility graphs. Regenerate `routinggenerated`.
