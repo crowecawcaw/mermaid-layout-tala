@@ -64,6 +64,7 @@ const packages = {
   placementmetrics: 'internal/placement',
   clusteralignment: 'internal/placement',
   clusterflip: 'internal/placement',
+  childorder: 'internal/placement',
   transpose: 'internal/placement',
   optimizerindex: 'internal/placement',
   placementstages: 'internal/placement',
