@@ -622,3 +622,9 @@ the guarded route ordering and geometry helpers. Two hundred forty Go fixtures
 compare search results, route ordering and exact work counts. Cluster-specific
 search and nested ancestors need additional coverage. Regenerate
 `labelingedge` and `labelingsort`.
+
+`labeling/place.ts` translates full label placement and the new-edge-only
+variant, with positioned-graph validation and atomic rollback. Four hundred
+eighty Go fixtures compare node labels, icons, edge labels and work-limit
+rollback. Nested clusters, arrowheads and malformed inputs need additional
+coverage. Regenerate `labelingplace`, `labelingnewedges` and `labelinglimits`.
