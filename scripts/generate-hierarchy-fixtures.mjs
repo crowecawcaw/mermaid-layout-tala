@@ -88,6 +88,7 @@ const packages = {
   ovgresource: 'internal/routing',
   routingroute: 'internal/routing',
   routingtunnel: 'internal/routing',
+  ovgports: 'internal/routing',
 };
 if (!(kind in packages))
   throw new Error(

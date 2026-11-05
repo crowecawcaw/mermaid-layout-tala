@@ -309,3 +309,8 @@ fixtures compare these decisions and work charges. Regenerate `routingroute`.
 sequence wedge adjustment, endpoint creation and whole-graph discovery.
 960 Go cases cover horizontal/vertical layouts, obstructions, multiple edges
 and work-limit failures. Regenerate `routingtunnel`.
+
+`routing/ovg-ports.ts` translates visibility port generation, shared-point
+ownership, tunnel insertion and center connections. Go fixtures cover all 23
+shapes, shared coordinates, invisible nodes and interrupted builds across 736
+cases. Regenerate `ovgports`.
