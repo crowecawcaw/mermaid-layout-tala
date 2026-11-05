@@ -2,6 +2,7 @@
 package placement
 
 import (
+	"context"
 	"encoding/json"
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/layoutgraph"
 	"github.com/d2lang/d2/lib/geo"
@@ -47,7 +48,15 @@ func TestExportTypeScriptPlacementmetricsFixtures(t *testing.T) {
 			v := counts.transformsTo(geo.Orientation(d))
 			transforms = append(transforms, []bool{v.mirrorX, v.mirrorY})
 		}
-		out = append(out, map[string]any{"transforms": transforms, "trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersectsOtherNode(g, ns[0], ns[1]), "fits": withinMaxSize(g)})
+		intersection, fits := intersectsOtherNode(g, ns[0], ns[1]), withinMaxSize(g)
+		if err := mirrorAxes(context.Background(), g, trial%2 == 0, trial%3 == 0); err != nil {
+			t.Fatal(err)
+		}
+		positions := []any{}
+		for _, n := range ns {
+			positions = append(positions, []float64{n.TopLeft.X, n.TopLeft.Y})
+		}
+		out = append(out, map[string]any{"mirrored": positions, "transforms": transforms, "trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersection, "fits": fits})
 	}
 	b, err := json.Marshal(out)
 	if err != nil {

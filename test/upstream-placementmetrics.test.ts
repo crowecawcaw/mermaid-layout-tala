@@ -1,3 +1,5 @@
+import { mirrorAxes } from '../src/upstream/placement/mirror.js';
+import { Background } from '../src/upstream/limits/context.js';
 import { transformsTo } from '../src/upstream/placement/direction.js';
 import { it } from 'vitest';
 import fixtures from './fixtures/upstream-placementmetrics.json';
@@ -49,5 +51,10 @@ it.each(fixtures)('matches Go placement metrics $trial', (f) => {
       intersection: f.intersection,
       fits: f.fits,
     },
+  );
+  mirrorAxes(Background, g, f.trial % 2 === 0, f.trial % 3 === 0);
+  compare(
+    nodes.map((n) => [n.TopLeft!.X, n.TopLeft!.Y]),
+    f.mirrored,
   );
 });
