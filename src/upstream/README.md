@@ -588,3 +588,9 @@ minimization and global sifting. Two hundred forty Go fixtures compare ranked
 node orders and connections, including crossing-heavy graphs. Nested and table
 cases need additional coverage. Regenerate `hierarchycrossing` and
 `hierarchysifting`.
+
+`hierarchy/initial-geometry.ts` and `hierarchy/alignment.ts` translate initial
+level placement and four-direction Brandes–Köpf alignment. Two hundred forty Go
+fixtures compare flat-graph geometry before and after alignment. Nested
+containers, tables and cancellation need additional coverage. Regenerate
+`hierarchyinitialgeometry` and `hierarchyalignment`.
