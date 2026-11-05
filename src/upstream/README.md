@@ -404,3 +404,8 @@ Go cases compare port identities, work charges and label positions. Regenerate
 lookup and nearby-edge indexing. One hundred twenty Go cases compare overlap
 lookups, proximity flags and work totals; cancellation during Go map iteration
 and richer labels need further coverage. Regenerate `routeinventory`.
+
+`routing/route-ports.ts` translates used-port discovery and mirrored-port
+preferences using a coordinate-keyed point map. One hundred twenty Go cases
+compare all six occupancy sets, symmetry decisions and work charges.
+Regenerate `routeports`.
