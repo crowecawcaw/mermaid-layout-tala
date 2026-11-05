@@ -600,3 +600,8 @@ transforms, ownership restoration and rollback. Two hundred forty Go fixtures
 compare flat-graph geometry in every direction with seeded and unseeded order.
 Nested containers, tables and late cancellation need additional coverage.
 Regenerate `hierarchyplacestage` and `hierarchyplaceseeded`.
+
+`hierarchy/compound.ts` translates compound rigid-block placement, endpoint
+offsets and interface ordering. Eighty Go fixtures compare seeded layouts in
+all directions and fixed-descendant rejection. Tables, complex nested blocks
+and cancellation need additional coverage. Regenerate `hierarchycompound`.
