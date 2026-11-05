@@ -352,3 +352,8 @@ cases need additional coverage. Regenerate `ovgconnect`.
 breadth-first near-port penalty flags. Four hundred eighty Go cases compare
 nested containment, flag propagation and interrupted work. Regenerate
 `ovgpostconnect`.
+
+`routing/tree-routes.ts` translates tree edge port selection, alignment,
+midpoints and OVG insertion. Go fixtures cover 960 combinations of direction,
+shape, source/target orientation and work limits; shared parent arrowhead
+conflicts need more coverage. Regenerate `routingtree`.
