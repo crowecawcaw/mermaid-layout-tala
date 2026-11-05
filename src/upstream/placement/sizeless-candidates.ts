@@ -99,6 +99,18 @@ export class SizelessCandidates {
       )
         this.occupied.set(this.key(n.TopLeft.X, n.TopLeft.Y), n);
   }
+  occupiedAt(p: Point): Node | null {
+    if (Number.isNaN(p.X) || Number.isNaN(p.Y)) return null;
+    return this.occupied.get(this.key(p.X, p.Y)) ?? null;
+  }
+  removeOccupied(p: Point): void {
+    if (!Number.isNaN(p.X) && !Number.isNaN(p.Y))
+      this.occupied.delete(this.key(p.X, p.Y));
+  }
+  putOccupied(p: Point, node: Node): void {
+    if (!Number.isNaN(p.X) && !Number.isNaN(p.Y))
+      this.occupied.set(this.key(p.X, p.Y), node);
+  }
   isOccupied(p: Point): boolean {
     return (
       !Number.isNaN(p.X) &&

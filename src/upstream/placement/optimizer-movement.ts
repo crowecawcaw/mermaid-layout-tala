@@ -111,3 +111,158 @@ export function optimizerMoveNodeAbs(
     if (!complete) restoreNodePositions(snapshots);
   }
 }
+
+function snapshot(node: Node): NodePositionSnapshot {
+  return {
+    node,
+    pointer: node.TopLeft,
+    x: node.TopLeft?.X ?? 0,
+    y: node.TopLeft?.Y ?? 0,
+  };
+}
+export function captureOptimizerNodePositions(
+  nodes: Node[],
+  guard: OptimizationWorkGuard,
+): NodePositionSnapshot[] {
+  if (nodes.length <= 2) {
+    let leaves = true;
+    for (const node of nodes) {
+      if (node == null)
+        throw new Error(`TALA ${guard.Location()} found a nil node`);
+      if (
+        node.Graph === null ||
+        node.isContainer ||
+        node.isClusterVessel ||
+        node.Graph.Sequences.has(node)
+      ) {
+        leaves = false;
+        break;
+      }
+    }
+    if (leaves) {
+      const snapshots: NodePositionSnapshot[] = [];
+      for (const node of nodes) {
+        if (snapshots.some((s) => s.node === node)) continue;
+        guard.Step();
+        snapshots.push(snapshot(node));
+      }
+      return snapshots;
+    }
+  }
+  if (nodes.length === 1) {
+    const descendants = optimizerDescendants(nodes[0]!, guard),
+      snapshots: NodePositionSnapshot[] = [];
+    for (const node of [nodes[0]!, ...descendants]) {
+      guard.Step();
+      snapshots.push(snapshot(node));
+    }
+    return snapshots;
+  }
+  const seen = new Set<Node>(),
+    snapshots: NodePositionSnapshot[] = [];
+  for (const node of nodes) {
+    if (node == null)
+      throw new Error(`TALA ${guard.Location()} found a nil node`);
+    const all = [node, ...optimizerDescendants(node, guard)];
+    for (const current of all) {
+      if (seen.has(current)) continue;
+      if (seen.size >= MaxEngineNodes)
+        throw new Error(
+          `TALA ${guard.Location()} position snapshot exceeds node limit ${MaxEngineNodes}`,
+        );
+      guard.Step();
+      seen.add(current);
+      snapshots.push(snapshot(current));
+    }
+  }
+  return snapshots;
+}
+export class OptimizerCandidateMovement {
+  constructor(
+    readonly positions: NodePositionSnapshot[],
+    readonly descendantWork: bigint,
+  ) {}
+  moveAbs(x: number, y: number, guard: OptimizationWorkGuard): void {
+    const node = this.positions[0]!.node;
+    if (node.TopLeft === null)
+      throw new Error(
+        `TALA ${guard.Location()} cannot move an unpositioned node`,
+      );
+    if (node.TopLeft.X === x && node.TopLeft.Y === y) {
+      guard.Step();
+      return;
+    }
+    for (let i = 0n; i < this.descendantWork; i++) guard.Step();
+    const descendants = this.positions.slice(1);
+    for (const position of descendants) {
+      guard.Step();
+      if (position.node.TopLeft === null)
+        throw new Error(
+          `TALA ${guard.Location()} cannot move an unpositioned descendant`,
+        );
+    }
+    const dx = x - node.TopLeft.X,
+      dy = y - node.TopLeft.Y;
+    node.TopLeft.X += dx;
+    node.TopLeft.Y += dy;
+    for (const position of descendants) {
+      guard.Step();
+      position.node.TopLeft!.X += dx;
+      position.node.TopLeft!.Y += dy;
+    }
+  }
+}
+export function captureOptimizerCandidateMovement(
+  node: Node,
+  guard: OptimizationWorkGuard,
+): OptimizerCandidateMovement {
+  const before = guard.Used(),
+    positions = captureOptimizerNodePositions([node], guard);
+  return new OptimizerCandidateMovement(
+    positions,
+    guard.Used() - before - BigInt(positions.length),
+  );
+}
+export function optimizerSwapPositions(
+  a: Node,
+  b: Node,
+  guard: OptimizationWorkGuard,
+): void {
+  if (a == null || b == null || a.TopLeft === null || b.TopLeft === null)
+    throw new Error(`TALA ${guard.Location()} cannot swap unpositioned nodes`);
+  const snapshots = captureOptimizerNodePositions([a, b], guard);
+  let complete = false;
+  try {
+    const x = a.TopLeft.X,
+      y = a.TopLeft.Y;
+    optimizerMoveNodeAbs(a, b.TopLeft.X, b.TopLeft.Y, guard);
+    optimizerMoveNodeAbs(b, x, y, guard);
+    complete = true;
+  } finally {
+    if (!complete) restoreNodePositions(snapshots);
+  }
+}
+export function withOptimizerPositionsSwapped(
+  a: Node,
+  b: Node,
+  guard: OptimizationWorkGuard,
+  fn: () => void,
+): void {
+  const before = guard.Used(),
+    snapshots = captureOptimizerNodePositions([a, b], guard),
+    work = guard.Used() - before;
+  try {
+    if (a == null || b == null || a.TopLeft === null || b.TopLeft === null)
+      throw new Error(
+        `TALA ${guard.Location()} cannot swap unpositioned nodes`,
+      );
+    for (let i = 0n; i < work; i++) guard.Step();
+    const x = a.TopLeft.X,
+      y = a.TopLeft.Y;
+    optimizerMoveNodeAbs(a, b.TopLeft.X, b.TopLeft.Y, guard);
+    optimizerMoveNodeAbs(b, x, y, guard);
+    fn();
+  } finally {
+    restoreNodePositions(snapshots);
+  }
+}

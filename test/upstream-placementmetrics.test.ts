@@ -1,3 +1,4 @@
+import { moveNodeToBestGuarded } from '../src/upstream/placement/sizeless-moves.js';
 import { nodeCandidatePositions } from '../src/upstream/placement/initialize-candidates.js';
 import { SizelessCandidates } from '../src/upstream/placement/sizeless-candidates.js';
 import { moveNodeToBest } from '../src/upstream/placement/moves.js';
@@ -165,5 +166,24 @@ it.each(fixtures)('matches Go placement metrics $trial', (f) => {
       p.Y,
     ]),
     f.initialPoints,
+  );
+  const sizeGuard = new OptimizationWorkGuard(
+    Background,
+    'sizeless',
+    MaxOptimizationWorkUnits,
+  );
+  const sizeMoved = moveNodeToBestGuarded(
+    Background,
+    nodes[0]!,
+    candidates,
+    sizeGuard,
+  );
+  compare(
+    {
+      moved: sizeMoved,
+      position: [nodes[0]!.TopLeft!.X, nodes[0]!.TopLeft!.Y],
+      work: String(sizeGuard.Used()),
+    },
+    { moved: f.sizeMoved, position: f.sizePosition, work: f.sizeWork },
   );
 });

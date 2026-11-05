@@ -137,7 +137,17 @@ func TestExportTypeScriptPlacementmetricsFixtures(t *testing.T) {
 		for _, p := range initial {
 			initialPoints = append(initialPoints, []float64{p.X, p.Y})
 		}
-		out = append(out, map[string]any{"initialPoints": initialPoints, "candidates": pointValues, "candidateDistance": distance, "candidateWork": candidateWork, "movePosition": movePosition, "moved": moved, "moveWork": moveWork, "guardedMedian": []float64{gx, gy}, "guardedMove": move, "metricWork": metricWork, "guardedIDs": guardedIDs, "guardedWork": work, "directed": directed, "mirrored": positions, "transforms": transforms, "trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersection, "fits": fits})
+		sizeGuard, err := limits.NewOptimizationWorkGuard(context.Background(), "sizeless", limits.MaxOptimizationWorkUnits)
+		if err != nil {
+			t.Fatal(err)
+		}
+		sizeMoved, err := optim.moveNodeToBestGuarded(context.Background(), ns[0], points, sizeGuard)
+		if err != nil {
+			t.Fatal(err)
+		}
+		sizePosition := []float64{ns[0].TopLeft.X, ns[0].TopLeft.Y}
+		sizeWork := fmt.Sprint(sizeGuard.Used())
+		out = append(out, map[string]any{"sizeMoved": sizeMoved, "sizePosition": sizePosition, "sizeWork": sizeWork, "initialPoints": initialPoints, "candidates": pointValues, "candidateDistance": distance, "candidateWork": candidateWork, "movePosition": movePosition, "moved": moved, "moveWork": moveWork, "guardedMedian": []float64{gx, gy}, "guardedMove": move, "metricWork": metricWork, "guardedIDs": guardedIDs, "guardedWork": work, "directed": directed, "mirrored": positions, "transforms": transforms, "trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersection, "fits": fits})
 	}
 	b, err := json.Marshal(out)
 	if err != nil {
