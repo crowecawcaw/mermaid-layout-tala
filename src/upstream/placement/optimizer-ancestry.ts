@@ -7,6 +7,7 @@ import type { Graph } from '../layoutgraph/graph.js';
 import type { Tree } from '../layoutgraph/records.js';
 import type { Point } from '../geo/point.js';
 import { nodeDebugID } from '../layoutgraph/debug.js';
+import { Slice } from '../gosort/slice.js';
 import { fixedOrigin } from '../layoutgraph/containment.js';
 import { maxEngineTopologyReferences } from '../layoutgraph/topology-preflight.js';
 
@@ -99,7 +100,7 @@ export function optimizerOrderedNears(
     nears.push(near);
   }
   guard.AddSort(nears.length);
-  nears.sort((a, b) => (a.ID < b.ID ? -1 : a.ID > b.ID ? 1 : 0));
+  Slice(nears, (a, b) => a.ID < b.ID);
   return nears;
 }
 export function appendBoundedOptimizerNodes(
