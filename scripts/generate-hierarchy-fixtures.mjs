@@ -121,6 +121,7 @@ const packages = {
   guardedbounds: 'internal/graphbounds',
   routinggraph: 'internal/routing',
   placementsymmetrystage: 'internal/placement',
+  placementswapstage: 'internal/placement',
 };
 if (!(kind in packages))
   throw new Error(

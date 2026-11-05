@@ -475,3 +475,9 @@ coverage remains pending. Regenerate `routinggraph`.
 transpose-stage wrapper. One hundred sixty Go fixtures compare node positions
 and cell size across both stages. Go map order for adjacent nodes remains a
 potential tie difference. Regenerate `placementsymmetrystage`.
+
+`placement/swap-stage.ts` translates ordinary and smart swaps, transaction
+validation, crossing and cost comparisons, and the four-pass stage. Eighty
+Go fixtures exercise successful swaps and compare final geometry and cell size.
+Grouped containers and cancellation need broader coverage. Regenerate
+`placementswapstage`.
