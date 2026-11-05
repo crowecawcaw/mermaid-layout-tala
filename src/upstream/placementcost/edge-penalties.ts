@@ -31,9 +31,10 @@ export function edgeDirectionAndLabelPenalty(
   edgeDirection: O,
   options: EdgeLengthOptions,
   setup: EdgeLengthPreparation,
+  initialDistance = 0,
 ): number {
   const graph = node.Graph!;
-  let penalty = 0,
+  let penalty = initialDistance,
     outer = replacement;
   if (
     replacement.Container !== adjacent.Container &&

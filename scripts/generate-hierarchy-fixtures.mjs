@@ -6,7 +6,10 @@ import { fileURLToPath } from 'node:url';
 const pin = 'bf33790338b9854cb2a34418e69c17f9abf8de4b';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const upstream = process.argv[2];
-if (!upstream) throw new Error('Usage: node scripts/generate-hierarchy-fixtures.mjs /path/to/d2');
+if (!upstream)
+  throw new Error(
+    'Usage: node scripts/generate-hierarchy-fixtures.mjs /path/to/d2',
+  );
 const checkout = resolve(upstream);
 const head = execFileSync('git', ['-C', checkout, 'rev-parse', 'HEAD'], {
   encoding: 'utf8',
@@ -57,14 +60,21 @@ const packages = {
   combinationpreflight: 'internal/layoutgraph',
   combine: 'internal/packing',
   placementgeometry: 'internal/placementcost',
+  edgelength: 'internal/placementcost',
   ports: 'internal/placementcost',
 };
-if (!(kind in packages)) throw new Error(`Fixture kind must be one of: ${Object.keys(packages).join(', ')}`);
+if (!(kind in packages))
+  throw new Error(
+    `Fixture kind must be one of: ${Object.keys(packages).join(', ')}`,
+  );
 const packagePath = `d2layouts/d2talalayout/${packages[kind]}`;
 const target = resolve(checkout, packagePath, 'typescript_fixture_test.go');
 if (existsSync(target)) throw new Error(`Refusing to overwrite ${target}`);
 try {
-  copyFileSync(resolve(root, `scripts/upstream/${kind}_fixture_test.go`), target);
+  copyFileSync(
+    resolve(root, `scripts/upstream/${kind}_fixture_test.go`),
+    target,
+  );
   execFileSync(
     process.env.TALA_GO ?? 'go',
     [
@@ -81,10 +91,10 @@ try {
         ...process.env,
         [`TALA_${kind.toUpperCase()}_FIXTURES`]: resolve(
           root,
-          `test/fixtures/upstream-${kind}.json`
+          `test/fixtures/upstream-${kind}.json`,
         ),
       },
-    }
+    },
   );
 } finally {
   rmSync(target, { force: true });
