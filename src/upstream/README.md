@@ -623,6 +623,11 @@ compare search results, route ordering and exact work counts. Cluster-specific
 search and nested ancestors need additional coverage. Regenerate
 `labelingedge` and `labelingsort`.
 
+`routing/reorder-duplicates.ts` translates duplicate straight-route ordering
+and rollback. One hundred twenty Go fixtures compare label placement across
+duplicate routes, reversed edges and competing labels. Regenerate
+`routingreorder`.
+
 `labeling/place.ts` translates full label placement and the new-edge-only
 variant, with positioned-graph validation and atomic rollback. Four hundred
 eighty Go fixtures compare node labels, icons, edge labels and work-limit

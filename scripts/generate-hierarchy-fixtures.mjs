@@ -103,6 +103,7 @@ const packages = {
   labelingplace: 'internal/labeling',
   labelingnewedges: 'internal/labeling',
   labelinglimits: 'internal/labeling',
+  routingreorder: 'internal/routing',
   initialize: 'internal/placement',
   orthogonal: 'internal/placement',
   placenodes: 'internal/placement',
