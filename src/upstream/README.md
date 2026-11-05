@@ -447,3 +447,8 @@ public adapter remain in progress. Regenerate `routinggenerate`.
 `routing/selected-routes.ts` translates parallel-route ordering and the atomic
 commit of selected route points. Six hundred Go cases compare route ownership,
 committed geometry and work-limit failures. Regenerate `routingselected`.
+
+`routing/sentinel-routes.ts` translates tree sentinel path traversal,
+port-ownership validation and loop-route conversion. Eighty Go cases cover
+all directions and missing path segments; full tree-route integration needs
+additional coverage. Regenerate `routingsentinel`.
