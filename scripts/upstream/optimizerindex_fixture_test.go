@@ -8,6 +8,7 @@ import (
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/layoutgraph"
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/limits"
 	"github.com/d2lang/d2/lib/geo"
+	"math/rand"
 	"os"
 	"testing"
 )
@@ -84,7 +85,19 @@ func TestExportTypeScriptOptimizerindexFixtures(t *testing.T) {
 		}
 		movePosition := []float64{g.Nodes[0].TopLeft.X, g.Nodes[0].TopLeft.Y}
 		moveWork := fmt.Sprint(searchGuard.Used())
-		out = append(out, map[string]any{"moved": moved, "movePosition": movePosition, "moveWork": moveWork, "distance": distance, "placements": values, "searchWork": searchWork, "trial": trial, "count": count, "x": point.X, "y": point.Y, "id": id, "overlap": overlap, "can": can, "rebuildWork": rebuildWork, "work": fmt.Sprint(guard.Used())})
+		rng := rand.New(rand.NewSource(int64(trial + 1)))
+		sized.randGenerator = rng
+		swap, err := sized.bestSwapCandidateGuarded(context.Background(), g.Nodes[0], searchGuard)
+		if err != nil {
+			t.Fatal(err)
+		}
+		swapID := 0
+		if swap != nil {
+			swapID = int(swap.ID)
+		}
+		swapWork := fmt.Sprint(searchGuard.Used())
+		nextRandom := fmt.Sprint(rng.Int63())
+		out = append(out, map[string]any{"swapID": swapID, "swapWork": swapWork, "nextRandom": nextRandom, "moved": moved, "movePosition": movePosition, "moveWork": moveWork, "distance": distance, "placements": values, "searchWork": searchWork, "trial": trial, "count": count, "x": point.X, "y": point.Y, "id": id, "overlap": overlap, "can": can, "rebuildWork": rebuildWork, "work": fmt.Sprint(guard.Used())})
 	}
 	b, err := json.Marshal(out)
 	if err != nil {

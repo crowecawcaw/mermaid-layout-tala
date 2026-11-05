@@ -1,3 +1,5 @@
+import { GoRandom } from '../src/random.js';
+import { bestSizedSwapCandidateGuarded } from '../src/upstream/placement/sized-moves.js';
 import { moveSizedNodeToBestGuarded } from '../src/upstream/placement/sized-moves.js';
 import {
   SizedSearch,
@@ -97,5 +99,21 @@ it.each(fixtures)('matches Go optimizer index $trial', (f) => {
       work: String(searchGuard.Used()),
     },
     { moved: f.moved, position: f.movePosition, work: f.moveWork },
+  );
+  const random = new GoRandom(BigInt(f.trial + 1));
+  const swap = bestSizedSwapCandidateGuarded(
+    Background,
+    sized,
+    g.Nodes[0]!,
+    random,
+    searchGuard,
+  );
+  compare(
+    {
+      id: Number(swap?.ID ?? 0n),
+      work: String(searchGuard.Used()),
+      next: String(random.int63()),
+    },
+    { id: f.swapID, work: f.swapWork, next: f.nextRandom },
   );
 });

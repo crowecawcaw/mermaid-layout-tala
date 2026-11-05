@@ -1,3 +1,8 @@
+import { Shuffle } from '../limits/optimization.js';
+import { isAdjacentTo } from '../layoutgraph/node-spatial.js';
+import { NodeEdgeLength } from '../placementcost/edge-length.js';
+import { optimizerDoesOverlap } from './optimizer-metrics.js';
+import { withOptimizerPositionsSwapped } from './optimizer-movement.js';
 // Translated internal/placement/sized_optimizer.go at D2 bf337903. MPL-2.0.
 // Copyright Terrastruct Inc. and contributors.
 import type { Context } from '../limits/context.js';
@@ -106,4 +111,88 @@ export function moveSizedNodeToBestGuarded(
   } finally {
     scorer.Close();
   }
+}
+
+export function bestSizedSwapCandidateGuarded(
+  ctx: Context,
+  optim: SizedSearch,
+  node: Node,
+  random: import('../limits/optimization.js').Random,
+  guard: OptimizationWorkGuard,
+): Node | null {
+  const options = {
+    EdgeAbductions: optim.edgeAbductions,
+    IncludeNodeSizes: true,
+    EnforceMinimumGap: false,
+    PenalizeDirection: true,
+  };
+  const score = (n: Node): number => {
+    chargeOptimizerScoring(n, optim.edgeAbductions, true, guard);
+    let value = NodeEdgeLength(ctx, n, options);
+    const crossing = ColumnCrossingCost(ctx, n, optim.edgeAbductions),
+      symmetry = NodeSymmetry(ctx, n, optim.edgeAbductions);
+    value += crossing;
+    value -= symmetry * optim.symmetryCost * n.Edges.length;
+    return value;
+  };
+  let min = Infinity;
+  const current1 = score(node);
+  let best: Node | null = null;
+  const indices: number[] = [];
+  for (let i = 0; i < optim.graph.Nodes.length; i++) {
+    guard.Step();
+    indices.push(i);
+  }
+  Shuffle(indices, random, guard);
+  for (const index of indices) {
+    guard.Step();
+    const candidate = optim.graph.Nodes[index]!;
+    if (
+      candidate === node ||
+      candidate.FixedTopLeft !== null ||
+      !isAdjacentTo(candidate, node, true) ||
+      optim.graph.NodeToTree.has(candidate)
+    )
+      continue;
+    const first = optim.spatialIndex.doesOverlap(
+      candidate,
+      node.TopLeft,
+      [node],
+      guard,
+    );
+    const second = optim.spatialIndex.doesOverlap(
+      node,
+      candidate.TopLeft,
+      [candidate],
+      guard,
+    );
+    if (first || second) continue;
+    const current2 = score(candidate);
+    let swapped1 = 0,
+      swapped2 = 0,
+      valid = false;
+    withOptimizerPositionsSwapped(node, candidate, guard, () => {
+      const a = optimizerDoesOverlap(candidate, candidate.TopLeft, [], guard);
+      const b = optimizerDoesOverlap(node, node.TopLeft, [], guard);
+      if (a || b) return;
+      valid = true;
+      swapped1 = score(node);
+      if (PrecisionCompare(swapped1, current1, PRECISION) < 0)
+        swapped2 = score(candidate);
+    });
+    if (!valid) continue;
+    if (
+      PrecisionCompare(swapped1, current1, PRECISION) < 0 &&
+      PrecisionCompare(swapped1 + swapped2, current1 + current2, PRECISION) <
+        0 &&
+      PrecisionCompare(swapped1 + swapped2, min, PRECISION) < 0
+    ) {
+      min = swapped1 + swapped2;
+      best = candidate;
+    }
+  }
+  const error = ctx.Err();
+  if (error !== null)
+    throw new Error(`EdgeLength: ${error.message}`, { cause: error });
+  return best;
 }
