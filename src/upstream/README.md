@@ -582,3 +582,9 @@ containers and late cancellation need additional coverage. Regenerate
 initialization, table-column nodes and long-edge dummy chains. One hundred
 twenty Go fixtures compare flat-node connections and dummy chains; table and
 nested cases need additional coverage. Regenerate `hierarchyplacementnodes`.
+
+`hierarchy/crossing.ts` and `hierarchy/sifting.ts` translate iterative crossing
+minimization and global sifting. Two hundred forty Go fixtures compare ranked
+node orders and connections, including crossing-heavy graphs. Nested and table
+cases need additional coverage. Regenerate `hierarchycrossing` and
+`hierarchysifting`.
