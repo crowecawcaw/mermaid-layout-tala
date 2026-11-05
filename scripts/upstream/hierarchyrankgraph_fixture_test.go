@@ -44,6 +44,9 @@ func TestExportTypeScriptHierarchyrankgraphFixtures(t *testing.T) {
 			e := g.Connect(nodes[5], nodes[0])
 			e.TargetArrowhead = layoutgraph.TriangleArrowhead
 		}
+		for i, e := range g.Edges {
+			e.ID = layoutgraph.EntityID(i + 1)
+		}
 		guard, _ := limits.NewOptimizationWorkGuard(context.Background(), "RankDAG", 10000000)
 		problem, err := newRankProblem(g, guard)
 		msg := ""

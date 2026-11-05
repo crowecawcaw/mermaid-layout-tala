@@ -36,6 +36,9 @@ it.each(fixtures)('matches Go rank graph preparation $trial', (f) => {
     const e = g.Connect(nodes[5]!, nodes[0]!);
     e.TargetArrowhead = TriangleArrowhead;
   }
+  g.Edges.forEach((e, i) => {
+    e.ID = BigInt(i + 1);
+  });
   const guard = new OptimizationWorkGuard(Background, 'RankDAG', 10000000n);
   let error = '',
     levels: number[] | null = [],

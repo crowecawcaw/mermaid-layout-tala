@@ -560,5 +560,7 @@ large-workflow cases need additional coverage. Regenerate `hierarchyvalidity`.
 `hierarchy/rank-graph.ts` translates network-simplex input validation, stable
 node and edge ordering, and initial longest-path ranks. One hundred twenty Go
 fixtures compare ranks, validation failures and work counts. The simplex
-optimization and hierarchy discovery remain outstanding. Regenerate
-`hierarchyrankgraph`.
+optimizer is in `hierarchy/rank-simplex.ts` and `hierarchy/rank.ts`; 240 Go
+fixtures compare weighted DAG ranks, optimality certificates and work counts,
+including cases requiring improvement. Hierarchy discovery and placement remain
+outstanding. Regenerate `hierarchyrankgraph` and `hierarchysimplex`.
