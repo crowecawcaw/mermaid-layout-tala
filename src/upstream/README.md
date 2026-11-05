@@ -571,3 +571,9 @@ construction. Two hundred eighty Go fixtures compare DAGs, ranks and build
 decisions. Cycle selection inherits Go map-iteration sensitivity; broader
 topologies and the graph-wide assignment stage need additional coverage.
 Regenerate `hierarchydag` and `hierarchybuild`.
+
+`hierarchy/assign.ts` translates graph-wide hierarchy assignment, previous
+membership clearing, edge restoration and rollback. One hundred twenty Go
+fixtures compare membership, levels and near links on flat graphs; nested
+containers and late cancellation need additional coverage. Regenerate
+`hierarchyassign`.
