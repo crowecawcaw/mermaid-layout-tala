@@ -105,6 +105,7 @@ const packages = {
   routingbest: 'internal/routing',
   routingsharing: 'internal/routing',
   routingtable: 'internal/routing',
+  routeinventory: 'internal/routing',
 };
 if (!(kind in packages))
   throw new Error(

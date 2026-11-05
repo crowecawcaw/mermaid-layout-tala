@@ -399,3 +399,8 @@ charges; complex styles and nested clusters need broader coverage. Regenerate
 port selection and renderer-compatible arrowhead label boxes. Two hundred forty
 Go cases compare port identities, work charges and label positions. Regenerate
 `routingtable`.
+
+`routing/route-inventory.ts` translates route registration, overlapping-route
+lookup and nearby-edge indexing. One hundred twenty Go cases compare overlap
+lookups, proximity flags and work totals; cancellation during Go map iteration
+and richer labels need further coverage. Regenerate `routeinventory`.
