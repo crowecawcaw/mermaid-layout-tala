@@ -53,6 +53,7 @@ const packages = {
   enginecompoundroutes: 'internal/engine',
   layout: '',
   layoutcorpus: '',
+  layoutfeatures: '',
   loops: 'internal/loops',
   loopoffsets: 'internal/loops',
   packing: 'internal/packing',

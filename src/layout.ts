@@ -8,6 +8,7 @@ export interface LayoutNode extends RankNode {
   width: number;
   height: number;
   fixedSize?: boolean;
+  shape?: string;
   parentId?: string;
   isGroup?: boolean;
   direction?: LayoutDirection;

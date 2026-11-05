@@ -52,7 +52,7 @@ runs the default seeds `[1, 2, 3]` using a Go-compatible random stream and selec
 the result by upstream penalty, then area, with later seeds winning exact ties.
 
 The public layout now runs the translated upstream TALA pipeline. The pinned
-full-layout corpus matches all 72 cases, including nested groups, loops, parallel
+full-layout corpus matches all 88 cases, including nested groups, loops, parallel
 edges and all four directions. This corpus is a useful baseline, not proof of
 parity for every graph or all D2 features. See the [parity matrix](./test/UPSTREAM-PARITY.md).
 
@@ -69,8 +69,8 @@ API's options. Seeds accept safe integer numbers or signed 64-bit `bigint`
 values. Up to 64 entries and 16 unique seeds are allowed; duplicates are removed
 in authored order. `getTalaSeeds()` returns an independent copy. `evaluateLayout()`
 returns a score for a public layout result. Seed selection uses the translated
-upstream graph evaluator. Icons, shape-specific node types and arrowhead labels
-are not yet exposed by the flowchart input model.
+upstream graph evaluator. Some Mermaid shapes have matching upstream shape policies; icons and arrowhead
+labels are not yet exposed by the flowchart input model.
 
 ## Development
 
@@ -80,8 +80,8 @@ npm run build
 npm test
 ```
 
-`npm run test:parity` compares complete layouts against 72 pinned Go fixtures.
-It currently reports 72/72 matching. It checks geometry and routes on this corpus;
+`npm run test:parity` compares complete layouts against 88 pinned Go fixtures.
+It currently reports 88/88 matching. It checks geometry and routes on this corpus;
 additional upstream features and graph shapes still need differential coverage.
 
 Run the playground with `npm run demo -- --port 4173`, then open

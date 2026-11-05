@@ -15,7 +15,7 @@ export async function render(
   data: LayoutData,
   svg: SVG,
   helpers: InternalHelpers,
-  _options?: RenderOptions
+  _options?: RenderOptions,
 ): Promise<void> {
   const root = svg.select('g');
   helpers.insertMarkers(root, data.markers ?? [], data.type, data.diagramId);
@@ -50,15 +50,18 @@ export async function render(
         {
           config: data.config,
           dir: (data.direction ?? 'TB') as string,
-        }
+        },
       );
       const svgNode = element.node() as SVGGraphicsElement | null;
-      if (!svgNode) throw new Error(`Mermaid did not create an SVG element for node ${node.id}`);
+      if (!svgNode)
+        throw new Error(
+          `Mermaid did not create an SVG element for node ${node.id}`,
+        );
       const box = svgNode.getBBox();
       nodeWithPosition.width = box.width;
       nodeWithPosition.height = box.height;
       nodeWithPosition.domElement = element;
-    })
+    }),
   );
 
   const measuredEdges = await Promise.all(
@@ -66,7 +69,7 @@ export async function render(
       const measured = { ...edge };
       await helpers.insertEdgeLabel(edgeLabels, measured);
       return measured;
-    })
+    }),
   );
   const direction = normalizeDirection(data.direction);
   const flowchartConfig = data.config.flowchart;
@@ -77,6 +80,7 @@ export async function render(
         id: node.id,
         width: measured.width ?? node.width ?? 100,
         height: measured.height ?? node.height ?? 50,
+        ...(node.shape && !node.isGroup ? { shape: node.shape } : {}),
         ...(node.parentId !== undefined ? { parentId: node.parentId } : {}),
         ...(node.isGroup
           ? {
@@ -105,7 +109,7 @@ export async function render(
       ...(flowchartConfig?.rankSpacing !== undefined
         ? { rankSpacing: flowchartConfig.rankSpacing }
         : {}),
-    }
+    },
   );
   const positionedEdges = new Map(result.edges.map((edge) => [edge.id, edge]));
   for (const positioned of result.nodes) {
@@ -119,7 +123,7 @@ export async function render(
     if (!node.isGroup)
       node.domElement?.attr(
         'transform',
-        `translate(${positioned.x}, ${positioned.y})${scaleX === 1 && scaleY === 1 ? '' : ` scale(${scaleX}, ${scaleY})`}`
+        `translate(${positioned.x}, ${positioned.y})${scaleX === 1 && scaleY === 1 ? '' : ` scale(${scaleX}, ${scaleY})`}`,
       );
   }
 
@@ -136,7 +140,10 @@ export async function render(
   for (const node of Object.values(nodesById)
     .filter((node) => node.isGroup)
     .sort((a, b) => depth(a) - depth(b))) {
-    await helpers.insertCluster(clusters, node as Parameters<InternalHelpers['insertCluster']>[1]);
+    await helpers.insertCluster(
+      clusters,
+      node as Parameters<InternalHelpers['insertCluster']>[1],
+    );
   }
 
   await Promise.all(
@@ -152,9 +159,16 @@ export async function render(
       const points = path.points.map((point) => ({ ...point }));
       if (startNode.intersect && endNode.intersect && points.length >= 3) {
         points[0] = startNode.intersect(points[1]);
-        points[points.length - 1] = endNode.intersect(points[points.length - 2]);
+        points[points.length - 1] = endNode.intersect(
+          points[points.length - 2],
+        );
       }
-      const edgeWithPath = { ...edge, points: simplifyRoute(points), x: path.x, y: path.y };
+      const edgeWithPath = {
+        ...edge,
+        points: simplifyRoute(points),
+        x: path.x,
+        y: path.y,
+      };
       const paths = helpers.insertEdge(
         edgePaths,
         edgeWithPath,
@@ -163,10 +177,10 @@ export async function render(
         startNode,
         endNode,
         data.diagramId,
-        true
+        true,
       );
       helpers.positionEdgeLabel(edgeWithPath, paths);
-    })
+    }),
   );
 }
 

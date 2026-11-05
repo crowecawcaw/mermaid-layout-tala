@@ -144,6 +144,35 @@ export function translateFlowchart(
       emptyGroup ? Math.max(n.width, 2) : n.width,
       emptyGroup ? Math.max(n.height, 2) : n.height,
     );
+    if (n.shape) {
+      const known: Record<string, string> = {
+        rectangle: 'Square',
+        square: 'Square',
+        diamond: 'Diamond',
+        diam: 'Diamond',
+        question: 'Diamond',
+        decision: 'Diamond',
+        circle: 'Circle',
+        circ: 'Circle',
+        oval: 'Oval',
+        hexagon: 'Hexagon',
+        hex: 'Hexagon',
+        cylinder: 'Cylinder',
+        cyl: 'Cylinder',
+        db: 'Cylinder',
+        database: 'Cylinder',
+        parallelogram: 'Parallelogram',
+        cloud: 'Cloud',
+        person: 'Person',
+        document: 'Document',
+        queue: 'Queue',
+        package: 'Package',
+        page: 'Page',
+        step: 'Step',
+        image: 'Image',
+      };
+      node.SetShape(known[n.shape.toLowerCase()] ?? n.shape);
+    }
     node.D2ID = abs.get(n.id)!;
     let depth = 1;
     for (let parent = n.parentId; parent; parent = byId.get(parent)?.parentId)

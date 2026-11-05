@@ -1,13 +1,13 @@
 import { readFileSync } from 'node:fs';
 import { layoutFlowchart } from '../build/src/index.js';
-const fixtures = ['upstream-layout.json', 'upstream-layoutcorpus.json'].flatMap(
-  (file) =>
-    JSON.parse(
-      readFileSync(
-        new URL(`../test/fixtures/${file}`, import.meta.url),
-        'utf8',
-      ),
-    ),
+const fixtures = [
+  'upstream-layout.json',
+  'upstream-layoutcorpus.json',
+  'upstream-layoutfeatures.json',
+].flatMap((file) =>
+  JSON.parse(
+    readFileSync(new URL(`../test/fixtures/${file}`, import.meta.url), 'utf8'),
+  ),
 );
 const equal = (a, b) => Math.abs(a - b) <= 1e-7;
 function compact(points) {
