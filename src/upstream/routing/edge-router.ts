@@ -33,6 +33,7 @@ import {
 import { PriorityQueue, type PriorityQueueEntry } from './priority-queue.js';
 import { RouteInventory, edgeDebug } from './route-inventory.js';
 import { PointMap } from './point-map.js';
+import type { RouteWorkGuard } from './stage-guard.js';
 import { usedPorts, centerSymmetricalPorts } from './route-ports.js';
 import {
   sourceAndTargetClusterNodesGuarded,
@@ -83,8 +84,9 @@ export class OVGEdgeRouter {
     existing: Route[],
     edges: Edge[],
     limit = MaxSearchWorkUnits,
+    aggregate: RouteWorkGuard | null = null,
   ) {
-    this.work = new RouteSearchWorkGuard(ctx, flavor, limit);
+    this.work = new RouteSearchWorkGuard(ctx, flavor, limit, aggregate);
     this.work.Add(BigInt(edges.length));
     this.edges = [...edges];
     const clustered = new Set<Node>();

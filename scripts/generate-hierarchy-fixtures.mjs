@@ -117,6 +117,7 @@ const packages = {
   routinggenerate: 'internal/routing',
   routingselected: 'internal/routing',
   routingsentinel: 'internal/routing',
+  routingcoordinator: 'internal/routing',
 };
 if (!(kind in packages))
   throw new Error(

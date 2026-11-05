@@ -452,3 +452,10 @@ committed geometry and work-limit failures. Regenerate `routingselected`.
 port-ownership validation and loop-route conversion. Eighty Go cases cover
 all directions and missing path segments; full tree-route integration needs
 additional coverage. Regenerate `routingsentinel`.
+
+`routing/coordinator.ts` connects visibility graph construction, tree and loop
+routes, route flavors and selected-route commit. One hundred Go cases compare
+complete subgraph edge routes, including duplicate connections and labels.
+Flavor execution is currently sequential in TypeScript, so Go worker panic and
+cancellation ordering differ. The whole-graph atomic stage remains pending.
+Regenerate `routingcoordinator`.
