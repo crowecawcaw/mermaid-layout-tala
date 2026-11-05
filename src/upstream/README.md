@@ -515,3 +515,9 @@ including intersection checks, symmetry checks, and rollback. One hundred
 sixty Go fixtures compare node positions and routes on both axes, with fixed
 nodes and obstacles. Multi-edge and nested cases need additional coverage.
 Regenerate `placementdejitter`.
+
+`placement/cluster-flip.ts` also translates full cluster optimization,
+including vessel and connected-node alignment trials, gap reduction and stage
+rollback. One hundred twenty Go fixtures compare full-stage geometry; nested
+clusters and rollback failures need additional coverage. Regenerate
+`clusterstage`.
