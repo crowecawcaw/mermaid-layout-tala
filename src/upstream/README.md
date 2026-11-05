@@ -470,3 +470,8 @@ aggregate budgets, subgraph routing, ownership restoration and atomic rollback.
 Three hundred Go cases compare complete routes, rerouting/early-return behavior
 and work-limit rollback. Broader nested, tree, concurrent-failure and observer
 coverage remains pending. Regenerate `routinggraph`.
+
+`placement/symmetry-stage.ts` translates symmetry balancing and the complete
+transpose-stage wrapper. One hundred sixty Go fixtures compare node positions
+and cell size across both stages. Go map order for adjacent nodes remains a
+potential tie difference. Regenerate `placementsymmetrystage`.

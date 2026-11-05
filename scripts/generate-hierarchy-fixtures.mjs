@@ -120,6 +120,7 @@ const packages = {
   routingcoordinator: 'internal/routing',
   guardedbounds: 'internal/graphbounds',
   routinggraph: 'internal/routing',
+  placementsymmetrystage: 'internal/placement',
 };
 if (!(kind in packages))
   throw new Error(
