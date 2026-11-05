@@ -129,7 +129,15 @@ func TestExportTypeScriptPlacementmetricsFixtures(t *testing.T) {
 			pointValues = append(pointValues, []float64{p.X, p.Y})
 		}
 		candidateWork := fmt.Sprint(candidateGuard.Used())
-		out = append(out, map[string]any{"candidates": pointValues, "candidateDistance": distance, "candidateWork": candidateWork, "movePosition": movePosition, "moved": moved, "moveWork": moveWork, "guardedMedian": []float64{gx, gy}, "guardedMove": move, "metricWork": metricWork, "guardedIDs": guardedIDs, "guardedWork": work, "directed": directed, "mirrored": positions, "transforms": transforms, "trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersection, "fits": fits})
+		initial, err := nodeCandidatePositions(context.Background(), ns[0], g, optim)
+		if err != nil {
+			t.Fatal(err)
+		}
+		initialPoints := []any{}
+		for _, p := range initial {
+			initialPoints = append(initialPoints, []float64{p.X, p.Y})
+		}
+		out = append(out, map[string]any{"initialPoints": initialPoints, "candidates": pointValues, "candidateDistance": distance, "candidateWork": candidateWork, "movePosition": movePosition, "moved": moved, "moveWork": moveWork, "guardedMedian": []float64{gx, gy}, "guardedMove": move, "metricWork": metricWork, "guardedIDs": guardedIDs, "guardedWork": work, "directed": directed, "mirrored": positions, "transforms": transforms, "trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersection, "fits": fits})
 	}
 	b, err := json.Marshal(out)
 	if err != nil {

@@ -1,3 +1,4 @@
+import { nodeCandidatePositions } from '../src/upstream/placement/initialize-candidates.js';
 import { SizelessCandidates } from '../src/upstream/placement/sizeless-candidates.js';
 import { moveNodeToBest } from '../src/upstream/placement/moves.js';
 import {
@@ -157,5 +158,12 @@ it.each(fixtures)('matches Go placement metrics $trial', (f) => {
       points: f.candidates,
       work: f.candidateWork,
     },
+  );
+  compare(
+    nodeCandidatePositions(Background, nodes[0]!, g, optim).map((p) => [
+      p.X,
+      p.Y,
+    ]),
+    f.initialPoints,
   );
 });
