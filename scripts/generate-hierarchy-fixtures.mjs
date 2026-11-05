@@ -123,6 +123,7 @@ const packages = {
   placementsymmetrystage: 'internal/placement',
   placementswapstage: 'internal/placement',
   connectedset: 'internal/layoutgraph',
+  placementalign: 'internal/placement',
 };
 if (!(kind in packages))
   throw new Error(

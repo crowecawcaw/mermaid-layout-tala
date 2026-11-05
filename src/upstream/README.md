@@ -486,3 +486,9 @@ Grouped containers and cancellation need broader coverage. Regenerate
 its indexed large-graph variant, including container and cluster ownership
 views. One hundred sixty Go fixtures compare membership with exclusions on
 small and large nested graphs. Regenerate `connectedset`.
+
+`placement/alignment-stage.ts` translates axis alignment, connected-node
+moves, table-port deltas and the repeated alignment stage. One hundred Go
+fixtures compare per-pass and final node positions, including fixed nodes.
+Table, group and nested cases need additional coverage. Regenerate
+`placementalign`.
