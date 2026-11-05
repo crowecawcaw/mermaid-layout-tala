@@ -577,3 +577,8 @@ membership clearing, edge restoration and rollback. One hundred twenty Go
 fixtures compare membership, levels and near links on flat graphs; nested
 containers and late cancellation need additional coverage. Regenerate
 `hierarchyassign`.
+
+`hierarchy/placement-nodes.ts` translates placement-node construction, rank
+initialization, table-column nodes and long-edge dummy chains. One hundred
+twenty Go fixtures compare flat-node connections and dummy chains; table and
+nested cases need additional coverage. Regenerate `hierarchyplacementnodes`.
