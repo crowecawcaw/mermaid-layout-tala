@@ -225,8 +225,9 @@ facing table-column ports and axis alignment. `placementcost/{geometry,axis,
 cluster,flow-continuity}.ts` translate scoring dependencies. `edge-length.ts`
 assembles the edge scorer, including obstruction, direction, cluster and table
 penalties. The reusable scorer caches preparation and replays cancellation polls;
-pool allocation and broader grouped/table differential coverage remain pending,
-and the remaining table-crossing and graph-wide cost routines. Lazy turn/crossing/
+pool allocation and broader grouped/table differential coverage remain pending.
+Graph-wide scoring uses sequential execution instead of Go worker goroutines,
+so concurrent cancellation and panic ordering are not yet equivalent. Lazy turn/crossing/
 non-center-port cost calculation is translated in `layoutgraph/placement-cost.ts`.
 Four hundred Go cases compare scoring values and compass calculations, and 460
 cases cover all 23 shapes' absolute ports and table-column distances. Regenerate
@@ -238,3 +239,6 @@ Regenerate `edgelength`.
 
 The node symmetry score is translated and compared with Go for every node in
 the 320 `edgelength` graphs; group and abduction cases need additional coverage.
+
+Graph-wide costs and cache hashes also match Go for the 320 `edgelength` graphs
+across eight option combinations; larger parallel and grouped graphs need coverage.

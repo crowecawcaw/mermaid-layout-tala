@@ -4,6 +4,7 @@ package placementcost
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/layoutgraph"
 	"github.com/d2lang/d2/lib/geo"
 	"os"
@@ -66,7 +67,18 @@ func TestExportTypeScriptEdgelengthFixtures(t *testing.T) {
 			}
 			symmetry = append(symmetry, value)
 		}
-		out = append(out, map[string]any{"symmetry": symmetry, "trial": trial, "cell": g.CellSize, "direction": g.Direction(nil), "nodes": dataNodes, "edges": edges, "expected": values})
+		graphValues := []float64{}
+		states := []string{}
+		for mask := 0; mask < 8; mask++ {
+			opts := EdgeLengthOptions{IncludeNodeSizes: mask&1 != 0, EnforceMinimumGap: mask&2 != 0, PenalizeDirection: mask&4 != 0}
+			states = append(states, fmt.Sprint(placementEdgeLengthState(g, g.RoutingCosts(), opts)))
+			value, err := EdgeLength(context.Background(), g, opts)
+			if err != nil {
+				t.Fatal(err)
+			}
+			graphValues = append(graphValues, value)
+		}
+		out = append(out, map[string]any{"graphValues": graphValues, "states": states, "symmetry": symmetry, "trial": trial, "cell": g.CellSize, "direction": g.Direction(nil), "nodes": dataNodes, "edges": edges, "expected": values})
 	}
 	b, err := json.Marshal(out)
 	if err != nil {

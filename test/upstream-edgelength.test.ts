@@ -1,3 +1,7 @@
+import {
+  EdgeLength,
+  placementEdgeLengthState,
+} from '../src/upstream/placementcost/graph-edge-length.js';
 import { it } from 'vitest';
 import fixtures from './fixtures/upstream-edgelength.json';
 import { compare } from './helpers/compare.js';
@@ -36,4 +40,18 @@ it.each(fixtures)('matches Go edge scoring for case $trial', (f) => {
     nodes.map((n) => NodeSymmetry(Background, n, null)),
     f.symmetry,
   );
+  const states: string[] = [],
+    graphValues: number[] = [];
+  for (let mask = 0; mask < 8; mask++) {
+    const options = {
+      EdgeAbductions: null,
+      IncludeNodeSizes: !!(mask & 1),
+      EnforceMinimumGap: !!(mask & 2),
+      PenalizeDirection: !!(mask & 4),
+    };
+    states.push(String(placementEdgeLengthState(g, options)));
+    graphValues.push(EdgeLength(Background, g, options));
+  }
+  compare(states, f.states);
+  compare(graphValues, f.graphValues);
 });
