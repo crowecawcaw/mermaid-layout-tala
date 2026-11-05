@@ -8,6 +8,8 @@ type NodeWithPosition = LayoutData['nodes'][number] & {
   width?: number;
   height?: number;
   domElement?: { attr(name: string, value: string): unknown };
+  labelElement?: SVGGraphicsElement;
+  labelTransform?: string;
 };
 
 /** Mermaid's external-layout entry point. It follows the public loader contract. */
@@ -57,6 +59,25 @@ export async function render(
         throw new Error(
           `Mermaid did not create an SVG element for node ${node.id}`,
         );
+      if (node.label) {
+        const label = svgNode.querySelector?.('g.label') as
+          SVGGraphicsElement | null | undefined;
+        if (label && typeof label.getBBox === 'function') {
+          const labelBox = label.getBBox();
+          if (
+            Number.isFinite(labelBox.width) &&
+            Number.isFinite(labelBox.height)
+          ) {
+            nodeWithPosition.labelBBox = {
+              width: labelBox.width,
+              height: labelBox.height,
+            };
+            nodeWithPosition.labelElement = label;
+            nodeWithPosition.labelTransform =
+              label.getAttribute('transform') ?? '';
+          }
+        }
+      }
       const box = svgNode.getBBox();
       nodeWithPosition.width = box.width;
       nodeWithPosition.height = box.height;
@@ -88,7 +109,12 @@ export async function render(
               labelWidth: measured.labelBBox?.width ?? 0,
               labelHeight: (measured.labelBBox?.height ?? 24) + 10,
             }
-          : {}),
+          : measured.labelBBox && node.label
+            ? {
+                labelWidth: measured.labelBBox.width,
+                labelHeight: measured.labelBBox.height,
+              }
+            : {}),
         ...(node.dir ? { direction: normalizeDirection(node.dir) } : {}),
       };
     }),
@@ -125,6 +151,19 @@ export async function render(
         'transform',
         `translate(${positioned.x}, ${positioned.y})${scaleX === 1 && scaleY === 1 ? '' : ` scale(${scaleX}, ${scaleY})`}`,
       );
+    if (
+      !node.isGroup &&
+      node.labelElement &&
+      positioned.labelX !== undefined &&
+      positioned.labelY !== undefined
+    ) {
+      const dx = (positioned.labelX - positioned.x) / scaleX;
+      const dy = (positioned.labelY - positioned.y) / scaleY;
+      node.labelElement.setAttribute(
+        'transform',
+        `translate(${dx}, ${dy}) ${node.labelTransform ?? ''}`.trim(),
+      );
+    }
   }
 
   // Paint parent backgrounds before their descendants.
