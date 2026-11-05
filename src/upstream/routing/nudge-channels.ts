@@ -317,7 +317,7 @@ export function applyChannelProblem(
   }
   return changed;
 }
-function channelInventoryIsClosed(
+export function channelInventoryIsClosed(
   g: Graph,
   snapshot: ReturnType<typeof captureRouteMutations>,
   guard: RouteWorkGuard,

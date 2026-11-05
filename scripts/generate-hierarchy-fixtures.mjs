@@ -119,6 +119,7 @@ const packages = {
   routingnudgestage: 'internal/routing',
   routingshortcutgeometry: 'internal/routing',
   routingshortcutsafety: 'internal/routing',
+  routingshortcutstage: 'internal/routing',
   initialize: 'internal/placement',
   orthogonal: 'internal/placement',
   placenodes: 'internal/placement',
