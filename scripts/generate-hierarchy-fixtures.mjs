@@ -108,6 +108,7 @@ const packages = {
   routeinventory: 'internal/routing',
   routeports: 'internal/routing',
   routingcosts: 'internal/routing',
+  routingline: 'internal/routing',
 };
 if (!(kind in packages))
   throw new Error(

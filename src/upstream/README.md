@@ -414,3 +414,8 @@ Regenerate `routeports`.
 translate arrowhead label obstruction costs and fixed-node overlap discovery.
 Two hundred forty Go cases compare costs, overlap sets and work accounting.
 Regenerate `routingcosts`.
+
+`routing/route-line.ts` translates guarded straight-line candidate selection,
+including port sharing, obstacles, angle checks, labels and route scoring.
+Nine hundred sixty Go cases compare candidates, cost and budget failures.
+Regenerate `routingline`.
