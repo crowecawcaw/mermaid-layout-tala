@@ -9,6 +9,7 @@ import {
 import {
   prepareNodeEdgeLength,
   type EdgeLengthOptions,
+  type EdgeLengthPreparation,
 } from './edge-preparation.js';
 import { edgeRouteGeometry } from './edge-route-geometry.js';
 import { edgeDistance } from './edge-distance.js';
@@ -25,6 +26,15 @@ export function NodeEdgeLength(
 ): number {
   checkScoringCancellation(ctx);
   const scratch = prepareNodeEdgeLength(ctx, node, options);
+  return evaluateNodeEdgeLength(ctx, node, options, scratch);
+}
+
+export function evaluateNodeEdgeLength(
+  ctx: Context,
+  node: Node,
+  options: EdgeLengthOptions,
+  scratch: EdgeLengthPreparation,
+): number {
   let total = 0;
   const includeSizes = options.IncludeNodeSizes;
   const minimum =

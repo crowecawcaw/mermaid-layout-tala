@@ -224,8 +224,9 @@ Regenerate `combine` and `combinationpreflight`.
 facing table-column ports and axis alignment. `placementcost/{geometry,axis,
 cluster,flow-continuity}.ts` translate scoring dependencies. `edge-length.ts`
 assembles the edge scorer, including obstruction, direction, cluster and table
-penalties; pooled scorer reuse and broader grouped/table differential coverage
-remain pending, as does symmetry scoring. Lazy turn/crossing/
+penalties. The reusable scorer caches preparation and replays cancellation polls;
+pool allocation and broader grouped/table differential coverage remain pending,
+as does symmetry scoring. Lazy turn/crossing/
 non-center-port cost calculation is translated in `layoutgraph/placement-cost.ts`.
 Four hundred Go cases compare scoring values and compass calculations, and 460
 cases cover all 23 shapes' absolute ports and table-column distances. Regenerate
