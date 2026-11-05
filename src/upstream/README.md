@@ -357,3 +357,9 @@ nested containment, flag propagation and interrupted work. Regenerate
 midpoints and OVG insertion. Go fixtures cover 960 combinations of direction,
 shape, source/target orientation and work limits; shared parent arrowhead
 conflicts need more coverage. Regenerate `routingtree`.
+
+`routing/ovg-hierarchy.ts` translates hierarchy visibility levels, boundary
+alignment, port-direction transforms and the hierarchy build wrapper. Single-
+node Go fixtures cover all four directions, table transposition and restoration
+on work-limit failures. Multi-level hierarchy builds and multiple port owners
+need further differential coverage. Regenerate `ovghierarchy`.
