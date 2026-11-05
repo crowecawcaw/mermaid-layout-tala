@@ -79,6 +79,16 @@ export function allocateEntityIDs(values: string[]): bigint[] {
   ambiguous.forEach((e, i) => (ids[e.index] = 4294967296n + BigInt(i)));
   return ids;
 }
+function compareIdentifiers(a: string, b: string): number {
+  const left = /^(.*?)(\d+)$/.exec(a),
+    right = /^(.*?)(\d+)$/.exec(b);
+  if (left && right && left[1] === right[1]) {
+    const x = BigInt(left[2]!),
+      y = BigInt(right[2]!);
+    if (x !== y) return x < y ? -1 : 1;
+  }
+  return a < b ? -1 : a > b ? 1 : 0;
+}
 function arrowhead(value: string | undefined, fallback: string): string {
   if (value === undefined) return fallback;
   const aliases: Record<string, string> = {
@@ -463,12 +473,8 @@ export function layoutFlowchartTranslated(
   inputEdges: readonly LayoutEdge[],
   options: LayoutOptions = {},
 ): LayoutResult {
-  inputNodes = [...inputNodes].sort((a, b) =>
-    a.id < b.id ? -1 : a.id > b.id ? 1 : 0,
-  );
-  inputEdges = [...inputEdges].sort((a, b) =>
-    a.id < b.id ? -1 : a.id > b.id ? 1 : 0,
-  );
+  inputNodes = [...inputNodes].sort((a, b) => compareIdentifiers(a.id, b.id));
+  inputEdges = [...inputEdges].sort((a, b) => compareIdentifiers(a.id, b.id));
   const seeds =
       options.seeds === undefined
         ? getTalaSeeds()
