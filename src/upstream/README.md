@@ -347,3 +347,8 @@ Regenerate `ovgportboundary`.
 restrictions and port-direction compatibility. Six hundred forty Go cases
 compare ordered connections and work-limit behavior; grouped and multi-owner
 cases need additional coverage. Regenerate `ovgconnect`.
+
+`routing/ovg-postconnect.ts` translates nested container assignment and the
+breadth-first near-port penalty flags. Four hundred eighty Go cases compare
+nested containment, flag propagation and interrupted work. Regenerate
+`ovgpostconnect`.
