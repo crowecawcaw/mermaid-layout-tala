@@ -41,7 +41,13 @@ func TestExportTypeScriptPlacementmetricsFixtures(t *testing.T) {
 		}
 		x, y := median(neighbors, false)
 		sx, sy := median(neighbors, true)
-		out = append(out, map[string]any{"trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersectsOtherNode(g, ns[0], ns[1]), "fits": withinMaxSize(g)})
+		counts := directionCounts{left: trial % 5, right: trial / 5 % 5, top: trial / 25 % 5, bottom: trial / 125 % 5}
+		transforms := []any{}
+		for d := 0; d < 9; d++ {
+			v := counts.transformsTo(geo.Orientation(d))
+			transforms = append(transforms, []bool{v.mirrorX, v.mirrorY})
+		}
+		out = append(out, map[string]any{"transforms": transforms, "trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersectsOtherNode(g, ns[0], ns[1]), "fits": withinMaxSize(g)})
 	}
 	b, err := json.Marshal(out)
 	if err != nil {
