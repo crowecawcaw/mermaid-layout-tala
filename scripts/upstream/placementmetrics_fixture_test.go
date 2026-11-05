@@ -165,7 +165,9 @@ func TestExportTypeScriptPlacementmetricsFixtures(t *testing.T) {
 		}
 		sizePosition := []float64{ns[0].TopLeft.X, ns[0].TopLeft.Y}
 		sizeWork := fmt.Sprint(sizeGuard.Used())
-		out = append(out, map[string]any{"sizedMedian": []float64{sizedMedian.X, sizedMedian.Y}, "sizedNext": sizedNext, "sizedWork": sizedWork, "placements": placements, "sizeMoved": sizeMoved, "sizePosition": sizePosition, "sizeWork": sizeWork, "initialPoints": initialPoints, "candidates": pointValues, "candidateDistance": distance, "candidateWork": candidateWork, "movePosition": movePosition, "moved": moved, "moveWork": moveWork, "guardedMedian": []float64{gx, gy}, "guardedMove": move, "metricWork": metricWork, "guardedIDs": guardedIDs, "guardedWork": work, "directed": directed, "mirrored": positions, "transforms": transforms, "trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersection, "fits": fits})
+		rotateAround(ns[0], g, ns[1], 1+trial%3, trial%2 == 0)
+		rotation := []float64{ns[0].TopLeft.X, ns[0].TopLeft.Y}
+		out = append(out, map[string]any{"rotation": rotation, "sizedMedian": []float64{sizedMedian.X, sizedMedian.Y}, "sizedNext": sizedNext, "sizedWork": sizedWork, "placements": placements, "sizeMoved": sizeMoved, "sizePosition": sizePosition, "sizeWork": sizeWork, "initialPoints": initialPoints, "candidates": pointValues, "candidateDistance": distance, "candidateWork": candidateWork, "movePosition": movePosition, "moved": moved, "moveWork": moveWork, "guardedMedian": []float64{gx, gy}, "guardedMove": move, "metricWork": metricWork, "guardedIDs": guardedIDs, "guardedWork": work, "directed": directed, "mirrored": positions, "transforms": transforms, "trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersection, "fits": fits})
 	}
 	b, err := json.Marshal(out)
 	if err != nil {

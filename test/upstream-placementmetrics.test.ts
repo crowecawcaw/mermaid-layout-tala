@@ -1,3 +1,4 @@
+import { rotateAround } from '../src/upstream/placement/rotation.js';
 import { SizedSetup } from '../src/upstream/placement/sized-setup.js';
 import { GoRandom } from '../src/random.js';
 import { iterPlacementsAroundPoint } from '../src/upstream/placement/sized-kernels.js';
@@ -211,4 +212,6 @@ it.each(fixtures)('matches Go placement metrics $trial', (f) => {
     },
     { moved: f.sizeMoved, position: f.sizePosition, work: f.sizeWork },
   );
+  rotateAround(nodes[0]!, g, nodes[1]!, 1 + (f.trial % 3), f.trial % 2 === 0);
+  compare([nodes[0]!.TopLeft!.X, nodes[0]!.TopLeft!.Y], f.rotation);
 });
