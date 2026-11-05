@@ -82,6 +82,7 @@ const packages = {
   routingsimplify: 'internal/routing',
   routingqueue: 'internal/routing',
   routingovg: 'internal/routing',
+  routingedgeset: 'internal/routing',
 };
 if (!(kind in packages))
   throw new Error(

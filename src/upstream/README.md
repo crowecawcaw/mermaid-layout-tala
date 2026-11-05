@@ -282,3 +282,8 @@ charges. Its pop order and work totals match 160 Go fixtures. Regenerate
 metadata, including multiple owners and directions per port, direction-set
 transforms and distance to node boundaries. The visibility construction and
 port-index scans remain pending. Regenerate `routingovg` for 360 Go cases.
+
+`routing/ovg-edge-set.ts` translates visibility-edge indexing, ordered overlap
+and crossing queries, and guarded insertion/work accounting. Its 160 Go
+fixtures cover 6,400 queries, duplicates and zero-length edges. Regenerate
+`routingedgeset`.
