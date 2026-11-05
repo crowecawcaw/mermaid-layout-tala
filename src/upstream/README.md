@@ -633,6 +633,12 @@ atomic work guard. One hundred fifty Go fixtures compare routes and limit
 failures, including backing-slice capacity. Broader cluster geometry needs
 additional coverage. Regenerate `routingcrosshatch`.
 
+`routing/straight-fallback.ts` translates optional straight-edge fallback,
+including candidate filtering and route/cost rollback. One hundred sixty Go
+fixtures compare routes with obstacles, arrowhead labels and table ports.
+Cluster and cancellation cases need additional coverage. Regenerate
+`routingfallback`.
+
 `labeling/place.ts` translates full label placement and the new-edge-only
 variant, with positioned-graph validation and atomic rollback. Four hundred
 eighty Go fixtures compare node labels, icons, edge labels and work-limit

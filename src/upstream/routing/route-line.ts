@@ -2,6 +2,7 @@
 // cluster_route_guard.go at D2 bf337903. MPL-2.0.
 // Copyright Terrastruct Inc. and contributors.
 import { Point } from '../geo/point.js';
+import type { Context } from '../limits/context.js';
 import { EuclideanDistance, PrecisionCompare } from '../geo/math.js';
 import { Orientation as O, GetOpposite } from '../geo/orientation.js';
 import { Edge } from '../layoutgraph/edge.js';
@@ -120,7 +121,31 @@ export function routeLineGuarded(
   routes: Route[] | null,
   guard: SharingBudget,
 ): [Point, Point, number] {
-  guard.Step();
+  return routeLineChecked(g, edge, allEdges, routes, guard, () => guard.Step());
+}
+export function routeLine(
+  ctx: Context,
+  g: Graph,
+  edge: Edge,
+  allEdges: Edge[],
+  routes: Route[] | null,
+): [Point, Point, number] {
+  const budget: SharingBudget = { Step() {}, Add(_units: bigint) {}, Check() {} };
+  return routeLineChecked(g, edge, allEdges, routes, budget, () => {
+    const error = ctx.Err();
+    if (error)
+      throw new Error(`EdgeRouting: ${error.message}`, { cause: error });
+  });
+}
+function routeLineChecked(
+  g: Graph,
+  edge: Edge,
+  allEdges: Edge[],
+  routes: Route[] | null,
+  guard: SharingBudget,
+  check: () => void,
+): [Point, Point, number] {
+  check();
   const fo = nodeOrientation(edge.From, edge.To);
   if (fo === O.NONE) throw ErrInvalidCandidate;
   const fromPorts = portsByOrientation(edge.From, GetOpposite(fo));
@@ -132,7 +157,7 @@ export function routeLineGuarded(
   const filter = (edges: Edge[]): Edge[] => {
     const out: Edge[] = [];
     for (const e of edges) {
-      guard.Step();
+      check();
       if (e !== edge) out.push(e);
     }
     return out;
@@ -155,7 +180,7 @@ export function routeLineGuarded(
         : [],
     positioned: PositionedArrowheadLabel[] = [];
   for (let i = 0; i < allEdges.length; i++) {
-    guard.Step();
+    check();
     const e = allEdges[i]!;
     if (e === edge) continue;
     const route =
@@ -171,14 +196,14 @@ export function routeLineGuarded(
     bestFrom: Point | null = null,
     bestTo: Point | null = null;
   for (const from of fromPorts) {
-    guard.Step();
+    check();
     let fromCost = 0;
     const existingFrom = fromEdges.get(from);
     if (existingFrom?.length) {
       if (duplicate(edge, existingFrom, guard)) continue;
       let matches = true;
       for (const e of existingFrom) {
-        guard.Step();
+        check();
         if (
           edge.SourceArrowhead !==
           (e.From === edge.From ? e.SourceArrowhead : e.TargetArrowhead)
@@ -191,14 +216,14 @@ export function routeLineGuarded(
       if (edge.HasSourceArrow()) fromCost = maxSideLength(edge.From, fo) / 2;
     }
     for (const target of toPorts) {
-      guard.Step();
+      check();
       let toCost = 0;
       const existingTo = toEdges.get(target);
       if (existingTo?.length) {
         if (duplicate(edge, existingTo, guard)) continue;
         let matches = true;
         for (const e of existingTo) {
-          guard.Step();
+          check();
           if (
             edge.TargetArrowhead !==
             (e.To === edge.To ? e.TargetArrowhead : e.SourceArrowhead)
