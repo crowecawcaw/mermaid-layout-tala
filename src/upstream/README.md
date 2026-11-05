@@ -492,3 +492,9 @@ moves, table-port deltas and the repeated alignment stage. One hundred Go
 fixtures compare per-pass and final node positions, including fixed nodes.
 Table, group and nested cases need additional coverage. Regenerate
 `placementalign`.
+
+`placement/equidistance.ts` translates the repeated equidistance stage and
+its transactional comparisons of individual and connected-node moves. One
+hundred twenty Go fixtures compare final positions, including fixed nodes.
+Grouped and nested cases need additional coverage. Regenerate
+`placementgapcenter`.

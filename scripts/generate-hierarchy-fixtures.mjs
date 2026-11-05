@@ -124,6 +124,7 @@ const packages = {
   placementswapstage: 'internal/placement',
   connectedset: 'internal/layoutgraph',
   placementalign: 'internal/placement',
+  placementgapcenter: 'internal/placement',
 };
 if (!(kind in packages))
   throw new Error(
