@@ -1,5 +1,9 @@
 import type { InternalHelpers, LayoutData, RenderOptions, SVG } from 'mermaid';
-import { layoutFlowchart, type LayoutDirection } from './layout.js';
+import {
+  layoutFlowchart,
+  type LayoutDirection,
+  type EdgeStyleInput,
+} from './layout.js';
 import { simplifyRoute } from './routing.js';
 
 type NodeWithPosition = LayoutData['nodes'][number] & {
@@ -11,6 +15,35 @@ type NodeWithPosition = LayoutData['nodes'][number] & {
   labelElement?: SVGGraphicsElement;
   labelTransform?: string;
 };
+
+function edgeLayoutStyle(
+  styles: string[] | undefined,
+): EdgeStyleInput | undefined {
+  if (!styles?.length) return undefined;
+  const result: EdgeStyleInput = {};
+  for (const declaration of styles.flatMap((style) => style.split(';'))) {
+    const colon = declaration.indexOf(':');
+    if (colon < 0) continue;
+    const name = declaration.slice(0, colon).trim().toLowerCase();
+    const value = declaration.slice(colon + 1).trim();
+    if (!value) continue;
+    if (name === 'stroke') result.stroke = value;
+    else if (name === 'fill') result.fill = value;
+    else if (name === 'stroke-dasharray') result.strokeDash = value;
+    else if (
+      name === 'opacity' &&
+      Number.isFinite(Number(value)) &&
+      Number(value) >= 0 &&
+      Number(value) <= 1
+    )
+      result.opacity = value;
+    else if (name === 'stroke-width') {
+      const width = value.replace(/px$/i, '').trim();
+      if (/^\d+$/.test(width)) result.strokeWidth = width;
+    }
+  }
+  return Object.keys(result).length ? result : undefined;
+}
 
 /** Mermaid's external-layout entry point. It follows the public loader contract. */
 export async function render(
@@ -119,19 +152,23 @@ export async function render(
         ...(node.dir ? { direction: normalizeDirection(node.dir) } : {}),
       };
     }),
-    measuredEdges.map((edge) => ({
-      id: edge.id,
-      from: edge.start ?? '',
-      to: edge.end ?? '',
-      ...(edge.label && ((edge.width ?? 0) > 0 || (edge.height ?? 0) > 0)
-        ? { label: edge.label }
-        : {}),
-      ...(edge.thickness === 'invisible' ? { isInvisible: true } : {}),
-      labelWidth: edge.width ?? 0,
-      labelHeight: edge.height ?? 0,
-      sourceArrowhead: edge.arrowTypeStart ?? 'none',
-      targetArrowhead: edge.arrowTypeEnd ?? 'none',
-    })),
+    measuredEdges.map((edge) => {
+      const style = edgeLayoutStyle(edge.style);
+      return {
+        id: edge.id,
+        from: edge.start ?? '',
+        to: edge.end ?? '',
+        ...(style ? { style } : {}),
+        ...(edge.label && ((edge.width ?? 0) > 0 || (edge.height ?? 0) > 0)
+          ? { label: edge.label }
+          : {}),
+        ...(edge.thickness === 'invisible' ? { isInvisible: true } : {}),
+        labelWidth: edge.width ?? 0,
+        labelHeight: edge.height ?? 0,
+        sourceArrowhead: edge.arrowTypeStart ?? 'none',
+        targetArrowhead: edge.arrowTypeEnd ?? 'none',
+      };
+    }),
     {
       direction,
       ...(flowchartConfig?.nodeSpacing !== undefined

@@ -7,6 +7,7 @@ import { describe, expect, it, vi } from 'vitest';
 import talaLayouts from '../src/index.js';
 import { render } from '../src/render.js';
 import { layoutFlowchart } from '../src/layout.js';
+import * as layoutModule from '../src/layout.js';
 
 describe('Mermaid adapter', () => {
   it('registers as an external Mermaid layout loader', async () => {
@@ -138,5 +139,53 @@ describe('Mermaid adapter', () => {
     expect(labelTransforms.get('A')).toBe(
       `translate(${expected.labelX! - expected.x}, ${expected.labelY! - expected.y}) translate(0, -7)`,
     );
+  });
+  it('passes Mermaid edge styles into TALA routing', async () => {
+    const layout = vi.spyOn(layoutModule, 'layoutFlowchart');
+    const selection = {
+      select: vi.fn(() => selection),
+      insert: vi.fn(() => selection),
+      attr: vi.fn(() => selection),
+    };
+    const helpers = {
+      insertMarkers: vi.fn(),
+      insertNode: vi.fn(async () => ({
+        node: () => ({ getBBox: () => ({ width: 60, height: 30 }) }),
+        attr: () => undefined,
+      })),
+      insertEdgeLabel: vi.fn(async () => undefined),
+      insertEdge: vi.fn(() => ({ updatedPath: {}, originalPath: {} })),
+      positionEdgeLabel: vi.fn(),
+      log: { debug: vi.fn() },
+    } as unknown as InternalHelpers;
+    const data = {
+      nodes: [
+        { id: 'A', isGroup: false },
+        { id: 'B', isGroup: false },
+      ],
+      edges: [
+        {
+          id: 'e',
+          start: 'A',
+          end: 'B',
+          style: ['stroke: #aabbcc; stroke-width: 3px', 'opacity: 0.5'],
+        },
+      ],
+      config: { flowchart: {} },
+      direction: 'TB',
+      markers: [],
+      type: 'flowchart-v2',
+      diagramId: 'styled',
+    } as unknown as LayoutData;
+    try {
+      await render(data, selection as unknown as SVG, helpers);
+      expect(layout.mock.calls.at(-1)![1][0]!.style).toEqual({
+        stroke: '#aabbcc',
+        strokeWidth: '3',
+        opacity: '0.5',
+      });
+    } finally {
+      layout.mockRestore();
+    }
   });
 });
