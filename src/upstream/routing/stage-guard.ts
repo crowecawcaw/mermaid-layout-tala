@@ -226,3 +226,43 @@ export function runAtomicRouteStage(
     throw error;
   }
 }
+
+// stableSortRouteValues is the upstream cancellable bottom-up merge sort.
+export function stableSortRouteValues<T>(
+  values: T[],
+  less: (a: T, b: T) => boolean,
+  guard: RouteWorkGuard,
+): void {
+  if (values.length < 2) {
+    guard.Step();
+    return;
+  }
+  const temporary = new Array<T>(values.length);
+  for (let width = 1; width < values.length;) {
+    for (let start = 0; start < values.length; start += 2 * width) {
+      const middle = Math.min(start + width, values.length),
+        end = Math.min(start + 2 * width, values.length);
+      let left = start,
+        right = middle,
+        output = start;
+      while (left < middle && right < end) {
+        guard.Step();
+        temporary[output++] = less(values[right]!, values[left]!)
+          ? values[right++]!
+          : values[left++]!;
+      }
+      while (left < middle) {
+        guard.Step();
+        temporary[output++] = values[left++]!;
+      }
+      while (right < end) {
+        guard.Step();
+        temporary[output++] = values[right++]!;
+      }
+    }
+    guard.Add(BigInt(values.length));
+    for (let i = 0; i < values.length; i++) values[i] = temporary[i]!;
+    if (width > Math.floor(values.length / 2)) break;
+    width *= 2;
+  }
+}

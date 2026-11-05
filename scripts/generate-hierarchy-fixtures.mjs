@@ -83,6 +83,8 @@ const packages = {
   routingqueue: 'internal/routing',
   routingovg: 'internal/routing',
   routingedgeset: 'internal/routing',
+  routingguard: 'internal/routing',
+  routingsort: 'internal/routing',
 };
 if (!(kind in packages))
   throw new Error(

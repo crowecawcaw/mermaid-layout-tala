@@ -287,3 +287,10 @@ port-index scans remain pending. Regenerate `routingovg` for 360 Go cases.
 and crossing queries, and guarded insertion/work accounting. Its 160 Go
 fixtures cover 6,400 queries, duplicates and zero-length edges. Regenerate
 `routingedgeset`.
+
+`routing/search-guard.ts` translates per-flavor search budgeting, cancellation,
+aggregate accounting, telemetry and guarded ancestry helpers. The route-stage
+stable merge sort is also translated. Go fixtures compare 2,400 work-budget
+sequences and 1,560 stable-sort and interrupted-sort cases. The search guard's
+concurrent worker ordering remains subject to the existing JavaScript/Go
+concurrency limitation. Regenerate `routingguard` and `routingsort`.
