@@ -15,7 +15,7 @@ import type { Edge } from '../layoutgraph/edge.js';
 function nodeDebug(n: Edge['From']): string {
   return n.D2ID ?? String(n.ID);
 }
-function edgeDebug(edge: Edge): string {
+export function edgeDebug(edge: Edge): string {
   let arrow = '-';
   if (edge.HasSourceArrow()) arrow = '<' + arrow;
   if (edge.HasTargetArrow()) arrow += '>';

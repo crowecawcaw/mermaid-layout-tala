@@ -419,3 +419,11 @@ Regenerate `routingcosts`.
 including port sharing, obstacles, angle checks, labels and route scoring.
 Nine hundred sixty Go cases compare candidates, cost and budget failures.
 Regenerate `routingline`.
+
+`routing/edge-router.ts` translates the OVG Dijkstra search, including quick
+straight-line candidates, port and container constraints, route sharing,
+label penalties, turn costs and path reconstruction. Three hundred twenty Go
+cases compare routes, costs and work failures on a controlled visibility graph.
+The complete slingshot optimization, multi-route scenarios, generated-graph
+search and public pipeline integration still need verification/translation.
+Regenerate `routingsearch`.

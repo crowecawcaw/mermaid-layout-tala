@@ -22,6 +22,11 @@ export class PointMap<T> {
       (this.values.get(point.X)?.has(point.Y) ?? false)
     );
   }
+  get size(): number {
+    let total = 0;
+    for (const ys of this.values.values()) total += ys.size;
+    return total;
+  }
   entries(): [Point, T][] {
     const result: [Point, T][] = [];
     for (const ys of this.values.values())
