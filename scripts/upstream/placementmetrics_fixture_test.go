@@ -98,6 +98,33 @@ func TestExportTypeScriptPlacementmetricsFixtures(t *testing.T) {
 		}
 		sizedNext := fmt.Sprint(rng.Int63())
 		sizedWork := fmt.Sprint(sizedGuard.Used())
+		compaction := []any{}
+		for mask := 0; mask < 4; mask++ {
+			horizontal := mask&1 != 0
+			include := mask&2 != 0
+			vedges, err := visibilityEdges(context.Background(), g, horizontal, include)
+			if err != nil {
+				t.Fatal(err)
+			}
+			pairs := []any{}
+			for _, e := range vedges {
+				pairs = append(pairs, []int{int(e.From.ID), int(e.To.ID)})
+			}
+			ordered := orderedAlongAxis(g, horizontal)
+			ids := []int{}
+			for _, n := range ordered {
+				ids = append(ids, int(n.ID))
+			}
+			moves, err := candidateMoves(context.Background(), g, ns[0], 2, horizontal, include, 0, vedges)
+			if err != nil {
+				t.Fatal(err)
+			}
+			points := []any{}
+			for _, p := range moves {
+				points = append(points, []float64{p.X, p.Y})
+			}
+			compaction = append(compaction, map[string]any{"edges": pairs, "order": ids, "points": points})
+		}
 		intersection, fits := intersectsOtherNode(g, ns[0], ns[1]), withinMaxSize(g)
 		if err := mirrorAxes(context.Background(), g, trial%2 == 0, trial%3 == 0); err != nil {
 			t.Fatal(err)
@@ -167,7 +194,7 @@ func TestExportTypeScriptPlacementmetricsFixtures(t *testing.T) {
 		sizeWork := fmt.Sprint(sizeGuard.Used())
 		rotateAround(ns[0], g, ns[1], 1+trial%3, trial%2 == 0)
 		rotation := []float64{ns[0].TopLeft.X, ns[0].TopLeft.Y}
-		out = append(out, map[string]any{"rotation": rotation, "sizedMedian": []float64{sizedMedian.X, sizedMedian.Y}, "sizedNext": sizedNext, "sizedWork": sizedWork, "placements": placements, "sizeMoved": sizeMoved, "sizePosition": sizePosition, "sizeWork": sizeWork, "initialPoints": initialPoints, "candidates": pointValues, "candidateDistance": distance, "candidateWork": candidateWork, "movePosition": movePosition, "moved": moved, "moveWork": moveWork, "guardedMedian": []float64{gx, gy}, "guardedMove": move, "metricWork": metricWork, "guardedIDs": guardedIDs, "guardedWork": work, "directed": directed, "mirrored": positions, "transforms": transforms, "trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersection, "fits": fits})
+		out = append(out, map[string]any{"compaction": compaction, "rotation": rotation, "sizedMedian": []float64{sizedMedian.X, sizedMedian.Y}, "sizedNext": sizedNext, "sizedWork": sizedWork, "placements": placements, "sizeMoved": sizeMoved, "sizePosition": sizePosition, "sizeWork": sizeWork, "initialPoints": initialPoints, "candidates": pointValues, "candidateDistance": distance, "candidateWork": candidateWork, "movePosition": movePosition, "moved": moved, "moveWork": moveWork, "guardedMedian": []float64{gx, gy}, "guardedMove": move, "metricWork": metricWork, "guardedIDs": guardedIDs, "guardedWork": work, "directed": directed, "mirrored": positions, "transforms": transforms, "trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersection, "fits": fits})
 	}
 	b, err := json.Marshal(out)
 	if err != nil {

@@ -1,3 +1,8 @@
+import {
+  visibilityEdges,
+  orderedAlongAxis,
+  candidateMoves,
+} from '../src/upstream/placement/compaction-geometry.js';
 import { rotateAround } from '../src/upstream/placement/rotation.js';
 import { SizedSetup } from '../src/upstream/placement/sized-setup.js';
 import { GoRandom } from '../src/random.js';
@@ -91,6 +96,26 @@ it.each(fixtures)('matches Go placement metrics $trial', (f) => {
     },
     { median: f.sizedMedian, next: f.sizedNext, work: f.sizedWork },
   );
+  const compaction = Array.from({ length: 4 }, (_, mask) => {
+    const horizontal = (mask & 1) !== 0,
+      include = (mask & 2) !== 0,
+      edges = visibilityEdges(Background, g, horizontal, include);
+    return {
+      edges: edges.map((e) => [Number(e.From.ID), Number(e.To.ID)]),
+      order: orderedAlongAxis(g, horizontal).map((n) => Number(n.ID)),
+      points: candidateMoves(
+        Background,
+        g,
+        nodes[0]!,
+        2,
+        horizontal,
+        include,
+        0,
+        edges,
+      ).map((p) => [p.X, p.Y]),
+    };
+  });
+  compare(compaction, f.compaction);
   const neighbors = adjacents(nodes[0]!, null);
   const counts = {
     left: f.trial % 5,
