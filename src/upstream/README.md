@@ -383,3 +383,8 @@ landing and flight geometry helpers, preference calculation, path filling and
 route-check caching. Four hundred eighty Go cases cover the geometric
 predicates and preferences; the complete slingshot search remains pending.
 Regenerate `slingshotgeometry`.
+
+`routing/best-route.ts` translates the final route reconstruction, including
+turn-cost correction, ideal axes, cycle handling and bounded work. Eight
+hundred Go cases compare route selection and interruption. Regenerate
+`routingbest`.
