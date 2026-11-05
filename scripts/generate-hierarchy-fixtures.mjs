@@ -47,6 +47,7 @@ const packages = {
   quality: 'internal/quality',
   qualitycrossings: 'internal/quality',
   qualityinspection: 'internal/quality',
+  qualityscoring: 'internal/quality',
   layout: '',
   loops: 'internal/loops',
   loopoffsets: 'internal/loops',
