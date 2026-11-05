@@ -336,3 +336,9 @@ construction and the edge-point scan. The individual geometry routines match
 960 Go cases across orientations, shapes and work limits; grouped nodes and
 the complete multi-owner scan need additional coverage. Regenerate
 `ovgedgepoints`.
+
+`routing/ovg-port-boundaries.ts` translates boundary connections from ports,
+including direction-aware obstacle exceptions and the fallback connection
+path. Four hundred eighty Go cases compare generated points and resource
+accounting; multi-owner and nested-container coverage remains pending.
+Regenerate `ovgportboundary`.
