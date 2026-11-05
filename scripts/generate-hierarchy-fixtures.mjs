@@ -94,6 +94,7 @@ const packages = {
   ovgintersection: 'internal/routing',
   ovgedgepoints: 'internal/routing',
   ovgportboundary: 'internal/routing',
+  ovgconnect: 'internal/routing',
 };
 if (!(kind in packages))
   throw new Error(

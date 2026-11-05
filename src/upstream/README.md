@@ -342,3 +342,8 @@ including direction-aware obstacle exceptions and the fallback connection
 path. Four hundred eighty Go cases compare generated points and resource
 accounting; multi-owner and nested-container coverage remains pending.
 Regenerate `ovgportboundary`.
+
+`routing/ovg-connect.ts` translates axis sweeps, obstacle checks, sequence-port
+restrictions and port-direction compatibility. Six hundred forty Go cases
+compare ordered connections and work-limit behavior; grouped and multi-owner
+cases need additional coverage. Regenerate `ovgconnect`.
