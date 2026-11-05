@@ -1,3 +1,4 @@
+import { iterPlacementsAroundPoint } from '../src/upstream/placement/sized-kernels.js';
 import { moveNodeToBestGuarded } from '../src/upstream/placement/sizeless-moves.js';
 import { nodeCandidatePositions } from '../src/upstream/placement/initialize-candidates.js';
 import { SizelessCandidates } from '../src/upstream/placement/sizeless-candidates.js';
@@ -43,6 +44,12 @@ it.each(fixtures)('matches Go placement metrics $trial', (f) => {
     if (j % 2 === 0) edge.SourceArrowhead = 'triangle';
     else edge.TargetArrowhead = 'triangle';
   }
+  const placements: number[][] = [];
+  iterPlacementsAroundPoint(nodes[0]!, 1, 2, f.trial % 2 === 0, (x, y) => {
+    placements.push([x, y]);
+    return false;
+  });
+  compare(placements, f.placements);
   const guard = new OptimizationWorkGuard(
     Background,
     'test',
