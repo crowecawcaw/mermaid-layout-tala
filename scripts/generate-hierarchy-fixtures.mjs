@@ -50,6 +50,7 @@ const packages = {
   qualityscoring: 'internal/quality',
   enginepipeline: 'internal/engine',
   enginecompound: 'internal/engine',
+  enginecompoundroutes: 'internal/engine',
   layout: '',
   loops: 'internal/loops',
   loopoffsets: 'internal/loops',
