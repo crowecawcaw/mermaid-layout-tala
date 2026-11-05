@@ -33,6 +33,8 @@ const packages = {
   hierarchyvalidity: 'internal/hierarchy',
   hierarchyrankgraph: 'internal/hierarchy',
   hierarchysimplex: 'internal/hierarchy',
+  hierarchydag: 'internal/hierarchy',
+  hierarchybuild: 'internal/hierarchy',
   quality: 'internal/quality',
   layout: '',
   loops: 'internal/loops',

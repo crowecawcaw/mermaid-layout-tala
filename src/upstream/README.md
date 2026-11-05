@@ -564,3 +564,10 @@ optimizer is in `hierarchy/rank-simplex.ts` and `hierarchy/rank.ts`; 240 Go
 fixtures compare weighted DAG ranks, optimality certificates and work counts,
 including cases requiring improvement. Hierarchy discovery and placement remain
 outstanding. Regenerate `hierarchyrankgraph` and `hierarchysimplex`.
+
+`hierarchy/dag.ts` and `hierarchy/build.ts` translate cycle removal, weighted
+duplicate-edge consolidation, rank mapping and per-component hierarchy
+construction. Two hundred eighty Go fixtures compare DAGs, ranks and build
+decisions. Cycle selection inherits Go map-iteration sensitivity; broader
+topologies and the graph-wide assignment stage need additional coverage.
+Regenerate `hierarchydag` and `hierarchybuild`.
