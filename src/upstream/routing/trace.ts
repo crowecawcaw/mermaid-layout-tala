@@ -81,3 +81,46 @@ export function traceToShapeBorder(edge: Edge | null): void {
     }
   }
 }
+
+// The guarded wrapper owns the whole stage's validation and rollback boundary.
+import type { Context } from '../limits/context.js';
+import type { Graph } from '../layoutgraph/graph.js';
+import {
+  MaxRouteStageWorkUnits,
+  RouteWorkGuard,
+  runAtomicRouteStage,
+} from './stage-guard.js';
+import { snapshotPointer } from '../layoutgraph/transaction-snapshot.js';
+export function traceToShapeBorderGuarded(
+  edge: Edge | null,
+  guard: RouteWorkGuard,
+): void {
+  guard.Step();
+  if (!edge || !edge.From || !edge.To || edge.Points.length < 2) return;
+  const from = snapshotPointer(edge.From.TopLeft),
+    to = snapshotPointer(edge.To.TopLeft);
+  try {
+    traceToShapeBorder(edge);
+  } catch (error) {
+    edge.From.TopLeft = from.restore();
+    edge.To.TopLeft = to.restore();
+    throw error;
+  }
+  guard.Step();
+}
+export function TraceEdgesToShapeBorder(
+  ctx: Context,
+  graph: Graph,
+  workLimit = MaxRouteStageWorkUnits,
+): void {
+  runAtomicRouteStage(
+    ctx,
+    'TraceEdgesToShapeBorder',
+    graph,
+    [],
+    workLimit,
+    (guard) => {
+      for (const edge of graph.Edges) traceToShapeBorderGuarded(edge, guard);
+    },
+  );
+}

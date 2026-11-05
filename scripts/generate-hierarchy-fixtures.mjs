@@ -78,6 +78,7 @@ const packages = {
   ports: 'internal/placementcost',
   routinggeometry: 'internal/routing',
   routingtrace: 'internal/routing',
+  routingstage: 'internal/routing',
 };
 if (!(kind in packages))
   throw new Error(

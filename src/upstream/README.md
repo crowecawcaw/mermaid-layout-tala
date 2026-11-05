@@ -264,5 +264,6 @@ Regenerate `routinggeometry`.
 
 `routing/trace.ts` translates the shape-border tracing kernel, including
 3D/multiple offsets and restoration of aliased node positions. Go fixtures
-cover all 23 shapes, self-edges and modifier combinations. The atomic
-route-stage wrapper is still pending. Regenerate `routingtrace`.
+cover all 23 shapes, self-edges and modifier combinations. The atomic route-stage wrapper includes validation, work accounting and
+rollback; 480 Go work-limit cases compare its output and failure boundaries.
+Regenerate `routingtrace` and `routingstage`.
