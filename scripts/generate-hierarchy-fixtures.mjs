@@ -98,6 +98,8 @@ const packages = {
   labelmodel: 'internal/labeling',
   labelingshared: 'internal/labeling',
   labelingguard: 'internal/labeling',
+  labelingsort: 'internal/labeling',
+  labelingedge: 'internal/labeling',
   initialize: 'internal/placement',
   orthogonal: 'internal/placement',
   placenodes: 'internal/placement',

@@ -3,7 +3,19 @@
 import type { Context } from '../limits/context.js';
 import { MaxEngineTreeDepth } from '../limits/work.js';
 import type { Graph } from '../layoutgraph/graph.js';
-import type { Node } from '../layoutgraph/node.js';
+import { Node } from '../layoutgraph/node.js';
+import { Point } from '../geo/point.js';
+import { EuclideanDistance } from '../geo/math.js';
+import { type Orientation } from '../geo/orientation.js';
+import type { Position } from '../label/label.js';
+import { EdgeLabelTopLeft } from '../layoutgraph/graph-bounds.js';
+import { NodeBoundingBox } from '../graphbounds/bounds.js';
+import { nodeOrientation } from '../layoutgraph/node-spatial.js';
+import {
+  PositionArrowheadLabel,
+  type PositionedArrowheadLabel,
+} from './arrowhead.js';
+import type { Cluster } from '../layoutgraph/records.js';
 import type { Edge } from '../layoutgraph/edge.js';
 import type { Label, Icon } from '../layoutgraph/records.js';
 import {
@@ -189,4 +201,128 @@ export function isLabelPlacementDescendantOf(
     else if (descendant.Sequence) descendant = descendant.Sequence.Vessel;
     else descendant = null;
   }
+}
+export function routeLengthPlacement(
+  edge: Edge,
+  guard: LabelPlacementWorkGuard,
+): number {
+  let length = 0;
+  for (let i = 1; i < edge.Points.length; i++) {
+    guard.step();
+    const a = edge.Points[i - 1]!,
+      b = edge.Points[i]!;
+    length += EuclideanDistance(a.X, a.Y, b.X, b.Y);
+  }
+  return length;
+}
+export function edgeLabelTopLeft(
+  edge: Edge,
+  position: Position,
+  width: number,
+  height: number,
+  guard: LabelPlacementWorkGuard,
+): Point | null {
+  guard.add(BigInt(edge.Points.length));
+  guard.add(BigInt(edge.Points.length));
+  const point = EdgeLabelTopLeft(edge, position, width, height);
+  guard.check();
+  return point;
+}
+export function positionedArrowheadLabel(
+  edge: Edge,
+  isTarget: boolean,
+  guard: LabelPlacementWorkGuard,
+): PositionedArrowheadLabel | null {
+  for (let i = 0; i < 3; i++) guard.add(BigInt(edge.Points.length));
+  const value = PositionArrowheadLabel(edge, isTarget, edge.Points);
+  guard.check();
+  return value;
+}
+export function sortLabelPlacementEdges(
+  edges: Edge[],
+  guard: LabelPlacementWorkGuard,
+): Edge[] {
+  let items = edges.map((edge) => {
+      guard.step();
+      return { edge, length: routeLengthPlacement(edge, guard) };
+    }),
+    buffer = new Array<(typeof items)[number]>(items.length);
+  const less = (a: (typeof items)[number], b: (typeof items)[number]) =>
+    b.edge.Points.length === 2 && a.edge.Points.length > 2
+      ? true
+      : a.edge.Points.length === 2 && b.edge.Points.length > 2
+        ? false
+        : a.length < b.length;
+  for (let width = 1; width < items.length;) {
+    for (let start = 0; start < items.length; start += 2 * width) {
+      const middle = Math.min(start + width, items.length),
+        end = Math.min(start + 2 * width, items.length);
+      let left = start,
+        right = middle,
+        output = start;
+      while (left < middle && right < end) {
+        guard.step();
+        buffer[output++] = less(items[right]!, items[left]!)
+          ? items[right++]!
+          : items[left++]!;
+      }
+      while (left < middle) {
+        guard.step();
+        buffer[output++] = items[left++]!;
+      }
+      while (right < end) {
+        guard.step();
+        buffer[output++] = items[right++]!;
+      }
+    }
+    [items, buffer] = [buffer, items];
+    if (width > Math.floor(items.length / 2)) break;
+    width *= 2;
+  }
+  guard.check();
+  return items.map((item) => item.edge);
+}
+export function clusterNodeBoundingBoxPlacement(
+  node: Node,
+  nodes: Node[],
+  guard: LabelPlacementWorkGuard,
+): [Point, Point] {
+  if (!node || !node.TopLeft)
+    throw new Error(`TALA ${guard.location} cluster contains an unplaced node`);
+  return NodeBoundingBox(node, nodes, {
+    Step: () => guard.step(),
+    Finish() {},
+  });
+}
+export function clusterLabelPlacementOrientation(
+  node: Node,
+  member: Node,
+  cluster: Cluster,
+  guard: LabelPlacementWorkGuard,
+): [Orientation, number] {
+  let tl = new Point(-Infinity, -Infinity),
+    br = new Point(Infinity, Infinity);
+  if (cluster.Nodes.length) {
+    tl = new Point(Infinity, Infinity);
+    br = new Point(-Infinity, -Infinity);
+    for (const n of cluster.Nodes) {
+      const [a, b] = clusterNodeBoundingBoxPlacement(n, cluster.Nodes, guard);
+      tl.X = Math.min(tl.X, a.X);
+      tl.Y = Math.min(tl.Y, a.Y);
+      br.X = Math.max(br.X, b.X);
+      br.Y = Math.max(br.Y, b.Y);
+    }
+  }
+  const shell = new Node(0n, br.X - tl.X, br.Y - tl.Y);
+  shell.TopLeft = tl;
+  const orientation = nodeOrientation(node, shell);
+  let index = -1;
+  for (let i = 0; i < cluster.Nodes.length; i++) {
+    guard.step();
+    if (cluster.Nodes[i] === member) {
+      index = i;
+      break;
+    }
+  }
+  return [orientation, index];
 }

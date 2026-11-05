@@ -616,3 +616,9 @@ Regenerate `labelingshared`.
 overlap kernels and ancestry checks. One hundred twenty Go fixtures compare
 overlap results and work counts. Cluster-specific scans and placement-stage
 rollback need further coverage. Regenerate `labelingguard`.
+
+`labeling/edge-placement.ts` translates edge-label candidate selection and
+the guarded route ordering and geometry helpers. Two hundred forty Go fixtures
+compare search results, route ordering and exact work counts. Cluster-specific
+search and nested ancestors need additional coverage. Regenerate
+`labelingedge` and `labelingsort`.
