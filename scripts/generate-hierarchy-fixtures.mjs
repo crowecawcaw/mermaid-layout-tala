@@ -116,6 +116,7 @@ const packages = {
   routingbalancestage: 'internal/routing',
   routingchannelconstraints: 'internal/routing',
   routingchannelsafety: 'internal/routing',
+  routingnudgestage: 'internal/routing',
   initialize: 'internal/placement',
   orthogonal: 'internal/placement',
   placenodes: 'internal/placement',

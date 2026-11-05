@@ -146,7 +146,11 @@ export function captureRouteMutations(
   g: Graph,
   extra: Edge[],
   guard: RouteWorkGuard,
-): { restore(): void } {
+): {
+  restore(): void;
+  nodes: ReadonlyMap<Node, unknown>;
+  edges: ReadonlyMap<Edge, unknown>;
+} {
   const cellSize = g.CellSize,
     crossing = g.crossingCost,
     turn = g.turnCost,
@@ -196,6 +200,8 @@ export function captureRouteMutations(
   }
   guard.Finish();
   return {
+    nodes,
+    edges,
     restore() {
       g.CellSize = cellSize;
       g.crossingCost = crossing;
