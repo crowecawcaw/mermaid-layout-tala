@@ -104,6 +104,7 @@ const packages = {
   slingshotgeometry: 'internal/routing',
   routingbest: 'internal/routing',
   routingsharing: 'internal/routing',
+  routingtable: 'internal/routing',
 };
 if (!(kind in packages))
   throw new Error(

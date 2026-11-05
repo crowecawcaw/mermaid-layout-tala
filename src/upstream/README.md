@@ -394,3 +394,8 @@ and node scans, ancestor filtering and cluster membership discovery. Six
 hundred Go cases compare arrowhead-based sharing, geometric overlap and work
 charges; complex styles and nested clusters need broader coverage. Regenerate
 `routingsharing`.
+
+`routing/table-ports.ts` and `labeling/arrowhead.ts` translate table-column
+port selection and renderer-compatible arrowhead label boxes. Two hundred forty
+Go cases compare port identities, work charges and label positions. Regenerate
+`routingtable`.
