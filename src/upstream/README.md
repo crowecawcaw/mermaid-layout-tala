@@ -639,6 +639,10 @@ fixtures compare routes with obstacles, arrowhead labels and table ports.
 Cluster and cancellation cases need additional coverage. Regenerate
 `routingfallback`.
 
+`routing/cluster-branching.ts` translates clustered edge branch selection and
+atomic rollback. One hundred eighty Go work-limit fixtures compare routes and
+errors. More cluster arrangements need coverage. Regenerate `routingbranch`.
+
 `labeling/place.ts` translates full label placement and the new-edge-only
 variant, with positioned-graph validation and atomic rollback. Four hundred
 eighty Go fixtures compare node labels, icons, edge labels and work-limit
