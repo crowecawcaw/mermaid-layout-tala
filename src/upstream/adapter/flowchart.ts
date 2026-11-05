@@ -383,8 +383,72 @@ export function translateFlowchart(
     );
     e.ID = edgeIDs[i]!;
     e.D2ID = edgeAbs[i]!;
-    e.IsInvisible = input.isInvisible ?? false;
-    if (e.IsInvisible) e.Style.Stroke = { Value: 'transparent' };
+    const style = input.style;
+    if (style) {
+      const fields = {
+        opacity: 'Opacity',
+        stroke: 'Stroke',
+        fill: 'Fill',
+        fillPattern: 'FillPattern',
+        strokeWidth: 'StrokeWidth',
+        strokeDash: 'StrokeDash',
+        borderRadius: 'BorderRadius',
+        shadow: 'Shadow',
+        threeDee: 'ThreeDee',
+        multiple: 'Multiple',
+        font: 'Font',
+        fontSize: 'FontSize',
+        fontColor: 'FontColor',
+        animated: 'Animated',
+        bold: 'Bold',
+        italic: 'Italic',
+        underline: 'Underline',
+        filled: 'Filled',
+        doubleBorder: 'DoubleBorder',
+        textTransform: 'TextTransform',
+      } as const;
+      for (const key of Object.keys(fields) as (keyof typeof fields)[]) {
+        const value = style[key];
+        if (value !== undefined) e.Style[fields[key]] = { Value: value };
+      }
+      if (
+        style.opacity !== undefined &&
+        (!style.opacity.trim() ||
+          !Number.isFinite(Number(style.opacity)) ||
+          Number(style.opacity) < 0 ||
+          Number(style.opacity) > 1)
+      )
+        throw new Error(`edge ${input.id} has invalid opacity`);
+      for (const key of ['strokeWidth', 'fontSize'] as const)
+        if (
+          style[key] !== undefined &&
+          (!/^[+-]?\d+$/.test(style[key]!) ||
+            Number(style[key]) < (key === 'fontSize' ? 1 : 0) ||
+            Number(style[key]) > 1_000_000_000)
+        )
+          throw new Error(`edge ${input.id} has invalid ${key}`);
+      for (const key of [
+        'animated',
+        'bold',
+        'doubleBorder',
+        'filled',
+        'italic',
+        'multiple',
+        'shadow',
+        'threeDee',
+        'underline',
+      ] as const)
+        if (
+          style[key] !== undefined &&
+          !/^(1|0|t|T|f|F|true|false|TRUE|FALSE|True|False)$/.test(style[key]!)
+        )
+          throw new Error(`edge ${input.id} has invalid ${key}`);
+    }
+    if (input.isInvisible) e.Style.Stroke = { Value: 'transparent' };
+    e.IsInvisible =
+      !!input.isInvisible ||
+      style?.stroke?.toLowerCase() === 'transparent' ||
+      (style?.opacity !== undefined && Number(style.opacity) === 0);
     e.SourceArrowhead = reversed[i]
       ? NoArrowhead
       : arrowhead(input.sourceArrowhead, NoArrowhead);
@@ -436,6 +500,10 @@ export function translateFlowchart(
         e.MinWidth += extra;
         e.MinHeight += extra;
       }
+    if (style?.opacity !== undefined && Number(style.opacity) === 0) {
+      e.MinWidth = 0;
+      e.MinHeight = 0;
+    }
     if (
       input.label ||
       (input.labelWidth ?? 0) > 0 ||

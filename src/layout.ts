@@ -34,6 +34,29 @@ export interface ArrowheadLabel {
   height: number;
 }
 
+export interface EdgeStyleInput {
+  opacity?: string;
+  stroke?: string;
+  fill?: string;
+  fillPattern?: string;
+  strokeWidth?: string;
+  strokeDash?: string;
+  borderRadius?: string;
+  shadow?: string;
+  threeDee?: string;
+  multiple?: string;
+  font?: string;
+  fontSize?: string;
+  fontColor?: string;
+  animated?: string;
+  bold?: string;
+  italic?: string;
+  underline?: string;
+  filled?: string;
+  doubleBorder?: string;
+  textTransform?: string;
+}
+
 export interface LayoutEdge {
   id: string;
   from: string;
@@ -44,6 +67,7 @@ export interface LayoutEdge {
   targetTableColumnIndex?: number;
   sourceArrowheadLabel?: ArrowheadLabel;
   targetArrowheadLabel?: ArrowheadLabel;
+  style?: EdgeStyleInput;
   label?: string;
   isInvisible?: boolean;
   labelWidth?: number;

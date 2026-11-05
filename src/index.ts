@@ -9,6 +9,7 @@ export {
   type LayoutDirection,
   type LayoutEdge,
   type ArrowheadLabel,
+  type EdgeStyleInput,
   type LayoutNode,
   type LayoutOptions,
   type LayoutResult,
