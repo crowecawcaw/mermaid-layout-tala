@@ -556,3 +556,9 @@ discovery and placement remain outstanding. Regenerate `hierarchyeligibility`.
 extent and hierarchy validity rules. One hundred sixty Go fixtures compare
 these decisions across directed, undirected and loop edges. Abducted-edge and
 large-workflow cases need additional coverage. Regenerate `hierarchyvalidity`.
+
+`hierarchy/rank-graph.ts` translates network-simplex input validation, stable
+node and edge ordering, and initial longest-path ranks. One hundred twenty Go
+fixtures compare ranks, validation failures and work counts. The simplex
+optimization and hierarchy discovery remain outstanding. Regenerate
+`hierarchyrankgraph`.
