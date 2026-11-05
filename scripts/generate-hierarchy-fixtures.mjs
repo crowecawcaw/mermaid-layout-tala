@@ -76,6 +76,7 @@ const packages = {
   placenested: 'internal/placement',
   edgelength: 'internal/placementcost',
   ports: 'internal/placementcost',
+  routinggeometry: 'internal/routing',
 };
 if (!(kind in packages))
   throw new Error(

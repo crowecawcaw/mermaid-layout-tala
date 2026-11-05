@@ -255,3 +255,9 @@ orthogonal optimizer, tree placement, direction refinement and packing. Go
 fixtures compare 48 flat and 24 nested graphs, including fixed nodes and edge
 abductions. It remains an internal translation; the public adapter still uses
 the earlier pipeline. Regenerate `placenodes` and `placenested`.
+
+`routing/{geometry,turns,cost}.ts` translate segment and box intersection,
+ideal turn axes, route crossings and candidate route cost. Six hundred Go
+fixtures cover these shared routing primitives, including degenerate segments
+and negative-size boxes. The routing stages that use them remain in progress.
+Regenerate `routinggeometry`.
