@@ -611,3 +611,8 @@ segment sorting, overlap scores and cluster label search helpers. One hundred
 twenty Go fixtures compare interval geometry, scoring and cancellation-check
 counts. Cluster cases and the full label-placement stage remain to be covered.
 Regenerate `labelingshared`.
+
+`labeling/guard.ts` translates label work accounting, rollback snapshots,
+overlap kernels and ancestry checks. One hundred twenty Go fixtures compare
+overlap results and work counts. Cluster-specific scans and placement-stage
+rollback need further coverage. Regenerate `labelingguard`.

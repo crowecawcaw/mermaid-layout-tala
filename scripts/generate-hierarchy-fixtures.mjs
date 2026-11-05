@@ -97,6 +97,7 @@ const packages = {
   placementstages: 'internal/placement',
   labelmodel: 'internal/labeling',
   labelingshared: 'internal/labeling',
+  labelingguard: 'internal/labeling',
   initialize: 'internal/placement',
   orthogonal: 'internal/placement',
   placenodes: 'internal/placement',
