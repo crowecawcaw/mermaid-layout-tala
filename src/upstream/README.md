@@ -443,3 +443,7 @@ fallback in the upstream route-generation order. One hundred ninety-two Go
 cases compare complete route sets across all four flavors, including duplicate
 edges and arrowhead labels. Graph-stage orchestration, post-processing and the
 public adapter remain in progress. Regenerate `routinggenerate`.
+
+`routing/selected-routes.ts` translates parallel-route ordering and the atomic
+commit of selected route points. Six hundred Go cases compare route ownership,
+committed geometry and work-limit failures. Regenerate `routingselected`.
