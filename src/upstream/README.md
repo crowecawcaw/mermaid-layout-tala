@@ -330,3 +330,9 @@ fixed-overlap discovery, port indexing and proximity rejection. Six hundred
 forty Go cases compare generated nodes, budget use and failure boundaries;
 fixtures currently use one port owner, so multi-owner Go map ordering needs
 additional coverage. Regenerate `ovgintersection`.
+
+`routing/ovg-edge-points.ts` translates edge perimeter and halfway point
+construction and the edge-point scan. The individual geometry routines match
+960 Go cases across orientations, shapes and work limits; grouped nodes and
+the complete multi-owner scan need additional coverage. Regenerate
+`ovgedgepoints`.
