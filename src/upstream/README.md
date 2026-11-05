@@ -437,3 +437,9 @@ search, overlap checks, preferences and label penalties. One hundred Go cases
 compare normal slingshot results, and eighty more directly compare S-shaped
 searches with obstacles. Multi-route and table-column cases need broader
 coverage. Regenerate `routingslingshot` and `routingsshape`.
+
+`routing/generate-routes.ts` connects slingshot, Dijkstra and straight-line
+fallback in the upstream route-generation order. One hundred ninety-two Go
+cases compare complete route sets across all four flavors, including duplicate
+edges and arrowhead labels. Graph-stage orchestration, post-processing and the
+public adapter remain in progress. Regenerate `routinggenerate`.
