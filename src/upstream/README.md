@@ -294,3 +294,9 @@ stable merge sort is also translated. Go fixtures compare 2,400 work-budget
 sequences and 1,560 stable-sort and interrupted-sort cases. The search guard's
 concurrent worker ordering remains subject to the existing JavaScript/Go
 concurrency limitation. Regenerate `routingguard` and `routingsort`.
+
+`routing/ovg.ts` and `ovg-resource.ts` translate foundational visibility graph
+insertion and connection, point canonicalization and resource accounting.
+The remaining visibility graph construction scans are not yet translated.
+180 Go fixtures cover graph operations and resource-limit boundaries;
+regenerate `ovgresource`.
