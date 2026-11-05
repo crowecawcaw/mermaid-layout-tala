@@ -645,8 +645,13 @@ errors. More cluster arrangements need coverage. Regenerate `routingbranch`.
 
 `routing/swap-port-geometry.ts` translates port-swap route classification,
 intersection and guarded point operations. One hundred twenty Go fixtures
-compare shape classifications and obstacle checks. Full port swapping remains
-outstanding. Regenerate `routingswapgeometry`.
+compare shape classifications and obstacle checks. Regenerate
+`routingswapgeometry`.
+
+`routing/swap-ports.ts` translates same-side and adjacent-side swaps, route
+refinement and atomic stage rollback. One hundred eighty Go work-limit fixtures
+compare routes and errors. More multi-side, table and cluster cases need
+coverage. Regenerate `routingswapstage`.
 
 `labeling/place.ts` translates full label placement and the new-edge-only
 variant, with positioned-graph validation and atomic rollback. Four hundred
