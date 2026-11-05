@@ -1,3 +1,4 @@
+import { moveSizedNodeToBestGuarded } from '../src/upstream/placement/sized-moves.js';
 import {
   SizedSearch,
   PlacementPointsScratch,
@@ -80,5 +81,21 @@ it.each(fixtures)('matches Go optimizer index $trial', (f) => {
       work: String(searchGuard.Used()),
     },
     { distance: f.distance, placements: f.placements, work: f.searchWork },
+  );
+  const moved = moveSizedNodeToBestGuarded(
+    Background,
+    sized,
+    g.Nodes[0]!,
+    placements,
+    f.trial % 2 === 0,
+    searchGuard,
+  );
+  compare(
+    {
+      moved,
+      position: [g.Nodes[0]!.TopLeft!.X, g.Nodes[0]!.TopLeft!.Y],
+      work: String(searchGuard.Used()),
+    },
+    { moved: f.moved, position: f.movePosition, work: f.moveWork },
   );
 });

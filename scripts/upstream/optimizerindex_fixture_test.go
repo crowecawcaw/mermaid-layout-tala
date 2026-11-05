@@ -77,7 +77,14 @@ func TestExportTypeScriptOptimizerindexFixtures(t *testing.T) {
 		for _, v := range placements {
 			values = append(values, []float64{v.X, v.Y})
 		}
-		out = append(out, map[string]any{"distance": distance, "placements": values, "searchWork": fmt.Sprint(searchGuard.Used()), "trial": trial, "count": count, "x": point.X, "y": point.Y, "id": id, "overlap": overlap, "can": can, "rebuildWork": rebuildWork, "work": fmt.Sprint(guard.Used())})
+		searchWork := fmt.Sprint(searchGuard.Used())
+		moved, err := sized.moveNodeToBestGuarded(context.Background(), g.Nodes[0], placements, trial%2 == 0, searchGuard)
+		if err != nil {
+			t.Fatal(err)
+		}
+		movePosition := []float64{g.Nodes[0].TopLeft.X, g.Nodes[0].TopLeft.Y}
+		moveWork := fmt.Sprint(searchGuard.Used())
+		out = append(out, map[string]any{"moved": moved, "movePosition": movePosition, "moveWork": moveWork, "distance": distance, "placements": values, "searchWork": searchWork, "trial": trial, "count": count, "x": point.X, "y": point.Y, "id": id, "overlap": overlap, "can": can, "rebuildWork": rebuildWork, "work": fmt.Sprint(guard.Used())})
 	}
 	b, err := json.Marshal(out)
 	if err != nil {
