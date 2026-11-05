@@ -314,3 +314,8 @@ and work-limit failures. Regenerate `routingtunnel`.
 ownership, tunnel insertion and center connections. Go fixtures cover all 23
 shapes, shared coordinates, invisible nodes and interrupted builds across 736
 cases. Regenerate `ovgports`.
+
+`routing/ovg-boundaries.ts` translates boundary layers, corner nodes, bounding
+boxes and the point proximity index. 480 Go cases compare generated boundary
+nodes and resource-limit behavior; index-specific coverage remains pending.
+Regenerate `ovgboundary`.
