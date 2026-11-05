@@ -1,3 +1,4 @@
+import { SizelessCandidates } from '../src/upstream/placement/sizeless-candidates.js';
 import { moveNodeToBest } from '../src/upstream/placement/moves.js';
 import {
   optimizerMedian,
@@ -126,5 +127,35 @@ it.each(fixtures)('matches Go placement metrics $trial', (f) => {
       work: String(moveGuard.Used()),
     },
     { position: f.movePosition, moved: f.moved, work: f.moveWork },
+  );
+  const optim = new SizelessCandidates(Background, g, null);
+  const candidateGuard = new OptimizationWorkGuard(
+    Background,
+    'candidate',
+    MaxOptimizationWorkUnits,
+  );
+  const center = new Point(f.trial % 100, (f.trial * 3) % 100);
+  const distance = optim.findClosestUnoccupiedDistanceGuarded(
+    nodes[0]!,
+    center,
+    candidateGuard,
+  );
+  const candidates = optim.placementPointsGuarded(
+    nodes[0]!,
+    center,
+    distance,
+    candidateGuard,
+  );
+  compare(
+    {
+      distance,
+      points: candidates.map((p) => [p.X, p.Y]),
+      work: String(candidateGuard.Used()),
+    },
+    {
+      distance: f.candidateDistance,
+      points: f.candidates,
+      work: f.candidateWork,
+    },
   );
 });

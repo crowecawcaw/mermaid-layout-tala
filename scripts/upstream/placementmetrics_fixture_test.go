@@ -107,7 +107,29 @@ func TestExportTypeScriptPlacementmetricsFixtures(t *testing.T) {
 		}
 		movePosition := []float64{ns[0].TopLeft.X, ns[0].TopLeft.Y}
 		moveWork := fmt.Sprint(moveGuard.Used())
-		out = append(out, map[string]any{"movePosition": movePosition, "moved": moved, "moveWork": moveWork, "guardedMedian": []float64{gx, gy}, "guardedMove": move, "metricWork": metricWork, "guardedIDs": guardedIDs, "guardedWork": work, "directed": directed, "mirrored": positions, "transforms": transforms, "trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersection, "fits": fits})
+		optim, err := newSizelessOptimizer(context.Background(), g, nil)
+		if err != nil {
+			t.Fatal(err)
+		}
+		candidateGuard, err := limits.NewOptimizationWorkGuard(context.Background(), "candidate", limits.MaxOptimizationWorkUnits)
+		if err != nil {
+			t.Fatal(err)
+		}
+		center := geo.NewPoint(float64(trial%100), float64(trial*3%100))
+		distance, err := optim.findClosestUnoccupiedDistanceGuarded(ns[0], center, candidateGuard)
+		if err != nil {
+			t.Fatal(err)
+		}
+		points, err := optim.placementPointsGuarded(ns[0], center, distance, candidateGuard)
+		if err != nil {
+			t.Fatal(err)
+		}
+		pointValues := []any{}
+		for _, p := range points {
+			pointValues = append(pointValues, []float64{p.X, p.Y})
+		}
+		candidateWork := fmt.Sprint(candidateGuard.Used())
+		out = append(out, map[string]any{"candidates": pointValues, "candidateDistance": distance, "candidateWork": candidateWork, "movePosition": movePosition, "moved": moved, "moveWork": moveWork, "guardedMedian": []float64{gx, gy}, "guardedMove": move, "metricWork": metricWork, "guardedIDs": guardedIDs, "guardedWork": work, "directed": directed, "mirrored": positions, "transforms": transforms, "trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersection, "fits": fits})
 	}
 	b, err := json.Marshal(out)
 	if err != nil {
