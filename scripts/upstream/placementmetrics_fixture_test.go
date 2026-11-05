@@ -8,6 +8,7 @@ import (
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/layoutgraph"
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/limits"
 	"github.com/d2lang/d2/lib/geo"
+	"math/rand"
 	"os"
 	"testing"
 )
@@ -82,6 +83,21 @@ func TestExportTypeScriptPlacementmetricsFixtures(t *testing.T) {
 			v := counts.transformsTo(geo.Orientation(d))
 			transforms = append(transforms, []bool{v.mirrorX, v.mirrorY})
 		}
+		rng := rand.New(rand.NewSource(int64(trial + 1)))
+		sized, err := newSizedOptimizer(context.Background(), g, nil, nil, rng, nil)
+		if err != nil {
+			t.Fatal(err)
+		}
+		sizedGuard, err := limits.NewOptimizationWorkGuard(context.Background(), "sized", limits.MaxOptimizationWorkUnits)
+		if err != nil {
+			t.Fatal(err)
+		}
+		sizedMedian, err := sized.medianPointGuarded(ns[0], 1.5, nil, sizedGuard)
+		if err != nil {
+			t.Fatal(err)
+		}
+		sizedNext := fmt.Sprint(rng.Int63())
+		sizedWork := fmt.Sprint(sizedGuard.Used())
 		intersection, fits := intersectsOtherNode(g, ns[0], ns[1]), withinMaxSize(g)
 		if err := mirrorAxes(context.Background(), g, trial%2 == 0, trial%3 == 0); err != nil {
 			t.Fatal(err)
@@ -149,7 +165,7 @@ func TestExportTypeScriptPlacementmetricsFixtures(t *testing.T) {
 		}
 		sizePosition := []float64{ns[0].TopLeft.X, ns[0].TopLeft.Y}
 		sizeWork := fmt.Sprint(sizeGuard.Used())
-		out = append(out, map[string]any{"placements": placements, "sizeMoved": sizeMoved, "sizePosition": sizePosition, "sizeWork": sizeWork, "initialPoints": initialPoints, "candidates": pointValues, "candidateDistance": distance, "candidateWork": candidateWork, "movePosition": movePosition, "moved": moved, "moveWork": moveWork, "guardedMedian": []float64{gx, gy}, "guardedMove": move, "metricWork": metricWork, "guardedIDs": guardedIDs, "guardedWork": work, "directed": directed, "mirrored": positions, "transforms": transforms, "trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersection, "fits": fits})
+		out = append(out, map[string]any{"sizedMedian": []float64{sizedMedian.X, sizedMedian.Y}, "sizedNext": sizedNext, "sizedWork": sizedWork, "placements": placements, "sizeMoved": sizeMoved, "sizePosition": sizePosition, "sizeWork": sizeWork, "initialPoints": initialPoints, "candidates": pointValues, "candidateDistance": distance, "candidateWork": candidateWork, "movePosition": movePosition, "moved": moved, "moveWork": moveWork, "guardedMedian": []float64{gx, gy}, "guardedMove": move, "metricWork": metricWork, "guardedIDs": guardedIDs, "guardedWork": work, "directed": directed, "mirrored": positions, "transforms": transforms, "trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersection, "fits": fits})
 	}
 	b, err := json.Marshal(out)
 	if err != nil {

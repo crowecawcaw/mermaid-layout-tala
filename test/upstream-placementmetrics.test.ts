@@ -1,3 +1,5 @@
+import { SizedSetup } from '../src/upstream/placement/sized-setup.js';
+import { GoRandom } from '../src/random.js';
 import { iterPlacementsAroundPoint } from '../src/upstream/placement/sized-kernels.js';
 import { moveNodeToBestGuarded } from '../src/upstream/placement/sizeless-moves.js';
 import { nodeCandidatePositions } from '../src/upstream/placement/initialize-candidates.js';
@@ -71,6 +73,22 @@ it.each(fixtures)('matches Go placement metrics $trial', (f) => {
   compare(
     { median: guardedMedian, move: guardedMove, work: String(guard.Used()) },
     { median: f.guardedMedian, move: f.guardedMove, work: f.metricWork },
+  );
+  const sizedRandom = new GoRandom(BigInt(f.trial + 1));
+  const sized = new SizedSetup(Background, g, null, null, sizedRandom, []);
+  const sizedGuard = new OptimizationWorkGuard(
+    Background,
+    'sized',
+    MaxOptimizationWorkUnits,
+  );
+  const sizedMedian = sized.medianPointGuarded(nodes[0]!, 1.5, [], sizedGuard);
+  compare(
+    {
+      median: [sizedMedian.X, sizedMedian.Y],
+      next: String(sizedRandom.int63()),
+      work: String(sizedGuard.Used()),
+    },
+    { median: f.sizedMedian, next: f.sizedNext, work: f.sizedWork },
   );
   const neighbors = adjacents(nodes[0]!, null);
   const counts = {
