@@ -363,3 +363,10 @@ alignment, port-direction transforms and the hierarchy build wrapper. Single-
 node Go fixtures cover all four directions, table transposition and restoration
 on work-limit failures. Multi-level hierarchy builds and multiple port owners
 need further differential coverage. Regenerate `ovghierarchy`.
+
+`routing/ovg-build.ts` connects the translated visibility graph construction
+passes in upstream order. One hundred twenty-eight single-node Go cases compare
+the complete resulting graph and work-limit failures; multiple nodes,
+hierarchies, groups and Go map iteration require further differential testing.
+This internal builder is not yet connected to public routing. Regenerate
+`ovgbuild`.
