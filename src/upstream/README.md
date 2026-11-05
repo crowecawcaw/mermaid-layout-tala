@@ -528,3 +528,8 @@ forty Go fixtures compare representative geometry, route validation and exact
 work counts. Nested groups and several geometry helpers need more coverage;
 the packing algorithm itself is still outstanding. Regenerate `packingguard`
 and `packingroutes`.
+
+`packing/candidates.ts` translates placement candidate generation, estimated
+and actual route segments, and route-blocker checks. One hundred twenty Go
+fixtures compare outputs and work counts on flat graphs; cluster endpoints and
+nested cases need additional coverage. Regenerate `packingcandidates`.

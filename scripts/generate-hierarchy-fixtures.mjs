@@ -36,6 +36,7 @@ const packages = {
   packing: 'internal/packing',
   packingguard: 'internal/packing',
   packingroutes: 'internal/packing',
+  packingcandidates: 'internal/packing',
   geo: '../../lib/geo',
   label: '../../lib/label',
   trees: 'internal/trees',
