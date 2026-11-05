@@ -96,6 +96,7 @@ const packages = {
   optimizerindex: 'internal/placement',
   placementstages: 'internal/placement',
   labelmodel: 'internal/labeling',
+  labelingshared: 'internal/labeling',
   initialize: 'internal/placement',
   orthogonal: 'internal/placement',
   placenodes: 'internal/placement',

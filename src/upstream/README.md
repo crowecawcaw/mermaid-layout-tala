@@ -605,3 +605,9 @@ Regenerate `hierarchyplacestage` and `hierarchyplaceseeded`.
 offsets and interface ordering. Eighty Go fixtures compare seeded layouts in
 all directions and fixed-descendant rejection. Tables, complex nested blocks
 and cancellation need additional coverage. Regenerate `hierarchycompound`.
+
+`labeling/shared-segments.ts` translates shared-route intervals, cancellable
+segment sorting, overlap scores and cluster label search helpers. One hundred
+twenty Go fixtures compare interval geometry, scoring and cancellation-check
+counts. Cluster cases and the full label-placement stage remain to be covered.
+Regenerate `labelingshared`.
