@@ -5,7 +5,7 @@ import type { Node } from '../layoutgraph/node.js';
 import type { EdgeAbduction } from '../layoutgraph/records.js';
 import type { Point } from '../geo/point.js';
 import type { OptimizationWorkGuard } from '../limits/optimization.js';
-import { MaxEngineNodes } from '../limits/work.js';
+import { MaxEngineNodes, MaxEngineEdges } from '../limits/work.js';
 import { maxEngineTopologyReferences } from '../layoutgraph/topology-preflight.js';
 import { deltaToGuarded } from '../layoutgraph/node-spacing.js';
 import { median } from './metrics.js';
@@ -158,4 +158,51 @@ export function chargeOptimizerScoring(
   let search = BigInt(node.Graph.Nodes.length + (abductions?.length ?? 0) + 1);
   if (includeSymmetry) search += edges;
   guard.AddProduct(edges, search);
+}
+
+export function chargeOptimizerTranspose(
+  graph: Graph | null,
+  node: Node | null,
+  abductions: EdgeAbduction[] | null,
+  guard: OptimizationWorkGuard,
+): void {
+  if (graph === null || node === null || node.Graph === null)
+    throw new Error(
+      `TALA ${guard.Location()} transpose requires a node with a graph`,
+    );
+  if (
+    graph.Nodes.length > MaxEngineNodes ||
+    graph.Edges.length > MaxEngineEdges ||
+    (abductions?.length ?? 0) > MaxEngineEdges
+  )
+    throw new Error(
+      `TALA ${guard.Location()} transpose inputs exceed engine limits`,
+    );
+  for (const ab of abductions ?? []) {
+    guard.Step();
+    if (ab == null)
+      throw new Error(`TALA ${guard.Location()} found a nil edge abduction`);
+  }
+  if (
+    node.Hierarchy !== null ||
+    node.FixedTopLeft !== null ||
+    node.Edges.length < 1 ||
+    node.Edges.length > 2 ||
+    graph.NodeToTree.has(node) ||
+    graph.Trees.has(node)
+  ) {
+    guard.Step();
+    return;
+  }
+  const nodes = BigInt(graph.Nodes.length + 1),
+    edges = BigInt(graph.Edges.length + 1),
+    abs = BigInt((abductions?.length ?? 0) + 1);
+  for (let i = 0; i < 6; i++) guard.Add(nodes + edges + abs);
+  for (let i = 0; i < 5; i++) {
+    if (abductions === null) {
+      guard.AddProduct(nodes, edges);
+      guard.AddProduct(edges, edges);
+    } else guard.AddProduct(BigInt(node.Edges.length + 1), nodes + abs);
+  }
+  for (let i = 0; i < 4; i++) guard.AddProduct(nodes, nodes);
 }

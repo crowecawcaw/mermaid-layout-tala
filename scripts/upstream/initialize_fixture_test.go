@@ -72,7 +72,25 @@ func TestExportTypeScriptInitializeFixtures(t *testing.T) {
 			optimized = append(optimized, []float64{n.TopLeft.X, n.TopLeft.Y})
 		}
 		nextRandom := fmt.Sprint(rng.Int63())
-		out = append(out, map[string]any{"optimized": optimized, "nextRandom": nextRandom, "stress": stress, "stressPositions": stressPositions, "trial": trial, "cell": g.CellSize, "count": count, "fixed": trial%4 == 0, "edges": edges, "positions": positions})
+		for _, n := range nodes {
+			n.TopLeft.X *= g.CellSize * 3
+			n.TopLeft.Y *= g.CellSize * 3
+		}
+		sizedRng := rand.New(rand.NewSource(int64(trial + 101)))
+		sized, err := newSizedOptimizer(context.Background(), g, nil, nil, sizedRng, nil)
+		if err != nil {
+			t.Fatal(err)
+		}
+		sizedChanged, err := sized.optimize(context.Background(), 0.5)
+		if err != nil {
+			t.Fatal(err)
+		}
+		sizedPositions := []any{}
+		for _, n := range nodes {
+			sizedPositions = append(sizedPositions, []float64{n.TopLeft.X, n.TopLeft.Y})
+		}
+		sizedNext := fmt.Sprint(sizedRng.Int63())
+		out = append(out, map[string]any{"sizedChanged": sizedChanged, "sizedPositions": sizedPositions, "sizedNext": sizedNext, "optimized": optimized, "nextRandom": nextRandom, "stress": stress, "stressPositions": stressPositions, "trial": trial, "cell": g.CellSize, "count": count, "fixed": trial%4 == 0, "edges": edges, "positions": positions})
 	}
 	b, err := json.Marshal(out)
 	if err != nil {
