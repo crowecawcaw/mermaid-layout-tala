@@ -1,7 +1,13 @@
 import { readFileSync } from 'node:fs';
 import { layoutFlowchart } from '../build/src/index.js';
-const fixtures = JSON.parse(
-  readFileSync(new URL('../test/fixtures/upstream-layout.json', import.meta.url), 'utf8')
+const fixtures = ['upstream-layout.json', 'upstream-layoutcorpus.json'].flatMap(
+  (file) =>
+    JSON.parse(
+      readFileSync(
+        new URL(`../test/fixtures/${file}`, import.meta.url),
+        'utf8',
+      ),
+    ),
 );
 const equal = (a, b) => Math.abs(a - b) <= 1e-7;
 function compact(points) {
@@ -13,7 +19,8 @@ function compact(points) {
     if (
       a &&
       b &&
-      ((equal(a.x, b.x) && equal(b.x, point.x)) || (equal(a.y, b.y) && equal(b.y, point.y)))
+      ((equal(a.x, b.x) && equal(b.x, point.x)) ||
+        (equal(a.y, b.y) && equal(b.y, point.y)))
     )
       result.pop();
     result.push(point);
@@ -25,10 +32,19 @@ const results = [];
 for (const fixture of fixtures) {
   let differences = [];
   try {
-    const actual = layoutFlowchart(fixture.nodes, fixture.edges, fixture.options);
+    const actual = layoutFlowchart(
+      fixture.nodes,
+      fixture.edges,
+      fixture.options,
+    );
     for (const node of fixture.expected.nodes) {
       const found = actual.nodes.find((n) => n.id === node.id);
-      if (!found || ['x', 'y', 'width', 'height'].some((key) => !equal(node[key], found[key])))
+      if (
+        !found ||
+        ['x', 'y', 'width', 'height'].some(
+          (key) => !equal(node[key], found[key]),
+        )
+      )
         differences.push(`node:${node.id}`);
     }
     for (const edge of fixture.expected.edges) {
@@ -37,7 +53,10 @@ for (const fixture of fixtures) {
         points = compact(found?.points ?? []);
       if (
         expected.length !== points.length ||
-        expected.some((p, i) => !points[i] || !equal(p.x, points[i].x) || !equal(p.y, points[i].y))
+        expected.some(
+          (p, i) =>
+            !points[i] || !equal(p.x, points[i].x) || !equal(p.y, points[i].y),
+        )
       )
         differences.push(`route:${edge.id}`);
     }
@@ -45,17 +64,23 @@ for (const fixture of fixtures) {
     differences.push(`error:${error.message}`);
   }
   if (!differences.length) passed++;
-  results.push({ name: fixture.name, passed: !differences.length, differences });
+  results.push({
+    name: fixture.name,
+    passed: !differences.length,
+    differences,
+  });
 }
 if (process.argv.includes('--json'))
-  console.log(JSON.stringify({ passed, total: fixtures.length, results }, null, 2));
+  console.log(
+    JSON.stringify({ passed, total: fixtures.length, results }, null, 2),
+  );
 else {
   for (const result of results)
     console.log(
-      `${result.passed ? 'PASS' : 'DIFF'} ${result.name}${result.passed ? '' : ` (${result.differences.join(', ')})`}`
+      `${result.passed ? 'PASS' : 'DIFF'} ${result.name}${result.passed ? '' : ` (${result.differences.join(', ')})`}`,
     );
   console.log(
-    `Full-layout parity: ${passed}/${fixtures.length}; tolerance 1e-7; redundant collinear route vertices ignored.`
+    `Full-layout parity: ${passed}/${fixtures.length}; tolerance 1e-7; redundant collinear route vertices ignored.`,
   );
 }
 process.exitCode = passed === fixtures.length ? 0 : 1;

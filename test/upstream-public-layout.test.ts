@@ -1,5 +1,6 @@
 import { it, expect } from 'vitest';
 import fixtures from './fixtures/upstream-layout.json';
+import expanded from './fixtures/upstream-layoutcorpus.json';
 import {
   layoutFlowchart,
   type LayoutDirection,
@@ -24,26 +25,29 @@ function compact(points: Point[]): Point[] {
   }
   return result;
 }
-it.each(fixtures)('matches pinned Go public layout $name', (fixture) => {
-  const actual = layoutFlowchart(fixture.nodes, fixture.edges, {
-    ...fixture.options,
-    direction: fixture.options.direction as LayoutDirection,
-  });
-  for (const node of fixture.expected.nodes) {
-    const found = actual.nodes.find((candidate) => candidate.id === node.id);
-    expect(found).toBeDefined();
-    for (const key of ['x', 'y', 'width', 'height'] as const)
-      expect(found![key]).toBeCloseTo(node[key], 7);
-  }
-  for (const edge of fixture.expected.edges) {
-    const found = actual.edges.find((candidate) => candidate.id === edge.id);
-    expect(found).toBeDefined();
-    const expected = compact(edge.points),
-      points = compact(found!.points);
-    expect(points).toHaveLength(expected.length);
-    for (let i = 0; i < points.length; i++) {
-      expect(points[i]!.x).toBeCloseTo(expected[i]!.x, 7);
-      expect(points[i]!.y).toBeCloseTo(expected[i]!.y, 7);
+it.each([...fixtures, ...expanded])(
+  'matches pinned Go public layout $name',
+  (fixture) => {
+    const actual = layoutFlowchart(fixture.nodes, fixture.edges, {
+      ...fixture.options,
+      direction: fixture.options.direction as LayoutDirection,
+    });
+    for (const node of fixture.expected.nodes) {
+      const found = actual.nodes.find((candidate) => candidate.id === node.id);
+      expect(found).toBeDefined();
+      for (const key of ['x', 'y', 'width', 'height'] as const)
+        expect(found![key]).toBeCloseTo(node[key], 7);
     }
-  }
-});
+    for (const edge of fixture.expected.edges) {
+      const found = actual.edges.find((candidate) => candidate.id === edge.id);
+      expect(found).toBeDefined();
+      const expected = compact(edge.points),
+        points = compact(found!.points);
+      expect(points).toHaveLength(expected.length);
+      for (let i = 0; i < points.length; i++) {
+        expect(points[i]!.x).toBeCloseTo(expected[i]!.x, 7);
+        expect(points[i]!.y).toBeCloseTo(expected[i]!.y, 7);
+      }
+    }
+  },
+);

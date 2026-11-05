@@ -43,7 +43,7 @@ function walk(g: Graph, apply: (n: Node) => void): void {
 function transpose(g: Graph): void {
   walk(g, (n) => {
     [n.Width, n.Height] = [n.Height, n.Width];
-    [n.TopLeft!.X, n.TopLeft!.Y] = [n.TopLeft!.Y, n.TopLeft!.X];
+    if (n.TopLeft) [n.TopLeft.X, n.TopLeft.Y] = [n.TopLeft.Y, n.TopLeft.X];
     [n.padding.left, n.padding.top] = [n.padding.top, n.padding.left];
     [n.padding.right, n.padding.bottom] = [n.padding.bottom, n.padding.right];
     [n.margin.left, n.margin.top] = [n.margin.top, n.margin.left];
