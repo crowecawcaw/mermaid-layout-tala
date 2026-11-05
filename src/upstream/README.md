@@ -304,3 +304,8 @@ regenerate `ovgresource`.
 `routing/route.ts` translates segment endpoint extraction, colinearity and
 opposing-direction checks, and guarded route-swap eligibility. 1,200 Go
 fixtures compare these decisions and work charges. Regenerate `routingroute`.
+
+`routing/tunnel.ts` translates tunnel range splitting, obstacle filtering,
+sequence wedge adjustment, endpoint creation and whole-graph discovery.
+960 Go cases cover horizontal/vertical layouts, obstructions, multiple edges
+and work-limit failures. Regenerate `routingtunnel`.
