@@ -90,6 +90,7 @@ const packages = {
   routingtunnel: 'internal/routing',
   ovgports: 'internal/routing',
   ovgboundary: 'internal/routing',
+  ovgportindex: 'internal/routing',
 };
 if (!(kind in packages))
   throw new Error(

@@ -319,3 +319,8 @@ cases. Regenerate `ovgports`.
 boxes and the point proximity index. 480 Go cases compare generated boundary
 nodes and resource-limit behavior; index-specific coverage remains pending.
 Regenerate `ovgboundary`.
+
+`routing/ovg-port-index.ts` translates port coordinate indexing, aligned-owner
+merging, clearance queries and the unobstructed port-line scan. Two hundred
+single-owner Go fixtures compare 6,000 queries and aggregate work; Go map owner
+iteration can differ for multiple owners. Regenerate `ovgportindex`.
