@@ -125,6 +125,7 @@ const packages = {
   connectedset: 'internal/layoutgraph',
   placementalign: 'internal/placement',
   placementgapcenter: 'internal/placement',
+  placementgapgeometry: 'internal/placement',
 };
 if (!(kind in packages))
   throw new Error(

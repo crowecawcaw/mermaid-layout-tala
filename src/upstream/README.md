@@ -498,3 +498,7 @@ its transactional comparisons of individual and connected-node moves. One
 hundred twenty Go fixtures compare final positions, including fixed nodes.
 Grouped and nested cases need additional coverage. Regenerate
 `placementgapcenter`.
+
+`placement/gap-geometry.ts` translates gap normalization's between-node and
+nearest-connected-node searches. Four hundred eighty Go fixtures exercise both
+axes and traversal directions. Regenerate `placementgapgeometry`.
