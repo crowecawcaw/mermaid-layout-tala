@@ -9,6 +9,7 @@ const fixtures = [
   'upstream-layoutnodeoptions.json',
   'upstream-layoutarrowlabels.json',
   'upstream-layouttables.json',
+  'upstream-layoutvisibility.json',
 ].flatMap((file) =>
   JSON.parse(
     readFileSync(new URL(`../test/fixtures/${file}`, import.meta.url), 'utf8'),

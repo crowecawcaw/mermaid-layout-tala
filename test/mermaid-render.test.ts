@@ -15,16 +15,20 @@ describe('Mermaid render integration', () => {
     });
     Object.defineProperty(SVGElement.prototype, 'getComputedTextLength', {
       configurable: true,
-      value(this: SVGElement) { return (this.textContent?.length ?? 0) * 8; },
+      value(this: SVGElement) {
+        return (this.textContent?.length ?? 0) * 8;
+      },
     });
     const talaDefinition = talaLayouts[0]!;
-    mermaid.registerLayoutLoaders([{
-      ...talaDefinition,
-      loader: async () => {
-        talaLoaderCalled = true;
-        return talaDefinition.loader();
+    mermaid.registerLayoutLoaders([
+      {
+        ...talaDefinition,
+        loader: async () => {
+          talaLoaderCalled = true;
+          return talaDefinition.loader();
+        },
       },
-    }]);
+    ]);
   });
 
   it('renders real Mermaid flowcharts with finite routed paths', async () => {
@@ -35,6 +39,7 @@ describe('Mermaid render integration', () => {
       'flowchart RL\n  A[Webhook] --> B[Queue]\n  B --> C[Normalize]\n  C -->|valid| D[Store]\n  C -->|invalid| E[Dead letter]',
       'flowchart TB\n client[Client] --> a\n subgraph cloud[Cloud platform]\n subgraph app[Application]\n direction LR\n a[Gateway] --> b[Service]\n end\n b --> db[(Database)]\n end',
       'flowchart LR\n subgraph group[Services]\n a[Worker]\n end\n client[Client] --> group\n a --> a',
+      'flowchart LR\n A[Start] ~~~ B[Spacer]\n B -->|visible| C{Choice}\n C --o D[(Store)]',
     ];
     for (const [index, source] of diagrams.entries()) {
       const result = await mermaid.render(`tala-layout-smoke-${index}`, source);
@@ -43,7 +48,8 @@ describe('Mermaid render integration', () => {
       expect(result.svg).toContain('translate(');
       expect(result.svg).not.toContain('NaN');
       expect(result.svg).not.toContain('Infinity');
-      if (source.includes('subgraph')) expect(result.svg).toContain('cluster-label');
+      if (source.includes('subgraph'))
+        expect(result.svg).toContain('cluster-label');
     }
     expect(talaLoaderCalled).toBe(true);
   });

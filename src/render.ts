@@ -123,6 +123,10 @@ export async function render(
       id: edge.id,
       from: edge.start ?? '',
       to: edge.end ?? '',
+      ...(edge.label && ((edge.width ?? 0) > 0 || (edge.height ?? 0) > 0)
+        ? { label: edge.label }
+        : {}),
+      ...(edge.thickness === 'invisible' ? { isInvisible: true } : {}),
       labelWidth: edge.width ?? 0,
       labelHeight: edge.height ?? 0,
       sourceArrowhead: edge.arrowTypeStart ?? 'none',

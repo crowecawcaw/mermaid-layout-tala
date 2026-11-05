@@ -59,6 +59,7 @@ const packages = {
   layoutnodeoptions: '',
   layoutarrowlabels: '',
   layouttables: '',
+  layoutvisibility: '',
   resultvalidation: '',
   resultmetadata: '',
   loops: 'internal/loops',

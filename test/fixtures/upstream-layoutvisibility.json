@@ -1,0 +1,2494 @@
+[
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      },
+      {
+        "id": "e1",
+        "from": "n0",
+        "to": "n2",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      },
+      {
+        "id": "e2",
+        "from": "n1",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      },
+      {
+        "id": "e3",
+        "from": "n2",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_BOTTOM_CENTER",
+          "labelX": 14,
+          "labelY": 90,
+          "points": [
+            {
+              "x": 36,
+              "y": 30
+            },
+            {
+              "x": 36,
+              "y": 110
+            },
+            {
+              "x": 76,
+              "y": 110
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "labelPercentage": 0.8611111111111112,
+          "labelPosition": "UNLOCKED_MIDDLE",
+          "labelX": 51,
+          "labelY": 170,
+          "points": [
+            {
+              "x": 36,
+              "y": 30
+            },
+            {
+              "x": 36,
+              "y": 170
+            },
+            {
+              "x": 76,
+              "y": 170
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "labelPercentage": 0.15,
+          "labelPosition": "UNLOCKED_TOP",
+          "labelX": 176,
+          "labelY": 98,
+          "points": [
+            {
+              "x": 156,
+              "y": 110
+            },
+            {
+              "x": 201,
+              "y": 110
+            },
+            {
+              "x": 201,
+              "y": 152
+            },
+            {
+              "x": 246,
+              "y": 152
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "isCurve": false,
+          "labelPercentage": 0.19999999999999998,
+          "labelPosition": "UNLOCKED_BOTTOM",
+          "labelX": 178,
+          "labelY": 183,
+          "points": [
+            {
+              "x": 156,
+              "y": 170
+            },
+            {
+              "x": 201,
+              "y": 170
+            },
+            {
+              "x": 201,
+              "y": 152
+            },
+            {
+              "x": 246,
+              "y": 152
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 36,
+          "y": 15
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n1",
+          "width": 80,
+          "x": 116,
+          "y": 110
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 116,
+          "y": 170
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 291,
+          "y": 157.5
+        }
+      ]
+    },
+    "name": "hiddennodes-TB",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "isInvisible": true,
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "isInvisible": true,
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      },
+      {
+        "id": "e1",
+        "from": "n0",
+        "to": "n2",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      },
+      {
+        "id": "e2",
+        "from": "n1",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      },
+      {
+        "id": "e3",
+        "from": "n2",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "labelPercentage": 0.7337278106508875,
+          "labelPosition": "UNLOCKED_TOP",
+          "labelX": 135,
+          "labelY": 8,
+          "points": [
+            {
+              "x": 60,
+              "y": 69
+            },
+            {
+              "x": 120,
+              "y": 69
+            },
+            {
+              "x": 120,
+              "y": 20
+            },
+            {
+              "x": 180,
+              "y": 20
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "labelPercentage": 0.6666666666666666,
+          "labelPosition": "UNLOCKED_BOTTOM",
+          "labelX": 135,
+          "labelY": 97,
+          "points": [
+            {
+              "x": 60,
+              "y": 69
+            },
+            {
+              "x": 120,
+              "y": 69
+            },
+            {
+              "x": 120,
+              "y": 84
+            },
+            {
+              "x": 180,
+              "y": 84
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "labelPercentage": 0.3,
+          "labelPosition": "UNLOCKED_TOP",
+          "labelX": 281,
+          "labelY": 12,
+          "points": [
+            {
+              "x": 260,
+              "y": 24
+            },
+            {
+              "x": 330,
+              "y": 24
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_BOTTOM_LEFT",
+          "labelX": 292,
+          "labelY": 93,
+          "points": [
+            {
+              "x": 260,
+              "y": 80
+            },
+            {
+              "x": 295,
+              "y": 80
+            },
+            {
+              "x": 295,
+              "y": 24
+            },
+            {
+              "x": 330,
+              "y": 24
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 69
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n1",
+          "width": 80,
+          "x": 220,
+          "y": 20
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 220,
+          "y": 80
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 375,
+          "y": 31.5
+        }
+      ]
+    },
+    "name": "hiddennodes-BT",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "isInvisible": true,
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "isInvisible": true,
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      },
+      {
+        "id": "e1",
+        "from": "n0",
+        "to": "n2",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      },
+      {
+        "id": "e2",
+        "from": "n1",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      },
+      {
+        "id": "e3",
+        "from": "n2",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "labelPercentage": 0.7870370370370371,
+          "labelPosition": "UNLOCKED_TOP",
+          "labelX": 112,
+          "labelY": 5,
+          "points": [
+            {
+              "x": 60,
+              "y": 51
+            },
+            {
+              "x": 97,
+              "y": 51
+            },
+            {
+              "x": 97,
+              "y": 18
+            },
+            {
+              "x": 135,
+              "y": 18
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "labelPercentage": 0.7850467289719626,
+          "labelPosition": "UNLOCKED_BOTTOM",
+          "labelX": 112,
+          "labelY": 96,
+          "points": [
+            {
+              "x": 60,
+              "y": 51
+            },
+            {
+              "x": 97,
+              "y": 51
+            },
+            {
+              "x": 97,
+              "y": 83
+            },
+            {
+              "x": 135,
+              "y": 83
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "labelPercentage": 0.175,
+          "labelPosition": "UNLOCKED_TOP",
+          "labelX": 238,
+          "labelY": 9,
+          "points": [
+            {
+              "x": 215,
+              "y": 21
+            },
+            {
+              "x": 265,
+              "y": 21
+            },
+            {
+              "x": 265,
+              "y": 50
+            },
+            {
+              "x": 315,
+              "y": 50
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "isCurve": false,
+          "labelPercentage": 0.15,
+          "labelPosition": "UNLOCKED_BOTTOM",
+          "labelX": 235,
+          "labelY": 94,
+          "points": [
+            {
+              "x": 215,
+              "y": 81
+            },
+            {
+              "x": 265,
+              "y": 81
+            },
+            {
+              "x": 265,
+              "y": 50
+            },
+            {
+              "x": 315,
+              "y": 50
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 51
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n1",
+          "width": 80,
+          "x": 175,
+          "y": 21
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 175,
+          "y": 81
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 360,
+          "y": 50.5
+        }
+      ]
+    },
+    "name": "hiddennodes-LR",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "isInvisible": true,
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "isInvisible": true,
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      },
+      {
+        "id": "e1",
+        "from": "n0",
+        "to": "n2",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      },
+      {
+        "id": "e2",
+        "from": "n1",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      },
+      {
+        "id": "e3",
+        "from": "n2",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "labelPercentage": 0.744,
+          "labelPosition": "UNLOCKED_BOTTOM",
+          "labelX": 297,
+          "labelY": 8,
+          "points": [
+            {
+              "x": 360,
+              "y": 50
+            },
+            {
+              "x": 312,
+              "y": 50
+            },
+            {
+              "x": 312,
+              "y": 20
+            },
+            {
+              "x": 265,
+              "y": 20
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "labelPercentage": 0.744,
+          "labelPosition": "UNLOCKED_TOP",
+          "labelX": 297,
+          "labelY": 93,
+          "points": [
+            {
+              "x": 360,
+              "y": 50
+            },
+            {
+              "x": 312,
+              "y": 50
+            },
+            {
+              "x": 312,
+              "y": 80
+            },
+            {
+              "x": 265,
+              "y": 80
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "labelPercentage": 0.175,
+          "labelPosition": "UNLOCKED_BOTTOM",
+          "labelX": 163,
+          "labelY": 8,
+          "points": [
+            {
+              "x": 185,
+              "y": 20
+            },
+            {
+              "x": 137,
+              "y": 20
+            },
+            {
+              "x": 137,
+              "y": 49
+            },
+            {
+              "x": 90,
+              "y": 49
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "isCurve": false,
+          "labelPercentage": 0.175,
+          "labelPosition": "UNLOCKED_TOP",
+          "labelX": 163,
+          "labelY": 93,
+          "points": [
+            {
+              "x": 185,
+              "y": 80
+            },
+            {
+              "x": 137,
+              "y": 80
+            },
+            {
+              "x": 137,
+              "y": 49
+            },
+            {
+              "x": 90,
+              "y": 49
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 390,
+          "y": 50
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n1",
+          "width": 80,
+          "x": 225,
+          "y": 20
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 225,
+          "y": 80
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 45,
+          "y": 49.5
+        }
+      ]
+    },
+    "name": "hiddennodes-RL",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "isInvisible": true,
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "isInvisible": true,
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "isInvisible": true,
+        "label": "link"
+      },
+      {
+        "id": "e1",
+        "from": "n0",
+        "to": "n2",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      },
+      {
+        "id": "e2",
+        "from": "n1",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "isInvisible": true,
+        "label": "link"
+      },
+      {
+        "id": "e3",
+        "from": "n2",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 138,
+          "labelY": 28,
+          "points": [
+            {
+              "x": 66,
+              "y": 15
+            },
+            {
+              "x": 116,
+              "y": 15
+            },
+            {
+              "x": 116,
+              "y": 90
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_BOTTOM_CENTER",
+          "labelX": 14,
+          "labelY": 120,
+          "points": [
+            {
+              "x": 36,
+              "y": 30
+            },
+            {
+              "x": 36,
+              "y": 170
+            },
+            {
+              "x": 76,
+              "y": 170
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 236,
+          "labelY": 98,
+          "points": [
+            {
+              "x": 156,
+              "y": 110
+            },
+            {
+              "x": 291,
+              "y": 110
+            },
+            {
+              "x": 291,
+              "y": 135
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_RIGHT",
+          "labelX": 219,
+          "labelY": 140,
+          "points": [
+            {
+              "x": 156,
+              "y": 170
+            },
+            {
+              "x": 201,
+              "y": 170
+            },
+            {
+              "x": 201,
+              "y": 152
+            },
+            {
+              "x": 246,
+              "y": 152
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 36,
+          "y": 15
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n1",
+          "width": 80,
+          "x": 116,
+          "y": 110
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 116,
+          "y": 170
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 291,
+          "y": 157.5
+        }
+      ]
+    },
+    "name": "hiddenedges-TB",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "isInvisible": true,
+        "label": "link"
+      },
+      {
+        "id": "e1",
+        "from": "n0",
+        "to": "n2",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      },
+      {
+        "id": "e2",
+        "from": "n1",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "isInvisible": true,
+        "label": "link"
+      },
+      {
+        "id": "e3",
+        "from": "n2",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 80,
+          "labelY": 8,
+          "points": [
+            {
+              "x": 30,
+              "y": 45
+            },
+            {
+              "x": 30,
+              "y": 20
+            },
+            {
+              "x": 155,
+              "y": 20
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_LEFT",
+          "labelX": 89,
+          "labelY": 48,
+          "points": [
+            {
+              "x": 60,
+              "y": 60
+            },
+            {
+              "x": 107,
+              "y": 60
+            },
+            {
+              "x": 107,
+              "y": 80
+            },
+            {
+              "x": 155,
+              "y": 80
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "labelPercentage": 0.19999999999999998,
+          "labelPosition": "UNLOCKED_TOP",
+          "labelX": 256,
+          "labelY": 8,
+          "points": [
+            {
+              "x": 235,
+              "y": 20
+            },
+            {
+              "x": 282,
+              "y": 20
+            },
+            {
+              "x": 282,
+              "y": 32
+            },
+            {
+              "x": 330,
+              "y": 32
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "isCurve": false,
+          "labelPercentage": 0.15,
+          "labelPosition": "UNLOCKED_BOTTOM",
+          "labelX": 256,
+          "labelY": 93,
+          "points": [
+            {
+              "x": 235,
+              "y": 80
+            },
+            {
+              "x": 282,
+              "y": 80
+            },
+            {
+              "x": 282,
+              "y": 32
+            },
+            {
+              "x": 330,
+              "y": 32
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 60
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n1",
+          "width": 80,
+          "x": 195,
+          "y": 20
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 195,
+          "y": 80
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 375,
+          "y": 22.5
+        }
+      ]
+    },
+    "name": "hiddenedges-BT",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "isInvisible": true,
+        "label": "link"
+      },
+      {
+        "id": "e1",
+        "from": "n0",
+        "to": "n2",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      },
+      {
+        "id": "e2",
+        "from": "n1",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "isInvisible": true,
+        "label": "link"
+      },
+      {
+        "id": "e3",
+        "from": "n2",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "labelPercentage": 0.7542372881355932,
+          "labelPosition": "UNLOCKED_TOP",
+          "labelX": 119,
+          "labelY": 8,
+          "points": [
+            {
+              "x": 60,
+              "y": 50
+            },
+            {
+              "x": 104,
+              "y": 50
+            },
+            {
+              "x": 104,
+              "y": 20
+            },
+            {
+              "x": 148,
+              "y": 20
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "labelPercentage": 0.7542372881355932,
+          "labelPosition": "UNLOCKED_BOTTOM",
+          "labelX": 119,
+          "labelY": 93,
+          "points": [
+            {
+              "x": 60,
+              "y": 50
+            },
+            {
+              "x": 104,
+              "y": 50
+            },
+            {
+              "x": 104,
+              "y": 80
+            },
+            {
+              "x": 148,
+              "y": 80
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "labelPercentage": 0.175,
+          "labelPosition": "UNLOCKED_TOP",
+          "labelX": 248,
+          "labelY": 8,
+          "points": [
+            {
+              "x": 228,
+              "y": 20
+            },
+            {
+              "x": 271,
+              "y": 20
+            },
+            {
+              "x": 271,
+              "y": 49
+            },
+            {
+              "x": 315,
+              "y": 49
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "isCurve": false,
+          "labelPercentage": 0.175,
+          "labelPosition": "UNLOCKED_BOTTOM",
+          "labelX": 249,
+          "labelY": 93,
+          "points": [
+            {
+              "x": 228,
+              "y": 80
+            },
+            {
+              "x": 271,
+              "y": 80
+            },
+            {
+              "x": 271,
+              "y": 49
+            },
+            {
+              "x": 315,
+              "y": 49
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 50
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n1",
+          "width": 80,
+          "x": 188,
+          "y": 20
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 188,
+          "y": 80
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 360,
+          "y": 49.5
+        }
+      ]
+    },
+    "name": "hiddenedges-LR",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "isInvisible": true,
+        "label": "link"
+      },
+      {
+        "id": "e1",
+        "from": "n0",
+        "to": "n2",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      },
+      {
+        "id": "e2",
+        "from": "n1",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "isInvisible": true,
+        "label": "link"
+      },
+      {
+        "id": "e3",
+        "from": "n2",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "labelPercentage": 0.744,
+          "labelPosition": "UNLOCKED_BOTTOM",
+          "labelX": 297,
+          "labelY": 8,
+          "points": [
+            {
+              "x": 360,
+              "y": 50
+            },
+            {
+              "x": 312,
+              "y": 50
+            },
+            {
+              "x": 312,
+              "y": 20
+            },
+            {
+              "x": 265,
+              "y": 20
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "labelPercentage": 0.744,
+          "labelPosition": "UNLOCKED_TOP",
+          "labelX": 297,
+          "labelY": 93,
+          "points": [
+            {
+              "x": 360,
+              "y": 50
+            },
+            {
+              "x": 312,
+              "y": 50
+            },
+            {
+              "x": 312,
+              "y": 80
+            },
+            {
+              "x": 265,
+              "y": 80
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "labelPercentage": 0.175,
+          "labelPosition": "UNLOCKED_BOTTOM",
+          "labelX": 163,
+          "labelY": 8,
+          "points": [
+            {
+              "x": 185,
+              "y": 20
+            },
+            {
+              "x": 137,
+              "y": 20
+            },
+            {
+              "x": 137,
+              "y": 49
+            },
+            {
+              "x": 90,
+              "y": 49
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "isCurve": false,
+          "labelPercentage": 0.175,
+          "labelPosition": "UNLOCKED_TOP",
+          "labelX": 163,
+          "labelY": 93,
+          "points": [
+            {
+              "x": 185,
+              "y": 80
+            },
+            {
+              "x": 137,
+              "y": 80
+            },
+            {
+              "x": 137,
+              "y": 49
+            },
+            {
+              "x": 90,
+              "y": 49
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 390,
+          "y": 50
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n1",
+          "width": 80,
+          "x": 225,
+          "y": 20
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 225,
+          "y": 80
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 45,
+          "y": 49.5
+        }
+      ]
+    },
+    "name": "hiddenedges-RL",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "isInvisible": true,
+        "label": "link"
+      },
+      {
+        "id": "e1",
+        "from": "n0",
+        "to": "n2",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      },
+      {
+        "id": "e2",
+        "from": "n1",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "isInvisible": true,
+        "label": "link"
+      },
+      {
+        "id": "e3",
+        "from": "n2",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 138,
+          "labelY": 28,
+          "points": [
+            {
+              "x": 66,
+              "y": 15
+            },
+            {
+              "x": 116,
+              "y": 15
+            },
+            {
+              "x": 116,
+              "y": 90
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_BOTTOM_CENTER",
+          "labelX": 14,
+          "labelY": 120,
+          "points": [
+            {
+              "x": 36,
+              "y": 30
+            },
+            {
+              "x": 36,
+              "y": 170
+            },
+            {
+              "x": 76,
+              "y": 170
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 236,
+          "labelY": 98,
+          "points": [
+            {
+              "x": 156,
+              "y": 110
+            },
+            {
+              "x": 291,
+              "y": 110
+            },
+            {
+              "x": 291,
+              "y": 135
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_RIGHT",
+          "labelX": 219,
+          "labelY": 140,
+          "points": [
+            {
+              "x": 156,
+              "y": 170
+            },
+            {
+              "x": 201,
+              "y": 170
+            },
+            {
+              "x": 201,
+              "y": 152
+            },
+            {
+              "x": 246,
+              "y": 152
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 36,
+          "y": 15
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n1",
+          "width": 80,
+          "x": 116,
+          "y": 110
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 116,
+          "y": 170
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 291,
+          "y": 157.5
+        }
+      ]
+    },
+    "name": "hiddenmixed-TB",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "isInvisible": true,
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "isInvisible": true,
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "isInvisible": true,
+        "label": "link"
+      },
+      {
+        "id": "e1",
+        "from": "n0",
+        "to": "n2",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      },
+      {
+        "id": "e2",
+        "from": "n1",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "isInvisible": true,
+        "label": "link"
+      },
+      {
+        "id": "e3",
+        "from": "n2",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 80,
+          "labelY": 8,
+          "points": [
+            {
+              "x": 30,
+              "y": 45
+            },
+            {
+              "x": 30,
+              "y": 20
+            },
+            {
+              "x": 155,
+              "y": 20
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_LEFT",
+          "labelX": 89,
+          "labelY": 48,
+          "points": [
+            {
+              "x": 60,
+              "y": 60
+            },
+            {
+              "x": 107,
+              "y": 60
+            },
+            {
+              "x": 107,
+              "y": 80
+            },
+            {
+              "x": 155,
+              "y": 80
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "labelPercentage": 0.19999999999999998,
+          "labelPosition": "UNLOCKED_TOP",
+          "labelX": 256,
+          "labelY": 8,
+          "points": [
+            {
+              "x": 235,
+              "y": 20
+            },
+            {
+              "x": 282,
+              "y": 20
+            },
+            {
+              "x": 282,
+              "y": 32
+            },
+            {
+              "x": 330,
+              "y": 32
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "isCurve": false,
+          "labelPercentage": 0.15,
+          "labelPosition": "UNLOCKED_BOTTOM",
+          "labelX": 256,
+          "labelY": 93,
+          "points": [
+            {
+              "x": 235,
+              "y": 80
+            },
+            {
+              "x": 282,
+              "y": 80
+            },
+            {
+              "x": 282,
+              "y": 32
+            },
+            {
+              "x": 330,
+              "y": 32
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 60
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n1",
+          "width": 80,
+          "x": 195,
+          "y": 20
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 195,
+          "y": 80
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 375,
+          "y": 22.5
+        }
+      ]
+    },
+    "name": "hiddenmixed-BT",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "isInvisible": true,
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "isInvisible": true,
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "isInvisible": true,
+        "label": "link"
+      },
+      {
+        "id": "e1",
+        "from": "n0",
+        "to": "n2",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      },
+      {
+        "id": "e2",
+        "from": "n1",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "isInvisible": true,
+        "label": "link"
+      },
+      {
+        "id": "e3",
+        "from": "n2",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "labelPercentage": 0.7542372881355932,
+          "labelPosition": "UNLOCKED_TOP",
+          "labelX": 119,
+          "labelY": 8,
+          "points": [
+            {
+              "x": 60,
+              "y": 50
+            },
+            {
+              "x": 104,
+              "y": 50
+            },
+            {
+              "x": 104,
+              "y": 20
+            },
+            {
+              "x": 148,
+              "y": 20
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "labelPercentage": 0.7542372881355932,
+          "labelPosition": "UNLOCKED_BOTTOM",
+          "labelX": 119,
+          "labelY": 93,
+          "points": [
+            {
+              "x": 60,
+              "y": 50
+            },
+            {
+              "x": 104,
+              "y": 50
+            },
+            {
+              "x": 104,
+              "y": 80
+            },
+            {
+              "x": 148,
+              "y": 80
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "labelPercentage": 0.175,
+          "labelPosition": "UNLOCKED_TOP",
+          "labelX": 248,
+          "labelY": 8,
+          "points": [
+            {
+              "x": 228,
+              "y": 20
+            },
+            {
+              "x": 271,
+              "y": 20
+            },
+            {
+              "x": 271,
+              "y": 49
+            },
+            {
+              "x": 315,
+              "y": 49
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "isCurve": false,
+          "labelPercentage": 0.175,
+          "labelPosition": "UNLOCKED_BOTTOM",
+          "labelX": 249,
+          "labelY": 93,
+          "points": [
+            {
+              "x": 228,
+              "y": 80
+            },
+            {
+              "x": 271,
+              "y": 80
+            },
+            {
+              "x": 271,
+              "y": 49
+            },
+            {
+              "x": 315,
+              "y": 49
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 50
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n1",
+          "width": 80,
+          "x": 188,
+          "y": 20
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 188,
+          "y": 80
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 360,
+          "y": 49.5
+        }
+      ]
+    },
+    "name": "hiddenmixed-LR",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "isInvisible": true,
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "isInvisible": true,
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "isInvisible": true,
+        "label": "link"
+      },
+      {
+        "id": "e1",
+        "from": "n0",
+        "to": "n2",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      },
+      {
+        "id": "e2",
+        "from": "n1",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "isInvisible": true,
+        "label": "link"
+      },
+      {
+        "id": "e3",
+        "from": "n2",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "label": "link"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "labelPercentage": 0.744,
+          "labelPosition": "UNLOCKED_BOTTOM",
+          "labelX": 297,
+          "labelY": 8,
+          "points": [
+            {
+              "x": 360,
+              "y": 50
+            },
+            {
+              "x": 312,
+              "y": 50
+            },
+            {
+              "x": 312,
+              "y": 20
+            },
+            {
+              "x": 265,
+              "y": 20
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "labelPercentage": 0.744,
+          "labelPosition": "UNLOCKED_TOP",
+          "labelX": 297,
+          "labelY": 93,
+          "points": [
+            {
+              "x": 360,
+              "y": 50
+            },
+            {
+              "x": 312,
+              "y": 50
+            },
+            {
+              "x": 312,
+              "y": 80
+            },
+            {
+              "x": 265,
+              "y": 80
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "labelPercentage": 0.175,
+          "labelPosition": "UNLOCKED_BOTTOM",
+          "labelX": 163,
+          "labelY": 8,
+          "points": [
+            {
+              "x": 185,
+              "y": 20
+            },
+            {
+              "x": 137,
+              "y": 20
+            },
+            {
+              "x": 137,
+              "y": 49
+            },
+            {
+              "x": 90,
+              "y": 49
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "isCurve": false,
+          "labelPercentage": 0.175,
+          "labelPosition": "UNLOCKED_TOP",
+          "labelX": 163,
+          "labelY": 93,
+          "points": [
+            {
+              "x": 185,
+              "y": 80
+            },
+            {
+              "x": 137,
+              "y": 80
+            },
+            {
+              "x": 137,
+              "y": 49
+            },
+            {
+              "x": 90,
+              "y": 49
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 390,
+          "y": 50
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n1",
+          "width": 80,
+          "x": 225,
+          "y": 20
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 225,
+          "y": 80
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 45,
+          "y": 49.5
+        }
+      ]
+    },
+    "name": "hiddenmixed-RL",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30
+      },
+      {
+        "isInvisible": true,
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "isInvisible": true,
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  }
+]

@@ -7,6 +7,7 @@ import arrowheads from './fixtures/upstream-layoutarrowheads.json';
 import nodeOptions from './fixtures/upstream-layoutnodeoptions.json';
 import arrowLabels from './fixtures/upstream-layoutarrowlabels.json';
 import tables from './fixtures/upstream-layouttables.json';
+import visibility from './fixtures/upstream-layoutvisibility.json';
 import {
   layoutFlowchart,
   type LayoutDirection,
@@ -40,6 +41,7 @@ it.each([
   ...nodeOptions,
   ...arrowLabels,
   ...tables,
+  ...visibility,
 ])('matches pinned Go public layout $name', (fixture) => {
   const actual = layoutFlowchart(fixture.nodes, fixture.edges, {
     ...fixture.options,

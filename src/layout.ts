@@ -42,6 +42,8 @@ export interface LayoutEdge {
   targetTableColumnIndex?: number;
   sourceArrowheadLabel?: ArrowheadLabel;
   targetArrowheadLabel?: ArrowheadLabel;
+  label?: string;
+  isInvisible?: boolean;
   labelWidth?: number;
   labelHeight?: number;
 }

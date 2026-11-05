@@ -362,6 +362,8 @@ export function translateFlowchart(
     );
     e.ID = edgeIDs[i]!;
     e.D2ID = edgeAbs[i]!;
+    e.IsInvisible = input.isInvisible ?? false;
+    if (e.IsInvisible) e.Style.Stroke = { Value: 'transparent' };
     e.SourceArrowhead = reversed[i]
       ? NoArrowhead
       : arrowhead(input.sourceArrowhead, NoArrowhead);
@@ -413,9 +415,13 @@ export function translateFlowchart(
         e.MinWidth += extra;
         e.MinHeight += extra;
       }
-    if ((input.labelWidth ?? 0) > 0 || (input.labelHeight ?? 0) > 0) {
+    if (
+      input.label ||
+      (input.labelWidth ?? 0) > 0 ||
+      (input.labelHeight ?? 0) > 0
+    ) {
       e.Label = new Label();
-      e.Label.Text = 'label';
+      e.Label.Text = input.label || 'label';
       e.Label.Width = input.labelWidth ?? 0;
       e.Label.Height = input.labelHeight ?? 0;
     }
