@@ -1,3 +1,4 @@
+import { initializeByGraphDistance } from '../src/upstream/placement/stress-initialize.js';
 import { it, expect } from 'vitest';
 import fixtures from './fixtures/upstream-initialize.json';
 import { compare } from './helpers/compare.js';
@@ -21,6 +22,15 @@ it.each(fixtures)('matches Go initialization $trial', (f) => {
     e.SourceArrowhead = r.source;
     e.TargetArrowhead = r.target;
   });
+  const stress = initializeByGraphDistance(Background, g);
+  compare(stress, f.stress);
+  if (stress) {
+    compare(
+      nodes.map((n) => [n.TopLeft!.X, n.TopLeft!.Y]),
+      f.stressPositions,
+    );
+    for (const n of nodes) n.TopLeft = null;
+  }
   initializeNodes(Background, g);
   compare(
     nodes.map((n) => [n.TopLeft!.X, n.TopLeft!.Y]),

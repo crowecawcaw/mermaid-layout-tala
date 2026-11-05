@@ -39,6 +39,17 @@ func TestExportTypeScriptInitializeFixtures(t *testing.T) {
 			}
 			edges = append(edges, map[string]any{"source": string(e.SourceArrowhead), "target": string(e.TargetArrowhead)})
 		}
+		stress, err := initializeByGraphDistance(context.Background(), g)
+		if err != nil {
+			t.Fatal(err)
+		}
+		stressPositions := []any{}
+		if stress {
+			for _, n := range nodes {
+				stressPositions = append(stressPositions, []float64{n.TopLeft.X, n.TopLeft.Y})
+				n.TopLeft = nil
+			}
+		}
 		if err := initializeNodes(context.Background(), g); err != nil {
 			t.Fatal(err)
 		}
@@ -46,7 +57,7 @@ func TestExportTypeScriptInitializeFixtures(t *testing.T) {
 		for _, n := range nodes {
 			positions = append(positions, []float64{n.TopLeft.X, n.TopLeft.Y})
 		}
-		out = append(out, map[string]any{"trial": trial, "cell": g.CellSize, "count": count, "fixed": trial%4 == 0, "edges": edges, "positions": positions})
+		out = append(out, map[string]any{"stress": stress, "stressPositions": stressPositions, "trial": trial, "cell": g.CellSize, "count": count, "fixed": trial%4 == 0, "edges": edges, "positions": positions})
 	}
 	b, err := json.Marshal(out)
 	if err != nil {
