@@ -431,3 +431,9 @@ Eighty connected two-node cases also match Go search paths and costs using
 fully generated visibility graphs. Regenerate `routinggenerated`.
 Sixty additional Go cases compare sequential searches for two or three edges,
 including duplicate and reversed connections. Regenerate `routingmulti`.
+
+`routing/slingshot.ts` translates the upstream L- and S-shaped quick-route
+search, overlap checks, preferences and label penalties. One hundred Go cases
+compare normal slingshot results, and eighty more directly compare S-shaped
+searches with obstacles. Multi-route and table-column cases need broader
+coverage. Regenerate `routingslingshot` and `routingsshape`.
