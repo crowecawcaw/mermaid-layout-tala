@@ -272,3 +272,8 @@ Regenerate `routingtrace` and `routingstage`.
 other-edge checks, signed endpoint direction checks, and atomic rollback.
 1,440 Go comparisons cover successful simplification, obstructions, transposed
 routes and work-limit failures. Regenerate `routingsimplify`.
+
+`routing/priority-queue.ts` translates the indexed min-heap used by route
+search, including insertion-order ties, decrease-key, entry reuse and work
+charges. Its pop order and work totals match 160 Go fixtures. Regenerate
+`routingqueue`.

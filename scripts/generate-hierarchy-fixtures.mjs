@@ -80,6 +80,7 @@ const packages = {
   routingtrace: 'internal/routing',
   routingstage: 'internal/routing',
   routingsimplify: 'internal/routing',
+  routingqueue: 'internal/routing',
 };
 if (!(kind in packages))
   throw new Error(
