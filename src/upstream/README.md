@@ -267,3 +267,8 @@ Regenerate `routinggeometry`.
 cover all 23 shapes, self-edges and modifier combinations. The atomic route-stage wrapper includes validation, work accounting and
 rollback; 480 Go work-limit cases compare its output and failure boundaries.
 Regenerate `routingtrace` and `routingstage`.
+
+`routing/edge-simplify.ts` translates route bend simplification, obstacle and
+other-edge checks, signed endpoint direction checks, and atomic rollback.
+1,440 Go comparisons cover successful simplification, obstructions, transposed
+routes and work-limit failures. Regenerate `routingsimplify`.

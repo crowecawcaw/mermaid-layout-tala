@@ -79,6 +79,7 @@ const packages = {
   routinggeometry: 'internal/routing',
   routingtrace: 'internal/routing',
   routingstage: 'internal/routing',
+  routingsimplify: 'internal/routing',
 };
 if (!(kind in packages))
   throw new Error(
