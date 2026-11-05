@@ -9,6 +9,11 @@ import type {
 } from '../../layout.js';
 import { getTalaSeeds, normalizeSeeds } from '../../random.js';
 import { Background } from '../limits/context.js';
+import {
+  MaxEngineNodes,
+  MaxEngineEdges,
+  MaxEngineTreeDepth,
+} from '../limits/work.js';
 import { Orientation } from '../geo/orientation.js';
 import { Point } from '../geo/point.js';
 import {
@@ -93,6 +98,18 @@ export function translateFlowchart(
   edgeIDs: bigint[];
   reversed: boolean[];
 } {
+  if (inputNodes.length > MaxEngineNodes)
+    throw new Error(`D2 object count exceeds limit ${MaxEngineNodes}`);
+  if (inputEdges.length > MaxEngineEdges)
+    throw new Error(`D2 edge count exceeds limit ${MaxEngineEdges}`);
+  const totalColumns = inputNodes.reduce(
+    (count, node) => count + (node.tableColumns ?? 0),
+    0,
+  );
+  if (totalColumns > MaxEngineNodes)
+    throw new Error(
+      `D2 SQL table column count exceeds limit ${MaxEngineNodes}`,
+    );
   const direction = options.direction ?? 'TB';
   if (!(direction in orientation)) throw new Error('invalid layout direction');
   for (const name of [
@@ -101,7 +118,7 @@ export function translateFlowchart(
     'containerPadding',
   ] as const) {
     const v = options[name];
-    if (v !== undefined && (!Number.isFinite(v) || v < 0))
+    if (v !== undefined && (!Number.isFinite(v) || v < 0 || v > 1_000_000_000))
       throw new Error(`${name} must be finite and nonnegative`);
   }
   if (
@@ -115,13 +132,18 @@ export function translateFlowchart(
     if (
       !Number.isFinite(n.width) ||
       n.width <= 0 ||
+      n.width > 1_000_000_000 ||
       !Number.isFinite(n.height) ||
-      n.height <= 0
+      n.height <= 0 ||
+      n.height > 1_000_000_000
     )
       throw new Error(`node ${n.id} must have finite positive dimensions`);
     for (const key of ['labelWidth', 'labelHeight'] as const) {
       const value = n[key];
-      if (value !== undefined && (!Number.isFinite(value) || value < 0))
+      if (
+        value !== undefined &&
+        (!Number.isFinite(value) || value < 0 || value > 1_000_000_000)
+      )
         throw new Error(`${key} must be finite and nonnegative`);
     }
     if (
@@ -139,6 +161,12 @@ export function translateFlowchart(
         Math.abs(n.fixedPosition.y) > 1_000_000_000)
     )
       throw new Error(`node ${n.id} has an invalid fixed position`);
+    if (
+      n.fixedPosition &&
+      (Math.abs(n.fixedPosition.x + n.width) > 1_000_000_000 ||
+        Math.abs(n.fixedPosition.y + n.height) > 1_000_000_000)
+    )
+      throw new Error(`node ${n.id} fixed bounds exceed the supported range`);
     for (const [name, value] of [
       ['labelPosition', n.labelPosition],
       ['iconPosition', n.iconPosition],
@@ -163,16 +191,21 @@ export function translateFlowchart(
   const ordered: LayoutNode[] = [],
     abs = new Map<string, string>(),
     visiting = new Set<string>();
-  const visit = (node: LayoutNode, parent: string) => {
+  const visit = (node: LayoutNode, parent: string, depth: number) => {
+    if (depth > MaxEngineTreeDepth)
+      throw new Error(
+        `D2 object nesting depth exceeds limit ${MaxEngineTreeDepth}`,
+      );
     if (visiting.has(node.id)) throw new Error('cyclic container parent');
     visiting.add(node.id);
     const id = parent ? `${parent}.${node.id}` : node.id;
     abs.set(node.id, id);
     ordered.push(node);
-    for (const child of children.get(node.id) ?? []) visit(child, id);
+    for (const child of children.get(node.id) ?? [])
+      visit(child, id, depth + 1);
     visiting.delete(node.id);
   };
-  for (const node of children.get(null) ?? []) visit(node, '');
+  for (const node of children.get(null) ?? []) visit(node, '', 1);
   if (ordered.length !== inputNodes.length)
     throw new Error('cyclic container parent');
   const ids = allocateEntityIDs(ordered.map((n) => abs.get(n.id)!)),
@@ -279,7 +312,10 @@ export function translateFlowchart(
       throw new Error(`edge ${e.id} references a missing node`);
     for (const key of ['labelWidth', 'labelHeight'] as const) {
       const v = e[key];
-      if (v !== undefined && (!Number.isFinite(v) || v < 0))
+      if (
+        v !== undefined &&
+        (!Number.isFinite(v) || v < 0 || v > 1_000_000_000)
+      )
         throw new Error(`${key} must be finite and nonnegative`);
     }
     for (const [name, label] of [
@@ -478,15 +514,26 @@ export function layoutFlowchartTranslated(
   for (const edge of inputEdges)
     if (edge.from !== edge.to) outgoing.get(edge.from)!.push(edge);
   const dag: LayoutEdge[] = [];
-  const visitRank = (id: string): void => {
-    colors.set(id, 1);
-    for (const edge of outgoing.get(id)!) {
-      const color = colors.get(edge.to)!;
+  const visitRank = (start: string): void => {
+    const stack: { id: string; index: number }[] = [{ id: start, index: 0 }];
+    colors.set(start, 1);
+    while (stack.length) {
+      const frame = stack[stack.length - 1]!,
+        edges = outgoing.get(frame.id)!;
+      if (frame.index >= edges.length) {
+        colors.set(frame.id, 2);
+        stack.pop();
+        continue;
+      }
+      const edge = edges[frame.index++]!,
+        color = colors.get(edge.to)!;
       if (color === 1) continue;
       dag.push(edge);
-      if (color === 0) visitRank(edge.to);
+      if (color === 0) {
+        colors.set(edge.to, 1);
+        stack.push({ id: edge.to, index: 0 });
+      }
     }
-    colors.set(id, 2);
   };
   for (const n of inputNodes) if (colors.get(n.id) === 0) visitRank(n.id);
   const ranks = new Map(inputNodes.map((n) => [n.id, 0]));
