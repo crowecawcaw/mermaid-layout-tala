@@ -502,3 +502,10 @@ Grouped and nested cases need additional coverage. Regenerate
 `placement/gap-geometry.ts` translates gap normalization's between-node and
 nearest-connected-node searches. Four hundred eighty Go fixtures exercise both
 axes and traversal directions. Regenerate `placementgapgeometry`.
+
+`placement/gap-reduction.ts` translates connected-neighbor gap reduction,
+symmetry recovery, container-side moves, and the complete normalization stage.
+Four hundred eighty Go fixtures each compare the reduction and stage on flat
+graphs, including successful moves and fixed nodes. Nested containers, groups,
+and failure rollback need additional coverage. Regenerate
+`placementgapreduction` and `placementgapstage`.

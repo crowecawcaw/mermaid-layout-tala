@@ -126,6 +126,8 @@ const packages = {
   placementalign: 'internal/placement',
   placementgapcenter: 'internal/placement',
   placementgapgeometry: 'internal/placement',
+  placementgapreduction: 'internal/placement',
+  placementgapstage: 'internal/placement',
 };
 if (!(kind in packages))
   throw new Error(
