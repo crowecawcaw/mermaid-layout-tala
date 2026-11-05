@@ -1,3 +1,5 @@
+import { compaction } from '../src/upstream/placement/compaction.js';
+import { LayoutAxis } from '../src/upstream/placement/axis.js';
 import { SizedOptimizer } from '../src/upstream/placement/sized-optimizer.js';
 import { SizelessOptimizer } from '../src/upstream/placement/sizeless-optimizer.js';
 import { GoRandom } from '../src/random.js';
@@ -60,6 +62,18 @@ it.each(fixtures)('matches Go initialization $trial', (f) => {
       next: String(sizedRandom.int63()),
     },
     { changed: f.sizedChanged, positions: f.sizedPositions, next: f.sizedNext },
+  );
+  compaction(Background, g, {
+    edgeAbductions: null,
+    axis: f.trial % 2 === 0 ? LayoutAxis.Horizontal : LayoutAxis.Vertical,
+    includeSizes: true,
+    factor: 1,
+    transition: f.trial % 3 === 0,
+    moveWorkLimit: 0n,
+  });
+  compare(
+    nodes.map((n) => [n.TopLeft!.X, n.TopLeft!.Y]),
+    f.compacted,
   );
 });
 
@@ -135,4 +149,33 @@ it('restores sized optimization state on a work-limit failure', () => {
   expect(nodes.map((n) => [n.TopLeft!.X, n.TopLeft!.Y])).toEqual(before);
   expect(g.turnCost).toBe(4);
   expect(g.edgeLengthCache!.get(99n)).toBe(12);
+});
+
+it('restores compaction positions and routing costs when movement work is exhausted', () => {
+  const g = new Graph();
+  g.CellSize = 20;
+  const nodes = Array.from({ length: 3 }, (_, i) => {
+    const n = new Node(BigInt(i + 1), 20, 20);
+    g.AddNewNodeToContainer(null, n);
+    n.TopLeft = new Point(i * 100, 0);
+    return n;
+  });
+  g.Connect(nodes[0]!, nodes[1]!);
+  g.Connect(nodes[1]!, nodes[2]!);
+  const pointers = nodes.map((n) => n.TopLeft!),
+    before = pointers.map((p) => [p.X, p.Y]);
+  g.turnCost = 7;
+  expect(() =>
+    compaction(Background, g, {
+      edgeAbductions: null,
+      axis: LayoutAxis.Horizontal,
+      includeSizes: true,
+      factor: 1,
+      transition: false,
+      moveWorkLimit: 1n,
+    }),
+  ).toThrow('work exceeds limit');
+  nodes.forEach((n, i) => expect(n.TopLeft).toBe(pointers[i]));
+  expect(nodes.map((n) => [n.TopLeft!.X, n.TopLeft!.Y])).toEqual(before);
+  expect(g.turnCost).toBe(7);
 });

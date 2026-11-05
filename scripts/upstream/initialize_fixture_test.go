@@ -90,7 +90,19 @@ func TestExportTypeScriptInitializeFixtures(t *testing.T) {
 			sizedPositions = append(sizedPositions, []float64{n.TopLeft.X, n.TopLeft.Y})
 		}
 		sizedNext := fmt.Sprint(sizedRng.Int63())
-		out = append(out, map[string]any{"sizedChanged": sizedChanged, "sizedPositions": sizedPositions, "sizedNext": sizedNext, "optimized": optimized, "nextRandom": nextRandom, "stress": stress, "stressPositions": stressPositions, "trial": trial, "cell": g.CellSize, "count": count, "fixed": trial%4 == 0, "edges": edges, "positions": positions})
+		axis := horizontalAxis
+		if trial%2 == 1 {
+			axis = verticalAxis
+		}
+		err = compaction(context.Background(), g, compactionOptions{axis: axis, includeSizes: true, factor: 1, transition: trial%3 == 0})
+		if err != nil {
+			t.Fatal(err)
+		}
+		compacted := []any{}
+		for _, n := range nodes {
+			compacted = append(compacted, []float64{n.TopLeft.X, n.TopLeft.Y})
+		}
+		out = append(out, map[string]any{"compacted": compacted, "sizedChanged": sizedChanged, "sizedPositions": sizedPositions, "sizedNext": sizedNext, "optimized": optimized, "nextRandom": nextRandom, "stress": stress, "stressPositions": stressPositions, "trial": trial, "cell": g.CellSize, "count": count, "fixed": trial%4 == 0, "edges": edges, "positions": positions})
 	}
 	b, err := json.Marshal(out)
 	if err != nil {
