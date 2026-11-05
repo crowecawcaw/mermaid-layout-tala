@@ -594,3 +594,9 @@ level placement and four-direction Brandes–Köpf alignment. Two hundred forty 
 fixtures compare flat-graph geometry before and after alignment. Nested
 containers, tables and cancellation need additional coverage. Regenerate
 `hierarchyinitialgeometry` and `hierarchyalignment`.
+
+`hierarchy/place.ts` connects hierarchy placement, seeded ordering, direction
+transforms, ownership restoration and rollback. Two hundred forty Go fixtures
+compare flat-graph geometry in every direction with seeded and unseeded order.
+Nested containers, tables and late cancellation need additional coverage.
+Regenerate `hierarchyplacestage` and `hierarchyplaceseeded`.

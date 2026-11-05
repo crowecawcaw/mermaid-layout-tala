@@ -41,6 +41,8 @@ const packages = {
   hierarchysifting: 'internal/hierarchy',
   hierarchyinitialgeometry: 'internal/hierarchy',
   hierarchyalignment: 'internal/hierarchy',
+  hierarchyplacestage: 'internal/hierarchy',
+  hierarchyplaceseeded: 'internal/hierarchy',
   quality: 'internal/quality',
   layout: '',
   loops: 'internal/loops',
