@@ -122,6 +122,7 @@ const packages = {
   routinggraph: 'internal/routing',
   placementsymmetrystage: 'internal/placement',
   placementswapstage: 'internal/placement',
+  connectedset: 'internal/layoutgraph',
 };
 if (!(kind in packages))
   throw new Error(

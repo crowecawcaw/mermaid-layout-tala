@@ -481,3 +481,8 @@ validation, crossing and cost comparisons, and the four-pass stage. Eighty
 Go fixtures exercise successful swaps and compare final geometry and cell size.
 Grouped containers and cancellation need broader coverage. Regenerate
 `placementswapstage`.
+
+`layoutgraph/connected-set.ts` translates the original connected traversal and
+its indexed large-graph variant, including container and cluster ownership
+views. One hundred sixty Go fixtures compare membership with exclusions on
+small and large nested graphs. Regenerate `connectedset`.
