@@ -70,6 +70,7 @@ const packages = {
   placementstages: 'internal/placement',
   labelmodel: 'internal/labeling',
   initialize: 'internal/placement',
+  orthogonal: 'internal/placement',
   edgelength: 'internal/placementcost',
   ports: 'internal/placementcost',
 };

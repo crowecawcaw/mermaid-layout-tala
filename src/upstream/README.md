@@ -242,3 +242,10 @@ the 320 `edgelength` graphs; group and abduction cases need additional coverage.
 
 Graph-wide costs and cache hashes also match Go for the 320 `edgelength` graphs
 across eight option combinations; larger parallel and grouped graphs need coverage.
+
+The orthogonal placement pass now connects translated initialization, sizeless
+and sized optimization, compaction, nested geometry and herd synchronization.
+Forty-eight Go fixtures compare final coordinates, turn cost and RNG state on
+small chain and branching graphs, including fixed nodes. Nested groups, larger
+graphs and full public-pipeline integration still require verification. Regenerate
+`orthogonal`.
