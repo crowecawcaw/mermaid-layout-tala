@@ -373,3 +373,7 @@ This internal builder is not yet connected to public routing. Regenerate
 Eighty additional connected two-node Go cases compare complete visibility
 coordinates and edge topology independent of map-driven insertion order;
 regenerate `ovgbuildmulti`.
+
+`routing/sort-edges.ts` translates all four route generation orders and
+cluster-first stable ordering, using Go's stable sort schedule. One hundred
+eighty Go graphs compare every flavor. Regenerate `routingsortedge`.

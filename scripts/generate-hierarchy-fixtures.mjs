@@ -100,6 +100,7 @@ const packages = {
   ovghierarchy: 'internal/routing',
   ovgbuild: 'internal/routing',
   ovgbuildmulti: 'internal/routing',
+  routingsortedge: 'internal/routing',
 };
 if (!(kind in packages))
   throw new Error(
