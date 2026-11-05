@@ -1,3 +1,6 @@
+import { ComputeOffsets } from '../loops/loops.js';
+import { Initialize } from '../labeling/model.js';
+import { UpdateSpacing } from '../layoutgraph/node-spacing.js';
 // Translated internal/placement/stages.go at D2 bf337903. MPL-2.0.
 // Copyright Terrastruct Inc. and contributors.
 import type { Graph } from '../layoutgraph/graph.js';
@@ -138,4 +141,10 @@ export function Pad(graph: Graph): void {
     node.TopLeft!.X += placementPadding;
     node.TopLeft!.Y += placementPadding;
   }
+}
+
+export function Prepare(graph: Graph): void {
+  ComputeOffsets(graph);
+  Initialize(graph);
+  for (const node of graph.Nodes) UpdateSpacing(node);
 }

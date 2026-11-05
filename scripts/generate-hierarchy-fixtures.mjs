@@ -32,6 +32,7 @@ const packages = {
   quality: 'internal/quality',
   layout: '',
   loops: 'internal/loops',
+  loopoffsets: 'internal/loops',
   packing: 'internal/packing',
   geo: '../../lib/geo',
   label: '../../lib/label',
