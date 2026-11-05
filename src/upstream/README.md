@@ -277,3 +277,8 @@ routes and work-limit failures. Regenerate `routingsimplify`.
 search, including insertion-order ties, decrease-key, entry reuse and work
 charges. Its pop order and work totals match 160 Go fixtures. Regenerate
 `routingqueue`.
+
+`routing/ovg-node.ts` and `ovg-edge.ts` translate visibility graph node/edge
+metadata, including multiple owners and directions per port, direction-set
+transforms and distance to node boundaries. The visibility construction and
+port-index scans remain pending. Regenerate `routingovg` for 360 Go cases.
