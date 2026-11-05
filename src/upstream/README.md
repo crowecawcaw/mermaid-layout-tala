@@ -388,3 +388,9 @@ Regenerate `slingshotgeometry`.
 turn-cost correction, ideal axes, cycle handling and bounded work. Eight
 hundred Go cases compare route selection and interruption. Regenerate
 `routingbest`.
+
+`routing/route-sharing.ts` translates route overlap eligibility, guarded edge
+and node scans, ancestor filtering and cluster membership discovery. Six
+hundred Go cases compare arrowhead-based sharing, geometric overlap and work
+charges; complex styles and nested clusters need broader coverage. Regenerate
+`routingsharing`.

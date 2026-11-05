@@ -103,6 +103,7 @@ const packages = {
   routingsortedge: 'internal/routing',
   slingshotgeometry: 'internal/routing',
   routingbest: 'internal/routing',
+  routingsharing: 'internal/routing',
 };
 if (!(kind in packages))
   throw new Error(

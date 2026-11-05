@@ -128,6 +128,9 @@ export class RouteSearchWorkGuard {
     }
     this.Check();
   }
+  HasDone(): boolean {
+    return this.done !== null;
+  }
   Used(): bigint {
     return this.used;
   }
