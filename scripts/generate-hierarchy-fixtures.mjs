@@ -30,6 +30,7 @@ const kind = process.argv[3] ?? 'hierarchy';
 const packages = {
   hierarchy: 'internal/hierarchy',
   hierarchyeligibility: 'internal/hierarchy',
+  hierarchyvalidity: 'internal/hierarchy',
   quality: 'internal/quality',
   layout: '',
   loops: 'internal/loops',

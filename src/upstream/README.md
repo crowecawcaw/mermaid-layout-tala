@@ -551,3 +551,8 @@ and complex container shapes need additional coverage. Regenerate
 eligibility rules, including structural-edge filtering. One hundred twenty Go
 fixtures cover shapes, loops, internal edges and fixed nodes. Full hierarchy
 discovery and placement remain outstanding. Regenerate `hierarchyeligibility`.
+
+`hierarchy/validity.ts` translates orientation, direction counting, workflow
+extent and hierarchy validity rules. One hundred sixty Go fixtures compare
+these decisions across directed, undirected and loop edges. Abducted-edge and
+large-workflow cases need additional coverage. Regenerate `hierarchyvalidity`.
