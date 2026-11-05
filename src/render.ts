@@ -113,6 +113,7 @@ export async function render(
             ? {
                 labelWidth: measured.labelBBox.width,
                 labelHeight: measured.labelBBox.height,
+                label: node.label,
               }
             : {}),
         ...(node.dir ? { direction: normalizeDirection(node.dir) } : {}),

@@ -14,12 +14,12 @@ full parity. The prior WebAssembly replacement remains reverted; the public
 | Hierarchy, placement and packing | Translated upstream algorithms, including compound hierarchy placement | Go differential fixtures cover rank assignment, ordering, alignment, gap normalization, recursive packing and grouped layouts; more complex graphs remain to be tested |
 | Routing and labels | Translated upstream OVG routing, cleanup, port swaps, segment balancing, channel nudging, shortcutting and label placement | Go differential fixtures cover stages and work limits; shapes, clusters, aliases and larger diagrams need broader coverage |
 | Candidate selection | Go-compatible random stream, upstream penalty/area scoring and compound refinement | Scoring and refinement have differential fixtures; public adapter validation and additional D2 metadata need coverage |
-| Mermaid adapter | Maps the supported flowchart input to the translated graph | 140/140 pinned full-layout fixtures pass. The input model does not expose all D2 shapes, icons, labels or fixed-port features |
+| Mermaid adapter | Maps the supported flowchart input to the translated graph | 160/160 pinned full-layout fixtures pass. The input model does not expose all D2 shapes, arrowhead labels or fixed-port features |
 | Resource accounting | Translated work guards and stage rollback | Expand cancellation and failure tests through the complete public pipeline |
 
 ## Acceptance work still required
 
-1. Expand end-to-end Go comparisons beyond the initial 140 cases, including
+1. Expand end-to-end Go comparisons beyond the initial 160 cases, including
    larger and nested graphs, labels, alternate shapes and fixed ports.
 2. Extend the Mermaid input mapping and result validation for upstream features
    that the current flowchart API cannot represent.

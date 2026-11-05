@@ -6,6 +6,7 @@ const fixtures = [
   'upstream-layoutfeatures.json',
   'upstream-layoutrandom.json',
   'upstream-layoutarrowheads.json',
+  'upstream-layoutnodeoptions.json',
 ].flatMap((file) =>
   JSON.parse(
     readFileSync(new URL(`../test/fixtures/${file}`, import.meta.url), 'utf8'),
@@ -48,6 +49,15 @@ for (const fixture of fixtures) {
         )
       )
         differences.push(`node:${node.id}`);
+      for (const key of [
+        'fontSize',
+        'iconPosition',
+        'labelPosition',
+        'labelWidth',
+        'labelHeight',
+      ])
+        if (key in node && (!found || node[key] !== found[key]))
+          differences.push(`node-${key}:${node.id}`);
       if (
         'labelX' in node &&
         (!found ||
@@ -60,6 +70,9 @@ for (const fixture of fixtures) {
       const found = actual.edges.find((e) => e.id === edge.id);
       const expected = compact(edge.points),
         points = compact(found?.points ?? []);
+      for (const key of ['isCurve', 'labelPosition', 'labelPercentage'])
+        if (key in edge && (!found || edge[key] !== found[key]))
+          differences.push(`edge-${key}:${edge.id}`);
       if (
         'labelX' in edge &&
         (!found || !equal(edge.labelX, found.x) || !equal(edge.labelY, found.y))

@@ -9,6 +9,15 @@ export interface LayoutNode extends RankNode {
   height: number;
   fixedSize?: boolean;
   shape?: string;
+  label?: string;
+  labelPosition?: string;
+  icon?: string;
+  iconPosition?: string;
+  fontSize?: number;
+  fixedPosition?: { x: number; y: number };
+  isInvisible?: boolean;
+  is3D?: boolean;
+  isMultiple?: boolean;
   parentId?: string;
   isGroup?: boolean;
   direction?: LayoutDirection;
@@ -47,12 +56,16 @@ export interface PositionedNode extends LayoutNode {
   order: number;
   labelX?: number;
   labelY?: number;
+  iconPosition?: string;
 }
 
 export interface PositionedEdge extends LayoutEdge {
   points: Point[];
   x: number;
   y: number;
+  labelPosition?: string;
+  labelPercentage?: number;
+  isCurve?: boolean;
 }
 
 export interface LayoutResult {

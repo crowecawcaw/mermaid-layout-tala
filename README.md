@@ -52,14 +52,14 @@ runs the default seeds `[1, 2, 3]` using a Go-compatible random stream and selec
 the result by upstream penalty, then area, with later seeds winning exact ties.
 
 The public layout now runs the translated upstream TALA pipeline. The pinned
-full-layout corpus matches all 140 cases, including nested groups, loops, parallel
+full-layout corpus matches all 160 cases, including nested groups, loops, parallel
 edges and all four directions. This corpus is a useful baseline, not proof of
 parity for every graph or all D2 features. See the [parity matrix](./test/UPSTREAM-PARITY.md).
 
 The synchronous `layoutFlowchart(nodes, edges, options)` API is preserved. Nodes
-can specify `parentId`, `isGroup`, `direction`, `labelWidth`, and `labelHeight`;
-edges can specify measured `labelWidth` and `labelHeight`. Nodes can request
-fixed dimensions with `fixedSize: true`. Invalid parent references and cycles
+can specify `parentId`, `isGroup`, `direction`, `shape`, measured labels,
+icon placement, font size, and fixed positions. Edges can specify measured
+labels and arrowhead types. Nodes can request fixed dimensions with `fixedSize: true`. Invalid parent references and cycles
 are rejected. The legacy `nodeSpacing`, `rankSpacing`, `orderingPasses`, and
 `containerPadding` options are accepted for compatibility; upstream TALA uses
 its own spacing and ordering policies.
@@ -69,8 +69,8 @@ API's options. Seeds accept safe integer numbers or signed 64-bit `bigint`
 values. Up to 64 entries and 16 unique seeds are allowed; duplicates are removed
 in authored order. `getTalaSeeds()` returns an independent copy. `evaluateLayout()`
 returns a score for a public layout result. Seed selection uses the translated
-upstream graph evaluator. Some Mermaid shapes have matching upstream shape policies; icons and arrowhead
-labels are not yet exposed by the flowchart input model.
+upstream graph evaluator. Some Mermaid shapes have matching upstream shape
+policies; arrowhead labels are not yet exposed by the flowchart input model.
 
 ## Development
 
@@ -80,8 +80,8 @@ npm run build
 npm test
 ```
 
-`npm run test:parity` compares complete layouts against 140 pinned Go fixtures.
-It currently reports 140/140 matching. It checks geometry and routes on this corpus;
+`npm run test:parity` compares complete layouts against 160 pinned Go fixtures.
+It currently reports 160/160 matching. It checks geometry and routes on this corpus;
 additional upstream features and graph shapes still need differential coverage.
 
 Run the playground with `npm run demo -- --port 4173`, then open

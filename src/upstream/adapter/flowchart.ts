@@ -10,6 +10,13 @@ import type {
 import { getTalaSeeds, normalizeSeeds } from '../../random.js';
 import { Background } from '../limits/context.js';
 import { Orientation } from '../geo/orientation.js';
+import { Point } from '../geo/point.js';
+import {
+  FromString,
+  IsShapePosition,
+  String as LabelPositionString,
+  Mirrored,
+} from '../label/label.js';
 import { Graph } from '../layoutgraph/graph.js';
 import { Node } from '../layoutgraph/node.js';
 import {
@@ -116,6 +123,27 @@ export function translateFlowchart(
       if (value !== undefined && (!Number.isFinite(value) || value < 0))
         throw new Error(`${key} must be finite and nonnegative`);
     }
+    if (
+      n.fontSize !== undefined &&
+      (!Number.isInteger(n.fontSize) ||
+        n.fontSize <= 0 ||
+        n.fontSize > 1_000_000_000)
+    )
+      throw new Error(`node ${n.id} has an invalid font size`);
+    if (
+      n.fixedPosition &&
+      (!Number.isInteger(n.fixedPosition.x) ||
+        !Number.isInteger(n.fixedPosition.y) ||
+        Math.abs(n.fixedPosition.x) > 1_000_000_000 ||
+        Math.abs(n.fixedPosition.y) > 1_000_000_000)
+    )
+      throw new Error(`node ${n.id} has an invalid fixed position`);
+    for (const [name, value] of [
+      ['labelPosition', n.labelPosition],
+      ['iconPosition', n.iconPosition],
+    ] as const)
+      if (value !== undefined && !IsShapePosition(FromString(value)))
+        throw new Error(`node ${n.id} has an invalid ${name}`);
     if (n.direction !== undefined && !(n.direction in orientation))
       throw new Error(`node ${n.id} has an invalid direction`);
     byId.set(n.id, n);
@@ -188,20 +216,31 @@ export function translateFlowchart(
       node.SetShape(known[n.shape.toLowerCase()] ?? n.shape);
     }
     node.D2ID = abs.get(n.id)!;
+    node.IsInvisible = n.isInvisible ?? false;
+    node.Is3D = n.is3D ?? false;
+    node.IsMultiple = n.isMultiple ?? false;
+    if (n.fixedPosition)
+      node.FixedTopLeft = new Point(n.fixedPosition.x, n.fixedPosition.y);
+    if (n.icon) {
+      node.InitIcon();
+      if (n.iconPosition) node.Icon!.Position = FromString(n.iconPosition);
+    }
     let depth = 1;
     for (let parent = n.parentId; parent; parent = byId.get(parent)?.parentId)
       depth++;
     node.FontSize =
-      n.isGroup && (children.get(n.id)?.length ?? 0) > 0
+      n.fontSize ??
+      (n.isGroup && (children.get(n.id)?.length ?? 0) > 0
         ? ([28, 24, 20][depth - 1] ?? 16)
-        : 16;
+        : 16);
     if (n.fixedSize) {
       node.DesiredWidth = n.width;
       node.DesiredHeight = n.height;
     }
-    if ((n.labelWidth ?? 0) > 0 || (n.labelHeight ?? 0) > 0) {
+    if (n.label || (n.labelWidth ?? 0) > 0 || (n.labelHeight ?? 0) > 0) {
       node.Label = new Label();
-      node.Label.Text = 'label';
+      node.Label.Text = n.label || 'label';
+      if (n.labelPosition) node.Label.Position = FromString(n.labelPosition);
       node.Label.Width = n.labelWidth ?? 0;
       node.Label.Height = n.labelHeight ?? 0;
     }
@@ -410,10 +449,17 @@ export function layoutFlowchartTranslated(
         height: n.Height,
         rank: ranks.get(input.id) ?? 0,
         order: index,
+        ...(n.FontSize !== null ? { fontSize: n.FontSize } : {}),
+        ...(n.Icon
+          ? { iconPosition: LabelPositionString(n.Icon.Position) }
+          : {}),
         ...(label
           ? {
               labelX: label.X + n.Label!.Width / 2,
               labelY: label.Y + n.Label!.Height / 2,
+              labelWidth: n.Label!.Width,
+              labelHeight: n.Label!.Height,
+              labelPosition: LabelPositionString(n.Label!.Position),
             }
           : {}),
       };
@@ -437,7 +483,25 @@ export function layoutFlowchartTranslated(
             y: label.Y + edge.Label!.Height / 2,
           }
         : routeMidpoint(points);
-      return { ...input, points, x: center.x, y: center.y };
+      return {
+        ...input,
+        points,
+        x: center.x,
+        y: center.y,
+        isCurve: edge.IsCurve,
+        ...(edge.Label
+          ? {
+              labelPosition: LabelPositionString(
+                reversed[index]
+                  ? Mirrored(edge.Label.Position)
+                  : edge.Label.Position,
+              ),
+              labelPercentage: reversed[index]
+                ? 1 - edge.LabelPercentage
+                : edge.LabelPercentage,
+            }
+          : {}),
+      };
     }),
   };
 }
