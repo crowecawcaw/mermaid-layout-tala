@@ -1,12 +1,11 @@
 # Mermaid TALA Layout
 
-An experimental TypeScript layout loader for Mermaid 12 flowcharts. It ports
-TALA's weighted DAG rank assignment from D2 and adds layer ordering, spacing,
-component placement, and orthogonal edge routes.
+An experimental TypeScript layout loader for Mermaid 12 flowcharts, using a
+direct translation of the TALA layout pipeline from D2.
 
 ![A left-to-right flowchart arranged by the TALA-derived layout](./docs/tala-layout-example.svg)
 
-Try the [interactive playground](https://crowecawcaw.github.io/mermaid-layout-tala/) to edit Mermaid flowcharts and compare TALA with Mermaid's ELK and Dagre layouts. It includes ten selectable examples, including nested cloud architecture, and controls for TALA's node and layer spacing.
+Try the [interactive playground](https://crowecawcaw.github.io/mermaid-layout-tala/) to edit Mermaid flowcharts and compare TALA with Mermaid's ELK and Dagre layouts. It includes ten selectable examples, including nested cloud architecture.
 
 The architecture examples use flowchart subgraphs. Mermaid's `architecture-beta` diagrams still use Mermaid's native renderer.
 
@@ -52,28 +51,26 @@ are placed away from nodes, container titles, and previously placed labels. Layo
 runs the default seeds `[1, 2, 3]` using a Go-compatible random stream and selects
 the result by upstream penalty, then area, with later seeds winning exact ties.
 
-**Full upstream TALA parity is not yet achieved.** The weighted DAG ranker has translated upstream correctness coverage, and
-hierarchy ordering/alignment matches 120 Go-generated differential fixtures. Container layout, routing, and
-label placement are native implementations with functional regression tests;
-they do not reproduce upstream coordinates. General placement/refinement,
-compound alignment, the remaining packing phases, complete label optimization, and the remaining upstream placement/routing stages are still unported. See the [parity matrix](./test/UPSTREAM-PARITY.md).
+The public layout now runs the translated upstream TALA pipeline. The pinned
+full-layout corpus matches all 36 cases, including nested groups, loops, parallel
+edges and all four directions. This corpus is a useful baseline, not proof of
+parity for every graph or all D2 features. See the [parity matrix](./test/UPSTREAM-PARITY.md).
 
 The synchronous `layoutFlowchart(nodes, edges, options)` API is preserved. Nodes
 can specify `parentId`, `isGroup`, `direction`, `labelWidth`, and `labelHeight`;
-edges can specify measured `labelWidth` and `labelHeight`. Nodes can opt out of upstream edge-density resizing with `fixedSize: true`.
-Container dimensions
-are minimum sizes and expand to fit their children. `containerPadding` defaults
-to 24. Invalid parent references and parent cycles are rejected. The router
-bounds each fallback search to 250,000 grid points and throws if that budget is
-exceeded or no route exists. Labels may move away from their route when crowded.
+edges can specify measured `labelWidth` and `labelHeight`. Nodes can request
+fixed dimensions with `fixedSize: true`. Invalid parent references and cycles
+are rejected. The legacy `nodeSpacing`, `rankSpacing`, `orderingPasses`, and
+`containerPadding` options are accepted for compatibility; upstream TALA uses
+its own spacing and ordering policies.
 
 Use `setTalaSeeds([1, 2, 3])` to configure defaults, or pass `seeds` in the direct
 API's options. Seeds accept safe integer numbers or signed 64-bit `bigint`
 values. Up to 64 entries and 16 unique seeds are allowed; duplicates are removed
 in authored order. `getTalaSeeds()` returns an independent copy. `evaluateLayout()`
-returns the penalty and area used for selection. Scoring covers measured node
-and edge labels and rectangle geometry; icons and arrowhead labels remain outside
-the adapter's input model.
+returns a score for a public layout result. Seed selection uses the translated
+upstream graph evaluator. Icons, shape-specific node types and arrowhead labels
+are not yet exposed by the flowchart input model.
 
 ## Development
 
@@ -84,9 +81,8 @@ npm test
 ```
 
 `npm run test:parity` compares complete layouts against 36 pinned Go fixtures.
-It currently reports 12/36 matching and exits nonzero for the remaining
-differences; this is a full-parity acceptance check, separate from the passing
-regression and stage-differential suite.
+It currently reports 36/36 matching. It checks geometry and routes on this corpus;
+additional upstream features and graph shapes still need differential coverage.
 
 Run the playground with `npm run demo -- --port 4173`, then open
 <http://127.0.0.1:4173/>. Build the GitHub Pages site with

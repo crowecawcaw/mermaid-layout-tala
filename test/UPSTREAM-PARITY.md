@@ -10,45 +10,22 @@ full parity. The prior WebAssembly replacement remains reverted; the public
 
 | Domain | Current implementation | Evidence / remaining work |
 | --- | --- | --- |
-| Weighted DAG ranking | Upstream-derived network simplex | [Rank coverage](./UPSTREAM-RANK-COVERAGE.md): exhaustive small DAG optima, Go-seeded corpus, deterministic tie fixtures; private basis injection not exposed |
-| Hierarchy discovery | Deterministic DFS feedback-edge removal | Upstream eligibility, hierarchy discovery, fixed hierarchy contracts remain unported |
-| Layer ordering and alignment | Translated crossing minimization, global sifting, long-edge dummy chains and four-direction Brandes–Köpf alignment | `hierarchy.test.ts`: 120 Go-generated differential fixtures (including dummy chains) compare exact layer order and coordinates; four upstream alignment-root contracts. Nested compound alignment and table-column handling remain unported |
-| Nested containers | Native bottom-up child placement and descendant-edge projection | `compound.test.ts`: containment, local/inherited direction, group endpoints, input-order stability, invalid parents; upstream compound admission/placement goldens not ported |
-| General placement | Layered placement only | Tree, sequence, hub, herd, cluster discovery and placement/refinement stages remain unported |
-| Component packing | Translated independent-component candidate placement, area/aspect-ratio objective and route bounds | `packing.test.ts`: 100 exact Go placement fixtures. Fixed nodes, ancestor obstacles, loop margins, large equal-area sort ties and the separate bin-packing phase remain unported |
-| Routing | Native rectangle visibility-grid fallback with bend cost | `routing.test.ts`: obstacles, shortcuts, feedback edges, all directions; upstream OVG, port swapping, channel nudging, route cleanup and shape-specific geometry remain unported |
-| Self/parallel edges | Translated rectangle loop ports, ordering, tracks and edge-density prescaling; native parallel lanes | `loops.test.ts`: 132 exact Go loop fixtures across arrowhead categories, label sizes and fractional dimensions, plus nested-loop containment. All four complete singleton-loop cases match. Nonrectangular ports, full loop extent reservation and duplicate-route optimization remain unported |
-| Edge labels | Measured spacing, arc-length midpoint and greedy collision avoidance | `labeling.test.ts`: parallel labels, node avoidance, all directions; upstream label scoring, icons, arrowhead labels remain unported |
-| Mermaid rendering | Native helper adapter; measured groups, labels and shape clipping | Adapter unit test and real Mermaid integration under jsdom, including nested groups and group endpoints; real-browser playground smoke check performed separately |
-| Seed selection and quality | Go-compatible random stream, isolated attempts, translated penalty/area scoring and exact later-seed tie rule | `random.test.ts`, `seeds.test.ts`, `quality.test.ts`: Go stream fixtures and 100 differential scoring fixtures; icons, arrowhead labels and cluster membership scoring remain outside the adapter model |
-| Resource accounting | Ranker checks and bounded routing grid | Upstream aggregate work accounting, cancellation, atomic rollback contracts remain unported |
-
-## Direct engine translation
-
-The required destination is now a direct translation of the whole upstream
-engine, preserving its graph model and ordered stages. The earlier native
-placement/routing alternatives are transitional and do not satisfy that goal.
-New source translations live in `src/upstream/`; their status is documented in
-[the translation notes](../src/upstream/README.md). The first shared geometry
-translation has 400 Go differential cases and is not yet wired into the adapter.
+| Engine and graph model | Direct TypeScript translation of the upstream pipeline and graph stages | `upstream-enginepipeline.test.ts` compares complete single-seed layouts; broaden topology and cancellation coverage |
+| Hierarchy, placement and packing | Translated upstream algorithms, including compound hierarchy placement | Go differential fixtures cover rank assignment, ordering, alignment, gap normalization, recursive packing and grouped layouts; more complex graphs remain to be tested |
+| Routing and labels | Translated upstream OVG routing, cleanup, port swaps, segment balancing, channel nudging, shortcutting and label placement | Go differential fixtures cover stages and work limits; shapes, clusters, aliases and larger diagrams need broader coverage |
+| Candidate selection | Go-compatible random stream, upstream penalty/area scoring and compound refinement | Scoring and refinement have differential fixtures; public adapter validation and additional D2 metadata need coverage |
+| Mermaid adapter | Maps the supported flowchart input to the translated graph | 36/36 pinned full-layout fixtures pass. The input model does not expose all D2 shapes, icons, labels or fixed-port features |
+| Resource accounting | Translated work guards and stage rollback | Expand cancellation and failure tests through the complete public pipeline |
 
 ## Acceptance work still required
 
-1. Expand the pinned full-layout corpus beyond its initial 36 cases. It currently
-   covers empty graphs, singletons, chains, diamonds, cycles, loops, parallel
-   labels, disconnected components and nested groups in four directions.
-   `npm run test:parity` reports 12/36 matching; this command deliberately exits
-   nonzero until full-layout geometry and routes match.
-2. Extend the translated hierarchy stages to compound alignment and table-column
-   handling, then integrate upstream general placement stages.
-3. Port graph ownership, preprocessing, placement, packing, routing, labeling and
-   quality stages in their upstream pipeline order. Keep functional fallbacks
-   explicitly distinguished from translated algorithms.
-4. Compare final geometry, routes, labels and seed choices against the reference
-   fixtures. Record tolerances explicitly; input-order determinism alone is not
-   an upstream differential test.
-5. Test actual browser measurements and SVG paths in addition to jsdom. Keep
-   public API compatibility and package/playground builds in CI.
+1. Expand end-to-end Go comparisons beyond the initial 36 cases, including
+   larger and nested graphs, labels, alternate shapes and fixed ports.
+2. Extend the Mermaid input mapping and result validation for upstream features
+   that the current flowchart API cannot represent.
+3. Verify browser rendering and performance on representative Mermaid diagrams.
+4. Continue differential testing of seed choices, cancellation and resource
+   limits across the entire pipeline.
 
 ## Regenerate hierarchy differential fixtures
 
@@ -64,8 +41,7 @@ commit, installs a temporary test in the Go internal package, generates the
 The checked-in Go source calls upstream ordering/alignment directly; it does
 not reimplement those algorithms to manufacture expected results. Fixture
 assertions use upstream spacing (60px siblings, 50px dummies, 60px outer padding).
-The Mermaid adapter retains configurable spacing, so these are stage-level
-comparisons, not a claim of full-pipeline coordinate parity.
+These are stage-level comparisons; the public corpus separately checks full layouts.
 
 ## Scoring, randomness and full-layout references
 

@@ -8,11 +8,10 @@ numerical edge cases. Do not substitute the existing adapter's placement or
 routing strategies. Preserve upstream package boundaries and function names
 where possible so changes can be reviewed beside their Go source.
 
-The current public layout implementation is still the earlier partial native
-implementation. These modules are not yet connected to that pipeline. Complete
-engine parity requires translating the graph records and their ownership rules,
-then the algorithms and ordered engine pipeline, and replacing the earlier
-implementation. The Mermaid adapter belongs outside the translated engine.
+The public flowchart API now uses these modules in the upstream stage order.
+The checked-in 36-case full-layout corpus matches the pinned Go implementation.
+That does not establish complete parity for inputs or D2 features outside the
+adapter model; extend the differential corpus as those are added.
 
 ## Current translation
 
@@ -51,7 +50,7 @@ box placement and route placement. Eighty Go-generated cases exercise every
 position and compare exact coordinates, classifications, mirroring and returned
 segment indices. The upstream shadowed result index for outside route labels is
 preserved. These are dependencies of the forthcoming graph and engine port,
-not replacements connected to the current public layout pipeline yet.
+used by the public layout pipeline.
 
 `layoutgraph/` now contains the initial graph-owned node, edge, tree, grouping,
 label, icon and hierarchy records, basic topology mutations and shared constants.
@@ -655,7 +654,7 @@ coverage. Regenerate `routingswapstage`.
 
 `routing/balance-geometry.ts` translates guarded segment inventories, movement
 bounds, distribution and order checks. One hundred twenty Go fixtures compare
-results and work counts. The complete balancing stage remains outstanding.
+results and work counts. The complete balancing stage is translated and covered by stage fixtures.
 Regenerate `routingbalancegeometry`.
 
 `labeling/place.ts` translates full label placement and the new-edge-only
