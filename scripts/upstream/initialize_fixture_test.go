@@ -4,8 +4,10 @@ package placement
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/layoutgraph"
 	"github.com/d2lang/d2/lib/geo"
+	"math/rand"
 	"os"
 	"testing"
 )
@@ -57,7 +59,20 @@ func TestExportTypeScriptInitializeFixtures(t *testing.T) {
 		for _, n := range nodes {
 			positions = append(positions, []float64{n.TopLeft.X, n.TopLeft.Y})
 		}
-		out = append(out, map[string]any{"stress": stress, "stressPositions": stressPositions, "trial": trial, "cell": g.CellSize, "count": count, "fixed": trial%4 == 0, "edges": edges, "positions": positions})
+		rng := rand.New(rand.NewSource(int64(trial + 1)))
+		optim, err := newSizelessOptimizer(context.Background(), g, rng)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if err = optim.optimize(context.Background(), 1.5); err != nil {
+			t.Fatal(err)
+		}
+		optimized := []any{}
+		for _, n := range nodes {
+			optimized = append(optimized, []float64{n.TopLeft.X, n.TopLeft.Y})
+		}
+		nextRandom := fmt.Sprint(rng.Int63())
+		out = append(out, map[string]any{"optimized": optimized, "nextRandom": nextRandom, "stress": stress, "stressPositions": stressPositions, "trial": trial, "cell": g.CellSize, "count": count, "fixed": trial%4 == 0, "edges": edges, "positions": positions})
 	}
 	b, err := json.Marshal(out)
 	if err != nil {

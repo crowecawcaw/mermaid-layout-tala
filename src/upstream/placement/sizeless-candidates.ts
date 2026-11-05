@@ -99,6 +99,13 @@ export class SizelessCandidates {
       )
         this.occupied.set(this.key(n.TopLeft.X, n.TopLeft.Y), n);
   }
+  snapshotOccupied(): Map<string, Node> {
+    return new Map(this.occupied);
+  }
+  restoreOccupied(snapshot: Map<string, Node>): void {
+    this.occupied.clear();
+    for (const [key, node] of snapshot) this.occupied.set(key, node);
+  }
   occupiedAt(p: Point): Node | null {
     if (Number.isNaN(p.X) || Number.isNaN(p.Y)) return null;
     return this.occupied.get(this.key(p.X, p.Y)) ?? null;

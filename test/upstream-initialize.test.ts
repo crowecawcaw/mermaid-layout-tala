@@ -1,3 +1,5 @@
+import { SizelessOptimizer } from '../src/upstream/placement/sizeless-optimizer.js';
+import { GoRandom } from '../src/random.js';
 import { initializeByGraphDistance } from '../src/upstream/placement/stress-initialize.js';
 import { it, expect } from 'vitest';
 import fixtures from './fixtures/upstream-initialize.json';
@@ -36,6 +38,13 @@ it.each(fixtures)('matches Go initialization $trial', (f) => {
     nodes.map((n) => [n.TopLeft!.X, n.TopLeft!.Y]),
     f.positions,
   );
+  const rng = new GoRandom(BigInt(f.trial + 1));
+  new SizelessOptimizer(Background, g, rng).optimize(Background, 1.5);
+  compare(
+    nodes.map((n) => [n.TopLeft!.X, n.TopLeft!.Y]),
+    f.optimized,
+  );
+  compare(String(rng.int63()), f.nextRandom);
 });
 
 it('restores original positions when a disconnected node is missed', () => {
@@ -55,4 +64,28 @@ it('restores original positions when a disconnected node is missed', () => {
   expect([original.X, original.Y]).toEqual([4, 5]);
   expect(b.TopLeft).toBeNull();
   expect(c.TopLeft).toBeNull();
+});
+
+it('restores geometry and placement costs when the optimizer exhausts its work limit', () => {
+  const g = new Graph();
+  g.CellSize = 20;
+  const nodes = Array.from({ length: 4 }, (_, i) => {
+    const n = new Node(BigInt(i + 1), 20, 20);
+    g.AddNewNodeToContainer(null, n);
+    n.TopLeft = new Point(i * 2, 0);
+    return n;
+  });
+  for (let i = 1; i < nodes.length; i++) g.Connect(nodes[i - 1]!, nodes[i]!);
+  const points = nodes.map((n) => n.TopLeft!),
+    before = points.map((p) => [p.X, p.Y]);
+  const optim = new SizelessOptimizer(Background, g, new GoRandom(10n));
+  g.turnCost = 3;
+  g.edgeLengthCache!.set(77n, 9);
+  expect(() => optim.optimizeWithLimit(Background, 1, 30n)).toThrow(
+    'work exceeds limit',
+  );
+  expect(nodes.map((n) => n.TopLeft)).toEqual(points);
+  expect(nodes.map((n) => [n.TopLeft!.X, n.TopLeft!.Y])).toEqual(before);
+  expect(g.turnCost).toBe(3);
+  expect(g.edgeLengthCache!.get(77n)).toBe(9);
 });
