@@ -1,3 +1,7 @@
+import {
+  SizedSearch,
+  PlacementPointsScratch,
+} from '../src/upstream/placement/sized-search.js';
 import { it } from 'vitest';
 import fixtures from './fixtures/upstream-optimizerindex.json';
 import { compare } from './helpers/compare.js';
@@ -46,5 +50,35 @@ it.each(fixtures)('matches Go optimizer index $trial', (f) => {
       rebuildWork: f.rebuildWork,
       work: f.work,
     },
+  );
+  const sized = new SizedSearch(Background, g, null, null, null, []),
+    searchGuard = new OptimizationWorkGuard(
+      Background,
+      'search',
+      MaxOptimizationWorkUnits,
+    );
+  sized.spatialIndex.rebuild(g, searchGuard);
+  const distance = sized.findClosestUnoccupiedDistanceGuarded(
+    g.Nodes[0]!,
+    p,
+    f.trial % 2 === 0,
+    null,
+    searchGuard,
+  );
+  const placements = sized.fillPlacementPointsGuarded(
+    g.Nodes[0]!,
+    p,
+    distance,
+    f.trial % 2 === 0,
+    new PlacementPointsScratch(),
+    searchGuard,
+  );
+  compare(
+    {
+      distance,
+      placements: placements.map((p) => [p.X, p.Y]),
+      work: String(searchGuard.Used()),
+    },
+    { distance: f.distance, placements: f.placements, work: f.searchWork },
   );
 });

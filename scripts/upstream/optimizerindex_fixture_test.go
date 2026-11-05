@@ -53,7 +53,31 @@ func TestExportTypeScriptOptimizerindexFixtures(t *testing.T) {
 		if err != nil {
 			t.Fatal(err)
 		}
-		out = append(out, map[string]any{"trial": trial, "count": count, "x": point.X, "y": point.Y, "id": id, "overlap": overlap, "can": can, "rebuildWork": rebuildWork, "work": fmt.Sprint(guard.Used())})
+		sized, err := newSizedOptimizer(context.Background(), g, nil, nil, nil, nil)
+		if err != nil {
+			t.Fatal(err)
+		}
+		searchGuard, err := limits.NewOptimizationWorkGuard(context.Background(), "search", limits.MaxOptimizationWorkUnits)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if err = sized.rebuildSpatialIndex(searchGuard); err != nil {
+			t.Fatal(err)
+		}
+		distance, err := sized.findClosestUnoccupiedDistanceGuarded(g.Nodes[0], point, trial%2 == 0, nil, searchGuard)
+		if err != nil {
+			t.Fatal(err)
+		}
+		scratch := placementPointsScratch{}
+		placements, err := sized.fillPlacementPointsGuarded(g.Nodes[0], point, distance, trial%2 == 0, &scratch, searchGuard)
+		if err != nil {
+			t.Fatal(err)
+		}
+		values := []any{}
+		for _, v := range placements {
+			values = append(values, []float64{v.X, v.Y})
+		}
+		out = append(out, map[string]any{"distance": distance, "placements": values, "searchWork": fmt.Sprint(searchGuard.Used()), "trial": trial, "count": count, "x": point.X, "y": point.Y, "id": id, "overlap": overlap, "can": can, "rebuildWork": rebuildWork, "work": fmt.Sprint(guard.Used())})
 	}
 	b, err := json.Marshal(out)
 	if err != nil {
