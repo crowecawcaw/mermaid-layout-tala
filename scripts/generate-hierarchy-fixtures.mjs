@@ -99,6 +99,7 @@ const packages = {
   routingtree: 'internal/routing',
   ovghierarchy: 'internal/routing',
   ovgbuild: 'internal/routing',
+  ovgbuildmulti: 'internal/routing',
 };
 if (!(kind in packages))
   throw new Error(

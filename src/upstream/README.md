@@ -370,3 +370,6 @@ the complete resulting graph and work-limit failures; multiple nodes,
 hierarchies, groups and Go map iteration require further differential testing.
 This internal builder is not yet connected to public routing. Regenerate
 `ovgbuild`.
+Eighty additional connected two-node Go cases compare complete visibility
+coordinates and edge topology independent of map-driven insertion order;
+regenerate `ovgbuildmulti`.
