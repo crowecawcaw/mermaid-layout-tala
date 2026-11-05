@@ -23,6 +23,10 @@ import { Layout } from '../engine/pipeline.js';
 import { CompoundCandidate } from '../engine/compound-candidate.js';
 import { PreserveCompoundRoutes } from '../engine/compound-routes.js';
 import { Evaluate, type Score } from '../quality/scoring.js';
+import {
+  validateCompletedGraph,
+  validateLayoutResultTopology,
+} from './result-validation.js';
 import { routeMidpoint } from '../../routing.js';
 const orientation: Record<LayoutDirection, Orientation> = {
   TB: Orientation.Bottom,
@@ -263,6 +267,27 @@ export function translateFlowchart(
   });
   return { graph, nodeIDs, edgeIDs, reversed };
 }
+function evaluateCandidate(input: Graph, candidate: Graph): Score {
+  try {
+    validateCompletedGraph(Background, candidate);
+  } catch (error) {
+    throw new Error(`validate TALA seed result: ${(error as Error).message}`, {
+      cause: error,
+    });
+  }
+  try {
+    validateLayoutResultTopology(Background, input, candidate);
+  } catch (error) {
+    throw new Error(
+      `validate TALA seed result topology: ${(error as Error).message}`,
+      { cause: error },
+    );
+  }
+  const score = Evaluate(Background, candidate);
+  if (!Number.isFinite(score.Penalty))
+    throw new Error('TALA seed result has a non-finite score');
+  return score;
+}
 export function layoutFlowchartTranslated(
   inputNodes: readonly LayoutNode[],
   inputEdges: readonly LayoutEdge[],
@@ -289,9 +314,7 @@ export function layoutFlowchartTranslated(
   for (const seed of seeds)
     try {
       const candidate = Layout(Background, graph, { Seed: seed }),
-        score = Evaluate(Background, candidate);
-      if (!Number.isFinite(score.Penalty))
-        throw new Error('TALA seed result has a non-finite score');
+        score = evaluateCandidate(graph, candidate);
       if (!bestScore || score.Compare(bestScore) <= 0) {
         best = candidate;
         bestScore = score;
@@ -304,7 +327,7 @@ export function layoutFlowchartTranslated(
   try {
     const candidate = CompoundCandidate(Background, best);
     if (candidate !== best) {
-      const score = Evaluate(Background, candidate);
+      const score = evaluateCandidate(graph, candidate);
       if (score.Compare(bestScore!) < 0) {
         best = candidate;
         bestScore = score;
@@ -315,7 +338,9 @@ export function layoutFlowchartTranslated(
   }
   if (best !== ordinary)
     try {
-      best = PreserveCompoundRoutes(Background, ordinary, best);
+      const refined = PreserveCompoundRoutes(Background, ordinary, best);
+      evaluateCandidate(graph, refined);
+      best = refined;
     } catch {
       /* Optional upstream refinement retains the selected placement. */
     }
