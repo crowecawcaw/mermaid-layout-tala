@@ -38,10 +38,18 @@ it.each([...fixtures, ...expanded, ...features])(
       expect(found).toBeDefined();
       for (const key of ['x', 'y', 'width', 'height'] as const)
         expect(found![key]).toBeCloseTo(node[key], 7);
+      if ('labelX' in node) {
+        expect(found!.labelX).toBeCloseTo(node.labelX as number, 7);
+        expect(found!.labelY).toBeCloseTo(node.labelY as number, 7);
+      }
     }
     for (const edge of fixture.expected.edges) {
       const found = actual.edges.find((candidate) => candidate.id === edge.id);
       expect(found).toBeDefined();
+      if ('labelX' in edge) {
+        expect(found!.x).toBeCloseTo(edge.labelX as number, 7);
+        expect(found!.y).toBeCloseTo(edge.labelY as number, 7);
+      }
       const expected = compact(edge.points),
         points = compact(found!.points);
       expect(points).toHaveLength(expected.length);

@@ -4,33 +4,45 @@
       {
         "id": "e0",
         "from": "n0",
-        "to": "n1"
+        "to": "n1",
+        "labelWidth": 40,
+        "labelHeight": 20
       },
       {
         "id": "e1",
         "from": "n0",
-        "to": "n2"
+        "to": "n2",
+        "labelWidth": 40,
+        "labelHeight": 20
       },
       {
         "id": "e2",
         "from": "n1",
-        "to": "n3"
+        "to": "n3",
+        "labelWidth": 40,
+        "labelHeight": 20
       },
       {
         "id": "e3",
         "from": "n2",
-        "to": "n3"
+        "to": "n3",
+        "labelWidth": 40,
+        "labelHeight": 20
       },
       {
         "id": "e4",
         "from": "n3",
-        "to": "n4"
+        "to": "n4",
+        "labelWidth": 40,
+        "labelHeight": 20
       }
     ],
     "expected": {
       "edges": [
         {
           "id": "e0",
+          "labelX": 80,
+          "labelY": 63,
           "points": [
             {
               "x": 108,
@@ -42,12 +54,14 @@
             },
             {
               "x": 53,
-              "y": 145
+              "y": 165
             }
           ]
         },
         {
           "id": "e1",
+          "labelX": 250,
+          "labelY": 52,
           "points": [
             {
               "x": 167,
@@ -59,54 +73,60 @@
             },
             {
               "x": 223,
-              "y": 125
+              "y": 145
             }
           ]
         },
         {
           "id": "e2",
+          "labelX": 88,
+          "labelY": 289,
           "points": [
             {
               "x": 61,
-              "y": 172
+              "y": 192
             },
             {
               "x": 61,
-              "y": 313
+              "y": 353
             },
             {
               "x": 93,
-              "y": 313
+              "y": 353
             }
           ]
         },
         {
           "id": "e3",
+          "labelX": 270,
+          "labelY": 317,
           "points": [
             {
               "x": 243,
-              "y": 200
+              "y": 220
             },
             {
               "x": 243,
-              "y": 313
+              "y": 353
             },
             {
               "x": 183,
-              "y": 313
+              "y": 353
             }
           ]
         },
         {
           "id": "e4",
+          "labelX": 165,
+          "labelY": 431,
           "points": [
             {
               "x": 138,
-              "y": 336
+              "y": 376
             },
             {
               "x": 138,
-              "y": 425
+              "y": 485
             }
           ]
         }
@@ -124,28 +144,28 @@
           "id": "n1",
           "width": 70,
           "x": 35,
-          "y": 160.5
+          "y": 180.5
         },
         {
           "height": 80,
           "id": "n2",
           "width": 80,
           "x": 243,
-          "y": 160
+          "y": 180
         },
         {
           "height": 45,
           "id": "n3",
           "width": 90,
           "x": 138,
-          "y": 313.5
+          "y": 353.5
         },
         {
           "height": 50,
           "id": "n4",
           "width": 100,
           "x": 138,
-          "y": 450
+          "y": 510
         }
       ]
     },
@@ -196,105 +216,125 @@
       {
         "id": "e0",
         "from": "n0",
-        "to": "n1"
+        "to": "n1",
+        "labelWidth": 40,
+        "labelHeight": 20
       },
       {
         "id": "e1",
         "from": "n0",
-        "to": "n2"
+        "to": "n2",
+        "labelWidth": 40,
+        "labelHeight": 20
       },
       {
         "id": "e2",
         "from": "n1",
-        "to": "n3"
+        "to": "n3",
+        "labelWidth": 40,
+        "labelHeight": 20
       },
       {
         "id": "e3",
         "from": "n2",
-        "to": "n3"
+        "to": "n3",
+        "labelWidth": 40,
+        "labelHeight": 20
       },
       {
         "id": "e4",
         "from": "n3",
-        "to": "n4"
+        "to": "n4",
+        "labelWidth": 40,
+        "labelHeight": 20
       }
     ],
     "expected": {
       "edges": [
         {
           "id": "e0",
+          "labelX": 27,
+          "labelY": 473,
           "points": [
             {
               "x": 108,
-              "y": 460
+              "y": 520
             },
             {
               "x": 53,
-              "y": 460
+              "y": 520
             },
             {
               "x": 53,
-              "y": 330
+              "y": 370
             }
           ]
         },
         {
           "id": "e1",
+          "labelX": 197,
+          "labelY": 483,
           "points": [
             {
               "x": 167,
-              "y": 460
+              "y": 520
             },
             {
               "x": 223,
-              "y": 460
+              "y": 520
             },
             {
               "x": 223,
-              "y": 350
+              "y": 390
             }
           ]
         },
         {
           "id": "e2",
+          "labelX": 35,
+          "labelY": 246,
           "points": [
             {
               "x": 61,
-              "y": 303
+              "y": 343
             },
             {
               "x": 61,
-              "y": 161
+              "y": 181
             },
             {
               "x": 93,
-              "y": 161
+              "y": 181
             }
           ]
         },
         {
           "id": "e3",
+          "labelX": 217,
+          "labelY": 218,
           "points": [
             {
               "x": 243,
-              "y": 275
+              "y": 315
             },
             {
               "x": 243,
-              "y": 161
+              "y": 181
             },
             {
               "x": 183,
-              "y": 161
+              "y": 181
             }
           ]
         },
         {
           "id": "e4",
+          "labelX": 112,
+          "labelY": 105,
           "points": [
             {
               "x": 138,
-              "y": 139
+              "y": 159
             },
             {
               "x": 138,
@@ -309,28 +349,28 @@
           "id": "n0",
           "width": 60,
           "x": 138,
-          "y": 460
+          "y": 520
         },
         {
           "height": 35,
           "id": "n1",
           "width": 70,
           "x": 35,
-          "y": 314.5
+          "y": 354.5
         },
         {
           "height": 80,
           "id": "n2",
           "width": 80,
           "x": 243,
-          "y": 315
+          "y": 355
         },
         {
           "height": 45,
           "id": "n3",
           "width": 90,
           "x": 138,
-          "y": 161.5
+          "y": 181.5
         },
         {
           "height": 50,
@@ -388,109 +428,129 @@
       {
         "id": "e0",
         "from": "n0",
-        "to": "n1"
+        "to": "n1",
+        "labelWidth": 40,
+        "labelHeight": 20
       },
       {
         "id": "e1",
         "from": "n0",
-        "to": "n2"
+        "to": "n2",
+        "labelWidth": 40,
+        "labelHeight": 20
       },
       {
         "id": "e2",
         "from": "n1",
-        "to": "n3"
+        "to": "n3",
+        "labelWidth": 40,
+        "labelHeight": 20
       },
       {
         "id": "e3",
         "from": "n2",
-        "to": "n3"
+        "to": "n3",
+        "labelWidth": 40,
+        "labelHeight": 20
       },
       {
         "id": "e4",
         "from": "n3",
-        "to": "n4"
+        "to": "n4",
+        "labelWidth": 40,
+        "labelHeight": 20
       }
     ],
     "expected": {
       "edges": [
         {
           "id": "e0",
+          "labelX": 82,
+          "labelY": 197,
           "points": [
             {
               "x": 30,
-              "y": 91
+              "y": 148
             },
             {
               "x": 30,
-              "y": 26
+              "y": 213
             },
             {
-              "x": 159,
-              "y": 26
+              "x": 199,
+              "y": 213
             }
           ]
         },
         {
           "id": "e1",
+          "labelX": 84,
+          "labelY": 44,
           "points": [
             {
               "x": 30,
-              "y": 121
+              "y": 118
             },
             {
               "x": 30,
-              "y": 179
+              "y": 60
             },
             {
-              "x": 155,
-              "y": 179
+              "x": 195,
+              "y": 60
             }
           ]
         },
         {
           "id": "e2",
+          "labelX": 388,
+          "labelY": 205,
           "points": [
             {
-              "x": 225,
-              "y": 17
+              "x": 265,
+              "y": 221
             },
             {
-              "x": 365,
-              "y": 17
+              "x": 445,
+              "y": 221
             },
             {
-              "x": 365,
-              "y": 83
+              "x": 445,
+              "y": 156
             }
           ]
         },
         {
           "id": "e3",
+          "labelX": 393,
+          "labelY": 24,
           "points": [
             {
-              "x": 230,
-              "y": 199
+              "x": 270,
+              "y": 40
             },
             {
-              "x": 365,
-              "y": 199
+              "x": 445,
+              "y": 40
             },
             {
-              "x": 365,
-              "y": 128
+              "x": 445,
+              "y": 111
             }
           ]
         },
         {
           "id": "e4",
+          "labelX": 555,
+          "labelY": 117,
           "points": [
             {
-              "x": 410,
-              "y": 105
+              "x": 490,
+              "y": 133
             },
             {
-              "x": 500,
-              "y": 105
+              "x": 620,
+              "y": 133
             }
           ]
         }
@@ -501,35 +561,35 @@
           "id": "n0",
           "width": 60,
           "x": 30,
-          "y": 106
+          "y": 133
         },
         {
           "height": 35,
           "id": "n1",
           "width": 70,
-          "x": 190,
-          "y": 17.5
+          "x": 230,
+          "y": 221.5
         },
         {
           "height": 80,
           "id": "n2",
           "width": 80,
-          "x": 190,
-          "y": 199
+          "x": 230,
+          "y": 40
         },
         {
           "height": 45,
           "id": "n3",
           "width": 90,
-          "x": 365,
-          "y": 105.5
+          "x": 445,
+          "y": 133.5
         },
         {
           "height": 50,
           "id": "n4",
           "width": 100,
-          "x": 550,
-          "y": 106
+          "x": 670,
+          "y": 133
         }
       ]
     },
@@ -580,104 +640,124 @@
       {
         "id": "e0",
         "from": "n0",
-        "to": "n1"
+        "to": "n1",
+        "labelWidth": 40,
+        "labelHeight": 20
       },
       {
         "id": "e1",
         "from": "n0",
-        "to": "n2"
+        "to": "n2",
+        "labelWidth": 40,
+        "labelHeight": 20
       },
       {
         "id": "e2",
         "from": "n1",
-        "to": "n3"
+        "to": "n3",
+        "labelWidth": 40,
+        "labelHeight": 20
       },
       {
         "id": "e3",
         "from": "n2",
-        "to": "n3"
+        "to": "n3",
+        "labelWidth": 40,
+        "labelHeight": 20
       },
       {
         "id": "e4",
         "from": "n3",
-        "to": "n4"
+        "to": "n4",
+        "labelWidth": 40,
+        "labelHeight": 20
       }
     ],
     "expected": {
       "edges": [
         {
           "id": "e0",
+          "labelX": 638,
+          "labelY": 43,
           "points": [
             {
-              "x": 570,
+              "x": 690,
               "y": 91
             },
             {
-              "x": 570,
+              "x": 690,
               "y": 26
             },
             {
-              "x": 441,
+              "x": 521,
               "y": 26
             }
           ]
         },
         {
           "id": "e1",
+          "labelX": 637,
+          "labelY": 196,
           "points": [
             {
-              "x": 570,
+              "x": 690,
               "y": 121
             },
             {
-              "x": 570,
+              "x": 690,
               "y": 179
             },
             {
-              "x": 445,
+              "x": 525,
               "y": 179
             }
           ]
         },
         {
           "id": "e2",
+          "labelX": 332,
+          "labelY": 34,
           "points": [
             {
-              "x": 375,
+              "x": 455,
               "y": 17
             },
             {
-              "x": 235,
+              "x": 275,
               "y": 17
             },
             {
-              "x": 235,
+              "x": 275,
               "y": 83
             }
           ]
         },
         {
           "id": "e3",
+          "labelX": 327,
+          "labelY": 216,
           "points": [
             {
-              "x": 370,
+              "x": 450,
               "y": 199
             },
             {
-              "x": 235,
+              "x": 275,
               "y": 199
             },
             {
-              "x": 235,
+              "x": 275,
               "y": 128
             }
           ]
         },
         {
           "id": "e4",
+          "labelX": 165,
+          "labelY": 122,
           "points": [
             {
-              "x": 190,
+              "x": 230,
               "y": 105
             },
             {
@@ -692,28 +772,28 @@
           "height": 30,
           "id": "n0",
           "width": 60,
-          "x": 570,
+          "x": 690,
           "y": 106
         },
         {
           "height": 35,
           "id": "n1",
           "width": 70,
-          "x": 410,
+          "x": 490,
           "y": 17.5
         },
         {
           "height": 80,
           "id": "n2",
           "width": 80,
-          "x": 410,
+          "x": 490,
           "y": 199
         },
         {
           "height": 45,
           "id": "n3",
           "width": 90,
-          "x": 235,
+          "x": 275,
           "y": 105.5
         },
         {
@@ -883,6 +963,8 @@
         {
           "height": 30,
           "id": "n0",
+          "labelX": 138,
+          "labelY": 15,
           "width": 60,
           "x": 138,
           "y": 15
@@ -890,6 +972,8 @@
         {
           "height": 35,
           "id": "n1",
+          "labelX": 35,
+          "labelY": 140.5,
           "width": 70,
           "x": 35,
           "y": 140.5
@@ -897,6 +981,8 @@
         {
           "height": 40,
           "id": "n2",
+          "labelX": 243,
+          "labelY": 140,
           "width": 80,
           "x": 243,
           "y": 140
@@ -904,6 +990,8 @@
         {
           "height": 45,
           "id": "n3",
+          "labelX": 138,
+          "labelY": 273.5,
           "width": 90,
           "x": 138,
           "y": 273.5
@@ -911,6 +999,8 @@
         {
           "height": 50,
           "id": "n4",
+          "labelX": 138,
+          "labelY": 410,
           "width": 100,
           "x": 138,
           "y": 410
@@ -1080,6 +1170,8 @@
         {
           "height": 30,
           "id": "n0",
+          "labelX": 138,
+          "labelY": 420,
           "width": 60,
           "x": 138,
           "y": 420
@@ -1087,6 +1179,8 @@
         {
           "height": 35,
           "id": "n1",
+          "labelX": 35,
+          "labelY": 294.5,
           "width": 70,
           "x": 35,
           "y": 294.5
@@ -1094,6 +1188,8 @@
         {
           "height": 40,
           "id": "n2",
+          "labelX": 243,
+          "labelY": 295,
           "width": 80,
           "x": 243,
           "y": 295
@@ -1101,6 +1197,8 @@
         {
           "height": 45,
           "id": "n3",
+          "labelX": 138,
+          "labelY": 161.5,
           "width": 90,
           "x": 138,
           "y": 161.5
@@ -1108,6 +1206,8 @@
         {
           "height": 50,
           "id": "n4",
+          "labelX": 138,
+          "labelY": 25,
           "width": 100,
           "x": 138,
           "y": 25
@@ -1277,6 +1377,8 @@
         {
           "height": 30,
           "id": "n0",
+          "labelX": 30,
+          "labelY": 98,
           "width": 60,
           "x": 30,
           "y": 98
@@ -1284,6 +1386,8 @@
         {
           "height": 35,
           "id": "n1",
+          "labelX": 190,
+          "labelY": 17.5,
           "width": 70,
           "x": 190,
           "y": 17.5
@@ -1291,6 +1395,8 @@
         {
           "height": 40,
           "id": "n2",
+          "labelX": 190,
+          "labelY": 181,
           "width": 80,
           "x": 190,
           "y": 181
@@ -1298,6 +1404,8 @@
         {
           "height": 45,
           "id": "n3",
+          "labelX": 365,
+          "labelY": 98.5,
           "width": 90,
           "x": 365,
           "y": 98.5
@@ -1305,6 +1413,8 @@
         {
           "height": 50,
           "id": "n4",
+          "labelX": 550,
+          "labelY": 98,
           "width": 100,
           "x": 550,
           "y": 98
@@ -1474,6 +1584,8 @@
         {
           "height": 30,
           "id": "n0",
+          "labelX": 570,
+          "labelY": 98,
           "width": 60,
           "x": 570,
           "y": 98
@@ -1481,6 +1593,8 @@
         {
           "height": 35,
           "id": "n1",
+          "labelX": 410,
+          "labelY": 17.5,
           "width": 70,
           "x": 410,
           "y": 17.5
@@ -1488,6 +1602,8 @@
         {
           "height": 40,
           "id": "n2",
+          "labelX": 410,
+          "labelY": 181,
           "width": 80,
           "x": 410,
           "y": 181
@@ -1495,6 +1611,8 @@
         {
           "height": 45,
           "id": "n3",
+          "labelX": 235,
+          "labelY": 98.5,
           "width": 90,
           "x": 235,
           "y": 98.5
@@ -1502,6 +1620,8 @@
         {
           "height": 50,
           "id": "n4",
+          "labelX": 50,
+          "labelY": 98,
           "width": 100,
           "x": 50,
           "y": 98
@@ -1561,6 +1681,8 @@
         "id": "e0",
         "from": "n0",
         "to": "n1",
+        "labelWidth": 40,
+        "labelHeight": 20,
         "sourceArrowhead": "triangle",
         "targetArrowhead": "none"
       },
@@ -1568,6 +1690,8 @@
         "id": "e1",
         "from": "n1",
         "to": "n2",
+        "labelWidth": 40,
+        "labelHeight": 20,
         "sourceArrowhead": "triangle",
         "targetArrowhead": "triangle"
       },
@@ -1575,6 +1699,8 @@
         "id": "e2",
         "from": "n2",
         "to": "n3",
+        "labelWidth": 40,
+        "labelHeight": 20,
         "sourceArrowhead": "none",
         "targetArrowhead": "none"
       },
@@ -1582,6 +1708,8 @@
         "id": "e3",
         "from": "n3",
         "to": "n4",
+        "labelWidth": 40,
+        "labelHeight": 20,
         "sourceArrowhead": "none",
         "targetArrowhead": "triangle"
       },
@@ -1589,6 +1717,8 @@
         "id": "e4",
         "from": "n0",
         "to": "n4",
+        "labelWidth": 40,
+        "labelHeight": 20,
         "sourceArrowhead": "triangle",
         "targetArrowhead": "none"
       }
@@ -1597,74 +1727,84 @@
       "edges": [
         {
           "id": "e0",
+          "labelX": 49,
+          "labelY": 114,
           "points": [
             {
               "x": 45,
-              "y": 154
+              "y": 161
             },
             {
               "x": 22,
-              "y": 154
+              "y": 161
             },
             {
               "x": 22,
-              "y": 37
+              "y": 44
             }
           ]
         },
         {
           "id": "e1",
+          "labelX": 103,
+          "labelY": 9,
           "points": [
             {
               "x": 70,
-              "y": 19
+              "y": 26
             },
             {
               "x": 135,
-              "y": 19
+              "y": 26
             }
           ]
         },
         {
           "id": "e2",
+          "labelX": 202,
+          "labelY": 95,
           "points": [
             {
               "x": 175,
-              "y": 40
+              "y": 47
             },
             {
               "x": 175,
-              "y": 135
+              "y": 142
             }
           ]
         },
         {
           "id": "e3",
+          "labelX": 189,
+          "labelY": 232,
           "points": [
             {
               "x": 162,
-              "y": 180
+              "y": 187
             },
             {
               "x": 162,
-              "y": 270
+              "y": 277
             }
           ]
         },
         {
           "id": "e4",
+          "labelX": 41,
+          "labelY": 251,
           "points": [
             {
               "x": 67,
-              "y": 169
+              "y": 176
             },
             {
               "x": 67,
-              "y": 295
+              "y": 302
             },
             {
               "x": 90,
-              "y": 295
+              "y": 302
             }
           ]
         }
@@ -1675,35 +1815,35 @@
           "id": "n0",
           "width": 60,
           "x": 75,
-          "y": 154
+          "y": 161
         },
         {
           "height": 35,
           "id": "n1",
           "width": 70,
           "x": 35,
-          "y": 19.5
+          "y": 26.5
         },
         {
           "height": 40,
           "id": "n2",
           "width": 80,
           "x": 175,
-          "y": 20
+          "y": 27
         },
         {
           "height": 45,
           "id": "n3",
           "width": 90,
           "x": 180,
-          "y": 157.5
+          "y": 164.5
         },
         {
           "height": 50,
           "id": "n4",
           "width": 100,
           "x": 140,
-          "y": 295
+          "y": 302
         }
       ]
     },
@@ -1750,6 +1890,8 @@
         "id": "e0",
         "from": "n0",
         "to": "n1",
+        "labelWidth": 40,
+        "labelHeight": 20,
         "sourceArrowhead": "triangle",
         "targetArrowhead": "none"
       },
@@ -1757,6 +1899,8 @@
         "id": "e1",
         "from": "n1",
         "to": "n2",
+        "labelWidth": 40,
+        "labelHeight": 20,
         "sourceArrowhead": "triangle",
         "targetArrowhead": "triangle"
       },
@@ -1764,6 +1908,8 @@
         "id": "e2",
         "from": "n2",
         "to": "n3",
+        "labelWidth": 40,
+        "labelHeight": 20,
         "sourceArrowhead": "none",
         "targetArrowhead": "none"
       },
@@ -1771,6 +1917,8 @@
         "id": "e3",
         "from": "n3",
         "to": "n4",
+        "labelWidth": 40,
+        "labelHeight": 20,
         "sourceArrowhead": "none",
         "targetArrowhead": "triangle"
       },
@@ -1778,6 +1926,8 @@
         "id": "e4",
         "from": "n0",
         "to": "n4",
+        "labelWidth": 40,
+        "labelHeight": 20,
         "sourceArrowhead": "triangle",
         "targetArrowhead": "none"
       }
@@ -1786,73 +1936,83 @@
       "edges": [
         {
           "id": "e0",
+          "labelX": 185,
+          "labelY": 217,
           "points": [
             {
-              "x": 210,
+              "x": 211,
               "y": 165
             },
             {
-              "x": 210,
+              "x": 211,
               "y": 269
             }
           ]
         },
         {
           "id": "e1",
+          "labelX": 131,
+          "labelY": 303,
           "points": [
             {
-              "x": 175,
+              "x": 176,
               "y": 286
             },
             {
-              "x": 85,
+              "x": 86,
               "y": 286
             }
           ]
         },
         {
           "id": "e2",
+          "labelX": 19,
+          "labelY": 224,
           "points": [
             {
-              "x": 45,
+              "x": 46,
               "y": 267
             },
             {
-              "x": 45,
+              "x": 46,
               "y": 180
             }
           ]
         },
         {
           "id": "e3",
+          "labelX": 19,
+          "labelY": 58,
           "points": [
             {
-              "x": 45,
+              "x": 46,
               "y": 135
             },
             {
-              "x": 45,
+              "x": 46,
               "y": 25
             },
             {
-              "x": 90,
+              "x": 91,
               "y": 25
             }
           ]
         },
         {
           "id": "e4",
+          "labelX": 163,
+          "labelY": 86,
           "points": [
             {
-              "x": 180,
+              "x": 181,
               "y": 150
             },
             {
-              "x": 135,
+              "x": 136,
               "y": 150
             },
             {
-              "x": 135,
+              "x": 136,
               "y": 50
             }
           ]
@@ -1863,35 +2023,35 @@
           "height": 30,
           "id": "n0",
           "width": 60,
-          "x": 210,
+          "x": 211,
           "y": 150
         },
         {
           "height": 35,
           "id": "n1",
           "width": 70,
-          "x": 210,
+          "x": 211,
           "y": 286.5
         },
         {
           "height": 40,
           "id": "n2",
           "width": 80,
-          "x": 45,
+          "x": 46,
           "y": 287
         },
         {
           "height": 45,
           "id": "n3",
           "width": 90,
-          "x": 45,
+          "x": 46,
           "y": 157.5
         },
         {
           "height": 50,
           "id": "n4",
           "width": 100,
-          "x": 140,
+          "x": 141,
           "y": 25
         }
       ]
@@ -1939,6 +2099,8 @@
         "id": "e0",
         "from": "n0",
         "to": "n1",
+        "labelWidth": 40,
+        "labelHeight": 20,
         "sourceArrowhead": "triangle",
         "targetArrowhead": "none"
       },
@@ -1946,6 +2108,8 @@
         "id": "e1",
         "from": "n1",
         "to": "n2",
+        "labelWidth": 40,
+        "labelHeight": 20,
         "sourceArrowhead": "triangle",
         "targetArrowhead": "triangle"
       },
@@ -1953,6 +2117,8 @@
         "id": "e2",
         "from": "n2",
         "to": "n3",
+        "labelWidth": 40,
+        "labelHeight": 20,
         "sourceArrowhead": "none",
         "targetArrowhead": "none"
       },
@@ -1960,6 +2126,8 @@
         "id": "e3",
         "from": "n3",
         "to": "n4",
+        "labelWidth": 40,
+        "labelHeight": 20,
         "sourceArrowhead": "none",
         "targetArrowhead": "triangle"
       },
@@ -1967,6 +2135,8 @@
         "id": "e4",
         "from": "n0",
         "to": "n4",
+        "labelWidth": 40,
+        "labelHeight": 20,
         "sourceArrowhead": "triangle",
         "targetArrowhead": "none"
       }
@@ -1975,74 +2145,84 @@
       "edges": [
         {
           "id": "e0",
+          "labelX": 19,
+          "labelY": 230,
           "points": [
             {
-              "x": 50,
-              "y": 252
+              "x": 69,
+              "y": 256
             },
             {
-              "x": 27,
-              "y": 252
+              "x": 46,
+              "y": 256
             },
             {
-              "x": 27,
-              "y": 177
+              "x": 46,
+              "y": 181
             }
           ]
         },
         {
           "id": "e1",
+          "labelX": 44,
+          "labelY": 96,
           "points": [
             {
-              "x": 51,
-              "y": 142
+              "x": 70,
+              "y": 146
             },
             {
-              "x": 51,
-              "y": 42
+              "x": 70,
+              "y": 46
             }
           ]
         },
         {
           "id": "e2",
+          "labelX": 129,
+          "labelY": 9,
           "points": [
             {
-              "x": 80,
-              "y": 22
+              "x": 99,
+              "y": 26
             },
             {
-              "x": 140,
-              "y": 22
+              "x": 159,
+              "y": 26
             }
           ]
         },
         {
           "id": "e3",
+          "labelX": 213,
+          "labelY": 90,
           "points": [
             {
-              "x": 167,
-              "y": 45
+              "x": 186,
+              "y": 49
             },
             {
-              "x": 167,
-              "y": 127
+              "x": 186,
+              "y": 131
             }
           ]
         },
         {
           "id": "e4",
+          "labelX": 198,
+          "labelY": 240,
           "points": [
             {
-              "x": 110,
-              "y": 252
+              "x": 129,
+              "y": 256
             },
             {
-              "x": 152,
-              "y": 252
+              "x": 171,
+              "y": 256
             },
             {
-              "x": 152,
-              "y": 177
+              "x": 171,
+              "y": 181
             }
           ]
         }
@@ -2052,36 +2232,36 @@
           "height": 30,
           "id": "n0",
           "width": 60,
-          "x": 80,
-          "y": 252
+          "x": 99,
+          "y": 256
         },
         {
           "height": 35,
           "id": "n1",
           "width": 70,
-          "x": 40,
-          "y": 159.5
+          "x": 59,
+          "y": 163.5
         },
         {
           "height": 40,
           "id": "n2",
           "width": 80,
-          "x": 40,
-          "y": 22
+          "x": 59,
+          "y": 26
         },
         {
           "height": 45,
           "id": "n3",
           "width": 90,
-          "x": 185,
-          "y": 22.5
+          "x": 204,
+          "y": 26.5
         },
         {
           "height": 50,
           "id": "n4",
           "width": 100,
-          "x": 145,
-          "y": 152
+          "x": 164,
+          "y": 156
         }
       ]
     },
@@ -2128,6 +2308,8 @@
         "id": "e0",
         "from": "n0",
         "to": "n1",
+        "labelWidth": 40,
+        "labelHeight": 20,
         "sourceArrowhead": "triangle",
         "targetArrowhead": "none"
       },
@@ -2135,6 +2317,8 @@
         "id": "e1",
         "from": "n1",
         "to": "n2",
+        "labelWidth": 40,
+        "labelHeight": 20,
         "sourceArrowhead": "triangle",
         "targetArrowhead": "triangle"
       },
@@ -2142,6 +2326,8 @@
         "id": "e2",
         "from": "n2",
         "to": "n3",
+        "labelWidth": 40,
+        "labelHeight": 20,
         "sourceArrowhead": "none",
         "targetArrowhead": "none"
       },
@@ -2149,6 +2335,8 @@
         "id": "e3",
         "from": "n3",
         "to": "n4",
+        "labelWidth": 40,
+        "labelHeight": 20,
         "sourceArrowhead": "none",
         "targetArrowhead": "triangle"
       },
@@ -2156,6 +2344,8 @@
         "id": "e4",
         "from": "n0",
         "to": "n4",
+        "labelWidth": 40,
+        "labelHeight": 20,
         "sourceArrowhead": "triangle",
         "targetArrowhead": "none"
       }
@@ -2164,70 +2354,80 @@
       "edges": [
         {
           "id": "e0",
+          "labelX": 24,
+          "labelY": 193,
           "points": [
             {
               "x": 50,
-              "y": 153
+              "y": 157
             },
             {
               "x": 50,
-              "y": 224
+              "y": 228
             }
           ]
         },
         {
           "id": "e1",
+          "labelX": 133,
+          "labelY": 229,
           "points": [
             {
               "x": 85,
-              "y": 241
+              "y": 245
             },
             {
               "x": 180,
-              "y": 241
+              "y": 245
             }
           ]
         },
         {
           "id": "e2",
+          "labelX": 194,
+          "labelY": 160,
           "points": [
             {
               "x": 220,
-              "y": 222
+              "y": 226
             },
             {
               "x": 220,
-              "y": 90
+              "y": 94
             }
           ]
         },
         {
           "id": "e3",
+          "labelX": 172,
+          "labelY": 9,
           "points": [
             {
               "x": 220,
-              "y": 45
+              "y": 49
             },
             {
               "x": 220,
-              "y": 22
+              "y": 26
             },
             {
               "x": 100,
-              "y": 22
+              "y": 26
             }
           ]
         },
         {
           "id": "e4",
+          "labelX": 77,
+          "labelY": 91,
           "points": [
             {
               "x": 50,
-              "y": 123
+              "y": 127
             },
             {
               "x": 50,
-              "y": 50
+              "y": 54
             }
           ]
         }
@@ -2238,35 +2438,35 @@
           "id": "n0",
           "width": 60,
           "x": 50,
-          "y": 138
+          "y": 142
         },
         {
           "height": 35,
           "id": "n1",
           "width": 70,
           "x": 50,
-          "y": 241.5
+          "y": 245.5
         },
         {
           "height": 40,
           "id": "n2",
           "width": 80,
           "x": 220,
-          "y": 242
+          "y": 246
         },
         {
           "height": 45,
           "id": "n3",
           "width": 90,
           "x": 220,
-          "y": 67.5
+          "y": 71.5
         },
         {
           "height": 50,
           "id": "n4",
           "width": 100,
           "x": 50,
-          "y": 25
+          "y": 29
         }
       ]
     },
@@ -2379,6 +2579,8 @@
         {
           "height": 389,
           "id": "n0",
+          "labelX": 235,
+          "labelY": 12.5,
           "width": 470,
           "x": 235,
           "y": 194.5
@@ -2386,6 +2588,8 @@
         {
           "height": 165,
           "id": "n1",
+          "labelX": 235,
+          "labelY": 316,
           "width": 350,
           "x": 235,
           "y": 246.5
@@ -2393,6 +2597,8 @@
         {
           "height": 40,
           "id": "n2",
+          "labelX": 310,
+          "labelY": 247,
           "width": 80,
           "x": 310,
           "y": 247
@@ -2400,6 +2606,8 @@
         {
           "height": 45,
           "id": "n3",
+          "labelX": 165,
+          "labelY": 246.5,
           "width": 90,
           "x": 165,
           "y": 246.5
@@ -2407,6 +2615,8 @@
         {
           "height": 50,
           "id": "n4",
+          "labelX": 235,
+          "labelY": 85,
           "width": 100,
           "x": 235,
           "y": 85
@@ -2538,6 +2748,8 @@
         {
           "height": 389,
           "id": "n0",
+          "labelX": 235,
+          "labelY": 12.5,
           "width": 470,
           "x": 235,
           "y": 194.5
@@ -2545,6 +2757,8 @@
         {
           "height": 165,
           "id": "n1",
+          "labelX": 235,
+          "labelY": 316,
           "width": 350,
           "x": 235,
           "y": 246.5
@@ -2552,6 +2766,8 @@
         {
           "height": 40,
           "id": "n2",
+          "labelX": 310,
+          "labelY": 247,
           "width": 80,
           "x": 310,
           "y": 247
@@ -2559,6 +2775,8 @@
         {
           "height": 45,
           "id": "n3",
+          "labelX": 165,
+          "labelY": 246.5,
           "width": 90,
           "x": 165,
           "y": 246.5
@@ -2566,6 +2784,8 @@
         {
           "height": 50,
           "id": "n4",
+          "labelX": 235,
+          "labelY": 85,
           "width": 100,
           "x": 235,
           "y": 85
@@ -2697,6 +2917,8 @@
         {
           "height": 389,
           "id": "n0",
+          "labelX": 235,
+          "labelY": 12.5,
           "width": 470,
           "x": 235,
           "y": 194.5
@@ -2704,6 +2926,8 @@
         {
           "height": 165,
           "id": "n1",
+          "labelX": 235,
+          "labelY": 316,
           "width": 350,
           "x": 235,
           "y": 246.5
@@ -2711,6 +2935,8 @@
         {
           "height": 40,
           "id": "n2",
+          "labelX": 310,
+          "labelY": 247,
           "width": 80,
           "x": 310,
           "y": 247
@@ -2718,6 +2944,8 @@
         {
           "height": 45,
           "id": "n3",
+          "labelX": 165,
+          "labelY": 246.5,
           "width": 90,
           "x": 165,
           "y": 246.5
@@ -2725,6 +2953,8 @@
         {
           "height": 50,
           "id": "n4",
+          "labelX": 235,
+          "labelY": 85,
           "width": 100,
           "x": 235,
           "y": 85
@@ -2856,6 +3086,8 @@
         {
           "height": 389,
           "id": "n0",
+          "labelX": 235,
+          "labelY": 12.5,
           "width": 470,
           "x": 235,
           "y": 194.5
@@ -2863,6 +3095,8 @@
         {
           "height": 165,
           "id": "n1",
+          "labelX": 235,
+          "labelY": 316,
           "width": 350,
           "x": 235,
           "y": 246.5
@@ -2870,6 +3104,8 @@
         {
           "height": 40,
           "id": "n2",
+          "labelX": 310,
+          "labelY": 247,
           "width": 80,
           "x": 310,
           "y": 247
@@ -2877,6 +3113,8 @@
         {
           "height": 45,
           "id": "n3",
+          "labelX": 165,
+          "labelY": 246.5,
           "width": 90,
           "x": 165,
           "y": 246.5
@@ -2884,6 +3122,8 @@
         {
           "height": 50,
           "id": "n4",
+          "labelX": 235,
+          "labelY": 85,
           "width": 100,
           "x": 235,
           "y": 85

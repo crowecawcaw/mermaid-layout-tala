@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/d2lang/d2/d2graph"
+	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/layoutgraph"
 	"github.com/d2lang/d2/d2target"
 	"github.com/d2lang/d2/lib/geo"
 	"os"
@@ -114,7 +115,7 @@ func TestExportTypeScriptLayoutfeaturesFixtures(t *testing.T) {
 						input.TargetArrowhead = "triangle"
 					}
 				}
-				if test.name == "labelled" || test.name == "multiedges" {
+				if test.name == "arrows" || test.name == "shapes" {
 					input.LabelWidth = 40
 					input.LabelHeight = 20
 					edge.Label.Value = "label"
@@ -128,18 +129,43 @@ func TestExportTypeScriptLayoutfeaturesFixtures(t *testing.T) {
 			if err := Layout(context.Background(), g, &opts); err != nil {
 				t.Fatalf("%s %s: %v", test.name, direction, err)
 			}
+			internal := layoutgraph.NewGraph()
+			bindings, err := translateGraph(context.Background(), g, internal, true)
+			if err != nil {
+				t.Fatal(err)
+			}
+			internalNodes := map[layoutgraph.EntityID]*layoutgraph.Node{}
+			for _, node := range internal.Nodes {
+				internalNodes[node.ID] = node
+			}
+			internalEdges := map[layoutgraph.EntityID]*layoutgraph.Edge{}
+			for _, edge := range internal.Edges {
+				internalEdges[edge.ID] = edge
+			}
 			outNodes := []map[string]any{}
 			outEdges := []map[string]any{}
 			for _, input := range nodes {
 				obj := objects[input.ID]
-				outNodes = append(outNodes, map[string]any{"id": input.ID, "x": obj.TopLeft.X + obj.Width/2, "y": obj.TopLeft.Y + obj.Height/2, "width": obj.Width, "height": obj.Height})
+				record := map[string]any{"id": input.ID, "x": obj.TopLeft.X + obj.Width/2, "y": obj.TopLeft.Y + obj.Height/2, "width": obj.Width, "height": obj.Height}
+				if n := internalNodes[bindings.objectIDs[obj]]; n.Label != nil {
+					p := n.LabelTopLeft(n.Label.Position, n.Label.Width, n.Label.Height)
+					record["labelX"] = p.X + n.Label.Width/2
+					record["labelY"] = p.Y + n.Label.Height/2
+				}
+				outNodes = append(outNodes, record)
 			}
 			for i, edge := range g.Edges {
 				points := []map[string]float64{}
 				for _, p := range edge.Route {
 					points = append(points, map[string]float64{"x": p.X, "y": p.Y})
 				}
-				outEdges = append(outEdges, map[string]any{"id": edges[i].ID, "points": points})
+				record := map[string]any{"id": edges[i].ID, "points": points}
+				if e := internalEdges[bindings.edgeIDs[edge]]; e.Label != nil {
+					p := e.LabelTopLeft(e.Label.Position, e.Label.Width, e.Label.Height)
+					record["labelX"] = p.X + e.Label.Width/2
+					record["labelY"] = p.Y + e.Label.Height/2
+				}
+				outEdges = append(outEdges, record)
 			}
 			fixtures = append(fixtures, map[string]any{"name": test.name + "-" + direction, "nodes": nodes, "edges": edges, "options": map[string]any{"direction": direction, "seeds": []int{1, 2, 3}}, "expected": map[string]any{"nodes": outNodes, "edges": outEdges}})
 		}

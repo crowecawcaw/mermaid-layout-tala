@@ -46,11 +46,23 @@ for (const fixture of fixtures) {
         )
       )
         differences.push(`node:${node.id}`);
+      if (
+        'labelX' in node &&
+        (!found ||
+          !equal(node.labelX, found.labelX) ||
+          !equal(node.labelY, found.labelY))
+      )
+        differences.push(`node-label:${node.id}`);
     }
     for (const edge of fixture.expected.edges) {
       const found = actual.edges.find((e) => e.id === edge.id);
       const expected = compact(edge.points),
         points = compact(found?.points ?? []);
+      if (
+        'labelX' in edge &&
+        (!found || !equal(edge.labelX, found.x) || !equal(edge.labelY, found.y))
+      )
+        differences.push(`edge-label:${edge.id}`);
       if (
         expected.length !== points.length ||
         expected.some(
