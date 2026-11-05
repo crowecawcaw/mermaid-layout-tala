@@ -32,7 +32,12 @@ func TestExportTypeScriptPlacementmetricsFixtures(t *testing.T) {
 		}
 		for j := 1; j < 6; j++ {
 			if j <= 1+trial%5 {
-				g.Connect(ns[0], ns[j])
+				edge := g.Connect(ns[0], ns[j])
+				if j%2 == 0 {
+					edge.SourceArrowhead = "triangle"
+				} else {
+					edge.TargetArrowhead = "triangle"
+				}
 			}
 		}
 		neighbors := adjacents(ns[0], nil)
@@ -56,7 +61,14 @@ func TestExportTypeScriptPlacementmetricsFixtures(t *testing.T) {
 		for _, n := range ns {
 			positions = append(positions, []float64{n.TopLeft.X, n.TopLeft.Y})
 		}
-		out = append(out, map[string]any{"mirrored": positions, "transforms": transforms, "trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersection, "fits": fits})
+		if err := direct(context.Background(), g, ns, nil, directOptions{checkEdgeLength: trial%2 == 0}); err != nil {
+			t.Fatal(err)
+		}
+		directed := []any{}
+		for _, n := range ns {
+			directed = append(directed, []float64{n.TopLeft.X, n.TopLeft.Y})
+		}
+		out = append(out, map[string]any{"directed": directed, "mirrored": positions, "transforms": transforms, "trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersection, "fits": fits})
 	}
 	b, err := json.Marshal(out)
 	if err != nil {

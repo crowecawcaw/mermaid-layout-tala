@@ -1,3 +1,4 @@
+import { direct } from '../src/upstream/placement/direct.js';
 import { mirrorAxes } from '../src/upstream/placement/mirror.js';
 import { Background } from '../src/upstream/limits/context.js';
 import { transformsTo } from '../src/upstream/placement/direction.js';
@@ -23,7 +24,11 @@ it.each(fixtures)('matches Go placement metrics $trial', (f) => {
     n.TopLeft = new Point(r.x, r.y);
     return n;
   });
-  for (let j = 1; j <= 1 + (f.trial % 5); j++) g.Connect(nodes[0]!, nodes[j]!);
+  for (let j = 1; j <= 1 + (f.trial % 5); j++) {
+    const edge = g.Connect(nodes[0]!, nodes[j]!);
+    if (j % 2 === 0) edge.SourceArrowhead = 'triangle';
+    else edge.TargetArrowhead = 'triangle';
+  }
   const neighbors = adjacents(nodes[0]!, null);
   const counts = {
     left: f.trial % 5,
@@ -56,5 +61,10 @@ it.each(fixtures)('matches Go placement metrics $trial', (f) => {
   compare(
     nodes.map((n) => [n.TopLeft!.X, n.TopLeft!.Y]),
     f.mirrored,
+  );
+  direct(Background, g, nodes, null, { checkEdgeLength: f.trial % 2 === 0 });
+  compare(
+    nodes.map((n) => [n.TopLeft!.X, n.TopLeft!.Y]),
+    f.directed,
   );
 });
