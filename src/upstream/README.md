@@ -261,3 +261,8 @@ ideal turn axes, route crossings and candidate route cost. Six hundred Go
 fixtures cover these shared routing primitives, including degenerate segments
 and negative-size boxes. The routing stages that use them remain in progress.
 Regenerate `routinggeometry`.
+
+`routing/trace.ts` translates the shape-border tracing kernel, including
+3D/multiple offsets and restoration of aliased node positions. Go fixtures
+cover all 23 shapes, self-edges and modifier combinations. The atomic
+route-stage wrapper is still pending. Regenerate `routingtrace`.

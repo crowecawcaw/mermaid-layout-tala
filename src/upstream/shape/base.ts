@@ -72,7 +72,7 @@ export function pathCommands(...paths: SvgPathContext[]): PathCommand[][] {
   return paths.map((p) => p.PathCommands());
 }
 export function TraceToShapeBorder(
-  shape: BaseShape,
+  shape: Pick<BaseShape, 'Is' | 'IsRectangular' | 'GetBox' | 'Perimeter'>,
   rectBorderPoint: Point,
   prevPoint: Point,
 ): Point {
