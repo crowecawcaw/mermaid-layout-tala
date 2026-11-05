@@ -1,3 +1,4 @@
+import { moveNodeToBest } from '../src/upstream/placement/moves.js';
 import {
   optimizerMedian,
   optimizerCanMove,
@@ -98,5 +99,32 @@ it.each(fixtures)('matches Go placement metrics $trial', (f) => {
   compare(
     nodes.map((n) => [n.TopLeft!.X, n.TopLeft!.Y]),
     f.directed,
+  );
+  const moveGuard = new OptimizationWorkGuard(
+    Background,
+    'move',
+    MaxOptimizationWorkUnits,
+  );
+  const point = nodes[0]!.TopLeft!.Copy();
+  const moved = moveNodeToBest(
+    Background,
+    g,
+    nodes[0]!,
+    [
+      point,
+      new Point(point.X + 100, point.Y),
+      new Point(point.X, point.Y + 100),
+    ],
+    null,
+    f.trial % 2 === 0,
+    moveGuard,
+  );
+  compare(
+    {
+      position: [nodes[0]!.TopLeft!.X, nodes[0]!.TopLeft!.Y],
+      moved,
+      work: String(moveGuard.Used()),
+    },
+    { position: f.movePosition, moved: f.moved, work: f.moveWork },
   );
 });
