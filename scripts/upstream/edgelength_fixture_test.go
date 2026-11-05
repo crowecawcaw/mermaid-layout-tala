@@ -58,7 +58,15 @@ func TestExportTypeScriptEdgelengthFixtures(t *testing.T) {
 			}
 			values = append(values, result)
 		}
-		out = append(out, map[string]any{"trial": trial, "cell": g.CellSize, "direction": g.Direction(nil), "nodes": dataNodes, "edges": edges, "expected": values})
+		symmetry := []float64{}
+		for _, n := range nodes {
+			value, err := NodeSymmetry(context.Background(), n, nil)
+			if err != nil {
+				t.Fatal(err)
+			}
+			symmetry = append(symmetry, value)
+		}
+		out = append(out, map[string]any{"symmetry": symmetry, "trial": trial, "cell": g.CellSize, "direction": g.Direction(nil), "nodes": dataNodes, "edges": edges, "expected": values})
 	}
 	b, err := json.Marshal(out)
 	if err != nil {

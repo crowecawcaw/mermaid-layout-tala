@@ -5,6 +5,7 @@ import { Background } from '../src/upstream/limits/context.js';
 import { Graph } from '../src/upstream/layoutgraph/graph.js';
 import { Node } from '../src/upstream/layoutgraph/node.js';
 import { Point } from '../src/upstream/geo/point.js';
+import { NodeSymmetry } from '../src/upstream/placementcost/symmetry.js';
 import { NodeEdgeLength } from '../src/upstream/placementcost/edge-length.js';
 
 it.each(fixtures)('matches Go edge scoring for case $trial', (f) => {
@@ -31,4 +32,8 @@ it.each(fixtures)('matches Go edge scoring for case $trial', (f) => {
     }),
   );
   compare(values, f.expected);
+  compare(
+    nodes.map((n) => NodeSymmetry(Background, n, null)),
+    f.symmetry,
+  );
 });

@@ -226,7 +226,7 @@ cluster,flow-continuity}.ts` translate scoring dependencies. `edge-length.ts`
 assembles the edge scorer, including obstruction, direction, cluster and table
 penalties. The reusable scorer caches preparation and replays cancellation polls;
 pool allocation and broader grouped/table differential coverage remain pending,
-as does symmetry scoring. Lazy turn/crossing/
+and the remaining table-crossing and graph-wide cost routines. Lazy turn/crossing/
 non-center-port cost calculation is translated in `layoutgraph/placement-cost.ts`.
 Four hundred Go cases compare scoring values and compass calculations, and 460
 cases cover all 23 shapes' absolute ports and table-column distances. Regenerate
@@ -235,3 +235,6 @@ cases cover all 23 shapes' absolute ports and table-column distances. Regenerate
 The assembled edge scorer is compared with Go across 320 graphs and eight option
 combinations each; these fixtures do not establish complete pipeline parity.
 Regenerate `edgelength`.
+
+The node symmetry score is translated and compared with Go for every node in
+the 320 `edgelength` graphs; group and abduction cases need additional coverage.
