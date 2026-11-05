@@ -128,6 +128,7 @@ const packages = {
   placementgapgeometry: 'internal/placement',
   placementgapreduction: 'internal/placement',
   placementgapstage: 'internal/placement',
+  placementdejitter: 'internal/placement',
 };
 if (!(kind in packages))
   throw new Error(

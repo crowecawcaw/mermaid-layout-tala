@@ -509,3 +509,9 @@ Four hundred eighty Go fixtures each compare the reduction and stage on flat
 graphs, including successful moves and fixed nodes. Nested containers, groups,
 and failure rollback need additional coverage. Regenerate
 `placementgapreduction` and `placementgapstage`.
+
+`placement/dejitter.ts` translates the routed-node micro-adjustment stage,
+including intersection checks, symmetry checks, and rollback. One hundred
+sixty Go fixtures compare node positions and routes on both axes, with fixed
+nodes and obstacles. Multi-edge and nested cases need additional coverage.
+Regenerate `placementdejitter`.
