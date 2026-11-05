@@ -459,3 +459,8 @@ complete subgraph edge routes, including duplicate connections and labels.
 Flavor execution is currently sequential in TypeScript, so Go worker panic and
 cancellation ordering differ. The whole-graph atomic stage remains pending.
 Regenerate `routingcoordinator`.
+
+`graphbounds/bounds.ts` translates guarded node and fixed-origin bounds used
+by routing and packing, including outside labels, icons and modifier offsets.
+Three hundred Go cases compare bounds and exact work counts. Regenerate
+`guardedbounds`.
