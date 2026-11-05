@@ -29,6 +29,7 @@ if (head !== pin) throw new Error(`Expected D2 ${pin}; found ${head}`);
 const kind = process.argv[3] ?? 'hierarchy';
 const packages = {
   hierarchy: 'internal/hierarchy',
+  hierarchyeligibility: 'internal/hierarchy',
   quality: 'internal/quality',
   layout: '',
   loops: 'internal/loops',

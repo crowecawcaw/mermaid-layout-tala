@@ -546,3 +546,8 @@ routes, fixed nodes, work limits and exact work counts. Clusters, hierarchies,
 and complex container shapes need additional coverage. Regenerate
 `packingstage`, `packingstagerouted`, `packingstagenested`,
 `packingnestedroutes` and `packinglimits`.
+
+`hierarchy/eligibility.ts` translates hierarchy candidate and container
+eligibility rules, including structural-edge filtering. One hundred twenty Go
+fixtures cover shapes, loops, internal edges and fixed nodes. Full hierarchy
+discovery and placement remain outstanding. Regenerate `hierarchyeligibility`.
