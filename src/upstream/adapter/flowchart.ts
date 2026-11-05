@@ -26,6 +26,7 @@ import { Evaluate, type Score } from '../quality/scoring.js';
 import {
   validateCompletedGraph,
   validateLayoutResultTopology,
+  validateLayoutResultMetadata,
 } from './result-validation.js';
 import { routeMidpoint } from '../../routing.js';
 const orientation: Record<LayoutDirection, Orientation> = {
@@ -275,11 +276,20 @@ function evaluateCandidate(input: Graph, candidate: Graph): Score {
       cause: error,
     });
   }
+  let sequenceEdges: Set<bigint>;
   try {
-    validateLayoutResultTopology(Background, input, candidate);
+    sequenceEdges = validateLayoutResultTopology(Background, input, candidate);
   } catch (error) {
     throw new Error(
       `validate TALA seed result topology: ${(error as Error).message}`,
+      { cause: error },
+    );
+  }
+  try {
+    validateLayoutResultMetadata(Background, input, candidate, sequenceEdges);
+  } catch (error) {
+    throw new Error(
+      `validate TALA seed result metadata: ${(error as Error).message}`,
       { cause: error },
     );
   }

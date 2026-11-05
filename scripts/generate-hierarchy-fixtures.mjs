@@ -56,6 +56,7 @@ const packages = {
   layoutfeatures: '',
   layoutrandom: '',
   resultvalidation: '',
+  resultmetadata: '',
   loops: 'internal/loops',
   loopoffsets: 'internal/loops',
   packing: 'internal/packing',

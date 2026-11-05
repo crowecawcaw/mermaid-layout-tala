@@ -207,3 +207,157 @@ export function validateLayoutResultTopology(
   validateTopology(ctx, expected, actual, sequenceEdges);
   return sequenceEdges;
 }
+
+export function validateLayoutResultMetadata(
+  ctx: Context,
+  expected: Graph,
+  actual: Graph,
+  allowedMissing: Set<bigint>,
+): void {
+  if (!expected || !actual)
+    throw new Error('cannot compare nil graph metadata');
+  checkContext(ctx);
+  if (expected.IsRootHierarchy !== actual.IsRootHierarchy)
+    throw new Error('root hierarchy metadata changed');
+  const directions = (graph: Graph) => {
+    const result = new Map<string, number>();
+    for (const [node, direction] of graph.Directions) {
+      checkContext(ctx);
+      const key = node ? `node:${node.ID}` : 'root';
+      if (result.has(key))
+        throw new Error('graph direction metadata repeats a canonical key');
+      result.set(key, direction);
+    }
+    return result;
+  };
+  const expectedDirections = directions(expected),
+    actualDirections = directions(actual);
+  if (expectedDirections.size !== actualDirections.size)
+    throw new Error('graph direction metadata changed');
+  for (const [key, value] of expectedDirections) {
+    checkContext(ctx);
+    if (actualDirections.get(key) !== value)
+      throw new Error('graph direction metadata changed');
+  }
+  const nodes = new Map<bigint, Node>();
+  for (const node of expected.Nodes) {
+    checkContext(ctx);
+    if (!node) throw new Error('input contains a nil node');
+    nodes.set(node.ID, node);
+  }
+  const optionalPoint = (a: Node['FixedTopLeft'], b: Node['FixedTopLeft']) =>
+    a === null || b === null ? a === b : a.Equals(b);
+  for (const node of actual.Nodes) {
+    checkContext(ctx);
+    if (!node) throw new Error('result contains a nil node');
+    const input = nodes.get(node.ID);
+    if (!input)
+      throw new Error(`result contains unexpected node ID ${node.ID}`);
+    if (input.ShapeType() !== node.ShapeType())
+      throw new Error(
+        `node ${node.ID} shape changed from ${JSON.stringify(input.ShapeType())} to ${JSON.stringify(node.ShapeType())}`,
+      );
+    if ((input.Container?.ID ?? null) !== (node.Container?.ID ?? null))
+      throw new Error(`node ${node.ID} container ownership changed`);
+    if (input.NumColumns() !== node.NumColumns())
+      throw new Error(
+        `node ${node.ID} table column count changed from ${input.NumColumns()} to ${node.NumColumns()}`,
+      );
+    if (input.Is3D !== node.Is3D)
+      throw new Error(`node ${node.ID} 3D outline metadata changed`);
+    if (input.IsMultiple !== node.IsMultiple)
+      throw new Error(`node ${node.ID} multiple outline metadata changed`);
+    if (input.IsInvisible !== node.IsInvisible)
+      throw new Error(`node ${node.ID} visibility metadata changed`);
+    if (!optionalPoint(input.FixedTopLeft, node.FixedTopLeft))
+      throw new Error(`node ${node.ID} fixed position metadata changed`);
+    if (
+      input.DesiredWidth !== node.DesiredWidth ||
+      input.DesiredHeight !== node.DesiredHeight
+    )
+      throw new Error(`node ${node.ID} desired-size metadata changed`);
+    if (input.ForceHierarchy !== node.ForceHierarchy)
+      throw new Error(`node ${node.ID} forced-hierarchy metadata changed`);
+    if ((input.Label?.Text ?? null) !== (node.Label?.Text ?? null))
+      throw new Error(`node ${node.ID} label identity changed`);
+    if (
+      input.Label &&
+      input.Label.Position !== 0 &&
+      input.Label.Position !== node.Label!.Position
+    )
+      throw new Error(`node ${node.ID} fixed label position changed`);
+    if (!!input.Icon !== !!node.Icon)
+      throw new Error(`node ${node.ID} icon presence changed`);
+    if (
+      input.Icon &&
+      input.Icon.Position !== 0 &&
+      input.Icon.Position !== node.Icon!.Position
+    )
+      throw new Error(`node ${node.ID} fixed icon position changed`);
+    if (
+      input.FontSize === null || node.FontSize === null
+        ? input.FontSize !== node.FontSize
+        : input.FontSize !== node.FontSize &&
+          ![13, 14, 16, 20, 24, 28, 32].includes(node.FontSize)
+    )
+      throw new Error(
+        `node ${node.ID} font size is outside the layout output domain`,
+      );
+  }
+  const edges = new Map<bigint, Edge>();
+  for (const edge of expected.Edges) {
+    checkContext(ctx);
+    if (!edge) throw new Error('input contains a nil edge');
+    edges.set(edge.ID, edge);
+  }
+  const seen = new Set<bigint>();
+  const sameLabel = (a: Edge['Label'], b: Edge['Label'], position: boolean) =>
+    a === null || b === null
+      ? a === b
+      : a.Text === b.Text &&
+        a.Width === b.Width &&
+        a.Height === b.Height &&
+        (!position || a.Position === b.Position);
+  for (const edge of actual.Edges) {
+    checkContext(ctx);
+    if (!edge) throw new Error('result contains a nil edge');
+    seen.add(edge.ID);
+    const input = edges.get(edge.ID);
+    if (!input)
+      throw new Error(`result contains unexpected edge ID ${edge.ID}`);
+    if (
+      input.SourceArrowhead !== edge.SourceArrowhead ||
+      input.TargetArrowhead !== edge.TargetArrowhead
+    )
+      throw new Error(`edge ${edge.ID} arrowhead metadata changed`);
+    if (!sameLabel(input.SourceArrowheadLabel, edge.SourceArrowheadLabel, true))
+      throw new Error(
+        `edge ${edge.ID} source arrowhead label metadata changed`,
+      );
+    if (!sameLabel(input.TargetArrowheadLabel, edge.TargetArrowheadLabel, true))
+      throw new Error(
+        `edge ${edge.ID} target arrowhead label metadata changed`,
+      );
+    if (input.MinWidth !== edge.MinWidth || input.MinHeight !== edge.MinHeight)
+      throw new Error(`edge ${edge.ID} minimum geometry changed`);
+    if (
+      input.FromTableColumnIndex !== edge.FromTableColumnIndex ||
+      input.ToTableColumnIndex !== edge.ToTableColumnIndex
+    )
+      throw new Error(
+        `edge ${edge.ID} table column attachment metadata changed`,
+      );
+    if (input.IsInvisible !== edge.IsInvisible)
+      throw new Error(`edge ${edge.ID} visibility metadata changed`);
+    const keys = Object.keys(input.Style) as (keyof typeof input.Style)[];
+    if (keys.some((key) => input.Style[key]?.Value !== edge.Style[key]?.Value))
+      throw new Error(`edge ${edge.ID} style metadata changed`);
+    if (!sameLabel(input.Label, edge.Label, false))
+      throw new Error(`edge ${edge.ID} label identity or dimensions changed`);
+  }
+  for (const id of edges.keys()) {
+    checkContext(ctx);
+    if (!seen.has(id) && !allowedMissing.has(id))
+      throw new Error(`result is missing edge ID ${id}`);
+  }
+}
