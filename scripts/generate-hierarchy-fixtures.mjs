@@ -86,6 +86,7 @@ const packages = {
   routingguard: 'internal/routing',
   routingsort: 'internal/routing',
   ovgresource: 'internal/routing',
+  routingroute: 'internal/routing',
 };
 if (!(kind in packages))
   throw new Error(

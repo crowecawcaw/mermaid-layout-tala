@@ -300,3 +300,7 @@ insertion and connection, point canonicalization and resource accounting.
 The remaining visibility graph construction scans are not yet translated.
 180 Go fixtures cover graph operations and resource-limit boundaries;
 regenerate `ovgresource`.
+
+`routing/route.ts` translates segment endpoint extraction, colinearity and
+opposing-direction checks, and guarded route-swap eligibility. 1,200 Go
+fixtures compare these decisions and work charges. Regenerate `routingroute`.
