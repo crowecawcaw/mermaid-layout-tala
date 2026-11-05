@@ -72,6 +72,8 @@ const packages = {
   labelmodel: 'internal/labeling',
   initialize: 'internal/placement',
   orthogonal: 'internal/placement',
+  placenodes: 'internal/placement',
+  placenested: 'internal/placement',
   edgelength: 'internal/placementcost',
   ports: 'internal/placementcost',
 };

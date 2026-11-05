@@ -249,3 +249,9 @@ Forty-eight Go fixtures compare final coordinates, turn cost and RNG state on
 small chain and branching graphs, including fixed nodes. Nested groups, larger
 graphs and full public-pipeline integration still require verification. Regenerate
 `orthogonal`.
+
+The recursive placement stage now connects subgraph splitting, nesting, the
+orthogonal optimizer, tree placement, direction refinement and packing. Go
+fixtures compare 48 flat and 24 nested graphs, including fixed nodes and edge
+abductions. It remains an internal translation; the public adapter still uses
+the earlier pipeline. Regenerate `placenodes` and `placenested`.
