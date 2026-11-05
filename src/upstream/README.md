@@ -643,6 +643,11 @@ Cluster and cancellation cases need additional coverage. Regenerate
 atomic rollback. One hundred eighty Go work-limit fixtures compare routes and
 errors. More cluster arrangements need coverage. Regenerate `routingbranch`.
 
+`routing/swap-port-geometry.ts` translates port-swap route classification,
+intersection and guarded point operations. One hundred twenty Go fixtures
+compare shape classifications and obstacle checks. Full port swapping remains
+outstanding. Regenerate `routingswapgeometry`.
+
 `labeling/place.ts` translates full label placement and the new-edge-only
 variant, with positioned-graph validation and atomic rollback. Four hundred
 eighty Go fixtures compare node labels, icons, edge labels and work-limit

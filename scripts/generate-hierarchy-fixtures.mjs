@@ -107,6 +107,7 @@ const packages = {
   routingcrosshatch: 'internal/routing',
   routingfallback: 'internal/routing',
   routingbranch: 'internal/routing',
+  routingswapgeometry: 'internal/routing',
   initialize: 'internal/placement',
   orthogonal: 'internal/placement',
   placenodes: 'internal/placement',
