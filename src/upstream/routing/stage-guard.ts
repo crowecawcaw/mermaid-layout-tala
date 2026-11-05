@@ -53,6 +53,9 @@ export class RouteWorkGuard {
   Finish(): void {
     this.Check();
   }
+  Used(): bigint {
+    return this.used;
+  }
 }
 export function validateRouteStageGeometry(
   g: Graph,

@@ -653,6 +653,11 @@ refinement and atomic stage rollback. One hundred eighty Go work-limit fixtures
 compare routes and errors. More multi-side, table and cluster cases need
 coverage. Regenerate `routingswapstage`.
 
+`routing/balance-geometry.ts` translates guarded segment inventories, movement
+bounds, distribution and order checks. One hundred twenty Go fixtures compare
+results and work counts. The complete balancing stage remains outstanding.
+Regenerate `routingbalancegeometry`.
+
 `labeling/place.ts` translates full label placement and the new-edge-only
 variant, with positioned-graph validation and atomic rollback. Four hundred
 eighty Go fixtures compare node labels, icons, edge labels and work-limit
