@@ -117,6 +117,7 @@ const packages = {
   routingchannelconstraints: 'internal/routing',
   routingchannelsafety: 'internal/routing',
   routingnudgestage: 'internal/routing',
+  routingshortcutgeometry: 'internal/routing',
   initialize: 'internal/placement',
   orthogonal: 'internal/placement',
   placenodes: 'internal/placement',
