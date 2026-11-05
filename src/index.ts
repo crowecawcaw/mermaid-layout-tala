@@ -8,6 +8,7 @@ export {
   layoutFlowchart,
   type LayoutDirection,
   type LayoutEdge,
+  type ArrowheadLabel,
   type LayoutNode,
   type LayoutOptions,
   type LayoutResult,

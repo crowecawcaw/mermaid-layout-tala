@@ -57,6 +57,7 @@ const packages = {
   layoutrandom: '',
   layoutarrowheads: '',
   layoutnodeoptions: '',
+  layoutarrowlabels: '',
   resultvalidation: '',
   resultmetadata: '',
   loops: 'internal/loops',

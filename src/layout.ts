@@ -25,12 +25,20 @@ export interface LayoutNode extends RankNode {
   labelHeight?: number;
 }
 
+export interface ArrowheadLabel {
+  text: string;
+  width: number;
+  height: number;
+}
+
 export interface LayoutEdge {
   id: string;
   from: string;
   to: string;
   sourceArrowhead?: string;
   targetArrowhead?: string;
+  sourceArrowheadLabel?: ArrowheadLabel;
+  targetArrowheadLabel?: ArrowheadLabel;
   labelWidth?: number;
   labelHeight?: number;
 }
@@ -66,6 +74,8 @@ export interface PositionedEdge extends LayoutEdge {
   labelPosition?: string;
   labelPercentage?: number;
   isCurve?: boolean;
+  sourceArrowheadLabelPosition?: Point;
+  targetArrowheadLabelPosition?: Point;
 }
 
 export interface LayoutResult {

@@ -5,6 +5,7 @@ import features from './fixtures/upstream-layoutfeatures.json';
 import random from './fixtures/upstream-layoutrandom.json';
 import arrowheads from './fixtures/upstream-layoutarrowheads.json';
 import nodeOptions from './fixtures/upstream-layoutnodeoptions.json';
+import arrowLabels from './fixtures/upstream-layoutarrowlabels.json';
 import {
   layoutFlowchart,
   type LayoutDirection,
@@ -36,6 +37,7 @@ it.each([
   ...random,
   ...arrowheads,
   ...nodeOptions,
+  ...arrowLabels,
 ])('matches pinned Go public layout $name', (fixture) => {
   const actual = layoutFlowchart(fixture.nodes, fixture.edges, {
     ...fixture.options,
@@ -62,6 +64,16 @@ it.each([
   for (const edge of fixture.expected.edges) {
     const found = actual.edges.find((candidate) => candidate.id === edge.id);
     expect(found).toBeDefined();
+    for (const key of [
+      'sourceArrowheadLabelPosition',
+      'targetArrowheadLabelPosition',
+    ] as const) {
+      if (key in edge) {
+        const expected = edge[key] as { x: number; y: number };
+        expect(found![key]?.x).toBeCloseTo(expected.x, 7);
+        expect(found![key]?.y).toBeCloseTo(expected.y, 7);
+      }
+    }
     if ('isCurve' in edge) expect(found!.isCurve).toBe(edge.isCurve);
     if ('labelPosition' in edge) {
       expect(found!.labelPosition).toBe(edge.labelPosition);

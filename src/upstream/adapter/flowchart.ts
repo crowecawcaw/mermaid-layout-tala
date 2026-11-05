@@ -26,6 +26,7 @@ import {
 } from '../layoutgraph/records.js';
 import { EdgeLabelTopLeft } from '../layoutgraph/graph-bounds.js';
 import { LabelTopLeft } from '../layoutgraph/node-geometry.js';
+import { PositionArrowheadLabel } from '../labeling/arrowhead.js';
 import { Layout } from '../engine/pipeline.js';
 import { CompoundCandidate } from '../engine/compound-candidate.js';
 import { PreserveCompoundRoutes } from '../engine/compound-routes.js';
@@ -266,6 +267,21 @@ export function translateFlowchart(
       if (v !== undefined && (!Number.isFinite(v) || v < 0))
         throw new Error(`${key} must be finite and nonnegative`);
     }
+    for (const [name, label] of [
+      ['sourceArrowheadLabel', e.sourceArrowheadLabel],
+      ['targetArrowheadLabel', e.targetArrowheadLabel],
+    ] as const) {
+      if (!label) continue;
+      if (
+        !Number.isFinite(label.width) ||
+        label.width < 0 ||
+        label.width > 1_000_000_000 ||
+        !Number.isFinite(label.height) ||
+        label.height < 0 ||
+        label.height > 1_000_000_000
+      )
+        throw new Error(`${name} dimensions must be finite and nonnegative`);
+    }
     const source = !!e.sourceArrowhead && e.sourceArrowhead !== 'none',
       target =
         e.targetArrowhead === undefined ||
@@ -301,8 +317,30 @@ export function translateFlowchart(
     e.TargetArrowhead = reversed[i]
       ? arrowhead(input.sourceArrowhead, TriangleArrowhead)
       : arrowhead(input.targetArrowhead, TriangleArrowhead);
+    const makeArrowLabel = (
+      value: typeof input.sourceArrowheadLabel,
+    ): Label | null => {
+      if (!value?.text) return null;
+      const result = new Label();
+      result.Text = value.text;
+      result.Width = value.width;
+      result.Height = value.height;
+      return result;
+    };
+    e.SourceArrowheadLabel = makeArrowLabel(
+      reversed[i] ? input.targetArrowheadLabel : input.sourceArrowheadLabel,
+    );
+    e.TargetArrowheadLabel = makeArrowLabel(
+      reversed[i] ? input.sourceArrowheadLabel : input.targetArrowheadLabel,
+    );
     e.MinWidth = (input.labelWidth ?? 0) + 10;
     e.MinHeight = (input.labelHeight ?? 0) + 10;
+    for (const label of [e.SourceArrowheadLabel, e.TargetArrowheadLabel])
+      if (label) {
+        const extra = Math.trunc(Math.max(label.Width, label.Height) + 5);
+        e.MinWidth += extra;
+        e.MinHeight += extra;
+      }
     if ((input.labelWidth ?? 0) > 0 || (input.labelHeight ?? 0) > 0) {
       e.Label = new Label();
       e.Label.Text = 'label';
@@ -483,9 +521,35 @@ export function layoutFlowchartTranslated(
             y: label.Y + edge.Label!.Height / 2,
           }
         : routeMidpoint(points);
+      const sourceArrow = PositionArrowheadLabel(
+        edge,
+        !!reversed[index],
+        edge.Points,
+      );
+      const targetArrow = PositionArrowheadLabel(
+        edge,
+        !reversed[index],
+        edge.Points,
+      );
       return {
         ...input,
         points,
+        ...(sourceArrow
+          ? {
+              sourceArrowheadLabelPosition: {
+                x: sourceArrow.Box.TopLeft.X + sourceArrow.Box.Width / 2,
+                y: sourceArrow.Box.TopLeft.Y + sourceArrow.Box.Height / 2,
+              },
+            }
+          : {}),
+        ...(targetArrow
+          ? {
+              targetArrowheadLabelPosition: {
+                x: targetArrow.Box.TopLeft.X + targetArrow.Box.Width / 2,
+                y: targetArrow.Box.TopLeft.Y + targetArrow.Box.Height / 2,
+              },
+            }
+          : {}),
         x: center.x,
         y: center.y,
         isCurve: edge.IsCurve,
