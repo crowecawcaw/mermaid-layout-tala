@@ -46,6 +46,7 @@ const packages = {
   hierarchycompound: 'internal/hierarchy',
   quality: 'internal/quality',
   qualitycrossings: 'internal/quality',
+  qualityinspection: 'internal/quality',
   layout: '',
   loops: 'internal/loops',
   loopoffsets: 'internal/loops',
