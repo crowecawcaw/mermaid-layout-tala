@@ -324,3 +324,9 @@ Regenerate `ovgboundary`.
 merging, clearance queries and the unobstructed port-line scan. Two hundred
 single-owner Go fixtures compare 6,000 queries and aggregate work; Go map owner
 iteration can differ for multiple owners. Regenerate `ovgportindex`.
+
+`routing/ovg-intersections.ts` connects Cartesian candidate generation,
+fixed-overlap discovery, port indexing and proximity rejection. Six hundred
+forty Go cases compare generated nodes, budget use and failure boundaries;
+fixtures currently use one port owner, so multi-owner Go map ordering needs
+additional coverage. Regenerate `ovgintersection`.
