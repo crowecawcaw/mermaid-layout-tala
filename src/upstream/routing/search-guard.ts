@@ -158,3 +158,33 @@ export function routeSearchHasFixedAncestor(
   }
   return false;
 }
+
+// fixedOverlapsForRoute mirrors the per-flavor immutable overlap inventory.
+export function fixedOverlapsForRoute(
+  nodes: Node[],
+  guard: RouteSearchWorkGuard,
+): Set<Node> {
+  const fixed: Node[] = [];
+  for (const node of nodes) {
+    guard.Step();
+    if (routeSearchHasFixedAncestor(guard, node)) fixed.push(node);
+  }
+  const overlaps = new Set<Node>();
+  for (const node of fixed) {
+    guard.Step();
+    if (overlaps.has(node)) continue;
+    for (const other of nodes) {
+      guard.Step();
+      const a = routeSearchIsDescendantOf(guard, node, other),
+        b = routeSearchIsDescendantOf(guard, other, node);
+      if (node === other || a || b) continue;
+      if (node.Box.Overlaps(other.Box)) {
+        overlaps.add(node);
+        if (routeSearchHasFixedAncestor(guard, other)) overlaps.add(other);
+        break;
+      }
+    }
+  }
+  guard.Check();
+  return overlaps;
+}

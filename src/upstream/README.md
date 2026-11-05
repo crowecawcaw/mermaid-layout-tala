@@ -409,3 +409,8 @@ and richer labels need further coverage. Regenerate `routeinventory`.
 preferences using a coordinate-keyed point map. One hundred twenty Go cases
 compare all six occupancy sets, symmetry decisions and work charges.
 Regenerate `routeports`.
+
+`routing/search-costs.ts` and the search guard's fixed-overlap inventory
+translate arrowhead label obstruction costs and fixed-node overlap discovery.
+Two hundred forty Go cases compare costs, overlap sets and work accounting.
+Regenerate `routingcosts`.
