@@ -60,6 +60,7 @@ const packages = {
   combinationpreflight: 'internal/layoutgraph',
   combine: 'internal/packing',
   placementgeometry: 'internal/placementcost',
+  placementmetrics: 'internal/placement',
   edgelength: 'internal/placementcost',
   ports: 'internal/placementcost',
 };
