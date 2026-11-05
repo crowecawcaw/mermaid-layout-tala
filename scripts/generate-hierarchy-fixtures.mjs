@@ -62,6 +62,7 @@ const packages = {
   combine: 'internal/packing',
   placementgeometry: 'internal/placementcost',
   placementmetrics: 'internal/placement',
+  optimizerindex: 'internal/placement',
   placementstages: 'internal/placement',
   labelmodel: 'internal/labeling',
   initialize: 'internal/placement',
