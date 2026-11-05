@@ -3,6 +3,7 @@ import fixtures from './fixtures/upstream-layout.json';
 import expanded from './fixtures/upstream-layoutcorpus.json';
 import features from './fixtures/upstream-layoutfeatures.json';
 import random from './fixtures/upstream-layoutrandom.json';
+import arrowheads from './fixtures/upstream-layoutarrowheads.json';
 import {
   layoutFlowchart,
   type LayoutDirection,
@@ -27,7 +28,7 @@ function compact(points: Point[]): Point[] {
   }
   return result;
 }
-it.each([...fixtures, ...expanded, ...features, ...random])(
+it.each([...fixtures, ...expanded, ...features, ...random, ...arrowheads])(
   'matches pinned Go public layout $name',
   (fixture) => {
     const actual = layoutFlowchart(fixture.nodes, fixture.edges, {

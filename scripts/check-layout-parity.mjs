@@ -5,6 +5,7 @@ const fixtures = [
   'upstream-layoutcorpus.json',
   'upstream-layoutfeatures.json',
   'upstream-layoutrandom.json',
+  'upstream-layoutarrowheads.json',
 ].flatMap((file) =>
   JSON.parse(
     readFileSync(new URL(`../test/fixtures/${file}`, import.meta.url), 'utf8'),

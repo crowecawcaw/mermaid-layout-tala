@@ -66,6 +66,15 @@ export function allocateEntityIDs(values: string[]): bigint[] {
   ambiguous.forEach((e, i) => (ids[e.index] = 4294967296n + BigInt(i)));
   return ids;
 }
+function arrowhead(value: string | undefined, fallback: string): string {
+  if (value === undefined) return fallback;
+  const aliases: Record<string, string> = {
+    arrow_point: 'triangle',
+    arrow_circle: 'circle',
+    arrow_cross: 'cross',
+  };
+  return aliases[value] ?? (value === '' ? NoArrowhead : value);
+}
 export function translateFlowchart(
   inputNodes: readonly LayoutNode[],
   inputEdges: readonly LayoutEdge[],
@@ -241,10 +250,6 @@ export function translateFlowchart(
   }
   const edgeIDs = allocateEntityIDs(edgeAbs);
   inputEdges.forEach((input, i) => {
-    const source = !!input.sourceArrowhead && input.sourceArrowhead !== 'none',
-      target =
-        input.targetArrowhead === undefined ||
-        (input.targetArrowhead !== '' && input.targetArrowhead !== 'none');
     const e = graph.Connect(
       mapped.get(reversed[i] ? input.to : input.from)!,
       mapped.get(reversed[i] ? input.from : input.to)!,
@@ -253,10 +258,10 @@ export function translateFlowchart(
     e.D2ID = edgeAbs[i]!;
     e.SourceArrowhead = reversed[i]
       ? NoArrowhead
-      : source
-        ? TriangleArrowhead
-        : NoArrowhead;
-    e.TargetArrowhead = reversed[i] || target ? TriangleArrowhead : NoArrowhead;
+      : arrowhead(input.sourceArrowhead, NoArrowhead);
+    e.TargetArrowhead = reversed[i]
+      ? arrowhead(input.sourceArrowhead, TriangleArrowhead)
+      : arrowhead(input.targetArrowhead, TriangleArrowhead);
     e.MinWidth = (input.labelWidth ?? 0) + 10;
     e.MinHeight = (input.labelHeight ?? 0) + 10;
     if ((input.labelWidth ?? 0) > 0 || (input.labelHeight ?? 0) > 0) {
