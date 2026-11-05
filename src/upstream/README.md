@@ -628,6 +628,11 @@ and rollback. One hundred twenty Go fixtures compare label placement across
 duplicate routes, reversed edges and competing labels. Regenerate
 `routingreorder`.
 
+`routing/crosshatch.ts` translates clustered shared-port straightening and its
+atomic work guard. One hundred fifty Go fixtures compare routes and limit
+failures, including backing-slice capacity. Broader cluster geometry needs
+additional coverage. Regenerate `routingcrosshatch`.
+
 `labeling/place.ts` translates full label placement and the new-edge-only
 variant, with positioned-graph validation and atomic rollback. Four hundred
 eighty Go fixtures compare node labels, icons, edge labels and work-limit
