@@ -101,6 +101,7 @@ const packages = {
   ovgbuild: 'internal/routing',
   ovgbuildmulti: 'internal/routing',
   routingsortedge: 'internal/routing',
+  slingshotgeometry: 'internal/routing',
 };
 if (!(kind in packages))
   throw new Error(

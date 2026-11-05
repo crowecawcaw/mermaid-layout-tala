@@ -377,3 +377,9 @@ regenerate `ovgbuildmulti`.
 `routing/sort-edges.ts` translates all four route generation orders and
 cluster-first stable ordering, using Go's stable sort schedule. One hundred
 eighty Go graphs compare every flavor. Regenerate `routingsortedge`.
+
+`routing/slingshot-geometry.ts` translates the upstream quick-route launch,
+landing and flight geometry helpers, preference calculation, path filling and
+route-check caching. Four hundred eighty Go cases cover the geometric
+predicates and preferences; the complete slingshot search remains pending.
+Regenerate `slingshotgeometry`.
