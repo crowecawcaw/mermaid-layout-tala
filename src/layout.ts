@@ -9,6 +9,7 @@ export interface LayoutNode extends RankNode {
   height: number;
   fixedSize?: boolean;
   shape?: string;
+  tableColumns?: number;
   label?: string;
   labelPosition?: string;
   icon?: string;
@@ -37,6 +38,8 @@ export interface LayoutEdge {
   to: string;
   sourceArrowhead?: string;
   targetArrowhead?: string;
+  sourceTableColumnIndex?: number;
+  targetTableColumnIndex?: number;
   sourceArrowheadLabel?: ArrowheadLabel;
   targetArrowheadLabel?: ArrowheadLabel;
   labelWidth?: number;

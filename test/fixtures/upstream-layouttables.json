@@ -1,0 +1,1694 @@
+[
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "sourceTableColumnIndex": 1
+      },
+      {
+        "id": "e1",
+        "from": "n2",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none",
+        "targetTableColumnIndex": 0
+      },
+      {
+        "id": "e2",
+        "from": "n0",
+        "to": "n1",
+        "sourceTableColumnIndex": 0
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 330,
+              "y": 62
+            },
+            {
+              "x": 470,
+              "y": 62
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 80,
+              "y": 62
+            },
+            {
+              "x": 230,
+              "y": 62
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 330,
+              "y": 102
+            },
+            {
+              "x": 400,
+              "y": 102
+            },
+            {
+              "x": 400,
+              "y": 92
+            },
+            {
+              "x": 470,
+              "y": 92
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 20,
+          "height": 160,
+          "id": "n0",
+          "width": 100,
+          "x": 280,
+          "y": 82
+        },
+        {
+          "fontSize": 28,
+          "height": 123,
+          "id": "n1",
+          "width": 123,
+          "x": 531.5,
+          "y": 61.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 40,
+          "y": 62
+        }
+      ]
+    },
+    "name": "table-TB",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 100,
+        "height": 160,
+        "shape": "sql_table",
+        "tableColumns": 3
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "sourceTableColumnIndex": 1
+      },
+      {
+        "id": "e1",
+        "from": "n2",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none",
+        "targetTableColumnIndex": 0
+      },
+      {
+        "id": "e2",
+        "from": "n0",
+        "to": "n1",
+        "sourceTableColumnIndex": 0
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 330,
+              "y": 62
+            },
+            {
+              "x": 470,
+              "y": 62
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 80,
+              "y": 62
+            },
+            {
+              "x": 230,
+              "y": 62
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 330,
+              "y": 102
+            },
+            {
+              "x": 400,
+              "y": 102
+            },
+            {
+              "x": 400,
+              "y": 92
+            },
+            {
+              "x": 470,
+              "y": 92
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 20,
+          "height": 160,
+          "id": "n0",
+          "width": 100,
+          "x": 280,
+          "y": 82
+        },
+        {
+          "fontSize": 28,
+          "height": 123,
+          "id": "n1",
+          "width": 123,
+          "x": 531.5,
+          "y": 61.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 40,
+          "y": 62
+        }
+      ]
+    },
+    "name": "table-BT",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 100,
+        "height": 160,
+        "shape": "sql_table",
+        "tableColumns": 3
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "sourceTableColumnIndex": 1
+      },
+      {
+        "id": "e1",
+        "from": "n2",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none",
+        "targetTableColumnIndex": 0
+      },
+      {
+        "id": "e2",
+        "from": "n0",
+        "to": "n1",
+        "sourceTableColumnIndex": 0
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 330,
+              "y": 62
+            },
+            {
+              "x": 470,
+              "y": 62
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 80,
+              "y": 62
+            },
+            {
+              "x": 230,
+              "y": 62
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 330,
+              "y": 102
+            },
+            {
+              "x": 400,
+              "y": 102
+            },
+            {
+              "x": 400,
+              "y": 92
+            },
+            {
+              "x": 470,
+              "y": 92
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 20,
+          "height": 160,
+          "id": "n0",
+          "width": 100,
+          "x": 280,
+          "y": 82
+        },
+        {
+          "fontSize": 28,
+          "height": 123,
+          "id": "n1",
+          "width": 123,
+          "x": 531.5,
+          "y": 61.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 40,
+          "y": 62
+        }
+      ]
+    },
+    "name": "table-LR",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 100,
+        "height": 160,
+        "shape": "sql_table",
+        "tableColumns": 3
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "sourceTableColumnIndex": 1
+      },
+      {
+        "id": "e1",
+        "from": "n2",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none",
+        "targetTableColumnIndex": 0
+      },
+      {
+        "id": "e2",
+        "from": "n0",
+        "to": "n1",
+        "sourceTableColumnIndex": 0
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 263,
+              "y": 62
+            },
+            {
+              "x": 123,
+              "y": 62
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 513,
+              "y": 62
+            },
+            {
+              "x": 363,
+              "y": 62
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 263,
+              "y": 102
+            },
+            {
+              "x": 193,
+              "y": 102
+            },
+            {
+              "x": 193,
+              "y": 92
+            },
+            {
+              "x": 123,
+              "y": 92
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 20,
+          "height": 160,
+          "id": "n0",
+          "width": 100,
+          "x": 313,
+          "y": 82
+        },
+        {
+          "fontSize": 28,
+          "height": 123,
+          "id": "n1",
+          "width": 123,
+          "x": 61.5,
+          "y": 61.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 553,
+          "y": 62
+        }
+      ]
+    },
+    "name": "table-RL",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 100,
+        "height": 160,
+        "shape": "sql_table",
+        "tableColumns": 3
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "sourceTableColumnIndex": 1
+      },
+      {
+        "id": "e1",
+        "from": "n2",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none",
+        "targetTableColumnIndex": 0
+      },
+      {
+        "id": "e2",
+        "from": "n0",
+        "to": "n1",
+        "sourceTableColumnIndex": 0
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 100,
+              "y": 100
+            },
+            {
+              "x": 435,
+              "y": 100
+            },
+            {
+              "x": 435,
+              "y": 35
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 880,
+              "y": 20
+            },
+            {
+              "x": 920,
+              "y": 20
+            },
+            {
+              "x": 920,
+              "y": 60
+            },
+            {
+              "x": 100,
+              "y": 60
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 100,
+              "y": 60
+            },
+            {
+              "x": 418,
+              "y": 60
+            },
+            {
+              "x": 418,
+              "y": 35
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 20,
+          "height": 160,
+          "id": "n0",
+          "width": 100,
+          "x": 50,
+          "y": 80
+        },
+        {
+          "fontSize": 16,
+          "height": 35,
+          "id": "n1",
+          "width": 70,
+          "x": 435,
+          "y": 17.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 840,
+          "y": 20
+        }
+      ]
+    },
+    "name": "fixedtable-TB",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 100,
+        "height": 160,
+        "shape": "sql_table",
+        "fixedPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "tableColumns": 3
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35,
+        "fixedPosition": {
+          "x": 400,
+          "y": 0
+        }
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40,
+        "fixedPosition": {
+          "x": 800,
+          "y": 0
+        }
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "sourceTableColumnIndex": 1
+      },
+      {
+        "id": "e1",
+        "from": "n2",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none",
+        "targetTableColumnIndex": 0
+      },
+      {
+        "id": "e2",
+        "from": "n0",
+        "to": "n1",
+        "sourceTableColumnIndex": 0
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 100,
+              "y": 100
+            },
+            {
+              "x": 435,
+              "y": 100
+            },
+            {
+              "x": 435,
+              "y": 35
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 880,
+              "y": 20
+            },
+            {
+              "x": 920,
+              "y": 20
+            },
+            {
+              "x": 920,
+              "y": 60
+            },
+            {
+              "x": 100,
+              "y": 60
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 100,
+              "y": 60
+            },
+            {
+              "x": 418,
+              "y": 60
+            },
+            {
+              "x": 418,
+              "y": 35
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 20,
+          "height": 160,
+          "id": "n0",
+          "width": 100,
+          "x": 50,
+          "y": 80
+        },
+        {
+          "fontSize": 16,
+          "height": 35,
+          "id": "n1",
+          "width": 70,
+          "x": 435,
+          "y": 17.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 840,
+          "y": 20
+        }
+      ]
+    },
+    "name": "fixedtable-BT",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 100,
+        "height": 160,
+        "shape": "sql_table",
+        "fixedPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "tableColumns": 3
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35,
+        "fixedPosition": {
+          "x": 400,
+          "y": 0
+        }
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40,
+        "fixedPosition": {
+          "x": 800,
+          "y": 0
+        }
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "sourceTableColumnIndex": 1
+      },
+      {
+        "id": "e1",
+        "from": "n2",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none",
+        "targetTableColumnIndex": 0
+      },
+      {
+        "id": "e2",
+        "from": "n0",
+        "to": "n1",
+        "sourceTableColumnIndex": 0
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 100,
+              "y": 100
+            },
+            {
+              "x": 435,
+              "y": 100
+            },
+            {
+              "x": 435,
+              "y": 35
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 880,
+              "y": 20
+            },
+            {
+              "x": 920,
+              "y": 20
+            },
+            {
+              "x": 920,
+              "y": 60
+            },
+            {
+              "x": 100,
+              "y": 60
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 100,
+              "y": 60
+            },
+            {
+              "x": 418,
+              "y": 60
+            },
+            {
+              "x": 418,
+              "y": 35
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 20,
+          "height": 160,
+          "id": "n0",
+          "width": 100,
+          "x": 50,
+          "y": 80
+        },
+        {
+          "fontSize": 16,
+          "height": 35,
+          "id": "n1",
+          "width": 70,
+          "x": 435,
+          "y": 17.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 840,
+          "y": 20
+        }
+      ]
+    },
+    "name": "fixedtable-LR",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 100,
+        "height": 160,
+        "shape": "sql_table",
+        "fixedPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "tableColumns": 3
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35,
+        "fixedPosition": {
+          "x": 400,
+          "y": 0
+        }
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40,
+        "fixedPosition": {
+          "x": 800,
+          "y": 0
+        }
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "sourceTableColumnIndex": 1
+      },
+      {
+        "id": "e1",
+        "from": "n2",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none",
+        "targetTableColumnIndex": 0
+      },
+      {
+        "id": "e2",
+        "from": "n0",
+        "to": "n1",
+        "sourceTableColumnIndex": 0
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 100,
+              "y": 100
+            },
+            {
+              "x": 435,
+              "y": 100
+            },
+            {
+              "x": 435,
+              "y": 35
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 880,
+              "y": 20
+            },
+            {
+              "x": 920,
+              "y": 20
+            },
+            {
+              "x": 920,
+              "y": 60
+            },
+            {
+              "x": 100,
+              "y": 60
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 100,
+              "y": 60
+            },
+            {
+              "x": 418,
+              "y": 60
+            },
+            {
+              "x": 418,
+              "y": 35
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 20,
+          "height": 160,
+          "id": "n0",
+          "width": 100,
+          "x": 50,
+          "y": 80
+        },
+        {
+          "fontSize": 16,
+          "height": 35,
+          "id": "n1",
+          "width": 70,
+          "x": 435,
+          "y": 17.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 840,
+          "y": 20
+        }
+      ]
+    },
+    "name": "fixedtable-RL",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 100,
+        "height": 160,
+        "shape": "sql_table",
+        "fixedPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "tableColumns": 3
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35,
+        "fixedPosition": {
+          "x": 400,
+          "y": 0
+        }
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40,
+        "fixedPosition": {
+          "x": 800,
+          "y": 0
+        }
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "sourceTableColumnIndex": 1,
+        "targetTableColumnIndex": 2
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none",
+        "sourceTableColumnIndex": 2,
+        "targetTableColumnIndex": 0
+      },
+      {
+        "id": "e2",
+        "from": "n0",
+        "to": "n2",
+        "sourceTableColumnIndex": 0
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 320,
+              "y": 140
+            },
+            {
+              "x": 470,
+              "y": 140
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 470,
+              "y": 140
+            },
+            {
+              "x": 395,
+              "y": 140
+            },
+            {
+              "x": 395,
+              "y": 180
+            },
+            {
+              "x": 320,
+              "y": 180
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 220,
+              "y": 140
+            },
+            {
+              "x": 80,
+              "y": 140
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 20,
+          "height": 160,
+          "id": "n0",
+          "width": 100,
+          "x": 270,
+          "y": 160
+        },
+        {
+          "fontSize": 20,
+          "height": 160,
+          "id": "n1",
+          "width": 100,
+          "x": 520,
+          "y": 80
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 40,
+          "y": 140
+        }
+      ]
+    },
+    "name": "twotables-TB",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 100,
+        "height": 160,
+        "shape": "sql_table",
+        "tableColumns": 3
+      },
+      {
+        "id": "n1",
+        "width": 100,
+        "height": 160,
+        "shape": "sql_table",
+        "tableColumns": 3
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "sourceTableColumnIndex": 1,
+        "targetTableColumnIndex": 2
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none",
+        "sourceTableColumnIndex": 2,
+        "targetTableColumnIndex": 0
+      },
+      {
+        "id": "e2",
+        "from": "n0",
+        "to": "n2",
+        "sourceTableColumnIndex": 0
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 320,
+              "y": 140
+            },
+            {
+              "x": 470,
+              "y": 140
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 470,
+              "y": 140
+            },
+            {
+              "x": 395,
+              "y": 140
+            },
+            {
+              "x": 395,
+              "y": 180
+            },
+            {
+              "x": 320,
+              "y": 180
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 220,
+              "y": 140
+            },
+            {
+              "x": 80,
+              "y": 140
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 20,
+          "height": 160,
+          "id": "n0",
+          "width": 100,
+          "x": 270,
+          "y": 160
+        },
+        {
+          "fontSize": 20,
+          "height": 160,
+          "id": "n1",
+          "width": 100,
+          "x": 520,
+          "y": 80
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 40,
+          "y": 140
+        }
+      ]
+    },
+    "name": "twotables-BT",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 100,
+        "height": 160,
+        "shape": "sql_table",
+        "tableColumns": 3
+      },
+      {
+        "id": "n1",
+        "width": 100,
+        "height": 160,
+        "shape": "sql_table",
+        "tableColumns": 3
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "sourceTableColumnIndex": 1,
+        "targetTableColumnIndex": 2
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none",
+        "sourceTableColumnIndex": 2,
+        "targetTableColumnIndex": 0
+      },
+      {
+        "id": "e2",
+        "from": "n0",
+        "to": "n2",
+        "sourceTableColumnIndex": 0
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 100,
+              "y": 100
+            },
+            {
+              "x": 170,
+              "y": 100
+            },
+            {
+              "x": 170,
+              "y": 230
+            },
+            {
+              "x": 300,
+              "y": 230
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 300,
+              "y": 230
+            },
+            {
+              "x": 170,
+              "y": 230
+            },
+            {
+              "x": 170,
+              "y": 60
+            },
+            {
+              "x": 100,
+              "y": 60
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 100,
+              "y": 60
+            },
+            {
+              "x": 240,
+              "y": 60
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 20,
+          "height": 160,
+          "id": "n0",
+          "width": 100,
+          "x": 50,
+          "y": 80
+        },
+        {
+          "fontSize": 20,
+          "height": 160,
+          "id": "n1",
+          "width": 100,
+          "x": 350,
+          "y": 170
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 280,
+          "y": 50
+        }
+      ]
+    },
+    "name": "twotables-LR",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 100,
+        "height": 160,
+        "shape": "sql_table",
+        "tableColumns": 3
+      },
+      {
+        "id": "n1",
+        "width": 100,
+        "height": 160,
+        "shape": "sql_table",
+        "tableColumns": 3
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1",
+        "sourceTableColumnIndex": 1,
+        "targetTableColumnIndex": 2
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none",
+        "sourceTableColumnIndex": 2,
+        "targetTableColumnIndex": 0
+      },
+      {
+        "id": "e2",
+        "from": "n0",
+        "to": "n2",
+        "sourceTableColumnIndex": 0
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 300,
+              "y": 140
+            },
+            {
+              "x": 100,
+              "y": 140
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 100,
+              "y": 140
+            },
+            {
+              "x": 225,
+              "y": 140
+            },
+            {
+              "x": 225,
+              "y": 100
+            },
+            {
+              "x": 300,
+              "y": 100
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 300,
+              "y": 100
+            },
+            {
+              "x": 130,
+              "y": 100
+            },
+            {
+              "x": 130,
+              "y": 180
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 20,
+          "height": 160,
+          "id": "n0",
+          "width": 100,
+          "x": 350,
+          "y": 120
+        },
+        {
+          "fontSize": 20,
+          "height": 160,
+          "id": "n1",
+          "width": 100,
+          "x": 50,
+          "y": 80
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 110,
+          "y": 200
+        }
+      ]
+    },
+    "name": "twotables-RL",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 100,
+        "height": 160,
+        "shape": "sql_table",
+        "tableColumns": 3
+      },
+      {
+        "id": "n1",
+        "width": 100,
+        "height": 160,
+        "shape": "sql_table",
+        "tableColumns": 3
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  }
+]

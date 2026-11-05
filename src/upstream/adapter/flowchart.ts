@@ -190,6 +190,8 @@ export function translateFlowchart(
     if (n.shape) {
       const known: Record<string, string> = {
         rectangle: 'Square',
+        sql_table: 'Table',
+        table: 'Table',
         square: 'Square',
         diamond: 'Diamond',
         diam: 'Diamond',
@@ -216,6 +218,17 @@ export function translateFlowchart(
       };
       node.SetShape(known[n.shape.toLowerCase()] ?? n.shape);
     }
+    if (n.tableColumns !== undefined) {
+      if (
+        !Number.isInteger(n.tableColumns) ||
+        n.tableColumns < 0 ||
+        n.tableColumns > 10_000
+      )
+        throw new Error(`node ${n.id} has an invalid table column count`);
+      if (!node.IsTable())
+        throw new Error(`node ${n.id} has columns but is not a table`);
+      node.SetNumColumns(n.tableColumns);
+    }
     node.D2ID = abs.get(n.id)!;
     node.IsInvisible = n.isInvisible ?? false;
     node.Is3D = n.is3D ?? false;
@@ -231,9 +244,11 @@ export function translateFlowchart(
       depth++;
     node.FontSize =
       n.fontSize ??
-      (n.isGroup && (children.get(n.id)?.length ?? 0) > 0
-        ? ([28, 24, 20][depth - 1] ?? 16)
-        : 16);
+      (node.IsTable()
+        ? 20
+        : n.isGroup && (children.get(n.id)?.length ?? 0) > 0
+          ? ([28, 24, 20][depth - 1] ?? 16)
+          : 16);
     if (n.fixedSize) {
       node.DesiredWidth = n.width;
       node.DesiredHeight = n.height;
@@ -327,6 +342,27 @@ export function translateFlowchart(
       result.Height = value.height;
       return result;
     };
+    const sourceColumn = reversed[i]
+      ? input.targetTableColumnIndex
+      : input.sourceTableColumnIndex;
+    const targetColumn = reversed[i]
+      ? input.sourceTableColumnIndex
+      : input.targetTableColumnIndex;
+    for (const [node, index] of [
+      [e.From, sourceColumn],
+      [e.To, targetColumn],
+    ] as const) {
+      if (
+        index !== undefined &&
+        (!node.IsTable() ||
+          !Number.isInteger(index) ||
+          index < 0 ||
+          index >= node.NumColumns())
+      )
+        throw new Error(`edge ${input.id} has an invalid table column index`);
+    }
+    e.FromTableColumnIndex = sourceColumn ?? null;
+    e.ToTableColumnIndex = targetColumn ?? null;
     e.SourceArrowheadLabel = makeArrowLabel(
       reversed[i] ? input.targetArrowheadLabel : input.sourceArrowheadLabel,
     );
