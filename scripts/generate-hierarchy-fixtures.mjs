@@ -119,6 +119,7 @@ const packages = {
   routingsentinel: 'internal/routing',
   routingcoordinator: 'internal/routing',
   guardedbounds: 'internal/graphbounds',
+  routinggraph: 'internal/routing',
 };
 if (!(kind in packages))
   throw new Error(

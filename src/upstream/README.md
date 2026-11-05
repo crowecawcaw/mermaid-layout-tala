@@ -464,3 +464,9 @@ Regenerate `routingcoordinator`.
 by routing and packing, including outside labels, icons and modifier offsets.
 Three hundred Go cases compare bounds and exact work counts. Regenerate
 `guardedbounds`.
+
+`routing/graph-stage.ts` connects tracked subgraph splitting, nearby obstacles,
+aggregate budgets, subgraph routing, ownership restoration and atomic rollback.
+Three hundred Go cases compare complete routes, rerouting/early-return behavior
+and work-limit rollback. Broader nested, tree, concurrent-failure and observer
+coverage remains pending. Regenerate `routinggraph`.
