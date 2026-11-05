@@ -37,6 +37,8 @@ const packages = {
   packingguard: 'internal/packing',
   packingroutes: 'internal/packing',
   packingcandidates: 'internal/packing',
+  packingroutedgeometry: 'internal/packing',
+  packingroutedbox: 'internal/packing',
   geo: '../../lib/geo',
   label: '../../lib/label',
   trees: 'internal/trees',

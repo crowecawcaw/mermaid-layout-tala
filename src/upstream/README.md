@@ -533,3 +533,9 @@ and `packingroutes`.
 and actual route segments, and route-blocker checks. One hundred twenty Go
 fixtures compare outputs and work counts on flat graphs; cluster endpoints and
 nested cases need additional coverage. Regenerate `packingcandidates`.
+
+`packing/routed-container*.ts` translates the routed-container shrink decision,
+route and rounded-corner preservation checks, and clipping geometry. Three
+hundred sixty Go fixtures compare decisions, geometry and work counts; complex
+styles and descendant routes need additional coverage. Regenerate
+`packingroutedgeometry` and `packingroutedbox`.
