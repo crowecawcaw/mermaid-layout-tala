@@ -223,6 +223,7 @@ export function translateFlowchart(
     graph = new Graph(),
     mapped = new Map<string, Node>();
   graph.Directions.set(null, orientation[direction]);
+  graph.IsRootHierarchy = options.rootHierarchy ?? false;
   ordered.forEach((n, i) => {
     const emptyGroup = n.isGroup && !children.get(n.id)?.length;
     const node = new Node(
@@ -235,6 +236,7 @@ export function translateFlowchart(
         rectangle: 'Square',
         sql_table: 'Table',
         table: 'Table',
+        hierarchy: 'Square',
         square: 'Square',
         diamond: 'Diamond',
         diam: 'Diamond',
@@ -273,6 +275,8 @@ export function translateFlowchart(
       node.SetNumColumns(n.tableColumns);
     }
     node.D2ID = abs.get(n.id)!;
+    node.ForceHierarchy =
+      (n.forceHierarchy ?? false) || n.shape?.toLowerCase() === 'hierarchy';
     node.IsInvisible = n.isInvisible ?? false;
     node.Is3D = n.is3D ?? false;
     node.IsMultiple = n.isMultiple ?? false;
@@ -311,6 +315,13 @@ export function translateFlowchart(
     mapped.set(n.id, node);
     nodeIDs.set(n.id, node.ID);
   });
+  for (const input of ordered) {
+    if (input.nearId === undefined) continue;
+    const target = mapped.get(input.nearId);
+    if (!target)
+      throw new Error(`node ${input.id} references a missing near node`);
+    mapped.get(input.id)!.AddNear(target);
+  }
   const edgeNames = new Set<string>(),
     reversed: boolean[] = [],
     edgeAbs: string[] = [];
@@ -597,8 +608,9 @@ export function layoutFlowchartTranslated(
           : {}),
       };
     }),
-    edges: inputEdges.map((input, index) => {
-      const edge = edgesByID.get(edgeIDs[index]!)!;
+    edges: inputEdges.flatMap((input, index) => {
+      const edge = edgesByID.get(edgeIDs[index]!);
+      if (!edge) return [];
       const points = (
         reversed[index] ? [...edge.Points].reverse() : edge.Points
       ).map((p) => ({ x: p.X, y: p.Y }));
@@ -626,41 +638,43 @@ export function layoutFlowchartTranslated(
         !reversed[index],
         edge.Points,
       );
-      return {
-        ...input,
-        points,
-        ...(sourceArrow
-          ? {
-              sourceArrowheadLabelPosition: {
-                x: sourceArrow.Box.TopLeft.X + sourceArrow.Box.Width / 2,
-                y: sourceArrow.Box.TopLeft.Y + sourceArrow.Box.Height / 2,
-              },
-            }
-          : {}),
-        ...(targetArrow
-          ? {
-              targetArrowheadLabelPosition: {
-                x: targetArrow.Box.TopLeft.X + targetArrow.Box.Width / 2,
-                y: targetArrow.Box.TopLeft.Y + targetArrow.Box.Height / 2,
-              },
-            }
-          : {}),
-        x: center.x,
-        y: center.y,
-        isCurve: edge.IsCurve,
-        ...(edge.Label
-          ? {
-              labelPosition: LabelPositionString(
-                reversed[index]
-                  ? Mirrored(edge.Label.Position)
-                  : edge.Label.Position,
-              ),
-              labelPercentage: reversed[index]
-                ? 1 - edge.LabelPercentage
-                : edge.LabelPercentage,
-            }
-          : {}),
-      };
+      return [
+        {
+          ...input,
+          points,
+          ...(sourceArrow
+            ? {
+                sourceArrowheadLabelPosition: {
+                  x: sourceArrow.Box.TopLeft.X + sourceArrow.Box.Width / 2,
+                  y: sourceArrow.Box.TopLeft.Y + sourceArrow.Box.Height / 2,
+                },
+              }
+            : {}),
+          ...(targetArrow
+            ? {
+                targetArrowheadLabelPosition: {
+                  x: targetArrow.Box.TopLeft.X + targetArrow.Box.Width / 2,
+                  y: targetArrow.Box.TopLeft.Y + targetArrow.Box.Height / 2,
+                },
+              }
+            : {}),
+          x: center.x,
+          y: center.y,
+          isCurve: edge.IsCurve,
+          ...(edge.Label
+            ? {
+                labelPosition: LabelPositionString(
+                  reversed[index]
+                    ? Mirrored(edge.Label.Position)
+                    : edge.Label.Position,
+                ),
+                labelPercentage: reversed[index]
+                  ? 1 - edge.LabelPercentage
+                  : edge.LabelPercentage,
+              }
+            : {}),
+        },
+      ];
     }),
   };
 }

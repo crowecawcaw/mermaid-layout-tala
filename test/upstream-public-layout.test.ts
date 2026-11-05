@@ -9,6 +9,8 @@ import arrowLabels from './fixtures/upstream-layoutarrowlabels.json';
 import tables from './fixtures/upstream-layouttables.json';
 import visibility from './fixtures/upstream-layoutvisibility.json';
 import large from './fixtures/upstream-layoutlarge.json';
+import proximity from './fixtures/upstream-layoutproximity.json';
+import sequence from './fixtures/upstream-layoutsequence.json';
 import {
   layoutFlowchart,
   type LayoutDirection,
@@ -44,11 +46,15 @@ it.each([
   ...tables,
   ...visibility,
   ...large,
+  ...proximity,
+  ...sequence,
 ])('matches pinned Go public layout $name', (fixture) => {
   const actual = layoutFlowchart(fixture.nodes, fixture.edges, {
     ...fixture.options,
     direction: fixture.options.direction as LayoutDirection,
   });
+  expect(actual.nodes).toHaveLength(fixture.expected.nodes.length);
+  expect(actual.edges).toHaveLength(fixture.expected.edges.length);
   for (const node of fixture.expected.nodes) {
     const found = actual.nodes.find((candidate) => candidate.id === node.id);
     expect(found).toBeDefined();

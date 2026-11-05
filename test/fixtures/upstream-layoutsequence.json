@@ -1,0 +1,1486 @@
+[
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "id": "e2",
+        "from": "n2",
+        "to": "n3"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e2",
+          "points": [
+            {
+              "x": 117,
+              "y": 33
+            },
+            {
+              "x": 117,
+              "y": 120
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 40,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 20
+        },
+        {
+          "height": 40,
+          "id": "n1",
+          "width": 70,
+          "x": 60,
+          "y": 20
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 100,
+          "y": 20
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 100,
+          "y": 142.5
+        }
+      ]
+    },
+    "name": "sequence-TB",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30,
+        "shape": "step"
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35,
+        "shape": "step"
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40,
+        "shape": "step"
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "id": "e2",
+        "from": "n2",
+        "to": "n3"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e2",
+          "points": [
+            {
+              "x": 117,
+              "y": 127
+            },
+            {
+              "x": 117,
+              "y": 45
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 40,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 140
+        },
+        {
+          "height": 40,
+          "id": "n1",
+          "width": 70,
+          "x": 60,
+          "y": 140
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 100,
+          "y": 140
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 100,
+          "y": 22.5
+        }
+      ]
+    },
+    "name": "sequence-BT",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30,
+        "shape": "step"
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35,
+        "shape": "step"
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40,
+        "shape": "step"
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "id": "e2",
+        "from": "n2",
+        "to": "n3"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e2",
+          "points": [
+            {
+              "x": 140,
+              "y": 23
+            },
+            {
+              "x": 240,
+              "y": 23
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 40,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 23
+        },
+        {
+          "height": 40,
+          "id": "n1",
+          "width": 70,
+          "x": 60,
+          "y": 23
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 100,
+          "y": 23
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 285,
+          "y": 22.5
+        }
+      ]
+    },
+    "name": "sequence-LR",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30,
+        "shape": "step"
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35,
+        "shape": "step"
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40,
+        "shape": "step"
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "id": "e2",
+        "from": "n2",
+        "to": "n3"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e2",
+          "points": [
+            {
+              "x": 320,
+              "y": 23
+            },
+            {
+              "x": 380,
+              "y": 23
+            },
+            {
+              "x": 380,
+              "y": 105
+            },
+            {
+              "x": 45,
+              "y": 105
+            },
+            {
+              "x": 45,
+              "y": 45
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 40,
+          "id": "n0",
+          "width": 60,
+          "x": 210,
+          "y": 23
+        },
+        {
+          "height": 40,
+          "id": "n1",
+          "width": 70,
+          "x": 240,
+          "y": 23
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 280,
+          "y": 23
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 45,
+          "y": 22.5
+        }
+      ]
+    },
+    "name": "sequence-RL",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30,
+        "shape": "step"
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35,
+        "shape": "step"
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40,
+        "shape": "step"
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "id": "e2",
+        "from": "n2",
+        "to": "n3"
+      },
+      {
+        "id": "e3",
+        "from": "n1",
+        "to": "n4"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e2",
+          "points": [
+            {
+              "x": 172,
+              "y": 20
+            },
+            {
+              "x": 207,
+              "y": 20
+            },
+            {
+              "x": 207,
+              "y": 120
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "points": [
+            {
+              "x": 74,
+              "y": 40
+            },
+            {
+              "x": 74,
+              "y": 120
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 40,
+          "id": "n0",
+          "width": 60,
+          "x": 62,
+          "y": 20
+        },
+        {
+          "height": 40,
+          "id": "n1",
+          "width": 70,
+          "x": 92,
+          "y": 20
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 132,
+          "y": 20
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 197,
+          "y": 142.5
+        },
+        {
+          "height": 50,
+          "id": "n4",
+          "width": 100,
+          "x": 50,
+          "y": 145
+        }
+      ]
+    },
+    "name": "sequence-branch-TB",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30,
+        "shape": "step"
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35,
+        "shape": "step"
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40,
+        "shape": "step"
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      },
+      {
+        "id": "n4",
+        "width": 100,
+        "height": 50
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "id": "e2",
+        "from": "n2",
+        "to": "n3"
+      },
+      {
+        "id": "e3",
+        "from": "n1",
+        "to": "n4"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e2",
+          "points": [
+            {
+              "x": 172,
+              "y": 140
+            },
+            {
+              "x": 207,
+              "y": 140
+            },
+            {
+              "x": 207,
+              "y": 45
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "points": [
+            {
+              "x": 74,
+              "y": 120
+            },
+            {
+              "x": 74,
+              "y": 50
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 40,
+          "id": "n0",
+          "width": 60,
+          "x": 62,
+          "y": 140
+        },
+        {
+          "height": 40,
+          "id": "n1",
+          "width": 70,
+          "x": 92,
+          "y": 140
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 132,
+          "y": 140
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 197,
+          "y": 22.5
+        },
+        {
+          "height": 50,
+          "id": "n4",
+          "width": 100,
+          "x": 50,
+          "y": 25
+        }
+      ]
+    },
+    "name": "sequence-branch-BT",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30,
+        "shape": "step"
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35,
+        "shape": "step"
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40,
+        "shape": "step"
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      },
+      {
+        "id": "n4",
+        "width": 100,
+        "height": 50
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "id": "e2",
+        "from": "n2",
+        "to": "n3"
+      },
+      {
+        "id": "e3",
+        "from": "n1",
+        "to": "n4"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e2",
+          "points": [
+            {
+              "x": 117,
+              "y": 127
+            },
+            {
+              "x": 117,
+              "y": 45
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "points": [
+            {
+              "x": 42,
+              "y": 160
+            },
+            {
+              "x": 42,
+              "y": 265
+            },
+            {
+              "x": 250,
+              "y": 265
+            },
+            {
+              "x": 250,
+              "y": 165
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 40,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 140
+        },
+        {
+          "height": 40,
+          "id": "n1",
+          "width": 70,
+          "x": 60,
+          "y": 140
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 100,
+          "y": 140
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 100,
+          "y": 22.5
+        },
+        {
+          "height": 50,
+          "id": "n4",
+          "width": 100,
+          "x": 250,
+          "y": 140
+        }
+      ]
+    },
+    "name": "sequence-branch-LR",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30,
+        "shape": "step"
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35,
+        "shape": "step"
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40,
+        "shape": "step"
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      },
+      {
+        "id": "n4",
+        "width": 100,
+        "height": 50
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "id": "e2",
+        "from": "n2",
+        "to": "n3"
+      },
+      {
+        "id": "e3",
+        "from": "n1",
+        "to": "n4"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e2",
+          "points": [
+            {
+              "x": 297,
+              "y": 127
+            },
+            {
+              "x": 297,
+              "y": 45
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "points": [
+            {
+              "x": 220,
+              "y": 120
+            },
+            {
+              "x": 220,
+              "y": 22
+            },
+            {
+              "x": 50,
+              "y": 22
+            },
+            {
+              "x": 50,
+              "y": 115
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 40,
+          "id": "n0",
+          "width": 60,
+          "x": 210,
+          "y": 140
+        },
+        {
+          "height": 40,
+          "id": "n1",
+          "width": 70,
+          "x": 240,
+          "y": 140
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 280,
+          "y": 140
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 280,
+          "y": 22.5
+        },
+        {
+          "height": 50,
+          "id": "n4",
+          "width": 100,
+          "x": 50,
+          "y": 140
+        }
+      ]
+    },
+    "name": "sequence-branch-RL",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30,
+        "shape": "step"
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35,
+        "shape": "step"
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40,
+        "shape": "step"
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      },
+      {
+        "id": "n4",
+        "width": 100,
+        "height": 50
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "id": "e2",
+        "from": "n2",
+        "to": "n3"
+      },
+      {
+        "id": "e3",
+        "from": "n1",
+        "to": "n1"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e2",
+          "points": [
+            {
+              "x": 117,
+              "y": 63
+            },
+            {
+              "x": 117,
+              "y": 150
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "points": [
+            {
+              "x": 42,
+              "y": 40
+            },
+            {
+              "x": 13,
+              "y": 40
+            },
+            {
+              "x": 13,
+              "y": 0
+            },
+            {
+              "x": 43,
+              "y": 0
+            },
+            {
+              "x": 43,
+              "y": 30
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 40,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 50
+        },
+        {
+          "height": 40,
+          "id": "n1",
+          "width": 70,
+          "x": 60,
+          "y": 50
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 100,
+          "y": 50
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 100,
+          "y": 172.5
+        }
+      ]
+    },
+    "name": "sequence-loop-TB",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30,
+        "shape": "step"
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35,
+        "shape": "step"
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40,
+        "shape": "step"
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "id": "e2",
+        "from": "n2",
+        "to": "n3"
+      },
+      {
+        "id": "e3",
+        "from": "n1",
+        "to": "n1"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e2",
+          "points": [
+            {
+              "x": 117,
+              "y": 127
+            },
+            {
+              "x": 117,
+              "y": 45
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "points": [
+            {
+              "x": 42,
+              "y": 130
+            },
+            {
+              "x": 13,
+              "y": 130
+            },
+            {
+              "x": 13,
+              "y": 90
+            },
+            {
+              "x": 43,
+              "y": 90
+            },
+            {
+              "x": 43,
+              "y": 120
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 40,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 140
+        },
+        {
+          "height": 40,
+          "id": "n1",
+          "width": 70,
+          "x": 60,
+          "y": 140
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 100,
+          "y": 140
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 100,
+          "y": 22.5
+        }
+      ]
+    },
+    "name": "sequence-loop-BT",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30,
+        "shape": "step"
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35,
+        "shape": "step"
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40,
+        "shape": "step"
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "id": "e2",
+        "from": "n2",
+        "to": "n3"
+      },
+      {
+        "id": "e3",
+        "from": "n1",
+        "to": "n1"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e2",
+          "points": [
+            {
+              "x": 140,
+              "y": 50
+            },
+            {
+              "x": 240,
+              "y": 50
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "points": [
+            {
+              "x": 42,
+              "y": 40
+            },
+            {
+              "x": 13,
+              "y": 40
+            },
+            {
+              "x": 13,
+              "y": 0
+            },
+            {
+              "x": 43,
+              "y": 0
+            },
+            {
+              "x": 43,
+              "y": 30
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 40,
+          "id": "n0",
+          "width": 60,
+          "x": 30,
+          "y": 50
+        },
+        {
+          "height": 40,
+          "id": "n1",
+          "width": 70,
+          "x": 60,
+          "y": 50
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 100,
+          "y": 50
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 285,
+          "y": 49.5
+        }
+      ]
+    },
+    "name": "sequence-loop-LR",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30,
+        "shape": "step"
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35,
+        "shape": "step"
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40,
+        "shape": "step"
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "id": "e1",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "id": "e2",
+        "from": "n2",
+        "to": "n3"
+      },
+      {
+        "id": "e3",
+        "from": "n1",
+        "to": "n1"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e2",
+          "points": [
+            {
+              "x": 257,
+              "y": 70
+            },
+            {
+              "x": 257,
+              "y": 172
+            },
+            {
+              "x": 45,
+              "y": 172
+            },
+            {
+              "x": 45,
+              "y": 72
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "points": [
+            {
+              "x": 222,
+              "y": 40
+            },
+            {
+              "x": 193,
+              "y": 40
+            },
+            {
+              "x": 193,
+              "y": 0
+            },
+            {
+              "x": 223,
+              "y": 0
+            },
+            {
+              "x": 223,
+              "y": 30
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "height": 40,
+          "id": "n0",
+          "width": 60,
+          "x": 210,
+          "y": 50
+        },
+        {
+          "height": 40,
+          "id": "n1",
+          "width": 70,
+          "x": 240,
+          "y": 50
+        },
+        {
+          "height": 40,
+          "id": "n2",
+          "width": 80,
+          "x": 280,
+          "y": 50
+        },
+        {
+          "height": 45,
+          "id": "n3",
+          "width": 90,
+          "x": 45,
+          "y": 49.5
+        }
+      ]
+    },
+    "name": "sequence-loop-RL",
+    "nodes": [
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30,
+        "shape": "step"
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 35,
+        "shape": "step"
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 40,
+        "shape": "step"
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 45
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  }
+]

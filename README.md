@@ -52,17 +52,18 @@ runs the default seeds `[1, 2, 3]` using a Go-compatible random stream and selec
 the result by upstream penalty, then area, with later seeds winning exact ties.
 
 The public layout now runs the translated upstream TALA pipeline. The pinned
-full-layout corpus matches all 216 cases, including nested groups, loops, parallel
+full-layout corpus matches all 244 cases, including nested groups, loops, parallel
 edges and all four directions. This corpus is a useful baseline, not proof of
 parity for every graph or all D2 features. See the [parity matrix](./test/UPSTREAM-PARITY.md).
 
 The synchronous `layoutFlowchart(nodes, edges, options)` API is preserved. Nodes
 can specify `parentId`, `isGroup`, `direction`, `shape`, measured labels,
-icon placement, font size, and fixed positions. Edges can specify measured
+icon placement, font size, fixed positions, and `nearId` relationships. Edges can specify measured
 labels and arrowhead types. Nodes can request fixed dimensions with `fixedSize: true`. Invalid parent references and cycles
 are rejected. The legacy `nodeSpacing`, `rankSpacing`, `orderingPasses`, and
 `containerPadding` options are accepted for compatibility; upstream TALA uses
-its own spacing and ordering policies.
+its own spacing and ordering policies. As in upstream, edges used to define a
+sequence of step-shaped nodes are consumed by layout and omitted from the result.
 
 Use `setTalaSeeds([1, 2, 3])` to configure defaults, or pass `seeds` in the direct
 API's options. Seeds accept safe integer numbers or signed 64-bit `bigint`
@@ -80,8 +81,8 @@ npm run build
 npm test
 ```
 
-`npm run test:parity` compares complete layouts against 216 pinned Go fixtures.
-It currently reports 216/216 matching. It checks geometry and routes on this corpus;
+`npm run test:parity` compares complete layouts against 244 pinned Go fixtures.
+It currently reports 244/244 matching. It checks geometry and routes on this corpus;
 additional upstream features and graph shapes still need differential coverage.
 
 Run the playground with `npm run demo -- --port 4173`, then open

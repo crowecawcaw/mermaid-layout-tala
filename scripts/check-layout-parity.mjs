@@ -11,6 +11,8 @@ const fixtures = [
   'upstream-layouttables.json',
   'upstream-layoutvisibility.json',
   'upstream-layoutlarge.json',
+  'upstream-layoutproximity.json',
+  'upstream-layoutsequence.json',
 ].flatMap((file) =>
   JSON.parse(
     readFileSync(new URL(`../test/fixtures/${file}`, import.meta.url), 'utf8'),
@@ -44,6 +46,10 @@ for (const fixture of fixtures) {
       fixture.edges,
       fixture.options,
     );
+    if (actual.nodes.length !== fixture.expected.nodes.length)
+      differences.push('node-count');
+    if (actual.edges.length !== fixture.expected.edges.length)
+      differences.push('edge-count');
     for (const node of fixture.expected.nodes) {
       const found = actual.nodes.find((n) => n.id === node.id);
       if (

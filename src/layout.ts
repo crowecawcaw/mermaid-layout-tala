@@ -10,6 +10,8 @@ export interface LayoutNode extends RankNode {
   fixedSize?: boolean;
   shape?: string;
   tableColumns?: number;
+  nearId?: string;
+  forceHierarchy?: boolean;
   label?: string;
   labelPosition?: string;
   icon?: string;
@@ -50,6 +52,7 @@ export interface LayoutEdge {
 
 export interface LayoutOptions {
   direction?: LayoutDirection;
+  rootHierarchy?: boolean;
   nodeSpacing?: number;
   rankSpacing?: number;
   orderingPasses?: number;
