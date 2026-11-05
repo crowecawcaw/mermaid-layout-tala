@@ -521,3 +521,10 @@ including vessel and connected-node alignment trials, gap reduction and stage
 rollback. One hundred twenty Go fixtures compare full-stage geometry; nested
 clusters and rollback failures need additional coverage. Regenerate
 `clusterstage`.
+
+`packing/guard.ts` translates guarded packing geometry, traversal, group
+synchronization, external-connection and route-inventory helpers. Two hundred
+forty Go fixtures compare representative geometry, route validation and exact
+work counts. Nested groups and several geometry helpers need more coverage;
+the packing algorithm itself is still outstanding. Regenerate `packingguard`
+and `packingroutes`.

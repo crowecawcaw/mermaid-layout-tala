@@ -34,6 +34,8 @@ const packages = {
   loops: 'internal/loops',
   loopoffsets: 'internal/loops',
   packing: 'internal/packing',
+  packingguard: 'internal/packing',
+  packingroutes: 'internal/packing',
   geo: '../../lib/geo',
   label: '../../lib/label',
   trees: 'internal/trees',
