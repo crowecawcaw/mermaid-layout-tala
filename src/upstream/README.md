@@ -525,9 +525,8 @@ clusters and rollback failures need additional coverage. Regenerate
 `packing/guard.ts` translates guarded packing geometry, traversal, group
 synchronization, external-connection and route-inventory helpers. Two hundred
 forty Go fixtures compare representative geometry, route validation and exact
-work counts. Nested groups and several geometry helpers need more coverage;
-the packing algorithm itself is still outstanding. Regenerate `packingguard`
-and `packingroutes`.
+work counts. Nested groups and several geometry helpers need more coverage.
+Regenerate `packingguard` and `packingroutes`.
 
 `packing/candidates.ts` translates placement candidate generation, estimated
 and actual route segments, and route-blocker checks. One hundred twenty Go
@@ -539,3 +538,11 @@ route and rounded-corner preservation checks, and clipping geometry. Three
 hundred sixty Go fixtures compare decisions, geometry and work counts; complex
 styles and descendant routes need additional coverage. Regenerate
 `packingroutedgeometry` and `packingroutedbox`.
+
+`packing/binpack.ts` translates the recursive packing stage, including
+component classification, candidate transactions, routed geometry and stage
+rollback. Five hundred twenty Go fixtures compare flat and nested graphs,
+routes, fixed nodes, work limits and exact work counts. Clusters, hierarchies,
+and complex container shapes need additional coverage. Regenerate
+`packingstage`, `packingstagerouted`, `packingstagenested`,
+`packingnestedroutes` and `packinglimits`.
