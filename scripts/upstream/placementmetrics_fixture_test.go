@@ -55,6 +55,18 @@ func TestExportTypeScriptPlacementmetricsFixtures(t *testing.T) {
 			guardedIDs = append(guardedIDs, int(n.ID))
 		}
 		work := fmt.Sprint(guard.Used())
+		gx, gy, err := optimizerMedian(guarded, true, guard)
+		if err != nil {
+			t.Fatal(err)
+		}
+		move, err := optimizerCanMove(ns[0], geo.NewPoint(float64(trial%100), float64(trial*3%100)), true, guard)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if err = chargeOptimizerScoring(ns[0], nil, true, guard); err != nil {
+			t.Fatal(err)
+		}
+		metricWork := fmt.Sprint(guard.Used())
 		neighbors := adjacents(ns[0], nil)
 		ids := []int{}
 		for _, n := range neighbors {
@@ -83,7 +95,7 @@ func TestExportTypeScriptPlacementmetricsFixtures(t *testing.T) {
 		for _, n := range ns {
 			directed = append(directed, []float64{n.TopLeft.X, n.TopLeft.Y})
 		}
-		out = append(out, map[string]any{"guardedIDs": guardedIDs, "guardedWork": work, "directed": directed, "mirrored": positions, "transforms": transforms, "trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersection, "fits": fits})
+		out = append(out, map[string]any{"guardedMedian": []float64{gx, gy}, "guardedMove": move, "metricWork": metricWork, "guardedIDs": guardedIDs, "guardedWork": work, "directed": directed, "mirrored": positions, "transforms": transforms, "trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersection, "fits": fits})
 	}
 	b, err := json.Marshal(out)
 	if err != nil {

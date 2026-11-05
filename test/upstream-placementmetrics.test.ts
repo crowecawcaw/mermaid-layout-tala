@@ -1,3 +1,8 @@
+import {
+  optimizerMedian,
+  optimizerCanMove,
+  chargeOptimizerScoring,
+} from '../src/upstream/placement/optimizer-metrics.js';
 import { optimizerAdjacents } from '../src/upstream/placement/optimizer-adjacents.js';
 import {
   OptimizationWorkGuard,
@@ -43,6 +48,18 @@ it.each(fixtures)('matches Go placement metrics $trial', (f) => {
   compare(
     { ids: guarded.map((n) => Number(n.ID)), work: String(guard.Used()) },
     { ids: f.guardedIDs, work: f.guardedWork },
+  );
+  const guardedMedian = optimizerMedian(guarded, true, guard);
+  const guardedMove = optimizerCanMove(
+    nodes[0]!,
+    new Point(f.trial % 100, (f.trial * 3) % 100),
+    true,
+    guard,
+  );
+  chargeOptimizerScoring(nodes[0]!, null, true, guard);
+  compare(
+    { median: guardedMedian, move: guardedMove, work: String(guard.Used()) },
+    { median: f.guardedMedian, move: f.guardedMove, work: f.metricWork },
   );
   const neighbors = adjacents(nodes[0]!, null);
   const counts = {
