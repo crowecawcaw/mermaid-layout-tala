@@ -4,7 +4,9 @@ package placement
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/layoutgraph"
+	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/limits"
 	"github.com/d2lang/d2/lib/geo"
 	"os"
 	"testing"
@@ -40,6 +42,19 @@ func TestExportTypeScriptPlacementmetricsFixtures(t *testing.T) {
 				}
 			}
 		}
+		guard, err := limits.NewOptimizationWorkGuard(context.Background(), "test", limits.MaxOptimizationWorkUnits)
+		if err != nil {
+			t.Fatal(err)
+		}
+		guarded, err := optimizerAdjacents(ns[0], nil, guard)
+		if err != nil {
+			t.Fatal(err)
+		}
+		guardedIDs := []int{}
+		for _, n := range guarded {
+			guardedIDs = append(guardedIDs, int(n.ID))
+		}
+		work := fmt.Sprint(guard.Used())
 		neighbors := adjacents(ns[0], nil)
 		ids := []int{}
 		for _, n := range neighbors {
@@ -68,7 +83,7 @@ func TestExportTypeScriptPlacementmetricsFixtures(t *testing.T) {
 		for _, n := range ns {
 			directed = append(directed, []float64{n.TopLeft.X, n.TopLeft.Y})
 		}
-		out = append(out, map[string]any{"directed": directed, "mirrored": positions, "transforms": transforms, "trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersection, "fits": fits})
+		out = append(out, map[string]any{"guardedIDs": guardedIDs, "guardedWork": work, "directed": directed, "mirrored": positions, "transforms": transforms, "trial": trial, "cell": g.CellSize, "nodes": records, "neighbors": ids, "median": []float64{x, y, sx, sy}, "intersection": intersection, "fits": fits})
 	}
 	b, err := json.Marshal(out)
 	if err != nil {

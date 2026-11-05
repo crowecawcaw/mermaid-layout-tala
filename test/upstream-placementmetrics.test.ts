@@ -1,3 +1,8 @@
+import { optimizerAdjacents } from '../src/upstream/placement/optimizer-adjacents.js';
+import {
+  OptimizationWorkGuard,
+  MaxOptimizationWorkUnits,
+} from '../src/upstream/limits/optimization.js';
 import { direct } from '../src/upstream/placement/direct.js';
 import { mirrorAxes } from '../src/upstream/placement/mirror.js';
 import { Background } from '../src/upstream/limits/context.js';
@@ -29,6 +34,16 @@ it.each(fixtures)('matches Go placement metrics $trial', (f) => {
     if (j % 2 === 0) edge.SourceArrowhead = 'triangle';
     else edge.TargetArrowhead = 'triangle';
   }
+  const guard = new OptimizationWorkGuard(
+    Background,
+    'test',
+    MaxOptimizationWorkUnits,
+  );
+  const guarded = optimizerAdjacents(nodes[0]!, null, guard);
+  compare(
+    { ids: guarded.map((n) => Number(n.ID)), work: String(guard.Used()) },
+    { ids: f.guardedIDs, work: f.guardedWork },
+  );
   const neighbors = adjacents(nodes[0]!, null);
   const counts = {
     left: f.trial % 5,
