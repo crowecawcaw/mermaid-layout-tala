@@ -75,7 +75,7 @@ export interface LayoutEdge {
   from: string;
   to: string;
   /** D2 edge identity index; defaults to the count of earlier equivalent edges. */
-  d2Index?: number;
+  d2Index?: number | bigint;
   sourceArrowhead?: string;
   targetArrowhead?: string;
   /** D2 edge arrow flags, independent of arrowhead attributes. */

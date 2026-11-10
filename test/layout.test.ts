@@ -21,7 +21,7 @@ describe('Mermaid flowchart layout slice', () => {
     ];
     const edge = { id: 'e', from: 'z', to: 'a' };
     expect(() => layoutFlowchart(nodes, [edge], { inputOrder: 'bad' as never })).toThrow(/input order/);
-    for (const d2Index of [-1, 0.5, Number.MAX_SAFE_INTEGER + 1])
+    for (const d2Index of [0.5, Number.MAX_SAFE_INTEGER + 1, -9223372036854775809n, 9223372036854775808n])
       expect(() => layoutFlowchart(nodes, [{ ...edge, d2Index }])).toThrow(/D2 index/);
     expect(() => layoutFlowchart(nodes, [
       { ...edge, id: 'first', d2Index: 0 },
@@ -32,6 +32,14 @@ describe('Mermaid flowchart layout slice', () => {
       { ...edge, id: 'second', d2Index: 2 },
     ], { inputOrder: 'authored' });
     expect(graph.Edges.map((e) => e.D2ID)).toEqual(['(z -> a)[7]', '(z -> a)[2]']);
+    const signed = translateFlowchart(nodes, [
+      { ...edge, id: 'negative', d2Index: -1 },
+      { ...edge, id: 'minimum', d2Index: -9223372036854775808n },
+      { ...edge, id: 'maximum', d2Index: 9223372036854775807n },
+    ], {}).graph;
+    expect(signed.Edges.map((e) => e.D2ID)).toEqual([
+      '(z -> a)[-1]', '(z -> a)[-9223372036854775808]', '(z -> a)[9223372036854775807]',
+    ]);
   });
 
   it('treats dots in D2 object IDs as part of the object, not ancestry', () => {

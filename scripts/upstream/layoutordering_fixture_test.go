@@ -98,6 +98,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"nested-root-level", [][2]int{{2, 3}, {2, 4}, {4, 3}}, false, 17},
 		{"grid-font", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 18},
 		{"empty-icon-presence", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 19},
+		{"negative-edge-indices", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 20},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -278,6 +279,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 			}
 			for i, pair := range test.pairs {
 				index := indices[i]
+				if test.shapeSet == 20 {
+					index = -1 - i
+				}
 				input := orderingEdge{ID: fmt.Sprintf("edge%d", 20-i), From: names[pair[0]], To: names[pair[1]], D2Index: &index, Label: "link", LabelWidth: 30, LabelHeight: 12}
 				if test.shapeSet == 10 && i != 1 {
 					input.To = d2sequence.LifelineEndID(input.From)

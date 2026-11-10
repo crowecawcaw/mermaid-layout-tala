@@ -421,8 +421,12 @@ export function translateFlowchart(
           throw new Error(`edge ${e.id} has a degenerate route segment`);
       }
     }
-    if (e.d2Index !== undefined && (!Number.isSafeInteger(e.d2Index) || e.d2Index < 0))
-      throw new Error(`edge ${e.id} has an invalid D2 index`);
+    if (e.d2Index !== undefined) {
+      const index = e.d2Index;
+      if (typeof index === 'number' ? !Number.isSafeInteger(index) :
+        typeof index !== 'bigint' || index < -9223372036854775808n || index > 9223372036854775807n)
+        throw new Error(`edge ${e.id} has an invalid D2 index`);
+    }
     if (edgeNames.has(e.id)) throw new Error('duplicate edge ID');
     edgeNames.add(e.id);
     const [source, target] = arrowFlags(e);
