@@ -89,6 +89,12 @@ function compareIdentifiers(a: string, b: string): number {
   }
   return a < b ? -1 : a > b ? 1 : 0;
 }
+// D2's Edge.AbsID compares path components with Go's Unicode simple case folding.
+function equalFold(a: string, b: string): boolean {
+  if (a === b) return true;
+  const escaped = a.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`^(?:${escaped})(?![\\s\\S])`, 'iu').test(b);
+}
 function arrowhead(value: string | undefined, fallback: string): string {
   if (value === undefined) return fallback;
   const aliases: Record<string, string> = {
@@ -371,7 +377,7 @@ export function translateFlowchart(
     while (
       from.length > 1 &&
       to.length > 1 &&
-      from[0]!.toLowerCase() === to[0]!.toLowerCase()
+      equalFold(from[0]!, to[0]!)
     ) {
       common.push(from.shift()!);
       to.shift();

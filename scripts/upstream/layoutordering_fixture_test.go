@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"strings"
 	"testing"
 
 	"github.com/d2lang/d2/d2graph"
@@ -45,6 +46,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"authored-order", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}, {0, 4}}, false},
 		{"parallel-edge-indices", [][2]int{{0, 1}, {0, 1}, {1, 2}, {1, 2}, {2, 3}, {3, 4}, {4, 0}}, false},
 		{"dotted-ids", [][2]int{{2, 3}, {2, 4}, {4, 3}}, true},
+		{"unicode-fold", [][2]int{{2, 3}, {2, 4}, {4, 3}}, true},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -53,6 +55,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		names := []string{"zeta", "alpha", "node10", "node2", "middle"}
 		if test.nested {
 			names = []string{"g.h", "g", "one", "two", "solo"}
+		}
+		if test.name == "unicode-fold" {
+			names = []string{"Σ", "ς", "one", "two", "solo"}
 		}
 		for _, direction := range []string{"TB", "BT", "LR", "RL"} {
 			g := d2graph.NewGraph()
@@ -74,7 +79,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				if input.IsInvisible {
 					obj.Style.Opacity = &d2graph.Scalar{Value: "0"}
 				}
-				parent.Children[id] = obj
+				parent.Children[strings.ToLower(id)] = obj
 				parent.ChildrenArray = append(parent.ChildrenArray, obj)
 				g.Objects = append(g.Objects, obj)
 				objects[id] = obj

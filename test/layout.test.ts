@@ -35,6 +35,20 @@ describe('Mermaid flowchart layout slice', () => {
     ], { inputOrder: 'authored' });
     expect(graph.Edges[0]!.D2ID).toBe('(g.h.one -> g.two)[0]');
   });
+
+  it('uses Go Unicode simple folding for edge identity ancestry', () => {
+    const group = (id: string) => ({ id, width: 80, height: 60, isGroup: true });
+    const node = (id: string, parentId: string) => ({ id, parentId, width: 40, height: 30 });
+    const nodes = [group('Σ'), group('ς'), group('İ'), group('i\u0307'),
+      node('one', 'Σ'), node('two', 'ς'), node('three', 'İ'), node('four', 'i\u0307')];
+    const { graph } = translateFlowchart(nodes, [
+      { id: 'e1', from: 'one', to: 'two', d2Index: 0 },
+      { id: 'e2', from: 'three', to: 'four', d2Index: 0 },
+    ], { inputOrder: 'authored' });
+    expect(graph.Edges.map((e) => e.D2ID)).toEqual([
+      'Σ.(one -> two)[0]', '(İ.three -> i\u0307.four)[0]',
+    ]);
+  });
   it('uses hierarchy ranks and measured node sizes', () => {
     const result = layoutFlowchart(
       [
