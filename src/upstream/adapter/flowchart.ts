@@ -347,12 +347,12 @@ export function translateFlowchart(
     const noLabel = labelText === '';
     node.IsInvisible = !!n.isInvisible ||
       (style?.opacity !== undefined && parseGoFloat(style.opacity) === 0) ||
-      (!!noFill && !!noStroke && noLabel && !n.icon);
+      (!!noFill && !!noStroke && noLabel && n.icon === undefined);
     node.Is3D = n.is3D ?? false;
     node.IsMultiple = n.isMultiple ?? false;
     if (n.fixedPosition)
       node.FixedTopLeft = new Point(n.fixedPosition.x, n.fixedPosition.y);
-    if (n.icon) {
+    if (n.icon !== undefined) {
       node.InitIcon();
       if (n.iconPosition) node.Icon!.Position = FromString(n.iconPosition);
     }

@@ -118,9 +118,11 @@ describe('Mermaid flowchart layout slice', () => {
       { id: 'empty', width: 60, height: 40, style: transparent },
       { id: 'label', width: 60, height: 40, style: transparent, label: 'visible' },
       { id: 'icon', width: 60, height: 40, style: transparent, icon: 'https://example.com/icon.svg' },
+      { id: 'empty-icon', width: 60, height: 40, style: transparent, icon: '' },
     ];
     const { graph } = translateFlowchart(nodes, [], { inputOrder: 'authored' });
-    expect(graph.Nodes.map((n) => n.IsInvisible)).toEqual([true, true, false, false]);
+    expect(graph.Nodes.map((n) => n.IsInvisible)).toEqual([true, true, false, false, false]);
+    expect(graph.Nodes[4]!.Icon).not.toBeNull();
     expect(() => translateFlowchart([{ ...nodes[0]!, style: { opacity: '2' } }], [], {})).toThrow(/opacity/);
     expect(() => translateFlowchart([{ ...nodes[0]!, style: { strokeWidth: '-1' } }], [], {})).toThrow(/strokeWidth/);
   });

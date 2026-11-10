@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"net/url"
 	"os"
 	"strconv"
 	"strings"
@@ -34,6 +35,7 @@ type orderingNode struct {
 	NearID       string            `json:"nearId,omitempty"`
 	HasClassData bool              `json:"hasClassData,omitempty"`
 	IsGrid       bool              `json:"isGrid,omitempty"`
+	Icon         *string           `json:"icon,omitempty"`
 }
 type orderingEdge struct {
 	ID                    string              `json:"id"`
@@ -95,6 +97,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"root-sequence-font", [][2]int{{2, 3}, {2, 4}, {4, 3}}, false, 16},
 		{"nested-root-level", [][2]int{{2, 3}, {2, 4}, {4, 3}}, false, 17},
 		{"grid-font", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 18},
+		{"empty-icon-presence", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 19},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -192,6 +195,17 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				if test.shapeSet == 18 {
 					input.IsGrid = i%2 == 0
 				}
+				if test.shapeSet == 19 {
+					input.IsInvisible = false
+					input.Style = map[string]string{"fill": "transparent", "stroke": "transparent"}
+					if i%2 == 0 {
+						icon := ""
+						if i == 2 {
+							icon = "https://example.com/icon.svg"
+						}
+						input.Icon = &icon
+					}
+				}
 				parent := g.Root
 				if test.shapeSet == 15 || test.shapeSet == 16 || test.shapeSet == 17 {
 					if i == 1 {
@@ -223,6 +237,13 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				}
 				obj := &d2graph.Object{Graph: g, Parent: parent, ID: id, IDVal: id, Box: geo.NewBox(geo.NewPoint(0, 0), input.Width, input.Height), Children: make(map[string]*d2graph.Object), Attributes: d2graph.Attributes{}}
 				obj.Shape.Value = input.Shape
+				if input.Icon != nil {
+					var err error
+					obj.Icon, err = url.Parse(*input.Icon)
+					if err != nil {
+						t.Fatal(err)
+					}
+				}
 				if input.IsGrid {
 					obj.GridRows = &d2graph.Scalar{Value: "2"}
 				}
@@ -359,6 +380,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 						t.Fatal(err)
 					}
 					record["fontSize"] = size
+				}
+				if obj.IconPosition != nil {
+					record["iconPosition"] = *obj.IconPosition
 				}
 				outNodes = append(outNodes, record)
 			}
