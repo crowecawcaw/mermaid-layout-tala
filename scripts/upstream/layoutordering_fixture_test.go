@@ -90,6 +90,8 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"unspecified-components", [][2]int{{0, 1}, {1, 2}, {3, 4}}, false, 14},
 		{"unspecified-reverse", [][2]int{{4, 3}, {3, 2}, {2, 1}, {1, 0}}, false, 14},
 		{"unspecified-dense", [][2]int{{0, 1}, {0, 2}, {0, 3}, {1, 3}, {1, 4}, {2, 4}, {3, 4}}, false, 14},
+		{"sequence-container-font", [][2]int{{2, 3}, {2, 4}, {4, 3}}, false, 15},
+		{"root-sequence-font", [][2]int{{2, 3}, {2, 4}, {4, 3}}, false, 16},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -105,12 +107,18 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		if test.shapeSet == 12 {
 			names[0] = "top-left"
 		}
+		if test.shapeSet == 15 || test.shapeSet == 16 {
+			names = []string{"seq", "inner", "leaf", "other", "solo"}
+		}
 		directions := []string{"TB", "BT", "LR", "RL"}
 		if test.shapeSet == 14 {
 			directions = []string{"DEFAULT"}
 		}
 		for _, direction := range directions {
 			g := d2graph.NewGraph()
+			if test.shapeSet == 16 {
+				g.Root.Shape.Value = "sequence_diagram"
+			}
 			g.Root.Direction.Value = dirs[direction]
 			nodes := []orderingNode{}
 			edges := []orderingEdge{}
@@ -164,7 +172,32 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 						input.Label, input.LabelWidth, input.LabelHeight = "visible", 30, 12
 					}
 				}
+				if test.shapeSet == 15 || test.shapeSet == 16 {
+					input.IsGroup = i < 2
+					if i == 0 && test.shapeSet == 15 {
+						input.Shape = "sequence_diagram"
+					}
+					if i < 2 {
+						input.Label = "title"
+						input.LabelWidth = 35
+						input.LabelHeight = 12
+					}
+				}
 				parent := g.Root
+				if test.shapeSet == 15 || test.shapeSet == 16 {
+					if i == 1 {
+						input.ParentID = names[0]
+						parent = objects[input.ParentID]
+					}
+					if i == 2 {
+						input.ParentID = names[1]
+						parent = objects[input.ParentID]
+					}
+					if i == 3 {
+						input.ParentID = names[0]
+						parent = objects[input.ParentID]
+					}
+				}
 				if test.shapeSet == 3 {
 					input.IsGroup = i == 0
 					if i == 1 {
@@ -351,6 +384,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				outEdges = append(outEdges, record)
 			}
 			options := map[string]any{"direction": direction, "seeds": []int{1, 2, 3}, "inputOrder": "authored"}
+			if test.shapeSet == 16 {
+				options["rootSequence"] = true
+			}
 			if test.name == "authored-order" {
 				delete(options, "inputOrder")
 			}

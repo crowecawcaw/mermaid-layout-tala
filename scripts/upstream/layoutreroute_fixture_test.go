@@ -53,8 +53,11 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
 	fixtures := []any{}
 	for _, direction := range []string{"TB", "BT", "LR", "RL", "DEFAULT"} {
-		for trial := 0; trial < 6; trial++ {
+		for trial := 0; trial < 8; trial++ {
 			g := d2graph.NewGraph()
+			if trial >= 6 {
+				g.Root.Shape.Value = "sequence_diagram"
+			}
 			g.Root.Direction.Value = dirs[direction]
 			nodes := []rerouteNode{{ID: "a", Width: 80, Height: 60, X: 40, Y: 30}, {ID: "b", Width: 80, Height: 60, X: 240, Y: 30}, {ID: "c", Width: 70, Height: 50, X: float64(85 + trial*25), Y: 165}}
 			if trial >= 4 {
@@ -149,6 +152,9 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 				out = append(out, record)
 			}
 			options := map[string]any{"direction": direction}
+			if trial >= 6 {
+				options["rootSequence"] = true
+			}
 			if direction == "DEFAULT" {
 				delete(options, "direction")
 			}

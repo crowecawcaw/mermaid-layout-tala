@@ -984,6 +984,328 @@
             "y": 60
           },
           {
+            "x": 235,
+            "y": 140
+          }
+        ],
+        "isCurve": true
+      }
+    ],
+    "expected": [
+      {
+        "id": "e0",
+        "isCurve": true,
+        "labelPercentage": 0.5,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "to": "b"
+      },
+      {
+        "id": "e1",
+        "isCurve": false,
+        "labelPercentage": 0.25,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 40,
+            "y": 60
+          },
+          {
+            "x": 40,
+            "y": 165
+          },
+          {
+            "x": 200,
+            "y": 165
+          }
+        ],
+        "to": "c"
+      },
+      {
+        "id": "e2",
+        "isCurve": true,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 235,
+            "y": 140
+          }
+        ],
+        "to": "c"
+      }
+    ],
+    "name": "TB-6",
+    "nodes": [
+      {
+        "id": "group",
+        "width": 400,
+        "height": 160,
+        "x": 140,
+        "y": 30,
+        "isGroup": true
+      },
+      {
+        "id": "a",
+        "width": 80,
+        "height": 60,
+        "x": 40,
+        "y": 30,
+        "parentId": "group"
+      },
+      {
+        "id": "b",
+        "width": 80,
+        "height": 60,
+        "x": 240,
+        "y": 30,
+        "parentId": "group"
+      },
+      {
+        "id": "c",
+        "width": 70,
+        "height": 50,
+        "x": 235,
+        "y": 165
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "rootSequence": true
+    },
+    "selected": [
+      "e1"
+    ]
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "a",
+        "to": "b",
+        "d2Index": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "isCurve": true,
+        "label": "existing",
+        "labelWidth": 30,
+        "labelHeight": 10,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.5
+      },
+      {
+        "id": "e1",
+        "from": "a",
+        "to": "c",
+        "d2Index": 1,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [],
+        "isCurve": true,
+        "label": "selected",
+        "labelWidth": 24,
+        "labelHeight": 12
+      },
+      {
+        "id": "e2",
+        "from": "b",
+        "to": "c",
+        "d2Index": 2,
+        "sourceArrow": true,
+        "targetArrow": false,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 260,
+            "y": 140
+          }
+        ],
+        "isCurve": true,
+        "label": "reversed",
+        "labelWidth": 25,
+        "labelHeight": 10,
+        "labelPosition": "UNLOCKED_TOP",
+        "labelPercentage": 0.25
+      }
+    ],
+    "expected": [
+      {
+        "id": "e0",
+        "isCurve": true,
+        "labelPercentage": 0.5,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "to": "b"
+      },
+      {
+        "id": "e1",
+        "isCurve": false,
+        "labelPercentage": 0,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 40,
+            "y": 60
+          },
+          {
+            "x": 40,
+            "y": 165
+          },
+          {
+            "x": 225,
+            "y": 165
+          }
+        ],
+        "to": "c"
+      },
+      {
+        "id": "e2",
+        "isCurve": false,
+        "labelPercentage": 0.25,
+        "labelPosition": "UNLOCKED_TOP",
+        "points": [
+          {
+            "x": 252,
+            "y": 60
+          },
+          {
+            "x": 252,
+            "y": 140
+          }
+        ],
+        "to": "c"
+      }
+    ],
+    "name": "TB-7",
+    "nodes": [
+      {
+        "id": "group",
+        "width": 400,
+        "height": 160,
+        "x": 140,
+        "y": 30,
+        "isGroup": true
+      },
+      {
+        "id": "a",
+        "width": 80,
+        "height": 60,
+        "x": 40,
+        "y": 30,
+        "parentId": "group"
+      },
+      {
+        "id": "b",
+        "width": 80,
+        "height": 60,
+        "x": 240,
+        "y": 30,
+        "parentId": "group"
+      },
+      {
+        "id": "c",
+        "width": 70,
+        "height": 50,
+        "x": 260,
+        "y": 165
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "rootSequence": true
+    },
+    "selected": [
+      "e1",
+      "e2"
+    ]
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "a",
+        "to": "b",
+        "d2Index": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "isCurve": true,
+        "label": "existing",
+        "labelWidth": 30,
+        "labelHeight": 10,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.5
+      },
+      {
+        "id": "e1",
+        "from": "a",
+        "to": "c",
+        "d2Index": 1,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [],
+        "isCurve": true,
+        "label": "selected",
+        "labelWidth": 24,
+        "labelHeight": 12,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.25
+      },
+      {
+        "id": "e2",
+        "from": "b",
+        "to": "c",
+        "d2Index": 2,
+        "sourceArrow": true,
+        "targetArrow": false,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
             "x": 85,
             "y": 140
           }
@@ -1855,6 +2177,328 @@
     ],
     "options": {
       "direction": "BT"
+    },
+    "selected": [
+      "e1",
+      "e2"
+    ]
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "a",
+        "to": "b",
+        "d2Index": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "isCurve": true,
+        "label": "existing",
+        "labelWidth": 30,
+        "labelHeight": 10,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.5
+      },
+      {
+        "id": "e1",
+        "from": "a",
+        "to": "c",
+        "d2Index": 1,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [],
+        "isCurve": true,
+        "label": "selected",
+        "labelWidth": 24,
+        "labelHeight": 12,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.25
+      },
+      {
+        "id": "e2",
+        "from": "b",
+        "to": "c",
+        "d2Index": 2,
+        "sourceArrow": true,
+        "targetArrow": false,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 235,
+            "y": 140
+          }
+        ],
+        "isCurve": true
+      }
+    ],
+    "expected": [
+      {
+        "id": "e0",
+        "isCurve": true,
+        "labelPercentage": 0.5,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "to": "b"
+      },
+      {
+        "id": "e1",
+        "isCurve": false,
+        "labelPercentage": 0.25,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 40,
+            "y": 60
+          },
+          {
+            "x": 40,
+            "y": 165
+          },
+          {
+            "x": 200,
+            "y": 165
+          }
+        ],
+        "to": "c"
+      },
+      {
+        "id": "e2",
+        "isCurve": true,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 235,
+            "y": 140
+          }
+        ],
+        "to": "c"
+      }
+    ],
+    "name": "BT-6",
+    "nodes": [
+      {
+        "id": "group",
+        "width": 400,
+        "height": 160,
+        "x": 140,
+        "y": 30,
+        "isGroup": true
+      },
+      {
+        "id": "a",
+        "width": 80,
+        "height": 60,
+        "x": 40,
+        "y": 30,
+        "parentId": "group"
+      },
+      {
+        "id": "b",
+        "width": 80,
+        "height": 60,
+        "x": 240,
+        "y": 30,
+        "parentId": "group"
+      },
+      {
+        "id": "c",
+        "width": 70,
+        "height": 50,
+        "x": 235,
+        "y": 165
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "rootSequence": true
+    },
+    "selected": [
+      "e1"
+    ]
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "a",
+        "to": "b",
+        "d2Index": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "isCurve": true,
+        "label": "existing",
+        "labelWidth": 30,
+        "labelHeight": 10,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.5
+      },
+      {
+        "id": "e1",
+        "from": "a",
+        "to": "c",
+        "d2Index": 1,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [],
+        "isCurve": true,
+        "label": "selected",
+        "labelWidth": 24,
+        "labelHeight": 12
+      },
+      {
+        "id": "e2",
+        "from": "b",
+        "to": "c",
+        "d2Index": 2,
+        "sourceArrow": true,
+        "targetArrow": false,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 260,
+            "y": 140
+          }
+        ],
+        "isCurve": true,
+        "label": "reversed",
+        "labelWidth": 25,
+        "labelHeight": 10,
+        "labelPosition": "UNLOCKED_TOP",
+        "labelPercentage": 0.25
+      }
+    ],
+    "expected": [
+      {
+        "id": "e0",
+        "isCurve": true,
+        "labelPercentage": 0.5,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "to": "b"
+      },
+      {
+        "id": "e1",
+        "isCurve": false,
+        "labelPercentage": 0,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 40,
+            "y": 60
+          },
+          {
+            "x": 40,
+            "y": 165
+          },
+          {
+            "x": 225,
+            "y": 165
+          }
+        ],
+        "to": "c"
+      },
+      {
+        "id": "e2",
+        "isCurve": false,
+        "labelPercentage": 0.25,
+        "labelPosition": "UNLOCKED_TOP",
+        "points": [
+          {
+            "x": 252,
+            "y": 60
+          },
+          {
+            "x": 252,
+            "y": 140
+          }
+        ],
+        "to": "c"
+      }
+    ],
+    "name": "BT-7",
+    "nodes": [
+      {
+        "id": "group",
+        "width": 400,
+        "height": 160,
+        "x": 140,
+        "y": 30,
+        "isGroup": true
+      },
+      {
+        "id": "a",
+        "width": 80,
+        "height": 60,
+        "x": 40,
+        "y": 30,
+        "parentId": "group"
+      },
+      {
+        "id": "b",
+        "width": 80,
+        "height": 60,
+        "x": 240,
+        "y": 30,
+        "parentId": "group"
+      },
+      {
+        "id": "c",
+        "width": 70,
+        "height": 50,
+        "x": 260,
+        "y": 165
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "rootSequence": true
     },
     "selected": [
       "e1",
@@ -2846,6 +3490,328 @@
             "y": 60
           },
           {
+            "x": 235,
+            "y": 140
+          }
+        ],
+        "isCurve": true
+      }
+    ],
+    "expected": [
+      {
+        "id": "e0",
+        "isCurve": true,
+        "labelPercentage": 0.5,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "to": "b"
+      },
+      {
+        "id": "e1",
+        "isCurve": false,
+        "labelPercentage": 0.25,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 40,
+            "y": 60
+          },
+          {
+            "x": 40,
+            "y": 165
+          },
+          {
+            "x": 200,
+            "y": 165
+          }
+        ],
+        "to": "c"
+      },
+      {
+        "id": "e2",
+        "isCurve": true,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 235,
+            "y": 140
+          }
+        ],
+        "to": "c"
+      }
+    ],
+    "name": "LR-6",
+    "nodes": [
+      {
+        "id": "group",
+        "width": 400,
+        "height": 160,
+        "x": 140,
+        "y": 30,
+        "isGroup": true
+      },
+      {
+        "id": "a",
+        "width": 80,
+        "height": 60,
+        "x": 40,
+        "y": 30,
+        "parentId": "group"
+      },
+      {
+        "id": "b",
+        "width": 80,
+        "height": 60,
+        "x": 240,
+        "y": 30,
+        "parentId": "group"
+      },
+      {
+        "id": "c",
+        "width": 70,
+        "height": 50,
+        "x": 235,
+        "y": 165
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "rootSequence": true
+    },
+    "selected": [
+      "e1"
+    ]
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "a",
+        "to": "b",
+        "d2Index": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "isCurve": true,
+        "label": "existing",
+        "labelWidth": 30,
+        "labelHeight": 10,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.5
+      },
+      {
+        "id": "e1",
+        "from": "a",
+        "to": "c",
+        "d2Index": 1,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [],
+        "isCurve": true,
+        "label": "selected",
+        "labelWidth": 24,
+        "labelHeight": 12
+      },
+      {
+        "id": "e2",
+        "from": "b",
+        "to": "c",
+        "d2Index": 2,
+        "sourceArrow": true,
+        "targetArrow": false,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 260,
+            "y": 140
+          }
+        ],
+        "isCurve": true,
+        "label": "reversed",
+        "labelWidth": 25,
+        "labelHeight": 10,
+        "labelPosition": "UNLOCKED_TOP",
+        "labelPercentage": 0.25
+      }
+    ],
+    "expected": [
+      {
+        "id": "e0",
+        "isCurve": true,
+        "labelPercentage": 0.5,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "to": "b"
+      },
+      {
+        "id": "e1",
+        "isCurve": false,
+        "labelPercentage": 0,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 40,
+            "y": 60
+          },
+          {
+            "x": 40,
+            "y": 165
+          },
+          {
+            "x": 225,
+            "y": 165
+          }
+        ],
+        "to": "c"
+      },
+      {
+        "id": "e2",
+        "isCurve": false,
+        "labelPercentage": 0.25,
+        "labelPosition": "UNLOCKED_TOP",
+        "points": [
+          {
+            "x": 252,
+            "y": 60
+          },
+          {
+            "x": 252,
+            "y": 140
+          }
+        ],
+        "to": "c"
+      }
+    ],
+    "name": "LR-7",
+    "nodes": [
+      {
+        "id": "group",
+        "width": 400,
+        "height": 160,
+        "x": 140,
+        "y": 30,
+        "isGroup": true
+      },
+      {
+        "id": "a",
+        "width": 80,
+        "height": 60,
+        "x": 40,
+        "y": 30,
+        "parentId": "group"
+      },
+      {
+        "id": "b",
+        "width": 80,
+        "height": 60,
+        "x": 240,
+        "y": 30,
+        "parentId": "group"
+      },
+      {
+        "id": "c",
+        "width": 70,
+        "height": 50,
+        "x": 260,
+        "y": 165
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "rootSequence": true
+    },
+    "selected": [
+      "e1",
+      "e2"
+    ]
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "a",
+        "to": "b",
+        "d2Index": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "isCurve": true,
+        "label": "existing",
+        "labelWidth": 30,
+        "labelHeight": 10,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.5
+      },
+      {
+        "id": "e1",
+        "from": "a",
+        "to": "c",
+        "d2Index": 1,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [],
+        "isCurve": true,
+        "label": "selected",
+        "labelWidth": 24,
+        "labelHeight": 12,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.25
+      },
+      {
+        "id": "e2",
+        "from": "b",
+        "to": "c",
+        "d2Index": 2,
+        "sourceArrow": true,
+        "targetArrow": false,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
             "x": 85,
             "y": 140
           }
@@ -3777,6 +4743,328 @@
             "y": 60
           },
           {
+            "x": 235,
+            "y": 140
+          }
+        ],
+        "isCurve": true
+      }
+    ],
+    "expected": [
+      {
+        "id": "e0",
+        "isCurve": true,
+        "labelPercentage": 0.5,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "to": "b"
+      },
+      {
+        "id": "e1",
+        "isCurve": false,
+        "labelPercentage": 0.25,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 40,
+            "y": 60
+          },
+          {
+            "x": 40,
+            "y": 165
+          },
+          {
+            "x": 200,
+            "y": 165
+          }
+        ],
+        "to": "c"
+      },
+      {
+        "id": "e2",
+        "isCurve": true,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 235,
+            "y": 140
+          }
+        ],
+        "to": "c"
+      }
+    ],
+    "name": "RL-6",
+    "nodes": [
+      {
+        "id": "group",
+        "width": 400,
+        "height": 160,
+        "x": 140,
+        "y": 30,
+        "isGroup": true
+      },
+      {
+        "id": "a",
+        "width": 80,
+        "height": 60,
+        "x": 40,
+        "y": 30,
+        "parentId": "group"
+      },
+      {
+        "id": "b",
+        "width": 80,
+        "height": 60,
+        "x": 240,
+        "y": 30,
+        "parentId": "group"
+      },
+      {
+        "id": "c",
+        "width": 70,
+        "height": 50,
+        "x": 235,
+        "y": 165
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "rootSequence": true
+    },
+    "selected": [
+      "e1"
+    ]
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "a",
+        "to": "b",
+        "d2Index": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "isCurve": true,
+        "label": "existing",
+        "labelWidth": 30,
+        "labelHeight": 10,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.5
+      },
+      {
+        "id": "e1",
+        "from": "a",
+        "to": "c",
+        "d2Index": 1,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [],
+        "isCurve": true,
+        "label": "selected",
+        "labelWidth": 24,
+        "labelHeight": 12
+      },
+      {
+        "id": "e2",
+        "from": "b",
+        "to": "c",
+        "d2Index": 2,
+        "sourceArrow": true,
+        "targetArrow": false,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 260,
+            "y": 140
+          }
+        ],
+        "isCurve": true,
+        "label": "reversed",
+        "labelWidth": 25,
+        "labelHeight": 10,
+        "labelPosition": "UNLOCKED_TOP",
+        "labelPercentage": 0.25
+      }
+    ],
+    "expected": [
+      {
+        "id": "e0",
+        "isCurve": true,
+        "labelPercentage": 0.5,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "to": "b"
+      },
+      {
+        "id": "e1",
+        "isCurve": false,
+        "labelPercentage": 0,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 40,
+            "y": 60
+          },
+          {
+            "x": 40,
+            "y": 165
+          },
+          {
+            "x": 225,
+            "y": 165
+          }
+        ],
+        "to": "c"
+      },
+      {
+        "id": "e2",
+        "isCurve": false,
+        "labelPercentage": 0.25,
+        "labelPosition": "UNLOCKED_TOP",
+        "points": [
+          {
+            "x": 252,
+            "y": 60
+          },
+          {
+            "x": 252,
+            "y": 140
+          }
+        ],
+        "to": "c"
+      }
+    ],
+    "name": "RL-7",
+    "nodes": [
+      {
+        "id": "group",
+        "width": 400,
+        "height": 160,
+        "x": 140,
+        "y": 30,
+        "isGroup": true
+      },
+      {
+        "id": "a",
+        "width": 80,
+        "height": 60,
+        "x": 40,
+        "y": 30,
+        "parentId": "group"
+      },
+      {
+        "id": "b",
+        "width": 80,
+        "height": 60,
+        "x": 240,
+        "y": 30,
+        "parentId": "group"
+      },
+      {
+        "id": "c",
+        "width": 70,
+        "height": 50,
+        "x": 260,
+        "y": 165
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "rootSequence": true
+    },
+    "selected": [
+      "e1",
+      "e2"
+    ]
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "a",
+        "to": "b",
+        "d2Index": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "isCurve": true,
+        "label": "existing",
+        "labelWidth": 30,
+        "labelHeight": 10,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.5
+      },
+      {
+        "id": "e1",
+        "from": "a",
+        "to": "c",
+        "d2Index": 1,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [],
+        "isCurve": true,
+        "label": "selected",
+        "labelWidth": 24,
+        "labelHeight": 12,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.25
+      },
+      {
+        "id": "e2",
+        "from": "b",
+        "to": "c",
+        "d2Index": 2,
+        "sourceArrow": true,
+        "targetArrow": false,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
             "x": 85,
             "y": 140
           }
@@ -4637,6 +5925,326 @@
       }
     ],
     "options": {},
+    "selected": [
+      "e1",
+      "e2"
+    ]
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "a",
+        "to": "b",
+        "d2Index": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "isCurve": true,
+        "label": "existing",
+        "labelWidth": 30,
+        "labelHeight": 10,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.5
+      },
+      {
+        "id": "e1",
+        "from": "a",
+        "to": "c",
+        "d2Index": 1,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [],
+        "isCurve": true,
+        "label": "selected",
+        "labelWidth": 24,
+        "labelHeight": 12,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.25
+      },
+      {
+        "id": "e2",
+        "from": "b",
+        "to": "c",
+        "d2Index": 2,
+        "sourceArrow": true,
+        "targetArrow": false,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 235,
+            "y": 140
+          }
+        ],
+        "isCurve": true
+      }
+    ],
+    "expected": [
+      {
+        "id": "e0",
+        "isCurve": true,
+        "labelPercentage": 0.5,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "to": "b"
+      },
+      {
+        "id": "e1",
+        "isCurve": false,
+        "labelPercentage": 0.25,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 40,
+            "y": 60
+          },
+          {
+            "x": 40,
+            "y": 165
+          },
+          {
+            "x": 200,
+            "y": 165
+          }
+        ],
+        "to": "c"
+      },
+      {
+        "id": "e2",
+        "isCurve": true,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 235,
+            "y": 140
+          }
+        ],
+        "to": "c"
+      }
+    ],
+    "name": "DEFAULT-6",
+    "nodes": [
+      {
+        "id": "group",
+        "width": 400,
+        "height": 160,
+        "x": 140,
+        "y": 30,
+        "isGroup": true
+      },
+      {
+        "id": "a",
+        "width": 80,
+        "height": 60,
+        "x": 40,
+        "y": 30,
+        "parentId": "group"
+      },
+      {
+        "id": "b",
+        "width": 80,
+        "height": 60,
+        "x": 240,
+        "y": 30,
+        "parentId": "group"
+      },
+      {
+        "id": "c",
+        "width": 70,
+        "height": 50,
+        "x": 235,
+        "y": 165
+      }
+    ],
+    "options": {
+      "rootSequence": true
+    },
+    "selected": [
+      "e1"
+    ]
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "a",
+        "to": "b",
+        "d2Index": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "isCurve": true,
+        "label": "existing",
+        "labelWidth": 30,
+        "labelHeight": 10,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.5
+      },
+      {
+        "id": "e1",
+        "from": "a",
+        "to": "c",
+        "d2Index": 1,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [],
+        "isCurve": true,
+        "label": "selected",
+        "labelWidth": 24,
+        "labelHeight": 12
+      },
+      {
+        "id": "e2",
+        "from": "b",
+        "to": "c",
+        "d2Index": 2,
+        "sourceArrow": true,
+        "targetArrow": false,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 260,
+            "y": 140
+          }
+        ],
+        "isCurve": true,
+        "label": "reversed",
+        "labelWidth": 25,
+        "labelHeight": 10,
+        "labelPosition": "UNLOCKED_TOP",
+        "labelPercentage": 0.25
+      }
+    ],
+    "expected": [
+      {
+        "id": "e0",
+        "isCurve": true,
+        "labelPercentage": 0.5,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "to": "b"
+      },
+      {
+        "id": "e1",
+        "isCurve": false,
+        "labelPercentage": 0,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 40,
+            "y": 60
+          },
+          {
+            "x": 40,
+            "y": 165
+          },
+          {
+            "x": 225,
+            "y": 165
+          }
+        ],
+        "to": "c"
+      },
+      {
+        "id": "e2",
+        "isCurve": false,
+        "labelPercentage": 0.25,
+        "labelPosition": "UNLOCKED_TOP",
+        "points": [
+          {
+            "x": 252,
+            "y": 60
+          },
+          {
+            "x": 252,
+            "y": 140
+          }
+        ],
+        "to": "c"
+      }
+    ],
+    "name": "DEFAULT-7",
+    "nodes": [
+      {
+        "id": "group",
+        "width": 400,
+        "height": 160,
+        "x": 140,
+        "y": 30,
+        "isGroup": true
+      },
+      {
+        "id": "a",
+        "width": 80,
+        "height": 60,
+        "x": 40,
+        "y": 30,
+        "parentId": "group"
+      },
+      {
+        "id": "b",
+        "width": 80,
+        "height": 60,
+        "x": 240,
+        "y": 30,
+        "parentId": "group"
+      },
+      {
+        "id": "c",
+        "width": 70,
+        "height": 50,
+        "x": 260,
+        "y": 165
+      }
+    ],
+    "options": {
+      "rootSequence": true
+    },
     "selected": [
       "e1",
       "e2"

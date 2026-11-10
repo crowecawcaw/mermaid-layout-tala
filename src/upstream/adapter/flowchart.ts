@@ -354,12 +354,14 @@ export function translateFlowchart(
       node.InitIcon();
       if (n.iconPosition) node.Icon!.Position = FromString(n.iconPosition);
     }
-    let depth = 1;
-    for (let parent = n.parentId; parent; parent = byId.get(parent)?.parentId)
+    let depth = 1, insideSequence = options.rootSequence ?? false;
+    for (let parent = n.parentId; parent; parent = byId.get(parent)?.parentId) {
       depth++;
+      if (byId.get(parent)?.shape === 'sequence_diagram') insideSequence = true;
+    }
     node.FontSize =
       n.fontSize ??
-      (n.isGroup && (children.get(n.id)?.length ?? 0) > 0 && n.shape !== 'text'
+      (n.isGroup && (children.get(n.id)?.length ?? 0) > 0 && n.shape !== 'text' && !insideSequence
         ? ([28, 24, 20][depth - 1] ?? 16)
         : n.tableColumns !== undefined || n.hasClassData
           ? 20

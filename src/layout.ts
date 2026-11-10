@@ -97,6 +97,7 @@ export interface LayoutOptions {
   /** Input ordering; defaults to authored order as in D2. */
   inputOrder?: 'authored' | 'canonical';
   rootHierarchy?: boolean;
+  rootSequence?: boolean;
   nodeSpacing?: number;
   rankSpacing?: number;
   orderingPasses?: number;
@@ -157,6 +158,7 @@ export interface RoutingResult {
 export interface RoutingOptions {
   direction?: LayoutDirection;
   rootHierarchy?: boolean;
+  rootSequence?: boolean;
 }
 
 interface WeightedEdge extends LayoutEdge {

@@ -89,6 +89,18 @@ describe('Mermaid flowchart layout slice', () => {
     expect(graph.Nodes.map((n) => n.FontSize)).toEqual([16, 20, 16, 16, 16, 20, 23]);
   });
 
+  it('uses sequence-diagram font defaults for descendant containers', () => {
+    const nodes = [
+      { id: 'seq', shape: 'sequence_diagram', isGroup: true, width: 80, height: 60 },
+      { id: 'inner', parentId: 'seq', isGroup: true, width: 60, height: 40 },
+      { id: 'leaf', parentId: 'inner', width: 40, height: 30 },
+    ];
+    const nested = translateFlowchart(nodes, [], {}).graph;
+    expect(nested.Nodes.map((node) => node.FontSize)).toEqual([28, 16, 16]);
+    const root = translateFlowchart(nodes, [], { rootSequence: true }).graph;
+    expect(root.Nodes.map((node) => node.FontSize)).toEqual([16, 16, 16]);
+  });
+
   it('derives node visibility from D2 styles, labels and icons', () => {
     const transparent = { fill: 'transparent', strokeWidth: '0' };
     const nodes = [

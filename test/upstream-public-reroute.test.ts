@@ -6,6 +6,7 @@ import { compare } from './helpers/compare.js';
 it.each(fixtures)('matches pinned Go RouteEdges $name', (fixture) => {
   const before = structuredClone({ nodes: fixture.nodes, edges: fixture.edges });
   const result = routeEdges(fixture.nodes, fixture.edges, fixture.selected, {
+    ...fixture.options,
     direction: fixture.options.direction as LayoutDirection,
   });
   expect({ nodes: fixture.nodes, edges: fixture.edges }).toEqual(before);
