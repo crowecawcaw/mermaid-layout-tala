@@ -228,6 +228,11 @@ export function translateFlowchart(
         n.fontSize > 1_000_000_000)
     )
       throw new Error(`node ${n.id} has an invalid font size`);
+    for (const key of ['desiredWidth', 'desiredHeight'] as const) {
+      const value = n[key];
+      if (value !== undefined && (!Number.isInteger(value) || value <= 0 || value > 1_000_000_000))
+        throw new Error(`node ${n.id} has an invalid ${key}`);
+    }
     if (
       n.fixedPosition &&
       (!Number.isInteger(n.fixedPosition.x) ||
@@ -384,10 +389,10 @@ export function translateFlowchart(
         : n.tableColumns !== undefined || n.hasClassData
           ? 20
           : 16);
-    if (n.fixedSize) {
-      node.DesiredWidth = n.width;
-      node.DesiredHeight = n.height;
-    }
+    if (n.desiredWidth !== undefined || n.fixedSize)
+      node.DesiredWidth = n.desiredWidth ?? n.width;
+    if (n.desiredHeight !== undefined || n.fixedSize)
+      node.DesiredHeight = n.desiredHeight ?? n.height;
     if (labelText !== '' && !['text', 'class', 'sql_table', 'code'].includes(n.shape ?? '')) {
       node.Label = new Label();
       node.Label.Text = labelText;

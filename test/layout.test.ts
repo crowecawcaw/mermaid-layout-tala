@@ -133,6 +133,20 @@ describe('Mermaid flowchart layout slice', () => {
     expect(() => translateFlowchart(nodes, [], { rootLevel: 0.5 })).toThrow(/rootLevel/);
   });
 
+  it('preserves independent D2 width and height attributes', () => {
+    const nodes = [
+      { id: 'width', width: 80, height: 50, desiredWidth: 110 },
+      { id: 'height', width: 80, height: 50, desiredHeight: 90 },
+      { id: 'both', width: 80, height: 50, fixedSize: true, desiredHeight: 70 },
+    ];
+    const { graph } = translateFlowchart(nodes, [], {});
+    expect(graph.Nodes.map((node) => [node.DesiredWidth, node.DesiredHeight])).toEqual([
+      [110, null], [null, 90], [80, 70],
+    ]);
+    for (const desiredWidth of [0, -1, 0.5, 1_000_000_001])
+      expect(() => translateFlowchart([{ id: 'bad', width: 80, height: 50, desiredWidth }], [], {})).toThrow(/desiredWidth/);
+  });
+
   it('derives node visibility from D2 styles, labels and icons', () => {
     const transparent = { fill: 'transparent', strokeWidth: '0' };
     const nodes = [

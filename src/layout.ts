@@ -19,6 +19,9 @@ export interface LayoutNode extends RankNode {
   width: number;
   height: number;
   fixedSize?: boolean;
+  /** Independent D2 width and height attributes, when present. */
+  desiredWidth?: number;
+  desiredHeight?: number;
   shape?: string;
   tableColumns?: number;
   /** Whether the D2 object has class metadata, even if it has no members. */

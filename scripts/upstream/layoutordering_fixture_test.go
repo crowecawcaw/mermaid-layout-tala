@@ -21,22 +21,24 @@ import (
 )
 
 type orderingNode struct {
-	ID           string            `json:"id"`
-	D2ID         *string           `json:"d2Id,omitempty"`
-	Width        float64           `json:"width"`
-	Height       float64           `json:"height"`
-	IsInvisible  bool              `json:"isInvisible,omitempty"`
-	IsGroup      bool              `json:"isGroup,omitempty"`
-	ParentID     string            `json:"parentId,omitempty"`
-	Shape        string            `json:"shape,omitempty"`
-	Label        string            `json:"label"`
-	LabelWidth   int               `json:"labelWidth,omitempty"`
-	LabelHeight  int               `json:"labelHeight,omitempty"`
-	Style        map[string]string `json:"style,omitempty"`
-	NearID       string            `json:"nearId,omitempty"`
-	HasClassData bool              `json:"hasClassData,omitempty"`
-	IsGrid       bool              `json:"isGrid,omitempty"`
-	Icon         *string           `json:"icon,omitempty"`
+	ID            string            `json:"id"`
+	D2ID          *string           `json:"d2Id,omitempty"`
+	Width         float64           `json:"width"`
+	Height        float64           `json:"height"`
+	IsInvisible   bool              `json:"isInvisible,omitempty"`
+	IsGroup       bool              `json:"isGroup,omitempty"`
+	ParentID      string            `json:"parentId,omitempty"`
+	Shape         string            `json:"shape,omitempty"`
+	Label         string            `json:"label"`
+	LabelWidth    int               `json:"labelWidth,omitempty"`
+	LabelHeight   int               `json:"labelHeight,omitempty"`
+	Style         map[string]string `json:"style,omitempty"`
+	NearID        string            `json:"nearId,omitempty"`
+	HasClassData  bool              `json:"hasClassData,omitempty"`
+	IsGrid        bool              `json:"isGrid,omitempty"`
+	Icon          *string           `json:"icon,omitempty"`
+	DesiredWidth  *int              `json:"desiredWidth,omitempty"`
+	DesiredHeight *int              `json:"desiredHeight,omitempty"`
 }
 type orderingEdge struct {
 	ID                    string              `json:"id"`
@@ -107,6 +109,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"scoped-lifelines", [][2]int{{0, 1}, {1, 2}, {3, 4}}, false, 25},
 		{"empty-local-id", [][2]int{{2, 3}, {3, 4}}, false, 26},
 		{"empty-arrowhead-shapes", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 27},
+		{"independent-fixed-sizes", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 28},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -252,6 +255,16 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 					id := []string{"actor", "beta", "gamma", "delta", "omega"}[i]
 					input.D2ID = &id
 				}
+				if test.shapeSet == 28 {
+					if i == 0 || i == 2 {
+						width := 110 + i*10
+						input.DesiredWidth = &width
+					}
+					if i == 1 || i == 2 {
+						height := 80 + i*10
+						input.DesiredHeight = &height
+					}
+				}
 				if test.shapeSet == 26 {
 					id := []string{"outer", "", "leaf", "other", "solo"}[i]
 					input.D2ID = &id
@@ -300,6 +313,12 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				}
 				obj := &d2graph.Object{Graph: g, Parent: parent, ID: d2ID, IDVal: d2ID, Box: geo.NewBox(geo.NewPoint(0, 0), input.Width, input.Height), Children: make(map[string]*d2graph.Object), Attributes: d2graph.Attributes{}}
 				obj.Shape.Value = input.Shape
+				if input.DesiredWidth != nil {
+					obj.WidthAttr = &d2graph.Scalar{Value: strconv.Itoa(*input.DesiredWidth)}
+				}
+				if input.DesiredHeight != nil {
+					obj.HeightAttr = &d2graph.Scalar{Value: strconv.Itoa(*input.DesiredHeight)}
+				}
 				if input.Icon != nil {
 					var err error
 					obj.Icon, err = url.Parse(*input.Icon)
