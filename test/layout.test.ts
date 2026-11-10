@@ -63,6 +63,17 @@ describe('Mermaid flowchart layout slice', () => {
     );
     expect(graph.Nodes.map((node) => node.ShapeType())).toEqual(shapes.map(([, shape]) => shape));
   });
+
+  it('uses D2 font defaults for table payloads and text containers', () => {
+    const nodes = [
+      { id: 'table-shape', shape: 'sql_table', width: 80, height: 50 },
+      { id: 'table-payload', shape: 'sql_table', tableColumns: 0, width: 80, height: 50 },
+      { id: 'text-group', shape: 'text', isGroup: true, width: 80, height: 50 },
+      { id: 'child', parentId: 'text-group', width: 40, height: 30 },
+    ];
+    const { graph } = translateFlowchart(nodes, [], { inputOrder: 'authored' });
+    expect(graph.Nodes.map((n) => n.FontSize)).toEqual([16, 20, 16, 16]);
+  });
   it('uses hierarchy ranks and measured node sizes', () => {
     const result = layoutFlowchart(
       [

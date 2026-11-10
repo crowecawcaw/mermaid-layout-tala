@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 	"testing"
 
@@ -23,6 +24,9 @@ type orderingNode struct {
 	IsGroup     bool    `json:"isGroup,omitempty"`
 	ParentID    string  `json:"parentId,omitempty"`
 	Shape       string  `json:"shape,omitempty"`
+	Label       string  `json:"label,omitempty"`
+	LabelWidth  int     `json:"labelWidth,omitempty"`
+	LabelHeight int     `json:"labelHeight,omitempty"`
 }
 type orderingEdge struct {
 	ID          string `json:"id"`
@@ -51,6 +55,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"unicode-fold", [][2]int{{2, 3}, {2, 4}, {4, 3}}, true, 0},
 		{"d2-shapes", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 1},
 		{"d2-shapes-extra", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 2},
+		{"font-defaults", [][2]int{{1, 2}, {1, 3}, {2, 4}}, false, 3},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -77,7 +82,18 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				if test.shapeSet == 2 {
 					input.Shape = []string{"text", "code", "sequence_diagram", "document", "page"}[i]
 				}
+				if test.shapeSet == 3 {
+					input.Shape = []string{"text", "rectangle", "sql_table", "class", "text"}[i]
+					input.Label, input.LabelWidth, input.LabelHeight = "title", 40, 12
+				}
 				parent := g.Root
+				if test.shapeSet == 3 {
+					input.IsGroup = i == 0
+					if i == 1 {
+						input.ParentID = names[0]
+						parent = objects[input.ParentID]
+					}
+				}
 				if test.nested {
 					input.IsGroup = i < 2
 					if i == 2 || i == 3 {
@@ -87,6 +103,10 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				}
 				obj := &d2graph.Object{Graph: g, Parent: parent, ID: id, IDVal: id, Box: geo.NewBox(geo.NewPoint(0, 0), input.Width, input.Height), Children: make(map[string]*d2graph.Object), Attributes: d2graph.Attributes{}}
 				obj.Shape.Value = input.Shape
+				if input.Label != "" {
+					obj.Label.Value = input.Label
+					obj.LabelDimensions = *d2target.NewTextDimensions(input.LabelWidth, input.LabelHeight)
+				}
 				if input.IsInvisible {
 					obj.Style.Opacity = &d2graph.Scalar{Value: "0"}
 				}
@@ -121,7 +141,15 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 			outNodes := []map[string]any{}
 			for _, input := range nodes {
 				obj := objects[input.ID]
-				outNodes = append(outNodes, map[string]any{"id": input.ID, "x": obj.TopLeft.X + obj.Width/2, "y": obj.TopLeft.Y + obj.Height/2, "width": obj.Width, "height": obj.Height})
+				record := map[string]any{"id": input.ID, "x": obj.TopLeft.X + obj.Width/2, "y": obj.TopLeft.Y + obj.Height/2, "width": obj.Width, "height": obj.Height}
+				if obj.Style.FontSize != nil {
+					size, err := strconv.Atoi(obj.Style.FontSize.Value)
+					if err != nil {
+						t.Fatal(err)
+					}
+					record["fontSize"] = size
+				}
+				outNodes = append(outNodes, record)
 			}
 			outEdges := []map[string]any{}
 			for i, edge := range g.Edges {

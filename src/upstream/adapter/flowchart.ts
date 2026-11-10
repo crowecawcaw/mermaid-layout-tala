@@ -308,10 +308,10 @@ export function translateFlowchart(
       depth++;
     node.FontSize =
       n.fontSize ??
-      (node.IsTable()
-        ? 20
-        : n.isGroup && (children.get(n.id)?.length ?? 0) > 0
-          ? ([28, 24, 20][depth - 1] ?? 16)
+      (n.isGroup && (children.get(n.id)?.length ?? 0) > 0 && n.shape !== 'text'
+        ? ([28, 24, 20][depth - 1] ?? 16)
+        : n.tableColumns !== undefined
+          ? 20
           : 16);
     if (n.fixedSize) {
       node.DesiredWidth = n.width;
