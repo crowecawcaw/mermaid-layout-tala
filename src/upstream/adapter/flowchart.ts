@@ -147,6 +147,14 @@ export function translateFlowchart(
   const byId = new Map<string, LayoutNode>();
   for (const n of inputNodes) {
     if (byId.has(n.id)) throw new Error('duplicate node ID');
+    if (n.style?.opacity !== undefined &&
+        (!n.style.opacity.trim() || !Number.isFinite(Number(n.style.opacity)) ||
+         Number(n.style.opacity) < 0 || Number(n.style.opacity) > 1))
+      throw new Error(`node ${n.id} has invalid opacity`);
+    if (n.style?.strokeWidth !== undefined &&
+        (!/^[+-]?\d+$/.test(n.style.strokeWidth) || Number(n.style.strokeWidth) < 0 ||
+         Number(n.style.strokeWidth) > 1_000_000_000))
+      throw new Error(`node ${n.id} has invalid strokeWidth`);
     if (
       !Number.isFinite(n.width) ||
       n.width <= 0 ||
@@ -294,7 +302,14 @@ export function translateFlowchart(
     node.D2ID = abs.get(n.id)!;
     node.ForceHierarchy =
       (n.forceHierarchy ?? false) || n.shape?.toLowerCase() === 'hierarchy';
-    node.IsInvisible = n.isInvisible ?? false;
+    const style = n.style;
+    const noFill = style?.fill?.toLowerCase() === 'transparent';
+    const noStroke = style?.stroke?.toLowerCase() === 'transparent' ||
+      (style?.strokeWidth !== undefined && Number(style.strokeWidth) === 0);
+    const noLabel = !n.label && !(n.labelWidth ?? 0) && !(n.labelHeight ?? 0);
+    node.IsInvisible = !!n.isInvisible ||
+      (style?.opacity !== undefined && Number(style.opacity) === 0) ||
+      (!!noFill && !!noStroke && noLabel && !n.icon);
     node.Is3D = n.is3D ?? false;
     node.IsMultiple = n.isMultiple ?? false;
     if (n.fixedPosition)

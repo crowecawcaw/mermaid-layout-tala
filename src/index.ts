@@ -11,6 +11,7 @@ export {
   type ArrowheadLabel,
   type EdgeStyleInput,
   type LayoutNode,
+  type NodeStyleInput,
   type LayoutOptions,
   type LayoutResult,
   type Point,

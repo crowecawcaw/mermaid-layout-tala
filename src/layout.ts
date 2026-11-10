@@ -4,6 +4,14 @@ import { layoutFlowchartTranslated } from './upstream/adapter/flowchart.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
+/** D2 style fields that determine whether a node participates as visible. */
+export interface NodeStyleInput {
+  opacity?: string;
+  fill?: string;
+  stroke?: string;
+  strokeWidth?: string;
+}
+
 export interface LayoutNode extends RankNode {
   width: number;
   height: number;
@@ -19,6 +27,7 @@ export interface LayoutNode extends RankNode {
   fontSize?: number;
   fixedPosition?: { x: number; y: number };
   isInvisible?: boolean;
+  style?: NodeStyleInput;
   is3D?: boolean;
   isMultiple?: boolean;
   parentId?: string;

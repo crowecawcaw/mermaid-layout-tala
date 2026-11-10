@@ -74,6 +74,20 @@ describe('Mermaid flowchart layout slice', () => {
     const { graph } = translateFlowchart(nodes, [], { inputOrder: 'authored' });
     expect(graph.Nodes.map((n) => n.FontSize)).toEqual([16, 20, 16, 16]);
   });
+
+  it('derives node visibility from D2 styles, labels and icons', () => {
+    const transparent = { fill: 'transparent', strokeWidth: '0' };
+    const nodes = [
+      { id: 'opacity', width: 60, height: 40, style: { opacity: '0' } },
+      { id: 'empty', width: 60, height: 40, style: transparent },
+      { id: 'label', width: 60, height: 40, style: transparent, label: 'visible' },
+      { id: 'icon', width: 60, height: 40, style: transparent, icon: 'https://example.com/icon.svg' },
+    ];
+    const { graph } = translateFlowchart(nodes, [], { inputOrder: 'authored' });
+    expect(graph.Nodes.map((n) => n.IsInvisible)).toEqual([true, true, false, false]);
+    expect(() => translateFlowchart([{ ...nodes[0]!, style: { opacity: '2' } }], [], {})).toThrow(/opacity/);
+    expect(() => translateFlowchart([{ ...nodes[0]!, style: { strokeWidth: '-1' } }], [], {})).toThrow(/strokeWidth/);
+  });
   it('uses hierarchy ranks and measured node sizes', () => {
     const result = layoutFlowchart(
       [

@@ -17,16 +17,17 @@ import (
 )
 
 type orderingNode struct {
-	ID          string  `json:"id"`
-	Width       float64 `json:"width"`
-	Height      float64 `json:"height"`
-	IsInvisible bool    `json:"isInvisible,omitempty"`
-	IsGroup     bool    `json:"isGroup,omitempty"`
-	ParentID    string  `json:"parentId,omitempty"`
-	Shape       string  `json:"shape,omitempty"`
-	Label       string  `json:"label,omitempty"`
-	LabelWidth  int     `json:"labelWidth,omitempty"`
-	LabelHeight int     `json:"labelHeight,omitempty"`
+	ID          string            `json:"id"`
+	Width       float64           `json:"width"`
+	Height      float64           `json:"height"`
+	IsInvisible bool              `json:"isInvisible,omitempty"`
+	IsGroup     bool              `json:"isGroup,omitempty"`
+	ParentID    string            `json:"parentId,omitempty"`
+	Shape       string            `json:"shape,omitempty"`
+	Label       string            `json:"label,omitempty"`
+	LabelWidth  int               `json:"labelWidth,omitempty"`
+	LabelHeight int               `json:"labelHeight,omitempty"`
+	Style       map[string]string `json:"style,omitempty"`
 }
 type orderingEdge struct {
 	ID          string `json:"id"`
@@ -56,6 +57,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"d2-shapes", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 1},
 		{"d2-shapes-extra", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 2},
 		{"font-defaults", [][2]int{{1, 2}, {1, 3}, {2, 4}}, false, 3},
+		{"node-visibility-styles", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 4},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -86,6 +88,14 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 					input.Shape = []string{"text", "rectangle", "sql_table", "class", "text"}[i]
 					input.Label, input.LabelWidth, input.LabelHeight = "title", 40, 12
 				}
+				if test.shapeSet == 4 {
+					input.IsInvisible = false
+					styles := []map[string]string{{"opacity": "0"}, {"fill": "transparent", "stroke": "transparent"}, {"fill": "transparent", "strokeWidth": "0"}, {"fill": "transparent", "stroke": "transparent"}, {"opacity": "1"}}
+					input.Style = styles[i]
+					if i == 3 {
+						input.Label, input.LabelWidth, input.LabelHeight = "visible", 30, 12
+					}
+				}
 				parent := g.Root
 				if test.shapeSet == 3 {
 					input.IsGroup = i == 0
@@ -109,6 +119,18 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				}
 				if input.IsInvisible {
 					obj.Style.Opacity = &d2graph.Scalar{Value: "0"}
+				}
+				if v, ok := input.Style["opacity"]; ok {
+					obj.Style.Opacity = &d2graph.Scalar{Value: v}
+				}
+				if v, ok := input.Style["fill"]; ok {
+					obj.Style.Fill = &d2graph.Scalar{Value: v}
+				}
+				if v, ok := input.Style["stroke"]; ok {
+					obj.Style.Stroke = &d2graph.Scalar{Value: v}
+				}
+				if v, ok := input.Style["strokeWidth"]; ok {
+					obj.Style.StrokeWidth = &d2graph.Scalar{Value: v}
 				}
 				parent.Children[strings.ToLower(id)] = obj
 				parent.ChildrenArray = append(parent.ChildrenArray, obj)
