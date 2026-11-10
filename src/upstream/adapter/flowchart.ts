@@ -107,6 +107,11 @@ function equalFold(a: string, b: string): boolean {
   const escaped = a.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   return new RegExp(`^(?:${escaped})(?![\\s\\S])`, 'iu').test(b);
 }
+// Go strings.ToLower applies Unicode simple mappings rune by rune, without
+// JavaScript's context-sensitive final sigma or dotted-I expansion.
+function d2Lower(value: string): string {
+  return Array.from(value, (rune) => rune === 'İ' ? 'i' : rune.toLowerCase()).join('');
+}
 function arrowhead(value: string | undefined, fallback: string, filled?: boolean, hasLabel = false): string {
   if (value === undefined && filled === undefined && !hasLabel) return fallback;
   const aliases: Record<string, string> = {
@@ -387,9 +392,14 @@ export function translateFlowchart(
     mapped.set(n.id, node);
     nodeIDs.set(n.id, node.ID);
   });
+  const lowerNodes = new Map<string, Node>();
+  for (const input of ordered) {
+    const key = d2Lower(input.id);
+    if (!lowerNodes.has(key)) lowerNodes.set(key, mapped.get(input.id)!);
+  }
   for (const input of ordered) {
     if (input.nearId === undefined) continue;
-    const target = mapped.get(input.nearId);
+    const target = mapped.get(input.nearId) ?? lowerNodes.get(d2Lower(input.nearId));
     if (!target && [
       'top-left', 'top-center', 'top-right', 'center-left', 'center-right',
       'bottom-left', 'bottom-center', 'bottom-right',

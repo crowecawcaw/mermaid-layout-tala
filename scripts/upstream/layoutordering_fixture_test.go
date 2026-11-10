@@ -99,6 +99,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"grid-font", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 18},
 		{"empty-icon-presence", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 19},
 		{"negative-edge-indices", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 20},
+		{"near-case-ascii", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 21},
+		{"near-case-sigma", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 22},
+		{"near-case-dotted-i", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 23},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -113,6 +116,16 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		}
 		if test.shapeSet == 12 {
 			names[0] = "top-left"
+		}
+		if test.shapeSet == 21 {
+			names[0] = "Alpha"
+			names[1] = "bravo"
+		}
+		if test.shapeSet == 22 {
+			names[0] = "ΟΣ"
+		}
+		if test.shapeSet == 23 {
+			names[0] = "İ"
 		}
 		if test.shapeSet == 15 || test.shapeSet == 16 || test.shapeSet == 17 {
 			names = []string{"seq", "inner", "leaf", "other", "solo"}
@@ -156,6 +169,15 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				}
 				if test.shapeSet == 12 && i == 2 {
 					input.NearID = "top-left"
+				}
+				if test.shapeSet == 21 && i == 2 {
+					input.NearID = "aLPHa"
+				}
+				if test.shapeSet == 22 && i == 2 {
+					input.NearID = "οσ"
+				}
+				if test.shapeSet == 23 && i == 2 {
+					input.NearID = "i"
 				}
 				if test.shapeSet == 13 {
 					input.Shape = "class"

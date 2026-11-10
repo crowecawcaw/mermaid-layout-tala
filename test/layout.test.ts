@@ -190,6 +190,13 @@ describe('Mermaid flowchart layout slice', () => {
       { id: 'top-left', width: 40, height: 30 },
     ], [], {});
     expect(graph.Nodes[0]!.Nears.has(graph.Nodes[1]!)).toBe(true);
+    for (const [id, nearId] of [['Alpha', 'aLPHa'], ['ΟΣ', 'οσ'], ['İ', 'i']]) {
+      const result = translateFlowchart([
+        { id: 'source', width: 40, height: 30, nearId },
+        { id, width: 40, height: 30 },
+      ], [], {}).graph;
+      expect(result.Nodes[0]!.Nears.has(result.Nodes[1]!)).toBe(true);
+    }
     expect(() => translateFlowchart([{ id: 'source', width: 40, height: 30, nearId: 'missing' }], [], {})).toThrow(/missing near node/);
   });
 
