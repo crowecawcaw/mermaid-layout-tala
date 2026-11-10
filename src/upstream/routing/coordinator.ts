@@ -16,12 +16,12 @@ import { Route as RouteLoops } from '../loops/loops.js';
 import { New as invariant } from '../invariant/errors.js';
 import { buildOVGFromGraphWithGuard } from './ovg-build.js';
 import type { OVG } from './ovg.js';
-import type { OVGNode } from './ovg-node.js';
-import type { OVGBuildGuard } from './ovg-resource.js';
+import { OVGNode } from './ovg-node.js';
+import { OVGBuildGuard, defaultOVGBuildLimits, type OVGBuildLimits } from './ovg-resource.js';
 import type { RouteWorkGuard } from './stage-guard.js';
 import { MaxSearchWorkUnits } from './search-guard.js';
 import { OVGEdgeRouter } from './edge-router.js';
-import type { Route } from './route.js';
+import { Route } from './route.js';
 import { generateRoutes } from './generate-routes.js';
 import type { RouteGenerationFlavor } from './sort-edges.js';
 import { finalizeSelectedRoutes } from './selected-routes.js';
@@ -166,5 +166,77 @@ export function routeEdgesWithResourceGuards(
     selected!.router.work,
     true,
   );
+  return ovg;
+}
+
+/** Translate routeAdditionalEdgesWithResourceLimits for standalone rerouting. */
+export function routeAdditionalEdgesWithResourceLimits(
+  ctx: Context,
+  g: Graph,
+  edges: Edge[],
+  limits: OVGBuildLimits = defaultOVGBuildLimits(),
+  searchLimit: bigint = MaxSearchWorkUnits,
+): OVG {
+  const selected = new Set(edges);
+  const guard = new OVGBuildGuard(ctx, limits);
+  const ovg = buildOVGFromGraphWithGuard(g, [], guard);
+  const existing: Route[] = [];
+  for (const edge of g.Edges) {
+    guard.Step();
+    if (selected.has(edge)) continue;
+    const nodes: OVGNode[] = [];
+    let last: import('../geo/point.js').Point | null = null;
+    const addPoint = (point: import('../geo/point.js').Point): void => {
+      guard.Step();
+      if (last?.Equals(point)) return;
+      last = point;
+      let node = ovg.occupant(point);
+      if (!node) {
+        node = new OVGNode(point);
+        node.Index = ovg.Nodes.length;
+        guard.addNodeUnchecked(ovg, node);
+      }
+      nodes.push(node);
+      if (nodes.length > 1) guard.connect(ovg, nodes[nodes.length - 2]!, node);
+    };
+    addPoint(edge.From.Center());
+    for (const point of edge.Points) addPoint(point);
+    addPoint(edge.To.Center());
+    if (nodes.length > 1) {
+      const route = new Route(edge, nodes);
+      route.FromPort = edge.Points[0]!;
+      route.ToPort = edge.Points.at(-1)!;
+      existing.push(route);
+    }
+  }
+  CrossingCost(g);
+  TurnCost(g);
+  NonCenterPortCost(g);
+  const flavors: RouteGenerationFlavor[] = g.Nodes[0]!.Hierarchy
+    ? ['TopDownLeftRight']
+    : ['ShortestToLongest', 'LongestToShortest', 'Default'];
+  const routers = flavors.map((flavor) => {
+    const router = new OVGEdgeRouter(ctx, flavor, ovg, g, existing, edges, searchLimit);
+    router.considerNodeLabels = true;
+    return router;
+  });
+  const responses = routers.map((router) => generateRoutes(ctx, router, true));
+  let firstError: Error | null = null;
+  let best = Infinity;
+  let chosen: { router: OVGEdgeRouter; routes: Route[] } | null = null;
+  for (let i = 0; i < responses.length; i++) {
+    const response = responses[i]!;
+    if (response.Err) {
+      if (response.Err.message.startsWith('TALA route-stage work limit exceeded')) throw response.Err;
+      firstError ??= response.Err;
+      continue;
+    }
+    if (PrecisionCompare(response.Distance, best, PRECISION) < 0) {
+      best = response.Distance;
+      chosen = { router: routers[i]!, routes: response.Routes! };
+    }
+  }
+  if (!chosen) throw firstError ?? invariant('edge routing produced no flavor responses');
+  finalizeSelectedRoutes(ctx, g, chosen.routes, selected, chosen.router.work, false);
   return ovg;
 }

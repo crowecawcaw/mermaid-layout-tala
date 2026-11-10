@@ -188,6 +188,7 @@ const packages = {
   routingselected: 'internal/routing',
   routingsentinel: 'internal/routing',
   routingcoordinator: 'internal/routing',
+  routingadditional: 'internal/routing',
   guardedbounds: 'internal/graphbounds',
   routinggraph: 'internal/routing',
   placementsymmetrystage: 'internal/placement',

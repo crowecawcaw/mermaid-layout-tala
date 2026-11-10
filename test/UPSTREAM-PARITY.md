@@ -16,6 +16,7 @@ full parity. The prior WebAssembly replacement remains reverted; the public
 | Candidate selection | Go-compatible random stream, upstream penalty/area scoring and compound refinement | Scoring and refinement have differential fixtures; public adapter validation and additional D2 metadata need coverage |
 | Mermaid adapter | Maps the supported flowchart input to the translated graph | 312/312 pinned full-layout fixtures pass, including authored ordering and explicit D2 edge indices. The input model does not expose all D2 shape and style features |
 | Resource accounting | Translated work guards and stage rollback | Expand cancellation and failure tests through the complete public pipeline |
+| Standalone edge rerouting | Additional-edge OVG routing is translated | 32 Go comparisons cover selection with existing routes; the full `RouteEdges` transaction and public adapter remain to be translated |
 
 `upstream-opacity.test.ts` also compares node and edge opacity validation and
 visibility against Go, including decimal and hexadecimal float syntax and
