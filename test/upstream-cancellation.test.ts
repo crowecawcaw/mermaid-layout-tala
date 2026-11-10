@@ -15,6 +15,26 @@ it('matches Go when layout, routing, or seed coordination starts canceled', () =
   expect(() => routeEdges([], [], [], { context: null as never })).toThrow(fixture.nilRoute);
 });
 
+it('matches Go parent cancellation and context value propagation', () => {
+  const key = Symbol('key');
+  const base: TalaContext = { Done: () => null, Err: () => null, Value: (candidate) => candidate === key ? 'value' : undefined };
+  const [parent, cancelParent] = withCancel(base);
+  const [child, cancelChild] = withCancel(parent);
+  expect(child.Err()?.message ?? '<nil>').toBe(fixture.childBefore);
+  expect(child.Value?.(key)).toBe(fixture.childValue);
+  expect(child.Done()!.closed).toBe(false);
+  cancelParent();
+  expect(child.Done()!.closed).toBe(true);
+  expect(child.Err()?.message).toBe(fixture.childAfterParent);
+  cancelChild();
+  const [parent2, cancelParent2] = withCancel();
+  const [child2, cancelChild2] = withCancel(parent2);
+  cancelChild2();
+  expect(parent2.Err()?.message ?? '<nil>').toBe(fixture.parentAfterChild);
+  expect(child2.Err()?.message).toBe(fixture.childAfterSelf);
+  cancelParent2();
+});
+
 it('propagates cancellation during layout without changing caller inputs', () => {
   let checks = 0;
   const context: TalaContext = { Done: () => null, Err: () => ++checks > 100 ? new Error('context canceled') : null };

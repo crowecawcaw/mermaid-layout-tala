@@ -9,12 +9,17 @@ export interface Context {
 }
 export const Background: Context = { Done: () => null, Err: () => null };
 export const Canceled = new Error('context canceled');
-export function WithCancel(): [Context, () => void] {
-  const done = { closed: false };
+export function WithCancel(parent: Context = Background): [Context, () => void] {
+  if (!parent) throw new Error('cannot create context from nil parent');
+  const parentDone = parent.Done();
+  let error: Error | null = null;
+  const checkParent = () => {
+    if (!error && parentDone?.closed) error = parent.Err() ?? Canceled;
+    return error;
+  };
+  const done: Done = { get closed() { return checkParent() !== null; } };
   return [
-    { Done: () => done, Err: () => (done.closed ? Canceled : null) },
-    () => {
-      done.closed = true;
-    },
+    { Done: () => done, Err: checkParent, Value: (key) => parent.Value?.(key) },
+    () => { if (!checkParent()) error = Canceled; },
   ];
 }
