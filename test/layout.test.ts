@@ -1,8 +1,19 @@
 import { describe, expect, it } from 'vitest';
 import { layoutFlowchart } from '../src/layout.js';
 import { translateFlowchart } from '../src/upstream/adapter/flowchart.js';
+import orderingFixtures from './fixtures/upstream-layoutordering.json';
 
 describe('Mermaid flowchart layout slice', () => {
+  it('uses authored order by default and offers canonical ordering explicitly', () => {
+    const fixture = orderingFixtures.find((f) => f.name === 'authored-order-TB')!;
+    const normal = layoutFlowchart(fixture.nodes, fixture.edges, { seeds: [1, 2, 3] });
+    const authored = layoutFlowchart(fixture.nodes, fixture.edges, { seeds: [1, 2, 3], inputOrder: 'authored' });
+    const canonical = layoutFlowchart(fixture.nodes, fixture.edges, { seeds: [1, 2, 3], inputOrder: 'canonical' });
+    expect(normal).toEqual(authored);
+    expect(normal.nodes.map(({ id, x, y }) => ({ id, x, y }))).not.toEqual(
+      canonical.nodes.map(({ id, x, y }) => ({ id, x, y })),
+    );
+  });
   it('validates D2 ordering and edge identity', () => {
     const nodes = [
       { id: 'z', width: 40, height: 30 },
@@ -211,7 +222,7 @@ describe('Mermaid flowchart layout slice', () => {
     expect(lr.nodes.find((node) => node.id === 'A')!.x).toBeLessThan(lr.nodes.find((node) => node.id === 'B')!.x);
     expect(bt.nodes.find((node) => node.id === 'A')!.y).toBeGreaterThan(bt.nodes.find((node) => node.id === 'B')!.y);
     expect(rl.nodes.find((node) => node.id === 'A')!.x).toBeGreaterThan(rl.nodes.find((node) => node.id === 'B')!.x);
-    expect(layoutFlowchart([...nodes].reverse(), [...edges].reverse())).toEqual(tb);
+    expect(layoutFlowchart([...nodes].reverse(), [...edges].reverse(), { inputOrder: 'canonical' })).toEqual(tb);
   });
 });
 

@@ -66,10 +66,10 @@ are rejected. The legacy `nodeSpacing`, `rankSpacing`, `orderingPasses`, and
 its own spacing and ordering policies. As in upstream, edges used to define a
 sequence of step-shaped nodes are consumed by layout and omitted from the result.
 
-By default the API uses canonical ID order for repeatable results independent of
-input array order. Set `inputOrder: 'authored'` to preserve D2 node and edge
-order. Set an edge's `d2Index` to its original D2 edge index when reproducing a
-D2 graph; if omitted, the edge's position in the selected input order is used.
+By default the API preserves node and edge input order, matching D2. Set
+`inputOrder: 'canonical'` for results independent of input array order. Set an
+edge's `d2Index` to its original D2 edge index when reproducing a D2 graph; if
+omitted, the edge's position in the selected input order is used.
 
 Use `setTalaSeeds([1, 2, 3])` to configure defaults, or pass `seeds` in the direct
 API's options. Seeds accept safe integer numbers or signed 64-bit `bigint`

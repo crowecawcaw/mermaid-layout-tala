@@ -18,7 +18,7 @@ const edges = [
 
 describe('compound layout', () => {
   it.each(['TB', 'BT', 'LR', 'RL'] as const)('contains nested nodes and avoids unrelated nodes in %s', (direction) => {
-    const result = layoutFlowchart(nodes, edges, { direction });
+    const result = layoutFlowchart(nodes, edges, { direction, inputOrder: 'canonical' });
     const byId = new Map(result.nodes.map((node) => [node.id, node]));
     for (const node of result.nodes) {
       if (!node.parentId) continue;
@@ -39,7 +39,7 @@ describe('compound layout', () => {
         }
       }
     }
-    expect(layoutFlowchart([...nodes].reverse(), [...edges].reverse(), { direction })).toEqual(result);
+    expect(layoutFlowchart([...nodes].reverse(), [...edges].reverse(), { direction, inputOrder: 'canonical' })).toEqual(result);
   });
 
   it('does not mutate inputs and supports empty groups and group endpoints', () => {

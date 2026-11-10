@@ -92,7 +92,7 @@ export interface LayoutEdge {
 
 export interface LayoutOptions {
   direction?: LayoutDirection;
-  /** Preserve authored node and edge order as D2 does. Defaults to canonical order. */
+  /** Input ordering; defaults to authored order as in D2. */
   inputOrder?: 'authored' | 'canonical';
   rootHierarchy?: boolean;
   nodeSpacing?: number;

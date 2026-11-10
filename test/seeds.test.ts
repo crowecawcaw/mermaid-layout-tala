@@ -31,7 +31,7 @@ describe('seed coordination', () => {
     const combined = layoutFlowchart(nodes, edges, { seeds: [1, 2, 3, 42] });
     expect(combined).toEqual(expected);
     expect(
-      layoutFlowchart([...nodes].reverse(), [...edges].reverse(), { seeds: [1, 2, 3, 42] })
+      layoutFlowchart([...nodes].reverse(), [...edges].reverse(), { seeds: [1, 2, 3, 42], inputOrder: 'canonical' })
     ).toEqual(combined);
   });
   it('copies defaults and supports the complete signed 64-bit seed range', () => {

@@ -271,7 +271,6 @@
     ],
     "options": {
       "direction": "TB",
-      "inputOrder": "authored",
       "seeds": [
         1,
         2,
@@ -543,7 +542,6 @@
     ],
     "options": {
       "direction": "BT",
-      "inputOrder": "authored",
       "seeds": [
         1,
         2,
@@ -823,7 +821,6 @@
     ],
     "options": {
       "direction": "LR",
-      "inputOrder": "authored",
       "seeds": [
         1,
         2,
@@ -1103,7 +1100,6 @@
     ],
     "options": {
       "direction": "RL",
-      "inputOrder": "authored",
       "seeds": [
         1,
         2,

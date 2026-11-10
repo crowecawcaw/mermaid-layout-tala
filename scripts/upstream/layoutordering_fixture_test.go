@@ -281,7 +281,11 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				}
 				outEdges = append(outEdges, record)
 			}
-			fixtures = append(fixtures, map[string]any{"name": test.name + "-" + direction, "nodes": nodes, "edges": edges, "options": map[string]any{"direction": direction, "seeds": []int{1, 2, 3}, "inputOrder": "authored"}, "expected": map[string]any{"nodes": outNodes, "edges": outEdges}})
+			options := map[string]any{"direction": direction, "seeds": []int{1, 2, 3}, "inputOrder": "authored"}
+			if test.name == "authored-order" {
+				delete(options, "inputOrder")
+			}
+			fixtures = append(fixtures, map[string]any{"name": test.name + "-" + direction, "nodes": nodes, "edges": edges, "options": options, "expected": map[string]any{"nodes": outNodes, "edges": outEdges}})
 		}
 	}
 	data, err := json.MarshalIndent(fixtures, "", "  ")

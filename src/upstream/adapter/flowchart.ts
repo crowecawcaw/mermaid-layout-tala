@@ -587,7 +587,7 @@ export function layoutFlowchartTranslated(
   inputEdges: readonly LayoutEdge[],
   options: LayoutOptions = {},
 ): LayoutResult {
-  if (options.inputOrder !== 'authored') {
+  if (options.inputOrder === 'canonical') {
     inputNodes = [...inputNodes].sort((a, b) => compareIdentifiers(a.id, b.id));
     inputEdges = [...inputEdges].sort((a, b) => compareIdentifiers(a.id, b.id));
   }
