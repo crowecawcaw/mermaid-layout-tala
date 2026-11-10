@@ -110,9 +110,10 @@ npm run build
 npm test
 ```
 
-`npm run test:parity` compares complete layouts against 312 pinned Go fixtures.
-It currently reports 312/312 matching. It checks geometry and routes on this corpus;
-additional upstream features and graph shapes still need differential coverage.
+`npm run test:parity` compares complete layouts and standalone rerouting against
+pinned Go fixtures. It currently reports 312/312 layouts and 24/24 rerouting
+cases matching. Additional upstream features and graph shapes still need
+differential coverage.
 
 Run the playground with `npm run demo -- --port 4173`, then open
 <http://127.0.0.1:4173/>. Build the GitHub Pages site with

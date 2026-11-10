@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { layoutFlowchart } from '../build/src/index.js';
+import { layoutFlowchart, routeEdges } from '../build/src/index.js';
 const fixtures = [
   'upstream-layout.json',
   'upstream-layoutcorpus.json',
@@ -126,9 +126,30 @@ for (const fixture of fixtures) {
     differences,
   });
 }
+const rerouteFixtures = JSON.parse(
+  readFileSync(new URL('../test/fixtures/upstream-layoutreroute.json', import.meta.url), 'utf8'),
+);
+const rerouteResults = rerouteFixtures.map((fixture) => {
+  const differences = [];
+  try {
+    const actual = routeEdges(fixture.nodes, fixture.edges, fixture.selected, fixture.options);
+    for (const edge of fixture.expected) {
+      const found = actual.edges.find((candidate) => candidate.id === edge.id);
+      if (!found) { differences.push(`edge:${edge.id}`); continue; }
+      for (const key of ['to', 'isCurve', 'labelPosition', 'labelPercentage'])
+        if (found[key] !== edge[key]) differences.push(`edge-${key}:${edge.id}`);
+      const expectedPoints = compact(edge.points), actualPoints = compact(found.points ?? []);
+      if (expectedPoints.length !== actualPoints.length || expectedPoints.some((point, i) =>
+        !actualPoints[i] || !equal(point.x, actualPoints[i].x) || !equal(point.y, actualPoints[i].y)))
+        differences.push(`route:${edge.id}`);
+    }
+  } catch (error) { differences.push(`error:${error.message}`); }
+  return { name: fixture.name, passed: differences.length === 0, differences };
+});
+const reroutePassed = rerouteResults.filter((result) => result.passed).length;
 if (process.argv.includes('--json'))
   console.log(
-    JSON.stringify({ passed, total: fixtures.length, results }, null, 2),
+    JSON.stringify({ passed, total: fixtures.length, results, rerouting: { passed: reroutePassed, total: rerouteFixtures.length, results: rerouteResults } }, null, 2),
   );
 else {
   for (const result of results)
@@ -138,5 +159,8 @@ else {
   console.log(
     `Full-layout parity: ${passed}/${fixtures.length}; tolerance 1e-7; redundant collinear route vertices ignored.`,
   );
+  for (const result of rerouteResults)
+    console.log(`${result.passed ? 'PASS' : 'DIFF'} reroute-${result.name}${result.passed ? '' : ` (${result.differences.join(', ')})`}`);
+  console.log(`Standalone rerouting parity: ${reroutePassed}/${rerouteFixtures.length}.`);
 }
-process.exitCode = passed === fixtures.length ? 0 : 1;
+process.exitCode = passed === fixtures.length && reroutePassed === rerouteFixtures.length ? 0 : 1;

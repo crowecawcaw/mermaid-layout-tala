@@ -21,6 +21,8 @@ type rerouteNode struct {
 	Y            float64 `json:"y"`
 	Shape        string  `json:"shape,omitempty"`
 	TableColumns *int    `json:"tableColumns,omitempty"`
+	ParentID     string  `json:"parentId,omitempty"`
+	IsGroup      bool    `json:"isGroup,omitempty"`
 }
 type reroutePoint struct {
 	X float64 `json:"x"`
@@ -51,10 +53,15 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
 	fixtures := []any{}
 	for _, direction := range []string{"TB", "BT", "LR", "RL"} {
-		for trial := 0; trial < 4; trial++ {
+		for trial := 0; trial < 6; trial++ {
 			g := d2graph.NewGraph()
 			g.Root.Direction.Value = dirs[direction]
 			nodes := []rerouteNode{{ID: "a", Width: 80, Height: 60, X: 40, Y: 30}, {ID: "b", Width: 80, Height: 60, X: 240, Y: 30}, {ID: "c", Width: 70, Height: 50, X: float64(85 + trial*25), Y: 165}}
+			if trial >= 4 {
+				nodes[0].ParentID, nodes[1].ParentID = "group", "group"
+				group := rerouteNode{ID: "group", Width: 400, Height: 160, X: 140, Y: 30, IsGroup: true}
+				nodes = append([]rerouteNode{group}, nodes...)
+			}
 			if trial == 3 {
 				cols := 3
 				nodes[1].Shape = "sql_table"
@@ -62,20 +69,24 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 			}
 			objects := map[string]*d2graph.Object{}
 			for _, n := range nodes {
-				o := &d2graph.Object{Graph: g, Parent: g.Root, ID: n.ID, IDVal: n.ID, Box: geo.NewBox(geo.NewPoint(n.X-n.Width/2, n.Y-n.Height/2), n.Width, n.Height), Children: map[string]*d2graph.Object{}, Attributes: d2graph.Attributes{}}
+				parent := g.Root
+				if n.ParentID != "" {
+					parent = objects[n.ParentID]
+				}
+				o := &d2graph.Object{Graph: g, Parent: parent, ID: n.ID, IDVal: n.ID, Box: geo.NewBox(geo.NewPoint(n.X-n.Width/2, n.Y-n.Height/2), n.Width, n.Height), Children: map[string]*d2graph.Object{}, Attributes: d2graph.Attributes{}}
 				o.Shape.Value = n.Shape
 				if n.TableColumns != nil {
 					o.SQLTable = &d2target.SQLTable{Columns: make([]d2target.SQLColumn, *n.TableColumns)}
 				}
-				g.Root.Children[n.ID] = o
-				g.Root.ChildrenArray = append(g.Root.ChildrenArray, o)
+				parent.Children[n.ID] = o
+				parent.ChildrenArray = append(parent.ChildrenArray, o)
 				g.Objects = append(g.Objects, o)
 				objects[n.ID] = o
 			}
 			inputs := []rerouteEdge{
 				{ID: "e0", From: "a", To: "b", D2Index: 0, TargetArrow: true, Points: []reroutePoint{{80, 30}, {200, 30}}, IsCurve: true, Label: "existing", LabelWidth: 30, LabelHeight: 10},
 				{ID: "e1", From: "a", To: "c", D2Index: 1, TargetArrow: true, Points: []reroutePoint{}, IsCurve: true, Label: "selected", LabelWidth: 24, LabelHeight: 12},
-				{ID: "e2", From: "b", To: "c", D2Index: 2, SourceArrow: true, Points: []reroutePoint{{240, 60}, {nodes[2].X, 140}}, IsCurve: true},
+				{ID: "e2", From: "b", To: "c", D2Index: 2, SourceArrow: true, Points: []reroutePoint{{240, 60}, {objects["c"].TopLeft.X + objects["c"].Width/2, 140}}, IsCurve: true},
 			}
 			position := "OUTSIDE_TOP_CENTER"
 			percent := 0.5
