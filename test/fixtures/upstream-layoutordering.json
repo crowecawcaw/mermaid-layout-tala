@@ -25555,5 +25555,2345 @@
         3
       ]
     }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "a-item",
+        "to": "b-item",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "a-item",
+        "to": "solo",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "solo",
+        "to": "b-item",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "b-item",
+        "to": "a-item",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 270,
+          "labelY": 88,
+          "points": [
+            {
+              "x": 180,
+              "y": 100
+            },
+            {
+              "x": 360,
+              "y": 100
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_LEFT",
+          "labelX": 142,
+          "labelY": 210,
+          "points": [
+            {
+              "x": 120,
+              "y": 180
+            },
+            {
+              "x": 120,
+              "y": 300
+            }
+          ]
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 368,
+          "labelY": 313,
+          "points": [
+            {
+              "x": 170,
+              "y": 325
+            },
+            {
+              "x": 420,
+              "y": 325
+            },
+            {
+              "x": 420,
+              "y": 180
+            }
+          ]
+        },
+        {
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 270,
+          "labelY": 153,
+          "points": [
+            {
+              "x": 360,
+              "y": 140
+            },
+            {
+              "x": 180,
+              "y": 140
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 240,
+          "id": "group-a",
+          "width": 240,
+          "x": 120,
+          "y": 120
+        },
+        {
+          "fontSize": 28,
+          "height": 240,
+          "id": "group-b",
+          "width": 240,
+          "x": 420,
+          "y": 120
+        },
+        {
+          "fontSize": 24,
+          "height": 120,
+          "id": "a-item",
+          "width": 120,
+          "x": 120,
+          "y": 120
+        },
+        {
+          "fontSize": 20,
+          "height": 120,
+          "id": "b-item",
+          "width": 120,
+          "x": 420,
+          "y": 120
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "solo",
+          "width": 100,
+          "x": 120,
+          "y": 325
+        }
+      ]
+    },
+    "name": "scoped-object-ids-TB",
+    "nodes": [
+      {
+        "id": "group-a",
+        "d2Id": "left",
+        "width": 60,
+        "height": 30,
+        "isGroup": true,
+        "label": ""
+      },
+      {
+        "id": "group-b",
+        "d2Id": "right",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "isGroup": true,
+        "label": ""
+      },
+      {
+        "id": "a-item",
+        "d2Id": "item",
+        "width": 80,
+        "height": 40,
+        "parentId": "group-a",
+        "label": ""
+      },
+      {
+        "id": "b-item",
+        "d2Id": "item",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "parentId": "group-b",
+        "label": ""
+      },
+      {
+        "id": "solo",
+        "d2Id": "solo",
+        "width": 100,
+        "height": 50,
+        "label": "",
+        "nearId": "LEFT"
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "a-item",
+        "to": "b-item",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "a-item",
+        "to": "solo",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "solo",
+        "to": "b-item",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "b-item",
+        "to": "a-item",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 270,
+          "labelY": 163,
+          "points": [
+            {
+              "x": 180,
+              "y": 175
+            },
+            {
+              "x": 360,
+              "y": 175
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 99,
+          "labelY": 93,
+          "points": [
+            {
+              "x": 120,
+              "y": 135
+            },
+            {
+              "x": 120,
+              "y": 50
+            }
+          ]
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 350,
+          "labelY": 13,
+          "points": [
+            {
+              "x": 170,
+              "y": 25
+            },
+            {
+              "x": 420,
+              "y": 25
+            },
+            {
+              "x": 420,
+              "y": 135
+            }
+          ]
+        },
+        {
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 270,
+          "labelY": 228,
+          "points": [
+            {
+              "x": 360,
+              "y": 215
+            },
+            {
+              "x": 180,
+              "y": 215
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 240,
+          "id": "group-a",
+          "width": 240,
+          "x": 120,
+          "y": 195
+        },
+        {
+          "fontSize": 28,
+          "height": 240,
+          "id": "group-b",
+          "width": 240,
+          "x": 420,
+          "y": 195
+        },
+        {
+          "fontSize": 24,
+          "height": 120,
+          "id": "a-item",
+          "width": 120,
+          "x": 120,
+          "y": 195
+        },
+        {
+          "fontSize": 20,
+          "height": 120,
+          "id": "b-item",
+          "width": 120,
+          "x": 420,
+          "y": 195
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "solo",
+          "width": 100,
+          "x": 120,
+          "y": 25
+        }
+      ]
+    },
+    "name": "scoped-object-ids-BT",
+    "nodes": [
+      {
+        "id": "group-a",
+        "d2Id": "left",
+        "width": 60,
+        "height": 30,
+        "isGroup": true,
+        "label": ""
+      },
+      {
+        "id": "group-b",
+        "d2Id": "right",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "isGroup": true,
+        "label": ""
+      },
+      {
+        "id": "a-item",
+        "d2Id": "item",
+        "width": 80,
+        "height": 40,
+        "parentId": "group-a",
+        "label": ""
+      },
+      {
+        "id": "b-item",
+        "d2Id": "item",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "parentId": "group-b",
+        "label": ""
+      },
+      {
+        "id": "solo",
+        "d2Id": "solo",
+        "width": 100,
+        "height": 50,
+        "label": "",
+        "nearId": "LEFT"
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "a-item",
+        "to": "b-item",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "a-item",
+        "to": "solo",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "solo",
+        "to": "b-item",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "b-item",
+        "to": "a-item",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 268,
+          "labelY": 145,
+          "points": [
+            {
+              "x": 180,
+              "y": 157
+            },
+            {
+              "x": 355,
+              "y": 157
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_RIGHT",
+          "labelX": 142,
+          "labelY": 270,
+          "points": [
+            {
+              "x": 120,
+              "y": 180
+            },
+            {
+              "x": 120,
+              "y": 300
+            }
+          ]
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 319,
+          "labelY": 295,
+          "points": [
+            {
+              "x": 170,
+              "y": 307
+            },
+            {
+              "x": 415,
+              "y": 307
+            },
+            {
+              "x": 415,
+              "y": 255
+            }
+          ]
+        },
+        {
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_RIGHT",
+          "labelX": 179,
+          "labelY": 223,
+          "points": [
+            {
+              "x": 355,
+              "y": 210
+            },
+            {
+              "x": 150,
+              "y": 210
+            },
+            {
+              "x": 150,
+              "y": 180
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 240,
+          "id": "group-a",
+          "width": 240,
+          "x": 120,
+          "y": 120
+        },
+        {
+          "fontSize": 28,
+          "height": 240,
+          "id": "group-b",
+          "width": 240,
+          "x": 415,
+          "y": 195
+        },
+        {
+          "fontSize": 24,
+          "height": 120,
+          "id": "a-item",
+          "width": 120,
+          "x": 120,
+          "y": 120
+        },
+        {
+          "fontSize": 20,
+          "height": 120,
+          "id": "b-item",
+          "width": 120,
+          "x": 415,
+          "y": 195
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "solo",
+          "width": 100,
+          "x": 120,
+          "y": 325
+        }
+      ]
+    },
+    "name": "scoped-object-ids-LR",
+    "nodes": [
+      {
+        "id": "group-a",
+        "d2Id": "left",
+        "width": 60,
+        "height": 30,
+        "isGroup": true,
+        "label": ""
+      },
+      {
+        "id": "group-b",
+        "d2Id": "right",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "isGroup": true,
+        "label": ""
+      },
+      {
+        "id": "a-item",
+        "d2Id": "item",
+        "width": 80,
+        "height": 40,
+        "parentId": "group-a",
+        "label": ""
+      },
+      {
+        "id": "b-item",
+        "d2Id": "item",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "parentId": "group-b",
+        "label": ""
+      },
+      {
+        "id": "solo",
+        "d2Id": "solo",
+        "width": 100,
+        "height": 50,
+        "label": "",
+        "nearId": "LEFT"
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "a-item",
+        "to": "b-item",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "a-item",
+        "to": "solo",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "solo",
+        "to": "b-item",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "b-item",
+        "to": "a-item",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 270,
+          "labelY": 188,
+          "points": [
+            {
+              "x": 360,
+              "y": 175
+            },
+            {
+              "x": 180,
+              "y": 175
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 399,
+          "labelY": 93,
+          "points": [
+            {
+              "x": 420,
+              "y": 135
+            },
+            {
+              "x": 420,
+              "y": 50
+            }
+          ]
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 190,
+          "labelY": 38,
+          "points": [
+            {
+              "x": 370,
+              "y": 25
+            },
+            {
+              "x": 120,
+              "y": 25
+            },
+            {
+              "x": 120,
+              "y": 135
+            }
+          ]
+        },
+        {
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_BOTTOM_CENTER",
+          "labelX": 270,
+          "labelY": 228,
+          "points": [
+            {
+              "x": 180,
+              "y": 215
+            },
+            {
+              "x": 360,
+              "y": 215
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 240,
+          "id": "group-a",
+          "width": 240,
+          "x": 420,
+          "y": 195
+        },
+        {
+          "fontSize": 28,
+          "height": 240,
+          "id": "group-b",
+          "width": 240,
+          "x": 120,
+          "y": 195
+        },
+        {
+          "fontSize": 24,
+          "height": 120,
+          "id": "a-item",
+          "width": 120,
+          "x": 420,
+          "y": 195
+        },
+        {
+          "fontSize": 20,
+          "height": 120,
+          "id": "b-item",
+          "width": 120,
+          "x": 120,
+          "y": 195
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "solo",
+          "width": 100,
+          "x": 420,
+          "y": 25
+        }
+      ]
+    },
+    "name": "scoped-object-ids-RL",
+    "nodes": [
+      {
+        "id": "group-a",
+        "d2Id": "left",
+        "width": 60,
+        "height": 30,
+        "isGroup": true,
+        "label": ""
+      },
+      {
+        "id": "group-b",
+        "d2Id": "right",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "isGroup": true,
+        "label": ""
+      },
+      {
+        "id": "a-item",
+        "d2Id": "item",
+        "width": 80,
+        "height": 40,
+        "parentId": "group-a",
+        "label": ""
+      },
+      {
+        "id": "b-item",
+        "d2Id": "item",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "parentId": "group-b",
+        "label": ""
+      },
+      {
+        "id": "solo",
+        "d2Id": "solo",
+        "width": 100,
+        "height": 50,
+        "label": "",
+        "nearId": "LEFT"
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "zeta",
+        "to": "actor-lifeline-end-2313178917",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "sourceArrow": false,
+        "targetArrow": false
+      },
+      {
+        "id": "edge19",
+        "from": "alpha",
+        "to": "node10",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "node2",
+        "to": "delta-lifeline-end-166850648",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "sourceArrow": false,
+        "targetArrow": false
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 121,
+          "labelY": 121,
+          "points": [
+            {
+              "x": 148,
+              "y": 173
+            },
+            {
+              "x": 118,
+              "y": 173
+            },
+            {
+              "x": 118,
+              "y": 133
+            },
+            {
+              "x": 163,
+              "y": 133
+            },
+            {
+              "x": 163,
+              "y": 163
+            }
+          ],
+          "to": "zeta"
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 62,
+          "labelY": 98,
+          "points": [
+            {
+              "x": 40,
+              "y": 35
+            },
+            {
+              "x": 40,
+              "y": 160
+            }
+          ],
+          "to": "node10"
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 120,
+          "labelY": 7,
+          "points": [
+            {
+              "x": 144,
+              "y": 60
+            },
+            {
+              "x": 114,
+              "y": 60
+            },
+            {
+              "x": 114,
+              "y": 19
+            },
+            {
+              "x": 167,
+              "y": 19
+            },
+            {
+              "x": 167,
+              "y": 49
+            }
+          ],
+          "to": "node2"
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "zeta",
+          "width": 60,
+          "x": 178,
+          "y": 183
+        },
+        {
+          "fontSize": 16,
+          "height": 35,
+          "id": "alpha",
+          "width": 70,
+          "x": 40,
+          "y": 17.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "node10",
+          "width": 80,
+          "x": 40,
+          "y": 180
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "node2",
+          "width": 90,
+          "x": 189,
+          "y": 71.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "middle",
+          "width": 100,
+          "x": 155,
+          "y": 248
+        }
+      ]
+    },
+    "name": "scoped-lifelines-TB",
+    "nodes": [
+      {
+        "id": "zeta",
+        "d2Id": "actor",
+        "width": 60,
+        "height": 30,
+        "label": ""
+      },
+      {
+        "id": "alpha",
+        "d2Id": "beta",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "node10",
+        "d2Id": "gamma",
+        "width": 80,
+        "height": 40,
+        "label": ""
+      },
+      {
+        "id": "node2",
+        "d2Id": "delta",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "middle",
+        "d2Id": "omega",
+        "width": 100,
+        "height": 50,
+        "label": ""
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "zeta",
+        "to": "actor-lifeline-end-2313178917",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "sourceArrow": false,
+        "targetArrow": false
+      },
+      {
+        "id": "edge19",
+        "from": "alpha",
+        "to": "node10",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "node2",
+        "to": "delta-lifeline-end-166850648",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "sourceArrow": false,
+        "targetArrow": false
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 160,
+          "labelY": 62,
+          "points": [
+            {
+              "x": 187,
+              "y": 114
+            },
+            {
+              "x": 157,
+              "y": 114
+            },
+            {
+              "x": 157,
+              "y": 74
+            },
+            {
+              "x": 202,
+              "y": 74
+            },
+            {
+              "x": 202,
+              "y": 104
+            }
+          ],
+          "to": "zeta"
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 19,
+          "labelY": 100,
+          "points": [
+            {
+              "x": 40,
+              "y": 160
+            },
+            {
+              "x": 40,
+              "y": 40
+            }
+          ],
+          "to": "node10"
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 159,
+          "labelY": 171,
+          "points": [
+            {
+              "x": 183,
+              "y": 224
+            },
+            {
+              "x": 153,
+              "y": 224
+            },
+            {
+              "x": 153,
+              "y": 183
+            },
+            {
+              "x": 206,
+              "y": 183
+            },
+            {
+              "x": 206,
+              "y": 213
+            }
+          ],
+          "to": "node2"
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "zeta",
+          "width": 60,
+          "x": 217,
+          "y": 124
+        },
+        {
+          "fontSize": 16,
+          "height": 35,
+          "id": "alpha",
+          "width": 70,
+          "x": 40,
+          "y": 177.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "node10",
+          "width": 80,
+          "x": 40,
+          "y": 20
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "node2",
+          "width": 90,
+          "x": 228,
+          "y": 235.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "middle",
+          "width": 100,
+          "x": 55,
+          "y": 240
+        }
+      ]
+    },
+    "name": "scoped-lifelines-BT",
+    "nodes": [
+      {
+        "id": "zeta",
+        "d2Id": "actor",
+        "width": 60,
+        "height": 30,
+        "label": ""
+      },
+      {
+        "id": "alpha",
+        "d2Id": "beta",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "node10",
+        "d2Id": "gamma",
+        "width": 80,
+        "height": 40,
+        "label": ""
+      },
+      {
+        "id": "node2",
+        "d2Id": "delta",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "middle",
+        "d2Id": "omega",
+        "width": 100,
+        "height": 50,
+        "label": ""
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "zeta",
+        "to": "actor-lifeline-end-2313178917",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "sourceArrow": false,
+        "targetArrow": false
+      },
+      {
+        "id": "edge19",
+        "from": "alpha",
+        "to": "node10",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "node2",
+        "to": "delta-lifeline-end-166850648",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "sourceArrow": false,
+        "targetArrow": false
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 165,
+          "labelY": 5,
+          "points": [
+            {
+              "x": 192,
+              "y": 58
+            },
+            {
+              "x": 162,
+              "y": 58
+            },
+            {
+              "x": 162,
+              "y": 18
+            },
+            {
+              "x": 207,
+              "y": 18
+            },
+            {
+              "x": 207,
+              "y": 48
+            }
+          ],
+          "to": "zeta"
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 115,
+          "labelY": 120,
+          "points": [
+            {
+              "x": 70,
+              "y": 132
+            },
+            {
+              "x": 160,
+              "y": 132
+            }
+          ],
+          "to": "node10"
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 15,
+          "labelY": 5,
+          "points": [
+            {
+              "x": 39,
+              "y": 59
+            },
+            {
+              "x": 9,
+              "y": 59
+            },
+            {
+              "x": 9,
+              "y": 18
+            },
+            {
+              "x": 62,
+              "y": 18
+            },
+            {
+              "x": 62,
+              "y": 48
+            }
+          ],
+          "to": "node2"
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "zeta",
+          "width": 60,
+          "x": 222,
+          "y": 68
+        },
+        {
+          "fontSize": 16,
+          "height": 35,
+          "id": "alpha",
+          "width": 70,
+          "x": 35,
+          "y": 132.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "node10",
+          "width": 80,
+          "x": 200,
+          "y": 133
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "node2",
+          "width": 90,
+          "x": 84,
+          "y": 70.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "middle",
+          "width": 100,
+          "x": 50,
+          "y": 198
+        }
+      ]
+    },
+    "name": "scoped-lifelines-LR",
+    "nodes": [
+      {
+        "id": "zeta",
+        "d2Id": "actor",
+        "width": 60,
+        "height": 30,
+        "label": ""
+      },
+      {
+        "id": "alpha",
+        "d2Id": "beta",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "node10",
+        "d2Id": "gamma",
+        "width": 80,
+        "height": 40,
+        "label": ""
+      },
+      {
+        "id": "node2",
+        "d2Id": "delta",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "middle",
+        "d2Id": "omega",
+        "width": 100,
+        "height": 50,
+        "label": ""
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "zeta",
+        "to": "actor-lifeline-end-2313178917",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "sourceArrow": false,
+        "targetArrow": false
+      },
+      {
+        "id": "edge19",
+        "from": "alpha",
+        "to": "node10",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "node2",
+        "to": "delta-lifeline-end-166850648",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "sourceArrow": false,
+        "targetArrow": false
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 165,
+          "labelY": 5,
+          "points": [
+            {
+              "x": 192,
+              "y": 58
+            },
+            {
+              "x": 162,
+              "y": 58
+            },
+            {
+              "x": 162,
+              "y": 18
+            },
+            {
+              "x": 207,
+              "y": 18
+            },
+            {
+              "x": 207,
+              "y": 48
+            }
+          ],
+          "to": "zeta"
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 120,
+          "labelY": 145,
+          "points": [
+            {
+              "x": 160,
+              "y": 132
+            },
+            {
+              "x": 80,
+              "y": 132
+            }
+          ],
+          "to": "node10"
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 15,
+          "labelY": 5,
+          "points": [
+            {
+              "x": 39,
+              "y": 59
+            },
+            {
+              "x": 9,
+              "y": 59
+            },
+            {
+              "x": 9,
+              "y": 18
+            },
+            {
+              "x": 62,
+              "y": 18
+            },
+            {
+              "x": 62,
+              "y": 48
+            }
+          ],
+          "to": "node2"
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "zeta",
+          "width": 60,
+          "x": 222,
+          "y": 68
+        },
+        {
+          "fontSize": 16,
+          "height": 35,
+          "id": "alpha",
+          "width": 70,
+          "x": 195,
+          "y": 132.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "node10",
+          "width": 80,
+          "x": 40,
+          "y": 133
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "node2",
+          "width": 90,
+          "x": 84,
+          "y": 70.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "middle",
+          "width": 100,
+          "x": 50,
+          "y": 198
+        }
+      ]
+    },
+    "name": "scoped-lifelines-RL",
+    "nodes": [
+      {
+        "id": "zeta",
+        "d2Id": "actor",
+        "width": 60,
+        "height": 30,
+        "label": ""
+      },
+      {
+        "id": "alpha",
+        "d2Id": "beta",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "node10",
+        "d2Id": "gamma",
+        "width": 80,
+        "height": 40,
+        "label": ""
+      },
+      {
+        "id": "node2",
+        "d2Id": "delta",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "middle",
+        "d2Id": "omega",
+        "width": 100,
+        "height": 50,
+        "label": ""
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "leaf-api",
+        "to": "other-api",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "other-api",
+        "to": "solo-api",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 182,
+          "labelY": 258,
+          "points": [
+            {
+              "x": 160,
+              "y": 160
+            },
+            {
+              "x": 160,
+              "y": 356
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 182,
+          "labelY": 439,
+          "points": [
+            {
+              "x": 160,
+              "y": 401
+            },
+            {
+              "x": 160,
+              "y": 476
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 280,
+          "id": "outer-api",
+          "width": 320,
+          "x": 160,
+          "y": 140
+        },
+        {
+          "fontSize": 24,
+          "height": 160,
+          "id": "empty-api",
+          "width": 200,
+          "x": 160,
+          "y": 140
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "leaf-api",
+          "width": 80,
+          "x": 160,
+          "y": 140
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "other-api",
+          "width": 90,
+          "x": 160,
+          "y": 378.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "solo-api",
+          "width": 100,
+          "x": 160,
+          "y": 501
+        }
+      ]
+    },
+    "name": "empty-local-id-TB",
+    "nodes": [
+      {
+        "id": "outer-api",
+        "d2Id": "outer",
+        "width": 60,
+        "height": 30,
+        "isGroup": true,
+        "label": ""
+      },
+      {
+        "id": "empty-api",
+        "d2Id": "",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "isGroup": true,
+        "parentId": "outer-api",
+        "label": ""
+      },
+      {
+        "id": "leaf-api",
+        "d2Id": "leaf",
+        "width": 80,
+        "height": 40,
+        "parentId": "empty-api",
+        "label": ""
+      },
+      {
+        "id": "other-api",
+        "d2Id": "other",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "solo-api",
+        "d2Id": "solo",
+        "width": 100,
+        "height": 50,
+        "label": ""
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "leaf-api",
+        "to": "other-api",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "other-api",
+        "to": "solo-api",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 139,
+          "labelY": 288,
+          "points": [
+            {
+              "x": 160,
+              "y": 392
+            },
+            {
+              "x": 160,
+              "y": 184
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 139,
+          "labelY": 95,
+          "points": [
+            {
+              "x": 160,
+              "y": 139
+            },
+            {
+              "x": 160,
+              "y": 50
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 280,
+          "id": "outer-api",
+          "width": 320,
+          "x": 160,
+          "y": 412
+        },
+        {
+          "fontSize": 24,
+          "height": 160,
+          "id": "empty-api",
+          "width": 200,
+          "x": 160,
+          "y": 412
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "leaf-api",
+          "width": 80,
+          "x": 160,
+          "y": 412
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "other-api",
+          "width": 90,
+          "x": 160,
+          "y": 161.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "solo-api",
+          "width": 100,
+          "x": 160,
+          "y": 25
+        }
+      ]
+    },
+    "name": "empty-local-id-BT",
+    "nodes": [
+      {
+        "id": "outer-api",
+        "d2Id": "outer",
+        "width": 60,
+        "height": 30,
+        "isGroup": true,
+        "label": ""
+      },
+      {
+        "id": "empty-api",
+        "d2Id": "",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "isGroup": true,
+        "parentId": "outer-api",
+        "label": ""
+      },
+      {
+        "id": "leaf-api",
+        "d2Id": "leaf",
+        "width": 80,
+        "height": 40,
+        "parentId": "empty-api",
+        "label": ""
+      },
+      {
+        "id": "other-api",
+        "d2Id": "other",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "solo-api",
+        "d2Id": "solo",
+        "width": 100,
+        "height": 50,
+        "label": ""
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "leaf-api",
+        "to": "other-api",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "other-api",
+        "to": "solo-api",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_RIGHT",
+          "labelX": 366,
+          "labelY": 128,
+          "points": [
+            {
+              "x": 200,
+              "y": 140
+            },
+            {
+              "x": 421,
+              "y": 140
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 562,
+          "labelY": 127,
+          "points": [
+            {
+              "x": 511,
+              "y": 139
+            },
+            {
+              "x": 612,
+              "y": 139
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 280,
+          "id": "outer-api",
+          "width": 320,
+          "x": 160,
+          "y": 140
+        },
+        {
+          "fontSize": 24,
+          "height": 160,
+          "id": "empty-api",
+          "width": 200,
+          "x": 160,
+          "y": 140
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "leaf-api",
+          "width": 80,
+          "x": 160,
+          "y": 140
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "other-api",
+          "width": 90,
+          "x": 466,
+          "y": 139.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "solo-api",
+          "width": 100,
+          "x": 662,
+          "y": 139
+        }
+      ]
+    },
+    "name": "empty-local-id-LR",
+    "nodes": [
+      {
+        "id": "outer-api",
+        "d2Id": "outer",
+        "width": 60,
+        "height": 30,
+        "isGroup": true,
+        "label": ""
+      },
+      {
+        "id": "empty-api",
+        "d2Id": "",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "isGroup": true,
+        "parentId": "outer-api",
+        "label": ""
+      },
+      {
+        "id": "leaf-api",
+        "d2Id": "leaf",
+        "width": 80,
+        "height": 40,
+        "parentId": "empty-api",
+        "label": ""
+      },
+      {
+        "id": "other-api",
+        "d2Id": "other",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "solo-api",
+        "d2Id": "solo",
+        "width": 100,
+        "height": 50,
+        "label": ""
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "leaf-api",
+        "to": "other-api",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "other-api",
+        "to": "solo-api",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_RIGHT",
+          "labelX": 356,
+          "labelY": 153,
+          "points": [
+            {
+              "x": 528,
+              "y": 140
+            },
+            {
+              "x": 299,
+              "y": 140
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 155,
+          "labelY": 152,
+          "points": [
+            {
+              "x": 209,
+              "y": 139
+            },
+            {
+              "x": 100,
+              "y": 139
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 280,
+          "id": "outer-api",
+          "width": 320,
+          "x": 568,
+          "y": 140
+        },
+        {
+          "fontSize": 24,
+          "height": 160,
+          "id": "empty-api",
+          "width": 200,
+          "x": 568,
+          "y": 140
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "leaf-api",
+          "width": 80,
+          "x": 568,
+          "y": 140
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "other-api",
+          "width": 90,
+          "x": 254,
+          "y": 139.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "solo-api",
+          "width": 100,
+          "x": 50,
+          "y": 139
+        }
+      ]
+    },
+    "name": "empty-local-id-RL",
+    "nodes": [
+      {
+        "id": "outer-api",
+        "d2Id": "outer",
+        "width": 60,
+        "height": 30,
+        "isGroup": true,
+        "label": ""
+      },
+      {
+        "id": "empty-api",
+        "d2Id": "",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "isGroup": true,
+        "parentId": "outer-api",
+        "label": ""
+      },
+      {
+        "id": "leaf-api",
+        "d2Id": "leaf",
+        "width": 80,
+        "height": 40,
+        "parentId": "empty-api",
+        "label": ""
+      },
+      {
+        "id": "other-api",
+        "d2Id": "other",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "solo-api",
+        "d2Id": "solo",
+        "width": 100,
+        "height": 50,
+        "label": ""
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
   }
 ]

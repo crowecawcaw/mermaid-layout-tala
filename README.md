@@ -70,7 +70,7 @@ runs the default seeds `[1, 2, 3]` using a Go-compatible random stream and selec
 the result by upstream penalty, then area, with later seeds winning exact ties.
 
 The public layout now runs the translated upstream TALA pipeline. The pinned
-full-layout corpus matches all 365 cases, including nested groups, loops, parallel
+full-layout corpus matches all 377 cases, including nested groups, loops, parallel
 edges and all four directions. This corpus is a useful baseline, not proof of
 parity for every graph or all D2 features. See the [parity matrix](./test/UPSTREAM-PARITY.md).
 
@@ -89,11 +89,14 @@ By default the API preserves node and edge input order, matching D2. Set
 edge's `d2Index` to its original D2 edge index when reproducing a D2 graph; if
 omitted, it counts earlier equivalent edges as the D2 compiler does. Explicit
 indices accept safe integers or signed 64-bit `bigint` values.
+When D2 objects in different containers share a local name, give each node a
+unique API `id` and supply its original local name as `d2Id`.
 Leaving `direction` unset also preserves D2's unspecified-direction behavior;
 pass `direction: 'TB'` when a top-to-bottom direction is required.
 
 For a D2 sequence lifeline, `d2LifelineEndId(actorId)` constructs its synthetic
-destination ID. Supply that ID as `to` and set both arrow flags to `false`;
+destination ID from the actor's local D2 ID (`d2Id`, when supplied). Supply that
+ID as `to` and set both arrow flags to `false`;
 the returned edge's destination is the actor, as in the upstream layout result.
 Set `rootSequence: true` when the D2 root itself is a sequence diagram.
 For D2 subgraphs, `rootLevel` preserves the original root nesting level; set
@@ -135,7 +138,7 @@ npm test
 ```
 
 `npm run test:parity` compares complete layouts and standalone rerouting against
-pinned Go fixtures. It currently reports 365/365 layouts and 40/40 rerouting
+pinned Go fixtures. It currently reports 377/377 layouts and 45/45 rerouting
 cases matching. Additional upstream features and graph shapes still need
 differential coverage.
 

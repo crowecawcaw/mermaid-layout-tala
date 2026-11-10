@@ -23,6 +23,7 @@ type rerouteNode struct {
 	TableColumns *int    `json:"tableColumns,omitempty"`
 	ParentID     string  `json:"parentId,omitempty"`
 	IsGroup      bool    `json:"isGroup,omitempty"`
+	D2ID         *string `json:"d2Id,omitempty"`
 }
 type reroutePoint struct {
 	X float64 `json:"x"`
@@ -53,17 +54,25 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
 	fixtures := []any{}
 	for _, direction := range []string{"TB", "BT", "LR", "RL", "DEFAULT"} {
-		for trial := 0; trial < 8; trial++ {
+		for trial := 0; trial < 9; trial++ {
 			g := d2graph.NewGraph()
 			if trial >= 6 {
 				g.Root.Shape.Value = "sequence_diagram"
 			}
 			g.Root.Direction.Value = dirs[direction]
 			nodes := []rerouteNode{{ID: "a", Width: 80, Height: 60, X: 40, Y: 30}, {ID: "b", Width: 80, Height: 60, X: 240, Y: 30}, {ID: "c", Width: 70, Height: 50, X: float64(85 + trial*25), Y: 165}}
-			if trial >= 4 {
+			if trial >= 4 && trial < 8 {
 				nodes[0].ParentID, nodes[1].ParentID = "group", "group"
 				group := rerouteNode{ID: "group", Width: 400, Height: 160, X: 140, Y: 30, IsGroup: true}
 				nodes = append([]rerouteNode{group}, nodes...)
+			}
+			if trial == 8 {
+				nodes[0].ParentID, nodes[1].ParentID = "group-a", "group-b"
+				item, other, left, right := "item", "other", "left", "right"
+				nodes[0].D2ID, nodes[1].D2ID, nodes[2].D2ID = &item, &item, &other
+				a := rerouteNode{ID: "group-a", D2ID: &left, Width: 140, Height: 120, X: 40, Y: 30, IsGroup: true}
+				b := rerouteNode{ID: "group-b", D2ID: &right, Width: 140, Height: 120, X: 240, Y: 30, IsGroup: true}
+				nodes = append([]rerouteNode{a, b}, nodes...)
 			}
 			if trial == 3 {
 				cols := 3
@@ -76,12 +85,16 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 				if n.ParentID != "" {
 					parent = objects[n.ParentID]
 				}
-				o := &d2graph.Object{Graph: g, Parent: parent, ID: n.ID, IDVal: n.ID, Box: geo.NewBox(geo.NewPoint(n.X-n.Width/2, n.Y-n.Height/2), n.Width, n.Height), Children: map[string]*d2graph.Object{}, Attributes: d2graph.Attributes{}}
+				id := n.ID
+				if n.D2ID != nil {
+					id = *n.D2ID
+				}
+				o := &d2graph.Object{Graph: g, Parent: parent, ID: id, IDVal: id, Box: geo.NewBox(geo.NewPoint(n.X-n.Width/2, n.Y-n.Height/2), n.Width, n.Height), Children: map[string]*d2graph.Object{}, Attributes: d2graph.Attributes{}}
 				o.Shape.Value = n.Shape
 				if n.TableColumns != nil {
 					o.SQLTable = &d2target.SQLTable{Columns: make([]d2target.SQLColumn, *n.TableColumns)}
 				}
-				parent.Children[n.ID] = o
+				parent.Children[id] = o
 				parent.ChildrenArray = append(parent.ChildrenArray, o)
 				g.Objects = append(g.Objects, o)
 				objects[n.ID] = o
@@ -142,7 +155,7 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 				for _, p := range e.Route {
 					points = append(points, reroutePoint{p.X, p.Y})
 				}
-				record := map[string]any{"id": inputs[i].ID, "points": points, "isCurve": e.IsCurve, "to": e.Dst.ID}
+				record := map[string]any{"id": inputs[i].ID, "points": points, "isCurve": e.IsCurve, "to": inputs[i].To}
 				if e.LabelPosition != nil {
 					record["labelPosition"] = *e.LabelPosition
 				}

@@ -13,6 +13,8 @@ export interface NodeStyleInput {
 }
 
 export interface LayoutNode extends RankNode {
+  /** Original local D2 object ID when it differs from the unique API ID. */
+  d2Id?: string;
   width: number;
   height: number;
   fixedSize?: boolean;

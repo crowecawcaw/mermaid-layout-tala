@@ -22,6 +22,7 @@ import (
 
 type orderingNode struct {
 	ID           string            `json:"id"`
+	D2ID         *string           `json:"d2Id,omitempty"`
 	Width        float64           `json:"width"`
 	Height       float64           `json:"height"`
 	IsInvisible  bool              `json:"isInvisible,omitempty"`
@@ -102,6 +103,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"near-case-ascii", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 21},
 		{"near-case-sigma", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 22},
 		{"near-case-dotted-i", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 23},
+		{"scoped-object-ids", [][2]int{{2, 3}, {2, 4}, {4, 3}, {3, 2}}, false, 24},
+		{"scoped-lifelines", [][2]int{{0, 1}, {1, 2}, {3, 4}}, false, 25},
+		{"empty-local-id", [][2]int{{2, 3}, {3, 4}}, false, 26},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -126,6 +130,12 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		}
 		if test.shapeSet == 23 {
 			names[0] = "İ"
+		}
+		if test.shapeSet == 24 {
+			names = []string{"group-a", "group-b", "a-item", "b-item", "solo"}
+		}
+		if test.shapeSet == 26 {
+			names = []string{"outer-api", "empty-api", "leaf-api", "other-api", "solo-api"}
 		}
 		if test.shapeSet == 15 || test.shapeSet == 16 || test.shapeSet == 17 {
 			names = []string{"seq", "inner", "leaf", "other", "solo"}
@@ -229,7 +239,32 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 						input.Icon = &icon
 					}
 				}
+				if test.shapeSet == 24 {
+					id := []string{"left", "right", "item", "item", "solo"}[i]
+					input.D2ID = &id
+					input.IsGroup = i < 2
+					if i == 4 {
+						input.NearID = "LEFT"
+					}
+				}
+				if test.shapeSet == 25 {
+					id := []string{"actor", "beta", "gamma", "delta", "omega"}[i]
+					input.D2ID = &id
+				}
+				if test.shapeSet == 26 {
+					id := []string{"outer", "", "leaf", "other", "solo"}[i]
+					input.D2ID = &id
+					input.IsGroup = i < 2
+				}
 				parent := g.Root
+				if test.shapeSet == 24 && (i == 2 || i == 3) {
+					input.ParentID = names[i-2]
+					parent = objects[input.ParentID]
+				}
+				if test.shapeSet == 26 && (i == 1 || i == 2) {
+					input.ParentID = names[i-1]
+					parent = objects[input.ParentID]
+				}
 				if test.shapeSet == 15 || test.shapeSet == 16 || test.shapeSet == 17 {
 					if i == 1 {
 						input.ParentID = names[0]
@@ -258,7 +293,11 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 						parent = objects[input.ParentID]
 					}
 				}
-				obj := &d2graph.Object{Graph: g, Parent: parent, ID: id, IDVal: id, Box: geo.NewBox(geo.NewPoint(0, 0), input.Width, input.Height), Children: make(map[string]*d2graph.Object), Attributes: d2graph.Attributes{}}
+				d2ID := id
+				if input.D2ID != nil {
+					d2ID = *input.D2ID
+				}
+				obj := &d2graph.Object{Graph: g, Parent: parent, ID: d2ID, IDVal: d2ID, Box: geo.NewBox(geo.NewPoint(0, 0), input.Width, input.Height), Children: make(map[string]*d2graph.Object), Attributes: d2graph.Attributes{}}
 				obj.Shape.Value = input.Shape
 				if input.Icon != nil {
 					var err error
@@ -293,7 +332,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				if v, ok := input.Style["strokeWidth"]; ok {
 					obj.Style.StrokeWidth = &d2graph.Scalar{Value: v}
 				}
-				parent.Children[strings.ToLower(id)] = obj
+				parent.Children[strings.ToLower(d2ID)] = obj
 				parent.ChildrenArray = append(parent.ChildrenArray, obj)
 				g.Objects = append(g.Objects, obj)
 				objects[id] = obj
@@ -305,14 +344,14 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 					index = -1 - i
 				}
 				input := orderingEdge{ID: fmt.Sprintf("edge%d", 20-i), From: names[pair[0]], To: names[pair[1]], D2Index: &index, Label: "link", LabelWidth: 30, LabelHeight: 12}
-				if test.shapeSet == 10 && i != 1 {
-					input.To = d2sequence.LifelineEndID(input.From)
+				if (test.shapeSet == 10 || test.shapeSet == 25) && i != 1 {
+					input.To = d2sequence.LifelineEndID(objects[input.From].ID)
 				}
 				if test.shapeSet == 8 && i%2 == 0 {
 					input.Label = ""
 				}
 				edge := &d2graph.Edge{Index: index, Src: objects[input.From], Dst: objects[input.To], DstArrow: true, Attributes: d2graph.Attributes{}}
-				if test.shapeSet == 10 && i != 1 {
+				if (test.shapeSet == 10 || test.shapeSet == 25) && i != 1 {
 					src, dst := false, false
 					input.SourceArrow, input.TargetArrow = &src, &dst
 					edge.SrcArrow, edge.DstArrow = false, false
@@ -419,8 +458,12 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 					points = append(points, map[string]float64{"x": p.X, "y": p.Y})
 				}
 				record := map[string]any{"id": edges[i].ID, "points": points, "isCurve": edge.IsCurve}
-				if test.shapeSet == 10 {
-					record["to"] = edge.Dst.ID
+				if test.shapeSet == 10 || test.shapeSet == 25 {
+					if edge.Dst == objects[edges[i].From] {
+						record["to"] = edges[i].From
+					} else {
+						record["to"] = edges[i].To
+					}
 				}
 				if test.shapeSet == 8 {
 					record["hasLabel"] = internalEdges[bindings.edgeIDs[edge]].Label != nil

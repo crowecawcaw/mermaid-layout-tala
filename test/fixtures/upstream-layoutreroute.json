@@ -1306,6 +1306,177 @@
             "y": 60
           },
           {
+            "x": 285,
+            "y": 140
+          }
+        ],
+        "isCurve": true
+      }
+    ],
+    "expected": [
+      {
+        "id": "e0",
+        "isCurve": true,
+        "labelPercentage": 0.5,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "to": "b"
+      },
+      {
+        "id": "e1",
+        "isCurve": false,
+        "labelPercentage": 0.25,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 40,
+            "y": 60
+          },
+          {
+            "x": 40,
+            "y": 165
+          },
+          {
+            "x": 250,
+            "y": 165
+          }
+        ],
+        "to": "c"
+      },
+      {
+        "id": "e2",
+        "isCurve": true,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 285,
+            "y": 140
+          }
+        ],
+        "to": "c"
+      }
+    ],
+    "name": "TB-8",
+    "nodes": [
+      {
+        "id": "group-a",
+        "width": 140,
+        "height": 120,
+        "x": 40,
+        "y": 30,
+        "isGroup": true,
+        "d2Id": "left"
+      },
+      {
+        "id": "group-b",
+        "width": 140,
+        "height": 120,
+        "x": 240,
+        "y": 30,
+        "isGroup": true,
+        "d2Id": "right"
+      },
+      {
+        "id": "a",
+        "width": 80,
+        "height": 60,
+        "x": 40,
+        "y": 30,
+        "parentId": "group-a",
+        "d2Id": "item"
+      },
+      {
+        "id": "b",
+        "width": 80,
+        "height": 60,
+        "x": 240,
+        "y": 30,
+        "parentId": "group-b",
+        "d2Id": "item"
+      },
+      {
+        "id": "c",
+        "width": 70,
+        "height": 50,
+        "x": 285,
+        "y": 165,
+        "d2Id": "other"
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "rootSequence": true
+    },
+    "selected": [
+      "e1"
+    ]
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "a",
+        "to": "b",
+        "d2Index": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "isCurve": true,
+        "label": "existing",
+        "labelWidth": 30,
+        "labelHeight": 10,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.5
+      },
+      {
+        "id": "e1",
+        "from": "a",
+        "to": "c",
+        "d2Index": 1,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [],
+        "isCurve": true,
+        "label": "selected",
+        "labelWidth": 24,
+        "labelHeight": 12,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.25
+      },
+      {
+        "id": "e2",
+        "from": "b",
+        "to": "c",
+        "d2Index": 2,
+        "sourceArrow": true,
+        "targetArrow": false,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
             "x": 85,
             "y": 140
           }
@@ -2503,6 +2674,177 @@
     "selected": [
       "e1",
       "e2"
+    ]
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "a",
+        "to": "b",
+        "d2Index": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "isCurve": true,
+        "label": "existing",
+        "labelWidth": 30,
+        "labelHeight": 10,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.5
+      },
+      {
+        "id": "e1",
+        "from": "a",
+        "to": "c",
+        "d2Index": 1,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [],
+        "isCurve": true,
+        "label": "selected",
+        "labelWidth": 24,
+        "labelHeight": 12,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.25
+      },
+      {
+        "id": "e2",
+        "from": "b",
+        "to": "c",
+        "d2Index": 2,
+        "sourceArrow": true,
+        "targetArrow": false,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 285,
+            "y": 140
+          }
+        ],
+        "isCurve": true
+      }
+    ],
+    "expected": [
+      {
+        "id": "e0",
+        "isCurve": true,
+        "labelPercentage": 0.5,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "to": "b"
+      },
+      {
+        "id": "e1",
+        "isCurve": false,
+        "labelPercentage": 0.25,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 40,
+            "y": 60
+          },
+          {
+            "x": 40,
+            "y": 165
+          },
+          {
+            "x": 250,
+            "y": 165
+          }
+        ],
+        "to": "c"
+      },
+      {
+        "id": "e2",
+        "isCurve": true,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 285,
+            "y": 140
+          }
+        ],
+        "to": "c"
+      }
+    ],
+    "name": "BT-8",
+    "nodes": [
+      {
+        "id": "group-a",
+        "width": 140,
+        "height": 120,
+        "x": 40,
+        "y": 30,
+        "isGroup": true,
+        "d2Id": "left"
+      },
+      {
+        "id": "group-b",
+        "width": 140,
+        "height": 120,
+        "x": 240,
+        "y": 30,
+        "isGroup": true,
+        "d2Id": "right"
+      },
+      {
+        "id": "a",
+        "width": 80,
+        "height": 60,
+        "x": 40,
+        "y": 30,
+        "parentId": "group-a",
+        "d2Id": "item"
+      },
+      {
+        "id": "b",
+        "width": 80,
+        "height": 60,
+        "x": 240,
+        "y": 30,
+        "parentId": "group-b",
+        "d2Id": "item"
+      },
+      {
+        "id": "c",
+        "width": 70,
+        "height": 50,
+        "x": 285,
+        "y": 165,
+        "d2Id": "other"
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "rootSequence": true
+    },
+    "selected": [
+      "e1"
     ]
   },
   {
@@ -3812,6 +4154,177 @@
             "y": 60
           },
           {
+            "x": 285,
+            "y": 140
+          }
+        ],
+        "isCurve": true
+      }
+    ],
+    "expected": [
+      {
+        "id": "e0",
+        "isCurve": true,
+        "labelPercentage": 0.5,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "to": "b"
+      },
+      {
+        "id": "e1",
+        "isCurve": false,
+        "labelPercentage": 0.25,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 40,
+            "y": 60
+          },
+          {
+            "x": 40,
+            "y": 165
+          },
+          {
+            "x": 250,
+            "y": 165
+          }
+        ],
+        "to": "c"
+      },
+      {
+        "id": "e2",
+        "isCurve": true,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 285,
+            "y": 140
+          }
+        ],
+        "to": "c"
+      }
+    ],
+    "name": "LR-8",
+    "nodes": [
+      {
+        "id": "group-a",
+        "width": 140,
+        "height": 120,
+        "x": 40,
+        "y": 30,
+        "isGroup": true,
+        "d2Id": "left"
+      },
+      {
+        "id": "group-b",
+        "width": 140,
+        "height": 120,
+        "x": 240,
+        "y": 30,
+        "isGroup": true,
+        "d2Id": "right"
+      },
+      {
+        "id": "a",
+        "width": 80,
+        "height": 60,
+        "x": 40,
+        "y": 30,
+        "parentId": "group-a",
+        "d2Id": "item"
+      },
+      {
+        "id": "b",
+        "width": 80,
+        "height": 60,
+        "x": 240,
+        "y": 30,
+        "parentId": "group-b",
+        "d2Id": "item"
+      },
+      {
+        "id": "c",
+        "width": 70,
+        "height": 50,
+        "x": 285,
+        "y": 165,
+        "d2Id": "other"
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "rootSequence": true
+    },
+    "selected": [
+      "e1"
+    ]
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "a",
+        "to": "b",
+        "d2Index": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "isCurve": true,
+        "label": "existing",
+        "labelWidth": 30,
+        "labelHeight": 10,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.5
+      },
+      {
+        "id": "e1",
+        "from": "a",
+        "to": "c",
+        "d2Index": 1,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [],
+        "isCurve": true,
+        "label": "selected",
+        "labelWidth": 24,
+        "labelHeight": 12,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.25
+      },
+      {
+        "id": "e2",
+        "from": "b",
+        "to": "c",
+        "d2Index": 2,
+        "sourceArrow": true,
+        "targetArrow": false,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
             "x": 85,
             "y": 140
           }
@@ -5065,6 +5578,177 @@
             "y": 60
           },
           {
+            "x": 285,
+            "y": 140
+          }
+        ],
+        "isCurve": true
+      }
+    ],
+    "expected": [
+      {
+        "id": "e0",
+        "isCurve": true,
+        "labelPercentage": 0.5,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "to": "b"
+      },
+      {
+        "id": "e1",
+        "isCurve": false,
+        "labelPercentage": 0.25,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 40,
+            "y": 60
+          },
+          {
+            "x": 40,
+            "y": 165
+          },
+          {
+            "x": 250,
+            "y": 165
+          }
+        ],
+        "to": "c"
+      },
+      {
+        "id": "e2",
+        "isCurve": true,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 285,
+            "y": 140
+          }
+        ],
+        "to": "c"
+      }
+    ],
+    "name": "RL-8",
+    "nodes": [
+      {
+        "id": "group-a",
+        "width": 140,
+        "height": 120,
+        "x": 40,
+        "y": 30,
+        "isGroup": true,
+        "d2Id": "left"
+      },
+      {
+        "id": "group-b",
+        "width": 140,
+        "height": 120,
+        "x": 240,
+        "y": 30,
+        "isGroup": true,
+        "d2Id": "right"
+      },
+      {
+        "id": "a",
+        "width": 80,
+        "height": 60,
+        "x": 40,
+        "y": 30,
+        "parentId": "group-a",
+        "d2Id": "item"
+      },
+      {
+        "id": "b",
+        "width": 80,
+        "height": 60,
+        "x": 240,
+        "y": 30,
+        "parentId": "group-b",
+        "d2Id": "item"
+      },
+      {
+        "id": "c",
+        "width": 70,
+        "height": 50,
+        "x": 285,
+        "y": 165,
+        "d2Id": "other"
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "rootSequence": true
+    },
+    "selected": [
+      "e1"
+    ]
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "a",
+        "to": "b",
+        "d2Index": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "isCurve": true,
+        "label": "existing",
+        "labelWidth": 30,
+        "labelHeight": 10,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.5
+      },
+      {
+        "id": "e1",
+        "from": "a",
+        "to": "c",
+        "d2Index": 1,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [],
+        "isCurve": true,
+        "label": "selected",
+        "labelWidth": 24,
+        "labelHeight": 12,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.25
+      },
+      {
+        "id": "e2",
+        "from": "b",
+        "to": "c",
+        "d2Index": 2,
+        "sourceArrow": true,
+        "targetArrow": false,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
             "x": 85,
             "y": 140
           }
@@ -6248,6 +6932,176 @@
     "selected": [
       "e1",
       "e2"
+    ]
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "a",
+        "to": "b",
+        "d2Index": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "isCurve": true,
+        "label": "existing",
+        "labelWidth": 30,
+        "labelHeight": 10,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.5
+      },
+      {
+        "id": "e1",
+        "from": "a",
+        "to": "c",
+        "d2Index": 1,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [],
+        "isCurve": true,
+        "label": "selected",
+        "labelWidth": 24,
+        "labelHeight": 12,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.25
+      },
+      {
+        "id": "e2",
+        "from": "b",
+        "to": "c",
+        "d2Index": 2,
+        "sourceArrow": true,
+        "targetArrow": false,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 285,
+            "y": 140
+          }
+        ],
+        "isCurve": true
+      }
+    ],
+    "expected": [
+      {
+        "id": "e0",
+        "isCurve": true,
+        "labelPercentage": 0.5,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "to": "b"
+      },
+      {
+        "id": "e1",
+        "isCurve": false,
+        "labelPercentage": 0.25,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "points": [
+          {
+            "x": 40,
+            "y": 60
+          },
+          {
+            "x": 40,
+            "y": 165
+          },
+          {
+            "x": 250,
+            "y": 165
+          }
+        ],
+        "to": "c"
+      },
+      {
+        "id": "e2",
+        "isCurve": true,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 285,
+            "y": 140
+          }
+        ],
+        "to": "c"
+      }
+    ],
+    "name": "DEFAULT-8",
+    "nodes": [
+      {
+        "id": "group-a",
+        "width": 140,
+        "height": 120,
+        "x": 40,
+        "y": 30,
+        "isGroup": true,
+        "d2Id": "left"
+      },
+      {
+        "id": "group-b",
+        "width": 140,
+        "height": 120,
+        "x": 240,
+        "y": 30,
+        "isGroup": true,
+        "d2Id": "right"
+      },
+      {
+        "id": "a",
+        "width": 80,
+        "height": 60,
+        "x": 40,
+        "y": 30,
+        "parentId": "group-a",
+        "d2Id": "item"
+      },
+      {
+        "id": "b",
+        "width": 80,
+        "height": 60,
+        "x": 240,
+        "y": 30,
+        "parentId": "group-b",
+        "d2Id": "item"
+      },
+      {
+        "id": "c",
+        "width": 70,
+        "height": 50,
+        "x": 285,
+        "y": 165,
+        "d2Id": "other"
+      }
+    ],
+    "options": {
+      "rootSequence": true
+    },
+    "selected": [
+      "e1"
     ]
   }
 ]

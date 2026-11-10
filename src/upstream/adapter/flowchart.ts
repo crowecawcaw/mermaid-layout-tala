@@ -261,22 +261,24 @@ export function translateFlowchart(
     abs = new Map<string, string>(),
     paths = new Map<string, string[]>(),
     visiting = new Set<string>();
-  const visit = (node: LayoutNode, parent: string[], depth: number) => {
+  const visit = (node: LayoutNode, parent: string[], parentAbs: string, parentID: string, depth: number) => {
     if (depth > MaxEngineTreeDepth)
       throw new Error(
         `D2 object nesting depth exceeds limit ${MaxEngineTreeDepth}`,
       );
     if (visiting.has(node.id)) throw new Error('cyclic container parent');
     visiting.add(node.id);
-    const path = [...parent, node.id];
+    const d2ID = node.d2Id ?? node.id;
+    const path = [...parent, d2ID];
+    const absoluteID = parentID !== '' ? `${parentAbs}.${d2ID}` : d2ID;
     paths.set(node.id, path);
-    abs.set(node.id, path.join('.'));
+    abs.set(node.id, absoluteID);
     ordered.push(node);
     for (const child of children.get(node.id) ?? [])
-      visit(child, path, depth + 1);
+      visit(child, path, absoluteID, d2ID, depth + 1);
     visiting.delete(node.id);
   };
-  for (const node of children.get(null) ?? []) visit(node, [], 1);
+  for (const node of children.get(null) ?? []) visit(node, [], '', '', 1);
   if (ordered.length !== inputNodes.length)
     throw new Error('cyclic container parent');
   const ids = allocateEntityIDs(ordered.map((n) => abs.get(n.id)!)),
@@ -362,7 +364,7 @@ export function translateFlowchart(
       if (n.iconPosition) node.Icon!.Position = FromString(n.iconPosition);
     }
     let depth = 1 + (options.rootLevel ?? 0), insideSequence = options.rootSequence ?? false;
-    for (let parent = n.parentId; parent; parent = byId.get(parent)?.parentId) {
+    for (let parent = n.parentId; parent !== undefined; parent = byId.get(parent)?.parentId) {
       depth++;
       if (byId.get(parent)?.shape === 'sequence_diagram') insideSequence = true;
     }
@@ -385,21 +387,26 @@ export function translateFlowchart(
       node.Label.Height = n.labelHeight ?? 0;
     }
     graph.AddNewNodeToContainer(
-      n.parentId ? mapped.get(n.parentId)! : null,
+      n.parentId !== undefined ? mapped.get(n.parentId)! : null,
       node,
     );
     if (n.direction) graph.Directions.set(node, orientation[n.direction]);
     mapped.set(n.id, node);
     nodeIDs.set(n.id, node.ID);
   });
-  const lowerNodes = new Map<string, Node>();
+  const lowerNodes = new Map<string, Node>(), lowerRootD2Nodes = new Map<string, Node>();
   for (const input of ordered) {
     const key = d2Lower(input.id);
     if (!lowerNodes.has(key)) lowerNodes.set(key, mapped.get(input.id)!);
+    if (input.parentId === undefined) {
+      const d2Key = d2Lower(input.d2Id ?? input.id);
+      if (!lowerRootD2Nodes.has(d2Key)) lowerRootD2Nodes.set(d2Key, mapped.get(input.id)!);
+    }
   }
   for (const input of ordered) {
     if (input.nearId === undefined) continue;
-    const target = mapped.get(input.nearId) ?? lowerNodes.get(d2Lower(input.nearId));
+    const key = d2Lower(input.nearId);
+    const target = mapped.get(input.nearId) ?? lowerRootD2Nodes.get(key) ?? lowerNodes.get(key);
     if (!target && [
       'top-left', 'top-center', 'top-right', 'center-left', 'center-right',
       'bottom-left', 'bottom-center', 'bottom-right',
@@ -440,7 +447,7 @@ export function translateFlowchart(
     if (edgeNames.has(e.id)) throw new Error('duplicate edge ID');
     edgeNames.add(e.id);
     const [source, target] = arrowFlags(e);
-    const lifelineID = d2LifelineEndId(e.from);
+    const lifelineID = d2LifelineEndId(byId.get(e.from)?.d2Id ?? e.from);
     const lifeline = !mapped.has(e.to) && e.to === lifelineID && !source && !target &&
       e.sourceArrowhead === undefined && e.targetArrowhead === undefined &&
       e.sourceArrowheadFilled === undefined && e.targetArrowheadFilled === undefined &&

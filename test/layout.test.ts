@@ -55,6 +55,20 @@ describe('Mermaid flowchart layout slice', () => {
     expect(graph.Edges[0]!.D2ID).toBe('(g.h.one -> g.two)[0]');
   });
 
+  it('preserves local D2 IDs independently of public IDs, including an empty parent ID', () => {
+    const nodes = [
+      { id: '', d2Id: '', width: 80, height: 60, isGroup: true },
+      { id: 'child-api', d2Id: 'leaf', parentId: '', width: 40, height: 30 },
+      { id: 'other-api', d2Id: 'other', width: 40, height: 30 },
+    ];
+    const { graph } = translateFlowchart(nodes, [
+      { id: 'e', from: 'child-api', to: 'other-api' },
+    ], {});
+    expect(graph.Nodes.map((n) => n.D2ID)).toEqual(['', 'leaf', 'other']);
+    expect(graph.Nodes[1]!.Container).toBe(graph.Nodes[0]);
+    expect(graph.Edges[0]!.D2ID).toBe('(.leaf -> other)[0]');
+  });
+
   it('uses Go Unicode simple folding for edge identity ancestry', () => {
     const group = (id: string) => ({ id, width: 80, height: 60, isGroup: true });
     const node = (id: string, parentId: string) => ({ id, parentId, width: 40, height: 30 });
