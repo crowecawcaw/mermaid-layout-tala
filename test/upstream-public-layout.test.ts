@@ -63,6 +63,7 @@ it.each([
   for (const node of fixture.expected.nodes) {
     const found = actual.nodes.find((candidate) => candidate.id === node.id);
     expect(found).toBeDefined();
+    if ('hasLabel' in node) expect(found!.labelX !== undefined).toBe(node.hasLabel);
     for (const key of ['x', 'y', 'width', 'height'] as const)
       expect(found![key]).toBeCloseTo(node[key], 7);
     if ('fontSize' in node) expect(found!.fontSize).toBe(node.fontSize);
@@ -81,6 +82,7 @@ it.each([
   for (const edge of fixture.expected.edges) {
     const found = actual.edges.find((candidate) => candidate.id === edge.id);
     expect(found).toBeDefined();
+    if ('hasLabel' in edge) expect(found!.labelPosition !== undefined).toBe(edge.hasLabel);
     for (const key of [
       'sourceArrowheadLabelPosition',
       'targetArrowheadLabelPosition',

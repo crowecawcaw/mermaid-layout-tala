@@ -114,6 +114,20 @@ describe('Mermaid flowchart layout slice', () => {
       ['triangle', 'none'], ['none', 'triangle'],
     ]);
   });
+
+  it('matches D2 label presence for embedded text shapes and empty labels', () => {
+    const nodes = ['text', 'class', 'sql_table', 'code', 'rectangle'].map((shape, i) => ({
+      id: `n${i}`, width: 80, height: 50, shape, label: 'content', labelWidth: 40, labelHeight: 12,
+    }));
+    nodes.push({ id: 'empty', width: 80, height: 50, shape: 'rectangle', label: '', labelWidth: 40, labelHeight: 12 });
+    const edges = [
+      { id: 'empty', from: 'n0', to: 'n1', label: '', labelWidth: 30, labelHeight: 10 },
+      { id: 'visible', from: 'n1', to: 'n2', label: 'label', labelWidth: 30, labelHeight: 10 },
+    ];
+    const { graph } = translateFlowchart(nodes, edges, { inputOrder: 'authored' });
+    expect(graph.Nodes.map((n) => n.Label?.Text ?? null)).toEqual([null, null, null, null, 'content', null]);
+    expect(graph.Edges.map((e) => e.Label?.Text ?? null)).toEqual([null, 'label']);
+  });
   it('uses hierarchy ranks and measured node sizes', () => {
     const result = layoutFlowchart(
       [

@@ -314,7 +314,8 @@ export function translateFlowchart(
     const noFill = style?.fill?.toLowerCase() === 'transparent';
     const noStroke = style?.stroke?.toLowerCase() === 'transparent' ||
       (style?.strokeWidth !== undefined && Number(style.strokeWidth) === 0);
-    const noLabel = !n.label && !(n.labelWidth ?? 0) && !(n.labelHeight ?? 0);
+    const labelText = n.label ?? ((n.labelWidth ?? 0) > 0 || (n.labelHeight ?? 0) > 0 ? 'label' : '');
+    const noLabel = labelText === '';
     node.IsInvisible = !!n.isInvisible ||
       (style?.opacity !== undefined && parseGoFloat(style.opacity) === 0) ||
       (!!noFill && !!noStroke && noLabel && !n.icon);
@@ -340,9 +341,9 @@ export function translateFlowchart(
       node.DesiredWidth = n.width;
       node.DesiredHeight = n.height;
     }
-    if (n.label || (n.labelWidth ?? 0) > 0 || (n.labelHeight ?? 0) > 0) {
+    if (labelText !== '' && !['text', 'class', 'sql_table', 'code'].includes(n.shape ?? '')) {
       node.Label = new Label();
-      node.Label.Text = n.label || 'label';
+      node.Label.Text = labelText;
       if (n.labelPosition) node.Label.Position = FromString(n.labelPosition);
       node.Label.Width = n.labelWidth ?? 0;
       node.Label.Height = n.labelHeight ?? 0;
@@ -541,13 +542,10 @@ export function translateFlowchart(
       e.MinWidth = 0;
       e.MinHeight = 0;
     }
-    if (
-      input.label ||
-      (input.labelWidth ?? 0) > 0 ||
-      (input.labelHeight ?? 0) > 0
-    ) {
+    const labelText = input.label ?? ((input.labelWidth ?? 0) > 0 || (input.labelHeight ?? 0) > 0 ? 'label' : '');
+    if (labelText !== '') {
       e.Label = new Label();
-      e.Label.Text = input.label || 'label';
+      e.Label.Text = labelText;
       e.Label.Width = input.labelWidth ?? 0;
       e.Label.Height = input.labelHeight ?? 0;
     }

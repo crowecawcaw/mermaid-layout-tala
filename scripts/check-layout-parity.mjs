@@ -54,6 +54,8 @@ for (const fixture of fixtures) {
       differences.push('edge-count');
     for (const node of fixture.expected.nodes) {
       const found = actual.nodes.find((n) => n.id === node.id);
+      if ('hasLabel' in node && (!found || (found.labelX !== undefined) !== node.hasLabel))
+        differences.push(`node-label-presence:${node.id}`);
       if (
         !found ||
         ['x', 'y', 'width', 'height'].some(
@@ -80,6 +82,8 @@ for (const fixture of fixtures) {
     }
     for (const edge of fixture.expected.edges) {
       const found = actual.edges.find((e) => e.id === edge.id);
+      if ('hasLabel' in edge && (!found || (found.labelPosition !== undefined) !== edge.hasLabel))
+        differences.push(`edge-label-presence:${edge.id}`);
       const expected = compact(edge.points),
         points = compact(found?.points ?? []);
       for (const key of [

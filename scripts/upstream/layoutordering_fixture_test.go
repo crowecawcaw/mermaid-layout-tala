@@ -25,7 +25,7 @@ type orderingNode struct {
 	IsGroup     bool              `json:"isGroup,omitempty"`
 	ParentID    string            `json:"parentId,omitempty"`
 	Shape       string            `json:"shape,omitempty"`
-	Label       string            `json:"label,omitempty"`
+	Label       string            `json:"label"`
 	LabelWidth  int               `json:"labelWidth,omitempty"`
 	LabelHeight int               `json:"labelHeight,omitempty"`
 	Style       map[string]string `json:"style,omitempty"`
@@ -75,6 +75,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"arrow-flags-and-fill", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 5},
 		{"arrow-label-default", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 6},
 		{"tiny-empty-groups", [][2]int{}, false, 7},
+		{"embedded-and-empty-labels", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 8},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -100,6 +101,13 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 					input.Width = 1
 					input.Height = 1
 					input.IsInvisible = false
+				}
+				if test.shapeSet == 8 {
+					input.Shape = []string{"text", "class", "sql_table", "code", "rectangle"}[i]
+					input.Label, input.LabelWidth, input.LabelHeight = "content", 40, 12
+					if i == 4 {
+						input.Label = ""
+					}
 				}
 				if test.shapeSet == 1 {
 					input.Shape = []string{"square", "callout", "stored_data", "c4-person", "class"}[i]
@@ -136,10 +144,8 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				}
 				obj := &d2graph.Object{Graph: g, Parent: parent, ID: id, IDVal: id, Box: geo.NewBox(geo.NewPoint(0, 0), input.Width, input.Height), Children: make(map[string]*d2graph.Object), Attributes: d2graph.Attributes{}}
 				obj.Shape.Value = input.Shape
-				if input.Label != "" {
-					obj.Label.Value = input.Label
-					obj.LabelDimensions = *d2target.NewTextDimensions(input.LabelWidth, input.LabelHeight)
-				}
+				obj.Label.Value = input.Label
+				obj.LabelDimensions = *d2target.NewTextDimensions(input.LabelWidth, input.LabelHeight)
 				if input.IsInvisible {
 					obj.Style.Opacity = &d2graph.Scalar{Value: "0"}
 				}
@@ -163,6 +169,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 			}
 			for i, pair := range test.pairs {
 				input := orderingEdge{ID: fmt.Sprintf("edge%d", 20-i), From: names[pair[0]], To: names[pair[1]], D2Index: indices[i], Label: "link", LabelWidth: 30, LabelHeight: 12}
+				if test.shapeSet == 8 && i%2 == 0 {
+					input.Label = ""
+				}
 				edge := &d2graph.Edge{Index: input.D2Index, Src: objects[input.From], Dst: objects[input.To], DstArrow: true, Attributes: d2graph.Attributes{}}
 				if test.shapeSet == 6 {
 					src := []bool{false, false, true, true, false}[i]
@@ -219,6 +228,10 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				t.Fatal(err)
 			}
 			internalEdges := map[layoutgraph.EntityID]*layoutgraph.Edge{}
+			internalNodes := map[layoutgraph.EntityID]*layoutgraph.Node{}
+			for _, node := range internal.Nodes {
+				internalNodes[node.ID] = node
+			}
 			for _, edge := range internal.Edges {
 				internalEdges[edge.ID] = edge
 			}
@@ -226,6 +239,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 			for _, input := range nodes {
 				obj := objects[input.ID]
 				record := map[string]any{"id": input.ID, "x": obj.TopLeft.X + obj.Width/2, "y": obj.TopLeft.Y + obj.Height/2, "width": obj.Width, "height": obj.Height}
+				if test.shapeSet == 8 {
+					record["hasLabel"] = internalNodes[bindings.objectIDs[obj]].Label != nil
+				}
 				if obj.Style.FontSize != nil {
 					size, err := strconv.Atoi(obj.Style.FontSize.Value)
 					if err != nil {
@@ -242,6 +258,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 					points = append(points, map[string]float64{"x": p.X, "y": p.Y})
 				}
 				record := map[string]any{"id": edges[i].ID, "points": points, "isCurve": edge.IsCurve}
+				if test.shapeSet == 8 {
+					record["hasLabel"] = internalEdges[bindings.edgeIDs[edge]].Label != nil
+				}
 				if e := internalEdges[bindings.edgeIDs[edge]]; e != nil {
 					reversed := edge.SrcArrow && !edge.DstArrow
 					if p := labeling.PositionArrowheadLabel(e, reversed, e.Points); p != nil {

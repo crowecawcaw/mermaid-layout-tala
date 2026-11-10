@@ -239,29 +239,34 @@
       {
         "id": "zeta",
         "width": 60,
-        "height": 30
+        "height": 30,
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
-        "height": 40
+        "height": 40,
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -506,29 +511,34 @@
       {
         "id": "zeta",
         "width": 60,
-        "height": 30
+        "height": 30,
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
-        "height": 40
+        "height": 40,
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -781,29 +791,34 @@
       {
         "id": "zeta",
         "width": 60,
-        "height": 30
+        "height": 30,
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
-        "height": 40
+        "height": 40,
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -1056,29 +1071,34 @@
       {
         "id": "zeta",
         "width": 60,
-        "height": 30
+        "height": 30,
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
-        "height": 40
+        "height": 40,
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -1342,29 +1362,34 @@
       {
         "id": "zeta",
         "width": 60,
-        "height": 30
+        "height": 30,
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
-        "height": 40
+        "height": 40,
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -1628,29 +1653,34 @@
       {
         "id": "zeta",
         "width": 60,
-        "height": 30
+        "height": 30,
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
-        "height": 40
+        "height": 40,
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -1918,29 +1948,34 @@
       {
         "id": "zeta",
         "width": 60,
-        "height": 30
+        "height": 30,
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
-        "height": 40
+        "height": 40,
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -2208,29 +2243,34 @@
       {
         "id": "zeta",
         "width": 60,
-        "height": 30
+        "height": 30,
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
-        "height": 40
+        "height": 40,
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -2387,32 +2427,37 @@
         "id": "g.h",
         "width": 60,
         "height": 30,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "g",
         "width": 70,
         "height": 35,
         "isInvisible": true,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "one",
         "width": 80,
         "height": 40,
-        "parentId": "g.h"
+        "parentId": "g.h",
+        "label": ""
       },
       {
         "id": "two",
         "width": 90,
         "height": 45,
         "isInvisible": true,
-        "parentId": "g"
+        "parentId": "g",
+        "label": ""
       },
       {
         "id": "solo",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -2569,32 +2614,37 @@
         "id": "g.h",
         "width": 60,
         "height": 30,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "g",
         "width": 70,
         "height": 35,
         "isInvisible": true,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "one",
         "width": 80,
         "height": 40,
-        "parentId": "g.h"
+        "parentId": "g.h",
+        "label": ""
       },
       {
         "id": "two",
         "width": 90,
         "height": 45,
         "isInvisible": true,
-        "parentId": "g"
+        "parentId": "g",
+        "label": ""
       },
       {
         "id": "solo",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -2751,32 +2801,37 @@
         "id": "g.h",
         "width": 60,
         "height": 30,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "g",
         "width": 70,
         "height": 35,
         "isInvisible": true,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "one",
         "width": 80,
         "height": 40,
-        "parentId": "g.h"
+        "parentId": "g.h",
+        "label": ""
       },
       {
         "id": "two",
         "width": 90,
         "height": 45,
         "isInvisible": true,
-        "parentId": "g"
+        "parentId": "g",
+        "label": ""
       },
       {
         "id": "solo",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -2933,32 +2988,37 @@
         "id": "g.h",
         "width": 60,
         "height": 30,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "g",
         "width": 70,
         "height": 35,
         "isInvisible": true,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "one",
         "width": 80,
         "height": 40,
-        "parentId": "g.h"
+        "parentId": "g.h",
+        "label": ""
       },
       {
         "id": "two",
         "width": 90,
         "height": 45,
         "isInvisible": true,
-        "parentId": "g"
+        "parentId": "g",
+        "label": ""
       },
       {
         "id": "solo",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -3115,32 +3175,37 @@
         "id": "Σ",
         "width": 60,
         "height": 30,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "ς",
         "width": 70,
         "height": 35,
         "isInvisible": true,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "one",
         "width": 80,
         "height": 40,
-        "parentId": "Σ"
+        "parentId": "Σ",
+        "label": ""
       },
       {
         "id": "two",
         "width": 90,
         "height": 45,
         "isInvisible": true,
-        "parentId": "ς"
+        "parentId": "ς",
+        "label": ""
       },
       {
         "id": "solo",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -3297,32 +3362,37 @@
         "id": "Σ",
         "width": 60,
         "height": 30,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "ς",
         "width": 70,
         "height": 35,
         "isInvisible": true,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "one",
         "width": 80,
         "height": 40,
-        "parentId": "Σ"
+        "parentId": "Σ",
+        "label": ""
       },
       {
         "id": "two",
         "width": 90,
         "height": 45,
         "isInvisible": true,
-        "parentId": "ς"
+        "parentId": "ς",
+        "label": ""
       },
       {
         "id": "solo",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -3479,32 +3549,37 @@
         "id": "Σ",
         "width": 60,
         "height": 30,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "ς",
         "width": 70,
         "height": 35,
         "isInvisible": true,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "one",
         "width": 80,
         "height": 40,
-        "parentId": "Σ"
+        "parentId": "Σ",
+        "label": ""
       },
       {
         "id": "two",
         "width": 90,
         "height": 45,
         "isInvisible": true,
-        "parentId": "ς"
+        "parentId": "ς",
+        "label": ""
       },
       {
         "id": "solo",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -3661,32 +3736,37 @@
         "id": "Σ",
         "width": 60,
         "height": 30,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "ς",
         "width": 70,
         "height": 35,
         "isInvisible": true,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "one",
         "width": 80,
         "height": 40,
-        "parentId": "Σ"
+        "parentId": "Σ",
+        "label": ""
       },
       {
         "id": "two",
         "width": 90,
         "height": 45,
         "isInvisible": true,
-        "parentId": "ς"
+        "parentId": "ς",
+        "label": ""
       },
       {
         "id": "solo",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -3905,33 +3985,38 @@
         "id": "zeta",
         "width": 60,
         "height": 30,
-        "shape": "square"
+        "shape": "square",
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
         "isInvisible": true,
-        "shape": "callout"
+        "shape": "callout",
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
         "height": 40,
-        "shape": "stored_data"
+        "shape": "stored_data",
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
         "isInvisible": true,
-        "shape": "c4-person"
+        "shape": "c4-person",
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
         "height": 50,
-        "shape": "class"
+        "shape": "class",
+        "label": ""
       }
     ],
     "options": {
@@ -4150,33 +4235,38 @@
         "id": "zeta",
         "width": 60,
         "height": 30,
-        "shape": "square"
+        "shape": "square",
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
         "isInvisible": true,
-        "shape": "callout"
+        "shape": "callout",
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
         "height": 40,
-        "shape": "stored_data"
+        "shape": "stored_data",
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
         "isInvisible": true,
-        "shape": "c4-person"
+        "shape": "c4-person",
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
         "height": 50,
-        "shape": "class"
+        "shape": "class",
+        "label": ""
       }
     ],
     "options": {
@@ -4395,33 +4485,38 @@
         "id": "zeta",
         "width": 60,
         "height": 30,
-        "shape": "square"
+        "shape": "square",
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
         "isInvisible": true,
-        "shape": "callout"
+        "shape": "callout",
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
         "height": 40,
-        "shape": "stored_data"
+        "shape": "stored_data",
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
         "isInvisible": true,
-        "shape": "c4-person"
+        "shape": "c4-person",
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
         "height": 50,
-        "shape": "class"
+        "shape": "class",
+        "label": ""
       }
     ],
     "options": {
@@ -4640,33 +4735,38 @@
         "id": "zeta",
         "width": 60,
         "height": 30,
-        "shape": "square"
+        "shape": "square",
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
         "isInvisible": true,
-        "shape": "callout"
+        "shape": "callout",
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
         "height": 40,
-        "shape": "stored_data"
+        "shape": "stored_data",
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
         "isInvisible": true,
-        "shape": "c4-person"
+        "shape": "c4-person",
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
         "height": 50,
-        "shape": "class"
+        "shape": "class",
+        "label": ""
       }
     ],
     "options": {
@@ -4885,33 +4985,38 @@
         "id": "zeta",
         "width": 60,
         "height": 30,
-        "shape": "text"
+        "shape": "text",
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
         "isInvisible": true,
-        "shape": "code"
+        "shape": "code",
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
         "height": 40,
-        "shape": "sequence_diagram"
+        "shape": "sequence_diagram",
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
         "isInvisible": true,
-        "shape": "document"
+        "shape": "document",
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
         "height": 50,
-        "shape": "page"
+        "shape": "page",
+        "label": ""
       }
     ],
     "options": {
@@ -5130,33 +5235,38 @@
         "id": "zeta",
         "width": 60,
         "height": 30,
-        "shape": "text"
+        "shape": "text",
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
         "isInvisible": true,
-        "shape": "code"
+        "shape": "code",
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
         "height": 40,
-        "shape": "sequence_diagram"
+        "shape": "sequence_diagram",
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
         "isInvisible": true,
-        "shape": "document"
+        "shape": "document",
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
         "height": 50,
-        "shape": "page"
+        "shape": "page",
+        "label": ""
       }
     ],
     "options": {
@@ -5375,33 +5485,38 @@
         "id": "zeta",
         "width": 60,
         "height": 30,
-        "shape": "text"
+        "shape": "text",
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
         "isInvisible": true,
-        "shape": "code"
+        "shape": "code",
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
         "height": 40,
-        "shape": "sequence_diagram"
+        "shape": "sequence_diagram",
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
         "isInvisible": true,
-        "shape": "document"
+        "shape": "document",
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
         "height": 50,
-        "shape": "page"
+        "shape": "page",
+        "label": ""
       }
     ],
     "options": {
@@ -5620,33 +5735,38 @@
         "id": "zeta",
         "width": 60,
         "height": 30,
-        "shape": "text"
+        "shape": "text",
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
         "isInvisible": true,
-        "shape": "code"
+        "shape": "code",
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
         "height": 40,
-        "shape": "sequence_diagram"
+        "shape": "sequence_diagram",
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
         "isInvisible": true,
-        "shape": "document"
+        "shape": "document",
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
         "height": 50,
-        "shape": "page"
+        "shape": "page",
+        "label": ""
       }
     ],
     "options": {
@@ -6637,6 +6757,7 @@
         "id": "zeta",
         "width": 60,
         "height": 30,
+        "label": "",
         "style": {
           "opacity": "0"
         }
@@ -6645,6 +6766,7 @@
         "id": "alpha",
         "width": 70,
         "height": 35,
+        "label": "",
         "style": {
           "fill": "transparent",
           "stroke": "transparent"
@@ -6654,6 +6776,7 @@
         "id": "node10",
         "width": 80,
         "height": 40,
+        "label": "",
         "style": {
           "fill": "transparent",
           "strokeWidth": "0"
@@ -6675,6 +6798,7 @@
         "id": "middle",
         "width": 100,
         "height": 50,
+        "label": "",
         "style": {
           "opacity": "1"
         }
@@ -6896,6 +7020,7 @@
         "id": "zeta",
         "width": 60,
         "height": 30,
+        "label": "",
         "style": {
           "opacity": "0"
         }
@@ -6904,6 +7029,7 @@
         "id": "alpha",
         "width": 70,
         "height": 35,
+        "label": "",
         "style": {
           "fill": "transparent",
           "stroke": "transparent"
@@ -6913,6 +7039,7 @@
         "id": "node10",
         "width": 80,
         "height": 40,
+        "label": "",
         "style": {
           "fill": "transparent",
           "strokeWidth": "0"
@@ -6934,6 +7061,7 @@
         "id": "middle",
         "width": 100,
         "height": 50,
+        "label": "",
         "style": {
           "opacity": "1"
         }
@@ -7155,6 +7283,7 @@
         "id": "zeta",
         "width": 60,
         "height": 30,
+        "label": "",
         "style": {
           "opacity": "0"
         }
@@ -7163,6 +7292,7 @@
         "id": "alpha",
         "width": 70,
         "height": 35,
+        "label": "",
         "style": {
           "fill": "transparent",
           "stroke": "transparent"
@@ -7172,6 +7302,7 @@
         "id": "node10",
         "width": 80,
         "height": 40,
+        "label": "",
         "style": {
           "fill": "transparent",
           "strokeWidth": "0"
@@ -7193,6 +7324,7 @@
         "id": "middle",
         "width": 100,
         "height": 50,
+        "label": "",
         "style": {
           "opacity": "1"
         }
@@ -7414,6 +7546,7 @@
         "id": "zeta",
         "width": 60,
         "height": 30,
+        "label": "",
         "style": {
           "opacity": "0"
         }
@@ -7422,6 +7555,7 @@
         "id": "alpha",
         "width": 70,
         "height": 35,
+        "label": "",
         "style": {
           "fill": "transparent",
           "stroke": "transparent"
@@ -7431,6 +7565,7 @@
         "id": "node10",
         "width": 80,
         "height": 40,
+        "label": "",
         "style": {
           "fill": "transparent",
           "strokeWidth": "0"
@@ -7452,6 +7587,7 @@
         "id": "middle",
         "width": 100,
         "height": 50,
+        "label": "",
         "style": {
           "opacity": "1"
         }
@@ -7684,29 +7820,34 @@
       {
         "id": "zeta",
         "width": 60,
-        "height": 30
+        "height": 30,
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
-        "height": 40
+        "height": 40,
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -7936,29 +8077,34 @@
       {
         "id": "zeta",
         "width": 60,
-        "height": 30
+        "height": 30,
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
-        "height": 40
+        "height": 40,
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -8188,29 +8334,34 @@
       {
         "id": "zeta",
         "width": 60,
-        "height": 30
+        "height": 30,
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
-        "height": 40
+        "height": 40,
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -8436,29 +8587,34 @@
       {
         "id": "zeta",
         "width": 60,
-        "height": 30
+        "height": 30,
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
-        "height": 40
+        "height": 40,
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -8715,29 +8871,34 @@
       {
         "id": "zeta",
         "width": 60,
-        "height": 30
+        "height": 30,
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
-        "height": 40
+        "height": 40,
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -9006,29 +9167,34 @@
       {
         "id": "zeta",
         "width": 60,
-        "height": 30
+        "height": 30,
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
-        "height": 40
+        "height": 40,
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -9285,29 +9451,34 @@
       {
         "id": "zeta",
         "width": 60,
-        "height": 30
+        "height": 30,
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
-        "height": 40
+        "height": 40,
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -9564,29 +9735,34 @@
       {
         "id": "zeta",
         "width": 60,
-        "height": 30
+        "height": 30,
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 70,
         "height": 35,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "node10",
         "width": 80,
-        "height": 40
+        "height": 40,
+        "label": ""
       },
       {
         "id": "node2",
         "width": 90,
         "height": 45,
-        "isInvisible": true
+        "isInvisible": true,
+        "label": ""
       },
       {
         "id": "middle",
         "width": 100,
-        "height": 50
+        "height": 50,
+        "label": ""
       }
     ],
     "options": {
@@ -9652,29 +9828,34 @@
         "id": "zeta",
         "width": 1,
         "height": 1,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 1,
-        "height": 1
+        "height": 1,
+        "label": ""
       },
       {
         "id": "node10",
         "width": 1,
         "height": 1,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "node2",
         "width": 1,
-        "height": 1
+        "height": 1,
+        "label": ""
       },
       {
         "id": "middle",
         "width": 1,
         "height": 1,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       }
     ],
     "options": {
@@ -9740,29 +9921,34 @@
         "id": "zeta",
         "width": 1,
         "height": 1,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 1,
-        "height": 1
+        "height": 1,
+        "label": ""
       },
       {
         "id": "node10",
         "width": 1,
         "height": 1,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "node2",
         "width": 1,
-        "height": 1
+        "height": 1,
+        "label": ""
       },
       {
         "id": "middle",
         "width": 1,
         "height": 1,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       }
     ],
     "options": {
@@ -9828,29 +10014,34 @@
         "id": "zeta",
         "width": 1,
         "height": 1,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 1,
-        "height": 1
+        "height": 1,
+        "label": ""
       },
       {
         "id": "node10",
         "width": 1,
         "height": 1,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "node2",
         "width": 1,
-        "height": 1
+        "height": 1,
+        "label": ""
       },
       {
         "id": "middle",
         "width": 1,
         "height": 1,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       }
     ],
     "options": {
@@ -9916,29 +10107,1066 @@
         "id": "zeta",
         "width": 1,
         "height": 1,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "alpha",
         "width": 1,
-        "height": 1
+        "height": 1,
+        "label": ""
       },
       {
         "id": "node10",
         "width": 1,
         "height": 1,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
       },
       {
         "id": "node2",
         "width": 1,
-        "height": 1
+        "height": 1,
+        "label": ""
       },
       {
         "id": "middle",
         "width": 1,
         "height": 1,
-        "isGroup": true
+        "isGroup": true,
+        "label": ""
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "zeta",
+        "to": "alpha",
+        "d2Index": 0,
+        "label": "",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "zeta",
+        "to": "node10",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "alpha",
+        "to": "node2",
+        "d2Index": 0,
+        "label": "",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "node10",
+        "to": "node2",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge16",
+        "from": "node2",
+        "to": "middle",
+        "d2Index": 0,
+        "label": "",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "edge20",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 30,
+              "y": 83
+            },
+            {
+              "x": 30,
+              "y": 17
+            },
+            {
+              "x": 185,
+              "y": 17
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 71,
+          "labelY": 169,
+          "points": [
+            {
+              "x": 30,
+              "y": 113
+            },
+            {
+              "x": 30,
+              "y": 181
+            },
+            {
+              "x": 180,
+              "y": 181
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "edge18",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 255,
+              "y": 17
+            },
+            {
+              "x": 425,
+              "y": 17
+            },
+            {
+              "x": 425,
+              "y": 76
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 373,
+          "labelY": 169,
+          "points": [
+            {
+              "x": 260,
+              "y": 181
+            },
+            {
+              "x": 425,
+              "y": 181
+            },
+            {
+              "x": 425,
+              "y": 121
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "edge16",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 470,
+              "y": 98
+            },
+            {
+              "x": 590,
+              "y": 98
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 30,
+          "id": "zeta",
+          "width": 60,
+          "x": 30,
+          "y": 98
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 35,
+          "id": "alpha",
+          "width": 70,
+          "x": 220,
+          "y": 17.5
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "node10",
+          "width": 80,
+          "x": 220,
+          "y": 181
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 45,
+          "id": "node2",
+          "width": 90,
+          "x": 425,
+          "y": 98.5
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 50,
+          "id": "middle",
+          "width": 100,
+          "x": 640,
+          "y": 98
+        }
+      ]
+    },
+    "name": "embedded-and-empty-labels-TB",
+    "nodes": [
+      {
+        "id": "zeta",
+        "width": 60,
+        "height": 30,
+        "shape": "text",
+        "label": "content",
+        "labelWidth": 40,
+        "labelHeight": 12
+      },
+      {
+        "id": "alpha",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "shape": "class",
+        "label": "content",
+        "labelWidth": 40,
+        "labelHeight": 12
+      },
+      {
+        "id": "node10",
+        "width": 80,
+        "height": 40,
+        "shape": "sql_table",
+        "label": "content",
+        "labelWidth": 40,
+        "labelHeight": 12
+      },
+      {
+        "id": "node2",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "shape": "code",
+        "label": "content",
+        "labelWidth": 40,
+        "labelHeight": 12
+      },
+      {
+        "id": "middle",
+        "width": 100,
+        "height": 50,
+        "shape": "rectangle",
+        "label": "",
+        "labelWidth": 40,
+        "labelHeight": 12
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "zeta",
+        "to": "alpha",
+        "d2Index": 0,
+        "label": "",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "zeta",
+        "to": "node10",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "alpha",
+        "to": "node2",
+        "d2Index": 0,
+        "label": "",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "node10",
+        "to": "node2",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge16",
+        "from": "node2",
+        "to": "middle",
+        "d2Index": 0,
+        "label": "",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "edge20",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 30,
+              "y": 118
+            },
+            {
+              "x": 30,
+              "y": 183
+            },
+            {
+              "x": 185,
+              "y": 183
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 71,
+          "labelY": 8,
+          "points": [
+            {
+              "x": 30,
+              "y": 88
+            },
+            {
+              "x": 30,
+              "y": 20
+            },
+            {
+              "x": 180,
+              "y": 20
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "edge18",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 255,
+              "y": 183
+            },
+            {
+              "x": 425,
+              "y": 183
+            },
+            {
+              "x": 425,
+              "y": 125
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 373,
+          "labelY": 8,
+          "points": [
+            {
+              "x": 260,
+              "y": 20
+            },
+            {
+              "x": 425,
+              "y": 20
+            },
+            {
+              "x": 425,
+              "y": 80
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "edge16",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 470,
+              "y": 102
+            },
+            {
+              "x": 590,
+              "y": 102
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 30,
+          "id": "zeta",
+          "width": 60,
+          "x": 30,
+          "y": 103
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 35,
+          "id": "alpha",
+          "width": 70,
+          "x": 220,
+          "y": 183.5
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "node10",
+          "width": 80,
+          "x": 220,
+          "y": 20
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 45,
+          "id": "node2",
+          "width": 90,
+          "x": 425,
+          "y": 102.5
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 50,
+          "id": "middle",
+          "width": 100,
+          "x": 640,
+          "y": 103
+        }
+      ]
+    },
+    "name": "embedded-and-empty-labels-BT",
+    "nodes": [
+      {
+        "id": "zeta",
+        "width": 60,
+        "height": 30,
+        "shape": "text",
+        "label": "content",
+        "labelWidth": 40,
+        "labelHeight": 12
+      },
+      {
+        "id": "alpha",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "shape": "class",
+        "label": "content",
+        "labelWidth": 40,
+        "labelHeight": 12
+      },
+      {
+        "id": "node10",
+        "width": 80,
+        "height": 40,
+        "shape": "sql_table",
+        "label": "content",
+        "labelWidth": 40,
+        "labelHeight": 12
+      },
+      {
+        "id": "node2",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "shape": "code",
+        "label": "content",
+        "labelWidth": 40,
+        "labelHeight": 12
+      },
+      {
+        "id": "middle",
+        "width": 100,
+        "height": 50,
+        "shape": "rectangle",
+        "label": "",
+        "labelWidth": 40,
+        "labelHeight": 12
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "zeta",
+        "to": "alpha",
+        "d2Index": 0,
+        "label": "",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "zeta",
+        "to": "node10",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "alpha",
+        "to": "node2",
+        "d2Index": 0,
+        "label": "",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "node10",
+        "to": "node2",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge16",
+        "from": "node2",
+        "to": "middle",
+        "d2Index": 0,
+        "label": "",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "edge20",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 30,
+              "y": 83
+            },
+            {
+              "x": 30,
+              "y": 17
+            },
+            {
+              "x": 185,
+              "y": 17
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 71,
+          "labelY": 169,
+          "points": [
+            {
+              "x": 30,
+              "y": 113
+            },
+            {
+              "x": 30,
+              "y": 181
+            },
+            {
+              "x": 180,
+              "y": 181
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "edge18",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 255,
+              "y": 17
+            },
+            {
+              "x": 425,
+              "y": 17
+            },
+            {
+              "x": 425,
+              "y": 76
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 373,
+          "labelY": 169,
+          "points": [
+            {
+              "x": 260,
+              "y": 181
+            },
+            {
+              "x": 425,
+              "y": 181
+            },
+            {
+              "x": 425,
+              "y": 121
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "edge16",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 470,
+              "y": 98
+            },
+            {
+              "x": 590,
+              "y": 98
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 30,
+          "id": "zeta",
+          "width": 60,
+          "x": 30,
+          "y": 98
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 35,
+          "id": "alpha",
+          "width": 70,
+          "x": 220,
+          "y": 17.5
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "node10",
+          "width": 80,
+          "x": 220,
+          "y": 181
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 45,
+          "id": "node2",
+          "width": 90,
+          "x": 425,
+          "y": 98.5
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 50,
+          "id": "middle",
+          "width": 100,
+          "x": 640,
+          "y": 98
+        }
+      ]
+    },
+    "name": "embedded-and-empty-labels-LR",
+    "nodes": [
+      {
+        "id": "zeta",
+        "width": 60,
+        "height": 30,
+        "shape": "text",
+        "label": "content",
+        "labelWidth": 40,
+        "labelHeight": 12
+      },
+      {
+        "id": "alpha",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "shape": "class",
+        "label": "content",
+        "labelWidth": 40,
+        "labelHeight": 12
+      },
+      {
+        "id": "node10",
+        "width": 80,
+        "height": 40,
+        "shape": "sql_table",
+        "label": "content",
+        "labelWidth": 40,
+        "labelHeight": 12
+      },
+      {
+        "id": "node2",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "shape": "code",
+        "label": "content",
+        "labelWidth": 40,
+        "labelHeight": 12
+      },
+      {
+        "id": "middle",
+        "width": 100,
+        "height": 50,
+        "shape": "rectangle",
+        "label": "",
+        "labelWidth": 40,
+        "labelHeight": 12
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "zeta",
+        "to": "alpha",
+        "d2Index": 0,
+        "label": "",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "zeta",
+        "to": "node10",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "alpha",
+        "to": "node2",
+        "d2Index": 0,
+        "label": "",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "node10",
+        "to": "node2",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge16",
+        "from": "node2",
+        "to": "middle",
+        "d2Index": 0,
+        "label": "",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "edge20",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 660,
+              "y": 83
+            },
+            {
+              "x": 660,
+              "y": 17
+            },
+            {
+              "x": 505,
+              "y": 17
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 619,
+          "labelY": 194,
+          "points": [
+            {
+              "x": 660,
+              "y": 113
+            },
+            {
+              "x": 660,
+              "y": 181
+            },
+            {
+              "x": 510,
+              "y": 181
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "edge18",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 435,
+              "y": 17
+            },
+            {
+              "x": 265,
+              "y": 17
+            },
+            {
+              "x": 265,
+              "y": 76
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 318,
+          "labelY": 194,
+          "points": [
+            {
+              "x": 430,
+              "y": 181
+            },
+            {
+              "x": 265,
+              "y": 181
+            },
+            {
+              "x": 265,
+              "y": 121
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "edge16",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 220,
+              "y": 98
+            },
+            {
+              "x": 100,
+              "y": 98
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 30,
+          "id": "zeta",
+          "width": 60,
+          "x": 660,
+          "y": 98
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 35,
+          "id": "alpha",
+          "width": 70,
+          "x": 470,
+          "y": 17.5
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "node10",
+          "width": 80,
+          "x": 470,
+          "y": 181
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 45,
+          "id": "node2",
+          "width": 90,
+          "x": 265,
+          "y": 98.5
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 50,
+          "id": "middle",
+          "width": 100,
+          "x": 50,
+          "y": 98
+        }
+      ]
+    },
+    "name": "embedded-and-empty-labels-RL",
+    "nodes": [
+      {
+        "id": "zeta",
+        "width": 60,
+        "height": 30,
+        "shape": "text",
+        "label": "content",
+        "labelWidth": 40,
+        "labelHeight": 12
+      },
+      {
+        "id": "alpha",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "shape": "class",
+        "label": "content",
+        "labelWidth": 40,
+        "labelHeight": 12
+      },
+      {
+        "id": "node10",
+        "width": 80,
+        "height": 40,
+        "shape": "sql_table",
+        "label": "content",
+        "labelWidth": 40,
+        "labelHeight": 12
+      },
+      {
+        "id": "node2",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "shape": "code",
+        "label": "content",
+        "labelWidth": 40,
+        "labelHeight": 12
+      },
+      {
+        "id": "middle",
+        "width": 100,
+        "height": 50,
+        "shape": "rectangle",
+        "label": "",
+        "labelWidth": 40,
+        "labelHeight": 12
       }
     ],
     "options": {
