@@ -53,6 +53,18 @@ export class RouteWorkGuard {
   Finish(): void {
     this.Check();
   }
+  ReserveSort(length: number): void {
+    if (length < 2) {
+      this.Step();
+      return;
+    }
+    for (let width = 1; width < length;) {
+      this.Add(BigInt(length));
+      if (width > Math.floor(length / 2)) break;
+      width *= 2;
+    }
+    this.Check();
+  }
   Used(): bigint {
     return this.used;
   }
@@ -224,6 +236,17 @@ export function runAtomicRouteStage(
   fn: (guard: RouteWorkGuard) => void,
 ): void {
   validateEngineGraph(ctx, location, g);
+  runAtomicRouteStageAfterPreflight(ctx, location, g, extra, limit, fn);
+}
+
+export function runAtomicRouteStageAfterPreflight(
+  ctx: Context,
+  location: string,
+  g: Graph,
+  extra: Edge[],
+  limit: bigint,
+  fn: (guard: RouteWorkGuard) => void,
+): void {
   const guard = new RouteWorkGuard(ctx, location, limit);
   validateRouteStageGeometry(g, extra, guard);
   const snapshot = captureRouteMutations(g, extra, guard);
