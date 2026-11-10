@@ -20,6 +20,8 @@ export interface LayoutNode extends RankNode {
   tableColumns?: number;
   /** Whether the D2 object has class metadata, even if it has no members. */
   hasClassData?: boolean;
+  /** Whether D2 grid rows or columns are set on this object. */
+  isGrid?: boolean;
   nearId?: string;
   forceHierarchy?: boolean;
   label?: string;
@@ -98,6 +100,7 @@ export interface LayoutOptions {
   inputOrder?: 'authored' | 'canonical';
   rootHierarchy?: boolean;
   rootSequence?: boolean;
+  rootLevel?: number;
   nodeSpacing?: number;
   rankSpacing?: number;
   orderingPasses?: number;
@@ -159,6 +162,7 @@ export interface RoutingOptions {
   direction?: LayoutDirection;
   rootHierarchy?: boolean;
   rootSequence?: boolean;
+  rootLevel?: number;
 }
 
 interface WeightedEdge extends LayoutEdge {

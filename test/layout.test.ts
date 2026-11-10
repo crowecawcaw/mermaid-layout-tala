@@ -101,6 +101,16 @@ describe('Mermaid flowchart layout slice', () => {
     expect(root.Nodes.map((node) => node.FontSize)).toEqual([16, 16, 16]);
   });
 
+  it('uses D2 root levels and grid metadata for default fonts', () => {
+    const nodes = [
+      { id: 'grid', isGrid: true, width: 40, height: 30 },
+      { id: 'text', isGrid: true, shape: 'text', width: 40, height: 30 },
+    ];
+    expect(translateFlowchart(nodes, [], {}).graph.Nodes.map((node) => node.FontSize)).toEqual([28, 16]);
+    expect(translateFlowchart(nodes, [], { rootLevel: 2 }).graph.Nodes.map((node) => node.FontSize)).toEqual([20, 16]);
+    expect(() => translateFlowchart(nodes, [], { rootLevel: 0.5 })).toThrow(/rootLevel/);
+  });
+
   it('derives node visibility from D2 styles, labels and icons', () => {
     const transparent = { fill: 'transparent', strokeWidth: '0' };
     const nodes = [

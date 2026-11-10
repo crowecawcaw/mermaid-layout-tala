@@ -33,6 +33,7 @@ type orderingNode struct {
 	Style        map[string]string `json:"style,omitempty"`
 	NearID       string            `json:"nearId,omitempty"`
 	HasClassData bool              `json:"hasClassData,omitempty"`
+	IsGrid       bool              `json:"isGrid,omitempty"`
 }
 type orderingEdge struct {
 	ID                    string              `json:"id"`
@@ -92,6 +93,8 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"unspecified-dense", [][2]int{{0, 1}, {0, 2}, {0, 3}, {1, 3}, {1, 4}, {2, 4}, {3, 4}}, false, 14},
 		{"sequence-container-font", [][2]int{{2, 3}, {2, 4}, {4, 3}}, false, 15},
 		{"root-sequence-font", [][2]int{{2, 3}, {2, 4}, {4, 3}}, false, 16},
+		{"nested-root-level", [][2]int{{2, 3}, {2, 4}, {4, 3}}, false, 17},
+		{"grid-font", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 18},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -107,7 +110,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		if test.shapeSet == 12 {
 			names[0] = "top-left"
 		}
-		if test.shapeSet == 15 || test.shapeSet == 16 {
+		if test.shapeSet == 15 || test.shapeSet == 16 || test.shapeSet == 17 {
 			names = []string{"seq", "inner", "leaf", "other", "solo"}
 		}
 		directions := []string{"TB", "BT", "LR", "RL"}
@@ -116,6 +119,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		}
 		for _, direction := range directions {
 			g := d2graph.NewGraph()
+			if test.shapeSet == 17 {
+				g.RootLevel = 2
+			}
 			if test.shapeSet == 16 {
 				g.Root.Shape.Value = "sequence_diagram"
 			}
@@ -172,7 +178,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 						input.Label, input.LabelWidth, input.LabelHeight = "visible", 30, 12
 					}
 				}
-				if test.shapeSet == 15 || test.shapeSet == 16 {
+				if test.shapeSet == 15 || test.shapeSet == 16 || test.shapeSet == 17 {
 					input.IsGroup = i < 2
 					if i == 0 && test.shapeSet == 15 {
 						input.Shape = "sequence_diagram"
@@ -183,8 +189,11 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 						input.LabelHeight = 12
 					}
 				}
+				if test.shapeSet == 18 {
+					input.IsGrid = i%2 == 0
+				}
 				parent := g.Root
-				if test.shapeSet == 15 || test.shapeSet == 16 {
+				if test.shapeSet == 15 || test.shapeSet == 16 || test.shapeSet == 17 {
 					if i == 1 {
 						input.ParentID = names[0]
 						parent = objects[input.ParentID]
@@ -214,6 +223,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				}
 				obj := &d2graph.Object{Graph: g, Parent: parent, ID: id, IDVal: id, Box: geo.NewBox(geo.NewPoint(0, 0), input.Width, input.Height), Children: make(map[string]*d2graph.Object), Attributes: d2graph.Attributes{}}
 				obj.Shape.Value = input.Shape
+				if input.IsGrid {
+					obj.GridRows = &d2graph.Scalar{Value: "2"}
+				}
 				if input.HasClassData {
 					obj.Class = &d2target.Class{}
 				}
@@ -384,6 +396,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				outEdges = append(outEdges, record)
 			}
 			options := map[string]any{"direction": direction, "seeds": []int{1, 2, 3}, "inputOrder": "authored"}
+			if test.shapeSet == 17 {
+				options["rootLevel"] = 2
+			}
 			if test.shapeSet == 16 {
 				options["rootSequence"] = true
 			}

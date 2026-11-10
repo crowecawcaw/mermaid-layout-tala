@@ -155,6 +155,8 @@ export function translateFlowchart(
     );
   const direction = options.direction;
   if (direction !== undefined && !(direction in orientation)) throw new Error('invalid layout direction');
+  if (options.rootLevel !== undefined && !Number.isSafeInteger(options.rootLevel))
+    throw new Error('rootLevel must be a safe integer');
   if (options.inputOrder !== undefined && options.inputOrder !== 'authored' && options.inputOrder !== 'canonical')
     throw new Error('invalid input order');
   for (const name of [
@@ -354,14 +356,14 @@ export function translateFlowchart(
       node.InitIcon();
       if (n.iconPosition) node.Icon!.Position = FromString(n.iconPosition);
     }
-    let depth = 1, insideSequence = options.rootSequence ?? false;
+    let depth = 1 + (options.rootLevel ?? 0), insideSequence = options.rootSequence ?? false;
     for (let parent = n.parentId; parent; parent = byId.get(parent)?.parentId) {
       depth++;
       if (byId.get(parent)?.shape === 'sequence_diagram') insideSequence = true;
     }
     node.FontSize =
       n.fontSize ??
-      (n.isGroup && (children.get(n.id)?.length ?? 0) > 0 && n.shape !== 'text' && !insideSequence
+      (((n.isGroup && (children.get(n.id)?.length ?? 0) > 0) || n.isGrid) && n.shape !== 'text' && !insideSequence
         ? ([28, 24, 20][depth - 1] ?? 16)
         : n.tableColumns !== undefined || n.hasClassData
           ? 20
