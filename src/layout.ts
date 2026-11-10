@@ -18,6 +18,8 @@ export interface LayoutNode extends RankNode {
   fixedSize?: boolean;
   shape?: string;
   tableColumns?: number;
+  /** Whether the D2 object has class metadata, even if it has no members. */
+  hasClassData?: boolean;
   nearId?: string;
   forceHierarchy?: boolean;
   label?: string;

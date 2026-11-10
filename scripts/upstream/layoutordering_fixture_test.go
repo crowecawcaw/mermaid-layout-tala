@@ -20,18 +20,19 @@ import (
 )
 
 type orderingNode struct {
-	ID          string            `json:"id"`
-	Width       float64           `json:"width"`
-	Height      float64           `json:"height"`
-	IsInvisible bool              `json:"isInvisible,omitempty"`
-	IsGroup     bool              `json:"isGroup,omitempty"`
-	ParentID    string            `json:"parentId,omitempty"`
-	Shape       string            `json:"shape,omitempty"`
-	Label       string            `json:"label"`
-	LabelWidth  int               `json:"labelWidth,omitempty"`
-	LabelHeight int               `json:"labelHeight,omitempty"`
-	Style       map[string]string `json:"style,omitempty"`
-	NearID      string            `json:"nearId,omitempty"`
+	ID           string            `json:"id"`
+	Width        float64           `json:"width"`
+	Height       float64           `json:"height"`
+	IsInvisible  bool              `json:"isInvisible,omitempty"`
+	IsGroup      bool              `json:"isGroup,omitempty"`
+	ParentID     string            `json:"parentId,omitempty"`
+	Shape        string            `json:"shape,omitempty"`
+	Label        string            `json:"label"`
+	LabelWidth   int               `json:"labelWidth,omitempty"`
+	LabelHeight  int               `json:"labelHeight,omitempty"`
+	Style        map[string]string `json:"style,omitempty"`
+	NearID       string            `json:"nearId,omitempty"`
+	HasClassData bool              `json:"hasClassData,omitempty"`
 }
 type orderingEdge struct {
 	ID                    string              `json:"id"`
@@ -83,6 +84,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"sequence-lifelines", [][2]int{{0, 1}, {1, 2}, {3, 4}}, false, 10},
 		{"near-constants", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 11},
 		{"near-constant-shadow", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 12},
+		{"class-metadata", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 13},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -128,6 +130,13 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				if test.shapeSet == 12 && i == 2 {
 					input.NearID = "top-left"
 				}
+				if test.shapeSet == 13 {
+					input.Shape = "class"
+					input.HasClassData = i%2 == 0
+					input.Label = "class"
+					input.LabelWidth = 40
+					input.LabelHeight = 12
+				}
 				if test.shapeSet == 1 {
 					input.Shape = []string{"square", "callout", "stored_data", "c4-person", "class"}[i]
 				}
@@ -163,6 +172,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				}
 				obj := &d2graph.Object{Graph: g, Parent: parent, ID: id, IDVal: id, Box: geo.NewBox(geo.NewPoint(0, 0), input.Width, input.Height), Children: make(map[string]*d2graph.Object), Attributes: d2graph.Attributes{}}
 				obj.Shape.Value = input.Shape
+				if input.HasClassData {
+					obj.Class = &d2target.Class{}
+				}
 				obj.Label.Value = input.Label
 				obj.LabelDimensions = *d2target.NewTextDimensions(input.LabelWidth, input.LabelHeight)
 				if input.NearID != "" {

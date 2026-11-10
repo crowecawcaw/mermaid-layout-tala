@@ -81,9 +81,12 @@ describe('Mermaid flowchart layout slice', () => {
       { id: 'table-payload', shape: 'sql_table', tableColumns: 0, width: 80, height: 50 },
       { id: 'text-group', shape: 'text', isGroup: true, width: 80, height: 50 },
       { id: 'child', parentId: 'text-group', width: 40, height: 30 },
+      { id: 'class-shape', shape: 'class', width: 80, height: 50 },
+      { id: 'class-data', shape: 'class', hasClassData: true, width: 80, height: 50 },
+      { id: 'class-font', shape: 'class', hasClassData: true, fontSize: 23, width: 80, height: 50 },
     ];
     const { graph } = translateFlowchart(nodes, [], { inputOrder: 'authored' });
-    expect(graph.Nodes.map((n) => n.FontSize)).toEqual([16, 20, 16, 16]);
+    expect(graph.Nodes.map((n) => n.FontSize)).toEqual([16, 20, 16, 16, 16, 20, 23]);
   });
 
   it('derives node visibility from D2 styles, labels and icons', () => {

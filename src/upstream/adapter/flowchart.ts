@@ -361,7 +361,7 @@ export function translateFlowchart(
       n.fontSize ??
       (n.isGroup && (children.get(n.id)?.length ?? 0) > 0 && n.shape !== 'text'
         ? ([28, 24, 20][depth - 1] ?? 16)
-        : n.tableColumns !== undefined
+        : n.tableColumns !== undefined || n.hasClassData
           ? 20
           : 16);
     if (n.fixedSize) {
