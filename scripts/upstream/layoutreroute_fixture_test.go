@@ -52,7 +52,7 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 	}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
 	fixtures := []any{}
-	for _, direction := range []string{"TB", "BT", "LR", "RL"} {
+	for _, direction := range []string{"TB", "BT", "LR", "RL", "DEFAULT"} {
 		for trial := 0; trial < 6; trial++ {
 			g := d2graph.NewGraph()
 			g.Root.Direction.Value = dirs[direction]
@@ -148,7 +148,11 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 				}
 				out = append(out, record)
 			}
-			fixtures = append(fixtures, map[string]any{"name": fmt.Sprintf("%s-%d", direction, trial), "nodes": nodes, "edges": inputs, "selected": selectedIDs, "options": map[string]any{"direction": direction}, "expected": out})
+			options := map[string]any{"direction": direction}
+			if direction == "DEFAULT" {
+				delete(options, "direction")
+			}
+			fixtures = append(fixtures, map[string]any{"name": fmt.Sprintf("%s-%d", direction, trial), "nodes": nodes, "edges": inputs, "selected": selectedIDs, "options": options, "expected": out})
 		}
 	}
 	data, err := json.MarshalIndent(fixtures, "", "  ")

@@ -85,6 +85,11 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"near-constants", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 11},
 		{"near-constant-shadow", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 12},
 		{"class-metadata", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 13},
+		{"unspecified-direction", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 14},
+		{"unspecified-cycle", [][2]int{{0, 1}, {1, 2}, {2, 0}, {2, 3}, {3, 4}}, false, 14},
+		{"unspecified-components", [][2]int{{0, 1}, {1, 2}, {3, 4}}, false, 14},
+		{"unspecified-reverse", [][2]int{{4, 3}, {3, 2}, {2, 1}, {1, 0}}, false, 14},
+		{"unspecified-dense", [][2]int{{0, 1}, {0, 2}, {0, 3}, {1, 3}, {1, 4}, {2, 4}, {3, 4}}, false, 14},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -100,7 +105,11 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		if test.shapeSet == 12 {
 			names[0] = "top-left"
 		}
-		for _, direction := range []string{"TB", "BT", "LR", "RL"} {
+		directions := []string{"TB", "BT", "LR", "RL"}
+		if test.shapeSet == 14 {
+			directions = []string{"DEFAULT"}
+		}
+		for _, direction := range directions {
 			g := d2graph.NewGraph()
 			g.Root.Direction.Value = dirs[direction]
 			nodes := []orderingNode{}
@@ -344,6 +353,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 			options := map[string]any{"direction": direction, "seeds": []int{1, 2, 3}, "inputOrder": "authored"}
 			if test.name == "authored-order" {
 				delete(options, "inputOrder")
+			}
+			if direction == "DEFAULT" {
+				delete(options, "direction")
 			}
 			fixtures = append(fixtures, map[string]any{"name": test.name + "-" + direction, "nodes": nodes, "edges": edges, "options": options, "expected": map[string]any{"nodes": outNodes, "edges": outEdges}})
 		}

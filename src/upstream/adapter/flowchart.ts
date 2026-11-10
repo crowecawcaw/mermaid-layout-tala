@@ -153,8 +153,8 @@ export function translateFlowchart(
     throw new Error(
       `D2 SQL table column count exceeds limit ${MaxEngineNodes}`,
     );
-  const direction = options.direction ?? 'TB';
-  if (!(direction in orientation)) throw new Error('invalid layout direction');
+  const direction = options.direction;
+  if (direction !== undefined && !(direction in orientation)) throw new Error('invalid layout direction');
   if (options.inputOrder !== undefined && options.inputOrder !== 'authored' && options.inputOrder !== 'canonical')
     throw new Error('invalid input order');
   for (const name of [
@@ -276,7 +276,7 @@ export function translateFlowchart(
     nodeIDs = new Map<string, bigint>(),
     graph = new Graph(),
     mapped = new Map<string, Node>();
-  graph.Directions.set(null, orientation[direction]);
+  if (direction !== undefined) graph.Directions.set(null, orientation[direction]);
   graph.IsRootHierarchy = options.rootHierarchy ?? false;
   ordered.forEach((n, i) => {
     const node = new Node(ids[i]!, n.width, n.height);

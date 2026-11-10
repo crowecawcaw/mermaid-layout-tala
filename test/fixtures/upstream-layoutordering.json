@@ -16070,5 +16070,1162 @@
         3
       ]
     }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "zeta",
+        "to": "alpha",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "zeta",
+        "to": "node10",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "alpha",
+        "to": "node2",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "node10",
+        "to": "node2",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge16",
+        "from": "node2",
+        "to": "middle",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 57,
+          "labelY": 39,
+          "points": [
+            {
+              "x": 108,
+              "y": 15
+            },
+            {
+              "x": 35,
+              "y": 15
+            },
+            {
+              "x": 35,
+              "y": 135
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 265,
+          "labelY": 36,
+          "points": [
+            {
+              "x": 168,
+              "y": 15
+            },
+            {
+              "x": 243,
+              "y": 15
+            },
+            {
+              "x": 243,
+              "y": 132
+            }
+          ]
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 57,
+          "labelY": 263,
+          "points": [
+            {
+              "x": 35,
+              "y": 170
+            },
+            {
+              "x": 35,
+              "y": 297
+            },
+            {
+              "x": 93,
+              "y": 297
+            }
+          ]
+        },
+        {
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 265,
+          "labelY": 265,
+          "points": [
+            {
+              "x": 243,
+              "y": 172
+            },
+            {
+              "x": 243,
+              "y": 297
+            },
+            {
+              "x": 183,
+              "y": 297
+            }
+          ]
+        },
+        {
+          "id": "edge16",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 160,
+          "labelY": 371,
+          "points": [
+            {
+              "x": 138,
+              "y": 320
+            },
+            {
+              "x": 138,
+              "y": 421
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 30,
+          "id": "zeta",
+          "width": 60,
+          "x": 138,
+          "y": 15
+        },
+        {
+          "fontSize": 16,
+          "height": 35,
+          "id": "alpha",
+          "width": 70,
+          "x": 35,
+          "y": 152.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "node10",
+          "width": 80,
+          "x": 243,
+          "y": 152
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "node2",
+          "width": 90,
+          "x": 138,
+          "y": 297.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "middle",
+          "width": 100,
+          "x": 138,
+          "y": 446
+        }
+      ]
+    },
+    "name": "unspecified-direction-DEFAULT",
+    "nodes": [
+      {
+        "id": "zeta",
+        "width": 60,
+        "height": 30,
+        "label": ""
+      },
+      {
+        "id": "alpha",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "node10",
+        "width": 80,
+        "height": 40,
+        "label": ""
+      },
+      {
+        "id": "node2",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "middle",
+        "width": 100,
+        "height": 50,
+        "label": ""
+      }
+    ],
+    "options": {
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "zeta",
+        "to": "alpha",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "alpha",
+        "to": "node10",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "node10",
+        "to": "zeta",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "node10",
+        "to": "node2",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge16",
+        "from": "node2",
+        "to": "middle",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 57,
+          "labelY": 33,
+          "points": [
+            {
+              "x": 77,
+              "y": 15
+            },
+            {
+              "x": 35,
+              "y": 15
+            },
+            {
+              "x": 35,
+              "y": 92
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 103,
+          "labelY": 97,
+          "points": [
+            {
+              "x": 70,
+              "y": 109
+            },
+            {
+              "x": 135,
+              "y": 109
+            }
+          ]
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_BOTTOM_CENTER",
+          "labelX": 198,
+          "labelY": 33,
+          "points": [
+            {
+              "x": 176,
+              "y": 90
+            },
+            {
+              "x": 176,
+              "y": 15
+            },
+            {
+              "x": 137,
+              "y": 15
+            }
+          ]
+        },
+        {
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 263,
+          "labelY": 98,
+          "points": [
+            {
+              "x": 215,
+              "y": 110
+            },
+            {
+              "x": 310,
+              "y": 110
+            }
+          ]
+        },
+        {
+          "id": "edge16",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 448,
+          "labelY": 100,
+          "points": [
+            {
+              "x": 400,
+              "y": 112
+            },
+            {
+              "x": 495,
+              "y": 112
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 30,
+          "id": "zeta",
+          "width": 60,
+          "x": 107,
+          "y": 15
+        },
+        {
+          "fontSize": 16,
+          "height": 35,
+          "id": "alpha",
+          "width": 70,
+          "x": 35,
+          "y": 109.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "node10",
+          "width": 80,
+          "x": 175,
+          "y": 110
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "node2",
+          "width": 90,
+          "x": 355,
+          "y": 112.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "middle",
+          "width": 100,
+          "x": 545,
+          "y": 115
+        }
+      ]
+    },
+    "name": "unspecified-cycle-DEFAULT",
+    "nodes": [
+      {
+        "id": "zeta",
+        "width": 60,
+        "height": 30,
+        "label": ""
+      },
+      {
+        "id": "alpha",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "node10",
+        "width": 80,
+        "height": 40,
+        "label": ""
+      },
+      {
+        "id": "node2",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "middle",
+        "width": 100,
+        "height": 50,
+        "label": ""
+      }
+    ],
+    "options": {
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "zeta",
+        "to": "alpha",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "alpha",
+        "to": "node10",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "node2",
+        "to": "middle",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 98,
+          "labelY": 76,
+          "points": [
+            {
+              "x": 60,
+              "y": 88
+            },
+            {
+              "x": 135,
+              "y": 88
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 243,
+          "labelY": 77,
+          "points": [
+            {
+              "x": 205,
+              "y": 88
+            },
+            {
+              "x": 280,
+              "y": 90
+            }
+          ]
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 126,
+          "labelY": 12,
+          "points": [
+            {
+              "x": 90,
+              "y": 24
+            },
+            {
+              "x": 161,
+              "y": 24
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 30,
+          "id": "zeta",
+          "width": 60,
+          "x": 30,
+          "y": 88
+        },
+        {
+          "fontSize": 16,
+          "height": 35,
+          "id": "alpha",
+          "width": 70,
+          "x": 170,
+          "y": 87.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "node10",
+          "width": 80,
+          "x": 320,
+          "y": 90
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "node2",
+          "width": 90,
+          "x": 45,
+          "y": 24.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "middle",
+          "width": 100,
+          "x": 211,
+          "y": 25
+        }
+      ]
+    },
+    "name": "unspecified-components-DEFAULT",
+    "nodes": [
+      {
+        "id": "zeta",
+        "width": 60,
+        "height": 30,
+        "label": ""
+      },
+      {
+        "id": "alpha",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "node10",
+        "width": 80,
+        "height": 40,
+        "label": ""
+      },
+      {
+        "id": "node2",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "middle",
+        "width": 100,
+        "height": 50,
+        "label": ""
+      }
+    ],
+    "options": {
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "middle",
+        "to": "node2",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "node2",
+        "to": "node10",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "node10",
+        "to": "alpha",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "alpha",
+        "to": "zeta",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 142,
+          "labelY": 10,
+          "points": [
+            {
+              "x": 100,
+              "y": 22
+            },
+            {
+              "x": 184,
+              "y": 22
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 316,
+          "labelY": 8,
+          "points": [
+            {
+              "x": 274,
+              "y": 20
+            },
+            {
+              "x": 357,
+              "y": 20
+            }
+          ]
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 478,
+          "labelY": 7,
+          "points": [
+            {
+              "x": 437,
+              "y": 19
+            },
+            {
+              "x": 519,
+              "y": 19
+            }
+          ]
+        },
+        {
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 630,
+          "labelY": 8,
+          "points": [
+            {
+              "x": 589,
+              "y": 20
+            },
+            {
+              "x": 670,
+              "y": 20
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 30,
+          "id": "zeta",
+          "width": 60,
+          "x": 700,
+          "y": 20
+        },
+        {
+          "fontSize": 16,
+          "height": 35,
+          "id": "alpha",
+          "width": 70,
+          "x": 554,
+          "y": 19.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "node10",
+          "width": 80,
+          "x": 397,
+          "y": 20
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "node2",
+          "width": 90,
+          "x": 229,
+          "y": 22.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "middle",
+          "width": 100,
+          "x": 50,
+          "y": 25
+        }
+      ]
+    },
+    "name": "unspecified-reverse-DEFAULT",
+    "nodes": [
+      {
+        "id": "zeta",
+        "width": 60,
+        "height": 30,
+        "label": ""
+      },
+      {
+        "id": "alpha",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "node10",
+        "width": 80,
+        "height": 40,
+        "label": ""
+      },
+      {
+        "id": "node2",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "middle",
+        "width": 100,
+        "height": 50,
+        "label": ""
+      }
+    ],
+    "options": {
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "zeta",
+        "to": "alpha",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "zeta",
+        "to": "node10",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "zeta",
+        "to": "node2",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "alpha",
+        "to": "node2",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge16",
+        "from": "alpha",
+        "to": "middle",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge15",
+        "from": "node10",
+        "to": "middle",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge14",
+        "from": "node2",
+        "to": "middle",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 81,
+          "labelY": 31,
+          "points": [
+            {
+              "x": 235,
+              "y": 18
+            },
+            {
+              "x": 46,
+              "y": 18
+            },
+            {
+              "x": 46,
+              "y": 138
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 451,
+          "labelY": 5,
+          "points": [
+            {
+              "x": 295,
+              "y": 18
+            },
+            {
+              "x": 490,
+              "y": 18
+            },
+            {
+              "x": 490,
+              "y": 135
+            }
+          ]
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 287,
+          "labelY": 156,
+          "points": [
+            {
+              "x": 265,
+              "y": 33
+            },
+            {
+              "x": 265,
+              "y": 278
+            }
+          ]
+        },
+        {
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 67,
+          "labelY": 288,
+          "points": [
+            {
+              "x": 46,
+              "y": 173
+            },
+            {
+              "x": 46,
+              "y": 300
+            },
+            {
+              "x": 215,
+              "y": 300
+            }
+          ]
+        },
+        {
+          "id": "edge16",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 45,
+          "labelY": 405,
+          "points": [
+            {
+              "x": 23,
+              "y": 173
+            },
+            {
+              "x": 23,
+              "y": 449
+            },
+            {
+              "x": 210,
+              "y": 449
+            }
+          ]
+        },
+        {
+          "id": "edge15",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 512,
+          "labelY": 402,
+          "points": [
+            {
+              "x": 490,
+              "y": 175
+            },
+            {
+              "x": 490,
+              "y": 449
+            },
+            {
+              "x": 310,
+              "y": 449
+            }
+          ]
+        },
+        {
+          "id": "edge14",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 282,
+          "labelY": 374,
+          "points": [
+            {
+              "x": 260,
+              "y": 323
+            },
+            {
+              "x": 260,
+              "y": 424
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 30,
+          "id": "zeta",
+          "width": 60,
+          "x": 265,
+          "y": 18
+        },
+        {
+          "fontSize": 16,
+          "height": 35,
+          "id": "alpha",
+          "width": 70,
+          "x": 35,
+          "y": 155.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "node10",
+          "width": 80,
+          "x": 490,
+          "y": 155
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "node2",
+          "width": 90,
+          "x": 260,
+          "y": 300.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "middle",
+          "width": 100,
+          "x": 260,
+          "y": 449
+        }
+      ]
+    },
+    "name": "unspecified-dense-DEFAULT",
+    "nodes": [
+      {
+        "id": "zeta",
+        "width": 60,
+        "height": 30,
+        "label": ""
+      },
+      {
+        "id": "alpha",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "node10",
+        "width": 80,
+        "height": 40,
+        "label": ""
+      },
+      {
+        "id": "node2",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "middle",
+        "width": 100,
+        "height": 50,
+        "label": ""
+      }
+    ],
+    "options": {
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
   }
 ]
