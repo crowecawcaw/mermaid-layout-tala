@@ -1,0 +1,58 @@
+[
+  {
+    "shape": "",
+    "valid": true
+  },
+  {
+    "shape": "none",
+    "valid": true
+  },
+  {
+    "shape": "arrow",
+    "valid": true
+  },
+  {
+    "shape": "triangle",
+    "valid": true
+  },
+  {
+    "shape": "diamond",
+    "valid": true
+  },
+  {
+    "shape": "circle",
+    "valid": true
+  },
+  {
+    "shape": "box",
+    "valid": true
+  },
+  {
+    "shape": "cross",
+    "valid": true
+  },
+  {
+    "shape": "cf-one",
+    "valid": true
+  },
+  {
+    "shape": "cf-many",
+    "valid": true
+  },
+  {
+    "shape": "cf-one-required",
+    "valid": true
+  },
+  {
+    "shape": "cf-many-required",
+    "valid": true
+  },
+  {
+    "shape": "bad",
+    "valid": false
+  },
+  {
+    "shape": "Triangle",
+    "valid": false
+  }
+]

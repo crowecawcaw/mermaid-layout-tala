@@ -48,8 +48,8 @@ type orderingEdge struct {
 	LabelHeight           int                 `json:"labelHeight"`
 	SourceArrow           *bool               `json:"sourceArrow,omitempty"`
 	TargetArrow           *bool               `json:"targetArrow,omitempty"`
-	SourceArrowhead       string              `json:"sourceArrowhead,omitempty"`
-	TargetArrowhead       string              `json:"targetArrowhead,omitempty"`
+	SourceArrowhead       *string             `json:"sourceArrowhead,omitempty"`
+	TargetArrowhead       *string             `json:"targetArrowhead,omitempty"`
 	SourceArrowheadFilled *bool               `json:"sourceArrowheadFilled,omitempty"`
 	TargetArrowheadFilled *bool               `json:"targetArrowheadFilled,omitempty"`
 	SourceArrowheadLabel  *orderingArrowLabel `json:"sourceArrowheadLabel,omitempty"`
@@ -106,6 +106,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"scoped-object-ids", [][2]int{{2, 3}, {2, 4}, {4, 3}, {3, 2}}, false, 24},
 		{"scoped-lifelines", [][2]int{{0, 1}, {1, 2}, {3, 4}}, false, 25},
 		{"empty-local-id", [][2]int{{2, 3}, {3, 4}}, false, 26},
+		{"empty-arrowhead-shapes", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 27},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -392,21 +393,38 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 					dst := []bool{false, true, true, false, false}[i]
 					input.SourceArrow, input.TargetArrow = &src, &dst
 					edge.SrcArrow, edge.DstArrow = src, dst
-					input.SourceArrowhead = []string{"diamond", "", "box", "triangle", "triangle"}[i]
-					input.TargetArrowhead = []string{"", "triangle", "circle", "", "diamond"}[i]
+					sourceShape := []string{"diamond", "", "box", "triangle", "triangle"}[i]
+					targetShape := []string{"", "triangle", "circle", "", "diamond"}[i]
 					srcFilled := []bool{true, false, true, true, false}[i]
 					dstFilled := []bool{false, false, true, false, true}[i]
-					if input.SourceArrowhead != "" {
+					if sourceShape != "" {
+						input.SourceArrowhead = &sourceShape
 						input.SourceArrowheadFilled = &srcFilled
 						edge.SrcArrowhead = &d2graph.Attributes{}
-						edge.SrcArrowhead.Shape.Value = input.SourceArrowhead
+						edge.SrcArrowhead.Shape.Value = sourceShape
 						edge.SrcArrowhead.Style.Filled = &d2graph.Scalar{Value: strconv.FormatBool(srcFilled)}
 					}
-					if input.TargetArrowhead != "" {
+					if targetShape != "" {
+						input.TargetArrowhead = &targetShape
 						input.TargetArrowheadFilled = &dstFilled
 						edge.DstArrowhead = &d2graph.Attributes{}
-						edge.DstArrowhead.Shape.Value = input.TargetArrowhead
+						edge.DstArrowhead.Shape.Value = targetShape
 						edge.DstArrowhead.Style.Filled = &d2graph.Scalar{Value: strconv.FormatBool(dstFilled)}
+					}
+				}
+				if test.shapeSet == 27 {
+					src := []bool{false, true, false, true, false}[i]
+					dst := []bool{true, false, false, true, true}[i]
+					input.SourceArrow, input.TargetArrow = &src, &dst
+					edge.SrcArrow, edge.DstArrow = src, dst
+					empty := ""
+					if i != 1 {
+						input.SourceArrowhead = &empty
+						edge.SrcArrowhead = &d2graph.Attributes{}
+					}
+					if i != 0 {
+						input.TargetArrowhead = &empty
+						edge.DstArrowhead = &d2graph.Attributes{}
 					}
 				}
 				edge.Label.Value = input.Label

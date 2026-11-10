@@ -118,9 +118,10 @@ function arrowhead(value: string | undefined, fallback: string, filled?: boolean
     arrow_point: 'triangle',
     arrow_circle: 'circle',
     arrow_cross: 'cross',
+    arrow_open: 'none',
   };
-  const shape = value === undefined || (value === '' && (filled !== undefined || hasLabel))
-    ? TriangleArrowhead : aliases[value] ?? (value === '' ? NoArrowhead : value);
+  const shape = value === undefined || value === ''
+    ? TriangleArrowhead : aliases[value] ?? value;
   if (shape === 'triangle' && filled === false) return 'unfilled-triangle';
   if (filled === true && (shape === 'diamond' || shape === 'circle' || shape === 'box'))
     return `filled-${shape}`;
@@ -128,8 +129,8 @@ function arrowhead(value: string | undefined, fallback: string, filled?: boolean
 }
 function arrowFlags(e: LayoutEdge): [boolean, boolean] {
   return [
-    e.sourceArrow ?? (!!e.sourceArrowhead && e.sourceArrowhead !== 'none'),
-    e.targetArrow ?? (e.targetArrowhead === undefined || (e.targetArrowhead !== '' && e.targetArrowhead !== 'none')),
+    e.sourceArrow ?? (!!e.sourceArrowhead && e.sourceArrowhead !== 'none' && e.sourceArrowhead !== 'arrow_open'),
+    e.targetArrow ?? (e.targetArrowhead === undefined || (e.targetArrowhead !== '' && e.targetArrowhead !== 'none' && e.targetArrowhead !== 'arrow_open')),
   ];
 }
 export function translateFlowchart(
@@ -422,6 +423,15 @@ export function translateFlowchart(
     equivalentCounts = new Map<string, number>();
   for (let i = 0; i < inputEdges.length; i++) {
     const e = inputEdges[i]!;
+    for (const [name, value] of [['source', e.sourceArrowhead], ['target', e.targetArrowhead]] as const) {
+      if (value !== undefined && ![
+        '', 'none', 'arrow', 'triangle', 'unfilled-triangle', 'diamond', 'filled-diamond',
+        'circle', 'filled-circle', 'cross', 'box', 'filled-box', 'line',
+        'cf-one', 'cf-many', 'cf-one-required', 'cf-many-required',
+        'arrow_point', 'arrow_circle', 'arrow_cross', 'arrow_open',
+      ].includes(value))
+        throw new Error(`edge ${e.id} has unsupported ${name} arrowhead ${JSON.stringify(value)}`);
+    }
     if (loadExistingLayout) {
       const existing = e as RoutingEdge;
       if (existing.labelPosition !== undefined && !IsEdgePosition(FromString(existing.labelPosition)))

@@ -226,6 +226,19 @@ describe('Mermaid flowchart layout slice', () => {
     ]);
   });
 
+  it('distinguishes an empty D2 arrowhead shape from absent attributes', () => {
+    const nodes = ['a', 'b', 'c'].map((id) => ({ id, width: 40, height: 30 }));
+    const { graph } = translateFlowchart(nodes, [
+      { id: 'empty', from: 'a', to: 'b', sourceArrowhead: '', sourceArrow: false, targetArrow: true },
+      { id: 'absent', from: 'a', to: 'c', sourceArrow: false, targetArrow: true },
+    ], {});
+    expect(graph.Edges.map((edge) => edge.SourceArrowhead)).toEqual(['triangle', 'none']);
+    const open = translateFlowchart(nodes, [
+      { id: 'open', from: 'a', to: 'b', sourceArrowhead: 'arrow_open', targetArrowhead: 'arrow_open' },
+    ], {}).graph.Edges[0]!;
+    expect([open.D2ID, open.SourceArrowhead, open.TargetArrowhead]).toEqual(['(a -- b)[0]', 'none', 'none']);
+  });
+
   it('matches D2 label presence for embedded text shapes and empty labels', () => {
     const nodes = ['text', 'class', 'sql_table', 'code', 'rectangle'].map((shape, i) => ({
       id: `n${i}`, width: 80, height: 50, shape, label: 'content', labelWidth: 40, labelHeight: 12,
