@@ -1,0 +1,138 @@
+[
+  {
+    "edge": {
+      "id": "e",
+      "from": "a",
+      "to": "b"
+    },
+    "error": "",
+    "minimum": [
+      10,
+      10
+    ],
+    "name": "constraint-0"
+  },
+  {
+    "edge": {
+      "id": "e",
+      "from": "a",
+      "to": "b",
+      "labelWidth": 999999990
+    },
+    "error": "",
+    "minimum": [
+      1000000000,
+      10
+    ],
+    "name": "constraint-1"
+  },
+  {
+    "edge": {
+      "id": "e",
+      "from": "a",
+      "to": "b",
+      "labelWidth": 999999991
+    },
+    "error": "D2 edge \"(a -\u003e b)[0]\" minimum dimensions exceed supported limit 1000000000",
+    "minimum": [],
+    "name": "constraint-2"
+  },
+  {
+    "edge": {
+      "id": "e",
+      "from": "a",
+      "to": "b",
+      "labelHeight": 999999991
+    },
+    "error": "D2 edge \"(a -\u003e b)[0]\" minimum dimensions exceed supported limit 1000000000",
+    "minimum": [],
+    "name": "constraint-3"
+  },
+  {
+    "edge": {
+      "id": "e",
+      "from": "a",
+      "to": "b",
+      "sourceArrowheadLabel": {
+        "text": "tip",
+        "width": 999999985,
+        "height": 1
+      }
+    },
+    "error": "",
+    "minimum": [
+      1000000000,
+      1000000000
+    ],
+    "name": "constraint-4"
+  },
+  {
+    "edge": {
+      "id": "e",
+      "from": "a",
+      "to": "b",
+      "sourceArrowheadLabel": {
+        "text": "tip",
+        "width": 999999986,
+        "height": 1
+      }
+    },
+    "error": "D2 edge \"(a -\u003e b)[0]\" minimum dimensions exceed supported limit 1000000000",
+    "minimum": [],
+    "name": "constraint-5"
+  },
+  {
+    "edge": {
+      "id": "e",
+      "from": "a",
+      "to": "b",
+      "sourceArrowheadLabel": {
+        "text": "tip",
+        "width": 499999990,
+        "height": 1
+      },
+      "targetArrowheadLabel": {
+        "text": "tip",
+        "width": 499999990,
+        "height": 1
+      }
+    },
+    "error": "",
+    "minimum": [
+      1000000000,
+      1000000000
+    ],
+    "name": "constraint-6"
+  },
+  {
+    "edge": {
+      "id": "e",
+      "from": "a",
+      "to": "b",
+      "labelWidth": 999999991,
+      "style": {
+        "opacity": "0"
+      }
+    },
+    "error": "D2 edge \"(a -\u003e b)[0]\" minimum dimensions exceed supported limit 1000000000",
+    "minimum": [],
+    "name": "constraint-7"
+  },
+  {
+    "edge": {
+      "id": "e",
+      "from": "a",
+      "to": "b",
+      "labelWidth": 25,
+      "style": {
+        "opacity": "0"
+      }
+    },
+    "error": "",
+    "minimum": [
+      0,
+      0
+    ],
+    "name": "constraint-8"
+  }
+]

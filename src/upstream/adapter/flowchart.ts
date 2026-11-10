@@ -649,6 +649,8 @@ export function translateFlowchart(
         e.MinWidth += extra;
         e.MinHeight += extra;
       }
+    if (e.MinWidth > 1_000_000_000 || e.MinHeight > 1_000_000_000)
+      throw new Error(`D2 edge ${JSON.stringify(edgeAbs[i])} minimum dimensions exceed supported limit 1000000000`);
     if (style?.opacity !== undefined && parseGoFloat(style.opacity) === 0) {
       e.MinWidth = 0;
       e.MinHeight = 0;

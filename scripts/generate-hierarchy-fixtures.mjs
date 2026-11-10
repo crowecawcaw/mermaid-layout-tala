@@ -70,6 +70,7 @@ const packages = {
   layoutreroute: '',
   layoutseedselection: '',
   layoutedgeindex: '',
+  layoutedgeconstraints: '',
   layoutarrowvalidation: '',
   layoutcancellation: '',
   resultvalidation: '',

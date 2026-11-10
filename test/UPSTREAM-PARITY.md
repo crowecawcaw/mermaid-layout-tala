@@ -21,6 +21,8 @@ full parity. The prior WebAssembly replacement remains reverted; the public
 `upstream-opacity.test.ts` also compares node and edge opacity validation and
 visibility against Go, including decimal and hexadecimal float syntax and
 rounding at floating-point boundaries.
+`upstream-edgeconstraints.test.ts` checks Go's combined edge-label and
+arrowhead-label size limits, including transparent edges.
 
 ## Acceptance work still required
 
