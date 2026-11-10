@@ -75,6 +75,25 @@ For a D2 sequence lifeline, `d2LifelineEndId(actorId)` constructs its synthetic
 destination ID. Supply that ID as `to` and set both arrow flags to `false`;
 the returned edge's destination is the actor, as in the upstream layout result.
 
+Use `routeEdges(nodes, edges, selectedIds, options)` to reroute selected edges
+without changing node positions. Nodes supply center coordinates `x` and
+`y`; unselected edges must supply existing `points`. The function returns new
+selected-edge records and leaves the input graph and unselected routes intact.
+For example:
+
+```ts
+import { routeEdges } from 'mermaid-layout-tala';
+
+const routed = routeEdges(
+  [
+    { id: 'a', x: 40, y: 30, width: 80, height: 60 },
+    { id: 'b', x: 240, y: 30, width: 80, height: 60 },
+  ],
+  [{ id: 'ab', from: 'a', to: 'b' }],
+  ['ab'],
+);
+```
+
 Use `setTalaSeeds([1, 2, 3])` to configure defaults, or pass `seeds` in the direct
 API's options. Seeds accept safe integer numbers or signed 64-bit `bigint`
 values. Up to 64 entries and 16 unique seeds are allowed; duplicates are removed

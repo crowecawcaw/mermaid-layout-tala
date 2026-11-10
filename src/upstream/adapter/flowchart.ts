@@ -6,12 +6,15 @@ import type {
   LayoutOptions,
   LayoutResult,
   LayoutDirection,
+  RoutingNode,
+  RoutingEdge,
 } from '../../layout.js';
 import { getTalaSeeds, normalizeSeeds } from '../../random.js';
 import { Background } from '../limits/context.js';
 import {
   MaxEngineNodes,
   MaxEngineEdges,
+  MaxEngineRoutePoints,
   MaxEngineTreeDepth,
 } from '../limits/work.js';
 import { Orientation } from '../geo/orientation.js';
@@ -19,6 +22,8 @@ import { Point } from '../geo/point.js';
 import {
   FromString,
   IsShapePosition,
+  IsEdgePosition,
+  IsUnlocked,
   String as LabelPositionString,
   Mirrored,
 } from '../label/label.js';
@@ -125,6 +130,7 @@ export function translateFlowchart(
   inputNodes: readonly LayoutNode[],
   inputEdges: readonly LayoutEdge[],
   options: LayoutOptions,
+  loadExistingLayout = false,
 ): {
   graph: Graph;
   nodeIDs: Map<string, bigint>;
@@ -136,6 +142,8 @@ export function translateFlowchart(
     throw new Error(`D2 object count exceeds limit ${MaxEngineNodes}`);
   if (inputEdges.length > MaxEngineEdges)
     throw new Error(`D2 edge count exceeds limit ${MaxEngineEdges}`);
+  if (loadExistingLayout && inputEdges.reduce((sum, edge) => sum + ((edge as RoutingEdge).points?.length ?? 0), 0) > MaxEngineRoutePoints)
+    throw new Error(`D2 route point count exceeds limit ${MaxEngineRoutePoints}`);
   const totalColumns = inputNodes.reduce(
     (count, node) => count + (node.tableColumns ?? 0),
     0,
@@ -165,6 +173,14 @@ export function translateFlowchart(
   const byId = new Map<string, LayoutNode>();
   for (const n of inputNodes) {
     if (byId.has(n.id)) throw new Error('duplicate node ID');
+    if (loadExistingLayout) {
+      const node = n as RoutingNode;
+      const x = node.x - n.width / 2, y = node.y - n.height / 2;
+      if (!Number.isFinite(x) || !Number.isFinite(y) ||
+          Math.abs(x) > 1_000_000_000 || Math.abs(y) > 1_000_000_000 ||
+          Math.abs(x + n.width) > 1_000_000_000 || Math.abs(y + n.height) > 1_000_000_000)
+        throw new Error(`node ${n.id} has an invalid existing position`);
+    }
     if (n.style?.opacity !== undefined) {
       const opacity = parseGoFloat(n.style.opacity);
       if (!Number.isFinite(opacity) || opacity < 0 || opacity > 1)
@@ -263,6 +279,10 @@ export function translateFlowchart(
   graph.IsRootHierarchy = options.rootHierarchy ?? false;
   ordered.forEach((n, i) => {
     const node = new Node(ids[i]!, n.width, n.height);
+    if (loadExistingLayout) {
+      const positioned = n as RoutingNode;
+      node.TopLeft = new Point(positioned.x - n.width / 2, positioned.y - n.height / 2);
+    }
     if (n.shape) {
       const known: Record<string, string> = {
         rectangle: 'Square',
@@ -376,6 +396,22 @@ export function translateFlowchart(
     equivalentCounts = new Map<string, number>();
   for (let i = 0; i < inputEdges.length; i++) {
     const e = inputEdges[i]!;
+    if (loadExistingLayout) {
+      const existing = e as RoutingEdge;
+      if (existing.labelPosition !== undefined && !IsEdgePosition(FromString(existing.labelPosition)))
+        throw new Error(`edge ${e.id} has an invalid label position`);
+      if (existing.labelPercentage !== undefined && (!Number.isFinite(existing.labelPercentage) || existing.labelPercentage < 0 || existing.labelPercentage > 1))
+        throw new Error(`edge ${e.id} has an invalid label percentage`);
+      if (existing.points?.length === 1) throw new Error(`edge ${e.id} has an incomplete route`);
+      for (let j = 0; j < (existing.points?.length ?? 0); j++) {
+        const point = existing.points![j]!;
+        if (!point || !Number.isFinite(point.x) || !Number.isFinite(point.y) || Math.abs(point.x) > 1_000_000_000 || Math.abs(point.y) > 1_000_000_000)
+          throw new Error(`edge ${e.id} has an invalid route point`);
+        const previous = existing.points![j - 1];
+        if (previous && previous.x === point.x && previous.y === point.y)
+          throw new Error(`edge ${e.id} has a degenerate route segment`);
+      }
+    }
     if (e.d2Index !== undefined && (!Number.isSafeInteger(e.d2Index) || e.d2Index < 0))
       throw new Error(`edge ${e.id} has an invalid D2 index`);
     if (edgeNames.has(e.id)) throw new Error('duplicate edge ID');
@@ -442,6 +478,10 @@ export function translateFlowchart(
     );
     e.ID = edgeIDs[i]!;
     e.D2ID = edgeAbs[i]!;
+    if (loadExistingLayout) {
+      const points = (input as RoutingEdge).points ?? [];
+      e.Points = (reversed[i] ? [...points].reverse() : points).map((p) => new Point(p.x, p.y));
+    }
     const style = input.style;
     if (style) {
       const fields = {
@@ -567,6 +607,16 @@ export function translateFlowchart(
       e.Label.Text = labelText;
       e.Label.Width = input.labelWidth ?? 0;
       e.Label.Height = input.labelHeight ?? 0;
+      const existing = input as RoutingEdge;
+      if (loadExistingLayout && existing.labelPosition !== undefined) {
+        e.Label.Position = FromString(existing.labelPosition);
+        if (existing.labelPercentage !== undefined) e.LabelPercentage = existing.labelPercentage;
+        if (reversed[i]) {
+          e.Label.Position = Mirrored(e.Label.Position);
+          if (existing.labelPercentage !== undefined || IsUnlocked(e.Label.Position))
+            e.LabelPercentage = 1 - e.LabelPercentage;
+        }
+      }
     }
   });
   return { graph, nodeIDs, edgeIDs, reversed, lifelines };

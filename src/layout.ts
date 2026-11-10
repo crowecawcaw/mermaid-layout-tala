@@ -133,6 +133,30 @@ export interface LayoutResult {
   edges: PositionedEdge[];
 }
 
+/** A node whose center is already positioned for standalone edge routing. */
+export interface RoutingNode extends LayoutNode {
+  x: number;
+  y: number;
+}
+
+/** Existing edge geometry; selected edges may have no route yet. */
+export interface RoutingEdge extends LayoutEdge {
+  points?: Point[];
+  labelPosition?: string;
+  labelPercentage?: number;
+  isCurve?: boolean;
+}
+
+export interface RoutingResult {
+  nodes: RoutingNode[];
+  edges: RoutingEdge[];
+}
+
+export interface RoutingOptions {
+  direction?: LayoutDirection;
+  rootHierarchy?: boolean;
+}
+
 interface WeightedEdge extends LayoutEdge {
   weight: number;
 }
