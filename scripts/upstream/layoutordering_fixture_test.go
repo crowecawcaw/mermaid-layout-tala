@@ -74,6 +74,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"node-visibility-styles", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 4},
 		{"arrow-flags-and-fill", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 5},
 		{"arrow-label-default", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 6},
+		{"tiny-empty-groups", [][2]int{}, false, 7},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -94,6 +95,12 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 			objects := map[string]*d2graph.Object{}
 			for i, id := range names {
 				input := orderingNode{ID: id, Width: float64(60 + i*10), Height: float64(30 + i*5), IsInvisible: i%2 == 1}
+				if test.shapeSet == 7 {
+					input.IsGroup = i%2 == 0
+					input.Width = 1
+					input.Height = 1
+					input.IsInvisible = false
+				}
 				if test.shapeSet == 1 {
 					input.Shape = []string{"square", "callout", "stored_data", "c4-person", "class"}[i]
 				}

@@ -9598,5 +9598,357 @@
         3
       ]
     }
+  },
+  {
+    "edges": [],
+    "expected": {
+      "edges": [],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 1,
+          "id": "zeta",
+          "width": 1,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "fontSize": 16,
+          "height": 1,
+          "id": "alpha",
+          "width": 1,
+          "x": 21.5,
+          "y": 0.5
+        },
+        {
+          "fontSize": 16,
+          "height": 1,
+          "id": "node10",
+          "width": 1,
+          "x": 0.5,
+          "y": 21.5
+        },
+        {
+          "fontSize": 16,
+          "height": 1,
+          "id": "node2",
+          "width": 1,
+          "x": 21.5,
+          "y": 21.5
+        },
+        {
+          "fontSize": 16,
+          "height": 1,
+          "id": "middle",
+          "width": 1,
+          "x": 42.5,
+          "y": 0.5
+        }
+      ]
+    },
+    "name": "tiny-empty-groups-TB",
+    "nodes": [
+      {
+        "id": "zeta",
+        "width": 1,
+        "height": 1,
+        "isGroup": true
+      },
+      {
+        "id": "alpha",
+        "width": 1,
+        "height": 1
+      },
+      {
+        "id": "node10",
+        "width": 1,
+        "height": 1,
+        "isGroup": true
+      },
+      {
+        "id": "node2",
+        "width": 1,
+        "height": 1
+      },
+      {
+        "id": "middle",
+        "width": 1,
+        "height": 1,
+        "isGroup": true
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [],
+    "expected": {
+      "edges": [],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 1,
+          "id": "zeta",
+          "width": 1,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "fontSize": 16,
+          "height": 1,
+          "id": "alpha",
+          "width": 1,
+          "x": 21.5,
+          "y": 0.5
+        },
+        {
+          "fontSize": 16,
+          "height": 1,
+          "id": "node10",
+          "width": 1,
+          "x": 0.5,
+          "y": 21.5
+        },
+        {
+          "fontSize": 16,
+          "height": 1,
+          "id": "node2",
+          "width": 1,
+          "x": 21.5,
+          "y": 21.5
+        },
+        {
+          "fontSize": 16,
+          "height": 1,
+          "id": "middle",
+          "width": 1,
+          "x": 42.5,
+          "y": 0.5
+        }
+      ]
+    },
+    "name": "tiny-empty-groups-BT",
+    "nodes": [
+      {
+        "id": "zeta",
+        "width": 1,
+        "height": 1,
+        "isGroup": true
+      },
+      {
+        "id": "alpha",
+        "width": 1,
+        "height": 1
+      },
+      {
+        "id": "node10",
+        "width": 1,
+        "height": 1,
+        "isGroup": true
+      },
+      {
+        "id": "node2",
+        "width": 1,
+        "height": 1
+      },
+      {
+        "id": "middle",
+        "width": 1,
+        "height": 1,
+        "isGroup": true
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [],
+    "expected": {
+      "edges": [],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 1,
+          "id": "zeta",
+          "width": 1,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "fontSize": 16,
+          "height": 1,
+          "id": "alpha",
+          "width": 1,
+          "x": 21.5,
+          "y": 0.5
+        },
+        {
+          "fontSize": 16,
+          "height": 1,
+          "id": "node10",
+          "width": 1,
+          "x": 0.5,
+          "y": 21.5
+        },
+        {
+          "fontSize": 16,
+          "height": 1,
+          "id": "node2",
+          "width": 1,
+          "x": 21.5,
+          "y": 21.5
+        },
+        {
+          "fontSize": 16,
+          "height": 1,
+          "id": "middle",
+          "width": 1,
+          "x": 42.5,
+          "y": 0.5
+        }
+      ]
+    },
+    "name": "tiny-empty-groups-LR",
+    "nodes": [
+      {
+        "id": "zeta",
+        "width": 1,
+        "height": 1,
+        "isGroup": true
+      },
+      {
+        "id": "alpha",
+        "width": 1,
+        "height": 1
+      },
+      {
+        "id": "node10",
+        "width": 1,
+        "height": 1,
+        "isGroup": true
+      },
+      {
+        "id": "node2",
+        "width": 1,
+        "height": 1
+      },
+      {
+        "id": "middle",
+        "width": 1,
+        "height": 1,
+        "isGroup": true
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [],
+    "expected": {
+      "edges": [],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 1,
+          "id": "zeta",
+          "width": 1,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "fontSize": 16,
+          "height": 1,
+          "id": "alpha",
+          "width": 1,
+          "x": 21.5,
+          "y": 0.5
+        },
+        {
+          "fontSize": 16,
+          "height": 1,
+          "id": "node10",
+          "width": 1,
+          "x": 0.5,
+          "y": 21.5
+        },
+        {
+          "fontSize": 16,
+          "height": 1,
+          "id": "node2",
+          "width": 1,
+          "x": 21.5,
+          "y": 21.5
+        },
+        {
+          "fontSize": 16,
+          "height": 1,
+          "id": "middle",
+          "width": 1,
+          "x": 42.5,
+          "y": 0.5
+        }
+      ]
+    },
+    "name": "tiny-empty-groups-RL",
+    "nodes": [
+      {
+        "id": "zeta",
+        "width": 1,
+        "height": 1,
+        "isGroup": true
+      },
+      {
+        "id": "alpha",
+        "width": 1,
+        "height": 1
+      },
+      {
+        "id": "node10",
+        "width": 1,
+        "height": 1,
+        "isGroup": true
+      },
+      {
+        "id": "node2",
+        "width": 1,
+        "height": 1
+      },
+      {
+        "id": "middle",
+        "width": 1,
+        "height": 1,
+        "isGroup": true
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
   }
 ]

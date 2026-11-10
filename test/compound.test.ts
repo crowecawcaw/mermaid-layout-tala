@@ -47,7 +47,7 @@ describe('compound layout', () => {
     const links = [...edges, { id: 'group', from: 'client', to: 'cloud' }, { id: 'inside', from: 'app', to: 'a' }];
     expect(layoutFlowchart(nodes, links).edges).toHaveLength(5);
     expect(nodes).toEqual(input);
-    expect(layoutFlowchart([{ id: 'empty', isGroup: true, width: 1, height: 1 }], []).nodes[0]!.width).toBeGreaterThan(1);
+    expect(layoutFlowchart([{ id: 'empty', isGroup: true, width: 1, height: 1 }], []).nodes[0]).toMatchObject({ width: 1, height: 1 });
   });
 
   it('rejects missing parents, non-group parents, and parent cycles', () => {

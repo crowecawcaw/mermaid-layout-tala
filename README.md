@@ -52,7 +52,7 @@ runs the default seeds `[1, 2, 3]` using a Go-compatible random stream and selec
 the result by upstream penalty, then area, with later seeds winning exact ties.
 
 The public layout now runs the translated upstream TALA pipeline. The pinned
-full-layout corpus matches all 296 cases, including nested groups, loops, parallel
+full-layout corpus matches all 300 cases, including nested groups, loops, parallel
 edges and all four directions. This corpus is a useful baseline, not proof of
 parity for every graph or all D2 features. See the [parity matrix](./test/UPSTREAM-PARITY.md).
 
@@ -87,8 +87,8 @@ npm run build
 npm test
 ```
 
-`npm run test:parity` compares complete layouts against 296 pinned Go fixtures.
-It currently reports 296/296 matching. It checks geometry and routes on this corpus;
+`npm run test:parity` compares complete layouts against 300 pinned Go fixtures.
+It currently reports 300/300 matching. It checks geometry and routes on this corpus;
 additional upstream features and graph shapes still need differential coverage.
 
 Run the playground with `npm run demo -- --port 4173`, then open

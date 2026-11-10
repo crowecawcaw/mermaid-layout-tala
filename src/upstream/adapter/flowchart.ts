@@ -256,12 +256,7 @@ export function translateFlowchart(
   graph.Directions.set(null, orientation[direction]);
   graph.IsRootHierarchy = options.rootHierarchy ?? false;
   ordered.forEach((n, i) => {
-    const emptyGroup = n.isGroup && !children.get(n.id)?.length;
-    const node = new Node(
-      ids[i]!,
-      emptyGroup ? Math.max(n.width, 2) : n.width,
-      emptyGroup ? Math.max(n.height, 2) : n.height,
-    );
+    const node = new Node(ids[i]!, n.width, n.height);
     if (n.shape) {
       const known: Record<string, string> = {
         rectangle: 'Square',
