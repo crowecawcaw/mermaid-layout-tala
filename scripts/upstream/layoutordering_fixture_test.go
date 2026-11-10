@@ -22,6 +22,7 @@ type orderingNode struct {
 	IsInvisible bool    `json:"isInvisible,omitempty"`
 	IsGroup     bool    `json:"isGroup,omitempty"`
 	ParentID    string  `json:"parentId,omitempty"`
+	Shape       string  `json:"shape,omitempty"`
 }
 type orderingEdge struct {
 	ID          string `json:"id"`
@@ -39,14 +40,17 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		t.Skip("set TALA_LAYOUTORDERING_FIXTURES")
 	}
 	cases := []struct {
-		name   string
-		pairs  [][2]int
-		nested bool
+		name     string
+		pairs    [][2]int
+		nested   bool
+		shapeSet int
 	}{
-		{"authored-order", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}, {0, 4}}, false},
-		{"parallel-edge-indices", [][2]int{{0, 1}, {0, 1}, {1, 2}, {1, 2}, {2, 3}, {3, 4}, {4, 0}}, false},
-		{"dotted-ids", [][2]int{{2, 3}, {2, 4}, {4, 3}}, true},
-		{"unicode-fold", [][2]int{{2, 3}, {2, 4}, {4, 3}}, true},
+		{"authored-order", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}, {0, 4}}, false, 0},
+		{"parallel-edge-indices", [][2]int{{0, 1}, {0, 1}, {1, 2}, {1, 2}, {2, 3}, {3, 4}, {4, 0}}, false, 0},
+		{"dotted-ids", [][2]int{{2, 3}, {2, 4}, {4, 3}}, true, 0},
+		{"unicode-fold", [][2]int{{2, 3}, {2, 4}, {4, 3}}, true, 0},
+		{"d2-shapes", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 1},
+		{"d2-shapes-extra", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 2},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -67,6 +71,12 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 			objects := map[string]*d2graph.Object{}
 			for i, id := range names {
 				input := orderingNode{ID: id, Width: float64(60 + i*10), Height: float64(30 + i*5), IsInvisible: i%2 == 1}
+				if test.shapeSet == 1 {
+					input.Shape = []string{"square", "callout", "stored_data", "c4-person", "class"}[i]
+				}
+				if test.shapeSet == 2 {
+					input.Shape = []string{"text", "code", "sequence_diagram", "document", "page"}[i]
+				}
 				parent := g.Root
 				if test.nested {
 					input.IsGroup = i < 2
@@ -76,6 +86,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 					}
 				}
 				obj := &d2graph.Object{Graph: g, Parent: parent, ID: id, IDVal: id, Box: geo.NewBox(geo.NewPoint(0, 0), input.Width, input.Height), Children: make(map[string]*d2graph.Object), Attributes: d2graph.Attributes{}}
+				obj.Shape.Value = input.Shape
 				if input.IsInvisible {
 					obj.Style.Opacity = &d2graph.Scalar{Value: "0"}
 				}

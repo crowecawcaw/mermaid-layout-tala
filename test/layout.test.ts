@@ -49,6 +49,20 @@ describe('Mermaid flowchart layout slice', () => {
       'Σ.(one -> two)[0]', '(İ.three -> i\u0307.four)[0]',
     ]);
   });
+
+  it('maps D2 shape names to their upstream shape policies', () => {
+    const shapes: [string, string][] = [
+      ['square', 'RealSquare'], ['callout', 'Callout'],
+      ['stored_data', 'StoredData'], ['c4-person', 'C4Person'],
+      ['class', 'Class'], ['text', 'Text'], ['code', 'Code'],
+    ];
+    const { graph } = translateFlowchart(
+      shapes.map(([shape], i) => ({ id: `n${i}`, width: 80, height: 50, shape })),
+      [],
+      {},
+    );
+    expect(graph.Nodes.map((node) => node.ShapeType())).toEqual(shapes.map(([, shape]) => shape));
+  });
   it('uses hierarchy ranks and measured node sizes', () => {
     const result = layoutFlowchart(
       [
