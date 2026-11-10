@@ -64,6 +64,7 @@ const packages = {
   layoutproximity: '',
   layoutsequence: '',
   layoutstyles: '',
+  layoutordering: '',
   resultvalidation: '',
   resultmetadata: '',
   loops: 'internal/loops',

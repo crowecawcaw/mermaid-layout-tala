@@ -1,7 +1,27 @@
 import { describe, expect, it } from 'vitest';
 import { layoutFlowchart } from '../src/layout.js';
+import { translateFlowchart } from '../src/upstream/adapter/flowchart.js';
 
 describe('Mermaid flowchart layout slice', () => {
+  it('validates D2 ordering and edge identity', () => {
+    const nodes = [
+      { id: 'z', width: 40, height: 30 },
+      { id: 'a', width: 40, height: 30 },
+    ];
+    const edge = { id: 'e', from: 'z', to: 'a' };
+    expect(() => layoutFlowchart(nodes, [edge], { inputOrder: 'bad' as never })).toThrow(/input order/);
+    for (const d2Index of [-1, 0.5, Number.MAX_SAFE_INTEGER + 1])
+      expect(() => layoutFlowchart(nodes, [{ ...edge, d2Index }])).toThrow(/D2 index/);
+    expect(() => layoutFlowchart(nodes, [
+      { ...edge, id: 'first', d2Index: 0 },
+      { ...edge, id: 'second', d2Index: 0 },
+    ], { inputOrder: 'authored' })).toThrow(/duplicate identity/);
+    const { graph } = translateFlowchart(nodes, [
+      { ...edge, id: 'first', d2Index: 7 },
+      { ...edge, id: 'second', d2Index: 2 },
+    ], { inputOrder: 'authored' });
+    expect(graph.Edges.map((e) => e.D2ID)).toEqual(['(z -> a)[7]', '(z -> a)[2]']);
+  });
   it('uses hierarchy ranks and measured node sizes', () => {
     const result = layoutFlowchart(
       [

@@ -122,6 +122,8 @@ export function translateFlowchart(
     );
   const direction = options.direction ?? 'TB';
   if (!(direction in orientation)) throw new Error('invalid layout direction');
+  if (options.inputOrder !== undefined && options.inputOrder !== 'authored' && options.inputOrder !== 'canonical')
+    throw new Error('invalid input order');
   for (const name of [
     'nodeSpacing',
     'rankSpacing',
@@ -327,6 +329,8 @@ export function translateFlowchart(
     edgeAbs: string[] = [];
   for (let i = 0; i < inputEdges.length; i++) {
     const e = inputEdges[i]!;
+    if (e.d2Index !== undefined && (!Number.isSafeInteger(e.d2Index) || e.d2Index < 0))
+      throw new Error(`edge ${e.id} has an invalid D2 index`);
     if (edgeNames.has(e.id)) throw new Error('duplicate edge ID');
     edgeNames.add(e.id);
     if (!mapped.has(e.from) || !mapped.has(e.to))
@@ -372,7 +376,7 @@ export function translateFlowchart(
     }
     const arrow = source ? (target ? '<->' : '<-') : target ? '->' : '--';
     edgeAbs.push(
-      `${common.length ? common.join('.') + '.' : ''}(${from.join('.')} ${arrow} ${to.join('.')})[${i}]`,
+      `${common.length ? common.join('.') + '.' : ''}(${from.join('.')} ${arrow} ${to.join('.')})[${e.d2Index ?? i}]`,
     );
   }
   const edgeIDs = allocateEntityIDs(edgeAbs);
@@ -552,8 +556,10 @@ export function layoutFlowchartTranslated(
   inputEdges: readonly LayoutEdge[],
   options: LayoutOptions = {},
 ): LayoutResult {
-  inputNodes = [...inputNodes].sort((a, b) => compareIdentifiers(a.id, b.id));
-  inputEdges = [...inputEdges].sort((a, b) => compareIdentifiers(a.id, b.id));
+  if (options.inputOrder !== 'authored') {
+    inputNodes = [...inputNodes].sort((a, b) => compareIdentifiers(a.id, b.id));
+    inputEdges = [...inputEdges].sort((a, b) => compareIdentifiers(a.id, b.id));
+  }
   const seeds =
       options.seeds === undefined
         ? getTalaSeeds()

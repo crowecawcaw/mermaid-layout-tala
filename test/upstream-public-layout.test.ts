@@ -12,6 +12,7 @@ import large from './fixtures/upstream-layoutlarge.json';
 import proximity from './fixtures/upstream-layoutproximity.json';
 import sequence from './fixtures/upstream-layoutsequence.json';
 import styles from './fixtures/upstream-layoutstyles.json';
+import ordering from './fixtures/upstream-layoutordering.json';
 import {
   layoutFlowchart,
   type LayoutDirection,
@@ -50,10 +51,12 @@ it.each([
   ...proximity,
   ...sequence,
   ...styles,
+  ...ordering,
 ])('matches pinned Go public layout $name', (fixture) => {
   const actual = layoutFlowchart(fixture.nodes, fixture.edges, {
     ...fixture.options,
     direction: fixture.options.direction as LayoutDirection,
+    ...('inputOrder' in fixture.options ? { inputOrder: fixture.options.inputOrder as 'authored' } : {}),
   });
   expect(actual.nodes).toHaveLength(fixture.expected.nodes.length);
   expect(actual.edges).toHaveLength(fixture.expected.edges.length);

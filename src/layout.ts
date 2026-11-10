@@ -61,6 +61,8 @@ export interface LayoutEdge {
   id: string;
   from: string;
   to: string;
+  /** D2 edge identity index; defaults to the edge's position in the input. */
+  d2Index?: number;
   sourceArrowhead?: string;
   targetArrowhead?: string;
   sourceTableColumnIndex?: number;
@@ -76,6 +78,8 @@ export interface LayoutEdge {
 
 export interface LayoutOptions {
   direction?: LayoutDirection;
+  /** Preserve authored node and edge order as D2 does. Defaults to canonical order. */
+  inputOrder?: 'authored' | 'canonical';
   rootHierarchy?: boolean;
   nodeSpacing?: number;
   rankSpacing?: number;
