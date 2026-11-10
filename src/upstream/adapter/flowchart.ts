@@ -202,22 +202,24 @@ export function translateFlowchart(
   }
   const ordered: LayoutNode[] = [],
     abs = new Map<string, string>(),
+    paths = new Map<string, string[]>(),
     visiting = new Set<string>();
-  const visit = (node: LayoutNode, parent: string, depth: number) => {
+  const visit = (node: LayoutNode, parent: string[], depth: number) => {
     if (depth > MaxEngineTreeDepth)
       throw new Error(
         `D2 object nesting depth exceeds limit ${MaxEngineTreeDepth}`,
       );
     if (visiting.has(node.id)) throw new Error('cyclic container parent');
     visiting.add(node.id);
-    const id = parent ? `${parent}.${node.id}` : node.id;
-    abs.set(node.id, id);
+    const path = [...parent, node.id];
+    paths.set(node.id, path);
+    abs.set(node.id, path.join('.'));
     ordered.push(node);
     for (const child of children.get(node.id) ?? [])
-      visit(child, id, depth + 1);
+      visit(child, path, depth + 1);
     visiting.delete(node.id);
   };
-  for (const node of children.get(null) ?? []) visit(node, '', 1);
+  for (const node of children.get(null) ?? []) visit(node, [], 1);
   if (ordered.length !== inputNodes.length)
     throw new Error('cyclic container parent');
   const ids = allocateEntityIDs(ordered.map((n) => abs.get(n.id)!)),
@@ -363,8 +365,8 @@ export function translateFlowchart(
         e.targetArrowhead === undefined ||
         (e.targetArrowhead !== '' && e.targetArrowhead !== 'none');
     reversed.push(source && !target);
-    const from = abs.get(e.from)!.split('.'),
-      to = abs.get(e.to)!.split('.'),
+    const from = [...paths.get(e.from)!],
+      to = [...paths.get(e.to)!],
       common: string[] = [];
     while (
       from.length > 1 &&

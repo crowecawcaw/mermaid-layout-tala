@@ -22,6 +22,19 @@ describe('Mermaid flowchart layout slice', () => {
     ], { inputOrder: 'authored' });
     expect(graph.Edges.map((e) => e.D2ID)).toEqual(['(z -> a)[7]', '(z -> a)[2]']);
   });
+
+  it('treats dots in D2 object IDs as part of the object, not ancestry', () => {
+    const nodes = [
+      { id: 'g.h', width: 80, height: 60, isGroup: true },
+      { id: 'g', width: 80, height: 60, isGroup: true },
+      { id: 'one', width: 40, height: 30, parentId: 'g.h' },
+      { id: 'two', width: 40, height: 30, parentId: 'g' },
+    ];
+    const { graph } = translateFlowchart(nodes, [
+      { id: 'e', from: 'one', to: 'two', d2Index: 0 },
+    ], { inputOrder: 'authored' });
+    expect(graph.Edges[0]!.D2ID).toBe('(g.h.one -> g.two)[0]');
+  });
   it('uses hierarchy ranks and measured node sizes', () => {
     const result = layoutFlowchart(
       [

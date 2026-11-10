@@ -19,6 +19,8 @@ type orderingNode struct {
 	Width       float64 `json:"width"`
 	Height      float64 `json:"height"`
 	IsInvisible bool    `json:"isInvisible,omitempty"`
+	IsGroup     bool    `json:"isGroup,omitempty"`
+	ParentID    string  `json:"parentId,omitempty"`
 }
 type orderingEdge struct {
 	ID          string `json:"id"`
@@ -36,17 +38,22 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		t.Skip("set TALA_LAYOUTORDERING_FIXTURES")
 	}
 	cases := []struct {
-		name  string
-		pairs [][2]int
+		name   string
+		pairs  [][2]int
+		nested bool
 	}{
-		{"authored-order", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}, {0, 4}}},
-		{"parallel-edge-indices", [][2]int{{0, 1}, {0, 1}, {1, 2}, {1, 2}, {2, 3}, {3, 4}, {4, 0}}},
+		{"authored-order", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}, {0, 4}}, false},
+		{"parallel-edge-indices", [][2]int{{0, 1}, {0, 1}, {1, 2}, {1, 2}, {2, 3}, {3, 4}, {4, 0}}, false},
+		{"dotted-ids", [][2]int{{2, 3}, {2, 4}, {4, 3}}, true},
 	}
-	names := []string{"zeta", "alpha", "node10", "node2", "middle"}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
 	fixtures := []any{}
 	for _, test := range cases {
+		names := []string{"zeta", "alpha", "node10", "node2", "middle"}
+		if test.nested {
+			names = []string{"g.h", "g", "one", "two", "solo"}
+		}
 		for _, direction := range []string{"TB", "BT", "LR", "RL"} {
 			g := d2graph.NewGraph()
 			g.Root.Direction.Value = dirs[direction]
@@ -55,12 +62,20 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 			objects := map[string]*d2graph.Object{}
 			for i, id := range names {
 				input := orderingNode{ID: id, Width: float64(60 + i*10), Height: float64(30 + i*5), IsInvisible: i%2 == 1}
-				obj := &d2graph.Object{Graph: g, Parent: g.Root, ID: id, IDVal: id, Box: geo.NewBox(geo.NewPoint(0, 0), input.Width, input.Height), Children: make(map[string]*d2graph.Object), Attributes: d2graph.Attributes{}}
+				parent := g.Root
+				if test.nested {
+					input.IsGroup = i < 2
+					if i == 2 || i == 3 {
+						input.ParentID = names[i-2]
+						parent = objects[input.ParentID]
+					}
+				}
+				obj := &d2graph.Object{Graph: g, Parent: parent, ID: id, IDVal: id, Box: geo.NewBox(geo.NewPoint(0, 0), input.Width, input.Height), Children: make(map[string]*d2graph.Object), Attributes: d2graph.Attributes{}}
 				if input.IsInvisible {
 					obj.Style.Opacity = &d2graph.Scalar{Value: "0"}
 				}
-				g.Root.Children[id] = obj
-				g.Root.ChildrenArray = append(g.Root.ChildrenArray, obj)
+				parent.Children[id] = obj
+				parent.ChildrenArray = append(parent.ChildrenArray, obj)
 				g.Objects = append(g.Objects, obj)
 				objects[id] = obj
 				nodes = append(nodes, input)
