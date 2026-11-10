@@ -96,14 +96,14 @@ function equalFold(a: string, b: string): boolean {
   const escaped = a.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   return new RegExp(`^(?:${escaped})(?![\\s\\S])`, 'iu').test(b);
 }
-function arrowhead(value: string | undefined, fallback: string, filled?: boolean): string {
-  if (value === undefined && filled === undefined) return fallback;
+function arrowhead(value: string | undefined, fallback: string, filled?: boolean, hasLabel = false): string {
+  if (value === undefined && filled === undefined && !hasLabel) return fallback;
   const aliases: Record<string, string> = {
     arrow_point: 'triangle',
     arrow_circle: 'circle',
     arrow_cross: 'cross',
   };
-  const shape = value === undefined || (value === '' && filled !== undefined)
+  const shape = value === undefined || (value === '' && (filled !== undefined || hasLabel))
     ? TriangleArrowhead : aliases[value] ?? (value === '' ? NoArrowhead : value);
   if (shape === 'triangle' && filled === false) return 'unfilled-triangle';
   if (filled === true && (shape === 'diamond' || shape === 'circle' || shape === 'box'))
@@ -493,10 +493,10 @@ export function translateFlowchart(
     const [sourceArrow, targetArrow] = arrowFlags(input);
     e.SourceArrowhead = reversed[i]
       ? NoArrowhead
-      : arrowhead(input.sourceArrowhead, sourceArrow ? TriangleArrowhead : NoArrowhead, input.sourceArrowheadFilled);
+      : arrowhead(input.sourceArrowhead, sourceArrow ? TriangleArrowhead : NoArrowhead, input.sourceArrowheadFilled, input.sourceArrowheadLabel !== undefined);
     e.TargetArrowhead = reversed[i]
-      ? arrowhead(input.sourceArrowhead, TriangleArrowhead, input.sourceArrowheadFilled)
-      : arrowhead(input.targetArrowhead, targetArrow ? TriangleArrowhead : NoArrowhead, input.targetArrowheadFilled);
+      ? arrowhead(input.sourceArrowhead, TriangleArrowhead, input.sourceArrowheadFilled, input.sourceArrowheadLabel !== undefined)
+      : arrowhead(input.targetArrowhead, targetArrow ? TriangleArrowhead : NoArrowhead, input.targetArrowheadFilled, input.targetArrowheadLabel !== undefined);
     const makeArrowLabel = (
       value: typeof input.sourceArrowheadLabel,
     ): Label | null => {

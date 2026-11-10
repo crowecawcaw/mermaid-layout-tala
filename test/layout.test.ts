@@ -102,6 +102,18 @@ describe('Mermaid flowchart layout slice', () => {
       ['(b -- c)[2]', 'filled-box', 'none'],
     ]);
   });
+
+  it('uses D2 default arrowhead shapes when labels create attributes', () => {
+    const nodes = ['a', 'b'].map((id) => ({ id, width: 40, height: 30 }));
+    const label = { text: 'label', width: 20, height: 10 };
+    const { graph } = translateFlowchart(nodes, [
+      { id: 'e1', from: 'a', to: 'b', sourceArrow: false, targetArrow: false, sourceArrowheadLabel: label },
+      { id: 'e2', from: 'b', to: 'a', sourceArrow: false, targetArrow: false, targetArrowheadLabel: label },
+    ], { inputOrder: 'authored' });
+    expect(graph.Edges.map((e) => [e.SourceArrowhead, e.TargetArrowhead])).toEqual([
+      ['triangle', 'none'], ['none', 'triangle'],
+    ]);
+  });
   it('uses hierarchy ranks and measured node sizes', () => {
     const result = layoutFlowchart(
       [

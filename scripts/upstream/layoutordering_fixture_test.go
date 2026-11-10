@@ -11,6 +11,7 @@ import (
 	"testing"
 
 	"github.com/d2lang/d2/d2graph"
+	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/labeling"
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/layoutgraph"
 	"github.com/d2lang/d2/d2target"
 	"github.com/d2lang/d2/lib/geo"
@@ -30,19 +31,26 @@ type orderingNode struct {
 	Style       map[string]string `json:"style,omitempty"`
 }
 type orderingEdge struct {
-	ID                    string `json:"id"`
-	From                  string `json:"from"`
-	To                    string `json:"to"`
-	D2Index               int    `json:"d2Index"`
-	Label                 string `json:"label"`
-	LabelWidth            int    `json:"labelWidth"`
-	LabelHeight           int    `json:"labelHeight"`
-	SourceArrow           *bool  `json:"sourceArrow,omitempty"`
-	TargetArrow           *bool  `json:"targetArrow,omitempty"`
-	SourceArrowhead       string `json:"sourceArrowhead,omitempty"`
-	TargetArrowhead       string `json:"targetArrowhead,omitempty"`
-	SourceArrowheadFilled *bool  `json:"sourceArrowheadFilled,omitempty"`
-	TargetArrowheadFilled *bool  `json:"targetArrowheadFilled,omitempty"`
+	ID                    string              `json:"id"`
+	From                  string              `json:"from"`
+	To                    string              `json:"to"`
+	D2Index               int                 `json:"d2Index"`
+	Label                 string              `json:"label"`
+	LabelWidth            int                 `json:"labelWidth"`
+	LabelHeight           int                 `json:"labelHeight"`
+	SourceArrow           *bool               `json:"sourceArrow,omitempty"`
+	TargetArrow           *bool               `json:"targetArrow,omitempty"`
+	SourceArrowhead       string              `json:"sourceArrowhead,omitempty"`
+	TargetArrowhead       string              `json:"targetArrowhead,omitempty"`
+	SourceArrowheadFilled *bool               `json:"sourceArrowheadFilled,omitempty"`
+	TargetArrowheadFilled *bool               `json:"targetArrowheadFilled,omitempty"`
+	SourceArrowheadLabel  *orderingArrowLabel `json:"sourceArrowheadLabel,omitempty"`
+	TargetArrowheadLabel  *orderingArrowLabel `json:"targetArrowheadLabel,omitempty"`
+}
+type orderingArrowLabel struct {
+	Text   string `json:"text"`
+	Width  int    `json:"width"`
+	Height int    `json:"height"`
 }
 
 func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
@@ -65,6 +73,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"font-defaults", [][2]int{{1, 2}, {1, 3}, {2, 4}}, false, 3},
 		{"node-visibility-styles", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 4},
 		{"arrow-flags-and-fill", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 5},
+		{"arrow-label-default", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 6},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -148,6 +157,23 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 			for i, pair := range test.pairs {
 				input := orderingEdge{ID: fmt.Sprintf("edge%d", 20-i), From: names[pair[0]], To: names[pair[1]], D2Index: indices[i], Label: "link", LabelWidth: 30, LabelHeight: 12}
 				edge := &d2graph.Edge{Index: input.D2Index, Src: objects[input.From], Dst: objects[input.To], DstArrow: true, Attributes: d2graph.Attributes{}}
+				if test.shapeSet == 6 {
+					src := []bool{false, false, true, true, false}[i]
+					dst := []bool{true, true, false, false, false}[i]
+					input.SourceArrow, input.TargetArrow = &src, &dst
+					edge.SrcArrow, edge.DstArrow = src, dst
+					if i == 0 || i == 2 || i == 4 {
+						input.SourceArrowheadLabel = &orderingArrowLabel{Text: "src", Width: 24, Height: 12}
+						edge.SrcArrowhead = &d2graph.Attributes{}
+						edge.SrcArrowhead.Label.Value = "src"
+						edge.SrcArrowhead.LabelDimensions = *d2target.NewTextDimensions(24, 12)
+					} else {
+						input.TargetArrowheadLabel = &orderingArrowLabel{Text: "dst", Width: 28, Height: 14}
+						edge.DstArrowhead = &d2graph.Attributes{}
+						edge.DstArrowhead.Label.Value = "dst"
+						edge.DstArrowhead.LabelDimensions = *d2target.NewTextDimensions(28, 14)
+					}
+				}
 				if test.shapeSet == 5 {
 					src := []bool{true, false, true, false, true}[i]
 					dst := []bool{false, true, true, false, false}[i]
@@ -209,6 +235,15 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 					points = append(points, map[string]float64{"x": p.X, "y": p.Y})
 				}
 				record := map[string]any{"id": edges[i].ID, "points": points, "isCurve": edge.IsCurve}
+				if e := internalEdges[bindings.edgeIDs[edge]]; e != nil {
+					reversed := edge.SrcArrow && !edge.DstArrow
+					if p := labeling.PositionArrowheadLabel(e, reversed, e.Points); p != nil {
+						record["sourceArrowheadLabelPosition"] = map[string]float64{"x": p.Box.TopLeft.X + p.Box.Width/2, "y": p.Box.TopLeft.Y + p.Box.Height/2}
+					}
+					if p := labeling.PositionArrowheadLabel(e, !reversed, e.Points); p != nil {
+						record["targetArrowheadLabelPosition"] = map[string]float64{"x": p.Box.TopLeft.X + p.Box.Width/2, "y": p.Box.TopLeft.Y + p.Box.Height/2}
+					}
+				}
 				if edge.LabelPosition != nil {
 					record["labelPosition"] = *edge.LabelPosition
 					record["labelPercentage"] = *edge.LabelPercentage
