@@ -67,6 +67,7 @@ const packages = {
   layoutordering: '',
   layoutopacity: '',
   layoutreroute: '',
+  layoutseedselection: '',
   resultvalidation: '',
   resultmetadata: '',
   loops: 'internal/loops',

@@ -48,6 +48,7 @@ import {
 } from './result-validation.js';
 import { routeMidpoint } from '../../routing.js';
 import { parseGoFloat } from './parse-float.js';
+import { coordinateLocalSeeds } from './seed-coordination.js';
 const orientation: Record<LayoutDirection, Orientation> = {
   TB: Orientation.Bottom,
   BT: Orientation.Top,
@@ -673,27 +674,17 @@ export function layoutFlowchartTranslated(
       inputEdges,
       options,
     );
-  let best: Graph | null = null,
-    bestScore: Score | null = null,
-    lastError: unknown;
-  for (const seed of seeds)
-    try {
-      const candidate = Layout(Background, graph, { Seed: seed }),
-        score = evaluateCandidate(graph, candidate);
-      if (!bestScore || score.Compare(bestScore) <= 0) {
-        best = candidate;
-        bestScore = score;
-      }
-    } catch (error) {
-      lastError = error;
-    }
-  if (!best) throw lastError;
+  const initial = coordinateLocalSeeds(seeds, (seed) => {
+    const candidate = Layout(Background, graph, { Seed: seed });
+    return { value: candidate, score: evaluateCandidate(graph, candidate) };
+  });
+  let best = initial.value, bestScore = initial.score;
   const ordinary = best;
   try {
     const candidate = CompoundCandidate(Background, best);
     if (candidate !== best) {
       const score = evaluateCandidate(graph, candidate);
-      if (score.Compare(bestScore!) < 0) {
+      if (score.Compare(bestScore) < 0) {
         best = candidate;
         bestScore = score;
       }

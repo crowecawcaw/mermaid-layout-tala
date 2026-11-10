@@ -1,0 +1,102 @@
+[
+  {
+    "attempts": [
+      {
+        "penalty": 2,
+        "area": 10
+      },
+      {
+        "penalty": 1,
+        "area": 20
+      },
+      {
+        "penalty": 3,
+        "area": 1
+      }
+    ],
+    "error": "",
+    "trial": 0,
+    "winner": 1
+  },
+  {
+    "attempts": [
+      {
+        "penalty": 1,
+        "area": 20
+      },
+      {
+        "penalty": 1,
+        "area": 10
+      },
+      {
+        "penalty": 1,
+        "area": 15
+      }
+    ],
+    "error": "",
+    "trial": 1,
+    "winner": 1
+  },
+  {
+    "attempts": [
+      {
+        "penalty": 1,
+        "area": 10
+      },
+      {
+        "penalty": 1,
+        "area": 10
+      },
+      {
+        "penalty": 1,
+        "area": 10
+      }
+    ],
+    "error": "",
+    "trial": 2,
+    "winner": 2
+  },
+  {
+    "attempts": [
+      {
+        "penalty": 0,
+        "area": 0,
+        "error": "first failed"
+      },
+      {
+        "penalty": 2,
+        "area": 3
+      },
+      {
+        "penalty": 0,
+        "area": 0,
+        "error": "third failed"
+      }
+    ],
+    "error": "",
+    "trial": 3,
+    "winner": 1
+  },
+  {
+    "attempts": [
+      {
+        "penalty": 0,
+        "area": 0,
+        "error": "first failed"
+      },
+      {
+        "penalty": 0,
+        "area": 0,
+        "error": "second failed"
+      },
+      {
+        "penalty": 0,
+        "area": 0,
+        "error": "third failed"
+      }
+    ],
+    "error": "all TALA seed attempts failed: seed 1: first failed\nseed 2: second failed\nseed 3: third failed",
+    "trial": 4,
+    "winner": -1
+  }
+]
