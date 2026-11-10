@@ -64,8 +64,8 @@ bounds. Random fixtures cross the 607-word generator state boundary for each
 seed and exercise exact signed-64-bit boundary seeds.
 
 Full-layout comparisons use absolute positions and dimensions with tolerance
-`1e-7`. Route comparison removes redundant collinear vertices from both outputs
-but otherwise compares directed geometry exactly. Matching stage fixtures does
+`1e-7`. Route comparisons check every vertex in order, including collinear
+vertices. Matching stage fixtures does
 not imply a matching complete engine pipeline. The remaining full-layout
 differences are reported, not hidden behind skips or permissive assertions.
 

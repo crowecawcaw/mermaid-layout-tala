@@ -17,27 +17,7 @@ import ordering from './fixtures/upstream-layoutordering.json';
 import {
   layoutFlowchart,
   type LayoutDirection,
-  type Point,
 } from '../src/layout.js';
-
-const equal = (a: number, b: number) => Math.abs(a - b) <= 1e-7;
-function compact(points: Point[]): Point[] {
-  const result: Point[] = [];
-  for (const point of points) {
-    const b = result.at(-1),
-      a = result.at(-2);
-    if (b && equal(b.x, point.x) && equal(b.y, point.y)) continue;
-    if (
-      a &&
-      b &&
-      ((equal(a.x, b.x) && equal(b.x, point.x)) ||
-        (equal(a.y, b.y) && equal(b.y, point.y)))
-    )
-      result.pop();
-    result.push(point);
-  }
-  return result;
-}
 it.each([
   ...fixtures,
   ...expanded,
@@ -108,8 +88,8 @@ it.each([
       expect(found!.x).toBeCloseTo(edge.labelX as number, 7);
       expect(found!.y).toBeCloseTo(edge.labelY as number, 7);
     }
-    const expected = compact(edge.points),
-      points = compact(found!.points);
+    const expected = edge.points,
+      points = found!.points;
     expect(points).toHaveLength(expected.length);
     for (let i = 0; i < points.length; i++) {
       expect(points[i]!.x).toBeCloseTo(expected[i]!.x, 7);

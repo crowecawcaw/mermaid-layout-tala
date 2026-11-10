@@ -22,23 +22,6 @@ const fixtures = [
   ),
 );
 const equal = (a, b) => Math.abs(a - b) <= 1e-7;
-function compact(points) {
-  const result = [];
-  for (const point of points) {
-    const b = result.at(-1),
-      a = result.at(-2);
-    if (b && equal(b.x, point.x) && equal(b.y, point.y)) continue;
-    if (
-      a &&
-      b &&
-      ((equal(a.x, b.x) && equal(b.x, point.x)) ||
-        (equal(a.y, b.y) && equal(b.y, point.y)))
-    )
-      result.pop();
-    result.push(point);
-  }
-  return result;
-}
 let passed = 0;
 const results = [];
 for (const fixture of fixtures) {
@@ -86,8 +69,8 @@ for (const fixture of fixtures) {
       if ('to' in edge && (!found || found.to !== edge.to)) differences.push(`edge-destination:${edge.id}`);
       if ('hasLabel' in edge && (!found || (found.labelPosition !== undefined) !== edge.hasLabel))
         differences.push(`edge-label-presence:${edge.id}`);
-      const expected = compact(edge.points),
-        points = compact(found?.points ?? []);
+      const expected = edge.points,
+        points = found?.points ?? [];
       for (const key of [
         'sourceArrowheadLabelPosition',
         'targetArrowheadLabelPosition',
@@ -139,7 +122,7 @@ const rerouteResults = rerouteFixtures.map((fixture) => {
       if (!found) { differences.push(`edge:${edge.id}`); continue; }
       for (const key of ['to', 'isCurve', 'labelPosition', 'labelPercentage'])
         if (found[key] !== edge[key]) differences.push(`edge-${key}:${edge.id}`);
-      const expectedPoints = compact(edge.points), actualPoints = compact(found.points ?? []);
+      const expectedPoints = edge.points, actualPoints = found.points ?? [];
       if (expectedPoints.length !== actualPoints.length || expectedPoints.some((point, i) =>
         !actualPoints[i] || !equal(point.x, actualPoints[i].x) || !equal(point.y, actualPoints[i].y)))
         differences.push(`route:${edge.id}`);
@@ -158,7 +141,7 @@ else {
       `${result.passed ? 'PASS' : 'DIFF'} ${result.name}${result.passed ? '' : ` (${result.differences.join(', ')})`}`,
     );
   console.log(
-    `Full-layout parity: ${passed}/${fixtures.length}; tolerance 1e-7; redundant collinear route vertices ignored.`,
+    `Full-layout parity: ${passed}/${fixtures.length}; tolerance 1e-7; route vertices compared in order.`,
   );
   for (const result of rerouteResults)
     console.log(`${result.passed ? 'PASS' : 'DIFF'} reroute-${result.name}${result.passed ? '' : ` (${result.differences.join(', ')})`}`);
