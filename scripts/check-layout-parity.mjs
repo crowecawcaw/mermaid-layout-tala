@@ -5,6 +5,7 @@ const fixtures = [
   'upstream-layoutcorpus.json',
   'upstream-layoutfeatures.json',
   'upstream-layoutrandom.json',
+  'upstream-layoutrandomextended.json',
   'upstream-layoutarrowheads.json',
   'upstream-layoutnodeoptions.json',
   'upstream-layoutarrowlabels.json',

@@ -3,6 +3,7 @@ import fixtures from './fixtures/upstream-layout.json';
 import expanded from './fixtures/upstream-layoutcorpus.json';
 import features from './fixtures/upstream-layoutfeatures.json';
 import random from './fixtures/upstream-layoutrandom.json';
+import randomExtended from './fixtures/upstream-layoutrandomextended.json';
 import arrowheads from './fixtures/upstream-layoutarrowheads.json';
 import nodeOptions from './fixtures/upstream-layoutnodeoptions.json';
 import arrowLabels from './fixtures/upstream-layoutarrowlabels.json';
@@ -42,6 +43,7 @@ it.each([
   ...expanded,
   ...features,
   ...random,
+  ...randomExtended,
   ...arrowheads,
   ...nodeOptions,
   ...arrowLabels,

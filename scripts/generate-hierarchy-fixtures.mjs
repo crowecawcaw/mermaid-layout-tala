@@ -55,6 +55,7 @@ const packages = {
   layoutcorpus: '',
   layoutfeatures: '',
   layoutrandom: '',
+  layoutrandomextended: '',
   layoutarrowheads: '',
   layoutnodeoptions: '',
   layoutarrowlabels: '',

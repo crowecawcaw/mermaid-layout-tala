@@ -1,0 +1,9356 @@
+[
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n3",
+        "to": "n1"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n0",
+        "to": "n3"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n1",
+        "to": "n1"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n0",
+        "to": "n3"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n1",
+        "to": "n1"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n3",
+        "to": "n1"
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n3",
+        "to": "n0"
+      },
+      {
+        "d2Index": 7,
+        "id": "e7",
+        "from": "n2",
+        "to": "n3"
+      },
+      {
+        "d2Index": 8,
+        "id": "e8",
+        "from": "n1",
+        "to": "n3"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 470,
+              "y": 240
+            },
+            {
+              "x": 620,
+              "y": 240
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 160,
+              "y": 200
+            },
+            {
+              "x": 321,
+              "y": 200
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 620,
+              "y": 200
+            },
+            {
+              "x": 590,
+              "y": 200
+            },
+            {
+              "x": 590,
+              "y": 130
+            },
+            {
+              "x": 660,
+              "y": 130
+            },
+            {
+              "x": 660,
+              "y": 160
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 160,
+              "y": 240
+            },
+            {
+              "x": 310,
+              "y": 240
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e4",
+          "points": [
+            {
+              "x": 620,
+              "y": 200
+            },
+            {
+              "x": 560,
+              "y": 200
+            },
+            {
+              "x": 560,
+              "y": 100
+            },
+            {
+              "x": 660,
+              "y": 100
+            },
+            {
+              "x": 660,
+              "y": 160
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e5",
+          "points": [
+            {
+              "x": 459,
+              "y": 280
+            },
+            {
+              "x": 620,
+              "y": 280
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e6",
+          "points": [
+            {
+              "x": 321,
+              "y": 280
+            },
+            {
+              "x": 160,
+              "y": 280
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e7",
+          "points": [
+            {
+              "x": 390,
+              "y": 90
+            },
+            {
+              "x": 390,
+              "y": 160
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e8",
+          "points": [
+            {
+              "x": 620,
+              "y": 200
+            },
+            {
+              "x": 459,
+              "y": 200
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 32,
+          "hasLabel": true,
+          "height": 160,
+          "id": "n3",
+          "labelX": 390,
+          "labelY": 240,
+          "width": 160,
+          "x": 390,
+          "y": 240
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": true,
+          "height": 90,
+          "id": "n2",
+          "labelX": 390,
+          "labelY": 45,
+          "width": 90,
+          "x": 390,
+          "y": 45
+        },
+        {
+          "fontSize": 32,
+          "hasLabel": true,
+          "height": 160,
+          "id": "n1",
+          "labelX": 700,
+          "labelY": 240,
+          "width": 160,
+          "x": 700,
+          "y": 240
+        },
+        {
+          "fontSize": 28,
+          "hasLabel": true,
+          "height": 160,
+          "id": "n0",
+          "labelX": 80,
+          "labelY": 240,
+          "width": 160,
+          "x": 80,
+          "y": 240
+        }
+      ]
+    },
+    "name": "extended-random-00-TB",
+    "nodes": [
+      {
+        "id": "n3",
+        "width": 40,
+        "height": 30,
+        "shape": "oval",
+        "labelWidth": 25,
+        "labelHeight": 15
+      },
+      {
+        "isInvisible": true,
+        "id": "n2",
+        "width": 90,
+        "height": 90,
+        "shape": "stored_data",
+        "labelWidth": 40,
+        "labelHeight": 10
+      },
+      {
+        "isGrid": true,
+        "id": "n1",
+        "width": 90,
+        "height": 90,
+        "shape": "TEXT",
+        "labelWidth": 30,
+        "labelHeight": 15
+      },
+      {
+        "id": "n0",
+        "width": 90,
+        "height": 50,
+        "shape": "square",
+        "labelWidth": 40,
+        "labelHeight": 20
+      }
+    ],
+    "options": {
+      "rootLevel": 0,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n0",
+        "to": "n2",
+        "labelWidth": 30,
+        "labelHeight": 10
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n1",
+        "to": "n3",
+        "labelWidth": 40,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n3",
+        "to": "n1",
+        "labelWidth": 50,
+        "labelHeight": 20
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n2",
+        "to": "n3",
+        "labelWidth": 40,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n1",
+        "to": "n2",
+        "labelWidth": 20,
+        "labelHeight": 10
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n2",
+        "to": "n0",
+        "labelWidth": 50,
+        "labelHeight": 20
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n2",
+        "to": "n4",
+        "labelWidth": 20,
+        "labelHeight": 10
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": true,
+          "id": "e0",
+          "labelX": 158,
+          "labelY": 90,
+          "points": [
+            {
+              "x": 117,
+              "y": 101
+            },
+            {
+              "x": 199,
+              "y": 101
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e1",
+          "labelX": 360,
+          "labelY": 85.5,
+          "points": [
+            {
+              "x": 386,
+              "y": 129
+            },
+            {
+              "x": 386,
+              "y": 41
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e2",
+          "labelX": 444,
+          "labelY": 81,
+          "points": [
+            {
+              "x": 412,
+              "y": 41
+            },
+            {
+              "x": 412,
+              "y": 121
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e3",
+          "labelX": 281,
+          "labelY": 6.5,
+          "points": [
+            {
+              "x": 240,
+              "y": 60
+            },
+            {
+              "x": 240,
+              "y": 21
+            },
+            {
+              "x": 360,
+              "y": 21
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e4",
+          "labelX": 323,
+          "labelY": 163,
+          "points": [
+            {
+              "x": 375,
+              "y": 151
+            },
+            {
+              "x": 270,
+              "y": 151
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e5",
+          "labelX": 150,
+          "labelY": 138,
+          "points": [
+            {
+              "x": 179,
+              "y": 121
+            },
+            {
+              "x": 120,
+              "y": 121
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e6",
+          "labelX": 240,
+          "labelY": 10,
+          "points": [
+            {
+              "x": 240,
+              "y": 60
+            },
+            {
+              "x": 240,
+              "y": 21
+            },
+            {
+              "x": 200,
+              "y": 21
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n4",
+          "width": 80,
+          "x": 160,
+          "y": 21
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n3",
+          "width": 80,
+          "x": 400,
+          "y": 21
+        },
+        {
+          "fontSize": 32,
+          "hasLabel": false,
+          "height": 120,
+          "id": "n2",
+          "width": 120,
+          "x": 240,
+          "y": 121
+        },
+        {
+          "fontSize": 32,
+          "hasLabel": false,
+          "height": 120,
+          "id": "n1",
+          "width": 120,
+          "x": 420,
+          "y": 181
+        },
+        {
+          "fontSize": 32,
+          "hasLabel": false,
+          "height": 120,
+          "id": "n0",
+          "width": 120,
+          "x": 60,
+          "y": 121
+        }
+      ]
+    },
+    "name": "extended-random-01-BT",
+    "nodes": [
+      {
+        "id": "n4",
+        "width": 80,
+        "height": 40,
+        "shape": "oval"
+      },
+      {
+        "id": "n3",
+        "width": 80,
+        "height": 40,
+        "shape": "SQL_TABLE"
+      },
+      {
+        "id": "n2",
+        "width": 40,
+        "height": 40,
+        "shape": "diamond"
+      },
+      {
+        "id": "n1",
+        "width": 40,
+        "height": 50,
+        "shape": "hexagon"
+      },
+      {
+        "id": "n0",
+        "width": 40,
+        "height": 60,
+        "shape": "oval"
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "rootLevel": 1,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n7",
+        "to": "n3",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n0",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n7",
+        "to": "n7",
+        "sourceArrowhead": "none",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n2",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n5",
+        "to": "n2",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n1",
+        "to": "n0",
+        "sourceArrowhead": "none",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n4",
+        "to": "n4",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 7,
+        "id": "e7",
+        "from": "n2",
+        "to": "n5",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 180,
+              "y": 350
+            },
+            {
+              "x": 89,
+              "y": 350
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 246,
+              "y": 38
+            },
+            {
+              "x": 216,
+              "y": 38
+            },
+            {
+              "x": 216,
+              "y": 0
+            },
+            {
+              "x": 264,
+              "y": 0
+            },
+            {
+              "x": 264,
+              "y": 30
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 180,
+              "y": 324
+            },
+            {
+              "x": 150,
+              "y": 324
+            },
+            {
+              "x": 150,
+              "y": 276
+            },
+            {
+              "x": 198,
+              "y": 276
+            },
+            {
+              "x": 198,
+              "y": 306
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 281,
+              "y": 153
+            },
+            {
+              "x": 281,
+              "y": 90
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e4",
+          "points": [
+            {
+              "x": 123,
+              "y": 193
+            },
+            {
+              "x": 246,
+              "y": 193
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e5",
+          "points": [
+            {
+              "x": 183,
+              "y": 64
+            },
+            {
+              "x": 281,
+              "y": 64
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e6",
+          "points": [
+            {
+              "x": 313,
+              "y": 306
+            },
+            {
+              "x": 313,
+              "y": 276
+            },
+            {
+              "x": 270,
+              "y": 276
+            },
+            {
+              "x": 270,
+              "y": 324
+            },
+            {
+              "x": 300,
+              "y": 324
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e7",
+          "points": [
+            {
+              "x": 246,
+              "y": 193
+            },
+            {
+              "x": 123,
+              "y": 193
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 20,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n7",
+          "width": 70,
+          "x": 215,
+          "y": 341
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 50,
+          "id": "n6",
+          "width": 40,
+          "x": 356,
+          "y": 25
+        },
+        {
+          "fontSize": 28,
+          "hasLabel": false,
+          "height": 123,
+          "id": "n5",
+          "width": 123,
+          "x": 61.5,
+          "y": 192.5
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n4",
+          "width": 50,
+          "x": 325,
+          "y": 341
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 80,
+          "id": "n3",
+          "width": 90,
+          "x": 45,
+          "y": 341
+        },
+        {
+          "fontSize": 20,
+          "hasLabel": false,
+          "height": 80,
+          "id": "n2",
+          "width": 70,
+          "x": 281,
+          "y": 193
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n1",
+          "width": 60,
+          "x": 153,
+          "y": 60
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 60,
+          "id": "n0",
+          "width": 70,
+          "x": 281,
+          "y": 60
+        }
+      ]
+    },
+    "name": "extended-random-02-LR",
+    "nodes": [
+      {
+        "hasClassData": true,
+        "id": "n7",
+        "width": 70,
+        "height": 70,
+        "shape": "class"
+      },
+      {
+        "id": "n6",
+        "width": 40,
+        "height": 50,
+        "shape": "stored_data"
+      },
+      {
+        "id": "n5",
+        "width": 70,
+        "height": 70,
+        "shape": "TEXT"
+      },
+      {
+        "id": "n4",
+        "width": 50,
+        "height": 70,
+        "shape": "TEXT"
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 80,
+        "shape": "oval"
+      },
+      {
+        "hasClassData": true,
+        "id": "n2",
+        "width": 70,
+        "height": 80,
+        "shape": "class"
+      },
+      {
+        "id": "n1",
+        "width": 60,
+        "height": 70,
+        "shape": "oval"
+      },
+      {
+        "id": "n0",
+        "width": 70,
+        "height": 60,
+        "shape": "callout"
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "rootLevel": 2,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n0",
+        "to": "n2"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n1",
+        "to": "n5"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n3",
+        "to": "n0"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n5",
+        "to": "n4"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n2",
+        "to": "n6"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n4",
+        "to": "n5"
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n5",
+        "to": "n5"
+      },
+      {
+        "d2Index": 7,
+        "id": "e7",
+        "from": "n1",
+        "to": "n0"
+      },
+      {
+        "d2Index": 8,
+        "id": "e8",
+        "from": "n2",
+        "to": "n3"
+      },
+      {
+        "d2Index": 9,
+        "id": "e9",
+        "from": "n1",
+        "to": "n4"
+      },
+      {
+        "d2Index": 10,
+        "id": "e10",
+        "from": "n3",
+        "to": "n4"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 302,
+              "y": 305
+            },
+            {
+              "x": 302,
+              "y": 204
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 240,
+              "y": 523
+            },
+            {
+              "x": 240,
+              "y": 645
+            },
+            {
+              "x": 195,
+              "y": 645
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 195,
+              "y": 270
+            },
+            {
+              "x": 286,
+              "y": 270
+            },
+            {
+              "x": 286,
+              "y": 305
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 90,
+              "y": 655
+            },
+            {
+              "x": 33,
+              "y": 655
+            },
+            {
+              "x": 33,
+              "y": 570
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e4",
+          "points": [
+            {
+              "x": 295,
+              "y": 170
+            },
+            {
+              "x": 295,
+              "y": 30
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e5",
+          "points": [
+            {
+              "x": 105,
+              "y": 500
+            },
+            {
+              "x": 155,
+              "y": 500
+            },
+            {
+              "x": 155,
+              "y": 585
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e6",
+          "points": [
+            {
+              "x": 96,
+              "y": 605
+            },
+            {
+              "x": 66,
+              "y": 605
+            },
+            {
+              "x": 66,
+              "y": 555
+            },
+            {
+              "x": 131,
+              "y": 555
+            },
+            {
+              "x": 131,
+              "y": 585
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e7",
+          "points": [
+            {
+              "x": 270,
+              "y": 485
+            },
+            {
+              "x": 295,
+              "y": 485
+            },
+            {
+              "x": 295,
+              "y": 345
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e8",
+          "points": [
+            {
+              "x": 270,
+              "y": 190
+            },
+            {
+              "x": 165,
+              "y": 190
+            },
+            {
+              "x": 165,
+              "y": 240
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e9",
+          "points": [
+            {
+              "x": 181,
+              "y": 475
+            },
+            {
+              "x": 110,
+              "y": 475
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e10",
+          "points": [
+            {
+              "x": 135,
+              "y": 270
+            },
+            {
+              "x": 60,
+              "y": 270
+            },
+            {
+              "x": 60,
+              "y": 450
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 90,
+          "id": "n7",
+          "width": 90,
+          "x": 405,
+          "y": 405
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 30,
+          "id": "n6",
+          "width": 100,
+          "x": 295,
+          "y": 15
+        },
+        {
+          "fontSize": 32,
+          "hasLabel": false,
+          "height": 120,
+          "id": "n5",
+          "width": 120,
+          "x": 150,
+          "y": 645
+        },
+        {
+          "fontSize": 20,
+          "hasLabel": false,
+          "height": 120,
+          "id": "n4",
+          "width": 120,
+          "x": 60,
+          "y": 510
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 60,
+          "id": "n3",
+          "width": 60,
+          "x": 165,
+          "y": 270
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n2",
+          "width": 50,
+          "x": 295,
+          "y": 190
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 80,
+          "id": "n1",
+          "width": 90,
+          "x": 225,
+          "y": 485
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n0",
+          "width": 50,
+          "x": 295,
+          "y": 325
+        }
+      ]
+    },
+    "name": "extended-random-03-RL",
+    "nodes": [
+      {
+        "id": "n7",
+        "width": 90,
+        "height": 90,
+        "shape": "callout"
+      },
+      {
+        "id": "n6",
+        "width": 100,
+        "height": 30,
+        "shape": "class"
+      },
+      {
+        "id": "n5",
+        "width": 60,
+        "height": 50,
+        "shape": "stored_data"
+      },
+      {
+        "id": "n4",
+        "width": 90,
+        "height": 60,
+        "shape": "stored_data"
+      },
+      {
+        "id": "n3",
+        "width": 60,
+        "height": 60,
+        "shape": "sql_table"
+      },
+      {
+        "id": "n2",
+        "width": 50,
+        "height": 40,
+        "shape": "callout"
+      },
+      {
+        "id": "n1",
+        "width": 90,
+        "height": 80,
+        "shape": "oval"
+      },
+      {
+        "nearId": "n7",
+        "id": "n0",
+        "width": 50,
+        "height": 40,
+        "shape": "callout"
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "rootLevel": 0,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n5",
+        "to": "n4"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n6",
+        "to": "n0"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n4",
+        "to": "n3"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n3",
+        "to": "n6"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n0",
+        "to": "n4"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n7",
+        "to": "n4"
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n4",
+        "to": "n1"
+      },
+      {
+        "d2Index": 7,
+        "id": "e7",
+        "from": "n5",
+        "to": "n3"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 190,
+              "y": 60
+            },
+            {
+              "x": 190,
+              "y": 153
+            },
+            {
+              "x": 154,
+              "y": 153
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 255,
+              "y": 290
+            },
+            {
+              "x": 165,
+              "y": 290
+            },
+            {
+              "x": 165,
+              "y": 315
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 164,
+              "y": 176
+            },
+            {
+              "x": 275,
+              "y": 176
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 275,
+              "y": 200
+            },
+            {
+              "x": 275,
+              "y": 270
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e4",
+          "points": [
+            {
+              "x": 135,
+              "y": 330
+            },
+            {
+              "x": 115,
+              "y": 330
+            },
+            {
+              "x": 115,
+              "y": 247
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e5",
+          "points": [
+            {
+              "x": 67,
+              "y": 50
+            },
+            {
+              "x": 67,
+              "y": 142
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e6",
+          "points": [
+            {
+              "x": 70,
+              "y": 237
+            },
+            {
+              "x": 70,
+              "y": 360
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e7",
+          "points": [
+            {
+              "x": 215,
+              "y": 30
+            },
+            {
+              "x": 275,
+              "y": 30
+            },
+            {
+              "x": 275,
+              "y": 130
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": true,
+          "height": 50,
+          "id": "n7",
+          "labelX": 45,
+          "labelY": 24.5,
+          "width": 90,
+          "x": 45,
+          "y": 25
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": true,
+          "height": 40,
+          "id": "n6",
+          "labelX": 275,
+          "labelY": 320,
+          "width": 40,
+          "x": 275,
+          "y": 290
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": true,
+          "height": 60,
+          "id": "n5",
+          "labelX": 174.5,
+          "labelY": 30,
+          "width": 80,
+          "x": 175,
+          "y": 30
+        },
+        {
+          "fontSize": 20,
+          "hasLabel": true,
+          "height": 120,
+          "id": "n4",
+          "labelX": 105,
+          "labelY": 188,
+          "width": 120,
+          "x": 105,
+          "y": 188
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": true,
+          "height": 70,
+          "id": "n3",
+          "labelX": 275,
+          "labelY": 147.5,
+          "width": 100,
+          "x": 275,
+          "y": 165
+        },
+        {
+          "fontSize": 20,
+          "hasLabel": false,
+          "height": 30,
+          "id": "n2",
+          "width": 90,
+          "x": 180,
+          "y": 380
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": true,
+          "height": 60,
+          "id": "n1",
+          "labelX": 70,
+          "labelY": 430,
+          "width": 50,
+          "x": 70,
+          "y": 390
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": true,
+          "height": 30,
+          "id": "n0",
+          "labelX": 165,
+          "labelY": 330,
+          "width": 60,
+          "x": 165,
+          "y": 330
+        }
+      ]
+    },
+    "name": "extended-random-04-TB",
+    "nodes": [
+      {
+        "id": "n7",
+        "width": 90,
+        "height": 50,
+        "shape": "hexagon",
+        "labelWidth": 30,
+        "labelHeight": 20
+      },
+      {
+        "id": "n6",
+        "width": 40,
+        "height": 40,
+        "shape": "stored_data",
+        "labelWidth": 25,
+        "labelHeight": 10
+      },
+      {
+        "id": "n5",
+        "width": 80,
+        "height": 60,
+        "shape": "hexagon",
+        "labelWidth": 30,
+        "labelHeight": 10
+      },
+      {
+        "id": "n4",
+        "width": 60,
+        "height": 90,
+        "shape": "oval",
+        "labelWidth": 20,
+        "labelHeight": 15
+      },
+      {
+        "id": "n3",
+        "width": 100,
+        "height": 70,
+        "shape": "callout",
+        "labelWidth": 40,
+        "labelHeight": 15
+      },
+      {
+        "hasClassData": true,
+        "id": "n2",
+        "width": 90,
+        "height": 30,
+        "shape": "class",
+        "labelWidth": 25,
+        "labelHeight": 15
+      },
+      {
+        "id": "n1",
+        "width": 50,
+        "height": 60,
+        "shape": "oval",
+        "labelWidth": 30,
+        "labelHeight": 10
+      },
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30,
+        "shape": "SQL_TABLE",
+        "labelWidth": 30,
+        "labelHeight": 10
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "rootLevel": 1,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n0",
+        "to": "n2",
+        "labelWidth": 50,
+        "labelHeight": 20
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n6",
+        "to": "n0",
+        "labelWidth": 40,
+        "labelHeight": 10
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n1",
+        "to": "n0",
+        "labelWidth": 20,
+        "labelHeight": 20
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n1",
+        "to": "n5",
+        "labelWidth": 40,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n4",
+        "to": "n4",
+        "labelWidth": 40,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n1",
+        "to": "n2",
+        "labelWidth": 40,
+        "labelHeight": 20
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n3",
+        "to": "n1",
+        "labelWidth": 40,
+        "labelHeight": 20
+      },
+      {
+        "d2Index": 7,
+        "id": "e7",
+        "from": "n1",
+        "to": "n0",
+        "labelWidth": 40,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 8,
+        "id": "e8",
+        "from": "n4",
+        "to": "n5",
+        "labelWidth": 50,
+        "labelHeight": 20
+      },
+      {
+        "d2Index": 9,
+        "id": "e9",
+        "from": "n2",
+        "to": "n6",
+        "labelWidth": 20,
+        "labelHeight": 10
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": true,
+          "id": "e0",
+          "labelX": 241,
+          "labelY": 235,
+          "points": [
+            {
+              "x": 272,
+              "y": 205
+            },
+            {
+              "x": 272,
+              "y": 265
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e1",
+          "labelX": 349,
+          "labelY": 300,
+          "points": [
+            {
+              "x": 322,
+              "y": 395
+            },
+            {
+              "x": 322,
+              "y": 205
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e2",
+          "labelX": 196,
+          "labelY": 132,
+          "points": [
+            {
+              "x": 166,
+              "y": 148
+            },
+            {
+              "x": 226,
+              "y": 148
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e3",
+          "labelX": 80,
+          "labelY": 295.5,
+          "points": [
+            {
+              "x": 106,
+              "y": 250
+            },
+            {
+              "x": 106,
+              "y": 340
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e4",
+          "labelX": 19,
+          "labelY": 532.5,
+          "points": [
+            {
+              "x": 76,
+              "y": 580
+            },
+            {
+              "x": 46,
+              "y": 580
+            },
+            {
+              "x": 46,
+              "y": 530
+            },
+            {
+              "x": 91,
+              "y": 530
+            },
+            {
+              "x": 91,
+              "y": 560
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e5",
+          "labelX": 166,
+          "labelY": 297,
+          "points": [
+            {
+              "x": 136,
+              "y": 250
+            },
+            {
+              "x": 136,
+              "y": 280
+            },
+            {
+              "x": 226,
+              "y": 280
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e6",
+          "labelX": 133,
+          "labelY": 100,
+          "points": [
+            {
+              "x": 106,
+              "y": 70
+            },
+            {
+              "x": 106,
+              "y": 130
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e7",
+          "labelX": 196,
+          "labelY": 175.5,
+          "points": [
+            {
+              "x": 166,
+              "y": 184
+            },
+            {
+              "x": 196,
+              "y": 184
+            },
+            {
+              "x": 196,
+              "y": 166
+            },
+            {
+              "x": 226,
+              "y": 166
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e8",
+          "labelX": 80,
+          "labelY": 495,
+          "points": [
+            {
+              "x": 111,
+              "y": 560
+            },
+            {
+              "x": 111,
+              "y": 430
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e9",
+          "labelX": 265,
+          "labelY": 377,
+          "points": [
+            {
+              "x": 248,
+              "y": 295
+            },
+            {
+              "x": 248,
+              "y": 435
+            },
+            {
+              "x": 271,
+              "y": 435
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 80,
+          "id": "n6",
+          "width": 80,
+          "x": 311,
+          "y": 435
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 90,
+          "id": "n5",
+          "width": 50,
+          "x": 106,
+          "y": 385
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n4",
+          "width": 60,
+          "x": 106,
+          "y": 580
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n3",
+          "width": 70,
+          "x": 106,
+          "y": 35
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 30,
+          "id": "n2",
+          "width": 70,
+          "x": 261,
+          "y": 280
+        },
+        {
+          "fontSize": 20,
+          "hasLabel": false,
+          "height": 120,
+          "id": "n1",
+          "width": 120,
+          "x": 106,
+          "y": 190
+        },
+        {
+          "fontSize": 28,
+          "hasLabel": false,
+          "height": 123,
+          "id": "n0",
+          "width": 123,
+          "x": 287.5,
+          "y": 143.5
+        }
+      ]
+    },
+    "name": "extended-random-05-BT",
+    "nodes": [
+      {
+        "id": "n6",
+        "width": 80,
+        "height": 80,
+        "shape": "text"
+      },
+      {
+        "id": "n5",
+        "width": 50,
+        "height": 90,
+        "shape": "sql_table"
+      },
+      {
+        "id": "n4",
+        "width": 60,
+        "height": 40,
+        "shape": "SQL_TABLE"
+      },
+      {
+        "id": "n3",
+        "width": 70,
+        "height": 70,
+        "shape": "cylinder"
+      },
+      {
+        "id": "n2",
+        "width": 70,
+        "height": 30,
+        "shape": "sql_table"
+      },
+      {
+        "id": "n1",
+        "width": 50,
+        "height": 90,
+        "shape": "TEXT"
+      },
+      {
+        "id": "n0",
+        "width": 50,
+        "height": 70,
+        "shape": "square"
+      }
+    ],
+    "options": {
+      "rootLevel": 2,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n0",
+        "to": "n3",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n5",
+        "to": "n6",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n4",
+        "to": "n0",
+        "sourceArrowhead": "none",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n4",
+        "to": "n7",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n7",
+        "to": "n6",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n7",
+        "to": "n2",
+        "sourceArrowhead": "none",
+        "targetArrowhead": "none"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 810,
+              "y": 45
+            },
+            {
+              "x": 910,
+              "y": 45
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 50,
+              "y": 90
+            },
+            {
+              "x": 150,
+              "y": 90
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 610,
+              "y": 38
+            },
+            {
+              "x": 711,
+              "y": 38
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 510,
+              "y": 38
+            },
+            {
+              "x": 460,
+              "y": 38
+            },
+            {
+              "x": 460,
+              "y": 90
+            },
+            {
+              "x": 410,
+              "y": 90
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e4",
+          "points": [
+            {
+              "x": 310,
+              "y": 90
+            },
+            {
+              "x": 210,
+              "y": 90
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e5",
+          "points": [
+            {
+              "x": 410,
+              "y": 90
+            },
+            {
+              "x": 460,
+              "y": 90
+            },
+            {
+              "x": 460,
+              "y": 135
+            },
+            {
+              "x": 520,
+              "y": 135
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 90,
+          "id": "n7",
+          "width": 100,
+          "x": 360,
+          "y": 90
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n6",
+          "width": 60,
+          "x": 180,
+          "y": 90
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 50,
+          "id": "n5",
+          "width": 50,
+          "x": 25,
+          "y": 90
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 30,
+          "id": "n4",
+          "width": 100,
+          "x": 560,
+          "y": 45
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 90,
+          "id": "n3",
+          "width": 40,
+          "x": 930,
+          "y": 45
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 50,
+          "id": "n2",
+          "width": 80,
+          "x": 560,
+          "y": 135
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 80,
+          "id": "n1",
+          "width": 60,
+          "x": 660,
+          "y": 100
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 60,
+          "id": "n0",
+          "width": 100,
+          "x": 760,
+          "y": 45
+        }
+      ]
+    },
+    "name": "extended-random-06-LR",
+    "nodes": [
+      {
+        "id": "n7",
+        "width": 100,
+        "height": 90,
+        "shape": "TEXT"
+      },
+      {
+        "id": "n6",
+        "width": 60,
+        "height": 70,
+        "shape": "text"
+      },
+      {
+        "isGrid": true,
+        "id": "n5",
+        "width": 50,
+        "height": 50,
+        "shape": "text"
+      },
+      {
+        "id": "n4",
+        "width": 100,
+        "height": 30,
+        "shape": "callout"
+      },
+      {
+        "id": "n3",
+        "width": 40,
+        "height": 90,
+        "shape": "diamond"
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 50,
+        "shape": "TEXT"
+      },
+      {
+        "id": "n1",
+        "width": 60,
+        "height": 80,
+        "shape": "code"
+      },
+      {
+        "id": "n0",
+        "width": 100,
+        "height": 60,
+        "shape": "oval"
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "rootLevel": 0,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n1",
+        "to": "n1"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n1",
+        "to": "n0"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n2",
+        "to": "n1"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n6",
+        "to": "n7"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n1",
+        "to": "n6"
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n6",
+        "to": "n7"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 539,
+              "y": 243
+            },
+            {
+              "x": 510,
+              "y": 243
+            },
+            {
+              "x": 510,
+              "y": 150
+            },
+            {
+              "x": 603,
+              "y": 150
+            },
+            {
+              "x": 603,
+              "y": 180
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 539,
+              "y": 243
+            },
+            {
+              "x": 455,
+              "y": 243
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 603,
+              "y": 120
+            },
+            {
+              "x": 603,
+              "y": 180
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 623,
+              "y": 200
+            },
+            {
+              "x": 623,
+              "y": 120
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e4",
+          "points": [
+            {
+              "x": 190,
+              "y": 265
+            },
+            {
+              "x": 120,
+              "y": 265
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e5",
+          "points": [
+            {
+              "x": 582,
+              "y": 285
+            },
+            {
+              "x": 300,
+              "y": 285
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e6",
+          "points": [
+            {
+              "x": 190,
+              "y": 305
+            },
+            {
+              "x": 120,
+              "y": 305
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 32,
+          "hasLabel": false,
+          "height": 120,
+          "id": "n7",
+          "width": 120,
+          "x": 60,
+          "y": 285
+        },
+        {
+          "fontSize": 20,
+          "hasLabel": false,
+          "height": 120,
+          "id": "n6",
+          "width": 120,
+          "x": 240,
+          "y": 285
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n5",
+          "width": 70,
+          "x": 35,
+          "y": 20
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 90,
+          "id": "n4",
+          "width": 50,
+          "x": 115,
+          "y": 45
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n3",
+          "width": 100,
+          "x": 210,
+          "y": 20
+        },
+        {
+          "fontSize": 32,
+          "hasLabel": false,
+          "height": 120,
+          "id": "n2",
+          "width": 120,
+          "x": 603,
+          "y": 60
+        },
+        {
+          "fontSize": 20,
+          "hasLabel": false,
+          "height": 125,
+          "id": "n1",
+          "width": 125,
+          "x": 602.5,
+          "y": 242.5
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 30,
+          "id": "n0",
+          "width": 50,
+          "x": 430,
+          "y": 250
+        }
+      ]
+    },
+    "name": "extended-random-07-RL",
+    "nodes": [
+      {
+        "id": "n7",
+        "width": 50,
+        "height": 40
+      },
+      {
+        "isInvisible": true,
+        "id": "n6",
+        "width": 90,
+        "height": 30,
+        "shape": "hexagon"
+      },
+      {
+        "id": "n5",
+        "width": 70,
+        "height": 40,
+        "shape": "class"
+      },
+      {
+        "id": "n4",
+        "width": 50,
+        "height": 90,
+        "shape": "hexagon"
+      },
+      {
+        "id": "n3",
+        "width": 100,
+        "height": 40,
+        "shape": "hexagon"
+      },
+      {
+        "id": "n2",
+        "width": 50,
+        "height": 40,
+        "shape": "square"
+      },
+      {
+        "id": "n1",
+        "width": 100,
+        "height": 80,
+        "shape": "diamond"
+      },
+      {
+        "nearId": "n7",
+        "id": "n0",
+        "width": 50,
+        "height": 30,
+        "shape": "callout"
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "rootLevel": 1,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n2",
+        "to": "n3"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n2",
+        "to": "n3"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n3",
+        "to": "n0"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n0",
+        "to": "n2"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n0",
+        "to": "n0"
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n3",
+        "to": "n3"
+      },
+      {
+        "d2Index": 7,
+        "id": "e7",
+        "from": "n0",
+        "to": "n3"
+      },
+      {
+        "d2Index": 8,
+        "id": "e8",
+        "from": "n2",
+        "to": "n1"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 298,
+              "y": 315
+            },
+            {
+              "x": 298,
+              "y": 480
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 328,
+              "y": 318
+            },
+            {
+              "x": 328,
+              "y": 482
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 280,
+              "y": 120
+            },
+            {
+              "x": 280,
+              "y": 240
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 240,
+              "y": 561
+            },
+            {
+              "x": 90,
+              "y": 561
+            },
+            {
+              "x": 90,
+              "y": 480
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e4",
+          "points": [
+            {
+              "x": 104,
+              "y": 361
+            },
+            {
+              "x": 104,
+              "y": 300
+            },
+            {
+              "x": 240,
+              "y": 300
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e5",
+          "points": [
+            {
+              "x": 30,
+              "y": 402
+            },
+            {
+              "x": 0,
+              "y": 402
+            },
+            {
+              "x": 0,
+              "y": 333
+            },
+            {
+              "x": 58,
+              "y": 333
+            },
+            {
+              "x": 58,
+              "y": 363
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e6",
+          "points": [
+            {
+              "x": 240,
+              "y": 522
+            },
+            {
+              "x": 210,
+              "y": 522
+            },
+            {
+              "x": 210,
+              "y": 453
+            },
+            {
+              "x": 268,
+              "y": 453
+            },
+            {
+              "x": 268,
+              "y": 483
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e7",
+          "points": [
+            {
+              "x": 150,
+              "y": 406
+            },
+            {
+              "x": 268,
+              "y": 406
+            },
+            {
+              "x": 268,
+              "y": 483
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e8",
+          "points": [
+            {
+              "x": 320,
+              "y": 240
+            },
+            {
+              "x": 320,
+              "y": 120
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 32,
+          "hasLabel": true,
+          "height": 120,
+          "id": "n3",
+          "labelX": 300,
+          "labelY": 552,
+          "width": 120,
+          "x": 300,
+          "y": 540
+        },
+        {
+          "fontSize": 32,
+          "hasLabel": true,
+          "height": 120,
+          "id": "n2",
+          "labelX": 300,
+          "labelY": 277.5,
+          "width": 120,
+          "x": 300,
+          "y": 300
+        },
+        {
+          "fontSize": 24,
+          "hasLabel": false,
+          "height": 120,
+          "id": "n1",
+          "width": 120,
+          "x": 300,
+          "y": 60
+        },
+        {
+          "fontSize": 32,
+          "hasLabel": true,
+          "height": 120,
+          "id": "n0",
+          "labelX": 90,
+          "labelY": 432,
+          "width": 120,
+          "x": 90,
+          "y": 420
+        }
+      ]
+    },
+    "name": "extended-random-08-TB",
+    "nodes": [
+      {
+        "id": "n3",
+        "width": 50,
+        "height": 30,
+        "shape": "cylinder",
+        "labelWidth": 35,
+        "labelHeight": 10
+      },
+      {
+        "id": "n2",
+        "width": 60,
+        "height": 40,
+        "shape": "callout",
+        "labelWidth": 35,
+        "labelHeight": 20
+      },
+      {
+        "id": "n1",
+        "width": 50,
+        "height": 80,
+        "shape": "text",
+        "labelWidth": 20,
+        "labelHeight": 15
+      },
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 40,
+        "shape": "cylinder",
+        "labelWidth": 35,
+        "labelHeight": 10
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "rootLevel": 2,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n4",
+        "to": "n0",
+        "labelWidth": 40,
+        "labelHeight": 10
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n5",
+        "to": "n2",
+        "labelWidth": 40,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n4",
+        "to": "n2",
+        "labelWidth": 40,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n0",
+        "to": "n5",
+        "labelWidth": 30,
+        "labelHeight": 20
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n0",
+        "to": "n3",
+        "labelWidth": 20,
+        "labelHeight": 10
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n5",
+        "to": "n1",
+        "labelWidth": 20,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n0",
+        "to": "n5",
+        "labelWidth": 50,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 7,
+        "id": "e7",
+        "from": "n1",
+        "to": "n5",
+        "labelWidth": 40,
+        "labelHeight": 10
+      },
+      {
+        "d2Index": 8,
+        "id": "e8",
+        "from": "n4",
+        "to": "n4",
+        "labelWidth": 50,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 9,
+        "id": "e9",
+        "from": "n1",
+        "to": "n1",
+        "labelWidth": 40,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 10,
+        "id": "e10",
+        "from": "n4",
+        "to": "n4",
+        "labelWidth": 40,
+        "labelHeight": 10
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": true,
+          "id": "e0",
+          "labelX": 224,
+          "labelY": 347,
+          "points": [
+            {
+              "x": 183,
+              "y": 365
+            },
+            {
+              "x": 250,
+              "y": 365
+            },
+            {
+              "x": 250,
+              "y": 330
+            },
+            {
+              "x": 318,
+              "y": 330
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e1",
+          "labelX": 248,
+          "labelY": 239.5,
+          "points": [
+            {
+              "x": 318,
+              "y": 225
+            },
+            {
+              "x": 178,
+              "y": 225
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e2",
+          "labelX": 185,
+          "labelY": 300.5,
+          "points": [
+            {
+              "x": 158,
+              "y": 345
+            },
+            {
+              "x": 158,
+              "y": 255
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e3",
+          "labelX": 310,
+          "labelY": 270,
+          "points": [
+            {
+              "x": 331,
+              "y": 300
+            },
+            {
+              "x": 331,
+              "y": 240
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e4",
+          "labelX": 429,
+          "labelY": 319,
+          "points": [
+            {
+              "x": 358,
+              "y": 330
+            },
+            {
+              "x": 500,
+              "y": 330
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e5",
+          "labelX": 305,
+          "labelY": 194.5,
+          "points": [
+            {
+              "x": 331,
+              "y": 210
+            },
+            {
+              "x": 331,
+              "y": 180
+            },
+            {
+              "x": 298,
+              "y": 180
+            },
+            {
+              "x": 298,
+              "y": 130
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e6",
+          "labelX": 376,
+          "labelY": 270.5,
+          "points": [
+            {
+              "x": 344,
+              "y": 300
+            },
+            {
+              "x": 344,
+              "y": 240
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e7",
+          "labelX": 371,
+          "labelY": 180,
+          "points": [
+            {
+              "x": 344,
+              "y": 150
+            },
+            {
+              "x": 344,
+              "y": 210
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e8",
+          "labelX": 26,
+          "labelY": 261.5,
+          "points": [
+            {
+              "x": 123,
+              "y": 355
+            },
+            {
+              "x": 23,
+              "y": 355
+            },
+            {
+              "x": 23,
+              "y": 275
+            },
+            {
+              "x": 138,
+              "y": 275
+            },
+            {
+              "x": 138,
+              "y": 345
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e9",
+          "labelX": 237,
+          "labelY": 7.5,
+          "points": [
+            {
+              "x": 293,
+              "y": 60
+            },
+            {
+              "x": 263,
+              "y": 60
+            },
+            {
+              "x": 263,
+              "y": 0
+            },
+            {
+              "x": 308,
+              "y": 0
+            },
+            {
+              "x": 308,
+              "y": 30
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e10",
+          "labelX": 96,
+          "labelY": 304,
+          "points": [
+            {
+              "x": 123,
+              "y": 355
+            },
+            {
+              "x": 93,
+              "y": 355
+            },
+            {
+              "x": 93,
+              "y": 315
+            },
+            {
+              "x": 138,
+              "y": 315
+            },
+            {
+              "x": 138,
+              "y": 345
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n6",
+          "width": 90,
+          "x": 45,
+          "y": 20
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 30,
+          "id": "n5",
+          "width": 40,
+          "x": 338,
+          "y": 225
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n4",
+          "width": 60,
+          "x": 153,
+          "y": 365
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n3",
+          "width": 70,
+          "x": 535,
+          "y": 330
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 60,
+          "id": "n2",
+          "width": 50,
+          "x": 153,
+          "y": 225
+        },
+        {
+          "fontSize": 24,
+          "hasLabel": false,
+          "height": 120,
+          "id": "n1",
+          "width": 120,
+          "x": 338,
+          "y": 90
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 60,
+          "id": "n0",
+          "width": 40,
+          "x": 338,
+          "y": 330
+        }
+      ]
+    },
+    "name": "extended-random-09-BT",
+    "nodes": [
+      {
+        "id": "n6",
+        "width": 90,
+        "height": 40,
+        "shape": "callout"
+      },
+      {
+        "id": "n5",
+        "width": 40,
+        "height": 30,
+        "shape": "SQL_TABLE"
+      },
+      {
+        "id": "n4",
+        "width": 60,
+        "height": 40,
+        "shape": "code"
+      },
+      {
+        "id": "n3",
+        "width": 70,
+        "height": 30,
+        "shape": "square"
+      },
+      {
+        "id": "n2",
+        "width": 50,
+        "height": 60,
+        "shape": "class"
+      },
+      {
+        "id": "n1",
+        "width": 80,
+        "height": 50,
+        "shape": "hexagon"
+      },
+      {
+        "id": "n0",
+        "width": 40,
+        "height": 60,
+        "shape": "SQL_TABLE"
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "rootLevel": 0,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n5",
+        "to": "n5",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n4",
+        "to": "n2",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n5",
+        "to": "n3",
+        "sourceArrowhead": "none",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n1",
+        "to": "n2",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n2",
+        "to": "n2",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n5",
+        "to": "n4",
+        "sourceArrowhead": "none",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n0",
+        "to": "n5",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 7,
+        "id": "e7",
+        "from": "n1",
+        "to": "n2",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      },
+      {
+        "d2Index": 8,
+        "id": "e8",
+        "from": "n3",
+        "to": "n0",
+        "sourceArrowhead": "none",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 9,
+        "id": "e9",
+        "from": "n3",
+        "to": "n1",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 10,
+        "id": "e10",
+        "from": "n1",
+        "to": "n2",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 348,
+              "y": 270
+            },
+            {
+              "x": 348,
+              "y": 240
+            },
+            {
+              "x": 300,
+              "y": 240
+            },
+            {
+              "x": 300,
+              "y": 278
+            },
+            {
+              "x": 330,
+              "y": 278
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 170,
+              "y": 283
+            },
+            {
+              "x": 170,
+              "y": 190
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 365,
+              "y": 330
+            },
+            {
+              "x": 365,
+              "y": 420
+            },
+            {
+              "x": 390,
+              "y": 420
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 310,
+              "y": 70
+            },
+            {
+              "x": 190,
+              "y": 70
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e4",
+          "points": [
+            {
+              "x": 30,
+              "y": 70
+            },
+            {
+              "x": 0,
+              "y": 70
+            },
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 70,
+              "y": 0
+            },
+            {
+              "x": 70,
+              "y": 30
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e5",
+          "points": [
+            {
+              "x": 365,
+              "y": 305
+            },
+            {
+              "x": 240,
+              "y": 305
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e6",
+          "points": [
+            {
+              "x": 555,
+              "y": 300
+            },
+            {
+              "x": 555,
+              "y": 285
+            },
+            {
+              "x": 400,
+              "y": 285
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e7",
+          "points": [
+            {
+              "x": 270,
+              "y": 110
+            },
+            {
+              "x": 190,
+              "y": 110
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e8",
+          "points": [
+            {
+              "x": 430,
+              "y": 420
+            },
+            {
+              "x": 555,
+              "y": 420
+            },
+            {
+              "x": 555,
+              "y": 390
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e9",
+          "points": [
+            {
+              "x": 410,
+              "y": 450
+            },
+            {
+              "x": 410,
+              "y": 490
+            },
+            {
+              "x": 640,
+              "y": 490
+            },
+            {
+              "x": 640,
+              "y": 110
+            },
+            {
+              "x": 431,
+              "y": 110
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e10",
+          "points": [
+            {
+              "x": 309,
+              "y": 150
+            },
+            {
+              "x": 190,
+              "y": 150
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 60,
+          "id": "n5",
+          "width": 70,
+          "x": 365,
+          "y": 300
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 90,
+          "id": "n4",
+          "width": 90,
+          "x": 195,
+          "y": 325
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 60,
+          "id": "n3",
+          "width": 40,
+          "x": 410,
+          "y": 420
+        },
+        {
+          "fontSize": 32,
+          "hasLabel": false,
+          "height": 160,
+          "id": "n2",
+          "width": 160,
+          "x": 110,
+          "y": 110
+        },
+        {
+          "fontSize": 32,
+          "hasLabel": false,
+          "height": 160,
+          "id": "n1",
+          "width": 160,
+          "x": 350,
+          "y": 110
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 90,
+          "id": "n0",
+          "width": 90,
+          "x": 555,
+          "y": 345
+        }
+      ]
+    },
+    "name": "extended-random-10-LR",
+    "nodes": [
+      {
+        "id": "n5",
+        "width": 70,
+        "height": 60,
+        "shape": "callout"
+      },
+      {
+        "id": "n4",
+        "width": 90,
+        "height": 90,
+        "shape": "cylinder"
+      },
+      {
+        "id": "n3",
+        "width": 40,
+        "height": 60,
+        "shape": "diamond"
+      },
+      {
+        "id": "n2",
+        "width": 70,
+        "height": 60,
+        "shape": "TEXT"
+      },
+      {
+        "id": "n1",
+        "width": 50,
+        "height": 40,
+        "shape": "diamond"
+      },
+      {
+        "id": "n0",
+        "width": 90,
+        "height": 90,
+        "shape": "callout"
+      }
+    ],
+    "options": {
+      "rootLevel": 1,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n3",
+        "to": "n1"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n3",
+        "to": "n2"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n1",
+        "to": "n3"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n2",
+        "to": "n3"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 369,
+              "y": 42
+            },
+            {
+              "x": 492,
+              "y": 42
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 738,
+              "y": 62
+            },
+            {
+              "x": 612,
+              "y": 62
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 246,
+              "y": 42
+            },
+            {
+              "x": 120,
+              "y": 42
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 492,
+              "y": 82
+            },
+            {
+              "x": 369,
+              "y": 82
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e4",
+          "points": [
+            {
+              "x": 120,
+              "y": 82
+            },
+            {
+              "x": 246,
+              "y": 82
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "hasLabel": false,
+          "height": 123,
+          "id": "n3",
+          "width": 123,
+          "x": 307.5,
+          "y": 61.5
+        },
+        {
+          "fontSize": 24,
+          "hasLabel": false,
+          "height": 120,
+          "id": "n2",
+          "width": 120,
+          "x": 60,
+          "y": 62
+        },
+        {
+          "fontSize": 24,
+          "hasLabel": false,
+          "height": 120,
+          "id": "n1",
+          "width": 120,
+          "x": 552,
+          "y": 62
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n0",
+          "width": 60,
+          "x": 768,
+          "y": 62
+        }
+      ]
+    },
+    "name": "extended-random-11-RL",
+    "nodes": [
+      {
+        "id": "n3",
+        "width": 70,
+        "height": 30,
+        "shape": "square"
+      },
+      {
+        "id": "n2",
+        "width": 70,
+        "height": 80,
+        "shape": "square"
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 80,
+        "shape": "code"
+      },
+      {
+        "nearId": "n3",
+        "id": "n0",
+        "width": 60,
+        "height": 70,
+        "shape": "stored_data"
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "rootLevel": 2,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n3",
+        "to": "n2"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n2",
+        "to": "n1"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n2",
+        "to": "n0"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n3",
+        "to": "n1"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n2",
+        "to": "n2"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n3",
+        "to": "n0"
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n3",
+        "to": "n3"
+      },
+      {
+        "d2Index": 7,
+        "id": "e7",
+        "from": "n0",
+        "to": "n2"
+      },
+      {
+        "d2Index": 8,
+        "id": "e8",
+        "from": "n0",
+        "to": "n0"
+      },
+      {
+        "d2Index": 9,
+        "id": "e9",
+        "from": "n0",
+        "to": "n3"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 103,
+              "y": 75
+            },
+            {
+              "x": 103,
+              "y": 105
+            },
+            {
+              "x": 285,
+              "y": 105
+            },
+            {
+              "x": 285,
+              "y": 135
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 310,
+              "y": 135
+            },
+            {
+              "x": 310,
+              "y": 50
+            },
+            {
+              "x": 260,
+              "y": 50
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 215,
+              "y": 187
+            },
+            {
+              "x": 146,
+              "y": 187
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 92,
+              "y": 45
+            },
+            {
+              "x": 92,
+              "y": 30
+            },
+            {
+              "x": 220,
+              "y": 30
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e4",
+          "points": [
+            {
+              "x": 215,
+              "y": 154
+            },
+            {
+              "x": 185,
+              "y": 154
+            },
+            {
+              "x": 185,
+              "y": 105
+            },
+            {
+              "x": 245,
+              "y": 105
+            },
+            {
+              "x": 245,
+              "y": 135
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e5",
+          "points": [
+            {
+              "x": 92,
+              "y": 75
+            },
+            {
+              "x": 92,
+              "y": 135
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e6",
+          "points": [
+            {
+              "x": 55,
+              "y": 60
+            },
+            {
+              "x": 25,
+              "y": 60
+            },
+            {
+              "x": 25,
+              "y": 15
+            },
+            {
+              "x": 70,
+              "y": 15
+            },
+            {
+              "x": 70,
+              "y": 45
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e7",
+          "points": [
+            {
+              "x": 143,
+              "y": 220
+            },
+            {
+              "x": 275,
+              "y": 220
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e8",
+          "points": [
+            {
+              "x": 31,
+              "y": 166
+            },
+            {
+              "x": 0,
+              "y": 166
+            },
+            {
+              "x": 0,
+              "y": 113
+            },
+            {
+              "x": 53,
+              "y": 113
+            },
+            {
+              "x": 53,
+              "y": 144
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e9",
+          "points": [
+            {
+              "x": 53,
+              "y": 144
+            },
+            {
+              "x": 53,
+              "y": 109
+            },
+            {
+              "x": 81,
+              "y": 109
+            },
+            {
+              "x": 81,
+              "y": 75
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 30,
+          "id": "n3",
+          "width": 60,
+          "x": 85,
+          "y": 60
+        },
+        {
+          "fontSize": 20,
+          "hasLabel": true,
+          "height": 120,
+          "id": "n2",
+          "labelX": 275,
+          "labelY": 172.5,
+          "width": 120,
+          "x": 275,
+          "y": 195
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n1",
+          "width": 40,
+          "x": 240,
+          "y": 35
+        },
+        {
+          "fontSize": 20,
+          "hasLabel": true,
+          "height": 125,
+          "id": "n0",
+          "labelX": 84.5,
+          "labelY": 197.5,
+          "width": 125,
+          "x": 84.5,
+          "y": 197.5
+        }
+      ]
+    },
+    "name": "extended-random-12-TB",
+    "nodes": [
+      {
+        "id": "n3",
+        "width": 60,
+        "height": 30,
+        "shape": "sql_table",
+        "labelWidth": 25,
+        "labelHeight": 20
+      },
+      {
+        "id": "n2",
+        "width": 50,
+        "height": 90,
+        "shape": "callout",
+        "labelWidth": 35,
+        "labelHeight": 15
+      },
+      {
+        "isGrid": true,
+        "id": "n1",
+        "width": 40,
+        "height": 70,
+        "shape": "text",
+        "labelWidth": 35,
+        "labelHeight": 15
+      },
+      {
+        "id": "n0",
+        "width": 100,
+        "height": 50,
+        "shape": "oval",
+        "labelWidth": 20,
+        "labelHeight": 15
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "rootLevel": 0,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n1",
+        "to": "n4",
+        "labelWidth": 30,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n5",
+        "to": "n0",
+        "labelWidth": 50,
+        "labelHeight": 10
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n2",
+        "to": "n0",
+        "labelWidth": 30,
+        "labelHeight": 20
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n4",
+        "to": "n5",
+        "labelWidth": 40,
+        "labelHeight": 20
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n4",
+        "to": "n1",
+        "labelWidth": 30,
+        "labelHeight": 10
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n1",
+        "to": "n2",
+        "labelWidth": 20,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n4",
+        "to": "n4",
+        "labelWidth": 30,
+        "labelHeight": 10
+      },
+      {
+        "d2Index": 7,
+        "id": "e7",
+        "from": "n4",
+        "to": "n0",
+        "labelWidth": 50,
+        "labelHeight": 10
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": true,
+          "id": "e0",
+          "labelX": 56,
+          "labelY": 344.5,
+          "points": [
+            {
+              "x": 77,
+              "y": 407
+            },
+            {
+              "x": 77,
+              "y": 282
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e1",
+          "labelX": 280,
+          "labelY": 245,
+          "points": [
+            {
+              "x": 311,
+              "y": 282
+            },
+            {
+              "x": 311,
+              "y": 207
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e2",
+          "labelX": 384,
+          "labelY": 284,
+          "points": [
+            {
+              "x": 362,
+              "y": 407
+            },
+            {
+              "x": 362,
+              "y": 182
+            },
+            {
+              "x": 341,
+              "y": 182
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e3",
+          "labelX": 190,
+          "labelY": 301,
+          "points": [
+            {
+              "x": 133,
+              "y": 282
+            },
+            {
+              "x": 133,
+              "y": 317
+            },
+            {
+              "x": 281,
+              "y": 317
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e4",
+          "labelX": 132,
+          "labelY": 345,
+          "points": [
+            {
+              "x": 110,
+              "y": 282
+            },
+            {
+              "x": 110,
+              "y": 407
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e5",
+          "labelX": 222,
+          "labelY": 423.5,
+          "points": [
+            {
+              "x": 144,
+              "y": 437
+            },
+            {
+              "x": 300,
+              "y": 437
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e6",
+          "labelX": 15,
+          "labelY": 116,
+          "points": [
+            {
+              "x": 37,
+              "y": 177
+            },
+            {
+              "x": 7,
+              "y": 177
+            },
+            {
+              "x": 7,
+              "y": 127
+            },
+            {
+              "x": 73,
+              "y": 127
+            },
+            {
+              "x": 73,
+              "y": 157
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e7",
+          "labelX": 214,
+          "labelY": 171,
+          "points": [
+            {
+              "x": 146,
+              "y": 182
+            },
+            {
+              "x": 281,
+              "y": 182
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 90,
+          "id": "n6",
+          "width": 70,
+          "x": 35,
+          "y": 45
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n5",
+          "width": 60,
+          "x": 311,
+          "y": 317
+        },
+        {
+          "fontSize": 20,
+          "hasLabel": false,
+          "height": 125,
+          "id": "n4",
+          "width": 125,
+          "x": 93.5,
+          "y": 219.5
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n3",
+          "width": 70,
+          "x": 225,
+          "y": 35
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 80,
+          "id": "n2",
+          "width": 90,
+          "x": 339,
+          "y": 447
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 60,
+          "id": "n1",
+          "width": 100,
+          "x": 94,
+          "y": 437
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 50,
+          "id": "n0",
+          "width": 60,
+          "x": 311,
+          "y": 182
+        }
+      ]
+    },
+    "name": "extended-random-13-BT",
+    "nodes": [
+      {
+        "id": "n6",
+        "width": 70,
+        "height": 90,
+        "shape": "sql_table"
+      },
+      {
+        "id": "n5",
+        "width": 60,
+        "height": 70,
+        "shape": "cylinder"
+      },
+      {
+        "id": "n4",
+        "width": 100,
+        "height": 70,
+        "shape": "stored_data"
+      },
+      {
+        "id": "n3",
+        "width": 70,
+        "height": 70,
+        "shape": "square"
+      },
+      {
+        "id": "n2",
+        "width": 90,
+        "height": 80,
+        "shape": "hexagon"
+      },
+      {
+        "id": "n1",
+        "width": 100,
+        "height": 60,
+        "shape": "class"
+      },
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 50,
+        "shape": "hexagon"
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "rootLevel": 1,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n3",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n2",
+        "to": "n2",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n0",
+        "to": "n4",
+        "sourceArrowhead": "none",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n0",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n1",
+        "to": "n1",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n3",
+        "to": "n2",
+        "sourceArrowhead": "none",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n4",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 175,
+              "y": 62
+            },
+            {
+              "x": 80,
+              "y": 62
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 343,
+              "y": 40
+            },
+            {
+              "x": 313,
+              "y": 40
+            },
+            {
+              "x": 313,
+              "y": 0
+            },
+            {
+              "x": 353,
+              "y": 0
+            },
+            {
+              "x": 353,
+              "y": 30
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 50,
+              "y": 72
+            },
+            {
+              "x": 30,
+              "y": 102
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 50,
+              "y": 32
+            },
+            {
+              "x": 50,
+              "y": 2
+            },
+            {
+              "x": 10,
+              "y": 2
+            },
+            {
+              "x": 10,
+              "y": 52
+            },
+            {
+              "x": 40,
+              "y": 52
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e4",
+          "points": [
+            {
+              "x": 205,
+              "y": 160
+            },
+            {
+              "x": 175,
+              "y": 160
+            },
+            {
+              "x": 175,
+              "y": 117
+            },
+            {
+              "x": 225,
+              "y": 117
+            },
+            {
+              "x": 225,
+              "y": 147
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e5",
+          "points": [
+            {
+              "x": 245,
+              "y": 58
+            },
+            {
+              "x": 341,
+              "y": 58
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e6",
+          "points": [
+            {
+              "x": 65,
+              "y": 102
+            },
+            {
+              "x": 65,
+              "y": 72
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 24,
+          "hasLabel": false,
+          "height": 120,
+          "id": "n4",
+          "width": 120,
+          "x": 60,
+          "y": 162
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 90,
+          "id": "n3",
+          "width": 70,
+          "x": 210,
+          "y": 52
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 50,
+          "id": "n2",
+          "width": 50,
+          "x": 365,
+          "y": 52
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 80,
+          "id": "n1",
+          "width": 60,
+          "x": 229,
+          "y": 187
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n0",
+          "width": 40,
+          "x": 60,
+          "y": 52
+        }
+      ]
+    },
+    "name": "extended-random-14-LR",
+    "nodes": [
+      {
+        "id": "n4",
+        "width": 80,
+        "height": 40,
+        "shape": "text"
+      },
+      {
+        "isInvisible": true,
+        "id": "n3",
+        "width": 70,
+        "height": 90,
+        "shape": "cylinder"
+      },
+      {
+        "id": "n2",
+        "width": 50,
+        "height": 50,
+        "shape": "oval"
+      },
+      {
+        "id": "n1",
+        "width": 60,
+        "height": 80,
+        "shape": "stored_data"
+      },
+      {
+        "id": "n0",
+        "width": 40,
+        "height": 40,
+        "shape": "sql_table"
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "rootLevel": 2,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n0",
+        "to": "n4"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n0",
+        "to": "n4"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n5",
+        "to": "n5"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n1",
+        "to": "n6"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n1",
+        "to": "n3"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n6",
+        "to": "n2"
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n4",
+        "to": "n6"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 46,
+              "y": 120
+            },
+            {
+              "x": 46,
+              "y": 180
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 72,
+              "y": 120
+            },
+            {
+              "x": 72,
+              "y": 180
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 155,
+              "y": 525
+            },
+            {
+              "x": 125,
+              "y": 525
+            },
+            {
+              "x": 125,
+              "y": 485
+            },
+            {
+              "x": 178,
+              "y": 485
+            },
+            {
+              "x": 178,
+              "y": 515
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 60,
+              "y": 485
+            },
+            {
+              "x": 60,
+              "y": 380
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e4",
+          "points": [
+            {
+              "x": 60,
+              "y": 555
+            },
+            {
+              "x": 60,
+              "y": 660
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e5",
+          "points": [
+            {
+              "x": 105,
+              "y": 320
+            },
+            {
+              "x": 245,
+              "y": 320
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e6",
+          "points": [
+            {
+              "x": 60,
+              "y": 230
+            },
+            {
+              "x": 60,
+              "y": 300
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 80,
+          "id": "n6",
+          "width": 90,
+          "x": 60,
+          "y": 340
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n5",
+          "width": 90,
+          "x": 200,
+          "y": 535
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 50,
+          "id": "n4",
+          "width": 80,
+          "x": 60,
+          "y": 205
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 60,
+          "id": "n3",
+          "width": 90,
+          "x": 60,
+          "y": 690
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n2",
+          "width": 40,
+          "x": 265,
+          "y": 320
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n1",
+          "width": 90,
+          "x": 60,
+          "y": 520
+        },
+        {
+          "fontSize": 32,
+          "hasLabel": false,
+          "height": 120,
+          "id": "n0",
+          "width": 120,
+          "x": 60,
+          "y": 60
+        }
+      ]
+    },
+    "name": "extended-random-15-RL",
+    "nodes": [
+      {
+        "id": "n6",
+        "width": 90,
+        "height": 80,
+        "shape": "SQL_TABLE"
+      },
+      {
+        "id": "n5",
+        "width": 90,
+        "height": 40,
+        "shape": "TEXT"
+      },
+      {
+        "id": "n4",
+        "width": 80,
+        "height": 50,
+        "shape": "sql_table"
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 60,
+        "shape": "hexagon"
+      },
+      {
+        "id": "n2",
+        "width": 40,
+        "height": 40,
+        "shape": "square"
+      },
+      {
+        "id": "n1",
+        "width": 90,
+        "height": 70,
+        "shape": "text"
+      },
+      {
+        "nearId": "n6",
+        "id": "n0",
+        "width": 40,
+        "height": 40,
+        "shape": "code"
+      }
+    ],
+    "options": {
+      "rootLevel": 0,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n0",
+        "to": "n0"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n0",
+        "to": "n2"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n3",
+        "to": "n0"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n0",
+        "to": "n0"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 60,
+              "y": 195
+            },
+            {
+              "x": 30,
+              "y": 195
+            },
+            {
+              "x": 30,
+              "y": 150
+            },
+            {
+              "x": 90,
+              "y": 150
+            },
+            {
+              "x": 90,
+              "y": 180
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 119,
+              "y": 195
+            },
+            {
+              "x": 195,
+              "y": 195
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 90,
+              "y": 60
+            },
+            {
+              "x": 90,
+              "y": 180
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 90,
+              "y": 210
+            },
+            {
+              "x": 90,
+              "y": 360
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e4",
+          "points": [
+            {
+              "x": 60,
+              "y": 195
+            },
+            {
+              "x": 0,
+              "y": 195
+            },
+            {
+              "x": 0,
+              "y": 120
+            },
+            {
+              "x": 90,
+              "y": 120
+            },
+            {
+              "x": 90,
+              "y": 180
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 20,
+          "hasLabel": false,
+          "height": 60,
+          "id": "n3",
+          "width": 100,
+          "x": 90,
+          "y": 30
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n2",
+          "width": 50,
+          "x": 220,
+          "y": 195
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": true,
+          "height": 80,
+          "id": "n1",
+          "labelX": 90,
+          "labelY": 455,
+          "width": 40,
+          "x": 90,
+          "y": 400
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": true,
+          "height": 30,
+          "id": "n0",
+          "labelX": 90,
+          "labelY": 220,
+          "width": 60,
+          "x": 90,
+          "y": 195
+        }
+      ]
+    },
+    "name": "extended-random-16-TB",
+    "nodes": [
+      {
+        "hasClassData": true,
+        "id": "n3",
+        "width": 100,
+        "height": 60,
+        "shape": "class",
+        "labelWidth": 35,
+        "labelHeight": 15
+      },
+      {
+        "id": "n2",
+        "width": 50,
+        "height": 40,
+        "shape": "code",
+        "labelWidth": 30,
+        "labelHeight": 15
+      },
+      {
+        "id": "n1",
+        "width": 40,
+        "height": 80,
+        "shape": "cylinder",
+        "labelWidth": 40,
+        "labelHeight": 20
+      },
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30,
+        "shape": "diamond",
+        "labelWidth": 40,
+        "labelHeight": 10
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "rootLevel": 1,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n5",
+        "to": "n1",
+        "labelWidth": 40,
+        "labelHeight": 10
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n6",
+        "to": "n6",
+        "labelWidth": 20,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n0",
+        "to": "n1",
+        "labelWidth": 40,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n6",
+        "to": "n1",
+        "labelWidth": 30,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n3",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n3",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 10
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n1",
+        "to": "n6",
+        "labelWidth": 40,
+        "labelHeight": 10
+      },
+      {
+        "d2Index": 7,
+        "id": "e7",
+        "from": "n1",
+        "to": "n4",
+        "labelWidth": 50,
+        "labelHeight": 20
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": true,
+          "id": "e0",
+          "labelX": 298,
+          "labelY": 346,
+          "points": [
+            {
+              "x": 324,
+              "y": 462
+            },
+            {
+              "x": 324,
+              "y": 288
+            },
+            {
+              "x": 266,
+              "y": 288
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e1",
+          "labelX": 10,
+          "labelY": 6.5,
+          "points": [
+            {
+              "x": 34,
+              "y": 70
+            },
+            {
+              "x": 4,
+              "y": 70
+            },
+            {
+              "x": 4,
+              "y": 21
+            },
+            {
+              "x": 65,
+              "y": 21
+            },
+            {
+              "x": 65,
+              "y": 51
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e2",
+          "labelX": 75,
+          "labelY": 335.5,
+          "points": [
+            {
+              "x": 101,
+              "y": 437
+            },
+            {
+              "x": 101,
+              "y": 288
+            },
+            {
+              "x": 156,
+              "y": 288
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e3",
+          "labelX": 116,
+          "labelY": 219.5,
+          "points": [
+            {
+              "x": 94,
+              "y": 129
+            },
+            {
+              "x": 94,
+              "y": 247
+            },
+            {
+              "x": 157,
+              "y": 247
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e4",
+          "labelX": 16,
+          "labelY": 554.5,
+          "points": [
+            {
+              "x": 127,
+              "y": 648
+            },
+            {
+              "x": 37,
+              "y": 648
+            },
+            {
+              "x": 37,
+              "y": 549
+            },
+            {
+              "x": 145,
+              "y": 549
+            },
+            {
+              "x": 145,
+              "y": 619
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e5",
+          "labelX": 76,
+          "labelY": 595,
+          "points": [
+            {
+              "x": 127,
+              "y": 648
+            },
+            {
+              "x": 97,
+              "y": 648
+            },
+            {
+              "x": 97,
+              "y": 589
+            },
+            {
+              "x": 145,
+              "y": 589
+            },
+            {
+              "x": 145,
+              "y": 619
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e6",
+          "labelX": 183,
+          "labelY": 187,
+          "points": [
+            {
+              "x": 197,
+              "y": 206
+            },
+            {
+              "x": 141,
+              "y": 129
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e7",
+          "labelX": 353,
+          "labelY": 194,
+          "points": [
+            {
+              "x": 267,
+              "y": 247
+            },
+            {
+              "x": 321,
+              "y": 247
+            },
+            {
+              "x": 321,
+              "y": 86
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "hasLabel": false,
+          "height": 123,
+          "id": "n6",
+          "width": 123,
+          "x": 95.5,
+          "y": 112.5
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n5",
+          "width": 60,
+          "x": 324,
+          "y": 482
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 50,
+          "id": "n4",
+          "width": 50,
+          "x": 321,
+          "y": 61
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 80,
+          "id": "n3",
+          "width": 80,
+          "x": 167,
+          "y": 656
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 80,
+          "id": "n2",
+          "width": 40,
+          "x": 247,
+          "y": 656
+        },
+        {
+          "fontSize": 20,
+          "hasLabel": false,
+          "height": 125,
+          "id": "n1",
+          "width": 125,
+          "x": 217.5,
+          "y": 268.5
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 90,
+          "id": "n0",
+          "width": 100,
+          "x": 101,
+          "y": 482
+        }
+      ]
+    },
+    "name": "extended-random-17-BT",
+    "nodes": [
+      {
+        "id": "n6",
+        "width": 70,
+        "height": 60,
+        "shape": "callout"
+      },
+      {
+        "id": "n5",
+        "width": 60,
+        "height": 40,
+        "shape": "hexagon"
+      },
+      {
+        "id": "n4",
+        "width": 50,
+        "height": 50,
+        "shape": "square"
+      },
+      {
+        "id": "n3",
+        "width": 80,
+        "height": 80,
+        "shape": "cylinder"
+      },
+      {
+        "id": "n2",
+        "width": 40,
+        "height": 80,
+        "shape": "hexagon"
+      },
+      {
+        "id": "n1",
+        "width": 100,
+        "height": 90,
+        "shape": "stored_data"
+      },
+      {
+        "id": "n0",
+        "width": 100,
+        "height": 90,
+        "shape": "class"
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "rootLevel": 2,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n3",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n1",
+        "to": "n3",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n0",
+        "to": "n1",
+        "sourceArrowhead": "none",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n0",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n2",
+        "to": "n2",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n3",
+        "to": "n2",
+        "sourceArrowhead": "none",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n1",
+        "to": "n3",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 7,
+        "id": "e7",
+        "from": "n1",
+        "to": "n3",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      },
+      {
+        "d2Index": 8,
+        "id": "e8",
+        "from": "n2",
+        "to": "n2",
+        "sourceArrowhead": "none",
+        "targetArrowhead": "none"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 205,
+              "y": 162
+            },
+            {
+              "x": 163,
+              "y": 162
+            },
+            {
+              "x": 163,
+              "y": 90
+            },
+            {
+              "x": 250,
+              "y": 90
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 430,
+              "y": 140
+            },
+            {
+              "x": 365,
+              "y": 140
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 320,
+              "y": 80
+            },
+            {
+              "x": 430,
+              "y": 80
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 268,
+              "y": 40
+            },
+            {
+              "x": 268,
+              "y": 10
+            },
+            {
+              "x": 220,
+              "y": 10
+            },
+            {
+              "x": 220,
+              "y": 60
+            },
+            {
+              "x": 250,
+              "y": 60
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e4",
+          "points": [
+            {
+              "x": 30,
+              "y": 190
+            },
+            {
+              "x": 0,
+              "y": 190
+            },
+            {
+              "x": 0,
+              "y": 153
+            },
+            {
+              "x": 43,
+              "y": 153
+            },
+            {
+              "x": 43,
+              "y": 183
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e5",
+          "points": [
+            {
+              "x": 205,
+              "y": 205
+            },
+            {
+              "x": 94,
+              "y": 205
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e6",
+          "points": [
+            {
+              "x": 483,
+              "y": 160
+            },
+            {
+              "x": 483,
+              "y": 200
+            },
+            {
+              "x": 365,
+              "y": 200
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e7",
+          "points": [
+            {
+              "x": 536,
+              "y": 160
+            },
+            {
+              "x": 536,
+              "y": 240
+            },
+            {
+              "x": 365,
+              "y": 240
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e8",
+          "points": [
+            {
+              "x": 78,
+              "y": 183
+            },
+            {
+              "x": 78,
+              "y": 153
+            },
+            {
+              "x": 120,
+              "y": 153
+            },
+            {
+              "x": 120,
+              "y": 190
+            },
+            {
+              "x": 90,
+              "y": 190
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "hasLabel": false,
+          "height": 160,
+          "id": "n3",
+          "width": 160,
+          "x": 285,
+          "y": 200
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n2",
+          "width": 70,
+          "x": 60,
+          "y": 200
+        },
+        {
+          "fontSize": 32,
+          "hasLabel": false,
+          "height": 160,
+          "id": "n1",
+          "width": 160,
+          "x": 510,
+          "y": 80
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 80,
+          "id": "n0",
+          "width": 70,
+          "x": 285,
+          "y": 80
+        }
+      ]
+    },
+    "name": "extended-random-18-LR",
+    "nodes": [
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 30
+      },
+      {
+        "id": "n2",
+        "width": 70,
+        "height": 40,
+        "shape": "oval"
+      },
+      {
+        "isGrid": true,
+        "id": "n1",
+        "width": 60,
+        "height": 90,
+        "shape": "square"
+      },
+      {
+        "id": "n0",
+        "width": 70,
+        "height": 80,
+        "shape": "text"
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "rootLevel": 0,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n0",
+        "to": "n3"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n0",
+        "to": "n4"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n3",
+        "to": "n3"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n0",
+        "to": "n4"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n0",
+        "to": "n2"
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n0",
+        "to": "n4"
+      },
+      {
+        "d2Index": 7,
+        "id": "e7",
+        "from": "n1",
+        "to": "n2"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 335,
+              "y": 160
+            },
+            {
+              "x": 335,
+              "y": 250
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 243,
+              "y": 40
+            },
+            {
+              "x": 149,
+              "y": 40
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 720,
+              "y": 73
+            },
+            {
+              "x": 622,
+              "y": 73
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 286,
+              "y": 260
+            },
+            {
+              "x": 256,
+              "y": 260
+            },
+            {
+              "x": 256,
+              "y": 220
+            },
+            {
+              "x": 311,
+              "y": 220
+            },
+            {
+              "x": 311,
+              "y": 250
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e4",
+          "points": [
+            {
+              "x": 240,
+              "y": 80
+            },
+            {
+              "x": 160,
+              "y": 80
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e5",
+          "points": [
+            {
+              "x": 385,
+              "y": 79
+            },
+            {
+              "x": 499,
+              "y": 79
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e6",
+          "points": [
+            {
+              "x": 243,
+              "y": 120
+            },
+            {
+              "x": 149,
+              "y": 120
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e7",
+          "points": [
+            {
+              "x": 720,
+              "y": 86
+            },
+            {
+              "x": 671,
+              "y": 86
+            },
+            {
+              "x": 671,
+              "y": 113
+            },
+            {
+              "x": 622,
+              "y": 113
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 32,
+          "hasLabel": false,
+          "height": 160,
+          "id": "n4",
+          "width": 160,
+          "x": 80,
+          "y": 80
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 60,
+          "id": "n3",
+          "width": 80,
+          "x": 320,
+          "y": 280
+        },
+        {
+          "fontSize": 28,
+          "hasLabel": false,
+          "height": 123,
+          "id": "n2",
+          "width": 123,
+          "x": 560.5,
+          "y": 79.5
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n1",
+          "width": 100,
+          "x": 770,
+          "y": 80
+        },
+        {
+          "fontSize": 32,
+          "hasLabel": false,
+          "height": 160,
+          "id": "n0",
+          "width": 160,
+          "x": 320,
+          "y": 80
+        }
+      ]
+    },
+    "name": "extended-random-19-RL",
+    "nodes": [
+      {
+        "id": "n4",
+        "width": 70,
+        "height": 70,
+        "shape": "oval"
+      },
+      {
+        "id": "n3",
+        "width": 80,
+        "height": 60,
+        "shape": "stored_data"
+      },
+      {
+        "id": "n2",
+        "width": 40,
+        "height": 70,
+        "shape": "TEXT"
+      },
+      {
+        "id": "n1",
+        "width": 100,
+        "height": 40,
+        "shape": "class"
+      },
+      {
+        "nearId": "n4",
+        "id": "n0",
+        "width": 70,
+        "height": 60,
+        "shape": "stored_data"
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "rootLevel": 1,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n2",
+        "to": "n4"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n1",
+        "to": "n3"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n3",
+        "to": "n2"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n3",
+        "to": "n4"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 30,
+              "y": 232
+            },
+            {
+              "x": 30,
+              "y": 258
+            },
+            {
+              "x": 130,
+              "y": 258
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 180,
+              "y": 30
+            },
+            {
+              "x": 180,
+              "y": 90
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 137,
+              "y": 116
+            },
+            {
+              "x": 30,
+              "y": 116
+            },
+            {
+              "x": 30,
+              "y": 142
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 180,
+              "y": 160
+            },
+            {
+              "x": 180,
+              "y": 225
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": true,
+          "height": 60,
+          "id": "n4",
+          "labelX": 180,
+          "labelY": 255,
+          "width": 100,
+          "x": 180,
+          "y": 255
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": true,
+          "height": 70,
+          "id": "n3",
+          "labelX": 180,
+          "labelY": 125,
+          "width": 90,
+          "x": 180,
+          "y": 125
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": true,
+          "height": 90,
+          "id": "n2",
+          "labelX": 30,
+          "labelY": 187,
+          "width": 60,
+          "x": 30,
+          "y": 187
+        },
+        {
+          "fontSize": 20,
+          "hasLabel": false,
+          "height": 30,
+          "id": "n1",
+          "width": 80,
+          "x": 180,
+          "y": 15
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": true,
+          "height": 90,
+          "id": "n0",
+          "labelX": 45.5,
+          "labelY": 45.5,
+          "width": 90,
+          "x": 45,
+          "y": 45
+        }
+      ]
+    },
+    "name": "extended-random-20-TB",
+    "nodes": [
+      {
+        "id": "n4",
+        "width": 100,
+        "height": 60,
+        "shape": "oval",
+        "labelWidth": 30,
+        "labelHeight": 20
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 70,
+        "shape": "oval",
+        "labelWidth": 35,
+        "labelHeight": 20
+      },
+      {
+        "id": "n2",
+        "width": 60,
+        "height": 90,
+        "shape": "stored_data",
+        "labelWidth": 20,
+        "labelHeight": 15
+      },
+      {
+        "hasClassData": true,
+        "id": "n1",
+        "width": 80,
+        "height": 30,
+        "shape": "class",
+        "labelWidth": 35,
+        "labelHeight": 20
+      },
+      {
+        "id": "n0",
+        "width": 90,
+        "height": 90,
+        "shape": "diamond",
+        "labelWidth": 30,
+        "labelHeight": 20
+      }
+    ],
+    "options": {
+      "rootLevel": 2,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n1",
+        "to": "n4",
+        "labelWidth": 30,
+        "labelHeight": 10
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n3",
+        "to": "n0",
+        "labelWidth": 20,
+        "labelHeight": 10
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n3",
+        "to": "n1",
+        "labelWidth": 50,
+        "labelHeight": 20
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n0",
+        "to": "n0",
+        "labelWidth": 50,
+        "labelHeight": 20
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": true,
+          "id": "e0",
+          "labelX": 35,
+          "labelY": 133,
+          "points": [
+            {
+              "x": 56,
+              "y": 180
+            },
+            {
+              "x": 56,
+              "y": 85
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e1",
+          "labelX": 161,
+          "labelY": 343,
+          "points": [
+            {
+              "x": 85,
+              "y": 354
+            },
+            {
+              "x": 236,
+              "y": 354
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e2",
+          "labelX": 24,
+          "labelY": 268,
+          "points": [
+            {
+              "x": 56,
+              "y": 315
+            },
+            {
+              "x": 56,
+              "y": 220
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e3",
+          "labelX": 175,
+          "labelY": 281,
+          "points": [
+            {
+              "x": 236,
+              "y": 334
+            },
+            {
+              "x": 206,
+              "y": 334
+            },
+            {
+              "x": 206,
+              "y": 273
+            },
+            {
+              "x": 252,
+              "y": 273
+            },
+            {
+              "x": 252,
+              "y": 303
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n4",
+          "width": 60,
+          "x": 56,
+          "y": 50
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 60,
+          "id": "n3",
+          "width": 60,
+          "x": 56,
+          "y": 345
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n2",
+          "width": 60,
+          "x": 303,
+          "y": 35
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n1",
+          "width": 100,
+          "x": 56,
+          "y": 200
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 90,
+          "id": "n0",
+          "width": 70,
+          "x": 271,
+          "y": 345
+        }
+      ]
+    },
+    "name": "extended-random-21-BT",
+    "nodes": [
+      {
+        "id": "n4",
+        "width": 60,
+        "height": 70,
+        "shape": "oval"
+      },
+      {
+        "isInvisible": true,
+        "id": "n3",
+        "width": 60,
+        "height": 60,
+        "shape": "oval"
+      },
+      {
+        "id": "n2",
+        "width": 60,
+        "height": 70,
+        "shape": "sql_table"
+      },
+      {
+        "id": "n1",
+        "width": 100,
+        "height": 40,
+        "shape": "diamond"
+      },
+      {
+        "id": "n0",
+        "width": 70,
+        "height": 90,
+        "shape": "cylinder"
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "rootLevel": 0,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n5",
+        "to": "n3",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n7",
+        "to": "n5",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n1",
+        "to": "n1",
+        "sourceArrowhead": "none",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n6",
+        "to": "n1",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n7",
+        "to": "n5",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 240,
+              "y": 110
+            },
+            {
+              "x": 240,
+              "y": 50
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 120,
+              "y": 150
+            },
+            {
+              "x": 182,
+              "y": 150
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 30,
+              "y": 300
+            },
+            {
+              "x": 0,
+              "y": 300
+            },
+            {
+              "x": 0,
+              "y": 250
+            },
+            {
+              "x": 50,
+              "y": 250
+            },
+            {
+              "x": 50,
+              "y": 280
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 210,
+              "y": 320
+            },
+            {
+              "x": 110,
+              "y": 320
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e4",
+          "points": [
+            {
+              "x": 120,
+              "y": 190
+            },
+            {
+              "x": 182,
+              "y": 190
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 20,
+          "hasLabel": false,
+          "height": 120,
+          "id": "n7",
+          "width": 120,
+          "x": 60,
+          "y": 170
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 90,
+          "id": "n6",
+          "width": 50,
+          "x": 235,
+          "y": 320
+        },
+        {
+          "fontSize": 32,
+          "hasLabel": false,
+          "height": 120,
+          "id": "n5",
+          "width": 120,
+          "x": 240,
+          "y": 170
+        },
+        {
+          "fontSize": 20,
+          "hasLabel": false,
+          "height": 30,
+          "id": "n4",
+          "width": 50,
+          "x": 25,
+          "y": 15
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 50,
+          "id": "n3",
+          "width": 40,
+          "x": 240,
+          "y": 25
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 90,
+          "id": "n2",
+          "width": 80,
+          "x": 320,
+          "y": 320
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 80,
+          "id": "n1",
+          "width": 80,
+          "x": 70,
+          "y": 320
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 90,
+          "id": "n0",
+          "width": 80,
+          "x": 360,
+          "y": 155
+        }
+      ]
+    },
+    "name": "extended-random-22-LR",
+    "nodes": [
+      {
+        "id": "n7",
+        "width": 90,
+        "height": 60,
+        "shape": "code"
+      },
+      {
+        "id": "n6",
+        "width": 50,
+        "height": 90,
+        "shape": "code"
+      },
+      {
+        "id": "n5",
+        "width": 60,
+        "height": 30,
+        "shape": "stored_data"
+      },
+      {
+        "hasClassData": true,
+        "id": "n4",
+        "width": 50,
+        "height": 30,
+        "shape": "class"
+      },
+      {
+        "id": "n3",
+        "width": 40,
+        "height": 50,
+        "shape": "SQL_TABLE"
+      },
+      {
+        "id": "n2",
+        "width": 80,
+        "height": 90,
+        "shape": "callout"
+      },
+      {
+        "id": "n1",
+        "width": 50,
+        "height": 80,
+        "shape": "square"
+      },
+      {
+        "id": "n0",
+        "width": 80,
+        "height": 90,
+        "shape": "code"
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "rootLevel": 1,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n3",
+        "to": "n0"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n2",
+        "to": "n2"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n4",
+        "to": "n1"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 410,
+              "y": 40
+            },
+            {
+              "x": 270,
+              "y": 40
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 30,
+              "y": 278
+            },
+            {
+              "x": 0,
+              "y": 278
+            },
+            {
+              "x": 0,
+              "y": 240
+            },
+            {
+              "x": 55,
+              "y": 240
+            },
+            {
+              "x": 55,
+              "y": 270
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 102,
+              "y": 198
+            },
+            {
+              "x": 102,
+              "y": 270
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 80,
+              "y": 95
+            },
+            {
+              "x": 80,
+              "y": 168
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 50,
+          "id": "n4",
+          "width": 50,
+          "x": 80,
+          "y": 70
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n3",
+          "width": 50,
+          "x": 435,
+          "y": 40
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 30,
+          "id": "n2",
+          "width": 100,
+          "x": 80,
+          "y": 285
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 30,
+          "id": "n1",
+          "width": 90,
+          "x": 80,
+          "y": 183
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 80,
+          "id": "n0",
+          "width": 40,
+          "x": 250,
+          "y": 40
+        }
+      ]
+    },
+    "name": "extended-random-23-RL",
+    "nodes": [
+      {
+        "id": "n4",
+        "width": 50,
+        "height": 50,
+        "shape": "sql_table"
+      },
+      {
+        "id": "n3",
+        "width": 50,
+        "height": 40,
+        "shape": "TEXT"
+      },
+      {
+        "id": "n2",
+        "width": 100,
+        "height": 30,
+        "shape": "class"
+      },
+      {
+        "id": "n1",
+        "width": 90,
+        "height": 30,
+        "shape": "class"
+      },
+      {
+        "nearId": "n4",
+        "id": "n0",
+        "width": 40,
+        "height": 80,
+        "shape": "sql_table"
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "rootLevel": 2,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n3",
+        "to": "n5"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n3",
+        "to": "n4"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n1",
+        "to": "n3"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n5",
+        "to": "n4"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n1",
+        "to": "n0"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n6",
+        "to": "n4"
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n2",
+        "to": "n7"
+      },
+      {
+        "d2Index": 7,
+        "id": "e7",
+        "from": "n2",
+        "to": "n7"
+      },
+      {
+        "d2Index": 8,
+        "id": "e8",
+        "from": "n1",
+        "to": "n0"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 200,
+              "y": 203
+            },
+            {
+              "x": 170,
+              "y": 203
+            },
+            {
+              "x": 170,
+              "y": 285
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 240,
+              "y": 223
+            },
+            {
+              "x": 240,
+              "y": 315
+            },
+            {
+              "x": 280,
+              "y": 315
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 325,
+              "y": 120
+            },
+            {
+              "x": 325,
+              "y": 203
+            },
+            {
+              "x": 279,
+              "y": 203
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 199,
+              "y": 330
+            },
+            {
+              "x": 280,
+              "y": 330
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e4",
+          "points": [
+            {
+              "x": 385,
+              "y": 60
+            },
+            {
+              "x": 417,
+              "y": 60
+            },
+            {
+              "x": 417,
+              "y": 180
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e5",
+          "points": [
+            {
+              "x": 440,
+              "y": 330
+            },
+            {
+              "x": 360,
+              "y": 330
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e6",
+          "points": [
+            {
+              "x": 40,
+              "y": 120
+            },
+            {
+              "x": 40,
+              "y": 240
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e7",
+          "points": [
+            {
+              "x": 80,
+              "y": 120
+            },
+            {
+              "x": 80,
+              "y": 240
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e8",
+          "points": [
+            {
+              "x": 352,
+              "y": 120
+            },
+            {
+              "x": 352,
+              "y": 226
+            },
+            {
+              "x": 380,
+              "y": 226
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 32,
+          "hasLabel": true,
+          "height": 120,
+          "id": "n7",
+          "labelX": 60,
+          "labelY": 300,
+          "width": 120,
+          "x": 60,
+          "y": 300
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": true,
+          "height": 70,
+          "id": "n6",
+          "labelX": 490,
+          "labelY": 330,
+          "width": 100,
+          "x": 490,
+          "y": 330
+        },
+        {
+          "fontSize": 28,
+          "hasLabel": true,
+          "height": 90,
+          "id": "n5",
+          "labelX": 170,
+          "labelY": 387.5,
+          "width": 60,
+          "x": 170,
+          "y": 330
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": true,
+          "height": 60,
+          "id": "n4",
+          "labelX": 320,
+          "labelY": 315,
+          "width": 80,
+          "x": 320,
+          "y": 330
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": true,
+          "height": 40,
+          "id": "n3",
+          "labelX": 240,
+          "labelY": 168,
+          "width": 80,
+          "x": 240,
+          "y": 203
+        },
+        {
+          "fontSize": 20,
+          "hasLabel": true,
+          "height": 120,
+          "id": "n2",
+          "labelX": 60,
+          "labelY": 60,
+          "width": 120,
+          "x": 60,
+          "y": 60
+        },
+        {
+          "fontSize": 32,
+          "hasLabel": true,
+          "height": 120,
+          "id": "n1",
+          "labelX": 325,
+          "labelY": 60,
+          "width": 120,
+          "x": 325,
+          "y": 60
+        },
+        {
+          "fontSize": 20,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n0",
+          "width": 70,
+          "x": 415,
+          "y": 215
+        }
+      ]
+    },
+    "name": "extended-random-24-TB",
+    "nodes": [
+      {
+        "id": "n7",
+        "width": 50,
+        "height": 50,
+        "shape": "hexagon",
+        "labelWidth": 30,
+        "labelHeight": 10
+      },
+      {
+        "id": "n6",
+        "width": 100,
+        "height": 70,
+        "labelWidth": 25,
+        "labelHeight": 10
+      },
+      {
+        "isGrid": true,
+        "id": "n5",
+        "width": 60,
+        "height": 90,
+        "shape": "diamond",
+        "labelWidth": 40,
+        "labelHeight": 15
+      },
+      {
+        "id": "n4",
+        "width": 80,
+        "height": 60,
+        "shape": "callout",
+        "labelWidth": 20,
+        "labelHeight": 10
+      },
+      {
+        "id": "n3",
+        "width": 80,
+        "height": 40,
+        "shape": "diamond",
+        "labelWidth": 40,
+        "labelHeight": 20
+      },
+      {
+        "id": "n2",
+        "width": 70,
+        "height": 90,
+        "shape": "hexagon",
+        "labelWidth": 35,
+        "labelHeight": 15
+      },
+      {
+        "id": "n1",
+        "width": 50,
+        "height": 50,
+        "shape": "TEXT",
+        "labelWidth": 30,
+        "labelHeight": 10
+      },
+      {
+        "hasClassData": true,
+        "id": "n0",
+        "width": 70,
+        "height": 70,
+        "shape": "class",
+        "labelWidth": 30,
+        "labelHeight": 15
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "rootLevel": 0,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n3",
+        "to": "n5",
+        "labelWidth": 20,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n2",
+        "to": "n2",
+        "labelWidth": 50,
+        "labelHeight": 20
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n1",
+        "to": "n4",
+        "labelWidth": 40,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n4",
+        "to": "n3",
+        "labelWidth": 20,
+        "labelHeight": 20
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": true,
+          "id": "e0",
+          "labelX": 431,
+          "labelY": 26.5,
+          "points": [
+            {
+              "x": 381,
+              "y": 40
+            },
+            {
+              "x": 480,
+              "y": 40
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e1",
+          "labelX": 25,
+          "labelY": 111,
+          "points": [
+            {
+              "x": 46,
+              "y": 162
+            },
+            {
+              "x": 16,
+              "y": 162
+            },
+            {
+              "x": 16,
+              "y": 127
+            },
+            {
+              "x": 69,
+              "y": 127
+            },
+            {
+              "x": 69,
+              "y": 157
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e2",
+          "labelX": 101,
+          "labelY": 26.5,
+          "points": [
+            {
+              "x": 50,
+              "y": 40
+            },
+            {
+              "x": 151,
+              "y": 40
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e3",
+          "labelX": 261,
+          "labelY": 24,
+          "points": [
+            {
+              "x": 211,
+              "y": 40
+            },
+            {
+              "x": 311,
+              "y": 40
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 80,
+          "id": "n5",
+          "width": 60,
+          "x": 510,
+          "y": 40
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 30,
+          "id": "n4",
+          "width": 60,
+          "x": 181,
+          "y": 40
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 30,
+          "id": "n3",
+          "width": 70,
+          "x": 346,
+          "y": 40
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n2",
+          "width": 90,
+          "x": 91,
+          "y": 177
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n1",
+          "width": 50,
+          "x": 25,
+          "y": 40
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n0",
+          "width": 80,
+          "x": 196,
+          "y": 135
+        }
+      ]
+    },
+    "name": "extended-random-25-BT",
+    "nodes": [
+      {
+        "id": "n5",
+        "width": 60,
+        "height": 80,
+        "shape": "hexagon"
+      },
+      {
+        "id": "n4",
+        "width": 60,
+        "height": 30,
+        "shape": "TEXT"
+      },
+      {
+        "id": "n3",
+        "width": 70,
+        "height": 30,
+        "shape": "class"
+      },
+      {
+        "id": "n2",
+        "width": 90,
+        "height": 30,
+        "shape": "callout"
+      },
+      {
+        "id": "n1",
+        "width": 50,
+        "height": 70,
+        "shape": "oval"
+      },
+      {
+        "id": "n0",
+        "width": 80,
+        "height": 70,
+        "shape": "code"
+      }
+    ],
+    "options": {
+      "rootLevel": 1,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n3",
+        "to": "n5",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n0",
+        "to": "n5",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n4",
+        "to": "n1",
+        "sourceArrowhead": "none",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n0",
+        "to": "n5",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 60,
+              "y": 182
+            },
+            {
+              "x": 60,
+              "y": 122
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 180,
+              "y": 42
+            },
+            {
+              "x": 120,
+              "y": 42
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 185,
+              "y": 217
+            },
+            {
+              "x": 255,
+              "y": 217
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 180,
+              "y": 82
+            },
+            {
+              "x": 120,
+              "y": 82
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 24,
+          "hasLabel": false,
+          "height": 120,
+          "id": "n5",
+          "width": 120,
+          "x": 60,
+          "y": 62
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n4",
+          "width": 70,
+          "x": 150,
+          "y": 217
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n3",
+          "width": 70,
+          "x": 60,
+          "y": 202
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n2",
+          "width": 50,
+          "x": 50,
+          "y": 262
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n1",
+          "width": 70,
+          "x": 290,
+          "y": 217
+        },
+        {
+          "fontSize": 28,
+          "hasLabel": false,
+          "height": 123,
+          "id": "n0",
+          "width": 123,
+          "x": 241.5,
+          "y": 61.5
+        }
+      ]
+    },
+    "name": "extended-random-26-LR",
+    "nodes": [
+      {
+        "id": "n5",
+        "width": 40,
+        "height": 80,
+        "shape": "square"
+      },
+      {
+        "id": "n4",
+        "width": 60,
+        "height": 70,
+        "shape": "square"
+      },
+      {
+        "id": "n3",
+        "width": 70,
+        "height": 40,
+        "shape": "code"
+      },
+      {
+        "id": "n2",
+        "width": 50,
+        "height": 40,
+        "shape": "code"
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 40,
+        "shape": "square"
+      },
+      {
+        "id": "n0",
+        "width": 40,
+        "height": 70,
+        "shape": "TEXT"
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "rootLevel": 2,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n3",
+        "to": "n3"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n3",
+        "to": "n0"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 135,
+              "y": 160
+            },
+            {
+              "x": 50,
+              "y": 160
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 270,
+              "y": 160
+            },
+            {
+              "x": 195,
+              "y": 160
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 290,
+              "y": 50
+            },
+            {
+              "x": 260,
+              "y": 50
+            },
+            {
+              "x": 260,
+              "y": 0
+            },
+            {
+              "x": 305,
+              "y": 0
+            },
+            {
+              "x": 305,
+              "y": 30
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 327,
+              "y": 70
+            },
+            {
+              "x": 327,
+              "y": 135
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n3",
+          "width": 60,
+          "x": 320,
+          "y": 50
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n2",
+          "width": 50,
+          "x": 25,
+          "y": 160
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 30,
+          "id": "n1",
+          "width": 60,
+          "x": 165,
+          "y": 160
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 50,
+          "id": "n0",
+          "width": 100,
+          "x": 320,
+          "y": 160
+        }
+      ]
+    },
+    "name": "extended-random-27-RL",
+    "nodes": [
+      {
+        "id": "n3",
+        "width": 60,
+        "height": 40,
+        "shape": "SQL_TABLE"
+      },
+      {
+        "id": "n2",
+        "width": 50,
+        "height": 70,
+        "shape": "hexagon"
+      },
+      {
+        "id": "n1",
+        "width": 60,
+        "height": 30,
+        "shape": "class"
+      },
+      {
+        "nearId": "n3",
+        "id": "n0",
+        "width": 100,
+        "height": 50,
+        "shape": "oval"
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "rootLevel": 0,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n0",
+        "to": "n0"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n1",
+        "to": "n0"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n3",
+        "to": "n0"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n3",
+        "to": "n1"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n2",
+        "to": "n3"
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "d2Index": 7,
+        "id": "e7",
+        "from": "n2",
+        "to": "n2"
+      },
+      {
+        "d2Index": 8,
+        "id": "e8",
+        "from": "n0",
+        "to": "n3"
+      },
+      {
+        "d2Index": 9,
+        "id": "e9",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "d2Index": 10,
+        "id": "e10",
+        "from": "n2",
+        "to": "n0"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 174,
+              "y": 80
+            },
+            {
+              "x": 144,
+              "y": 80
+            },
+            {
+              "x": 144,
+              "y": 0
+            },
+            {
+              "x": 224,
+              "y": 0
+            },
+            {
+              "x": 224,
+              "y": 30
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 349,
+              "y": 290
+            },
+            {
+              "x": 349,
+              "y": 230
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 271,
+              "y": 230
+            },
+            {
+              "x": 271,
+              "y": 330
+            },
+            {
+              "x": 324,
+              "y": 330
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 196,
+              "y": 330
+            },
+            {
+              "x": 196,
+              "y": 230
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e4",
+          "points": [
+            {
+              "x": 186,
+              "y": 410
+            },
+            {
+              "x": 324,
+              "y": 410
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e5",
+          "points": [
+            {
+              "x": 61,
+              "y": 230
+            },
+            {
+              "x": 61,
+              "y": 390
+            },
+            {
+              "x": 99,
+              "y": 390
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e6",
+          "points": [
+            {
+              "x": 374,
+              "y": 162
+            },
+            {
+              "x": 424,
+              "y": 162
+            },
+            {
+              "x": 424,
+              "y": 290
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e7",
+          "points": [
+            {
+              "x": 30,
+              "y": 188
+            },
+            {
+              "x": 0,
+              "y": 188
+            },
+            {
+              "x": 0,
+              "y": 150
+            },
+            {
+              "x": 58,
+              "y": 150
+            },
+            {
+              "x": 58,
+              "y": 180
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e8",
+          "points": [
+            {
+              "x": 271,
+              "y": 230
+            },
+            {
+              "x": 271,
+              "y": 370
+            },
+            {
+              "x": 219,
+              "y": 370
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e9",
+          "points": [
+            {
+              "x": 374,
+              "y": 96
+            },
+            {
+              "x": 474,
+              "y": 96
+            },
+            {
+              "x": 474,
+              "y": 290
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e10",
+          "points": [
+            {
+              "x": 99,
+              "y": 205
+            },
+            {
+              "x": 174,
+              "y": 205
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 24,
+          "hasLabel": true,
+          "height": 120,
+          "id": "n3",
+          "labelX": 159,
+          "labelY": 367.5,
+          "width": 120,
+          "x": 159,
+          "y": 390
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": true,
+          "height": 50,
+          "id": "n2",
+          "labelX": 69,
+          "labelY": 205,
+          "width": 90,
+          "x": 69,
+          "y": 205
+        },
+        {
+          "fontSize": 32,
+          "hasLabel": false,
+          "height": 200,
+          "id": "n1",
+          "width": 200,
+          "x": 424,
+          "y": 390
+        },
+        {
+          "fontSize": 32,
+          "hasLabel": true,
+          "height": 200,
+          "id": "n0",
+          "labelX": 274,
+          "labelY": 130,
+          "width": 200,
+          "x": 274,
+          "y": 130
+        }
+      ]
+    },
+    "name": "extended-random-28-TB",
+    "nodes": [
+      {
+        "id": "n3",
+        "width": 70,
+        "height": 80,
+        "shape": "callout",
+        "labelWidth": 25,
+        "labelHeight": 20
+      },
+      {
+        "isInvisible": true,
+        "id": "n2",
+        "width": 90,
+        "height": 50,
+        "shape": "stored_data",
+        "labelWidth": 40,
+        "labelHeight": 20
+      },
+      {
+        "id": "n1",
+        "width": 60,
+        "height": 70,
+        "shape": "code",
+        "labelWidth": 20,
+        "labelHeight": 10
+      },
+      {
+        "id": "n0",
+        "width": 50,
+        "height": 30,
+        "shape": "TEXT",
+        "labelWidth": 30,
+        "labelHeight": 10
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "rootLevel": 1,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n0",
+        "to": "n0",
+        "labelWidth": 20,
+        "labelHeight": 20
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n3",
+        "to": "n3",
+        "labelWidth": 30,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n3",
+        "to": "n2",
+        "labelWidth": 40,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n0",
+        "to": "n2",
+        "labelWidth": 20,
+        "labelHeight": 15
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n1",
+        "to": "n0",
+        "labelWidth": 20,
+        "labelHeight": 10
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": true,
+          "id": "e0",
+          "labelX": 10,
+          "labelY": 9,
+          "points": [
+            {
+              "x": 39,
+              "y": 66
+            },
+            {
+              "x": 9,
+              "y": 66
+            },
+            {
+              "x": 9,
+              "y": 26
+            },
+            {
+              "x": 51,
+              "y": 26
+            },
+            {
+              "x": 51,
+              "y": 56
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e1",
+          "labelX": 139,
+          "labelY": 161.5,
+          "points": [
+            {
+              "x": 190,
+              "y": 206
+            },
+            {
+              "x": 160,
+              "y": 206
+            },
+            {
+              "x": 160,
+              "y": 161
+            },
+            {
+              "x": 205,
+              "y": 161
+            },
+            {
+              "x": 205,
+              "y": 191
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e2",
+          "labelX": 254,
+          "labelY": 158.5,
+          "points": [
+            {
+              "x": 227,
+              "y": 191
+            },
+            {
+              "x": 227,
+              "y": 126
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e3",
+          "labelX": 146,
+          "labelY": 62.5,
+          "points": [
+            {
+              "x": 118,
+              "y": 76
+            },
+            {
+              "x": 173,
+              "y": 76
+            }
+          ]
+        },
+        {
+          "hasLabel": true,
+          "id": "e4",
+          "labelX": 68,
+          "labelY": 171,
+          "points": [
+            {
+              "x": 45,
+              "y": 206
+            },
+            {
+              "x": 84,
+              "y": 206
+            },
+            {
+              "x": 84,
+              "y": 96
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 30,
+          "id": "n3",
+          "width": 60,
+          "x": 220,
+          "y": 206
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n2",
+          "width": 100,
+          "x": 220,
+          "y": 91
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 30,
+          "id": "n1",
+          "width": 40,
+          "x": 25,
+          "y": 206
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n0",
+          "width": 90,
+          "x": 73,
+          "y": 76
+        }
+      ]
+    },
+    "name": "extended-random-29-BT",
+    "nodes": [
+      {
+        "id": "n3",
+        "width": 60,
+        "height": 30,
+        "shape": "SQL_TABLE"
+      },
+      {
+        "id": "n2",
+        "width": 100,
+        "height": 70,
+        "shape": "stored_data"
+      },
+      {
+        "id": "n1",
+        "width": 40,
+        "height": 30,
+        "shape": "cylinder"
+      },
+      {
+        "id": "n0",
+        "width": 90,
+        "height": 40,
+        "shape": "hexagon"
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "rootLevel": 2,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n3",
+        "to": "n4",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n0",
+        "to": "n3",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n0",
+        "to": "n0",
+        "sourceArrowhead": "none",
+        "targetArrowhead": "none"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 165,
+              "y": 160
+            },
+            {
+              "x": 90,
+              "y": 160
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 195,
+              "y": 60
+            },
+            {
+              "x": 195,
+              "y": 120
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 165,
+              "y": 45
+            },
+            {
+              "x": 135,
+              "y": 45
+            },
+            {
+              "x": 135,
+              "y": 0
+            },
+            {
+              "x": 195,
+              "y": 0
+            },
+            {
+              "x": 195,
+              "y": 30
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 90,
+          "id": "n4",
+          "width": 90,
+          "x": 45,
+          "y": 160
+        },
+        {
+          "fontSize": 20,
+          "hasLabel": false,
+          "height": 80,
+          "id": "n3",
+          "width": 60,
+          "x": 195,
+          "y": 160
+        },
+        {
+          "fontSize": 28,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n2",
+          "width": 90,
+          "x": 165,
+          "y": 250
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 80,
+          "id": "n1",
+          "width": 100,
+          "x": 50,
+          "y": 270
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 30,
+          "id": "n0",
+          "width": 60,
+          "x": 195,
+          "y": 45
+        }
+      ]
+    },
+    "name": "extended-random-30-LR",
+    "nodes": [
+      {
+        "id": "n4",
+        "width": 90,
+        "height": 90
+      },
+      {
+        "hasClassData": true,
+        "id": "n3",
+        "width": 60,
+        "height": 80,
+        "shape": "class"
+      },
+      {
+        "isGrid": true,
+        "id": "n2",
+        "width": 90,
+        "height": 40,
+        "shape": "TEXT"
+      },
+      {
+        "id": "n1",
+        "width": 100,
+        "height": 80,
+        "shape": "hexagon"
+      },
+      {
+        "id": "n0",
+        "width": 60,
+        "height": 30,
+        "shape": "diamond"
+      }
+    ],
+    "options": {
+      "rootLevel": 0,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n5",
+        "to": "n1"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n1",
+        "to": "n4"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n2",
+        "to": "n3"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n3",
+        "to": "n3"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n0",
+        "to": "n3"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n1",
+        "to": "n1"
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n0",
+        "to": "n4"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "hasLabel": false,
+          "id": "e0",
+          "points": [
+            {
+              "x": 315,
+              "y": 65
+            },
+            {
+              "x": 260,
+              "y": 65
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e1",
+          "points": [
+            {
+              "x": 220,
+              "y": 83
+            },
+            {
+              "x": 45,
+              "y": 83
+            },
+            {
+              "x": 45,
+              "y": 167
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e2",
+          "points": [
+            {
+              "x": 180,
+              "y": 440
+            },
+            {
+              "x": 75,
+              "y": 440
+            },
+            {
+              "x": 75,
+              "y": 380
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e3",
+          "points": [
+            {
+              "x": 30,
+              "y": 328
+            },
+            {
+              "x": 0,
+              "y": 328
+            },
+            {
+              "x": 0,
+              "y": 280
+            },
+            {
+              "x": 53,
+              "y": 280
+            },
+            {
+              "x": 53,
+              "y": 310
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e4",
+          "points": [
+            {
+              "x": 215,
+              "y": 302
+            },
+            {
+              "x": 215,
+              "y": 345
+            },
+            {
+              "x": 120,
+              "y": 345
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e5",
+          "points": [
+            {
+              "x": 220,
+              "y": 48
+            },
+            {
+              "x": 190,
+              "y": 48
+            },
+            {
+              "x": 190,
+              "y": 0
+            },
+            {
+              "x": 230,
+              "y": 0
+            },
+            {
+              "x": 230,
+              "y": 30
+            }
+          ]
+        },
+        {
+          "hasLabel": false,
+          "id": "e6",
+          "points": [
+            {
+              "x": 200,
+              "y": 274
+            },
+            {
+              "x": 200,
+              "y": 187
+            },
+            {
+              "x": 79,
+              "y": 187
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 90,
+          "id": "n5",
+          "width": 80,
+          "x": 355,
+          "y": 65
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 40,
+          "id": "n4",
+          "width": 70,
+          "x": 45,
+          "y": 187
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n3",
+          "width": 90,
+          "x": 75,
+          "y": 345
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n2",
+          "width": 60,
+          "x": 210,
+          "y": 440
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 70,
+          "id": "n1",
+          "width": 40,
+          "x": 240,
+          "y": 65
+        },
+        {
+          "fontSize": 16,
+          "hasLabel": false,
+          "height": 30,
+          "id": "n0",
+          "width": 40,
+          "x": 210,
+          "y": 287
+        }
+      ]
+    },
+    "name": "extended-random-31-RL",
+    "nodes": [
+      {
+        "id": "n5",
+        "width": 80,
+        "height": 90,
+        "shape": "cylinder"
+      },
+      {
+        "id": "n4",
+        "width": 70,
+        "height": 40,
+        "shape": "diamond"
+      },
+      {
+        "id": "n3",
+        "width": 90,
+        "height": 70,
+        "shape": "code"
+      },
+      {
+        "id": "n2",
+        "width": 60,
+        "height": 70,
+        "shape": "code"
+      },
+      {
+        "id": "n1",
+        "width": 40,
+        "height": 70,
+        "shape": "class"
+      },
+      {
+        "nearId": "n5",
+        "id": "n0",
+        "width": 40,
+        "height": 30,
+        "shape": "oval"
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "rootLevel": 1,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  }
+]
