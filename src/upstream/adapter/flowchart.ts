@@ -57,6 +57,11 @@ function fnv32(value: string): number {
   }
   return h >>> 0;
 }
+/** Construct the synthetic destination ID used by a D2 sequence lifeline. */
+export function d2LifelineEndId(actorId: string): string {
+  const prefix = `${actorId}-lifeline-end`;
+  return `${prefix}-${fnv32(prefix)}`;
+}
 export function allocateEntityIDs(values: string[]): bigint[] {
   const seen = new Set<string>(),
     counts = new Map<number, number>();
@@ -125,6 +130,7 @@ export function translateFlowchart(
   nodeIDs: Map<string, bigint>;
   edgeIDs: bigint[];
   reversed: boolean[];
+  lifelines: boolean[];
 } {
   if (inputNodes.length > MaxEngineNodes)
     throw new Error(`D2 object count exceeds limit ${MaxEngineNodes}`);
@@ -365,6 +371,7 @@ export function translateFlowchart(
   }
   const edgeNames = new Set<string>(),
     reversed: boolean[] = [],
+    lifelines: boolean[] = [],
     edgeAbs: string[] = [],
     equivalentCounts = new Map<string, number>();
   for (let i = 0; i < inputEdges.length; i++) {
@@ -373,8 +380,15 @@ export function translateFlowchart(
       throw new Error(`edge ${e.id} has an invalid D2 index`);
     if (edgeNames.has(e.id)) throw new Error('duplicate edge ID');
     edgeNames.add(e.id);
-    if (!mapped.has(e.from) || !mapped.has(e.to))
+    const [source, target] = arrowFlags(e);
+    const lifelineID = d2LifelineEndId(e.from);
+    const lifeline = !mapped.has(e.to) && e.to === lifelineID && !source && !target &&
+      e.sourceArrowhead === undefined && e.targetArrowhead === undefined &&
+      e.sourceArrowheadFilled === undefined && e.targetArrowheadFilled === undefined &&
+      e.sourceArrowheadLabel === undefined && e.targetArrowheadLabel === undefined;
+    if (!mapped.has(e.from) || (!mapped.has(e.to) && !lifeline))
       throw new Error(`edge ${e.id} references a missing node`);
+    lifelines.push(lifeline);
     for (const key of ['labelWidth', 'labelHeight'] as const) {
       const v = e[key];
       if (
@@ -398,7 +412,6 @@ export function translateFlowchart(
       )
         throw new Error(`${name} dimensions must be finite and nonnegative`);
     }
-    const [source, target] = arrowFlags(e);
     const forward = JSON.stringify([e.from, source, e.to, target]);
     const backward = JSON.stringify([e.to, target, e.from, source]);
     const key = forward < backward ? forward : backward;
@@ -406,7 +419,7 @@ export function translateFlowchart(
     equivalentCounts.set(key, inferredIndex + 1);
     reversed.push(source && !target);
     const from = [...paths.get(e.from)!],
-      to = [...paths.get(e.to)!],
+      to = [...paths.get(lifeline ? e.from : e.to)!],
       common: string[] = [];
     while (
       from.length > 1 &&
@@ -425,7 +438,7 @@ export function translateFlowchart(
   inputEdges.forEach((input, i) => {
     const e = graph.Connect(
       mapped.get(reversed[i] ? input.to : input.from)!,
-      mapped.get(reversed[i] ? input.from : input.to)!,
+      mapped.get(reversed[i] || lifelines[i] ? input.from : input.to)!,
     );
     e.ID = edgeIDs[i]!;
     e.D2ID = edgeAbs[i]!;
@@ -556,7 +569,7 @@ export function translateFlowchart(
       e.Label.Height = input.labelHeight ?? 0;
     }
   });
-  return { graph, nodeIDs, edgeIDs, reversed };
+  return { graph, nodeIDs, edgeIDs, reversed, lifelines };
 }
 function evaluateCandidate(input: Graph, candidate: Graph): Score {
   try {
@@ -601,7 +614,7 @@ export function layoutFlowchartTranslated(
       options.seeds === undefined
         ? getTalaSeeds()
         : normalizeSeeds(options.seeds),
-    { graph, nodeIDs, edgeIDs, reversed } = translateFlowchart(
+    { graph, nodeIDs, edgeIDs, reversed, lifelines } = translateFlowchart(
       inputNodes,
       inputEdges,
       options,
@@ -646,7 +659,7 @@ export function layoutFlowchartTranslated(
   const colors = new Map(inputNodes.map((n) => [n.id, 0]));
   const outgoing = new Map(inputNodes.map((n) => [n.id, [] as LayoutEdge[]]));
   for (const edge of inputEdges)
-    if (edge.from !== edge.to) outgoing.get(edge.from)!.push(edge);
+    if (edge.from !== edge.to && outgoing.has(edge.to)) outgoing.get(edge.from)!.push(edge);
   const dag: LayoutEdge[] = [];
   const visitRank = (start: string): void => {
     const stack: { id: string; index: number }[] = [{ id: start, index: 0 }];
@@ -752,6 +765,7 @@ export function layoutFlowchartTranslated(
       return [
         {
           ...input,
+          ...(lifelines[index] ? { to: input.from } : {}),
           points,
           ...(sourceArrow
             ? {

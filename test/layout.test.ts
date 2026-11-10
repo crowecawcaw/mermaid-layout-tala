@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { layoutFlowchart } from '../src/layout.js';
-import { translateFlowchart } from '../src/upstream/adapter/flowchart.js';
+import { d2LifelineEndId, translateFlowchart } from '../src/upstream/adapter/flowchart.js';
 import orderingFixtures from './fixtures/upstream-layoutordering.json';
 
 describe('Mermaid flowchart layout slice', () => {
@@ -128,6 +128,20 @@ describe('Mermaid flowchart layout slice', () => {
       '(a -> b)[0]', '(a -> b)[1]', '(b <- a)[2]',
       '(b -> a)[0]', '(a -> b)[7]', '(a -> b)[4]',
     ]);
+  });
+
+  it('accepts only the generated arrowless D2 lifeline endpoint', () => {
+    const fixture = orderingFixtures.find((f) => f.name === 'sequence-lifelines-TB')!;
+    const input = fixture.edges[0]!;
+    expect(d2LifelineEndId(input.from)).toBe(input.to);
+    const { graph, lifelines } = translateFlowchart(fixture.nodes, [input], {});
+    expect(lifelines).toEqual([true]);
+    expect(graph.Edges[0]!.From).toBe(graph.Edges[0]!.To);
+    expect(graph.Edges[0]!.D2ID).toBe(`(${input.from} -- ${input.from})[0]`);
+    expect(layoutFlowchart(fixture.nodes, [input]).edges[0]!.to).toBe(input.from);
+    expect(() => translateFlowchart(fixture.nodes, [{ ...input, to: `${input.to}x` }], {})).toThrow(/missing node/);
+    expect(() => translateFlowchart(fixture.nodes, [{ ...input, targetArrow: true }], {})).toThrow(/missing node/);
+    expect(() => translateFlowchart(fixture.nodes, [{ ...input, sourceArrowhead: 'none' }], {})).toThrow(/missing node/);
   });
 
   it('uses D2 default arrowhead shapes when labels create attributes', () => {

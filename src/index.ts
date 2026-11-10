@@ -4,6 +4,7 @@ export { setTalaSeeds, getTalaSeeds, type TalaSeed } from './random.js';
 export { evaluateLayout, type LayoutScore } from './quality.js';
 
 export { rankDag, type RankEdge, type RankNode } from './rank.js';
+export { d2LifelineEndId } from './upstream/adapter/flowchart.js';
 export {
   layoutFlowchart,
   type LayoutDirection,

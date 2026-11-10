@@ -83,6 +83,7 @@ it.each([
     const found = actual.edges.find((candidate) => candidate.id === edge.id);
     expect(found).toBeDefined();
     if ('hasLabel' in edge) expect(found!.labelPosition !== undefined).toBe(edge.hasLabel);
+    if ('to' in edge) expect(found!.to).toBe(edge.to);
     for (const key of [
       'sourceArrowheadLabelPosition',
       'targetArrowheadLabelPosition',

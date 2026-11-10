@@ -12222,5 +12222,829 @@
         3
       ]
     }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "zeta",
+        "to": "zeta-lifeline-end-891773750",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "sourceArrow": false,
+        "targetArrow": false
+      },
+      {
+        "id": "edge19",
+        "from": "alpha",
+        "to": "node10",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "node2",
+        "to": "node2-lifeline-end-2427294308",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "sourceArrow": false,
+        "targetArrow": false
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 121,
+          "labelY": 121,
+          "points": [
+            {
+              "x": 148,
+              "y": 173
+            },
+            {
+              "x": 118,
+              "y": 173
+            },
+            {
+              "x": 118,
+              "y": 133
+            },
+            {
+              "x": 163,
+              "y": 133
+            },
+            {
+              "x": 163,
+              "y": 163
+            }
+          ],
+          "to": "zeta"
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 62,
+          "labelY": 98,
+          "points": [
+            {
+              "x": 40,
+              "y": 35
+            },
+            {
+              "x": 40,
+              "y": 160
+            }
+          ],
+          "to": "node10"
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 120,
+          "labelY": 7,
+          "points": [
+            {
+              "x": 144,
+              "y": 60
+            },
+            {
+              "x": 114,
+              "y": 60
+            },
+            {
+              "x": 114,
+              "y": 19
+            },
+            {
+              "x": 167,
+              "y": 19
+            },
+            {
+              "x": 167,
+              "y": 49
+            }
+          ],
+          "to": "node2"
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "zeta",
+          "width": 60,
+          "x": 178,
+          "y": 183
+        },
+        {
+          "fontSize": 16,
+          "height": 35,
+          "id": "alpha",
+          "width": 70,
+          "x": 40,
+          "y": 17.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "node10",
+          "width": 80,
+          "x": 40,
+          "y": 180
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "node2",
+          "width": 90,
+          "x": 189,
+          "y": 71.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "middle",
+          "width": 100,
+          "x": 155,
+          "y": 248
+        }
+      ]
+    },
+    "name": "sequence-lifelines-TB",
+    "nodes": [
+      {
+        "id": "zeta",
+        "width": 60,
+        "height": 30,
+        "label": ""
+      },
+      {
+        "id": "alpha",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "node10",
+        "width": 80,
+        "height": 40,
+        "label": ""
+      },
+      {
+        "id": "node2",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "middle",
+        "width": 100,
+        "height": 50,
+        "label": ""
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "zeta",
+        "to": "zeta-lifeline-end-891773750",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "sourceArrow": false,
+        "targetArrow": false
+      },
+      {
+        "id": "edge19",
+        "from": "alpha",
+        "to": "node10",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "node2",
+        "to": "node2-lifeline-end-2427294308",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "sourceArrow": false,
+        "targetArrow": false
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 160,
+          "labelY": 62,
+          "points": [
+            {
+              "x": 187,
+              "y": 114
+            },
+            {
+              "x": 157,
+              "y": 114
+            },
+            {
+              "x": 157,
+              "y": 74
+            },
+            {
+              "x": 202,
+              "y": 74
+            },
+            {
+              "x": 202,
+              "y": 104
+            }
+          ],
+          "to": "zeta"
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 19,
+          "labelY": 100,
+          "points": [
+            {
+              "x": 40,
+              "y": 160
+            },
+            {
+              "x": 40,
+              "y": 40
+            }
+          ],
+          "to": "node10"
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 159,
+          "labelY": 171,
+          "points": [
+            {
+              "x": 183,
+              "y": 224
+            },
+            {
+              "x": 153,
+              "y": 224
+            },
+            {
+              "x": 153,
+              "y": 183
+            },
+            {
+              "x": 206,
+              "y": 183
+            },
+            {
+              "x": 206,
+              "y": 213
+            }
+          ],
+          "to": "node2"
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "zeta",
+          "width": 60,
+          "x": 217,
+          "y": 124
+        },
+        {
+          "fontSize": 16,
+          "height": 35,
+          "id": "alpha",
+          "width": 70,
+          "x": 40,
+          "y": 177.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "node10",
+          "width": 80,
+          "x": 40,
+          "y": 20
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "node2",
+          "width": 90,
+          "x": 228,
+          "y": 235.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "middle",
+          "width": 100,
+          "x": 55,
+          "y": 240
+        }
+      ]
+    },
+    "name": "sequence-lifelines-BT",
+    "nodes": [
+      {
+        "id": "zeta",
+        "width": 60,
+        "height": 30,
+        "label": ""
+      },
+      {
+        "id": "alpha",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "node10",
+        "width": 80,
+        "height": 40,
+        "label": ""
+      },
+      {
+        "id": "node2",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "middle",
+        "width": 100,
+        "height": 50,
+        "label": ""
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "zeta",
+        "to": "zeta-lifeline-end-891773750",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "sourceArrow": false,
+        "targetArrow": false
+      },
+      {
+        "id": "edge19",
+        "from": "alpha",
+        "to": "node10",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "node2",
+        "to": "node2-lifeline-end-2427294308",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "sourceArrow": false,
+        "targetArrow": false
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 165,
+          "labelY": 5,
+          "points": [
+            {
+              "x": 192,
+              "y": 58
+            },
+            {
+              "x": 162,
+              "y": 58
+            },
+            {
+              "x": 162,
+              "y": 18
+            },
+            {
+              "x": 207,
+              "y": 18
+            },
+            {
+              "x": 207,
+              "y": 48
+            }
+          ],
+          "to": "zeta"
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 115,
+          "labelY": 120,
+          "points": [
+            {
+              "x": 70,
+              "y": 132
+            },
+            {
+              "x": 160,
+              "y": 132
+            }
+          ],
+          "to": "node10"
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 15,
+          "labelY": 5,
+          "points": [
+            {
+              "x": 39,
+              "y": 59
+            },
+            {
+              "x": 9,
+              "y": 59
+            },
+            {
+              "x": 9,
+              "y": 18
+            },
+            {
+              "x": 62,
+              "y": 18
+            },
+            {
+              "x": 62,
+              "y": 48
+            }
+          ],
+          "to": "node2"
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "zeta",
+          "width": 60,
+          "x": 222,
+          "y": 68
+        },
+        {
+          "fontSize": 16,
+          "height": 35,
+          "id": "alpha",
+          "width": 70,
+          "x": 35,
+          "y": 132.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "node10",
+          "width": 80,
+          "x": 200,
+          "y": 133
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "node2",
+          "width": 90,
+          "x": 84,
+          "y": 70.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "middle",
+          "width": 100,
+          "x": 50,
+          "y": 198
+        }
+      ]
+    },
+    "name": "sequence-lifelines-LR",
+    "nodes": [
+      {
+        "id": "zeta",
+        "width": 60,
+        "height": 30,
+        "label": ""
+      },
+      {
+        "id": "alpha",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "node10",
+        "width": 80,
+        "height": 40,
+        "label": ""
+      },
+      {
+        "id": "node2",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "middle",
+        "width": 100,
+        "height": 50,
+        "label": ""
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "zeta",
+        "to": "zeta-lifeline-end-891773750",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "sourceArrow": false,
+        "targetArrow": false
+      },
+      {
+        "id": "edge19",
+        "from": "alpha",
+        "to": "node10",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "node2",
+        "to": "node2-lifeline-end-2427294308",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12,
+        "sourceArrow": false,
+        "targetArrow": false
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 165,
+          "labelY": 5,
+          "points": [
+            {
+              "x": 192,
+              "y": 58
+            },
+            {
+              "x": 162,
+              "y": 58
+            },
+            {
+              "x": 162,
+              "y": 18
+            },
+            {
+              "x": 207,
+              "y": 18
+            },
+            {
+              "x": 207,
+              "y": 48
+            }
+          ],
+          "to": "zeta"
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 120,
+          "labelY": 145,
+          "points": [
+            {
+              "x": 160,
+              "y": 132
+            },
+            {
+              "x": 80,
+              "y": 132
+            }
+          ],
+          "to": "node10"
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 15,
+          "labelY": 5,
+          "points": [
+            {
+              "x": 39,
+              "y": 59
+            },
+            {
+              "x": 9,
+              "y": 59
+            },
+            {
+              "x": 9,
+              "y": 18
+            },
+            {
+              "x": 62,
+              "y": 18
+            },
+            {
+              "x": 62,
+              "y": 48
+            }
+          ],
+          "to": "node2"
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "zeta",
+          "width": 60,
+          "x": 222,
+          "y": 68
+        },
+        {
+          "fontSize": 16,
+          "height": 35,
+          "id": "alpha",
+          "width": 70,
+          "x": 195,
+          "y": 132.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "node10",
+          "width": 80,
+          "x": 40,
+          "y": 133
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "node2",
+          "width": 90,
+          "x": 84,
+          "y": 70.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "middle",
+          "width": 100,
+          "x": 50,
+          "y": 198
+        }
+      ]
+    },
+    "name": "sequence-lifelines-RL",
+    "nodes": [
+      {
+        "id": "zeta",
+        "width": 60,
+        "height": 30,
+        "label": ""
+      },
+      {
+        "id": "alpha",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "node10",
+        "width": 80,
+        "height": 40,
+        "label": ""
+      },
+      {
+        "id": "node2",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "middle",
+        "width": 100,
+        "height": 50,
+        "label": ""
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
   }
 ]

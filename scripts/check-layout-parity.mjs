@@ -82,6 +82,7 @@ for (const fixture of fixtures) {
     }
     for (const edge of fixture.expected.edges) {
       const found = actual.edges.find((e) => e.id === edge.id);
+      if ('to' in edge && (!found || found.to !== edge.to)) differences.push(`edge-destination:${edge.id}`);
       if ('hasLabel' in edge && (!found || (found.labelPosition !== undefined) !== edge.hasLabel))
         differences.push(`edge-label-presence:${edge.id}`);
       const expected = compact(edge.points),

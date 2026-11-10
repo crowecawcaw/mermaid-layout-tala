@@ -11,6 +11,7 @@ import (
 	"testing"
 
 	"github.com/d2lang/d2/d2graph"
+	"github.com/d2lang/d2/d2layouts/d2sequence"
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/labeling"
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/layoutgraph"
 	"github.com/d2lang/d2/d2target"
@@ -77,6 +78,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"tiny-empty-groups", [][2]int{}, false, 7},
 		{"embedded-and-empty-labels", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 8},
 		{"inferred-edge-indices", [][2]int{{0, 1}, {0, 1}, {1, 0}, {1, 0}, {2, 3}, {0, 1}}, false, 9},
+		{"sequence-lifelines", [][2]int{{0, 1}, {1, 2}, {3, 4}}, false, 10},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -171,10 +173,19 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 			for i, pair := range test.pairs {
 				index := indices[i]
 				input := orderingEdge{ID: fmt.Sprintf("edge%d", 20-i), From: names[pair[0]], To: names[pair[1]], D2Index: &index, Label: "link", LabelWidth: 30, LabelHeight: 12}
+				if test.shapeSet == 10 && i != 1 {
+					input.To = d2sequence.LifelineEndID(input.From)
+				}
 				if test.shapeSet == 8 && i%2 == 0 {
 					input.Label = ""
 				}
 				edge := &d2graph.Edge{Index: index, Src: objects[input.From], Dst: objects[input.To], DstArrow: true, Attributes: d2graph.Attributes{}}
+				if test.shapeSet == 10 && i != 1 {
+					src, dst := false, false
+					input.SourceArrow, input.TargetArrow = &src, &dst
+					edge.SrcArrow, edge.DstArrow = false, false
+					edge.Dst = &d2graph.Object{ID: input.To}
+				}
 				if test.shapeSet == 9 {
 					src := []bool{false, false, true, false, false, false}[i]
 					dst := []bool{true, true, false, true, true, true}[i]
@@ -273,6 +284,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 					points = append(points, map[string]float64{"x": p.X, "y": p.Y})
 				}
 				record := map[string]any{"id": edges[i].ID, "points": points, "isCurve": edge.IsCurve}
+				if test.shapeSet == 10 {
+					record["to"] = edge.Dst.ID
+				}
 				if test.shapeSet == 8 {
 					record["hasLabel"] = internalEdges[bindings.edgeIDs[edge]].Label != nil
 				}
