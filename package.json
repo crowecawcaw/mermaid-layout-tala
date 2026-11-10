@@ -26,6 +26,10 @@
     ".": {
       "types": "./build/src/index.d.ts",
       "import": "./build/src/index.js"
+    },
+    "./core": {
+      "types": "./build/src/core.d.ts",
+      "import": "./build/src/core.js"
     }
   },
   "files": [
@@ -51,6 +55,11 @@
   },
   "peerDependencies": {
     "mermaid": ">=12.0.0"
+  },
+  "peerDependenciesMeta": {
+    "mermaid": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "jsdom": "^29.1.1",

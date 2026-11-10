@@ -1,7 +1,7 @@
 # Mermaid TALA Layout
 
-An experimental TypeScript layout loader for Mermaid 12 flowcharts, using a
-direct translation of the TALA layout pipeline from D2.
+An experimental TypeScript translation of the TALA layout pipeline from D2,
+available as a standalone library and as a Mermaid 12 flowchart layout loader.
 
 ![A left-to-right flowchart arranged by the TALA-derived layout](./docs/tala-layout-example.svg)
 
@@ -10,6 +10,24 @@ Try the [interactive playground](https://crowecawcaw.github.io/mermaid-layout-ta
 The architecture examples use flowchart subgraphs. Mermaid's `architecture-beta` diagrams still use Mermaid's native renderer.
 
 ## Install
+
+For standalone use, Mermaid is not required:
+
+```sh
+npm install mermaid-layout-tala
+```
+
+```ts
+import { layoutFlowchart } from 'mermaid-layout-tala/core';
+
+const result = layoutFlowchart(
+  [{ id: 'a', width: 80, height: 60 }, { id: 'b', width: 80, height: 60 }],
+  [{ id: 'ab', from: 'a', to: 'b' }],
+  { direction: 'TB' },
+);
+```
+
+For Mermaid integration, install both packages:
 
 ```sh
 npm install mermaid mermaid-layout-tala
@@ -88,7 +106,7 @@ selected-edge records and leaves the input graph and unselected routes intact.
 For example:
 
 ```ts
-import { routeEdges } from 'mermaid-layout-tala';
+import { routeEdges } from 'mermaid-layout-tala/core';
 
 const routed = routeEdges(
   [
