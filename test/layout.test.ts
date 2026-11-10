@@ -109,8 +109,24 @@ describe('Mermaid flowchart layout slice', () => {
     ], { inputOrder: 'authored' });
     expect(graph.Edges.map((e) => [e.D2ID, e.SourceArrowhead, e.TargetArrowhead])).toEqual([
       ['(a <- b)[0]', 'none', 'filled-diamond'],
-      ['(a -> c)[1]', 'none', 'unfilled-triangle'],
-      ['(b -- c)[2]', 'filled-box', 'none'],
+      ['(a -> c)[0]', 'none', 'unfilled-triangle'],
+      ['(b -- c)[0]', 'filled-box', 'none'],
+    ]);
+  });
+
+  it('numbers equivalent D2 edges, including reversed endpoints and explicit indices', () => {
+    const nodes = ['a', 'b'].map((id) => ({ id, width: 40, height: 30 }));
+    const { graph } = translateFlowchart(nodes, [
+      { id: 'e0', from: 'a', to: 'b' },
+      { id: 'e1', from: 'a', to: 'b' },
+      { id: 'e2', from: 'b', to: 'a', sourceArrow: true, targetArrow: false },
+      { id: 'e3', from: 'b', to: 'a' },
+      { id: 'e4', from: 'a', to: 'b', d2Index: 7 },
+      { id: 'e5', from: 'a', to: 'b' },
+    ], { inputOrder: 'authored' });
+    expect(graph.Edges.map((e) => e.D2ID)).toEqual([
+      '(a -> b)[0]', '(a -> b)[1]', '(b <- a)[2]',
+      '(b -> a)[0]', '(a -> b)[7]', '(a -> b)[4]',
     ]);
   });
 

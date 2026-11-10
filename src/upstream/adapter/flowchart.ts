@@ -365,7 +365,8 @@ export function translateFlowchart(
   }
   const edgeNames = new Set<string>(),
     reversed: boolean[] = [],
-    edgeAbs: string[] = [];
+    edgeAbs: string[] = [],
+    equivalentCounts = new Map<string, number>();
   for (let i = 0; i < inputEdges.length; i++) {
     const e = inputEdges[i]!;
     if (e.d2Index !== undefined && (!Number.isSafeInteger(e.d2Index) || e.d2Index < 0))
@@ -398,6 +399,11 @@ export function translateFlowchart(
         throw new Error(`${name} dimensions must be finite and nonnegative`);
     }
     const [source, target] = arrowFlags(e);
+    const forward = JSON.stringify([e.from, source, e.to, target]);
+    const backward = JSON.stringify([e.to, target, e.from, source]);
+    const key = forward < backward ? forward : backward;
+    const inferredIndex = equivalentCounts.get(key) ?? 0;
+    equivalentCounts.set(key, inferredIndex + 1);
     reversed.push(source && !target);
     const from = [...paths.get(e.from)!],
       to = [...paths.get(e.to)!],
@@ -412,7 +418,7 @@ export function translateFlowchart(
     }
     const arrow = source ? (target ? '<->' : '<-') : target ? '->' : '--';
     edgeAbs.push(
-      `${common.length ? common.join('.') + '.' : ''}(${from.join('.')} ${arrow} ${to.join('.')})[${e.d2Index ?? i}]`,
+      `${common.length ? common.join('.') + '.' : ''}(${from.join('.')} ${arrow} ${to.join('.')})[${e.d2Index ?? inferredIndex}]`,
     );
   }
   const edgeIDs = allocateEntityIDs(edgeAbs);

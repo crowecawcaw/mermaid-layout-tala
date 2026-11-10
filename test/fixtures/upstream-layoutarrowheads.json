@@ -2,6 +2,7 @@
   {
     "edges": [
       {
+        "d2Index": 0,
         "id": "e0",
         "from": "n0",
         "to": "n1",
@@ -11,6 +12,7 @@
         "targetArrowhead": "none"
       },
       {
+        "d2Index": 1,
         "id": "e1",
         "from": "n1",
         "to": "n2",
@@ -20,6 +22,7 @@
         "targetArrowhead": "arrow"
       },
       {
+        "d2Index": 2,
         "id": "e2",
         "from": "n2",
         "to": "n3",
@@ -29,6 +32,7 @@
         "targetArrowhead": "arrow"
       },
       {
+        "d2Index": 3,
         "id": "e3",
         "from": "n3",
         "to": "n3",
@@ -179,6 +183,7 @@
   {
     "edges": [
       {
+        "d2Index": 0,
         "id": "e0",
         "from": "n0",
         "to": "n1",
@@ -188,6 +193,7 @@
         "targetArrowhead": "none"
       },
       {
+        "d2Index": 1,
         "id": "e1",
         "from": "n1",
         "to": "n2",
@@ -197,6 +203,7 @@
         "targetArrowhead": "arrow"
       },
       {
+        "d2Index": 2,
         "id": "e2",
         "from": "n2",
         "to": "n3",
@@ -206,6 +213,7 @@
         "targetArrowhead": "arrow"
       },
       {
+        "d2Index": 3,
         "id": "e3",
         "from": "n3",
         "to": "n3",
@@ -356,6 +364,7 @@
   {
     "edges": [
       {
+        "d2Index": 0,
         "id": "e0",
         "from": "n0",
         "to": "n1",
@@ -365,6 +374,7 @@
         "targetArrowhead": "none"
       },
       {
+        "d2Index": 1,
         "id": "e1",
         "from": "n1",
         "to": "n2",
@@ -374,6 +384,7 @@
         "targetArrowhead": "arrow"
       },
       {
+        "d2Index": 2,
         "id": "e2",
         "from": "n2",
         "to": "n3",
@@ -383,6 +394,7 @@
         "targetArrowhead": "arrow"
       },
       {
+        "d2Index": 3,
         "id": "e3",
         "from": "n3",
         "to": "n3",
@@ -533,6 +545,7 @@
   {
     "edges": [
       {
+        "d2Index": 0,
         "id": "e0",
         "from": "n0",
         "to": "n1",
@@ -542,6 +555,7 @@
         "targetArrowhead": "none"
       },
       {
+        "d2Index": 1,
         "id": "e1",
         "from": "n1",
         "to": "n2",
@@ -551,6 +565,7 @@
         "targetArrowhead": "arrow"
       },
       {
+        "d2Index": 2,
         "id": "e2",
         "from": "n2",
         "to": "n3",
@@ -560,6 +575,7 @@
         "targetArrowhead": "arrow"
       },
       {
+        "d2Index": 3,
         "id": "e3",
         "from": "n3",
         "to": "n3",
@@ -710,6 +726,7 @@
   {
     "edges": [
       {
+        "d2Index": 0,
         "id": "e0",
         "from": "n0",
         "to": "n1",
@@ -719,6 +736,7 @@
         "targetArrowhead": "none"
       },
       {
+        "d2Index": 1,
         "id": "e1",
         "from": "n1",
         "to": "n2",
@@ -728,6 +746,7 @@
         "targetArrowhead": "circle"
       },
       {
+        "d2Index": 2,
         "id": "e2",
         "from": "n2",
         "to": "n3",
@@ -737,6 +756,7 @@
         "targetArrowhead": "circle"
       },
       {
+        "d2Index": 3,
         "id": "e3",
         "from": "n3",
         "to": "n3",
@@ -887,6 +907,7 @@
   {
     "edges": [
       {
+        "d2Index": 0,
         "id": "e0",
         "from": "n0",
         "to": "n1",
@@ -896,6 +917,7 @@
         "targetArrowhead": "none"
       },
       {
+        "d2Index": 1,
         "id": "e1",
         "from": "n1",
         "to": "n2",
@@ -905,6 +927,7 @@
         "targetArrowhead": "circle"
       },
       {
+        "d2Index": 2,
         "id": "e2",
         "from": "n2",
         "to": "n3",
@@ -914,6 +937,7 @@
         "targetArrowhead": "circle"
       },
       {
+        "d2Index": 3,
         "id": "e3",
         "from": "n3",
         "to": "n3",
@@ -1064,6 +1088,7 @@
   {
     "edges": [
       {
+        "d2Index": 0,
         "id": "e0",
         "from": "n0",
         "to": "n1",
@@ -1073,6 +1098,7 @@
         "targetArrowhead": "none"
       },
       {
+        "d2Index": 1,
         "id": "e1",
         "from": "n1",
         "to": "n2",
@@ -1082,6 +1108,7 @@
         "targetArrowhead": "circle"
       },
       {
+        "d2Index": 2,
         "id": "e2",
         "from": "n2",
         "to": "n3",
@@ -1091,6 +1118,7 @@
         "targetArrowhead": "circle"
       },
       {
+        "d2Index": 3,
         "id": "e3",
         "from": "n3",
         "to": "n3",
@@ -1241,6 +1269,7 @@
   {
     "edges": [
       {
+        "d2Index": 0,
         "id": "e0",
         "from": "n0",
         "to": "n1",
@@ -1250,6 +1279,7 @@
         "targetArrowhead": "none"
       },
       {
+        "d2Index": 1,
         "id": "e1",
         "from": "n1",
         "to": "n2",
@@ -1259,6 +1289,7 @@
         "targetArrowhead": "circle"
       },
       {
+        "d2Index": 2,
         "id": "e2",
         "from": "n2",
         "to": "n3",
@@ -1268,6 +1299,7 @@
         "targetArrowhead": "circle"
       },
       {
+        "d2Index": 3,
         "id": "e3",
         "from": "n3",
         "to": "n3",
@@ -1418,6 +1450,7 @@
   {
     "edges": [
       {
+        "d2Index": 0,
         "id": "e0",
         "from": "n0",
         "to": "n1",
@@ -1427,6 +1460,7 @@
         "targetArrowhead": "none"
       },
       {
+        "d2Index": 1,
         "id": "e1",
         "from": "n1",
         "to": "n2",
@@ -1436,6 +1470,7 @@
         "targetArrowhead": "diamond"
       },
       {
+        "d2Index": 2,
         "id": "e2",
         "from": "n2",
         "to": "n3",
@@ -1445,6 +1480,7 @@
         "targetArrowhead": "diamond"
       },
       {
+        "d2Index": 3,
         "id": "e3",
         "from": "n3",
         "to": "n3",
@@ -1595,6 +1631,7 @@
   {
     "edges": [
       {
+        "d2Index": 0,
         "id": "e0",
         "from": "n0",
         "to": "n1",
@@ -1604,6 +1641,7 @@
         "targetArrowhead": "none"
       },
       {
+        "d2Index": 1,
         "id": "e1",
         "from": "n1",
         "to": "n2",
@@ -1613,6 +1651,7 @@
         "targetArrowhead": "diamond"
       },
       {
+        "d2Index": 2,
         "id": "e2",
         "from": "n2",
         "to": "n3",
@@ -1622,6 +1661,7 @@
         "targetArrowhead": "diamond"
       },
       {
+        "d2Index": 3,
         "id": "e3",
         "from": "n3",
         "to": "n3",
@@ -1772,6 +1812,7 @@
   {
     "edges": [
       {
+        "d2Index": 0,
         "id": "e0",
         "from": "n0",
         "to": "n1",
@@ -1781,6 +1822,7 @@
         "targetArrowhead": "none"
       },
       {
+        "d2Index": 1,
         "id": "e1",
         "from": "n1",
         "to": "n2",
@@ -1790,6 +1832,7 @@
         "targetArrowhead": "diamond"
       },
       {
+        "d2Index": 2,
         "id": "e2",
         "from": "n2",
         "to": "n3",
@@ -1799,6 +1842,7 @@
         "targetArrowhead": "diamond"
       },
       {
+        "d2Index": 3,
         "id": "e3",
         "from": "n3",
         "to": "n3",
@@ -1949,6 +1993,7 @@
   {
     "edges": [
       {
+        "d2Index": 0,
         "id": "e0",
         "from": "n0",
         "to": "n1",
@@ -1958,6 +2003,7 @@
         "targetArrowhead": "none"
       },
       {
+        "d2Index": 1,
         "id": "e1",
         "from": "n1",
         "to": "n2",
@@ -1967,6 +2013,7 @@
         "targetArrowhead": "diamond"
       },
       {
+        "d2Index": 2,
         "id": "e2",
         "from": "n2",
         "to": "n3",
@@ -1976,6 +2023,7 @@
         "targetArrowhead": "diamond"
       },
       {
+        "d2Index": 3,
         "id": "e3",
         "from": "n3",
         "to": "n3",
@@ -2126,6 +2174,7 @@
   {
     "edges": [
       {
+        "d2Index": 0,
         "id": "e0",
         "from": "n0",
         "to": "n1",
@@ -2135,6 +2184,7 @@
         "targetArrowhead": "none"
       },
       {
+        "d2Index": 1,
         "id": "e1",
         "from": "n1",
         "to": "n2",
@@ -2144,6 +2194,7 @@
         "targetArrowhead": "box"
       },
       {
+        "d2Index": 2,
         "id": "e2",
         "from": "n2",
         "to": "n3",
@@ -2153,6 +2204,7 @@
         "targetArrowhead": "box"
       },
       {
+        "d2Index": 3,
         "id": "e3",
         "from": "n3",
         "to": "n3",
@@ -2303,6 +2355,7 @@
   {
     "edges": [
       {
+        "d2Index": 0,
         "id": "e0",
         "from": "n0",
         "to": "n1",
@@ -2312,6 +2365,7 @@
         "targetArrowhead": "none"
       },
       {
+        "d2Index": 1,
         "id": "e1",
         "from": "n1",
         "to": "n2",
@@ -2321,6 +2375,7 @@
         "targetArrowhead": "box"
       },
       {
+        "d2Index": 2,
         "id": "e2",
         "from": "n2",
         "to": "n3",
@@ -2330,6 +2385,7 @@
         "targetArrowhead": "box"
       },
       {
+        "d2Index": 3,
         "id": "e3",
         "from": "n3",
         "to": "n3",
@@ -2480,6 +2536,7 @@
   {
     "edges": [
       {
+        "d2Index": 0,
         "id": "e0",
         "from": "n0",
         "to": "n1",
@@ -2489,6 +2546,7 @@
         "targetArrowhead": "none"
       },
       {
+        "d2Index": 1,
         "id": "e1",
         "from": "n1",
         "to": "n2",
@@ -2498,6 +2556,7 @@
         "targetArrowhead": "box"
       },
       {
+        "d2Index": 2,
         "id": "e2",
         "from": "n2",
         "to": "n3",
@@ -2507,6 +2566,7 @@
         "targetArrowhead": "box"
       },
       {
+        "d2Index": 3,
         "id": "e3",
         "from": "n3",
         "to": "n3",
@@ -2657,6 +2717,7 @@
   {
     "edges": [
       {
+        "d2Index": 0,
         "id": "e0",
         "from": "n0",
         "to": "n1",
@@ -2666,6 +2727,7 @@
         "targetArrowhead": "none"
       },
       {
+        "d2Index": 1,
         "id": "e1",
         "from": "n1",
         "to": "n2",
@@ -2675,6 +2737,7 @@
         "targetArrowhead": "box"
       },
       {
+        "d2Index": 2,
         "id": "e2",
         "from": "n2",
         "to": "n3",
@@ -2684,6 +2747,7 @@
         "targetArrowhead": "box"
       },
       {
+        "d2Index": 3,
         "id": "e3",
         "from": "n3",
         "to": "n3",
@@ -2834,6 +2898,7 @@
   {
     "edges": [
       {
+        "d2Index": 0,
         "id": "e0",
         "from": "n0",
         "to": "n1",
@@ -2843,6 +2908,7 @@
         "targetArrowhead": "none"
       },
       {
+        "d2Index": 1,
         "id": "e1",
         "from": "n1",
         "to": "n2",
@@ -2852,6 +2918,7 @@
         "targetArrowhead": "cross"
       },
       {
+        "d2Index": 2,
         "id": "e2",
         "from": "n2",
         "to": "n3",
@@ -2861,6 +2928,7 @@
         "targetArrowhead": "cross"
       },
       {
+        "d2Index": 3,
         "id": "e3",
         "from": "n3",
         "to": "n3",
@@ -3011,6 +3079,7 @@
   {
     "edges": [
       {
+        "d2Index": 0,
         "id": "e0",
         "from": "n0",
         "to": "n1",
@@ -3020,6 +3089,7 @@
         "targetArrowhead": "none"
       },
       {
+        "d2Index": 1,
         "id": "e1",
         "from": "n1",
         "to": "n2",
@@ -3029,6 +3099,7 @@
         "targetArrowhead": "cross"
       },
       {
+        "d2Index": 2,
         "id": "e2",
         "from": "n2",
         "to": "n3",
@@ -3038,6 +3109,7 @@
         "targetArrowhead": "cross"
       },
       {
+        "d2Index": 3,
         "id": "e3",
         "from": "n3",
         "to": "n3",
@@ -3188,6 +3260,7 @@
   {
     "edges": [
       {
+        "d2Index": 0,
         "id": "e0",
         "from": "n0",
         "to": "n1",
@@ -3197,6 +3270,7 @@
         "targetArrowhead": "none"
       },
       {
+        "d2Index": 1,
         "id": "e1",
         "from": "n1",
         "to": "n2",
@@ -3206,6 +3280,7 @@
         "targetArrowhead": "cross"
       },
       {
+        "d2Index": 2,
         "id": "e2",
         "from": "n2",
         "to": "n3",
@@ -3215,6 +3290,7 @@
         "targetArrowhead": "cross"
       },
       {
+        "d2Index": 3,
         "id": "e3",
         "from": "n3",
         "to": "n3",
@@ -3365,6 +3441,7 @@
   {
     "edges": [
       {
+        "d2Index": 0,
         "id": "e0",
         "from": "n0",
         "to": "n1",
@@ -3374,6 +3451,7 @@
         "targetArrowhead": "none"
       },
       {
+        "d2Index": 1,
         "id": "e1",
         "from": "n1",
         "to": "n2",
@@ -3383,6 +3461,7 @@
         "targetArrowhead": "cross"
       },
       {
+        "d2Index": 2,
         "id": "e2",
         "from": "n2",
         "to": "n3",
@@ -3392,6 +3471,7 @@
         "targetArrowhead": "cross"
       },
       {
+        "d2Index": 3,
         "id": "e3",
         "from": "n3",
         "to": "n3",

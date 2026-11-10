@@ -34,7 +34,7 @@ type orderingEdge struct {
 	ID                    string              `json:"id"`
 	From                  string              `json:"from"`
 	To                    string              `json:"to"`
-	D2Index               int                 `json:"d2Index"`
+	D2Index               *int                `json:"d2Index,omitempty"`
 	Label                 string              `json:"label"`
 	LabelWidth            int                 `json:"labelWidth"`
 	LabelHeight           int                 `json:"labelHeight"`
@@ -76,6 +76,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"arrow-label-default", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 6},
 		{"tiny-empty-groups", [][2]int{}, false, 7},
 		{"embedded-and-empty-labels", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 8},
+		{"inferred-edge-indices", [][2]int{{0, 1}, {0, 1}, {1, 0}, {1, 0}, {2, 3}, {0, 1}}, false, 9},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -168,11 +169,25 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				nodes = append(nodes, input)
 			}
 			for i, pair := range test.pairs {
-				input := orderingEdge{ID: fmt.Sprintf("edge%d", 20-i), From: names[pair[0]], To: names[pair[1]], D2Index: indices[i], Label: "link", LabelWidth: 30, LabelHeight: 12}
+				index := indices[i]
+				input := orderingEdge{ID: fmt.Sprintf("edge%d", 20-i), From: names[pair[0]], To: names[pair[1]], D2Index: &index, Label: "link", LabelWidth: 30, LabelHeight: 12}
 				if test.shapeSet == 8 && i%2 == 0 {
 					input.Label = ""
 				}
-				edge := &d2graph.Edge{Index: input.D2Index, Src: objects[input.From], Dst: objects[input.To], DstArrow: true, Attributes: d2graph.Attributes{}}
+				edge := &d2graph.Edge{Index: index, Src: objects[input.From], Dst: objects[input.To], DstArrow: true, Attributes: d2graph.Attributes{}}
+				if test.shapeSet == 9 {
+					src := []bool{false, false, true, false, false, false}[i]
+					dst := []bool{true, true, false, true, true, true}[i]
+					input.SourceArrow, input.TargetArrow = &src, &dst
+					edge.SrcArrow, edge.DstArrow = src, dst
+					edge.Index = 0
+					for _, previous := range g.Edges {
+						if previous.IsEquivalent(edge.Src, edge.SrcArrow, edge.Dst, edge.DstArrow) {
+							edge.Index++
+						}
+					}
+					input.D2Index = nil
+				}
 				if test.shapeSet == 6 {
 					src := []bool{false, false, true, true, false}[i]
 					dst := []bool{true, true, false, false, false}[i]

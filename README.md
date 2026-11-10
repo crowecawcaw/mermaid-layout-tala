@@ -52,7 +52,7 @@ runs the default seeds `[1, 2, 3]` using a Go-compatible random stream and selec
 the result by upstream penalty, then area, with later seeds winning exact ties.
 
 The public layout now runs the translated upstream TALA pipeline. The pinned
-full-layout corpus matches all 304 cases, including nested groups, loops, parallel
+full-layout corpus matches all 308 cases, including nested groups, loops, parallel
 edges and all four directions. This corpus is a useful baseline, not proof of
 parity for every graph or all D2 features. See the [parity matrix](./test/UPSTREAM-PARITY.md).
 
@@ -69,7 +69,7 @@ sequence of step-shaped nodes are consumed by layout and omitted from the result
 By default the API preserves node and edge input order, matching D2. Set
 `inputOrder: 'canonical'` for results independent of input array order. Set an
 edge's `d2Index` to its original D2 edge index when reproducing a D2 graph; if
-omitted, the edge's position in the selected input order is used.
+omitted, it counts earlier equivalent edges as the D2 compiler does.
 
 Use `setTalaSeeds([1, 2, 3])` to configure defaults, or pass `seeds` in the direct
 API's options. Seeds accept safe integer numbers or signed 64-bit `bigint`
@@ -87,8 +87,8 @@ npm run build
 npm test
 ```
 
-`npm run test:parity` compares complete layouts against 304 pinned Go fixtures.
-It currently reports 304/304 matching. It checks geometry and routes on this corpus;
+`npm run test:parity` compares complete layouts against 308 pinned Go fixtures.
+It currently reports 308/308 matching. It checks geometry and routes on this corpus;
 additional upstream features and graph shapes still need differential coverage.
 
 Run the playground with `npm run demo -- --port 4173`, then open

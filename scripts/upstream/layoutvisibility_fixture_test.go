@@ -36,6 +36,7 @@ type nativeNodeInput struct {
 	IsMultiple    bool       `json:"isMultiple,omitempty"`
 }
 type nativeEdgeInput struct {
+	D2Index         int    `json:"d2Index"`
 	ID              string `json:"id"`
 	From            string `json:"from"`
 	To              string `json:"to"`
@@ -150,7 +151,7 @@ func TestExportTypeScriptLayoutvisibilityFixtures(t *testing.T) {
 				nodes = append(nodes, input)
 			}
 			for i, pair := range test.pairs {
-				input := nativeEdgeInput{ID: fmt.Sprintf("e%d", i), From: fmt.Sprintf("n%d", pair[0]), To: fmt.Sprintf("n%d", pair[1])}
+				input := nativeEdgeInput{D2Index: i, ID: fmt.Sprintf("e%d", i), From: fmt.Sprintf("n%d", pair[0]), To: fmt.Sprintf("n%d", pair[1])}
 				edge := &d2graph.Edge{Index: i, Src: objects[input.From], Dst: objects[input.To], DstArrow: true, Attributes: d2graph.Attributes{}}
 				if test.name == "arrows" {
 					switch i % 4 {

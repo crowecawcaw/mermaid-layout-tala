@@ -23,6 +23,7 @@ type randomNodeInput struct {
 	LabelHeight int     `json:"labelHeight,omitempty"`
 }
 type randomEdgeInput struct {
+	D2Index         int    `json:"d2Index"`
 	ID              string `json:"id"`
 	From            string `json:"from"`
 	To              string `json:"to"`
@@ -72,7 +73,7 @@ func TestExportTypeScriptLayoutrandomFixtures(t *testing.T) {
 		edgeCount := 2 + rng.Intn(7)
 		for i := 0; i < edgeCount; i++ {
 			from, to := rng.Intn(count), rng.Intn(count)
-			input := randomEdgeInput{ID: fmt.Sprintf("e%d", i), From: fmt.Sprintf("n%d", from), To: fmt.Sprintf("n%d", to)}
+			input := randomEdgeInput{D2Index: i, ID: fmt.Sprintf("e%d", i), From: fmt.Sprintf("n%d", from), To: fmt.Sprintf("n%d", to)}
 			edge := &d2graph.Edge{Index: i, Src: objects[from], Dst: objects[to], DstArrow: true, Attributes: d2graph.Attributes{}}
 			if trial%4 == 1 {
 				input.LabelWidth = 20 + rng.Intn(4)*10

@@ -70,7 +70,7 @@ export interface LayoutEdge {
   id: string;
   from: string;
   to: string;
-  /** D2 edge identity index; defaults to the edge's position in the input. */
+  /** D2 edge identity index; defaults to the count of earlier equivalent edges. */
   d2Index?: number;
   sourceArrowhead?: string;
   targetArrowhead?: string;
