@@ -52,7 +52,7 @@ runs the default seeds `[1, 2, 3]` using a Go-compatible random stream and selec
 the result by upstream penalty, then area, with later seeds winning exact ties.
 
 The public layout now runs the translated upstream TALA pipeline. The pinned
-full-layout corpus matches all 288 cases, including nested groups, loops, parallel
+full-layout corpus matches all 292 cases, including nested groups, loops, parallel
 edges and all four directions. This corpus is a useful baseline, not proof of
 parity for every graph or all D2 features. See the [parity matrix](./test/UPSTREAM-PARITY.md).
 
@@ -60,7 +60,7 @@ The synchronous `layoutFlowchart(nodes, edges, options)` API is preserved. Nodes
 can specify `parentId`, `isGroup`, `direction`, `shape`, measured labels,
 icon placement, font size, fixed positions, `nearId` relationships, and D2
 visibility styles (`opacity`, `fill`, `stroke`, and `strokeWidth`). Edges can specify measured
-labels and arrowhead types. Nodes can request fixed dimensions with `fixedSize: true`. Invalid parent references and cycles
+labels, arrow flags, arrowhead types and fill. Nodes can request fixed dimensions with `fixedSize: true`. Invalid parent references and cycles
 are rejected. The legacy `nodeSpacing`, `rankSpacing`, `orderingPasses`, and
 `containerPadding` options are accepted for compatibility; upstream TALA uses
 its own spacing and ordering policies. As in upstream, edges used to define a
@@ -87,8 +87,8 @@ npm run build
 npm test
 ```
 
-`npm run test:parity` compares complete layouts against 288 pinned Go fixtures.
-It currently reports 288/288 matching. It checks geometry and routes on this corpus;
+`npm run test:parity` compares complete layouts against 292 pinned Go fixtures.
+It currently reports 292/292 matching. It checks geometry and routes on this corpus;
 additional upstream features and graph shapes still need differential coverage.
 
 Run the playground with `npm run demo -- --port 4173`, then open

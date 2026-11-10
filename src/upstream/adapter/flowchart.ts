@@ -96,14 +96,25 @@ function equalFold(a: string, b: string): boolean {
   const escaped = a.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   return new RegExp(`^(?:${escaped})(?![\\s\\S])`, 'iu').test(b);
 }
-function arrowhead(value: string | undefined, fallback: string): string {
-  if (value === undefined) return fallback;
+function arrowhead(value: string | undefined, fallback: string, filled?: boolean): string {
+  if (value === undefined && filled === undefined) return fallback;
   const aliases: Record<string, string> = {
     arrow_point: 'triangle',
     arrow_circle: 'circle',
     arrow_cross: 'cross',
   };
-  return aliases[value] ?? (value === '' ? NoArrowhead : value);
+  const shape = value === undefined || (value === '' && filled !== undefined)
+    ? TriangleArrowhead : aliases[value] ?? (value === '' ? NoArrowhead : value);
+  if (shape === 'triangle' && filled === false) return 'unfilled-triangle';
+  if (filled === true && (shape === 'diamond' || shape === 'circle' || shape === 'box'))
+    return `filled-${shape}`;
+  return shape;
+}
+function arrowFlags(e: LayoutEdge): [boolean, boolean] {
+  return [
+    e.sourceArrow ?? (!!e.sourceArrowhead && e.sourceArrowhead !== 'none'),
+    e.targetArrow ?? (e.targetArrowhead === undefined || (e.targetArrowhead !== '' && e.targetArrowhead !== 'none')),
+  ];
 }
 export function translateFlowchart(
   inputNodes: readonly LayoutNode[],
@@ -390,10 +401,7 @@ export function translateFlowchart(
       )
         throw new Error(`${name} dimensions must be finite and nonnegative`);
     }
-    const source = !!e.sourceArrowhead && e.sourceArrowhead !== 'none',
-      target =
-        e.targetArrowhead === undefined ||
-        (e.targetArrowhead !== '' && e.targetArrowhead !== 'none');
+    const [source, target] = arrowFlags(e);
     reversed.push(source && !target);
     const from = [...paths.get(e.from)!],
       to = [...paths.get(e.to)!],
@@ -482,12 +490,13 @@ export function translateFlowchart(
       !!input.isInvisible ||
       style?.stroke?.toLowerCase() === 'transparent' ||
       (style?.opacity !== undefined && parseGoFloat(style.opacity) === 0);
+    const [sourceArrow, targetArrow] = arrowFlags(input);
     e.SourceArrowhead = reversed[i]
       ? NoArrowhead
-      : arrowhead(input.sourceArrowhead, NoArrowhead);
+      : arrowhead(input.sourceArrowhead, sourceArrow ? TriangleArrowhead : NoArrowhead, input.sourceArrowheadFilled);
     e.TargetArrowhead = reversed[i]
-      ? arrowhead(input.sourceArrowhead, TriangleArrowhead)
-      : arrowhead(input.targetArrowhead, TriangleArrowhead);
+      ? arrowhead(input.sourceArrowhead, TriangleArrowhead, input.sourceArrowheadFilled)
+      : arrowhead(input.targetArrowhead, targetArrow ? TriangleArrowhead : NoArrowhead, input.targetArrowheadFilled);
     const makeArrowLabel = (
       value: typeof input.sourceArrowheadLabel,
     ): Label | null => {

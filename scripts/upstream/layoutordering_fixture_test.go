@@ -30,13 +30,19 @@ type orderingNode struct {
 	Style       map[string]string `json:"style,omitempty"`
 }
 type orderingEdge struct {
-	ID          string `json:"id"`
-	From        string `json:"from"`
-	To          string `json:"to"`
-	D2Index     int    `json:"d2Index"`
-	Label       string `json:"label"`
-	LabelWidth  int    `json:"labelWidth"`
-	LabelHeight int    `json:"labelHeight"`
+	ID                    string `json:"id"`
+	From                  string `json:"from"`
+	To                    string `json:"to"`
+	D2Index               int    `json:"d2Index"`
+	Label                 string `json:"label"`
+	LabelWidth            int    `json:"labelWidth"`
+	LabelHeight           int    `json:"labelHeight"`
+	SourceArrow           *bool  `json:"sourceArrow,omitempty"`
+	TargetArrow           *bool  `json:"targetArrow,omitempty"`
+	SourceArrowhead       string `json:"sourceArrowhead,omitempty"`
+	TargetArrowhead       string `json:"targetArrowhead,omitempty"`
+	SourceArrowheadFilled *bool  `json:"sourceArrowheadFilled,omitempty"`
+	TargetArrowheadFilled *bool  `json:"targetArrowheadFilled,omitempty"`
 }
 
 func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
@@ -58,6 +64,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"d2-shapes-extra", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 2},
 		{"font-defaults", [][2]int{{1, 2}, {1, 3}, {2, 4}}, false, 3},
 		{"node-visibility-styles", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 4},
+		{"arrow-flags-and-fill", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 5},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -141,6 +148,28 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 			for i, pair := range test.pairs {
 				input := orderingEdge{ID: fmt.Sprintf("edge%d", 20-i), From: names[pair[0]], To: names[pair[1]], D2Index: indices[i], Label: "link", LabelWidth: 30, LabelHeight: 12}
 				edge := &d2graph.Edge{Index: input.D2Index, Src: objects[input.From], Dst: objects[input.To], DstArrow: true, Attributes: d2graph.Attributes{}}
+				if test.shapeSet == 5 {
+					src := []bool{true, false, true, false, true}[i]
+					dst := []bool{false, true, true, false, false}[i]
+					input.SourceArrow, input.TargetArrow = &src, &dst
+					edge.SrcArrow, edge.DstArrow = src, dst
+					input.SourceArrowhead = []string{"diamond", "", "box", "triangle", "triangle"}[i]
+					input.TargetArrowhead = []string{"", "triangle", "circle", "", "diamond"}[i]
+					srcFilled := []bool{true, false, true, true, false}[i]
+					dstFilled := []bool{false, false, true, false, true}[i]
+					if input.SourceArrowhead != "" {
+						input.SourceArrowheadFilled = &srcFilled
+						edge.SrcArrowhead = &d2graph.Attributes{}
+						edge.SrcArrowhead.Shape.Value = input.SourceArrowhead
+						edge.SrcArrowhead.Style.Filled = &d2graph.Scalar{Value: strconv.FormatBool(srcFilled)}
+					}
+					if input.TargetArrowhead != "" {
+						input.TargetArrowheadFilled = &dstFilled
+						edge.DstArrowhead = &d2graph.Attributes{}
+						edge.DstArrowhead.Shape.Value = input.TargetArrowhead
+						edge.DstArrowhead.Style.Filled = &d2graph.Scalar{Value: strconv.FormatBool(dstFilled)}
+					}
+				}
 				edge.Label.Value = input.Label
 				edge.LabelDimensions = *d2target.NewTextDimensions(input.LabelWidth, input.LabelHeight)
 				g.Edges = append(g.Edges, edge)

@@ -74,6 +74,11 @@ export interface LayoutEdge {
   d2Index?: number;
   sourceArrowhead?: string;
   targetArrowhead?: string;
+  /** D2 edge arrow flags, independent of arrowhead attributes. */
+  sourceArrow?: boolean;
+  targetArrow?: boolean;
+  sourceArrowheadFilled?: boolean;
+  targetArrowheadFilled?: boolean;
   sourceTableColumnIndex?: number;
   targetTableColumnIndex?: number;
   sourceArrowheadLabel?: ArrowheadLabel;

@@ -88,6 +88,20 @@ describe('Mermaid flowchart layout slice', () => {
     expect(() => translateFlowchart([{ ...nodes[0]!, style: { opacity: '2' } }], [], {})).toThrow(/opacity/);
     expect(() => translateFlowchart([{ ...nodes[0]!, style: { strokeWidth: '-1' } }], [], {})).toThrow(/strokeWidth/);
   });
+
+  it('keeps D2 arrow flags separate from shape and fill attributes', () => {
+    const nodes = ['a', 'b', 'c'].map((id) => ({ id, width: 40, height: 30 }));
+    const { graph } = translateFlowchart(nodes, [
+      { id: 'e1', from: 'a', to: 'b', sourceArrow: true, targetArrow: false, sourceArrowhead: 'diamond', sourceArrowheadFilled: true },
+      { id: 'e2', from: 'a', to: 'c', sourceArrow: false, targetArrow: true, targetArrowhead: 'triangle', targetArrowheadFilled: false },
+      { id: 'e3', from: 'b', to: 'c', sourceArrow: false, targetArrow: false, sourceArrowhead: 'box', sourceArrowheadFilled: true },
+    ], { inputOrder: 'authored' });
+    expect(graph.Edges.map((e) => [e.D2ID, e.SourceArrowhead, e.TargetArrowhead])).toEqual([
+      ['(a <- b)[0]', 'none', 'filled-diamond'],
+      ['(a -> c)[1]', 'none', 'unfilled-triangle'],
+      ['(b -- c)[2]', 'filled-box', 'none'],
+    ]);
+  });
   it('uses hierarchy ranks and measured node sizes', () => {
     const result = layoutFlowchart(
       [
