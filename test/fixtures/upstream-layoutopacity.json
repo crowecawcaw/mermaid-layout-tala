@@ -1,0 +1,442 @@
+[
+  {
+    "input": "",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "0",
+    "valid": true,
+    "zero": true
+  },
+  {
+    "input": "-0",
+    "valid": true,
+    "zero": true
+  },
+  {
+    "input": "+0",
+    "valid": true,
+    "zero": true
+  },
+  {
+    "input": "1",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "-1",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "+1",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0.5",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": ".5",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "1.",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "1e-4",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "1E+0",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "1e-4000",
+    "valid": true,
+    "zero": true
+  },
+  {
+    "input": "1e4000",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "1.0000000000000001",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "1.0000000000000002",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "0_0",
+    "valid": true,
+    "zero": true
+  },
+  {
+    "input": "0.0_1",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0_.0",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "1e_0",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "_0",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "0_",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": " 0",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "0 ",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "0x0",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "0x1",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "0x0p0",
+    "valid": true,
+    "zero": true
+  },
+  {
+    "input": "0x_0p0",
+    "valid": true,
+    "zero": true
+  },
+  {
+    "input": "0x0_p0",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "0x.8p0",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1p-1",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0p-1",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1p+0",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000001p0",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "0x1p-1075",
+    "valid": true,
+    "zero": true
+  },
+  {
+    "input": "0x1p-1074",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1p1024",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "0x.0000000000000000000000000001p+0",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x_.8p0",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "NaN",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "Inf",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "Infinity",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "true",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000000p-1080",
+    "valid": true,
+    "zero": true
+  },
+  {
+    "input": "0x1.0000000000000000p-1076",
+    "valid": true,
+    "zero": true
+  },
+  {
+    "input": "0x1.0000000000000000p-1075",
+    "valid": true,
+    "zero": true
+  },
+  {
+    "input": "0x1.0000000000000000p-1074",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000000p-1073",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000000p-1023",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000000p-1",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000000p0",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000000p1",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000800p-1080",
+    "valid": true,
+    "zero": true
+  },
+  {
+    "input": "0x1.0000000000000800p-1076",
+    "valid": true,
+    "zero": true
+  },
+  {
+    "input": "0x1.0000000000000800p-1075",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000800p-1074",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000800p-1073",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000800p-1023",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000800p-1",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000800p0",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000800p1",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000801p-1080",
+    "valid": true,
+    "zero": true
+  },
+  {
+    "input": "0x1.0000000000000801p-1076",
+    "valid": true,
+    "zero": true
+  },
+  {
+    "input": "0x1.0000000000000801p-1075",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000801p-1074",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000801p-1073",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000801p-1023",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000801p-1",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000801p0",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000801p1",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000fffp-1080",
+    "valid": true,
+    "zero": true
+  },
+  {
+    "input": "0x1.0000000000000fffp-1076",
+    "valid": true,
+    "zero": true
+  },
+  {
+    "input": "0x1.0000000000000fffp-1075",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000fffp-1074",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000fffp-1073",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000fffp-1023",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000fffp-1",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000fffp0",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "0x1.0000000000000fffp1",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "0x1.ffffffffffffffffp-1080",
+    "valid": true,
+    "zero": true
+  },
+  {
+    "input": "0x1.ffffffffffffffffp-1076",
+    "valid": true,
+    "zero": true
+  },
+  {
+    "input": "0x1.ffffffffffffffffp-1075",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.ffffffffffffffffp-1074",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.ffffffffffffffffp-1073",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.ffffffffffffffffp-1023",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.ffffffffffffffffp-1",
+    "valid": true,
+    "zero": false
+  },
+  {
+    "input": "0x1.ffffffffffffffffp0",
+    "valid": false,
+    "zero": false
+  },
+  {
+    "input": "0x1.ffffffffffffffffp1",
+    "valid": false,
+    "zero": false
+  }
+]

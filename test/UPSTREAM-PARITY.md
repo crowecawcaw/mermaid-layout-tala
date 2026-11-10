@@ -17,6 +17,10 @@ full parity. The prior WebAssembly replacement remains reverted; the public
 | Mermaid adapter | Maps the supported flowchart input to the translated graph | 288/288 pinned full-layout fixtures pass, including authored ordering and explicit D2 edge indices. The input model does not expose all D2 shape and style features |
 | Resource accounting | Translated work guards and stage rollback | Expand cancellation and failure tests through the complete public pipeline |
 
+`upstream-opacity.test.ts` also compares node and edge opacity validation and
+visibility against Go, including decimal and hexadecimal float syntax and
+rounding at floating-point boundaries.
+
 ## Acceptance work still required
 
 1. Expand end-to-end Go comparisons beyond the current 288 cases, including

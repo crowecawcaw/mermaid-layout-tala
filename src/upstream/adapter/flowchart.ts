@@ -42,6 +42,7 @@ import {
   validateLayoutResultMetadata,
 } from './result-validation.js';
 import { routeMidpoint } from '../../routing.js';
+import { parseGoFloat } from './parse-float.js';
 const orientation: Record<LayoutDirection, Orientation> = {
   TB: Orientation.Bottom,
   BT: Orientation.Top,
@@ -147,10 +148,11 @@ export function translateFlowchart(
   const byId = new Map<string, LayoutNode>();
   for (const n of inputNodes) {
     if (byId.has(n.id)) throw new Error('duplicate node ID');
-    if (n.style?.opacity !== undefined &&
-        (!n.style.opacity.trim() || !Number.isFinite(Number(n.style.opacity)) ||
-         Number(n.style.opacity) < 0 || Number(n.style.opacity) > 1))
-      throw new Error(`node ${n.id} has invalid opacity`);
+    if (n.style?.opacity !== undefined) {
+      const opacity = parseGoFloat(n.style.opacity);
+      if (!Number.isFinite(opacity) || opacity < 0 || opacity > 1)
+        throw new Error(`node ${n.id} has invalid opacity`);
+    }
     if (n.style?.strokeWidth !== undefined &&
         (!/^[+-]?\d+$/.test(n.style.strokeWidth) || Number(n.style.strokeWidth) < 0 ||
          Number(n.style.strokeWidth) > 1_000_000_000))
@@ -308,7 +310,7 @@ export function translateFlowchart(
       (style?.strokeWidth !== undefined && Number(style.strokeWidth) === 0);
     const noLabel = !n.label && !(n.labelWidth ?? 0) && !(n.labelHeight ?? 0);
     node.IsInvisible = !!n.isInvisible ||
-      (style?.opacity !== undefined && Number(style.opacity) === 0) ||
+      (style?.opacity !== undefined && parseGoFloat(style.opacity) === 0) ||
       (!!noFill && !!noStroke && noLabel && !n.icon);
     node.Is3D = n.is3D ?? false;
     node.IsMultiple = n.isMultiple ?? false;
@@ -445,14 +447,11 @@ export function translateFlowchart(
         const value = style[key];
         if (value !== undefined) e.Style[fields[key]] = { Value: value };
       }
-      if (
-        style.opacity !== undefined &&
-        (!style.opacity.trim() ||
-          !Number.isFinite(Number(style.opacity)) ||
-          Number(style.opacity) < 0 ||
-          Number(style.opacity) > 1)
-      )
-        throw new Error(`edge ${input.id} has invalid opacity`);
+      if (style.opacity !== undefined) {
+        const opacity = parseGoFloat(style.opacity);
+        if (!Number.isFinite(opacity) || opacity < 0 || opacity > 1)
+          throw new Error(`edge ${input.id} has invalid opacity`);
+      }
       for (const key of ['strokeWidth', 'fontSize'] as const)
         if (
           style[key] !== undefined &&
@@ -482,7 +481,7 @@ export function translateFlowchart(
     e.IsInvisible =
       !!input.isInvisible ||
       style?.stroke?.toLowerCase() === 'transparent' ||
-      (style?.opacity !== undefined && Number(style.opacity) === 0);
+      (style?.opacity !== undefined && parseGoFloat(style.opacity) === 0);
     e.SourceArrowhead = reversed[i]
       ? NoArrowhead
       : arrowhead(input.sourceArrowhead, NoArrowhead);
@@ -534,7 +533,7 @@ export function translateFlowchart(
         e.MinWidth += extra;
         e.MinHeight += extra;
       }
-    if (style?.opacity !== undefined && Number(style.opacity) === 0) {
+    if (style?.opacity !== undefined && parseGoFloat(style.opacity) === 0) {
       e.MinWidth = 0;
       e.MinHeight = 0;
     }
