@@ -17,6 +17,8 @@ import (
 )
 
 type randomNodeInput struct {
+	ParentID     string  `json:"parentId,omitempty"`
+	IsGroup      bool    `json:"isGroup,omitempty"`
 	IsInvisible  bool    `json:"isInvisible,omitempty"`
 	IsGrid       bool    `json:"isGrid,omitempty"`
 	HasClassData bool    `json:"hasClassData,omitempty"`
@@ -49,7 +51,7 @@ func TestExportTypeScriptLayoutrandomextendedFixtures(t *testing.T) {
 	dirs := []string{"TB", "BT", "LR", "RL"}
 	d2dirs := []string{"down", "up", "right", "left"}
 	shapes := []string{"", "diamond", "oval", "hexagon", "cylinder", "square", "callout", "stored_data", "class", "sql_table", "text", "code", "TEXT", "SQL_TABLE"}
-	for trial := 0; trial < 32; trial++ {
+	for trial := 0; trial < 64; trial++ {
 		g := d2graph.NewGraph()
 		g.Root.Direction.Value = d2dirs[trial%4]
 		if trial%5 == 0 {
@@ -64,6 +66,14 @@ func TestExportTypeScriptLayoutrandomextendedFixtures(t *testing.T) {
 			id := fmt.Sprintf("n%d", count-1-i)
 			input := randomNodeInput{ID: id, Width: float64(40 + rng.Intn(7)*10), Height: float64(30 + rng.Intn(7)*10)}
 			obj := &d2graph.Object{Graph: g, Parent: g.Root, ID: id, IDVal: id, Box: geo.NewBox(geo.NewPoint(0, 0), input.Width, input.Height), Children: make(map[string]*d2graph.Object), Attributes: d2graph.Attributes{}}
+			if trial >= 32 {
+				if i < 2 {
+					input.IsGroup = true
+				} else if i%3 != 0 {
+					obj.Parent = objects[i%2]
+					input.ParentID = obj.Parent.ID
+				}
+			}
 			input.Shape = shapes[rng.Intn(len(shapes))]
 			obj.Shape.Value = input.Shape
 			if trial%4 == 0 {
@@ -84,12 +94,12 @@ func TestExportTypeScriptLayoutrandomextendedFixtures(t *testing.T) {
 				input.HasClassData = true
 				obj.Class = &d2target.Class{}
 			}
-			if trial%4 == 3 && i == count-1 {
+			if trial < 32 && trial%4 == 3 && i == count-1 {
 				input.NearID = objects[0].ID
 				obj.NearKey = d2ast.MakeKeyPath([]string{input.NearID})
 			}
-			g.Root.Children[id] = obj
-			g.Root.ChildrenArray = append(g.Root.ChildrenArray, obj)
+			obj.Parent.Children[id] = obj
+			obj.Parent.ChildrenArray = append(obj.Parent.ChildrenArray, obj)
 			g.Objects = append(g.Objects, obj)
 			objects = append(objects, obj)
 			nodes = append(nodes, input)
