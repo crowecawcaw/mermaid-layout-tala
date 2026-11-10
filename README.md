@@ -121,6 +121,12 @@ const routed = routeEdges(
 );
 ```
 
+Both `layoutFlowchart` and `routeEdges` accept a `context` option. Use
+`withCancel()` to create a context and cancellation function, or implement
+`TalaContext` to observe cancellation from shared state. Calls are synchronous,
+so a cancellation callback on the same JavaScript event loop cannot run until
+the call returns.
+
 Use `setTalaSeeds([1, 2, 3])` to configure defaults, or pass `seeds` in the direct
 API's options. Seeds accept safe integer numbers or signed 64-bit `bigint`
 values. Up to 64 entries and 16 unique seeds are allowed; duplicates are removed

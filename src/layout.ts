@@ -1,5 +1,6 @@
 import type { RankNode } from './rank.js';
 import type { TalaSeed } from './random.js';
+import type { Context } from './upstream/limits/context.js';
 import { layoutFlowchartTranslated } from './upstream/adapter/flowchart.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
@@ -103,6 +104,7 @@ export interface LayoutOptions {
   rootHierarchy?: boolean;
   rootSequence?: boolean;
   rootLevel?: number;
+  context?: Context;
   nodeSpacing?: number;
   rankSpacing?: number;
   orderingPasses?: number;
@@ -165,6 +167,7 @@ export interface RoutingOptions {
   rootHierarchy?: boolean;
   rootSequence?: boolean;
   rootLevel?: number;
+  context?: Context;
 }
 
 interface WeightedEdge extends LayoutEdge {

@@ -15,6 +15,7 @@ export function routeEdges(
   selectedIds: readonly string[],
   options: RoutingOptions = {},
 ): RoutingResult {
+  if (options.context === null) throw new Error('TALA edge routing requires a context');
   if (selectedIds.length > MaxEngineEdges)
     throw new Error(`requested D2 edge count exceeds limit ${MaxEngineEdges}`);
   const indices = new Map<string, number>();
@@ -29,13 +30,22 @@ export function routeEdges(
     selected.add(id);
   }
   const { graph, edgeIDs, reversed, lifelines } = translateFlowchart(inputNodes, inputEdges, options, true);
+  const ctx = options.context ?? Background;
   const byID = new Map(graph.Edges.map((edge) => [edge.ID, edge]));
   const edges = selectedIds.map((id) => byID.get(edgeIDs[indices.get(id)!]!)!);
-  RouteEdges(Background, graph, edges);
-  for (const edge of edges) validateResultEdge(Background, edge);
-  return {
+  try {
+    RouteEdges(ctx, graph, edges);
+    for (const edge of edges) validateResultEdge(ctx, edge);
+  } catch (error) {
+    const canceled = ctx.Err();
+    if (canceled) throw new Error(`tala edge routing stopped: ${canceled.message}`, { cause: canceled });
+    throw error;
+  }
+  const result: RoutingResult = {
     nodes: [...inputNodes],
     edges: inputEdges.map((input, index) => {
+      const canceled = ctx.Err();
+      if (canceled) throw new Error(`tala edge routing stopped: ${canceled.message}`, { cause: canceled });
       if (!selected.has(input.id)) return input;
       const edge = byID.get(edgeIDs[index]!)!;
       const points = (reversed[index] ? [...edge.Points].reverse() : edge.Points)
@@ -52,4 +62,7 @@ export function routeEdges(
       };
     }),
   };
+  const canceled = ctx.Err();
+  if (canceled) throw new Error(`tala edge routing canceled before commit: ${canceled.message}`, { cause: canceled });
+  return result;
 }

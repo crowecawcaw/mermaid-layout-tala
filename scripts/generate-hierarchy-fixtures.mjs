@@ -71,6 +71,7 @@ const packages = {
   layoutseedselection: '',
   layoutedgeindex: '',
   layoutarrowvalidation: '',
+  layoutcancellation: '',
   resultvalidation: '',
   resultmetadata: '',
   loops: 'internal/loops',

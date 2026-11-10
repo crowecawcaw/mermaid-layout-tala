@@ -1,0 +1,7 @@
+{
+  "layout": "context canceled",
+  "nilLayout": "TALA layout requires a context",
+  "nilRoute": "TALA edge routing requires a context",
+  "route": "context canceled",
+  "seeds": "tala layout stopped before all seeds completed: context canceled"
+}

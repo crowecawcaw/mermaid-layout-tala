@@ -10,7 +10,7 @@ import type {
   RoutingEdge,
 } from '../../layout.js';
 import { getTalaSeeds, normalizeSeeds } from '../../random.js';
-import { Background } from '../limits/context.js';
+import { Background, type Context } from '../limits/context.js';
 import {
   MaxEngineNodes,
   MaxEngineEdges,
@@ -68,10 +68,11 @@ export function d2LifelineEndId(actorId: string): string {
   const prefix = `${actorId}-lifeline-end`;
   return `${prefix}-${fnv32(prefix)}`;
 }
-export function allocateEntityIDs(values: string[]): bigint[] {
+export function allocateEntityIDs(values: string[], ctx: Context = Background): bigint[] {
   const seen = new Set<string>(),
     counts = new Map<number, number>();
   const entries = values.map((value, index) => {
+    if (index % 256 === 0) { const error = ctx.Err(); if (error) throw error; }
     if (seen.has(value)) throw new Error(`duplicate identity ${value}`);
     seen.add(value);
     const hash = fnv32(value);
@@ -145,6 +146,9 @@ export function translateFlowchart(
   reversed: boolean[];
   lifelines: boolean[];
 } {
+  const ctx = options.context ?? Background;
+  const checkContext = () => { const error = ctx.Err(); if (error) throw error; };
+  checkContext();
   if (inputNodes.length > MaxEngineNodes)
     throw new Error(`D2 object count exceeds limit ${MaxEngineNodes}`);
   if (inputEdges.length > MaxEngineEdges)
@@ -181,6 +185,7 @@ export function translateFlowchart(
     throw new Error('orderingPasses must be finite');
   const byId = new Map<string, LayoutNode>();
   for (const n of inputNodes) {
+    checkContext();
     if (byId.has(n.id)) throw new Error('duplicate node ID');
     if (loadExistingLayout) {
       const node = n as RoutingNode;
@@ -249,6 +254,7 @@ export function translateFlowchart(
   }
   const children = new Map<string | null, LayoutNode[]>();
   for (const n of inputNodes) {
+    checkContext();
     const parent = n.parentId ?? null;
     if (parent !== null && !byId.has(parent))
       throw new Error(`node ${n.id} references a missing parent`);
@@ -263,6 +269,7 @@ export function translateFlowchart(
     paths = new Map<string, string[]>(),
     visiting = new Set<string>();
   const visit = (node: LayoutNode, parent: string[], parentAbs: string, parentID: string, depth: number) => {
+    checkContext();
     if (depth > MaxEngineTreeDepth)
       throw new Error(
         `D2 object nesting depth exceeds limit ${MaxEngineTreeDepth}`,
@@ -282,13 +289,14 @@ export function translateFlowchart(
   for (const node of children.get(null) ?? []) visit(node, [], '', '', 1);
   if (ordered.length !== inputNodes.length)
     throw new Error('cyclic container parent');
-  const ids = allocateEntityIDs(ordered.map((n) => abs.get(n.id)!)),
+  const ids = allocateEntityIDs(ordered.map((n) => abs.get(n.id)!), ctx),
     nodeIDs = new Map<string, bigint>(),
     graph = new Graph(),
     mapped = new Map<string, Node>();
   if (direction !== undefined) graph.Directions.set(null, orientation[direction]);
   graph.IsRootHierarchy = options.rootHierarchy ?? false;
   ordered.forEach((n, i) => {
+    checkContext();
     const node = new Node(ids[i]!, n.width, n.height);
     if (loadExistingLayout) {
       const positioned = n as RoutingNode;
@@ -397,6 +405,7 @@ export function translateFlowchart(
   });
   const lowerNodes = new Map<string, Node>(), lowerRootD2Nodes = new Map<string, Node>();
   for (const input of ordered) {
+    checkContext();
     const key = d2Lower(input.id);
     if (!lowerNodes.has(key)) lowerNodes.set(key, mapped.get(input.id)!);
     if (input.parentId === undefined) {
@@ -405,6 +414,7 @@ export function translateFlowchart(
     }
   }
   for (const input of ordered) {
+    checkContext();
     if (input.nearId === undefined) continue;
     const key = d2Lower(input.nearId);
     const target = mapped.get(input.nearId) ?? lowerRootD2Nodes.get(key) ?? lowerNodes.get(key);
@@ -422,6 +432,7 @@ export function translateFlowchart(
     edgeAbs: string[] = [],
     equivalentCounts = new Map<string, number>();
   for (let i = 0; i < inputEdges.length; i++) {
+    checkContext();
     const e = inputEdges[i]!;
     for (const [name, value] of [['source', e.sourceArrowhead], ['target', e.targetArrowhead]] as const) {
       if (value !== undefined && ![
@@ -510,8 +521,9 @@ export function translateFlowchart(
       `${common.length ? common.join('.') + '.' : ''}(${from.join('.')} ${arrow} ${to.join('.')})[${e.d2Index ?? inferredIndex}]`,
     );
   }
-  const edgeIDs = allocateEntityIDs(edgeAbs);
+  const edgeIDs = allocateEntityIDs(edgeAbs, ctx);
   inputEdges.forEach((input, i) => {
+    checkContext();
     const e = graph.Connect(
       mapped.get(reversed[i] ? input.to : input.from)!,
       mapped.get(reversed[i] || lifelines[i] ? input.from : input.to)!,
@@ -661,9 +673,9 @@ export function translateFlowchart(
   });
   return { graph, nodeIDs, edgeIDs, reversed, lifelines };
 }
-function evaluateCandidate(input: Graph, candidate: Graph): Score {
+function evaluateCandidate(ctx: Context, input: Graph, candidate: Graph): Score {
   try {
-    validateCompletedGraph(Background, candidate);
+    validateCompletedGraph(ctx, candidate);
   } catch (error) {
     throw new Error(`validate TALA seed result: ${(error as Error).message}`, {
       cause: error,
@@ -671,7 +683,7 @@ function evaluateCandidate(input: Graph, candidate: Graph): Score {
   }
   let sequenceEdges: Set<bigint>;
   try {
-    sequenceEdges = validateLayoutResultTopology(Background, input, candidate);
+    sequenceEdges = validateLayoutResultTopology(ctx, input, candidate);
   } catch (error) {
     throw new Error(
       `validate TALA seed result topology: ${(error as Error).message}`,
@@ -679,14 +691,14 @@ function evaluateCandidate(input: Graph, candidate: Graph): Score {
     );
   }
   try {
-    validateLayoutResultMetadata(Background, input, candidate, sequenceEdges);
+    validateLayoutResultMetadata(ctx, input, candidate, sequenceEdges);
   } catch (error) {
     throw new Error(
       `validate TALA seed result metadata: ${(error as Error).message}`,
       { cause: error },
     );
   }
-  const score = Evaluate(Background, candidate);
+  const score = Evaluate(ctx, candidate);
   if (!Number.isFinite(score.Penalty))
     throw new Error('TALA seed result has a non-finite score');
   return score;
@@ -696,6 +708,10 @@ export function layoutFlowchartTranslated(
   inputEdges: readonly LayoutEdge[],
   options: LayoutOptions = {},
 ): LayoutResult {
+  if (options.context === null) throw new Error('TALA layout requires a context');
+  const ctx = options.context ?? Background;
+  const initialError = ctx.Err();
+  if (initialError) throw initialError;
   if (options.inputOrder === 'canonical') {
     inputNodes = [...inputNodes].sort((a, b) => compareIdentifiers(a.id, b.id));
     inputEdges = [...inputEdges].sort((a, b) => compareIdentifiers(a.id, b.id));
@@ -710,41 +726,52 @@ export function layoutFlowchartTranslated(
       options,
     );
   const initial = coordinateLocalSeeds(seeds, (seed) => {
-    const candidate = Layout(Background, graph, { Seed: seed });
-    return { value: candidate, score: evaluateCandidate(graph, candidate) };
-  });
+    const candidate = Layout(ctx, graph, { Seed: seed });
+    return { value: candidate, score: evaluateCandidate(ctx, graph, candidate) };
+  }, ctx);
   let best = initial.value, bestScore = initial.score;
   const ordinary = best;
   try {
-    const candidate = CompoundCandidate(Background, best);
+    const candidate = CompoundCandidate(ctx, best);
     if (candidate !== best) {
-      const score = evaluateCandidate(graph, candidate);
+      const score = evaluateCandidate(ctx, graph, candidate);
       if (score.Compare(bestScore) < 0) {
         best = candidate;
         bestScore = score;
       }
     }
   } catch {
+    const error = ctx.Err();
+    if (error) throw error;
     /* Optional upstream candidate retains the incumbent. */
   }
   if (best !== ordinary)
     try {
-      const refined = PreserveCompoundRoutes(Background, ordinary, best);
-      evaluateCandidate(graph, refined);
+      const refined = PreserveCompoundRoutes(ctx, ordinary, best);
+      evaluateCandidate(ctx, graph, refined);
       best = refined;
     } catch {
+      const error = ctx.Err();
+      if (error) throw error;
       /* Optional upstream refinement retains the selected placement. */
     }
+  const canceledBeforeApply = ctx.Err();
+  if (canceledBeforeApply) throw new Error(`TALA layout canceled before apply: ${canceledBeforeApply.message}`, { cause: canceledBeforeApply });
   // Ranks are public metadata; upstream layout itself does not use this pass.
+  let rankWork = 0;
+  const checkRankContext = () => {
+    if (++rankWork % 256 === 0) { const error = ctx.Err(); if (error) throw error; }
+  };
   const colors = new Map(inputNodes.map((n) => [n.id, 0]));
   const outgoing = new Map(inputNodes.map((n) => [n.id, [] as LayoutEdge[]]));
   for (const edge of inputEdges)
-    if (edge.from !== edge.to && outgoing.has(edge.to)) outgoing.get(edge.from)!.push(edge);
+    { checkRankContext(); if (edge.from !== edge.to && outgoing.has(edge.to)) outgoing.get(edge.from)!.push(edge); }
   const dag: LayoutEdge[] = [];
   const visitRank = (start: string): void => {
     const stack: { id: string; index: number }[] = [{ id: start, index: 0 }];
     colors.set(start, 1);
     while (stack.length) {
+      checkRankContext();
       const frame = stack[stack.length - 1]!,
         edges = outgoing.get(frame.id)!;
       if (frame.index >= edges.length) {
@@ -767,6 +794,7 @@ export function layoutFlowchartTranslated(
   const indegrees = new Map(inputNodes.map((n) => [n.id, 0]));
   const rankOutgoing = new Map(inputNodes.map((n) => [n.id, [] as string[]]));
   for (const e of dag) {
+    checkRankContext();
     indegrees.set(e.to, indegrees.get(e.to)! + 1);
     rankOutgoing.get(e.from)!.push(e.to);
   }
@@ -774,6 +802,7 @@ export function layoutFlowchartTranslated(
     .filter((n) => indegrees.get(n.id) === 0)
     .map((n) => n.id);
   for (let i = 0; i < ready.length; i++) {
+    checkRankContext();
     const id = ready[i]!;
     for (const to of rankOutgoing.get(id)!) {
       ranks.set(to, Math.max(ranks.get(to)!, ranks.get(id)! + 1));
@@ -783,8 +812,9 @@ export function layoutFlowchartTranslated(
   }
   const nodesByID = new Map(best.Nodes.map((n) => [n.ID, n])),
     edgesByID = new Map(best.Edges.map((e) => [e.ID, e]));
-  return {
+  const result: LayoutResult = {
     nodes: inputNodes.map((input, index) => {
+      const error = ctx.Err(); if (error) throw error;
       const n = nodesByID.get(nodeIDs.get(input.id)!)!;
       const label = n.Label
         ? LabelTopLeft(n, n.Label.Position, n.Label.Width, n.Label.Height)
@@ -813,6 +843,7 @@ export function layoutFlowchartTranslated(
       };
     }),
     edges: inputEdges.flatMap((input, index) => {
+      const error = ctx.Err(); if (error) throw error;
       const edge = edgesByID.get(edgeIDs[index]!);
       if (!edge) return [];
       const points = (
@@ -882,4 +913,7 @@ export function layoutFlowchartTranslated(
       ];
     }),
   };
+  const canceledBeforeCommit = ctx.Err();
+  if (canceledBeforeCommit) throw new Error(`tala layout stopped before commit: ${canceledBeforeCommit.message}`, { cause: canceledBeforeCommit });
+  return result;
 }

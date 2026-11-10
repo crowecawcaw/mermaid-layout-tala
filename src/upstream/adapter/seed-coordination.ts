@@ -1,6 +1,7 @@
 // Translated seed-result coordination from d2talalayout/layout.go at D2 bf337903.
 // Copyright Terrastruct Inc. and contributors. SPDX-License-Identifier: MPL-2.0
 import type { Score } from '../quality/scoring.js';
+import { Background, type Context } from '../limits/context.js';
 
 export interface SeedCandidate<T> { value: T; score: Score }
 
@@ -8,6 +9,7 @@ export interface SeedCandidate<T> { value: T; score: Score }
 export function coordinateLocalSeeds<T>(
   seeds: readonly bigint[],
   run: (seed: bigint, index: number) => SeedCandidate<T>,
+  ctx: Context = Background,
 ): SeedCandidate<T> {
   if (!seeds.length) throw new Error('tala requires at least one seed');
   let best: SeedCandidate<T> | null = null;
@@ -21,6 +23,8 @@ export function coordinateLocalSeeds<T>(
       errors.push(`seed ${seed}: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
+  const canceled = ctx.Err();
+  if (canceled) throw new Error(`tala layout stopped before all seeds completed: ${canceled.message}`, { cause: canceled });
   if (!best) throw new Error(`all TALA seed attempts failed: ${errors.join('\n')}`);
   return best;
 }
