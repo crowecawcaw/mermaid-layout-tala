@@ -144,6 +144,20 @@ describe('Mermaid flowchart layout slice', () => {
     expect(() => translateFlowchart(fixture.nodes, [{ ...input, sourceArrowhead: 'none' }], {})).toThrow(/missing node/);
   });
 
+  it('accepts D2 near constants while preferring an object of the same name', () => {
+    const constants = ['top-left', 'top-center', 'top-right', 'center-left', 'center-right', 'bottom-left', 'bottom-center', 'bottom-right'];
+    for (const nearId of constants) {
+      const { graph } = translateFlowchart([{ id: 'source', width: 40, height: 30, nearId }], [], {});
+      expect(graph.Nodes[0]!.Nears.size).toBe(0);
+    }
+    const { graph } = translateFlowchart([
+      { id: 'source', width: 40, height: 30, nearId: 'top-left' },
+      { id: 'top-left', width: 40, height: 30 },
+    ], [], {});
+    expect(graph.Nodes[0]!.Nears.has(graph.Nodes[1]!)).toBe(true);
+    expect(() => translateFlowchart([{ id: 'source', width: 40, height: 30, nearId: 'missing' }], [], {})).toThrow(/missing near node/);
+  });
+
   it('uses D2 default arrowhead shapes when labels create attributes', () => {
     const nodes = ['a', 'b'].map((id) => ({ id, width: 40, height: 30 }));
     const label = { text: 'label', width: 20, height: 10 };

@@ -385,6 +385,10 @@ export function translateFlowchart(
   for (const input of ordered) {
     if (input.nearId === undefined) continue;
     const target = mapped.get(input.nearId);
+    if (!target && [
+      'top-left', 'top-center', 'top-right', 'center-left', 'center-right',
+      'bottom-left', 'bottom-center', 'bottom-right',
+    ].includes(input.nearId)) continue;
     if (!target)
       throw new Error(`node ${input.id} references a missing near node`);
     mapped.get(input.id)!.AddNear(target);

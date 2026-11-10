@@ -10,6 +10,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/d2lang/d2/d2ast"
 	"github.com/d2lang/d2/d2graph"
 	"github.com/d2lang/d2/d2layouts/d2sequence"
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/labeling"
@@ -30,6 +31,7 @@ type orderingNode struct {
 	LabelWidth  int               `json:"labelWidth,omitempty"`
 	LabelHeight int               `json:"labelHeight,omitempty"`
 	Style       map[string]string `json:"style,omitempty"`
+	NearID      string            `json:"nearId,omitempty"`
 }
 type orderingEdge struct {
 	ID                    string              `json:"id"`
@@ -79,6 +81,8 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"embedded-and-empty-labels", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 8},
 		{"inferred-edge-indices", [][2]int{{0, 1}, {0, 1}, {1, 0}, {1, 0}, {2, 3}, {0, 1}}, false, 9},
 		{"sequence-lifelines", [][2]int{{0, 1}, {1, 2}, {3, 4}}, false, 10},
+		{"near-constants", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 11},
+		{"near-constant-shadow", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 12},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -90,6 +94,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		}
 		if test.name == "unicode-fold" {
 			names = []string{"Σ", "ς", "one", "two", "solo"}
+		}
+		if test.shapeSet == 12 {
+			names[0] = "top-left"
 		}
 		for _, direction := range []string{"TB", "BT", "LR", "RL"} {
 			g := d2graph.NewGraph()
@@ -111,6 +118,15 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 					if i == 4 {
 						input.Label = ""
 					}
+				}
+				if test.shapeSet == 11 && i == 0 {
+					input.NearID = "top-left"
+				}
+				if test.shapeSet == 11 && i == 1 {
+					input.NearID = "bottom-right"
+				}
+				if test.shapeSet == 12 && i == 2 {
+					input.NearID = "top-left"
 				}
 				if test.shapeSet == 1 {
 					input.Shape = []string{"square", "callout", "stored_data", "c4-person", "class"}[i]
@@ -149,6 +165,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				obj.Shape.Value = input.Shape
 				obj.Label.Value = input.Label
 				obj.LabelDimensions = *d2target.NewTextDimensions(input.LabelWidth, input.LabelHeight)
+				if input.NearID != "" {
+					obj.NearKey = d2ast.MakeKeyPath([]string{input.NearID})
+				}
 				if input.IsInvisible {
 					obj.Style.Opacity = &d2graph.Scalar{Value: "0"}
 				}
