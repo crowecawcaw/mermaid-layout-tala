@@ -5,8 +5,10 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"math"
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/graphjson"
@@ -56,6 +58,60 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 			result, err := Layout(context.Background(), graph, LayoutOptions{Seed: seed})
 			if err != nil {
 				t.Fatalf("%s seed %d: %v", c.name, seed, err)
+			}
+			if seed == 123 && strings.HasPrefix(c.path, "layout/") {
+				goldenPath := filepath.Join("..", "testdata", strings.TrimSuffix(c.path, "graph.input.json"), "graph.exp.json")
+				goldenData, err := os.ReadFile(goldenPath)
+				if err != nil {
+					t.Fatal(err)
+				}
+				var golden struct {
+					Nodes []struct {
+						ID            int64 `json:"id"`
+						Width, Height float64
+						TopLeft       *struct{ X, Y float64 } `json:"topLeft"`
+					} `json:"nodes"`
+					Edges []struct {
+						ID     int64                    `json:"id"`
+						Points []struct{ X, Y float64 } `json:"points"`
+					} `json:"edges"`
+				}
+				if err := json.Unmarshal(goldenData, &golden); err != nil {
+					t.Fatal(err)
+				}
+				if len(golden.Nodes) != len(result.Nodes) || len(golden.Edges) != len(result.Edges) {
+					t.Fatalf("%s seed %d: upstream golden topology differs", c.name, seed)
+				}
+				goldenNodes := map[int64]int{}
+				for i, n := range golden.Nodes {
+					goldenNodes[n.ID] = i
+				}
+				for _, n := range result.Nodes {
+					i, ok := goldenNodes[n.IDValue()]
+					if !ok || golden.Nodes[i].TopLeft == nil {
+						t.Fatalf("%s: node %d missing from upstream golden", c.name, n.IDValue())
+					}
+					g := golden.Nodes[i]
+					if math.Abs(n.TopLeft.X-g.TopLeft.X) > 1e-7 || math.Abs(n.TopLeft.Y-g.TopLeft.Y) > 1e-7 || math.Abs(n.Width-g.Width) > 1e-7 || math.Abs(n.Height-g.Height) > 1e-7 {
+						t.Fatalf("%s: node %d differs from upstream golden", c.name, n.IDValue())
+					}
+				}
+				goldenEdges := map[int64]int{}
+				for i, e := range golden.Edges {
+					goldenEdges[e.ID] = i
+				}
+				for _, e := range result.Edges {
+					i, ok := goldenEdges[int64(e.ID)]
+					if !ok || len(e.Points) != len(golden.Edges[i].Points) {
+						t.Fatalf("%s: edge %d differs from upstream golden", c.name, e.ID)
+					}
+					for j, p := range e.Points {
+						g := golden.Edges[i].Points[j]
+						if math.Abs(p.X-g.X) > 1e-7 || math.Abs(p.Y-g.Y) > 1e-7 {
+							t.Fatalf("%s: edge %d vertex %d differs from upstream golden", c.name, e.ID, j)
+						}
+					}
+				}
 			}
 			nodes := []any{}
 			edges := []any{}

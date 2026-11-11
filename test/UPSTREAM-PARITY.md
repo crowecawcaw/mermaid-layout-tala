@@ -25,6 +25,8 @@ rounding at floating-point boundaries.
 arrowhead-label size limits, including transparent edges.
 The upstream engine corpus comparisons check every node's coordinates and size,
 label metadata, and every route vertex in order, with absolute tolerance `1e-7`.
+For seed 123, fixture generation also verifies the 34 upstream layout results
+against the upstream checked-in golden geometry and routes.
 Thirty-two randomized deep hierarchies that fail in upstream are also checked against
 the complete upstream error messages, rather than being excluded from the corpus.
 The 24-node cyclic fixtures are substantially slower in TypeScript: the four
