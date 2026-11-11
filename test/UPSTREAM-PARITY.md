@@ -30,7 +30,7 @@ clusters, sequences, tree topology, and hierarchy ranks. Floating-point geometry
 uses absolute tolerance `1e-7`; generated 64-bit entity IDs are compared exactly.
 For seed 123, fixture generation also verifies the 34 upstream layout results
 against the upstream checked-in golden geometry and routes.
-The OVG corpus compares node and edge coordinates and port ownership metadata;
+The OVG corpus compares node and edge coordinates, distances and port ownership metadata;
 seven upstream inputs that start unpositioned are given a deterministic grid
 before building the visibility graph.
 Thirty-two randomized deep hierarchies that fail in upstream are also checked against

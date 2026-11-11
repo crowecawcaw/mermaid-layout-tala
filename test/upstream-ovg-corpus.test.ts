@@ -60,7 +60,7 @@ it.each(fixtures)('matches upstream visibility graph $name', (fixture) => {
   const actualEdges = ovg.Edges.map((edge) => {
     let A = { X: edge.From.Point.X, Y: edge.From.Point.Y }, B = { X: edge.To.Point.X, Y: edge.To.Point.Y };
     if (order(B, A) < 0) [A, B] = [B, A];
-    return { A, B };
+    return { A, B, Distance: edge.Distance };
   }).sort((a, b) => order(a.A, b.A) || order(a.B, b.B));
   expect(actualNodes).toHaveLength(fixture.nodes.length);
   expect(actualEdges).toHaveLength(fixture.edges.length);
@@ -77,5 +77,6 @@ it.each(fixtures)('matches upstream visibility graph $name', (fixture) => {
   fixture.edges.forEach((edge, i) => {
     comparePoint(actualEdges[i]!.A, edge.A);
     comparePoint(actualEdges[i]!.B, edge.B);
+    expect(Math.abs(actualEdges[i]!.Distance - edge.Distance)).toBeLessThanOrEqual(1e-7);
   });
 });

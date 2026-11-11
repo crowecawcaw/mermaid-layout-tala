@@ -16,7 +16,10 @@ import (
 )
 
 type corpusPoint struct{ X, Y float64 }
-type corpusSegment struct{ A, B corpusPoint }
+type corpusSegment struct {
+	A, B     corpusPoint
+	Distance float64
+}
 type corpusPortOwner struct {
 	ID         string `json:"id"`
 	Directions uint16 `json:"directions"`
@@ -87,7 +90,7 @@ func TestExportTypeScriptOvgupstreamcorpusFixtures(t *testing.T) {
 			if corpusPointLess(b, a) {
 				a, b = b, a
 			}
-			edges = append(edges, corpusSegment{a, b})
+			edges = append(edges, corpusSegment{a, b, edge.Distance})
 		}
 		sort.Slice(edges, func(i, j int) bool {
 			if edges[i].A != edges[j].A {
