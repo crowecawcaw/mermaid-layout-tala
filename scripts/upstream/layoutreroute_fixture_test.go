@@ -31,21 +31,30 @@ type reroutePoint struct {
 	X float64 `json:"x"`
 	Y float64 `json:"y"`
 }
+type rerouteArrowLabel struct {
+	Text   string `json:"text"`
+	Width  int    `json:"width"`
+	Height int    `json:"height"`
+}
 type rerouteEdge struct {
-	ID                     string         `json:"id"`
-	From                   string         `json:"from"`
-	To                     string         `json:"to"`
-	D2Index                int            `json:"d2Index"`
-	SourceArrow            bool           `json:"sourceArrow"`
-	TargetArrow            bool           `json:"targetArrow"`
-	Points                 []reroutePoint `json:"points"`
-	IsCurve                bool           `json:"isCurve"`
-	Label                  string         `json:"label,omitempty"`
-	LabelWidth             int            `json:"labelWidth,omitempty"`
-	LabelHeight            int            `json:"labelHeight,omitempty"`
-	LabelPosition          *string        `json:"labelPosition,omitempty"`
-	LabelPercentage        *float64       `json:"labelPercentage,omitempty"`
-	SourceTableColumnIndex *int           `json:"sourceTableColumnIndex,omitempty"`
+	ID                     string             `json:"id"`
+	From                   string             `json:"from"`
+	To                     string             `json:"to"`
+	D2Index                int                `json:"d2Index"`
+	SourceArrow            bool               `json:"sourceArrow"`
+	TargetArrow            bool               `json:"targetArrow"`
+	Points                 []reroutePoint     `json:"points"`
+	IsCurve                bool               `json:"isCurve"`
+	Label                  string             `json:"label,omitempty"`
+	LabelWidth             int                `json:"labelWidth,omitempty"`
+	LabelHeight            int                `json:"labelHeight,omitempty"`
+	LabelPosition          *string            `json:"labelPosition,omitempty"`
+	LabelPercentage        *float64           `json:"labelPercentage,omitempty"`
+	SourceTableColumnIndex *int               `json:"sourceTableColumnIndex,omitempty"`
+	SourceArrowhead        string             `json:"sourceArrowhead,omitempty"`
+	SourceArrowheadStyle   map[string]string  `json:"sourceArrowheadStyle,omitempty"`
+	SourceArrowheadLabel   *rerouteArrowLabel `json:"sourceArrowheadLabel,omitempty"`
+	TargetArrowheadLabel   *rerouteArrowLabel `json:"targetArrowheadLabel,omitempty"`
 }
 
 func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
@@ -57,7 +66,7 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 	fixtures := []any{}
 	failures := []any{}
 	for _, direction := range []string{"TB", "BT", "LR", "RL", "DEFAULT"} {
-		for trial := 0; trial < 11; trial++ {
+		for trial := 0; trial < 13; trial++ {
 			g := d2graph.NewGraph()
 			if trial >= 6 {
 				g.Root.Shape.Value = "sequence_diagram"
@@ -115,6 +124,12 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 				inputs[0].To = d2sequence.LifelineEndID("a")
 				inputs[0].TargetArrow = false
 			}
+			if trial == 11 || trial == 12 {
+				inputs[1].SourceArrowhead = "diamond"
+				inputs[1].SourceArrowheadStyle = map[string]string{"filled": "TRUE"}
+				inputs[1].SourceArrowheadLabel = &rerouteArrowLabel{Text: "source", Width: 28, Height: 12}
+				inputs[1].TargetArrowheadLabel = &rerouteArrowLabel{Text: "target", Width: 30, Height: 14}
+			}
 			position := "OUTSIDE_TOP_CENTER"
 			percent := 0.5
 			inputs[0].LabelPosition = &position
@@ -143,6 +158,22 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 				e := &d2graph.Edge{Index: in.D2Index, Src: objects[in.From], Dst: objects[in.To], SrcArrow: in.SourceArrow, DstArrow: in.TargetArrow, IsCurve: in.IsCurve, Attributes: d2graph.Attributes{}}
 				if e.Dst == nil {
 					e.Dst = &d2graph.Object{ID: in.To}
+				}
+				if in.SourceArrowhead != "" || in.SourceArrowheadLabel != nil || in.SourceArrowheadStyle != nil {
+					e.SrcArrowhead = &d2graph.Attributes{}
+					e.SrcArrowhead.Shape.Value = in.SourceArrowhead
+					if v, ok := in.SourceArrowheadStyle["filled"]; ok {
+						e.SrcArrowhead.Style.Filled = &d2graph.Scalar{Value: v}
+					}
+					if label := in.SourceArrowheadLabel; label != nil {
+						e.SrcArrowhead.Label.Value = label.Text
+						e.SrcArrowhead.LabelDimensions = *d2target.NewTextDimensions(label.Width, label.Height)
+					}
+				}
+				if label := in.TargetArrowheadLabel; label != nil {
+					e.DstArrowhead = &d2graph.Attributes{}
+					e.DstArrowhead.Label.Value = label.Text
+					e.DstArrowhead.LabelDimensions = *d2target.NewTextDimensions(label.Width, label.Height)
 				}
 				e.SrcTableColumnIndex = in.SourceTableColumnIndex
 				e.Label.Value = in.Label
