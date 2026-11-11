@@ -19,7 +19,16 @@ it.each(fixtures)('matches Go sequence group ID allocation: $name', (fixture) =>
     sequence.Nodes = fixture.sequence.slice(1).map(node);
     graph.Sequences.set(node(fixture.sequence[0]!), sequence);
   }
-  if (fixture.tree.length)
-    graph.Trees.set(node(fixture.tree[0]!), fixture.tree.slice(1).map((id) => new Tree(node(id))));
+  if (fixture.tree.length) {
+    const roots: Tree[] = [];
+    let previous: Tree | null = null;
+    for (const id of fixture.tree.slice(1)) {
+      const current = new Tree(node(id));
+      if (previous) { previous.Children.push(current); current.Parent = previous; }
+      else roots.push(current);
+      previous = current;
+    }
+    graph.Trees.set(node(fixture.tree[0]!), roots);
+  }
   expect(String(nextAvailableNodeID(graph, BigInt(fixture.candidate), new Set(fixture.unavailable.map((id) => BigInt(id)))))).toBe(fixture.expected);
 });

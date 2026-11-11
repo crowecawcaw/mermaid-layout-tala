@@ -94,5 +94,23 @@
     "unavailable": [
       "47"
     ]
+  },
+  {
+    "active": [],
+    "candidate": "200",
+    "cluster": [],
+    "expected": "206",
+    "name": "deep-tree",
+    "sequence": [],
+    "tree": [
+      "200",
+      "201",
+      "202",
+      "203",
+      "204"
+    ],
+    "unavailable": [
+      "205"
+    ]
   }
 ]

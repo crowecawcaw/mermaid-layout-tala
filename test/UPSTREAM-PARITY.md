@@ -51,7 +51,7 @@ Twenty-four additional layouts compare exact positive and negative 64-bit node I
 and large or unset edge IDs without converting them to JavaScript numbers.
 They include nested containers, signed limits and forced collisions with
 generated cluster and sequence IDs, including consecutive collisions.
-Six direct sequence-ID allocation cases also cover signed-limit wraparound and
+Seven direct sequence-ID allocation cases also cover signed-limit wraparound and
 IDs owned by inactive clusters, sequences and trees.
 An additional 60 public layouts compare zero, negative, signed 64-bit boundary,
 and duplicate seed selections across all four directions.
