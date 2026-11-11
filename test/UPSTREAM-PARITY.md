@@ -34,6 +34,8 @@ labels; every route vertex in order; node proximity relationships; and the resul
 clusters, sequences, vessel geometry, tree topology, and hierarchy ranks. Floating-point geometry
 uses absolute tolerance `1e-7`; generated 64-bit entity IDs are compared exactly.
 The comparison also includes root and container directions and cached routing costs.
+An additional 60 public layouts compare zero, negative, signed 64-bit boundary,
+and duplicate seed selections across all four directions.
 The straight-edge fallback separately matches Go's cancellation poll count and
 all resulting routes across 200 positioned graphs, including 40 multi-edge cases.
 For seed 123, fixture generation also verifies the 34 upstream layout results
@@ -88,6 +90,7 @@ TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 eng
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 layoutinputgeometry
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 layoutnodegeometry
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 layoutcompiled
+TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 layoutseedboundaries
 go run scripts/upstream/random-fixtures.go > test/fixtures/upstream-random.json
 npm run test:parity
 ```
