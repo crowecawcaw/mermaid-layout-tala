@@ -1,0 +1,1224 @@
+[
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n0",
+        "to": "n4"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n1",
+        "to": "n0"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n0",
+        "to": "n3"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n3",
+        "to": "n2"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n0",
+        "to": "n4"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n3",
+        "to": "n1"
+      },
+      {
+        "d2Index": 7,
+        "id": "e7",
+        "from": "n1",
+        "to": "n1"
+      }
+    ],
+    "error": "all TALA seed attempts failed: seed 1: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors\nseed 2: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors\nseed 3: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors",
+    "name": "extended-random-67-RL",
+    "nodes": [
+      {
+        "isGroup": true,
+        "id": "n5",
+        "width": 80,
+        "height": 70,
+        "shape": "SQL_TABLE"
+      },
+      {
+        "parentId": "n5",
+        "isGroup": true,
+        "id": "n4",
+        "width": 100,
+        "height": 80,
+        "shape": "sql_table"
+      },
+      {
+        "parentId": "n5",
+        "id": "n3",
+        "width": 80,
+        "height": 70,
+        "shape": "SQL_TABLE"
+      },
+      {
+        "id": "n2",
+        "width": 100,
+        "height": 40,
+        "shape": "stored_data"
+      },
+      {
+        "parentId": "n5",
+        "id": "n1",
+        "width": 90,
+        "height": 30,
+        "shape": "class"
+      },
+      {
+        "parentId": "n4",
+        "nearPath": [
+          "n5",
+          "n4"
+        ],
+        "id": "n0",
+        "width": 50,
+        "height": 50,
+        "shape": "square"
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "rootLevel": 1,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n5",
+        "to": "n4"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n2",
+        "to": "n2"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n6",
+        "to": "n6"
+      }
+    ],
+    "error": "all TALA seed attempts failed: seed 1: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors\nseed 2: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors\nseed 3: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors",
+    "name": "extended-random-71-RL",
+    "nodes": [
+      {
+        "isGroup": true,
+        "id": "n7",
+        "width": 50,
+        "height": 70,
+        "shape": "text"
+      },
+      {
+        "parentId": "n7",
+        "isGroup": true,
+        "id": "n6",
+        "width": 40,
+        "height": 70,
+        "shape": "code"
+      },
+      {
+        "parentId": "n7",
+        "id": "n5",
+        "width": 40,
+        "height": 70,
+        "shape": "SQL_TABLE"
+      },
+      {
+        "id": "n4",
+        "width": 90,
+        "height": 40,
+        "shape": "stored_data"
+      },
+      {
+        "parentId": "n7",
+        "id": "n3",
+        "width": 70,
+        "height": 90,
+        "shape": "hexagon"
+      },
+      {
+        "parentId": "n6",
+        "id": "n2",
+        "width": 80,
+        "height": 90,
+        "shape": "hexagon"
+      },
+      {
+        "id": "n1",
+        "width": 60,
+        "height": 90,
+        "shape": "sql_table"
+      },
+      {
+        "parentId": "n6",
+        "nearPath": [
+          "n7",
+          "n6"
+        ],
+        "id": "n0",
+        "width": 80,
+        "height": 50,
+        "shape": "class"
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "rootLevel": 2,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n5",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n1",
+        "to": "n2",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n6",
+        "to": "n3",
+        "sourceArrowhead": "none",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n1",
+        "to": "n3",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n5",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      }
+    ],
+    "error": "all TALA seed attempts failed: seed 1: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors\nseed 2: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors\nseed 3: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors",
+    "name": "extended-random-74-LR",
+    "nodes": [
+      {
+        "isGroup": true,
+        "id": "n7",
+        "width": 100,
+        "height": 40,
+        "shape": "stored_data"
+      },
+      {
+        "parentId": "n7",
+        "isGroup": true,
+        "id": "n6",
+        "width": 50,
+        "height": 60,
+        "shape": "text"
+      },
+      {
+        "parentId": "n7",
+        "id": "n5",
+        "width": 90,
+        "height": 70,
+        "shape": "cylinder"
+      },
+      {
+        "id": "n4",
+        "width": 80,
+        "height": 70,
+        "shape": "stored_data"
+      },
+      {
+        "parentId": "n7",
+        "id": "n3",
+        "width": 90,
+        "height": 60
+      },
+      {
+        "parentId": "n6",
+        "id": "n2",
+        "width": 40,
+        "height": 80,
+        "shape": "code"
+      },
+      {
+        "id": "n1",
+        "width": 50,
+        "height": 70,
+        "shape": "sql_table"
+      },
+      {
+        "parentId": "n6",
+        "nearPath": [
+          "n7",
+          "n6"
+        ],
+        "id": "n0",
+        "width": 40,
+        "height": 50,
+        "shape": "text"
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "rootLevel": 2,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n0",
+        "to": "n4"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n3",
+        "to": "n3"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n7",
+        "to": "n3"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n6",
+        "to": "n2"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n7",
+        "to": "n0"
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n2",
+        "to": "n4"
+      },
+      {
+        "d2Index": 7,
+        "id": "e7",
+        "from": "n2",
+        "to": "n2"
+      }
+    ],
+    "error": "all TALA seed attempts failed: seed 1: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors\nseed 2: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors\nseed 3: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors",
+    "name": "extended-random-76-TB",
+    "nodes": [
+      {
+        "isGroup": true,
+        "id": "n7",
+        "width": 70,
+        "height": 50,
+        "shape": "text",
+        "labelWidth": 30,
+        "labelHeight": 10
+      },
+      {
+        "parentId": "n7",
+        "isGroup": true,
+        "id": "n6",
+        "width": 70,
+        "height": 60,
+        "labelWidth": 20,
+        "labelHeight": 10
+      },
+      {
+        "parentId": "n7",
+        "id": "n5",
+        "width": 40,
+        "height": 70,
+        "shape": "SQL_TABLE",
+        "labelWidth": 30,
+        "labelHeight": 10
+      },
+      {
+        "id": "n4",
+        "width": 100,
+        "height": 50,
+        "shape": "square",
+        "labelWidth": 30,
+        "labelHeight": 20
+      },
+      {
+        "parentId": "n7",
+        "id": "n3",
+        "width": 80,
+        "height": 90,
+        "shape": "code",
+        "labelWidth": 40,
+        "labelHeight": 10
+      },
+      {
+        "parentId": "n6",
+        "id": "n2",
+        "width": 50,
+        "height": 50,
+        "shape": "stored_data",
+        "labelWidth": 35,
+        "labelHeight": 20
+      },
+      {
+        "id": "n1",
+        "width": 70,
+        "height": 90,
+        "shape": "cylinder",
+        "labelWidth": 35,
+        "labelHeight": 20
+      },
+      {
+        "parentId": "n6",
+        "nearPath": [
+          "n7",
+          "n6"
+        ],
+        "id": "n0",
+        "width": 90,
+        "height": 60,
+        "shape": "sql_table",
+        "labelWidth": 30,
+        "labelHeight": 20
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "rootLevel": 1,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n1",
+        "to": "n3"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n3",
+        "to": "n6"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n7",
+        "to": "n2"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n6",
+        "to": "n6"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n1",
+        "to": "n6"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n5",
+        "to": "n3"
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n3",
+        "to": "n3"
+      },
+      {
+        "d2Index": 7,
+        "id": "e7",
+        "from": "n4",
+        "to": "n1"
+      },
+      {
+        "d2Index": 8,
+        "id": "e8",
+        "from": "n1",
+        "to": "n3"
+      },
+      {
+        "d2Index": 9,
+        "id": "e9",
+        "from": "n7",
+        "to": "n7"
+      }
+    ],
+    "error": "all TALA seed attempts failed: seed 1: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors\nseed 2: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors\nseed 3: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors",
+    "name": "extended-random-79-RL",
+    "nodes": [
+      {
+        "isGroup": true,
+        "id": "n7",
+        "width": 100,
+        "height": 70,
+        "shape": "text"
+      },
+      {
+        "parentId": "n7",
+        "isGroup": true,
+        "id": "n6",
+        "width": 60,
+        "height": 80,
+        "shape": "sql_table"
+      },
+      {
+        "parentId": "n7",
+        "id": "n5",
+        "width": 70,
+        "height": 40,
+        "shape": "hexagon"
+      },
+      {
+        "id": "n4",
+        "width": 100,
+        "height": 60,
+        "shape": "SQL_TABLE"
+      },
+      {
+        "parentId": "n7",
+        "id": "n3",
+        "width": 90,
+        "height": 60,
+        "shape": "stored_data"
+      },
+      {
+        "parentId": "n6",
+        "id": "n2",
+        "width": 60,
+        "height": 50,
+        "shape": "code"
+      },
+      {
+        "id": "n1",
+        "width": 60,
+        "height": 90,
+        "shape": "code"
+      },
+      {
+        "parentId": "n6",
+        "nearPath": [
+          "n7",
+          "n6"
+        ],
+        "id": "n0",
+        "width": 70,
+        "height": 80,
+        "shape": "cylinder"
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "rootLevel": 1,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n1",
+        "to": "n5"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n1",
+        "to": "n3"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n6",
+        "to": "n7"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n5",
+        "to": "n1"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n7",
+        "to": "n6"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n6",
+        "to": "n1"
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n4",
+        "to": "n2"
+      },
+      {
+        "d2Index": 7,
+        "id": "e7",
+        "from": "n6",
+        "to": "n4"
+      }
+    ],
+    "error": "all TALA seed attempts failed: seed 1: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors\nseed 2: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors\nseed 3: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors",
+    "name": "extended-random-80-TB",
+    "nodes": [
+      {
+        "isGroup": true,
+        "id": "n7",
+        "width": 70,
+        "height": 50,
+        "shape": "TEXT",
+        "labelWidth": 35,
+        "labelHeight": 15
+      },
+      {
+        "parentId": "n7",
+        "isGroup": true,
+        "hasClassData": true,
+        "id": "n6",
+        "width": 70,
+        "height": 50,
+        "shape": "class",
+        "labelWidth": 30,
+        "labelHeight": 15
+      },
+      {
+        "parentId": "n7",
+        "id": "n5",
+        "width": 90,
+        "height": 60,
+        "shape": "diamond",
+        "labelWidth": 35,
+        "labelHeight": 10
+      },
+      {
+        "hasClassData": true,
+        "id": "n4",
+        "width": 40,
+        "height": 90,
+        "shape": "class",
+        "labelWidth": 20,
+        "labelHeight": 20
+      },
+      {
+        "parentId": "n7",
+        "id": "n3",
+        "width": 70,
+        "height": 90,
+        "shape": "hexagon",
+        "labelWidth": 20,
+        "labelHeight": 15
+      },
+      {
+        "parentId": "n6",
+        "id": "n2",
+        "width": 90,
+        "height": 70,
+        "shape": "code",
+        "labelWidth": 20,
+        "labelHeight": 20
+      },
+      {
+        "id": "n1",
+        "width": 50,
+        "height": 40,
+        "shape": "stored_data",
+        "labelWidth": 20,
+        "labelHeight": 15
+      },
+      {
+        "parentId": "n6",
+        "nearPath": [
+          "n7",
+          "n6"
+        ],
+        "id": "n0",
+        "width": 60,
+        "height": 90,
+        "labelWidth": 25,
+        "labelHeight": 15
+      }
+    ],
+    "options": {
+      "rootLevel": 2,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n0",
+        "to": "n5",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n1",
+        "to": "n4",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n2",
+        "to": "n6",
+        "sourceArrowhead": "none",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n2",
+        "to": "n7",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n6",
+        "to": "n2",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      }
+    ],
+    "error": "all TALA seed attempts failed: seed 1: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors\nseed 2: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors\nseed 3: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors",
+    "name": "extended-random-86-LR",
+    "nodes": [
+      {
+        "isGroup": true,
+        "id": "n7",
+        "width": 100,
+        "height": 30,
+        "shape": "TEXT"
+      },
+      {
+        "parentId": "n7",
+        "isGroup": true,
+        "id": "n6",
+        "width": 80,
+        "height": 90,
+        "shape": "cylinder"
+      },
+      {
+        "parentId": "n7",
+        "id": "n5",
+        "width": 100,
+        "height": 30,
+        "shape": "hexagon"
+      },
+      {
+        "id": "n4",
+        "width": 70,
+        "height": 60,
+        "shape": "sql_table"
+      },
+      {
+        "parentId": "n7",
+        "id": "n3",
+        "width": 50,
+        "height": 30
+      },
+      {
+        "parentId": "n6",
+        "id": "n2",
+        "width": 40,
+        "height": 30,
+        "shape": "hexagon"
+      },
+      {
+        "id": "n1",
+        "width": 40,
+        "height": 30,
+        "shape": "square"
+      },
+      {
+        "parentId": "n6",
+        "nearPath": [
+          "n7",
+          "n6"
+        ],
+        "id": "n0",
+        "width": 70,
+        "height": 80,
+        "shape": "sql_table"
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "rootLevel": 2,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n2",
+        "to": "n3",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n4",
+        "to": "n6",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n7",
+        "to": "n5",
+        "sourceArrowhead": "none",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n4",
+        "to": "n7",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "none"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n4",
+        "to": "n0",
+        "sourceArrowhead": "triangle",
+        "targetArrowhead": "triangle"
+      }
+    ],
+    "error": "all TALA seed attempts failed: seed 1: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors\nseed 2: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors\nseed 3: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors",
+    "name": "extended-random-90-LR",
+    "nodes": [
+      {
+        "isGroup": true,
+        "id": "n7",
+        "width": 100,
+        "height": 40,
+        "shape": "SQL_TABLE"
+      },
+      {
+        "parentId": "n7",
+        "isGroup": true,
+        "id": "n6",
+        "width": 40,
+        "height": 40,
+        "shape": "oval"
+      },
+      {
+        "parentId": "n7",
+        "isGrid": true,
+        "id": "n5",
+        "width": 60,
+        "height": 30,
+        "shape": "code"
+      },
+      {
+        "id": "n4",
+        "width": 70,
+        "height": 40,
+        "shape": "square"
+      },
+      {
+        "parentId": "n7",
+        "id": "n3",
+        "width": 50,
+        "height": 30,
+        "shape": "sql_table"
+      },
+      {
+        "parentId": "n6",
+        "id": "n2",
+        "width": 60,
+        "height": 70,
+        "shape": "cylinder"
+      },
+      {
+        "id": "n1",
+        "width": 50,
+        "height": 40,
+        "shape": "hexagon"
+      },
+      {
+        "parentId": "n6",
+        "nearPath": [
+          "n7",
+          "n6"
+        ],
+        "id": "n0",
+        "width": 90,
+        "height": 30,
+        "shape": "callout"
+      }
+    ],
+    "options": {
+      "rootLevel": 0,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n1",
+        "to": "n4"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n3",
+        "to": "n0"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n4",
+        "to": "n0"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n2",
+        "to": "n2"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n0",
+        "to": "n4"
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n4",
+        "to": "n0"
+      },
+      {
+        "d2Index": 7,
+        "id": "e7",
+        "from": "n2",
+        "to": "n0"
+      },
+      {
+        "d2Index": 8,
+        "id": "e8",
+        "from": "n4",
+        "to": "n0"
+      },
+      {
+        "d2Index": 9,
+        "id": "e9",
+        "from": "n3",
+        "to": "n1"
+      },
+      {
+        "d2Index": 10,
+        "id": "e10",
+        "from": "n4",
+        "to": "n1"
+      }
+    ],
+    "error": "all TALA seed attempts failed: seed 1: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors\nseed 2: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors\nseed 3: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors",
+    "name": "extended-random-91-RL",
+    "nodes": [
+      {
+        "isGroup": true,
+        "id": "n5",
+        "width": 100,
+        "height": 70,
+        "shape": "code"
+      },
+      {
+        "parentId": "n5",
+        "isGroup": true,
+        "isInvisible": true,
+        "id": "n4",
+        "width": 90,
+        "height": 50,
+        "shape": "cylinder"
+      },
+      {
+        "parentId": "n5",
+        "id": "n3",
+        "width": 40,
+        "height": 40,
+        "shape": "sql_table"
+      },
+      {
+        "id": "n2",
+        "width": 50,
+        "height": 90,
+        "shape": "text"
+      },
+      {
+        "parentId": "n5",
+        "id": "n1",
+        "width": 100,
+        "height": 80
+      },
+      {
+        "parentId": "n4",
+        "nearPath": [
+          "n5",
+          "n4"
+        ],
+        "id": "n0",
+        "width": 40,
+        "height": 90,
+        "shape": "diamond"
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "rootLevel": 1,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "id": "e0",
+        "from": "n4",
+        "to": "n1"
+      },
+      {
+        "d2Index": 1,
+        "id": "e1",
+        "from": "n5",
+        "to": "n3"
+      },
+      {
+        "d2Index": 2,
+        "id": "e2",
+        "from": "n0",
+        "to": "n4"
+      },
+      {
+        "d2Index": 3,
+        "id": "e3",
+        "from": "n2",
+        "to": "n3"
+      },
+      {
+        "d2Index": 4,
+        "id": "e4",
+        "from": "n2",
+        "to": "n5"
+      },
+      {
+        "d2Index": 5,
+        "id": "e5",
+        "from": "n5",
+        "to": "n3"
+      },
+      {
+        "d2Index": 6,
+        "id": "e6",
+        "from": "n5",
+        "to": "n4"
+      },
+      {
+        "d2Index": 7,
+        "id": "e7",
+        "from": "n5",
+        "to": "n4"
+      },
+      {
+        "d2Index": 8,
+        "id": "e8",
+        "from": "n5",
+        "to": "n4"
+      },
+      {
+        "d2Index": 9,
+        "id": "e9",
+        "from": "n0",
+        "to": "n1"
+      },
+      {
+        "d2Index": 10,
+        "id": "e10",
+        "from": "n5",
+        "to": "n5"
+      }
+    ],
+    "error": "all TALA seed attempts failed: seed 1: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors\nseed 2: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors\nseed 3: TALA sizelessOptimizer.optimize cannot compute a median without positioned neighbors",
+    "name": "extended-random-95-RL",
+    "nodes": [
+      {
+        "isGroup": true,
+        "id": "n5",
+        "width": 40,
+        "height": 50,
+        "shape": "SQL_TABLE"
+      },
+      {
+        "parentId": "n5",
+        "isGroup": true,
+        "id": "n4",
+        "width": 90,
+        "height": 90,
+        "shape": "hexagon"
+      },
+      {
+        "parentId": "n5",
+        "id": "n3",
+        "width": 40,
+        "height": 50,
+        "shape": "stored_data"
+      },
+      {
+        "id": "n2",
+        "width": 100,
+        "height": 40,
+        "shape": "diamond"
+      },
+      {
+        "parentId": "n5",
+        "id": "n1",
+        "width": 90,
+        "height": 60
+      },
+      {
+        "parentId": "n4",
+        "nearPath": [
+          "n5",
+          "n4"
+        ],
+        "id": "n0",
+        "width": 90,
+        "height": 30,
+        "shape": "text"
+      }
+    ],
+    "options": {
+      "rootLevel": 2,
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  }
+]

@@ -13,22 +13,24 @@ import (
 	"math/rand"
 	"os"
 	"strconv"
+	"strings"
 	"testing"
 )
 
 type randomNodeInput struct {
-	ParentID     string  `json:"parentId,omitempty"`
-	IsGroup      bool    `json:"isGroup,omitempty"`
-	IsInvisible  bool    `json:"isInvisible,omitempty"`
-	IsGrid       bool    `json:"isGrid,omitempty"`
-	HasClassData bool    `json:"hasClassData,omitempty"`
-	NearID       string  `json:"nearId,omitempty"`
-	ID           string  `json:"id"`
-	Width        float64 `json:"width"`
-	Height       float64 `json:"height"`
-	Shape        string  `json:"shape,omitempty"`
-	LabelWidth   int     `json:"labelWidth,omitempty"`
-	LabelHeight  int     `json:"labelHeight,omitempty"`
+	ParentID     string   `json:"parentId,omitempty"`
+	IsGroup      bool     `json:"isGroup,omitempty"`
+	IsInvisible  bool     `json:"isInvisible,omitempty"`
+	IsGrid       bool     `json:"isGrid,omitempty"`
+	HasClassData bool     `json:"hasClassData,omitempty"`
+	NearID       string   `json:"nearId,omitempty"`
+	NearPath     []string `json:"nearPath,omitempty"`
+	ID           string   `json:"id"`
+	Width        float64  `json:"width"`
+	Height       float64  `json:"height"`
+	Shape        string   `json:"shape,omitempty"`
+	LabelWidth   int      `json:"labelWidth,omitempty"`
+	LabelHeight  int      `json:"labelHeight,omitempty"`
 }
 type randomEdgeInput struct {
 	D2Index         int    `json:"d2Index"`
@@ -47,11 +49,12 @@ func TestExportTypeScriptLayoutrandomextendedFixtures(t *testing.T) {
 		t.Skip()
 	}
 	out := []any{}
+	failures := []any{}
 	rng := rand.New(rand.NewSource(842719))
 	dirs := []string{"TB", "BT", "LR", "RL"}
 	d2dirs := []string{"down", "up", "right", "left"}
 	shapes := []string{"", "diamond", "oval", "hexagon", "cylinder", "square", "callout", "stored_data", "class", "sql_table", "text", "code", "TEXT", "SQL_TABLE"}
-	for trial := 0; trial < 64; trial++ {
+	for trial := 0; trial < 96; trial++ {
 		g := d2graph.NewGraph()
 		g.Root.Direction.Value = d2dirs[trial%4]
 		if trial%5 == 0 {
@@ -62,11 +65,25 @@ func TestExportTypeScriptLayoutrandomextendedFixtures(t *testing.T) {
 		edges := []randomEdgeInput{}
 		objects := []*d2graph.Object{}
 		count := 4 + rng.Intn(5)
+		if trial >= 64 {
+			count += 2
+		}
 		for i := 0; i < count; i++ {
 			id := fmt.Sprintf("n%d", count-1-i)
 			input := randomNodeInput{ID: id, Width: float64(40 + rng.Intn(7)*10), Height: float64(30 + rng.Intn(7)*10)}
 			obj := &d2graph.Object{Graph: g, Parent: g.Root, ID: id, IDVal: id, Box: geo.NewBox(geo.NewPoint(0, 0), input.Width, input.Height), Children: make(map[string]*d2graph.Object), Attributes: d2graph.Attributes{}}
-			if trial >= 32 {
+			if trial >= 64 {
+				if i < 2 {
+					input.IsGroup = true
+				}
+				if i == 1 {
+					obj.Parent = objects[0]
+					input.ParentID = obj.Parent.ID
+				} else if i > 1 && i%3 != 0 {
+					obj.Parent = objects[i%2]
+					input.ParentID = obj.Parent.ID
+				}
+			} else if trial >= 32 {
 				if i < 2 {
 					input.IsGroup = true
 				} else if i%3 != 0 {
@@ -97,6 +114,10 @@ func TestExportTypeScriptLayoutrandomextendedFixtures(t *testing.T) {
 			if trial < 32 && trial%4 == 3 && i == count-1 {
 				input.NearID = objects[0].ID
 				obj.NearKey = d2ast.MakeKeyPath([]string{input.NearID})
+			}
+			if trial >= 64 && i == count-1 {
+				input.NearPath = []string{objects[0].ID, objects[1].ID}
+				obj.NearKey = d2ast.MakeKeyPath(input.NearPath)
 			}
 			obj.Parent.Children[id] = obj
 			obj.Parent.ChildrenArray = append(obj.Parent.ChildrenArray, obj)
@@ -137,8 +158,13 @@ func TestExportTypeScriptLayoutrandomextendedFixtures(t *testing.T) {
 		}
 		opts := DefaultOptions()
 		opts.Seeds = []int64{1, 2, 3}
+		options := map[string]any{"direction": dirs[trial%4], "seeds": []int{1, 2, 3}, "rootLevel": trial % 3}
+		if trial%5 == 0 {
+			delete(options, "direction")
+		}
 		if err := Layout(context.Background(), g, &opts); err != nil {
-			t.Fatalf("trial %d: %v", trial, err)
+			failures = append(failures, map[string]any{"name": fmt.Sprintf("extended-random-%02d-%s", trial, dirs[trial%4]), "nodes": nodes, "edges": edges, "options": options, "error": err.Error()})
+			continue
 		}
 		internal := layoutgraph.NewGraph()
 		bindings, err := translateGraph(context.Background(), g, internal, true)
@@ -185,10 +211,6 @@ func TestExportTypeScriptLayoutrandomextendedFixtures(t *testing.T) {
 			}
 			outEdges = append(outEdges, record)
 		}
-		options := map[string]any{"direction": dirs[trial%4], "seeds": []int{1, 2, 3}, "rootLevel": trial % 3}
-		if trial%5 == 0 {
-			delete(options, "direction")
-		}
 		out = append(out, map[string]any{"name": fmt.Sprintf("extended-random-%02d-%s", trial, dirs[trial%4]), "nodes": nodes, "edges": edges, "options": options, "expected": map[string]any{"nodes": outNodes, "edges": outEdges}})
 	}
 	data, err := json.MarshalIndent(out, "", "  ")
@@ -196,6 +218,13 @@ func TestExportTypeScriptLayoutrandomextendedFixtures(t *testing.T) {
 		t.Fatal(err)
 	}
 	if err = os.WriteFile(path, append(data, '\n'), 0644); err != nil {
+		t.Fatal(err)
+	}
+	data, err = json.MarshalIndent(failures, "", "  ")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err = os.WriteFile(strings.TrimSuffix(path, ".json")+"-errors.json", append(data, '\n'), 0644); err != nil {
 		t.Fatal(err)
 	}
 }

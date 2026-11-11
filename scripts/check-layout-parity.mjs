@@ -131,9 +131,22 @@ const rerouteResults = rerouteFixtures.map((fixture) => {
   return { name: fixture.name, passed: differences.length === 0, differences };
 });
 const reroutePassed = rerouteResults.filter((result) => result.passed).length;
+const failureFixtures = JSON.parse(
+  readFileSync(new URL('../test/fixtures/upstream-layoutrandomextended-errors.json', import.meta.url), 'utf8'),
+);
+const failureResults = failureFixtures.map((fixture) => {
+  try {
+    layoutFlowchart(fixture.nodes, fixture.edges, fixture.options);
+    return { name: fixture.name, passed: false, differences: ['expected an upstream failure'] };
+  } catch (error) {
+    const passed = error.message === fixture.error;
+    return { name: fixture.name, passed, differences: passed ? [] : [`error:${error.message}`] };
+  }
+});
+const failurePassed = failureResults.filter((result) => result.passed).length;
 if (process.argv.includes('--json'))
   console.log(
-    JSON.stringify({ passed, total: fixtures.length, results, rerouting: { passed: reroutePassed, total: rerouteFixtures.length, results: rerouteResults } }, null, 2),
+    JSON.stringify({ passed, total: fixtures.length, results, failures: { passed: failurePassed, total: failureFixtures.length, results: failureResults }, rerouting: { passed: reroutePassed, total: rerouteFixtures.length, results: rerouteResults } }, null, 2),
   );
 else {
   for (const result of results)
@@ -143,8 +156,11 @@ else {
   console.log(
     `Full-layout parity: ${passed}/${fixtures.length}; tolerance 1e-7; route vertices compared in order.`,
   );
+  for (const result of failureResults)
+    console.log(`${result.passed ? 'PASS' : 'DIFF'} failure-${result.name}${result.passed ? '' : ` (${result.differences.join(', ')})`}`);
+  console.log(`Layout failure parity: ${failurePassed}/${failureFixtures.length}.`);
   for (const result of rerouteResults)
     console.log(`${result.passed ? 'PASS' : 'DIFF'} reroute-${result.name}${result.passed ? '' : ` (${result.differences.join(', ')})`}`);
   console.log(`Standalone rerouting parity: ${reroutePassed}/${rerouteFixtures.length}.`);
 }
-process.exitCode = passed === fixtures.length && reroutePassed === rerouteFixtures.length ? 0 : 1;
+process.exitCode = passed === fixtures.length && failurePassed === failureFixtures.length && reroutePassed === rerouteFixtures.length ? 0 : 1;
