@@ -10,13 +10,23 @@ import (
 	"testing"
 )
 
+type fallbackCountingContext struct {
+	context.Context
+	checks int
+}
+
+func (ctx *fallbackCountingContext) Err() error {
+	ctx.checks++
+	return nil
+}
+
 func TestExportTypeScriptRoutingfallbackFixtures(t *testing.T) {
 	path := os.Getenv("TALA_ROUTINGFALLBACK_FIXTURES")
 	if path == "" {
 		t.Skip()
 	}
 	out := []any{}
-	for trial := 0; trial < 160; trial++ {
+	for trial := 0; trial < 200; trial++ {
 		g := layoutgraph.NewGraph()
 		a := g.AddNode(layoutgraph.NewNode(1, 80, 60))
 		a.TopLeft = geo.NewPoint(0, 0)
@@ -34,12 +44,26 @@ func TestExportTypeScriptRoutingfallbackFixtures(t *testing.T) {
 		if trial%11 == 0 {
 			e.FromTableColumnIndex = new(int)
 		}
-		err := StraightEdgesFallback(context.Background(), g)
+		if trial >= 160 {
+			c := g.AddNode(layoutgraph.NewNode(10, 40, 40))
+			c.TopLeft = geo.NewPoint(20+float64(trial%4)*30, 200)
+			d := g.AddNode(layoutgraph.NewNode(11, 40, 40))
+			d.TopLeft = geo.NewPoint(280, 200+float64(trial%3)*30)
+			g.Connect(a, c).Points = []*geo.Point{geo.NewPoint(40, 60), geo.NewPoint(c.TopLeft.X+20, c.TopLeft.Y)}
+			g.Connect(c, d).Points = []*geo.Point{geo.NewPoint(c.TopLeft.X+40, c.TopLeft.Y+20), geo.NewPoint(d.TopLeft.X, d.TopLeft.Y+20)}
+			g.Connect(d, b).Points = []*geo.Point{geo.NewPoint(d.TopLeft.X+20, d.TopLeft.Y), geo.NewPoint(b.TopLeft.X+35, b.TopLeft.Y+50)}
+		}
+		ctx := &fallbackCountingContext{Context: context.Background()}
+		err := StraightEdgesFallback(ctx, g)
 		msg := ""
 		if err != nil {
 			msg = err.Error()
 		}
-		out = append(out, map[string]any{"trial": trial, "error": msg, "route": e.Points, "crossing": g.RoutingCosts()})
+		routes := make([][]*geo.Point, 0, len(g.Edges))
+		for _, edge := range g.Edges {
+			routes = append(routes, edge.Points)
+		}
+		out = append(out, map[string]any{"trial": trial, "error": msg, "route": e.Points, "routes": routes, "crossing": g.RoutingCosts(), "checks": ctx.checks})
 	}
 	data, err := json.Marshal(out)
 	if err != nil {
