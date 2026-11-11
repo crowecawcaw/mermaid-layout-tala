@@ -46,6 +46,8 @@ An additional 60 public layouts compare zero, negative, signed 64-bit boundary,
 and duplicate seed selections across all four directions.
 The straight-edge fallback separately matches Go's cancellation poll count and
 all resulting routes across 200 positioned graphs, including 40 multi-edge cases.
+Go-derived worker fixtures also check flavor ordering, fatal worker panics,
+ordinary failures and the flavor limit.
 For seed 123, fixture generation also verifies the 34 upstream layout results
 against the upstream checked-in golden geometry and routes.
 The OVG corpus compares node and edge coordinates, distances and port ownership metadata;
@@ -93,6 +95,7 @@ TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 lay
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 engineupstreamcorpus
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 enginecancellation
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 enginefallbacksnapshot
+TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 routingflavorworkers
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 ovgupstreamcorpus
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 engineovggoldens
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 layoutinputgeometry

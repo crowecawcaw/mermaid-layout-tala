@@ -457,7 +457,9 @@ additional coverage. Regenerate `routingsentinel`.
 routes, route flavors and selected-route commit. One hundred Go cases compare
 complete subgraph edge routes, including duplicate connections and labels.
 Flavor execution is currently sequential in TypeScript, so Go worker panic and
-cancellation ordering differ. Whole-graph atomic routing is translated in
+cancellation ordering differ. The worker coordinator treats exceptions crossing
+the worker boundary as fatal and sanitizes them, preserving Go's declared flavor
+order; Go-derived fixtures cover these cases. Whole-graph atomic routing is translated in
 `routing/graph-stage.ts` below.
 Regenerate `routingcoordinator`.
 

@@ -1,6 +1,6 @@
 // Translated routeEdgesWithResourceGuards from internal/routing/coordinator.go
 // at D2 bf337903. MPL-2.0. Copyright Terrastruct Inc. and contributors.
-import { WithCancel, type Context } from '../limits/context.js';
+import type { Context } from '../limits/context.js';
 import { PrecisionCompare } from '../geo/math.js';
 import { PRECISION } from '../geo/bezier.js';
 import type { Graph } from '../layoutgraph/graph.js';
@@ -23,6 +23,7 @@ import { MaxSearchWorkUnits } from './search-guard.js';
 import { OVGEdgeRouter } from './edge-router.js';
 import { Route } from './route.js';
 import { generateRoutes } from './generate-routes.js';
+import { generateRouteFlavorResponsesWith } from './flavor-workers.js';
 import type { RouteGenerationFlavor } from './sort-edges.js';
 import { finalizeSelectedRoutes } from './selected-routes.js';
 import { routeSentinelEdge, makeLoopRoute } from './sentinel-routes.js';
@@ -118,15 +119,8 @@ export function routeEdgesWithResourceGuards(
         aggregate,
       ),
   );
-  const [workerCtx, cancelWorkers] = WithCancel(ctx);
-  let responses;
-  try {
-    responses = routers.map((router) => generateRoutes(workerCtx, router, true));
-    const canceled = ctx.Err();
-    if (canceled) throw new Error(`EdgeRouting: ${canceled.message}`, { cause: canceled });
-  } finally {
-    cancelWorkers();
-  }
+  const responses = generateRouteFlavorResponsesWith(ctx, routers, true, (router, workerCtx, fallback) =>
+    generateRoutes(workerCtx, router, fallback));
   let firstError: Error | null = null;
   const successful = new Map<
     RouteGenerationFlavor,
@@ -228,15 +222,8 @@ export function routeAdditionalEdgesWithResourceLimits(
     router.considerNodeLabels = true;
     return router;
   });
-  const [workerCtx, cancelWorkers] = WithCancel(ctx);
-  let responses;
-  try {
-    responses = routers.map((router) => generateRoutes(workerCtx, router, true));
-    const canceled = ctx.Err();
-    if (canceled) throw new Error(`EdgeRouting: ${canceled.message}`, { cause: canceled });
-  } finally {
-    cancelWorkers();
-  }
+  const responses = generateRouteFlavorResponsesWith(ctx, routers, true, (router, workerCtx, fallback) =>
+    generateRoutes(workerCtx, router, fallback));
   let firstError: Error | null = null;
   let best = Infinity;
   let chosen: { router: OVGEdgeRouter; routes: Route[] } | null = null;

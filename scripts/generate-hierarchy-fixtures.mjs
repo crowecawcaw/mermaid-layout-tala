@@ -204,6 +204,7 @@ const packages = {
   routingselected: 'internal/routing',
   routingsentinel: 'internal/routing',
   routingcoordinator: 'internal/routing',
+  routingflavorworkers: 'internal/routing',
   routingadditional: 'internal/routing',
   routingstandalone: 'internal/routing',
   guardedbounds: 'internal/graphbounds',

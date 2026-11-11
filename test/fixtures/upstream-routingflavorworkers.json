@@ -1,0 +1,64 @@
+[
+  {
+    "calls": 3,
+    "error": "",
+    "name": "success",
+    "responses": [
+      {
+        "distance": 42,
+        "error": "",
+        "flavor": "ShortestToLongest"
+      },
+      {
+        "distance": 42,
+        "error": "",
+        "flavor": "LongestToShortest"
+      },
+      {
+        "distance": 42,
+        "error": "",
+        "flavor": "Default"
+      }
+    ]
+  },
+  {
+    "calls": 3,
+    "error": "",
+    "name": "ordinary-error",
+    "responses": [
+      {
+        "distance": 0,
+        "error": "ordinary failure",
+        "flavor": "ShortestToLongest"
+      },
+      {
+        "distance": 42,
+        "error": "",
+        "flavor": "LongestToShortest"
+      },
+      {
+        "distance": 42,
+        "error": "",
+        "flavor": "Default"
+      }
+    ]
+  },
+  {
+    "calls": 3,
+    "error": "layout invariant violated: edge routing flavor ShortestToLongest violated an invariant",
+    "name": "panic-first",
+    "responses": []
+  },
+  {
+    "calls": 3,
+    "error": "layout invariant violated: edge routing flavor ShortestToLongest violated an invariant",
+    "name": "panic-all",
+    "responses": []
+  },
+  {
+    "calls": 0,
+    "error": "TALA route-search work limit exceeded: edge routing declared 4 flavors; limit 3",
+    "name": "too-many",
+    "responses": []
+  }
+]
