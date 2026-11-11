@@ -158,6 +158,18 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 		{"fuzz-17640421aa66af00", 65, 80, 49, 118, 240, 9, 106},
 		{"fuzz-41c61ccd88c1b87f", 11, 23, 2, 81, 110, 13, 66},
 		{"fuzz-5e5764be2ee6224a", 46, 11, 5, 4, 110, 39, 91},
+		{"fuzz-extra-01", 101, 9, 3, 35, 55, 8, 35},
+		{"fuzz-extra-02", 102, 12, 4, 65, 75, 18, 55},
+		{"fuzz-extra-03", 103, 15, 5, 45, 45, 25, 60},
+		{"fuzz-extra-04", 104, 11, 2, 75, 70, 30, 45},
+		{"fuzz-extra-05", 105, 14, 3, 20, 80, 12, 75},
+		{"fuzz-extra-06", 106, 13, 4, 55, 35, 22, 50},
+		{"fuzz-extra-07", 107, 16, 5, 40, 60, 15, 65},
+		{"fuzz-extra-08", 108, 10, 4, 80, 50, 35, 40},
+		{"fuzz-extra-09", 109, 12, 3, 30, 85, 5, 70},
+		{"fuzz-extra-10", 110, 15, 2, 60, 65, 28, 55},
+		{"fuzz-extra-11", 111, 8, 5, 70, 75, 20, 60},
+		{"fuzz-extra-12", 112, 14, 4, 50, 40, 32, 50},
 	}
 	for _, f := range fuzzCases {
 		config := normalizeFuzzerConfig(f.seed, f.maxNodes, f.iterations, f.compaction, f.subset, f.minConnection, f.maxConnection)
