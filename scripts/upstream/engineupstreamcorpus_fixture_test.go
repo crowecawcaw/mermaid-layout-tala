@@ -291,6 +291,35 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 		fuzzInputs[name] = data
 		cases = append(cases, struct{ name, path string }{name, ""})
 	}
+	for variant := 0; variant < 2; variant++ {
+		name := fmt.Sprintf("arrow-labels-%d", variant)
+		graph := layoutgraph.NewGraph()
+		nodes := []*layoutgraph.Node{}
+		for i := 0; i < 7; i++ {
+			node := layoutgraph.NewNode(int64(i+1), float64(60+i*5), float64(40+i*2))
+			graph.AddNewNodeToContainer(nil, node)
+			nodes = append(nodes, node)
+		}
+		for i := 0; i < 7; i++ {
+			for _, shift := range []int{1, 2 + variant} {
+				edge := graph.Connect(nodes[i], nodes[(i+shift)%len(nodes)])
+				edge.ID = int64(len(graph.Edges))
+				edge.TargetArrowhead = "triangle"
+				if (i+shift)%2 == 0 {
+					edge.SourceArrowheadLabel = &layoutgraph.Label{Text: fmt.Sprintf("source-%d", i), Width: 24, Height: 10}
+				}
+				if (i+shift+variant)%3 == 0 {
+					edge.TargetArrowheadLabel = &layoutgraph.Label{Text: fmt.Sprintf("target-%d", i), Width: 28, Height: 12}
+				}
+			}
+		}
+		data, err := graphjson.Marshal(context.Background(), graph)
+		if err != nil {
+			t.Fatal(err)
+		}
+		fuzzInputs[name] = data
+		cases = append(cases, struct{ name, path string }{name, ""})
+	}
 	fixtures := []any{}
 	seedGoldens := map[string]string{
 		"clusters":                   "4f742ab0d3199a66b716e873fdba4c8bb9313d62c0a7a0102d710b7e82faf60f",
@@ -404,6 +433,12 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 					"fromTableColumnIndex": e.FromTableColumnIndex, "toTableColumnIndex": e.ToTableColumnIndex, "isInvisible": e.IsInvisible}
 				if e.Label != nil {
 					record["label"] = map[string]any{"text": e.Label.Text, "position": e.Label.Position.String(), "percentage": e.LabelPercentage, "width": e.Label.Width, "height": e.Label.Height}
+				}
+				if e.SourceArrowheadLabel != nil {
+					record["sourceArrowheadLabel"] = map[string]any{"text": e.SourceArrowheadLabel.Text, "position": e.SourceArrowheadLabel.Position.String(), "width": e.SourceArrowheadLabel.Width, "height": e.SourceArrowheadLabel.Height}
+				}
+				if e.TargetArrowheadLabel != nil {
+					record["targetArrowheadLabel"] = map[string]any{"text": e.TargetArrowheadLabel.Text, "position": e.TargetArrowheadLabel.Position.String(), "width": e.TargetArrowheadLabel.Width, "height": e.TargetArrowheadLabel.Height}
 				}
 				edges = append(edges, record)
 			}

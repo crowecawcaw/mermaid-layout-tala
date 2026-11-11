@@ -66,6 +66,17 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
       edge.Label.Width = input.label.Width;
       edge.Label.Height = input.label.Height;
     }
+    for (const [key, destination] of [['sourceArrowheadLabel', 'SourceArrowheadLabel'], ['targetArrowheadLabel', 'TargetArrowheadLabel']] as const) {
+      if (key in input && input[key]) {
+        const value = input[key];
+        const label = new Label();
+        label.Text = value.Text;
+        label.Position = FromString(value.Position);
+        label.Width = value.Width;
+        label.Height = value.Height;
+        edge[destination] = label;
+      }
+    }
     edge.Points = input.points.map((point: { x: number; y: number }) => new Point(point.x, point.y));
   }
   const result = Layout(Background, graph, { Seed: BigInt(fixture.seed) });
@@ -159,6 +170,13 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
   for (const expected of fixture.edges) {
     const edge = resultEdges.get(expected.id)!;
     expect(edge).toBeDefined();
+    for (const [key, actual] of [['sourceArrowheadLabel', edge.SourceArrowheadLabel], ['targetArrowheadLabel', edge.TargetArrowheadLabel]] as const) {
+      if (key in expected && expected[key]) {
+        const value = expected[key];
+        expect(actual).not.toBeNull();
+        expect({ text: actual!.Text, position: labelPositionString(actual!.Position), width: actual!.Width, height: actual!.Height }).toEqual(value);
+      } else expect(actual).toBeNull();
+    }
     expect({ d2id: edge.D2ID, from: Number(edge.From.ID), to: Number(edge.To.ID), sourceArrowhead: edge.SourceArrowhead,
       targetArrowhead: edge.TargetArrowhead, minWidth: edge.MinWidth, minHeight: edge.MinHeight,
       fromTableColumnIndex: edge.FromTableColumnIndex, toTableColumnIndex: edge.ToTableColumnIndex, isInvisible: edge.IsInvisible }).toEqual({
