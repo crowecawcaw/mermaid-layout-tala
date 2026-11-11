@@ -97,7 +97,7 @@ func TestExportTypeScriptOvgupstreamcorpusFixtures(t *testing.T) {
 		})
 		fixtures = append(fixtures, map[string]any{"name": name, "input": json.RawMessage(data), "nodes": nodes, "edges": edges})
 	}
-	data, err := json.MarshalIndent(fixtures, "", "  ")
+	data, err := json.Marshal(fixtures)
 	if err != nil {
 		t.Fatal(err)
 	}
