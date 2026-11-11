@@ -14,6 +14,7 @@ import (
 
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/graphjson"
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/layoutgraph"
+	"github.com/d2lang/d2/lib/shape"
 )
 
 func corpusID(id int64) string { return fmt.Sprint(id) }
@@ -181,19 +182,30 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 		fuzzInputs[f.name], fuzzSeeds[f.name] = data, f.seed
 		cases = append(cases, struct{ name, path string }{f.name, ""})
 	}
-	for variant := 0; variant < 4; variant++ {
+	for variant := 0; variant < 8; variant++ {
 		name := fmt.Sprintf("dense-cycle-%d", variant)
+		if variant >= 4 {
+			name = fmt.Sprintf("dense-shape-%d", variant-4)
+		}
 		graph := layoutgraph.NewGraph()
 		nodes := []*layoutgraph.Node{}
-		for i := 0; i < 8; i++ {
+		count := 8
+		if variant >= 4 {
+			count = 10
+		}
+		for i := 0; i < count; i++ {
 			node := layoutgraph.NewNode(int64(i+1), float64(45+i*5), float64(30+(i%4)*7))
+			if variant >= 4 {
+				shapes := []string{shape.SQUARE_TYPE, shape.DIAMOND_TYPE, shape.CIRCLE_TYPE, shape.HEXAGON_TYPE, shape.CLOUD_TYPE}
+				node.SetShape(shapes[(i+variant)%len(shapes)])
+			}
 			if (i+variant)%3 == 0 {
 				node.Label = &layoutgraph.Label{Text: fmt.Sprintf("node-%d", i), Width: 24, Height: 12}
 			}
 			graph.AddNewNodeToContainer(nil, node)
 			nodes = append(nodes, node)
 		}
-		for i := 0; i < 8; i++ {
+		for i := 0; i < count; i++ {
 			for _, shift := range []int{1, 2 + variant%3} {
 				edge := graph.Connect(nodes[i], nodes[(i+shift)%len(nodes)])
 				edge.ID = int64(len(graph.Edges))
