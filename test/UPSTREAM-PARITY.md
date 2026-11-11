@@ -40,7 +40,8 @@ shapes, at two seeds each. Four nested graphs also exercise dense cross-containe
 edges, labels and size constraints at both seeds; two more exercise fixed positions and node flags.
 Four additional cyclic graphs exercise source and target arrowhead labels,
 edge styles and visibility. A 16-node, 32-edge mixed-shape cyclic graph is also
-compared at both seeds.
+compared at both seeds. Twenty reproducibly generated connected graphs add
+mixed shapes, cycles, labels and edge styles.
 An additional 60 public layouts compare zero, negative, signed 64-bit boundary,
 and duplicate seed selections across all four directions.
 The straight-edge fallback separately matches Go's cancellation poll count and

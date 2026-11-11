@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"math"
+	"math/rand"
 	"os"
 	"path/filepath"
 	"strings"
@@ -365,6 +366,45 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 			t.Fatal(err)
 		}
 		fuzzInputs[name] = data
+		cases = append(cases, struct{ name, path string }{name, ""})
+	}
+	random := rand.New(rand.NewSource(8675309))
+	for trial := 0; trial < 20; trial++ {
+		name := fmt.Sprintf("random-connected-%02d", trial)
+		graph := layoutgraph.NewGraph()
+		count := 8 + random.Intn(7)
+		nodes := make([]*layoutgraph.Node, 0, count)
+		shapes := []string{shape.SQUARE_TYPE, shape.DIAMOND_TYPE, shape.CIRCLE_TYPE, shape.HEXAGON_TYPE, shape.CLOUD_TYPE}
+		for i := 0; i < count; i++ {
+			node := layoutgraph.NewNode(int64(i+1), float64(40+random.Intn(65)), float64(30+random.Intn(45)))
+			node.SetShape(shapes[random.Intn(len(shapes))])
+			if random.Intn(4) == 0 {
+				node.Label = &layoutgraph.Label{Text: fmt.Sprintf("node-%d", i), Width: 25, Height: 10}
+			}
+			graph.AddNewNodeToContainer(nil, node)
+			nodes = append(nodes, node)
+		}
+		for i := 0; i < count*2; i++ {
+			from := i % count
+			to := (from + 1 + random.Intn(count-1)) % count
+			if i < count {
+				to = (from + 1) % count
+			}
+			edge := graph.Connect(nodes[from], nodes[to])
+			edge.ID = int64(len(graph.Edges))
+			edge.TargetArrowhead = "triangle"
+			if random.Intn(5) == 0 {
+				edge.Label = &layoutgraph.Label{Text: fmt.Sprintf("edge-%d", i), Width: 20, Height: 10}
+			}
+			if random.Intn(5) == 0 {
+				edge.Style.Stroke = &layoutgraph.StyleScalar{Value: []string{"red", "blue"}[random.Intn(2)]}
+			}
+		}
+		data, err := graphjson.Marshal(context.Background(), graph)
+		if err != nil {
+			t.Fatal(err)
+		}
+		fuzzInputs[name], fuzzSeeds[name] = data, int64(2001+trial)
 		cases = append(cases, struct{ name, path string }{name, ""})
 	}
 	fixtures := []any{}
