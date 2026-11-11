@@ -18,9 +18,9 @@ npm install mermaid-layout-tala
 ```
 
 ```ts
-import { layoutFlowchart } from 'mermaid-layout-tala/core';
+import { layoutGraph } from 'mermaid-layout-tala/core';
 
-const result = layoutFlowchart(
+const result = layoutGraph(
   [{ id: 'a', width: 80, height: 60 }, { id: 'b', width: 80, height: 60 }],
   [{ id: 'ab', from: 'a', to: 'b' }],
   { direction: 'TB' },
@@ -74,7 +74,8 @@ full-layout corpus matches all 545 cases, including nested groups, loops, parall
 edges and all four directions. This corpus is a useful baseline, not proof of
 parity for every graph or all D2 features. See the [parity matrix](./test/UPSTREAM-PARITY.md).
 
-The synchronous `layoutFlowchart(nodes, edges, options)` API is preserved. Nodes
+The synchronous `layoutGraph(nodes, edges, options)` API is also available as
+`layoutFlowchart` for compatibility. Nodes
 can specify `parentId`, `isGroup`, `direction`, `shape`, measured labels,
 icon placement, font size, class metadata, fixed positions, `nearId` relationships, and D2
 styles, including `fontSize`, `threeDee`, and `multiple`. The convenience fields

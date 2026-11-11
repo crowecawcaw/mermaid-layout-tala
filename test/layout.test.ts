@@ -1,9 +1,15 @@
 import { describe, expect, it } from 'vitest';
 import { layoutFlowchart } from '../src/layout.js';
+import { layoutGraph } from '../src/core.js';
+import { layoutGraph as rootLayoutGraph } from '../src/index.js';
 import { d2LifelineEndId, translateFlowchart } from '../src/upstream/adapter/flowchart.js';
 import orderingFixtures from './fixtures/upstream-layoutordering.json';
 
 describe('Mermaid flowchart layout slice', () => {
+  it('exposes the same layout engine under the general graph API', () => {
+    expect(layoutGraph).toBe(layoutFlowchart);
+    expect(rootLayoutGraph).toBe(layoutFlowchart);
+  });
   it('uses authored order by default and offers canonical ordering explicitly', () => {
     const fixture = orderingFixtures.find((f) => f.name === 'authored-order-TB')!;
     const normal = layoutFlowchart(fixture.nodes, fixture.edges, { seeds: [1, 2, 3] });

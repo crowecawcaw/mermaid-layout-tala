@@ -7,6 +7,7 @@ export { routeEdges } from './upstream/adapter/route-edges.js';
 export { WithCancel as withCancel, Background as backgroundContext, type Context as TalaContext } from './upstream/limits/context.js';
 export {
   layoutFlowchart,
+  layoutFlowchart as layoutGraph,
   type LayoutDirection,
   type LayoutEdge,
   type ArrowheadLabel,
