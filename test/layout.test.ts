@@ -20,6 +20,13 @@ describe('Mermaid flowchart layout slice', () => {
       canonical.nodes.map(({ id, x, y }) => ({ id, x, y })),
     );
   });
+  it('applies explicit nested container directions', () => {
+    const fixture = orderingFixtures.find((f) => f.name === 'nested-container-directions-TB')!;
+    const directed = layoutFlowchart(fixture.nodes, fixture.edges, { direction: 'TB', seeds: [1, 2, 3] });
+    const undirectedNodes = fixture.nodes.map(({ direction: _direction, ...node }) => node);
+    const undirected = layoutFlowchart(undirectedNodes, fixture.edges, { direction: 'TB', seeds: [1, 2, 3] });
+    expect(directed.nodes.map(({ x, y }) => [x, y])).not.toEqual(undirected.nodes.map(({ x, y }) => [x, y]));
+  });
   it('validates D2 ordering and edge identity', () => {
     const nodes = [
       { id: 'z', width: 40, height: 30 },

@@ -35003,5 +35003,977 @@
         3
       ]
     }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "a-item",
+        "to": "a-second",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "a-second",
+        "to": "a-third",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "a-third",
+        "to": "b-item",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "b-item",
+        "to": "solo",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 205,
+          "labelY": 76,
+          "points": [
+            {
+              "x": 140,
+              "y": 88
+            },
+            {
+              "x": 270,
+              "y": 88
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 435,
+          "labelY": 76,
+          "points": [
+            {
+              "x": 370,
+              "y": 88
+            },
+            {
+              "x": 500,
+              "y": 88
+            }
+          ]
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 577,
+          "labelY": 223,
+          "points": [
+            {
+              "x": 555,
+              "y": 115
+            },
+            {
+              "x": 555,
+              "y": 330
+            }
+          ]
+        },
+        {
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_LEFT",
+          "labelX": 482,
+          "labelY": 365,
+          "points": [
+            {
+              "x": 510,
+              "y": 352
+            },
+            {
+              "x": 398,
+              "y": 352
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 175,
+          "id": "group-a",
+          "width": 670,
+          "x": 335,
+          "y": 87.5
+        },
+        {
+          "fontSize": 28,
+          "height": 165,
+          "id": "group-b",
+          "width": 210,
+          "x": 555,
+          "y": 352.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "a-item",
+          "width": 80,
+          "x": 100,
+          "y": 88
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "b-item",
+          "width": 90,
+          "x": 555,
+          "y": 352.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "a-second",
+          "width": 100,
+          "x": 320,
+          "y": 88
+        },
+        {
+          "fontSize": 16,
+          "height": 55,
+          "id": "a-third",
+          "width": 110,
+          "x": 555,
+          "y": 87.5
+        },
+        {
+          "fontSize": 16,
+          "height": 60,
+          "id": "solo",
+          "width": 120,
+          "x": 338,
+          "y": 353
+        }
+      ]
+    },
+    "name": "nested-container-directions-TB",
+    "nodes": [
+      {
+        "id": "group-a",
+        "d2Id": "left",
+        "width": 60,
+        "height": 30,
+        "isGroup": true,
+        "label": "",
+        "direction": "LR"
+      },
+      {
+        "id": "group-b",
+        "d2Id": "right",
+        "width": 70,
+        "height": 35,
+        "isGroup": true,
+        "label": "",
+        "direction": "BT"
+      },
+      {
+        "id": "a-item",
+        "d2Id": "item",
+        "width": 80,
+        "height": 40,
+        "parentId": "group-a",
+        "label": ""
+      },
+      {
+        "id": "b-item",
+        "d2Id": "item",
+        "width": 90,
+        "height": 45,
+        "parentId": "group-b",
+        "label": ""
+      },
+      {
+        "id": "a-second",
+        "d2Id": "second",
+        "width": 100,
+        "height": 50,
+        "parentId": "group-a",
+        "label": ""
+      },
+      {
+        "id": "a-third",
+        "d2Id": "third",
+        "width": 110,
+        "height": 55,
+        "parentId": "group-a",
+        "label": ""
+      },
+      {
+        "id": "solo",
+        "d2Id": "solo",
+        "width": 120,
+        "height": 60,
+        "label": ""
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "a-item",
+        "to": "a-second",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "a-second",
+        "to": "a-third",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "a-third",
+        "to": "b-item",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "b-item",
+        "to": "solo",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 205,
+          "labelY": 526,
+          "points": [
+            {
+              "x": 140,
+              "y": 538
+            },
+            {
+              "x": 270,
+              "y": 538
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 435,
+          "labelY": 526,
+          "points": [
+            {
+              "x": 370,
+              "y": 538
+            },
+            {
+              "x": 500,
+              "y": 538
+            }
+          ]
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 534,
+          "labelY": 394,
+          "points": [
+            {
+              "x": 555,
+              "y": 510
+            },
+            {
+              "x": 555,
+              "y": 278
+            }
+          ]
+        },
+        {
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 534,
+          "labelY": 147,
+          "points": [
+            {
+              "x": 555,
+              "y": 233
+            },
+            {
+              "x": 555,
+              "y": 60
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 175,
+          "id": "group-a",
+          "width": 670,
+          "x": 335,
+          "y": 537.5
+        },
+        {
+          "fontSize": 28,
+          "height": 165,
+          "id": "group-b",
+          "width": 210,
+          "x": 555,
+          "y": 255.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "a-item",
+          "width": 80,
+          "x": 100,
+          "y": 538
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "b-item",
+          "width": 90,
+          "x": 555,
+          "y": 255.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "a-second",
+          "width": 100,
+          "x": 320,
+          "y": 538
+        },
+        {
+          "fontSize": 16,
+          "height": 55,
+          "id": "a-third",
+          "width": 110,
+          "x": 555,
+          "y": 537.5
+        },
+        {
+          "fontSize": 16,
+          "height": 60,
+          "id": "solo",
+          "width": 120,
+          "x": 555,
+          "y": 30
+        }
+      ]
+    },
+    "name": "nested-container-directions-BT",
+    "nodes": [
+      {
+        "id": "group-a",
+        "d2Id": "left",
+        "width": 60,
+        "height": 30,
+        "isGroup": true,
+        "label": "",
+        "direction": "LR"
+      },
+      {
+        "id": "group-b",
+        "d2Id": "right",
+        "width": 70,
+        "height": 35,
+        "isGroup": true,
+        "label": "",
+        "direction": "BT"
+      },
+      {
+        "id": "a-item",
+        "d2Id": "item",
+        "width": 80,
+        "height": 40,
+        "parentId": "group-a",
+        "label": ""
+      },
+      {
+        "id": "b-item",
+        "d2Id": "item",
+        "width": 90,
+        "height": 45,
+        "parentId": "group-b",
+        "label": ""
+      },
+      {
+        "id": "a-second",
+        "d2Id": "second",
+        "width": 100,
+        "height": 50,
+        "parentId": "group-a",
+        "label": ""
+      },
+      {
+        "id": "a-third",
+        "d2Id": "third",
+        "width": 110,
+        "height": 55,
+        "parentId": "group-a",
+        "label": ""
+      },
+      {
+        "id": "solo",
+        "d2Id": "solo",
+        "width": 120,
+        "height": 60,
+        "label": ""
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "a-item",
+        "to": "a-second",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "a-second",
+        "to": "a-third",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "a-third",
+        "to": "b-item",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "b-item",
+        "to": "solo",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 213,
+          "labelY": 76,
+          "points": [
+            {
+              "x": 140,
+              "y": 88
+            },
+            {
+              "x": 286,
+              "y": 88
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 459,
+          "labelY": 76,
+          "points": [
+            {
+              "x": 386,
+              "y": 88
+            },
+            {
+              "x": 531,
+              "y": 88
+            }
+          ]
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 744,
+          "labelY": 75,
+          "points": [
+            {
+              "x": 641,
+              "y": 87
+            },
+            {
+              "x": 846,
+              "y": 87
+            }
+          ]
+        },
+        {
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_LEFT",
+          "labelX": 972,
+          "labelY": 75,
+          "points": [
+            {
+              "x": 936,
+              "y": 87
+            },
+            {
+              "x": 1080,
+              "y": 87
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 175,
+          "id": "group-a",
+          "width": 701,
+          "x": 350.5,
+          "y": 87.5
+        },
+        {
+          "fontSize": 28,
+          "height": 165,
+          "id": "group-b",
+          "width": 210,
+          "x": 891,
+          "y": 87.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "a-item",
+          "width": 80,
+          "x": 100,
+          "y": 88
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "b-item",
+          "width": 90,
+          "x": 891,
+          "y": 87.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "a-second",
+          "width": 100,
+          "x": 336,
+          "y": 88
+        },
+        {
+          "fontSize": 16,
+          "height": 55,
+          "id": "a-third",
+          "width": 110,
+          "x": 586,
+          "y": 87.5
+        },
+        {
+          "fontSize": 16,
+          "height": 60,
+          "id": "solo",
+          "width": 120,
+          "x": 1140,
+          "y": 87
+        }
+      ]
+    },
+    "name": "nested-container-directions-LR",
+    "nodes": [
+      {
+        "id": "group-a",
+        "d2Id": "left",
+        "width": 60,
+        "height": 30,
+        "isGroup": true,
+        "label": "",
+        "direction": "LR"
+      },
+      {
+        "id": "group-b",
+        "d2Id": "right",
+        "width": 70,
+        "height": 35,
+        "isGroup": true,
+        "label": "",
+        "direction": "BT"
+      },
+      {
+        "id": "a-item",
+        "d2Id": "item",
+        "width": 80,
+        "height": 40,
+        "parentId": "group-a",
+        "label": ""
+      },
+      {
+        "id": "b-item",
+        "d2Id": "item",
+        "width": 90,
+        "height": 45,
+        "parentId": "group-b",
+        "label": ""
+      },
+      {
+        "id": "a-second",
+        "d2Id": "second",
+        "width": 100,
+        "height": 50,
+        "parentId": "group-a",
+        "label": ""
+      },
+      {
+        "id": "a-third",
+        "d2Id": "third",
+        "width": 110,
+        "height": 55,
+        "parentId": "group-a",
+        "label": ""
+      },
+      {
+        "id": "solo",
+        "d2Id": "solo",
+        "width": 120,
+        "height": 60,
+        "label": ""
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "a-item",
+        "to": "a-second",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "a-second",
+        "to": "a-third",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "a-third",
+        "to": "b-item",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "b-item",
+        "to": "solo",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 205,
+          "labelY": 76,
+          "points": [
+            {
+              "x": 140,
+              "y": 88
+            },
+            {
+              "x": 270,
+              "y": 88
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 435,
+          "labelY": 76,
+          "points": [
+            {
+              "x": 370,
+              "y": 88
+            },
+            {
+              "x": 500,
+              "y": 88
+            }
+          ]
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 577,
+          "labelY": 223,
+          "points": [
+            {
+              "x": 555,
+              "y": 115
+            },
+            {
+              "x": 555,
+              "y": 330
+            }
+          ]
+        },
+        {
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_LEFT",
+          "labelX": 480,
+          "labelY": 365,
+          "points": [
+            {
+              "x": 510,
+              "y": 352
+            },
+            {
+              "x": 390,
+              "y": 352
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 175,
+          "id": "group-a",
+          "width": 670,
+          "x": 335,
+          "y": 87.5
+        },
+        {
+          "fontSize": 28,
+          "height": 165,
+          "id": "group-b",
+          "width": 210,
+          "x": 555,
+          "y": 352.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "a-item",
+          "width": 80,
+          "x": 100,
+          "y": 88
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "b-item",
+          "width": 90,
+          "x": 555,
+          "y": 352.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "a-second",
+          "width": 100,
+          "x": 320,
+          "y": 88
+        },
+        {
+          "fontSize": 16,
+          "height": 55,
+          "id": "a-third",
+          "width": 110,
+          "x": 555,
+          "y": 87.5
+        },
+        {
+          "fontSize": 16,
+          "height": 60,
+          "id": "solo",
+          "width": 120,
+          "x": 330,
+          "y": 352
+        }
+      ]
+    },
+    "name": "nested-container-directions-RL",
+    "nodes": [
+      {
+        "id": "group-a",
+        "d2Id": "left",
+        "width": 60,
+        "height": 30,
+        "isGroup": true,
+        "label": "",
+        "direction": "LR"
+      },
+      {
+        "id": "group-b",
+        "d2Id": "right",
+        "width": 70,
+        "height": 35,
+        "isGroup": true,
+        "label": "",
+        "direction": "BT"
+      },
+      {
+        "id": "a-item",
+        "d2Id": "item",
+        "width": 80,
+        "height": 40,
+        "parentId": "group-a",
+        "label": ""
+      },
+      {
+        "id": "b-item",
+        "d2Id": "item",
+        "width": 90,
+        "height": 45,
+        "parentId": "group-b",
+        "label": ""
+      },
+      {
+        "id": "a-second",
+        "d2Id": "second",
+        "width": 100,
+        "height": 50,
+        "parentId": "group-a",
+        "label": ""
+      },
+      {
+        "id": "a-third",
+        "d2Id": "third",
+        "width": 110,
+        "height": 55,
+        "parentId": "group-a",
+        "label": ""
+      },
+      {
+        "id": "solo",
+        "d2Id": "solo",
+        "width": 120,
+        "height": 60,
+        "label": ""
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
   }
 ]

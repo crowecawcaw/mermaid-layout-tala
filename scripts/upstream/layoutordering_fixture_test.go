@@ -35,6 +35,7 @@ type orderingNode struct {
 	Style         map[string]string `json:"style,omitempty"`
 	NearID        string            `json:"nearId,omitempty"`
 	NearPath      []string          `json:"nearPath,omitempty"`
+	Direction     string            `json:"direction,omitempty"`
 	HasClassData  bool              `json:"hasClassData,omitempty"`
 	IsGrid        bool              `json:"isGrid,omitempty"`
 	Icon          *string           `json:"icon,omitempty"`
@@ -119,6 +120,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"nested-near-path", [][2]int{{2, 3}, {2, 4}, {4, 3}, {3, 2}}, false, 31},
 		{"arrowhead-style-metadata", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 32},
 		{"unicode-transparent-styles", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 33},
+		{"nested-container-directions", [][2]int{{2, 4}, {4, 5}, {5, 3}, {3, 6}}, false, 34},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -146,6 +148,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		}
 		if test.shapeSet == 24 || test.shapeSet == 31 {
 			names = []string{"group-a", "group-b", "a-item", "b-item", "solo"}
+		}
+		if test.shapeSet == 34 {
+			names = []string{"group-a", "group-b", "a-item", "b-item", "a-second", "a-third", "solo"}
 		}
 		if test.shapeSet == 26 {
 			names = []string{"outer-api", "empty-api", "leaf-api", "other-api", "solo-api"}
@@ -261,8 +266,15 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 						input.Icon = &icon
 					}
 				}
-				if test.shapeSet == 24 || test.shapeSet == 31 {
-					id := []string{"left", "right", "item", "item", "solo"}[i]
+				if test.shapeSet == 24 || test.shapeSet == 31 || test.shapeSet == 34 {
+					if test.shapeSet == 34 {
+						input.IsInvisible = false
+					}
+					ids := []string{"left", "right", "item", "item", "solo"}
+					if test.shapeSet == 34 {
+						ids = []string{"left", "right", "item", "item", "second", "third", "solo"}
+					}
+					id := ids[i]
 					input.D2ID = &id
 					input.IsGroup = i < 2
 					if i == 4 && test.shapeSet == 24 {
@@ -270,6 +282,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 					}
 					if i == 4 && test.shapeSet == 31 {
 						input.NearPath = []string{"RIGHT", "ITEM"}
+					}
+					if test.shapeSet == 34 && i < 2 {
+						input.Direction = []string{"LR", "BT"}[i]
 					}
 				}
 				if test.shapeSet == 25 {
@@ -302,8 +317,12 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 					input.IsGroup = i < 2
 				}
 				parent := g.Root
-				if (test.shapeSet == 24 || test.shapeSet == 31) && (i == 2 || i == 3) {
+				if (test.shapeSet == 24 || test.shapeSet == 31 || test.shapeSet == 34) && (i == 2 || i == 3) {
 					input.ParentID = names[i-2]
+					parent = objects[input.ParentID]
+				}
+				if test.shapeSet == 34 && (i == 4 || i == 5) {
+					input.ParentID = names[0]
 					parent = objects[input.ParentID]
 				}
 				if test.shapeSet == 26 && (i == 1 || i == 2) {
@@ -344,6 +363,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				}
 				obj := &d2graph.Object{Graph: g, Parent: parent, ID: d2ID, IDVal: d2ID, Box: geo.NewBox(geo.NewPoint(0, 0), input.Width, input.Height), Children: make(map[string]*d2graph.Object), Attributes: d2graph.Attributes{}}
 				obj.Shape.Value = input.Shape
+				if input.Direction != "" {
+					obj.Direction.Value = dirs[input.Direction]
+				}
 				if input.DesiredWidth != nil {
 					obj.WidthAttr = &d2graph.Scalar{Value: strconv.Itoa(*input.DesiredWidth)}
 				}
