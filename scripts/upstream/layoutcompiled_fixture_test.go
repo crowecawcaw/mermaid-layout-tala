@@ -56,6 +56,9 @@ func TestExportTypeScriptLayoutcompiledFixtures(t *testing.T) {
 		{"fixed-size", "sized: {\n width: 150\n height: 90\n}\nsized -> other\n"},
 		{"grid", "box: {\n grid-rows: 2\n a\n b\n}\nbox.a -> outside\n"},
 		{"icons", "a: {\n icon: https://example.com/icon.svg\n icon.near: top-left\n label.near: outside-top-center\n}\na -> b\n"},
+		{"hierarchy", "box: {\n shape: hierarchy\n a -> b -> c\n}\nbox.c -> outside\n"},
+		{"sequence-shape", "box: {\n shape: sequence_diagram\n alice -> bob: hello\n}\nbox.alice -> outside\n"},
+		{"locked-position", "a: {\n top: 100\n left: 200\n}\na -> b\n"},
 	}
 	directions := []struct{ api, d2 string }{{"TB", "down"}, {"BT", "up"}, {"LR", "right"}, {"RL", "left"}}
 	out := []any{}
@@ -120,6 +123,11 @@ func TestExportTypeScriptLayoutcompiledFixtures(t *testing.T) {
 				if obj.HeightAttr != nil {
 					value, _ := strconv.Atoi(obj.HeightAttr.Value)
 					n["desiredHeight"] = value
+				}
+				if obj.Top != nil && obj.Left != nil {
+					top, _ := strconv.Atoi(obj.Top.Value)
+					left, _ := strconv.Atoi(obj.Left.Value)
+					n["fixedPosition"] = map[string]int{"x": left, "y": top}
 				}
 				nodes = append(nodes, n)
 			}

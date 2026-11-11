@@ -9390,5 +9390,1805 @@
         3
       ]
     }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "box.a",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "box.b"
+      },
+      {
+        "d2Index": 0,
+        "from": "box.b",
+        "id": "e1",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "box.c"
+      },
+      {
+        "d2Index": 0,
+        "from": "box.c",
+        "id": "e2",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "outside"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 86,
+              "y": 126
+            },
+            {
+              "x": 86,
+              "y": 216
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 86,
+              "y": 282
+            },
+            {
+              "x": 86,
+              "y": 372
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 60,
+              "y": 405
+            },
+            {
+              "x": 30,
+              "y": 405
+            },
+            {
+              "x": 30,
+              "y": 594
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 498,
+          "id": "box",
+          "labelX": 86.5,
+          "labelY": 23,
+          "width": 173,
+          "x": 86.5,
+          "y": 249
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.a",
+          "labelX": 86.5,
+          "labelY": 93,
+          "width": 53,
+          "x": 86.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.b",
+          "labelX": 86.5,
+          "labelY": 249,
+          "width": 53,
+          "x": 86.5,
+          "y": 249
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.c",
+          "labelX": 86.5,
+          "labelY": 405,
+          "width": 53,
+          "x": 86.5,
+          "y": 405
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "outside",
+          "labelX": 49,
+          "labelY": 627,
+          "width": 98,
+          "x": 49,
+          "y": 627
+        }
+      ]
+    },
+    "name": "compiled-hierarchy-TB",
+    "nodes": [
+      {
+        "d2Id": "box",
+        "height": 81,
+        "id": "box",
+        "isGroup": true,
+        "label": "box",
+        "labelHeight": 36,
+        "labelWidth": 42,
+        "shape": "hierarchy",
+        "width": 87
+      },
+      {
+        "d2Id": "a",
+        "height": 66,
+        "id": "box.a",
+        "label": "a",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "b",
+        "height": 66,
+        "id": "box.b",
+        "label": "b",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "c",
+        "height": 66,
+        "id": "box.c",
+        "label": "c",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "outside",
+        "height": 66,
+        "id": "outside",
+        "label": "outside",
+        "labelHeight": 21,
+        "labelWidth": 53,
+        "shape": "rectangle",
+        "width": 98
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "box.a",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "box.b"
+      },
+      {
+        "d2Index": 0,
+        "from": "box.b",
+        "id": "e1",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "box.c"
+      },
+      {
+        "d2Index": 0,
+        "from": "box.c",
+        "id": "e2",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "outside"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 86,
+              "y": 126
+            },
+            {
+              "x": 86,
+              "y": 216
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 86,
+              "y": 282
+            },
+            {
+              "x": 86,
+              "y": 372
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 113,
+              "y": 405
+            },
+            {
+              "x": 322,
+              "y": 405
+            },
+            {
+              "x": 322,
+              "y": 363
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 498,
+          "id": "box",
+          "labelX": 86.5,
+          "labelY": 23,
+          "width": 173,
+          "x": 86.5,
+          "y": 249
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.a",
+          "labelX": 86.5,
+          "labelY": 93,
+          "width": 53,
+          "x": 86.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.b",
+          "labelX": 86.5,
+          "labelY": 249,
+          "width": 53,
+          "x": 86.5,
+          "y": 249
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.c",
+          "labelX": 86.5,
+          "labelY": 405,
+          "width": 53,
+          "x": 86.5,
+          "y": 405
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "outside",
+          "labelX": 322,
+          "labelY": 330,
+          "width": 98,
+          "x": 322,
+          "y": 330
+        }
+      ]
+    },
+    "name": "compiled-hierarchy-BT",
+    "nodes": [
+      {
+        "d2Id": "box",
+        "height": 81,
+        "id": "box",
+        "isGroup": true,
+        "label": "box",
+        "labelHeight": 36,
+        "labelWidth": 42,
+        "shape": "hierarchy",
+        "width": 87
+      },
+      {
+        "d2Id": "a",
+        "height": 66,
+        "id": "box.a",
+        "label": "a",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "b",
+        "height": 66,
+        "id": "box.b",
+        "label": "b",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "c",
+        "height": 66,
+        "id": "box.c",
+        "label": "c",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "outside",
+        "height": 66,
+        "id": "outside",
+        "label": "outside",
+        "labelHeight": 21,
+        "labelWidth": 53,
+        "shape": "rectangle",
+        "width": 98
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "box.a",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "box.b"
+      },
+      {
+        "d2Index": 0,
+        "from": "box.b",
+        "id": "e1",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "box.c"
+      },
+      {
+        "d2Index": 0,
+        "from": "box.c",
+        "id": "e2",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "outside"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 86,
+              "y": 126
+            },
+            {
+              "x": 86,
+              "y": 216
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 86,
+              "y": 282
+            },
+            {
+              "x": 86,
+              "y": 372
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 113,
+              "y": 417
+            },
+            {
+              "x": 297,
+              "y": 417
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 498,
+          "id": "box",
+          "labelX": 86.5,
+          "labelY": 23,
+          "width": 173,
+          "x": 86.5,
+          "y": 249
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.a",
+          "labelX": 86.5,
+          "labelY": 93,
+          "width": 53,
+          "x": 86.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.b",
+          "labelX": 86.5,
+          "labelY": 249,
+          "width": 53,
+          "x": 86.5,
+          "y": 249
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.c",
+          "labelX": 86.5,
+          "labelY": 405,
+          "width": 53,
+          "x": 86.5,
+          "y": 405
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "outside",
+          "labelX": 346,
+          "labelY": 429,
+          "width": 98,
+          "x": 346,
+          "y": 429
+        }
+      ]
+    },
+    "name": "compiled-hierarchy-LR",
+    "nodes": [
+      {
+        "d2Id": "box",
+        "height": 81,
+        "id": "box",
+        "isGroup": true,
+        "label": "box",
+        "labelHeight": 36,
+        "labelWidth": 42,
+        "shape": "hierarchy",
+        "width": 87
+      },
+      {
+        "d2Id": "a",
+        "height": 66,
+        "id": "box.a",
+        "label": "a",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "b",
+        "height": 66,
+        "id": "box.b",
+        "label": "b",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "c",
+        "height": 66,
+        "id": "box.c",
+        "label": "c",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "outside",
+        "height": 66,
+        "id": "outside",
+        "label": "outside",
+        "labelHeight": 21,
+        "labelWidth": 53,
+        "shape": "rectangle",
+        "width": 98
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "box.a",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "box.b"
+      },
+      {
+        "d2Index": 0,
+        "from": "box.b",
+        "id": "e1",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "box.c"
+      },
+      {
+        "d2Index": 0,
+        "from": "box.c",
+        "id": "e2",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "outside"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 284,
+              "y": 126
+            },
+            {
+              "x": 284,
+              "y": 216
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 284,
+              "y": 282
+            },
+            {
+              "x": 284,
+              "y": 372
+            }
+          ]
+        },
+        {
+          "id": "e2",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 258,
+              "y": 417
+            },
+            {
+              "x": 98,
+              "y": 417
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 498,
+          "id": "box",
+          "labelX": 284.5,
+          "labelY": 23,
+          "width": 173,
+          "x": 284.5,
+          "y": 249
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.a",
+          "labelX": 284.5,
+          "labelY": 93,
+          "width": 53,
+          "x": 284.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.b",
+          "labelX": 284.5,
+          "labelY": 249,
+          "width": 53,
+          "x": 284.5,
+          "y": 249
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.c",
+          "labelX": 284.5,
+          "labelY": 405,
+          "width": 53,
+          "x": 284.5,
+          "y": 405
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "outside",
+          "labelX": 49,
+          "labelY": 429,
+          "width": 98,
+          "x": 49,
+          "y": 429
+        }
+      ]
+    },
+    "name": "compiled-hierarchy-RL",
+    "nodes": [
+      {
+        "d2Id": "box",
+        "height": 81,
+        "id": "box",
+        "isGroup": true,
+        "label": "box",
+        "labelHeight": 36,
+        "labelWidth": 42,
+        "shape": "hierarchy",
+        "width": 87
+      },
+      {
+        "d2Id": "a",
+        "height": 66,
+        "id": "box.a",
+        "label": "a",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "b",
+        "height": 66,
+        "id": "box.b",
+        "label": "b",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "c",
+        "height": 66,
+        "id": "box.c",
+        "label": "c",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "outside",
+        "height": 66,
+        "id": "outside",
+        "label": "outside",
+        "labelHeight": 21,
+        "labelWidth": 53,
+        "shape": "rectangle",
+        "width": 98
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "box.alice",
+        "id": "e0",
+        "label": "hello",
+        "labelHeight": 21,
+        "labelWidth": 33,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "box.bob"
+      },
+      {
+        "d2Index": 0,
+        "from": "box.alice",
+        "id": "e1",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "outside"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 175.5,
+          "labelY": 76.5,
+          "points": [
+            {
+              "x": 137,
+              "y": 93
+            },
+            {
+              "x": 214,
+              "y": 93
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 98,
+              "y": 126
+            },
+            {
+              "x": 98,
+              "y": 297
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 186,
+          "id": "box",
+          "labelX": 172.5,
+          "labelY": 23,
+          "width": 345,
+          "x": 172.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.alice",
+          "labelX": 98.5,
+          "labelY": 93,
+          "width": 77,
+          "x": 98.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.bob",
+          "labelX": 249.5,
+          "labelY": 93,
+          "width": 71,
+          "x": 249.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "outside",
+          "labelX": 99,
+          "labelY": 330,
+          "width": 98,
+          "x": 99,
+          "y": 330
+        }
+      ]
+    },
+    "name": "compiled-sequence-shape-TB",
+    "nodes": [
+      {
+        "d2Id": "box",
+        "height": 81,
+        "id": "box",
+        "isGroup": true,
+        "label": "box",
+        "labelHeight": 36,
+        "labelWidth": 42,
+        "shape": "sequence_diagram",
+        "width": 87
+      },
+      {
+        "d2Id": "alice",
+        "height": 66,
+        "id": "box.alice",
+        "label": "alice",
+        "labelHeight": 21,
+        "labelWidth": 32,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 77
+      },
+      {
+        "d2Id": "bob",
+        "height": 66,
+        "id": "box.bob",
+        "label": "bob",
+        "labelHeight": 21,
+        "labelWidth": 26,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 71
+      },
+      {
+        "d2Id": "outside",
+        "height": 66,
+        "id": "outside",
+        "label": "outside",
+        "labelHeight": 21,
+        "labelWidth": 53,
+        "shape": "rectangle",
+        "width": 98
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "box.alice",
+        "id": "e0",
+        "label": "hello",
+        "labelHeight": 21,
+        "labelWidth": 33,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "box.bob"
+      },
+      {
+        "d2Index": 0,
+        "from": "box.alice",
+        "id": "e1",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "outside"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 175.5,
+          "labelY": 274.5,
+          "points": [
+            {
+              "x": 137,
+              "y": 291
+            },
+            {
+              "x": 214,
+              "y": 291
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 98,
+              "y": 258
+            },
+            {
+              "x": 98,
+              "y": 66
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 186,
+          "id": "box",
+          "labelX": 172.5,
+          "labelY": 221,
+          "width": 345,
+          "x": 172.5,
+          "y": 291
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.alice",
+          "labelX": 98.5,
+          "labelY": 291,
+          "width": 77,
+          "x": 98.5,
+          "y": 291
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.bob",
+          "labelX": 249.5,
+          "labelY": 291,
+          "width": 71,
+          "x": 249.5,
+          "y": 291
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "outside",
+          "labelX": 99,
+          "labelY": 33,
+          "width": 98,
+          "x": 99,
+          "y": 33
+        }
+      ]
+    },
+    "name": "compiled-sequence-shape-BT",
+    "nodes": [
+      {
+        "d2Id": "box",
+        "height": 81,
+        "id": "box",
+        "isGroup": true,
+        "label": "box",
+        "labelHeight": 36,
+        "labelWidth": 42,
+        "shape": "sequence_diagram",
+        "width": 87
+      },
+      {
+        "d2Id": "alice",
+        "height": 66,
+        "id": "box.alice",
+        "label": "alice",
+        "labelHeight": 21,
+        "labelWidth": 32,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 77
+      },
+      {
+        "d2Id": "bob",
+        "height": 66,
+        "id": "box.bob",
+        "label": "bob",
+        "labelHeight": 21,
+        "labelWidth": 26,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 71
+      },
+      {
+        "d2Id": "outside",
+        "height": 66,
+        "id": "outside",
+        "label": "outside",
+        "labelHeight": 21,
+        "labelWidth": 53,
+        "shape": "rectangle",
+        "width": 98
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "box.alice",
+        "id": "e0",
+        "label": "hello",
+        "labelHeight": 21,
+        "labelWidth": 33,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "box.bob"
+      },
+      {
+        "d2Index": 0,
+        "from": "box.alice",
+        "id": "e1",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "outside"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 175.5,
+          "labelY": 76.5,
+          "points": [
+            {
+              "x": 137,
+              "y": 93
+            },
+            {
+              "x": 214,
+              "y": 93
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 98,
+              "y": 126
+            },
+            {
+              "x": 98,
+              "y": 219
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 186,
+          "id": "box",
+          "labelX": 172.5,
+          "labelY": 23,
+          "width": 345,
+          "x": 172.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.alice",
+          "labelX": 98.5,
+          "labelY": 93,
+          "width": 77,
+          "x": 98.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.bob",
+          "labelX": 249.5,
+          "labelY": 93,
+          "width": 71,
+          "x": 249.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "outside",
+          "labelX": 98,
+          "labelY": 252,
+          "width": 98,
+          "x": 98,
+          "y": 252
+        }
+      ]
+    },
+    "name": "compiled-sequence-shape-LR",
+    "nodes": [
+      {
+        "d2Id": "box",
+        "height": 81,
+        "id": "box",
+        "isGroup": true,
+        "label": "box",
+        "labelHeight": 36,
+        "labelWidth": 42,
+        "shape": "sequence_diagram",
+        "width": 87
+      },
+      {
+        "d2Id": "alice",
+        "height": 66,
+        "id": "box.alice",
+        "label": "alice",
+        "labelHeight": 21,
+        "labelWidth": 32,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 77
+      },
+      {
+        "d2Id": "bob",
+        "height": 66,
+        "id": "box.bob",
+        "label": "bob",
+        "labelHeight": 21,
+        "labelWidth": 26,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 71
+      },
+      {
+        "d2Id": "outside",
+        "height": 66,
+        "id": "outside",
+        "label": "outside",
+        "labelHeight": 21,
+        "labelWidth": 53,
+        "shape": "rectangle",
+        "width": 98
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "box.alice",
+        "id": "e0",
+        "label": "hello",
+        "labelHeight": 21,
+        "labelWidth": 33,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "box.bob"
+      },
+      {
+        "d2Index": 0,
+        "from": "box.alice",
+        "id": "e1",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "outside"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 353.5,
+          "labelY": 76.5,
+          "points": [
+            {
+              "x": 294,
+              "y": 93
+            },
+            {
+              "x": 412,
+              "y": 93
+            }
+          ]
+        },
+        {
+          "id": "e1",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 217,
+              "y": 93
+            },
+            {
+              "x": 98,
+              "y": 93
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 186,
+          "id": "box",
+          "labelX": 350,
+          "labelY": 23,
+          "width": 386,
+          "x": 350,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.alice",
+          "labelX": 255.5,
+          "labelY": 93,
+          "width": 77,
+          "x": 255.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.bob",
+          "labelX": 447.5,
+          "labelY": 93,
+          "width": 71,
+          "x": 447.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "outside",
+          "labelX": 49,
+          "labelY": 93,
+          "width": 98,
+          "x": 49,
+          "y": 93
+        }
+      ]
+    },
+    "name": "compiled-sequence-shape-RL",
+    "nodes": [
+      {
+        "d2Id": "box",
+        "height": 81,
+        "id": "box",
+        "isGroup": true,
+        "label": "box",
+        "labelHeight": 36,
+        "labelWidth": 42,
+        "shape": "sequence_diagram",
+        "width": 87
+      },
+      {
+        "d2Id": "alice",
+        "height": 66,
+        "id": "box.alice",
+        "label": "alice",
+        "labelHeight": 21,
+        "labelWidth": 32,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 77
+      },
+      {
+        "d2Id": "bob",
+        "height": 66,
+        "id": "box.bob",
+        "label": "bob",
+        "labelHeight": 21,
+        "labelWidth": 26,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 71
+      },
+      {
+        "d2Id": "outside",
+        "height": 66,
+        "id": "outside",
+        "label": "outside",
+        "labelHeight": 21,
+        "labelWidth": 53,
+        "shape": "rectangle",
+        "width": 98
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "a",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "b"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 226,
+              "y": 166
+            },
+            {
+              "x": 226,
+              "y": 264
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "a",
+          "labelX": 226.5,
+          "labelY": 133,
+          "width": 53,
+          "x": 226.5,
+          "y": 133
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "b",
+          "labelX": 226.5,
+          "labelY": 297,
+          "width": 53,
+          "x": 226.5,
+          "y": 297
+        }
+      ]
+    },
+    "name": "compiled-locked-position-TB",
+    "nodes": [
+      {
+        "d2Id": "a",
+        "fixedPosition": {
+          "x": 200,
+          "y": 100
+        },
+        "height": 66,
+        "id": "a",
+        "label": "a",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "b",
+        "height": 66,
+        "id": "b",
+        "label": "b",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "shape": "rectangle",
+        "width": 53
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "a",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "b"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 253,
+              "y": 133
+            },
+            {
+              "x": 330,
+              "y": 133
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "a",
+          "labelX": 226.5,
+          "labelY": 133,
+          "width": 53,
+          "x": 226.5,
+          "y": 133
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "b",
+          "labelX": 356.5,
+          "labelY": 133,
+          "width": 53,
+          "x": 356.5,
+          "y": 133
+        }
+      ]
+    },
+    "name": "compiled-locked-position-BT",
+    "nodes": [
+      {
+        "d2Id": "a",
+        "fixedPosition": {
+          "x": 200,
+          "y": 100
+        },
+        "height": 66,
+        "id": "a",
+        "label": "a",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "b",
+        "height": 66,
+        "id": "b",
+        "label": "b",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "shape": "rectangle",
+        "width": 53
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "a",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "b"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 253,
+              "y": 133
+            },
+            {
+              "x": 330,
+              "y": 133
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "a",
+          "labelX": 226.5,
+          "labelY": 133,
+          "width": 53,
+          "x": 226.5,
+          "y": 133
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "b",
+          "labelX": 356.5,
+          "labelY": 133,
+          "width": 53,
+          "x": 356.5,
+          "y": 133
+        }
+      ]
+    },
+    "name": "compiled-locked-position-LR",
+    "nodes": [
+      {
+        "d2Id": "a",
+        "fixedPosition": {
+          "x": 200,
+          "y": 100
+        },
+        "height": 66,
+        "id": "a",
+        "label": "a",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "b",
+        "height": 66,
+        "id": "b",
+        "label": "b",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "shape": "rectangle",
+        "width": 53
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "a",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "b"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 200,
+              "y": 133
+            },
+            {
+              "x": 119,
+              "y": 133
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "a",
+          "labelX": 226.5,
+          "labelY": 133,
+          "width": 53,
+          "x": 226.5,
+          "y": 133
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "b",
+          "labelX": 92.5,
+          "labelY": 133,
+          "width": 53,
+          "x": 92.5,
+          "y": 133
+        }
+      ]
+    },
+    "name": "compiled-locked-position-RL",
+    "nodes": [
+      {
+        "d2Id": "a",
+        "fixedPosition": {
+          "x": 200,
+          "y": 100
+        },
+        "height": 66,
+        "id": "a",
+        "label": "a",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "b",
+        "height": 66,
+        "id": "b",
+        "label": "b",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "shape": "rectangle",
+        "width": 53
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
   }
 ]
