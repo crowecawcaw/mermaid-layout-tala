@@ -47,9 +47,10 @@ node and edge identities through layout, and two exercise stale and partially
 populated routes and edge-label positions. Two trees include multiple unset
 edge IDs and mixtures of unset and assigned IDs. Five upstream regression graphs
 also run at seeds 1 and 123 in addition to their original seeds.
-Eight additional layouts compare exact positive and negative 64-bit node IDs
-and large or unset edge IDs without converting them to JavaScript numbers;
-four include nested containers and cross-boundary edges.
+Sixteen additional layouts compare exact positive and negative 64-bit node IDs
+and large or unset edge IDs without converting them to JavaScript numbers.
+They include nested containers, signed limits and forced collisions with
+generated cluster IDs.
 An additional 60 public layouts compare zero, negative, signed 64-bit boundary,
 and duplicate seed selections across all four directions.
 Thirteen seed-normalization cases also compare duplicate handling, empty input,
