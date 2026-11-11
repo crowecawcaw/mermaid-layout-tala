@@ -9,7 +9,7 @@ routing strategies. Preserve upstream package boundaries and function names
 where possible so changes can be reviewed beside their Go source.
 
 The public flowchart API now uses these modules in the upstream stage order.
-The checked-in 256-case full-layout corpus matches the pinned Go implementation.
+The checked-in 541-case full-layout corpus matches the pinned Go implementation.
 That does not establish complete parity for inputs or D2 features outside the
 adapter model; extend the differential corpus as those are added.
 
@@ -279,8 +279,9 @@ charges. Its pop order and work totals match 160 Go fixtures. Regenerate
 
 `routing/ovg-node.ts` and `ovg-edge.ts` translate visibility graph node/edge
 metadata, including multiple owners and directions per port, direction-set
-transforms and distance to node boundaries. The visibility construction and
-port-index scans remain pending. Regenerate `routingovg` for 360 Go cases.
+transforms and distance to node boundaries. Visibility construction and
+port-index scans are translated in the routing modules described below.
+Regenerate `routingovg` for 360 Go cases.
 
 `routing/ovg-edge-set.ts` translates visibility-edge indexing, ordered overlap
 and crossing queries, and guarded insertion/work accounting. Its 160 Go
@@ -296,7 +297,7 @@ concurrency limitation. Regenerate `routingguard` and `routingsort`.
 
 `routing/ovg.ts` and `ovg-resource.ts` translate foundational visibility graph
 insertion and connection, point canonicalization and resource accounting.
-The remaining visibility graph construction scans are not yet translated.
+Visibility graph construction scans are connected in `routing/ovg-build.ts`.
 180 Go fixtures cover graph operations and resource-limit boundaries;
 regenerate `ovgresource`.
 
@@ -367,8 +368,7 @@ need further differential coverage. Regenerate `ovghierarchy`.
 passes in upstream order. One hundred twenty-eight single-node Go cases compare
 the complete resulting graph and work-limit failures; multiple nodes,
 hierarchies, groups and Go map iteration require further differential testing.
-This internal builder is not yet connected to public routing. Regenerate
-`ovgbuild`.
+The routing coordinator calls this builder. Regenerate `ovgbuild`.
 Eighty additional connected two-node Go cases compare complete visibility
 coordinates and edge topology independent of map-driven insertion order;
 regenerate `ovgbuildmulti`.
@@ -548,8 +548,9 @@ and complex container shapes need additional coverage. Regenerate
 
 `hierarchy/eligibility.ts` translates hierarchy candidate and container
 eligibility rules, including structural-edge filtering. One hundred twenty Go
-fixtures cover shapes, loops, internal edges and fixed nodes. Full hierarchy
-discovery and placement remain outstanding. Regenerate `hierarchyeligibility`.
+fixtures cover shapes, loops, internal edges and fixed nodes. Hierarchy
+discovery and placement are translated in the stages described below; broader
+coverage remains needed. Regenerate `hierarchyeligibility`.
 
 `hierarchy/validity.ts` translates orientation, direction counting, workflow
 extent and hierarchy validity rules. One hundred sixty Go fixtures compare
@@ -561,8 +562,8 @@ node and edge ordering, and initial longest-path ranks. One hundred twenty Go
 fixtures compare ranks, validation failures and work counts. The simplex
 optimizer is in `hierarchy/rank-simplex.ts` and `hierarchy/rank.ts`; 240 Go
 fixtures compare weighted DAG ranks, optimality certificates and work counts,
-including cases requiring improvement. Hierarchy discovery and placement remain
-outstanding. Regenerate `hierarchyrankgraph` and `hierarchysimplex`.
+including cases requiring improvement. Hierarchy discovery and placement are
+connected in the public pipeline. Regenerate `hierarchyrankgraph` and `hierarchysimplex`.
 
 `hierarchy/dag.ts` and `hierarchy/build.ts` translate cycle removal, weighted
 duplicate-edge consolidation, rank mapping and per-component hierarchy
@@ -608,7 +609,8 @@ and cancellation need additional coverage. Regenerate `hierarchycompound`.
 `labeling/shared-segments.ts` translates shared-route intervals, cancellable
 segment sorting, overlap scores and cluster label search helpers. One hundred
 twenty Go fixtures compare interval geometry, scoring and cancellation-check
-counts. Cluster cases and the full label-placement stage remain to be covered.
+counts. Cluster cases need more coverage; the full label-placement stage and
+its fixtures are described below.
 Regenerate `labelingshared`.
 
 `labeling/guard.ts` translates label work accounting, rollback snapshots,
