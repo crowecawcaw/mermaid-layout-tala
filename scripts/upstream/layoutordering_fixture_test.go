@@ -55,6 +55,8 @@ type orderingEdge struct {
 	TargetArrowhead       *string             `json:"targetArrowhead,omitempty"`
 	SourceArrowheadFilled *bool               `json:"sourceArrowheadFilled,omitempty"`
 	TargetArrowheadFilled *bool               `json:"targetArrowheadFilled,omitempty"`
+	SourceArrowheadStyle  map[string]string   `json:"sourceArrowheadStyle,omitempty"`
+	TargetArrowheadStyle  map[string]string   `json:"targetArrowheadStyle,omitempty"`
 	SourceArrowheadLabel  *orderingArrowLabel `json:"sourceArrowheadLabel,omitempty"`
 	TargetArrowheadLabel  *orderingArrowLabel `json:"targetArrowheadLabel,omitempty"`
 }
@@ -114,6 +116,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"unicode-hash-collision", [][2]int{{0, 2}, {1, 2}, {2, 3}, {3, 4}, {4, 0}}, false, 29},
 		{"node-style-metadata", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 30},
 		{"nested-near-path", [][2]int{{2, 3}, {2, 4}, {4, 3}, {3, 2}}, false, 31},
+		{"arrowhead-style-metadata", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 32},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -491,6 +494,27 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 					if i != 0 {
 						input.TargetArrowhead = &empty
 						edge.DstArrowhead = &d2graph.Attributes{}
+					}
+				}
+				if test.shapeSet == 32 {
+					src, dst := false, true
+					input.SourceArrow, input.TargetArrow = &src, &dst
+					input.SourceArrowheadStyle = map[string]string{"filled": []string{"1", "false", "TRUE", "0", "t"}[i], "bold": "TRUE"}
+					input.TargetArrowheadStyle = map[string]string{"italic": "False"}
+					edge.SrcArrowhead = &d2graph.Attributes{}
+					edge.SrcArrowhead.Style.Filled = &d2graph.Scalar{Value: input.SourceArrowheadStyle["filled"]}
+					edge.SrcArrowhead.Style.Bold = &d2graph.Scalar{Value: "TRUE"}
+					edge.DstArrowhead = &d2graph.Attributes{}
+					edge.DstArrowhead.Style.Italic = &d2graph.Scalar{Value: "False"}
+					if i%2 == 0 {
+						shape := "diamond"
+						input.SourceArrowhead = &shape
+						edge.SrcArrowhead.Shape.Value = shape
+					}
+					if i == 3 {
+						src, dst := true, false
+						input.SourceArrow, input.TargetArrow = &src, &dst
+						edge.SrcArrow, edge.DstArrow = src, dst
 					}
 				}
 				edge.Label.Value = input.Label

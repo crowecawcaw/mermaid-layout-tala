@@ -70,7 +70,7 @@ runs the default seeds `[1, 2, 3]` using a Go-compatible random stream and selec
 the result by upstream penalty, then area, with later seeds winning exact ties.
 
 The public layout now runs the translated upstream TALA pipeline. The pinned
-full-layout corpus matches all 461 cases, including nested groups, loops, parallel
+full-layout corpus matches all 465 cases, including nested groups, loops, parallel
 edges and all four directions. This corpus is a useful baseline, not proof of
 parity for every graph or all D2 features. See the [parity matrix](./test/UPSTREAM-PARITY.md).
 
@@ -79,7 +79,9 @@ can specify `parentId`, `isGroup`, `direction`, `shape`, measured labels,
 icon placement, font size, class metadata, fixed positions, `nearId` relationships, and D2
 styles, including `fontSize`, `threeDee`, and `multiple`. The convenience fields
 `fontSize`, `is3D`, and `isMultiple` take precedence over their style equivalents. Edges can specify measured
-labels, arrow flags, arrowhead types and fill. Nodes can request fixed dimensions with `fixedSize: true`, or set `desiredWidth` and `desiredHeight` independently. Invalid parent references and cycles
+labels, arrow flags, arrowhead types, fill, and `sourceArrowheadStyle` or
+`targetArrowheadStyle` records. Explicit arrowhead fill flags take precedence
+over style fill values. Nodes can request fixed dimensions with `fixedSize: true`, or set `desiredWidth` and `desiredHeight` independently. Invalid parent references and cycles
 are rejected. The legacy `nodeSpacing`, `rankSpacing`, `orderingPasses`, and
 `containerPadding` options are accepted for compatibility; upstream TALA uses
 its own spacing and ordering policies. As in upstream, edges used to define a
@@ -150,7 +152,7 @@ npm test
 ```
 
 `npm run test:parity` compares complete layouts and standalone rerouting against
-pinned Go fixtures. It currently reports 461/461 layouts and 45/45 rerouting
+pinned Go fixtures. It currently reports 465/465 layouts and 45/45 rerouting
 cases matching. Additional upstream features and graph shapes still need
 differential coverage.
 

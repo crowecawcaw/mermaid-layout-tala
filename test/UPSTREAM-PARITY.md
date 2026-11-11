@@ -14,7 +14,7 @@ full parity. The prior WebAssembly replacement remains reverted; the public
 | Hierarchy, placement and packing | Translated upstream algorithms, including compound hierarchy placement | Go differential fixtures cover rank assignment, ordering, alignment, gap normalization, recursive packing and grouped layouts; more complex graphs remain to be tested |
 | Routing and labels | Translated upstream OVG routing, cleanup, port swaps, segment balancing, channel nudging, shortcutting and label placement | Go differential fixtures cover stages and work limits; shapes, clusters, aliases and larger diagrams need broader coverage |
 | Candidate selection | Go-compatible random stream, upstream penalty/area scoring and compound refinement | Scoring and refinement have differential fixtures; public adapter validation and additional D2 metadata need coverage |
-| Mermaid adapter | Maps the supported flowchart input to the translated graph | 461/461 pinned full-layout fixtures pass, including nested near paths, node style metadata, Unicode hash collisions, randomized nested graphs, authored ordering and explicit D2 edge indices. The input model does not expose all D2 shape and style features |
+| Mermaid adapter | Maps the supported flowchart input to the translated graph | 465/465 pinned full-layout fixtures pass, including arrowhead styles, nested near paths, node style metadata, Unicode hash collisions, randomized nested graphs, authored ordering and explicit D2 edge indices. The input model does not expose all D2 shape and style features |
 | Resource accounting | Translated work guards, stage rollback, and public cancellation contexts | Go comparisons cover pre-canceled layout, routing and seed coordination; expand cancellation and failure tests through the complete public pipeline |
 | Standalone edge rerouting | Additional-edge routing, the guarded `RouteEdges` transaction, and the public positioned-graph adapter are translated | 32 coordinator, 76 transaction, and 45 public Go comparisons cover nested graphs, existing routes, labels, SQL ports, reversed and parallel edges, failures and work limits; broaden sequence coverage |
 
@@ -26,7 +26,7 @@ arrowhead-label size limits, including transparent edges.
 
 ## Acceptance work still required
 
-1. Expand end-to-end Go comparisons beyond the current 461 cases, including
+1. Expand end-to-end Go comparisons beyond the current 465 cases, including
    larger and nested graphs, labels, alternate shapes and fixed ports.
 2. Extend the Mermaid input mapping and result validation for upstream features
    that the current flowchart API cannot represent.

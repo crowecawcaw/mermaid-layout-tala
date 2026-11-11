@@ -86,6 +86,9 @@ export interface LayoutEdge {
   targetArrow?: boolean;
   sourceArrowheadFilled?: boolean;
   targetArrowheadFilled?: boolean;
+  /** D2 arrowhead style records; their presence creates arrowhead attributes. */
+  sourceArrowheadStyle?: EdgeStyleInput;
+  targetArrowheadStyle?: EdgeStyleInput;
   sourceTableColumnIndex?: number;
   targetTableColumnIndex?: number;
   sourceArrowheadLabel?: ArrowheadLabel;

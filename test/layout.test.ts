@@ -267,6 +267,22 @@ describe('Mermaid flowchart layout slice', () => {
     ]);
   });
 
+  it('uses D2 arrowhead styles to create and fill arrowhead attributes', () => {
+    const nodes = ['a', 'b'].map((id) => ({ id, width: 40, height: 30 }));
+    const edges = [
+      { id: 'styled', from: 'a', to: 'b', sourceArrow: false, targetArrow: false,
+        sourceArrowhead: 'diamond', sourceArrowheadStyle: { filled: 'TRUE' }, targetArrowheadStyle: {} },
+      { id: 'override', from: 'b', to: 'a', sourceArrowhead: 'triangle',
+        sourceArrowheadFilled: false, sourceArrowheadStyle: { filled: 'true' } },
+    ];
+    const { graph } = translateFlowchart(nodes, edges, {});
+    expect([graph.Edges[0]!.SourceArrowhead, graph.Edges[0]!.TargetArrowhead]).toEqual(['filled-diamond', 'triangle']);
+    expect(graph.Edges[1]!.SourceArrowhead).toBe('unfilled-triangle');
+    expect(() => translateFlowchart(nodes, [{ ...edges[0]!, sourceArrowheadStyle: { filled: 'yes' } }], {})).toThrow(/invalid filled/);
+    const lifeline = { id: 'life', from: 'a', to: d2LifelineEndId('a'), sourceArrow: false, targetArrow: false };
+    expect(() => translateFlowchart(nodes, [{ ...lifeline, sourceArrowheadStyle: {} }], {})).toThrow(/missing node/);
+  });
+
   it('distinguishes an empty D2 arrowhead shape from absent attributes', () => {
     const nodes = ['a', 'b', 'c'].map((id) => ({ id, width: 40, height: 30 }));
     const { graph } = translateFlowchart(nodes, [

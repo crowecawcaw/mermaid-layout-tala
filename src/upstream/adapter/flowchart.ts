@@ -162,6 +162,10 @@ function validateStyle(style: EdgeStyleInput | undefined, owner: string): void {
         !/^(?:1|0|t|T|f|F|true|false|TRUE|FALSE|True|False)(?![\s\S])/.test(style[key]!))
       throw new Error(`${owner} has invalid ${key}`);
 }
+function styleFilled(style: EdgeStyleInput | undefined): boolean | undefined {
+  if (style?.filled === undefined) return undefined;
+  return ['1', 't', 'T', 'true', 'TRUE', 'True'].includes(style.filled);
+}
 export function translateFlowchart(
   inputNodes: readonly LayoutNode[],
   inputEdges: readonly LayoutEdge[],
@@ -488,6 +492,8 @@ export function translateFlowchart(
   for (let i = 0; i < inputEdges.length; i++) {
     checkContext();
     const e = inputEdges[i]!;
+    validateStyle(e.sourceArrowheadStyle, `edge ${e.id} source arrowhead`);
+    validateStyle(e.targetArrowheadStyle, `edge ${e.id} target arrowhead`);
     for (const [name, value] of [['source', e.sourceArrowhead], ['target', e.targetArrowhead]] as const) {
       if (value !== undefined && ![
         '', 'none', 'arrow', 'triangle', 'unfilled-triangle', 'diamond', 'filled-diamond',
@@ -526,6 +532,7 @@ export function translateFlowchart(
     const lifeline = !mapped.has(e.to) && e.to === lifelineID && !source && !target &&
       e.sourceArrowhead === undefined && e.targetArrowhead === undefined &&
       e.sourceArrowheadFilled === undefined && e.targetArrowheadFilled === undefined &&
+      e.sourceArrowheadStyle === undefined && e.targetArrowheadStyle === undefined &&
       e.sourceArrowheadLabel === undefined && e.targetArrowheadLabel === undefined;
     if (!mapped.has(e.from) || (!mapped.has(e.to) && !lifeline))
       throw new Error(`edge ${e.id} references a missing node`);
@@ -624,12 +631,16 @@ export function translateFlowchart(
       style?.stroke?.toLowerCase() === 'transparent' ||
       (style?.opacity !== undefined && parseGoFloat(style.opacity) === 0);
     const [sourceArrow, targetArrow] = arrowFlags(input);
+    const sourceFilled = input.sourceArrowheadFilled ?? styleFilled(input.sourceArrowheadStyle);
+    const targetFilled = input.targetArrowheadFilled ?? styleFilled(input.targetArrowheadStyle);
+    const sourceAttributes = input.sourceArrowheadLabel !== undefined || input.sourceArrowheadStyle !== undefined;
+    const targetAttributes = input.targetArrowheadLabel !== undefined || input.targetArrowheadStyle !== undefined;
     e.SourceArrowhead = reversed[i]
       ? NoArrowhead
-      : arrowhead(input.sourceArrowhead, sourceArrow ? TriangleArrowhead : NoArrowhead, input.sourceArrowheadFilled, input.sourceArrowheadLabel !== undefined);
+      : arrowhead(input.sourceArrowhead, sourceArrow ? TriangleArrowhead : NoArrowhead, sourceFilled, sourceAttributes);
     e.TargetArrowhead = reversed[i]
-      ? arrowhead(input.sourceArrowhead, TriangleArrowhead, input.sourceArrowheadFilled, input.sourceArrowheadLabel !== undefined)
-      : arrowhead(input.targetArrowhead, targetArrow ? TriangleArrowhead : NoArrowhead, input.targetArrowheadFilled, input.targetArrowheadLabel !== undefined);
+      ? arrowhead(input.sourceArrowhead, TriangleArrowhead, sourceFilled, sourceAttributes)
+      : arrowhead(input.targetArrowhead, targetArrow ? TriangleArrowhead : NoArrowhead, targetFilled, targetAttributes);
     const makeArrowLabel = (
       value: typeof input.sourceArrowheadLabel,
     ): Label | null => {
