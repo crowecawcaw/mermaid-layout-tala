@@ -31967,5 +31967,893 @@
         3
       ]
     }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "a-item",
+        "to": "b-item",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "a-item",
+        "to": "solo",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "solo",
+        "to": "b-item",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "b-item",
+        "to": "a-item",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 270,
+          "labelY": 163,
+          "points": [
+            {
+              "x": 180,
+              "y": 175
+            },
+            {
+              "x": 360,
+              "y": 175
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 190,
+          "labelY": 13,
+          "points": [
+            {
+              "x": 120,
+              "y": 135
+            },
+            {
+              "x": 120,
+              "y": 25
+            },
+            {
+              "x": 370,
+              "y": 25
+            }
+          ]
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 442,
+          "labelY": 93,
+          "points": [
+            {
+              "x": 420,
+              "y": 50
+            },
+            {
+              "x": 420,
+              "y": 135
+            }
+          ]
+        },
+        {
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 270,
+          "labelY": 228,
+          "points": [
+            {
+              "x": 360,
+              "y": 215
+            },
+            {
+              "x": 180,
+              "y": 215
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 240,
+          "id": "group-a",
+          "width": 240,
+          "x": 120,
+          "y": 195
+        },
+        {
+          "fontSize": 28,
+          "height": 240,
+          "id": "group-b",
+          "width": 240,
+          "x": 420,
+          "y": 195
+        },
+        {
+          "fontSize": 24,
+          "height": 120,
+          "id": "a-item",
+          "width": 120,
+          "x": 120,
+          "y": 195
+        },
+        {
+          "fontSize": 20,
+          "height": 120,
+          "id": "b-item",
+          "width": 120,
+          "x": 420,
+          "y": 195
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "solo",
+          "width": 100,
+          "x": 420,
+          "y": 25
+        }
+      ]
+    },
+    "name": "nested-near-path-TB",
+    "nodes": [
+      {
+        "id": "group-a",
+        "d2Id": "left",
+        "width": 60,
+        "height": 30,
+        "isGroup": true,
+        "label": ""
+      },
+      {
+        "id": "group-b",
+        "d2Id": "right",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "isGroup": true,
+        "label": ""
+      },
+      {
+        "id": "a-item",
+        "d2Id": "item",
+        "width": 80,
+        "height": 40,
+        "parentId": "group-a",
+        "label": ""
+      },
+      {
+        "id": "b-item",
+        "d2Id": "item",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "parentId": "group-b",
+        "label": ""
+      },
+      {
+        "id": "solo",
+        "d2Id": "solo",
+        "width": 100,
+        "height": 50,
+        "label": "",
+        "nearPath": [
+          "RIGHT",
+          "ITEM"
+        ]
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "a-item",
+        "to": "b-item",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "a-item",
+        "to": "solo",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "solo",
+        "to": "b-item",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "b-item",
+        "to": "a-item",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 223,
+          "labelY": 93,
+          "points": [
+            {
+              "x": 120,
+              "y": 135
+            },
+            {
+              "x": 120,
+              "y": 105
+            },
+            {
+              "x": 355,
+              "y": 105
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 217,
+          "labelY": 295,
+          "points": [
+            {
+              "x": 120,
+              "y": 255
+            },
+            {
+              "x": 120,
+              "y": 307
+            },
+            {
+              "x": 365,
+              "y": 307
+            }
+          ]
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_LEFT",
+          "labelX": 394,
+          "labelY": 270,
+          "points": [
+            {
+              "x": 415,
+              "y": 300
+            },
+            {
+              "x": 415,
+              "y": 180
+            }
+          ]
+        },
+        {
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 268,
+          "labelY": 170,
+          "points": [
+            {
+              "x": 355,
+              "y": 157
+            },
+            {
+              "x": 180,
+              "y": 157
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 240,
+          "id": "group-a",
+          "width": 240,
+          "x": 120,
+          "y": 195
+        },
+        {
+          "fontSize": 28,
+          "height": 240,
+          "id": "group-b",
+          "width": 240,
+          "x": 415,
+          "y": 120
+        },
+        {
+          "fontSize": 24,
+          "height": 120,
+          "id": "a-item",
+          "width": 120,
+          "x": 120,
+          "y": 195
+        },
+        {
+          "fontSize": 20,
+          "height": 120,
+          "id": "b-item",
+          "width": 120,
+          "x": 415,
+          "y": 120
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "solo",
+          "width": 100,
+          "x": 415,
+          "y": 325
+        }
+      ]
+    },
+    "name": "nested-near-path-BT",
+    "nodes": [
+      {
+        "id": "group-a",
+        "d2Id": "left",
+        "width": 60,
+        "height": 30,
+        "isGroup": true,
+        "label": ""
+      },
+      {
+        "id": "group-b",
+        "d2Id": "right",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "isGroup": true,
+        "label": ""
+      },
+      {
+        "id": "a-item",
+        "d2Id": "item",
+        "width": 80,
+        "height": 40,
+        "parentId": "group-a",
+        "label": ""
+      },
+      {
+        "id": "b-item",
+        "d2Id": "item",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "parentId": "group-b",
+        "label": ""
+      },
+      {
+        "id": "solo",
+        "d2Id": "solo",
+        "width": 100,
+        "height": 50,
+        "label": "",
+        "nearPath": [
+          "RIGHT",
+          "ITEM"
+        ]
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "a-item",
+        "to": "b-item",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "a-item",
+        "to": "solo",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "solo",
+        "to": "b-item",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "b-item",
+        "to": "a-item",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 225,
+          "labelY": 93,
+          "points": [
+            {
+              "x": 120,
+              "y": 135
+            },
+            {
+              "x": 120,
+              "y": 105
+            },
+            {
+              "x": 360,
+              "y": 105
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 184,
+          "labelY": 295,
+          "points": [
+            {
+              "x": 120,
+              "y": 255
+            },
+            {
+              "x": 120,
+              "y": 307
+            },
+            {
+              "x": 300,
+              "y": 307
+            }
+          ]
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_LEFT",
+          "labelX": 359,
+          "labelY": 270,
+          "points": [
+            {
+              "x": 380,
+              "y": 300
+            },
+            {
+              "x": 380,
+              "y": 180
+            }
+          ]
+        },
+        {
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 270,
+          "labelY": 170,
+          "points": [
+            {
+              "x": 360,
+              "y": 157
+            },
+            {
+              "x": 180,
+              "y": 157
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 240,
+          "id": "group-a",
+          "width": 240,
+          "x": 120,
+          "y": 195
+        },
+        {
+          "fontSize": 28,
+          "height": 240,
+          "id": "group-b",
+          "width": 240,
+          "x": 420,
+          "y": 120
+        },
+        {
+          "fontSize": 24,
+          "height": 120,
+          "id": "a-item",
+          "width": 120,
+          "x": 120,
+          "y": 195
+        },
+        {
+          "fontSize": 20,
+          "height": 120,
+          "id": "b-item",
+          "width": 120,
+          "x": 420,
+          "y": 120
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "solo",
+          "width": 100,
+          "x": 350,
+          "y": 325
+        }
+      ]
+    },
+    "name": "nested-near-path-LR",
+    "nodes": [
+      {
+        "id": "group-a",
+        "d2Id": "left",
+        "width": 60,
+        "height": 30,
+        "isGroup": true,
+        "label": ""
+      },
+      {
+        "id": "group-b",
+        "d2Id": "right",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "isGroup": true,
+        "label": ""
+      },
+      {
+        "id": "a-item",
+        "d2Id": "item",
+        "width": 80,
+        "height": 40,
+        "parentId": "group-a",
+        "label": ""
+      },
+      {
+        "id": "b-item",
+        "d2Id": "item",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "parentId": "group-b",
+        "label": ""
+      },
+      {
+        "id": "solo",
+        "d2Id": "solo",
+        "width": 100,
+        "height": 50,
+        "label": "",
+        "nearPath": [
+          "RIGHT",
+          "ITEM"
+        ]
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "a-item",
+        "to": "b-item",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "a-item",
+        "to": "solo",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "solo",
+        "to": "b-item",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "b-item",
+        "to": "a-item",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 313,
+          "labelY": 118,
+          "points": [
+            {
+              "x": 415,
+              "y": 135
+            },
+            {
+              "x": 415,
+              "y": 105
+            },
+            {
+              "x": 180,
+              "y": 105
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_BOTTOM_CENTER",
+          "labelX": 319,
+          "labelY": 295,
+          "points": [
+            {
+              "x": 415,
+              "y": 255
+            },
+            {
+              "x": 415,
+              "y": 307
+            },
+            {
+              "x": 170,
+              "y": 307
+            }
+          ]
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_LEFT",
+          "labelX": 99,
+          "labelY": 270,
+          "points": [
+            {
+              "x": 120,
+              "y": 300
+            },
+            {
+              "x": 120,
+              "y": 180
+            }
+          ]
+        },
+        {
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 268,
+          "labelY": 145,
+          "points": [
+            {
+              "x": 180,
+              "y": 157
+            },
+            {
+              "x": 355,
+              "y": 157
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 240,
+          "id": "group-a",
+          "width": 240,
+          "x": 415,
+          "y": 195
+        },
+        {
+          "fontSize": 28,
+          "height": 240,
+          "id": "group-b",
+          "width": 240,
+          "x": 120,
+          "y": 120
+        },
+        {
+          "fontSize": 24,
+          "height": 120,
+          "id": "a-item",
+          "width": 120,
+          "x": 415,
+          "y": 195
+        },
+        {
+          "fontSize": 20,
+          "height": 120,
+          "id": "b-item",
+          "width": 120,
+          "x": 120,
+          "y": 120
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "solo",
+          "width": 100,
+          "x": 120,
+          "y": 325
+        }
+      ]
+    },
+    "name": "nested-near-path-RL",
+    "nodes": [
+      {
+        "id": "group-a",
+        "d2Id": "left",
+        "width": 60,
+        "height": 30,
+        "isGroup": true,
+        "label": ""
+      },
+      {
+        "id": "group-b",
+        "d2Id": "right",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "isGroup": true,
+        "label": ""
+      },
+      {
+        "id": "a-item",
+        "d2Id": "item",
+        "width": 80,
+        "height": 40,
+        "parentId": "group-a",
+        "label": ""
+      },
+      {
+        "id": "b-item",
+        "d2Id": "item",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "parentId": "group-b",
+        "label": ""
+      },
+      {
+        "id": "solo",
+        "d2Id": "solo",
+        "width": 100,
+        "height": 50,
+        "label": "",
+        "nearPath": [
+          "RIGHT",
+          "ITEM"
+        ]
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
   }
 ]

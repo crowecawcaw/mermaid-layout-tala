@@ -241,6 +241,20 @@ describe('Mermaid flowchart layout slice', () => {
     expect(() => translateFlowchart([{ id: 'source', width: 40, height: 30, nearId: 'missing' }], [], {})).toThrow(/missing near node/);
   });
 
+  it('resolves D2 near paths from the root using local object IDs', () => {
+    const nodes = [
+      { id: 'source', width: 40, height: 30, nearPath: ['GROUP', 'item'] },
+      { id: 'container', d2Id: 'Group', width: 80, height: 60, isGroup: true },
+      { id: 'target', d2Id: 'Item', parentId: 'container', width: 40, height: 30 },
+    ];
+    const { graph } = translateFlowchart(nodes, [], {});
+    expect(graph.Nodes[0]!.Nears.has(graph.Nodes[2]!)).toBe(true);
+    for (const nearPath of [[], ['GROUP', 'missing'], Array(257).fill('x')])
+      expect(() => translateFlowchart([{ ...nodes[0]!, nearPath }, ...nodes.slice(1)], [], {})).toThrow(/near/);
+    expect(() => translateFlowchart([{ ...nodes[0]!, nearId: 'target' }, ...nodes.slice(1)], [], {})).toThrow(/both/);
+    expect(translateFlowchart([{ ...nodes[0]!, nearPath: ['top-left'] }], [], {}).graph.Nodes[0]!.Nears.size).toBe(0);
+  });
+
   it('uses D2 default arrowhead shapes when labels create attributes', () => {
     const nodes = ['a', 'b'].map((id) => ({ id, width: 40, height: 30 }));
     const label = { text: 'label', width: 20, height: 10 };

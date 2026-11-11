@@ -429,10 +429,16 @@ export function translateFlowchart(
     nodeIDs.set(n.id, node.ID);
   });
   const lowerNodes = new Map<string, Node>(), lowerRootD2Nodes = new Map<string, Node>();
+  const childrenByD2Id = new Map<string | null, Map<string, LayoutNode>>();
   for (const input of ordered) {
     checkContext();
     const key = d2Lower(input.id);
     if (!lowerNodes.has(key)) lowerNodes.set(key, mapped.get(input.id)!);
+    const parent = input.parentId ?? null;
+    let localChildren = childrenByD2Id.get(parent);
+    if (!localChildren) childrenByD2Id.set(parent, localChildren = new Map());
+    const localKey = d2Lower(input.d2Id ?? input.id);
+    if (!localChildren.has(localKey)) localChildren.set(localKey, input);
     if (input.parentId === undefined) {
       const d2Key = d2Lower(input.d2Id ?? input.id);
       if (!lowerRootD2Nodes.has(d2Key)) lowerRootD2Nodes.set(d2Key, mapped.get(input.id)!);
@@ -440,6 +446,29 @@ export function translateFlowchart(
   }
   for (const input of ordered) {
     checkContext();
+    if (input.nearPath !== undefined) {
+      if (input.nearId !== undefined)
+        throw new Error(`node ${input.id} cannot specify both nearId and nearPath`);
+      if (input.nearPath.length === 0 || input.nearPath.length > MaxEngineTreeDepth)
+        throw new Error(`node ${input.id} has an invalid near path`);
+      let parent: string | null = null;
+      let target: LayoutNode | undefined;
+      for (const part of input.nearPath) {
+        checkContext();
+        target = childrenByD2Id.get(parent)?.get(d2Lower(part));
+        if (!target) break;
+        parent = target.id;
+      }
+      if (target) {
+        mapped.get(input.id)!.AddNear(mapped.get(target.id)!);
+        continue;
+      }
+      if (input.nearPath.length === 1 && [
+        'top-left', 'top-center', 'top-right', 'center-left', 'center-right',
+        'bottom-left', 'bottom-center', 'bottom-right',
+      ].includes(input.nearPath[0]!)) continue;
+      throw new Error(`node ${input.id} references a missing near node`);
+    }
     if (input.nearId === undefined) continue;
     const key = d2Lower(input.nearId);
     const target = mapped.get(input.nearId) ?? lowerRootD2Nodes.get(key) ?? lowerNodes.get(key);

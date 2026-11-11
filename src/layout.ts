@@ -24,6 +24,8 @@ export interface LayoutNode extends RankNode {
   /** Whether D2 grid rows or columns are set on this object. */
   isGrid?: boolean;
   nearId?: string;
+  /** D2 near key components, resolved from the root by local D2 IDs. */
+  nearPath?: readonly string[];
   forceHierarchy?: boolean;
   label?: string;
   labelPosition?: string;

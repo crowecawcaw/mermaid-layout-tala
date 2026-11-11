@@ -34,6 +34,7 @@ type orderingNode struct {
 	LabelHeight   int               `json:"labelHeight,omitempty"`
 	Style         map[string]string `json:"style,omitempty"`
 	NearID        string            `json:"nearId,omitempty"`
+	NearPath      []string          `json:"nearPath,omitempty"`
 	HasClassData  bool              `json:"hasClassData,omitempty"`
 	IsGrid        bool              `json:"isGrid,omitempty"`
 	Icon          *string           `json:"icon,omitempty"`
@@ -112,6 +113,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"independent-fixed-sizes", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 28},
 		{"unicode-hash-collision", [][2]int{{0, 2}, {1, 2}, {2, 3}, {3, 4}, {4, 0}}, false, 29},
 		{"node-style-metadata", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 30},
+		{"nested-near-path", [][2]int{{2, 3}, {2, 4}, {4, 3}, {3, 2}}, false, 31},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -137,7 +139,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		if test.shapeSet == 23 {
 			names[0] = "İ"
 		}
-		if test.shapeSet == 24 {
+		if test.shapeSet == 24 || test.shapeSet == 31 {
 			names = []string{"group-a", "group-b", "a-item", "b-item", "solo"}
 		}
 		if test.shapeSet == 26 {
@@ -248,12 +250,15 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 						input.Icon = &icon
 					}
 				}
-				if test.shapeSet == 24 {
+				if test.shapeSet == 24 || test.shapeSet == 31 {
 					id := []string{"left", "right", "item", "item", "solo"}[i]
 					input.D2ID = &id
 					input.IsGroup = i < 2
-					if i == 4 {
+					if i == 4 && test.shapeSet == 24 {
 						input.NearID = "LEFT"
+					}
+					if i == 4 && test.shapeSet == 31 {
+						input.NearPath = []string{"RIGHT", "ITEM"}
 					}
 				}
 				if test.shapeSet == 25 {
@@ -286,7 +291,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 					input.IsGroup = i < 2
 				}
 				parent := g.Root
-				if test.shapeSet == 24 && (i == 2 || i == 3) {
+				if (test.shapeSet == 24 || test.shapeSet == 31) && (i == 2 || i == 3) {
 					input.ParentID = names[i-2]
 					parent = objects[input.ParentID]
 				}
@@ -351,6 +356,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				obj.LabelDimensions = *d2target.NewTextDimensions(input.LabelWidth, input.LabelHeight)
 				if input.NearID != "" {
 					obj.NearKey = d2ast.MakeKeyPath([]string{input.NearID})
+				}
+				if len(input.NearPath) != 0 {
+					obj.NearKey = d2ast.MakeKeyPath(input.NearPath)
 				}
 				if input.IsInvisible {
 					obj.Style.Opacity = &d2graph.Scalar{Value: "0"}
