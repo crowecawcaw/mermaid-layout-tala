@@ -218,9 +218,10 @@ export function translateFlowchart(
   for (const n of inputNodes) {
     checkContext();
     if (byId.has(n.id)) throw new Error('duplicate node ID');
-    if (loadExistingLayout) {
-      const node = n as RoutingNode;
-      const x = node.x - n.width / 2, y = node.y - n.height / 2;
+    if (loadExistingLayout || n.x !== undefined || n.y !== undefined) {
+      if (typeof n.x !== 'number' || typeof n.y !== 'number')
+        throw new Error(`node ${n.id} has an invalid existing position`);
+      const x = n.x - n.width / 2, y = n.y - n.height / 2;
       if (!Number.isFinite(x) || !Number.isFinite(y) ||
           Math.abs(x) > 1_000_000_000 || Math.abs(y) > 1_000_000_000 ||
           Math.abs(x + n.width) > 1_000_000_000 || Math.abs(y + n.height) > 1_000_000_000)

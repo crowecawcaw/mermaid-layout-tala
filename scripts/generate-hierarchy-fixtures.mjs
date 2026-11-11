@@ -74,6 +74,7 @@ const packages = {
   layoutedgeindex: '',
   layoutedgeconstraints: '',
   layoutinputgeometry: '',
+  layoutnodegeometry: '',
   layoutarrowvalidation: '',
   layoutcancellation: '',
   resultvalidation: '',

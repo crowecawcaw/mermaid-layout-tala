@@ -13,6 +13,9 @@ export interface LayoutNode extends RankNode {
   d2Id?: string;
   width: number;
   height: number;
+  /** Existing center position, validated but not used for a fresh layout. */
+  x?: number;
+  y?: number;
   fixedSize?: boolean;
   /** Independent D2 width and height attributes, when present. */
   desiredWidth?: number;

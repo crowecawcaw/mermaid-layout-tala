@@ -25,6 +25,8 @@ type orderingNode struct {
 	D2ID          *string           `json:"d2Id,omitempty"`
 	Width         float64           `json:"width"`
 	Height        float64           `json:"height"`
+	X             *float64          `json:"x,omitempty"`
+	Y             *float64          `json:"y,omitempty"`
 	IsInvisible   bool              `json:"isInvisible,omitempty"`
 	IsGroup       bool              `json:"isGroup,omitempty"`
 	ParentID      string            `json:"parentId,omitempty"`
@@ -126,6 +128,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"unicode-transparent-styles", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 33},
 		{"nested-container-directions", [][2]int{{2, 4}, {4, 5}, {5, 3}, {3, 6}}, false, 34},
 		{"existing-edge-geometry", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 35},
+		{"existing-node-geometry", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 36},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -184,6 +187,10 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 			objects := map[string]*d2graph.Object{}
 			for i, id := range names {
 				input := orderingNode{ID: id, Width: float64(60 + i*10), Height: float64(30 + i*5), IsInvisible: i%2 == 1}
+				if test.shapeSet == 36 {
+					x, y := float64(100+i*90), float64(-200+i*50)
+					input.X, input.Y = &x, &y
+				}
 				if test.shapeSet == 7 {
 					input.IsGroup = i%2 == 0
 					input.Width = 1
@@ -366,7 +373,11 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				if input.D2ID != nil {
 					d2ID = *input.D2ID
 				}
-				obj := &d2graph.Object{Graph: g, Parent: parent, ID: d2ID, IDVal: d2ID, Box: geo.NewBox(geo.NewPoint(0, 0), input.Width, input.Height), Children: make(map[string]*d2graph.Object), Attributes: d2graph.Attributes{}}
+				pos := geo.NewPoint(0, 0)
+				if input.X != nil && input.Y != nil {
+					pos = geo.NewPoint(*input.X-input.Width/2, *input.Y-input.Height/2)
+				}
+				obj := &d2graph.Object{Graph: g, Parent: parent, ID: d2ID, IDVal: d2ID, Box: geo.NewBox(pos, input.Width, input.Height), Children: make(map[string]*d2graph.Object), Attributes: d2graph.Attributes{}}
 				obj.Shape.Value = input.Shape
 				if input.Direction != "" {
 					obj.Direction.Value = dirs[input.Direction]

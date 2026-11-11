@@ -1,0 +1,66 @@
+[
+  {
+    "name": "node-geometry-0",
+    "node": {
+      "id": "a",
+      "width": 40,
+      "height": 30
+    },
+    "valid": true
+  },
+  {
+    "name": "node-geometry-1",
+    "node": {
+      "id": "a",
+      "width": 40,
+      "height": 30,
+      "x": 100,
+      "y": -100
+    },
+    "valid": true
+  },
+  {
+    "name": "node-geometry-2",
+    "node": {
+      "id": "a",
+      "width": 40,
+      "height": 30,
+      "x": 999999980,
+      "y": 0
+    },
+    "valid": true
+  },
+  {
+    "name": "node-geometry-3",
+    "node": {
+      "id": "a",
+      "width": 40,
+      "height": 30,
+      "x": 999999981,
+      "y": 0
+    },
+    "valid": false
+  },
+  {
+    "name": "node-geometry-4",
+    "node": {
+      "id": "a",
+      "width": 40,
+      "height": 30,
+      "x": -999999981,
+      "y": 0
+    },
+    "valid": false
+  },
+  {
+    "name": "node-geometry-5",
+    "node": {
+      "id": "a",
+      "width": 40,
+      "height": 30,
+      "x": 0,
+      "y": 999999986
+    },
+    "valid": false
+  }
+]
