@@ -34,6 +34,8 @@ labels; every route vertex in order; node proximity relationships; and the resul
 clusters, sequences, vessel geometry, tree topology, and hierarchy ranks. Floating-point geometry
 uses absolute tolerance `1e-7`; generated 64-bit entity IDs are compared exactly.
 The comparison also includes root and container directions and cached routing costs.
+It includes four additional connected eight-node, sixteen-edge graphs with
+cycles and labels at two seeds each.
 An additional 60 public layouts compare zero, negative, signed 64-bit boundary,
 and duplicate seed selections across all four directions.
 The straight-edge fallback separately matches Go's cancellation poll count and

@@ -181,6 +181,34 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 		fuzzInputs[f.name], fuzzSeeds[f.name] = data, f.seed
 		cases = append(cases, struct{ name, path string }{f.name, ""})
 	}
+	for variant := 0; variant < 4; variant++ {
+		name := fmt.Sprintf("dense-cycle-%d", variant)
+		graph := layoutgraph.NewGraph()
+		nodes := []*layoutgraph.Node{}
+		for i := 0; i < 8; i++ {
+			node := layoutgraph.NewNode(int64(i+1), float64(45+i*5), float64(30+(i%4)*7))
+			if (i+variant)%3 == 0 {
+				node.Label = &layoutgraph.Label{Text: fmt.Sprintf("node-%d", i), Width: 24, Height: 12}
+			}
+			graph.AddNewNodeToContainer(nil, node)
+			nodes = append(nodes, node)
+		}
+		for i := 0; i < 8; i++ {
+			for _, shift := range []int{1, 2 + variant%3} {
+				edge := graph.Connect(nodes[i], nodes[(i+shift)%len(nodes)])
+				edge.ID = int64(len(graph.Edges))
+				if (i+shift+variant)%4 == 0 {
+					edge.Label = &layoutgraph.Label{Text: fmt.Sprintf("edge-%d", i), Width: 20, Height: 10}
+				}
+			}
+		}
+		data, err := graphjson.Marshal(context.Background(), graph)
+		if err != nil {
+			t.Fatal(err)
+		}
+		fuzzInputs[name] = data
+		cases = append(cases, struct{ name, path string }{name, ""})
+	}
 	fixtures := []any{}
 	seedGoldens := map[string]string{
 		"clusters":                   "4f742ab0d3199a66b716e873fdba4c8bb9313d62c0a7a0102d710b7e82faf60f",
