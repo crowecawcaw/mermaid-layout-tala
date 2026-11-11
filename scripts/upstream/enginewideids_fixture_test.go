@@ -18,7 +18,7 @@ func TestExportTypeScriptEnginewideidsFixtures(t *testing.T) {
 		t.Skip()
 	}
 	fixtures := []any{}
-	for variant := 0; variant < 2; variant++ {
+	for variant := 0; variant < 4; variant++ {
 		for _, seed := range []int64{1, 123} {
 			graph := layoutgraph.NewGraph()
 			nodes := []*layoutgraph.Node{}
@@ -30,16 +30,29 @@ func TestExportTypeScriptEnginewideidsFixtures(t *testing.T) {
 					id = -int64(1<<60) + int64(i*103+1)
 				}
 				n := layoutgraph.NewNode(id, float64(40+i*5), float64(30+(i%4)*8))
-				graph.AddNewNodeToContainer(nil, n)
+				var parent *layoutgraph.Node
+				if variant >= 2 {
+					switch i {
+					case 1, 2, 3:
+						parent = nodes[0]
+					case 4, 5:
+						parent = nodes[3]
+					}
+				}
+				graph.AddNewNodeToContainer(parent, n)
 				nodes = append(nodes, n)
-				inputNodes = append(inputNodes, map[string]any{"id": fmt.Sprint(id), "width": n.Width, "height": n.Height})
+				record := map[string]any{"id": fmt.Sprint(id), "width": n.Width, "height": n.Height}
+				if parent != nil {
+					record["parent"] = fmt.Sprint(parent.IDValue())
+				}
+				inputNodes = append(inputNodes, record)
 			}
 			for i := 0; i < 9; i++ {
 				for _, shift := range []int{1, 3} {
 					from, to := nodes[i], nodes[(i+shift)%len(nodes)]
 					e := graph.Connect(from, to)
 					e.ID = math.MaxInt64 - int64(len(graph.Edges)*7)
-					if variant == 1 && i%3 == 0 {
+					if variant%2 == 1 && i%3 == 0 {
 						e.ID = 0
 					}
 					e.TargetArrowhead = "triangle"

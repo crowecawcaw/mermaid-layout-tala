@@ -11,7 +11,7 @@ it.each(fixtures)('matches Go with exact signed 64-bit entity IDs: $name', (fixt
   const nodes = new Map<string, Node>();
   for (const input of fixture.nodes) {
     const node = new Node(BigInt(input.id), input.width, input.height);
-    graph.AddNewNodeToContainer(null, node);
+    graph.AddNewNodeToContainer('parent' in input && input.parent ? nodes.get(input.parent)! : null, node);
     nodes.set(input.id, node);
   }
   for (const input of fixture.edges) {
