@@ -60,7 +60,7 @@ flowchart LR
 
 ## Scope
 
-The native TypeScript implementation supports measured flowchart nodes, all four
+The native TypeScript implementation supports measured graph nodes, all four
 directions (`TB`, `BT`, `LR`, `RL`), nested subgraph containers with local directions,
 connected components, parallel links, cycles, and self loops. Rectangle obstacle
 routing prevents routes from crossing unrelated node interiors. Mermaid clips

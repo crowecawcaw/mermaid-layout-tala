@@ -177,7 +177,7 @@ interface WeightedEdge extends LayoutEdge {
   weight: number;
 }
 
-/** Lay out a Mermaid flowchart with the translated TALA engine. */
+/** Lay out a graph with the translated TALA engine. */
 export function layoutFlowchart(
   inputNodes: readonly LayoutNode[],
   inputEdges: readonly LayoutEdge[],

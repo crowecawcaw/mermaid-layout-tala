@@ -1,7 +1,7 @@
 {
   "name": "mermaid-layout-tala",
   "version": "0.1.0",
-  "description": "TALA-derived hierarchical layout loader for Mermaid flowcharts",
+  "description": "TALA graph layout engine for TypeScript with optional Mermaid integration",
   "type": "module",
   "license": "MPL-2.0",
   "repository": {
@@ -16,6 +16,8 @@
     "mermaid",
     "mermaid-layout",
     "layout-engine",
+    "graph-layout",
+    "graph-drawing",
     "tala",
     "typescript",
     "flowchart"
