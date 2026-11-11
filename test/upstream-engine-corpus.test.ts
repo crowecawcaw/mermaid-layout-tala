@@ -97,10 +97,10 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
     expect(node).toBeDefined();
     expect({ d2id: node.D2ID, fontSize: node.FontSize, shapeType: node.ShapeType(), numColumns: node.NumColumns(),
       isInvisible: node.IsInvisible, is3D: node.Is3D, isMultiple: node.IsMultiple,
-      forceHierarchy: node.ForceHierarchy, isContainer: node.IsContainer() }).toEqual({
+      forceHierarchy: node.ForceHierarchy, isContainer: node.IsContainer(), nears: node.orderedNears().map(id) }).toEqual({
       d2id: expected.d2id, fontSize: expected.fontSize, shapeType: expected.shapeType, numColumns: expected.numColumns,
       isInvisible: expected.isInvisible, is3D: expected.is3D, isMultiple: expected.isMultiple,
-      forceHierarchy: expected.forceHierarchy, isContainer: expected.isContainer,
+      forceHierarchy: expected.forceHierarchy, isContainer: expected.isContainer, nears: expected.nears,
     });
     for (const [actual, value] of [[node.TopLeft!.X, expected.x], [node.TopLeft!.Y, expected.y],
       [node.Width, expected.width], [node.Height, expected.height]])

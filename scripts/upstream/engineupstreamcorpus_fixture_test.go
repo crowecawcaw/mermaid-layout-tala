@@ -184,9 +184,13 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 			nodes := []any{}
 			edges := []any{}
 			for _, n := range result.Nodes {
+				nears := []string{}
+				for _, near := range layoutgraph.OrderedNearsForSerialization(n) {
+					nears = append(nears, fmt.Sprint(near.IDValue()))
+				}
 				record := map[string]any{"id": n.IDValue(), "x": n.TopLeft.X, "y": n.TopLeft.Y, "width": n.Width, "height": n.Height,
 					"d2id": n.D2ID, "fontSize": n.FontSize, "shapeType": n.ShapeType(), "numColumns": n.NumColumns(),
-					"isInvisible": n.IsInvisible, "is3D": n.Is3D, "isMultiple": n.IsMultiple, "forceHierarchy": n.ForceHierarchy, "isContainer": n.IsContainer()}
+					"isInvisible": n.IsInvisible, "is3D": n.Is3D, "isMultiple": n.IsMultiple, "forceHierarchy": n.ForceHierarchy, "isContainer": n.IsContainer(), "nears": nears}
 				if n.Label != nil {
 					record["label"] = map[string]any{"text": n.Label.Text, "position": n.Label.Position.String(), "width": n.Label.Width, "height": n.Label.Height}
 				}
