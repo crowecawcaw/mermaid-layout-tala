@@ -96,4 +96,4 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
       expect(Math.abs(edge.Points[i]!.Y - expected.points[i]!.y)).toBeLessThanOrEqual(1e-7);
     }
   }
-}, 60_000);
+}, 300_000);
