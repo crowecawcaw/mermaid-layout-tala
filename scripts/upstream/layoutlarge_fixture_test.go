@@ -58,6 +58,13 @@ func TestExportTypeScriptLayoutlargeFixtures(t *testing.T) {
 		count int
 		pairs [][2]int
 	}{"twenty-four-layered", 24, pairs})
+	cyclic := append([][2]int{}, pairs...)
+	cyclic = append(cyclic, [2]int{20, 3}, [2]int{23, 4}, [2]int{18, 9}, [2]int{11, 11})
+	cases = append(cases, struct {
+		name  string
+		count int
+		pairs [][2]int
+	}{"twenty-four-cyclic", 24, cyclic})
 	pairs = [][2]int{}
 	for layer := 0; layer < 7; layer++ {
 		for column := 0; column < 5; column++ {
@@ -109,7 +116,7 @@ func TestExportTypeScriptLayoutlargeFixtures(t *testing.T) {
 			for i, pair := range test.pairs {
 				input := nativeEdgeInput{D2Index: i, ID: fmt.Sprintf("e%d", i), From: fmt.Sprintf("n%d", pair[0]), To: fmt.Sprintf("n%d", pair[1])}
 				edge := &d2graph.Edge{Index: i, Src: objects[input.From], Dst: objects[input.To], DstArrow: true, Attributes: d2graph.Attributes{}}
-				if test.name == "labelled" || test.name == "multiedges" || (test.name == "twenty-four-layered" && i%3 == 0) || (test.name == "forty-layered" && i%5 == 0) {
+				if test.name == "labelled" || test.name == "multiedges" || ((test.name == "twenty-four-layered" || test.name == "twenty-four-cyclic") && i%3 == 0) || (test.name == "forty-layered" && i%5 == 0) {
 					input.LabelWidth = 40
 					input.LabelHeight = 20
 					edge.Label.Value = "label"

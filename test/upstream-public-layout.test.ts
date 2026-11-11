@@ -96,4 +96,4 @@ it.each([
       expect(points[i]!.y).toBeCloseTo(expected[i]!.y, 7);
     }
   }
-});
+}, 60_000);
