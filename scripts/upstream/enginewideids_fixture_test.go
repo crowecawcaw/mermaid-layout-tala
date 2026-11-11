@@ -21,7 +21,7 @@ func TestExportTypeScriptEnginewideidsFixtures(t *testing.T) {
 		t.Skip()
 	}
 	fixtures := []any{}
-	for variant := 0; variant < 8; variant++ {
+	for variant := 0; variant < 10; variant++ {
 		for _, seed := range []int64{1, 123} {
 			graph := layoutgraph.NewGraph()
 			nodes := []*layoutgraph.Node{}
@@ -45,6 +45,9 @@ func TestExportTypeScriptEnginewideidsFixtures(t *testing.T) {
 				}
 				if variant >= 6 {
 					id = random.Int63()
+					if variant >= 8 && (i == 1 || i == 2) {
+						id = nodes[0].IDValue() + int64(i)
+					}
 				}
 				n := layoutgraph.NewNode(id, float64(40+i*5), float64(30+(i%4)*8))
 				if variant >= 6 && (i == 7 || i == 8) {
@@ -115,7 +118,11 @@ func TestExportTypeScriptEnginewideidsFixtures(t *testing.T) {
 				t.Fatal(err)
 			}
 			if variant >= 6 {
-				if _, ok := serialized.Clusters[nodes[0].IDValue()+1]; !ok {
+				offset := int64(1)
+				if variant >= 8 {
+					offset = 3
+				}
+				if _, ok := serialized.Clusters[nodes[0].IDValue()+offset]; !ok {
 					t.Fatalf("variant %d seed %d: expected a cluster ID collision with node %d", variant, seed, nodes[0].IDValue())
 				}
 			}
