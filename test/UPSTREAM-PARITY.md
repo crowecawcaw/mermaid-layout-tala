@@ -49,6 +49,8 @@ edge IDs and mixtures of unset and assigned IDs. Five upstream regression graphs
 also run at seeds 1 and 123 in addition to their original seeds.
 An additional 60 public layouts compare zero, negative, signed 64-bit boundary,
 and duplicate seed selections across all four directions.
+Thirteen seed-normalization cases also compare duplicate handling, empty input,
+signed boundaries, and the 16-unique and 64-entry limits against Go.
 The straight-edge fallback separately matches Go's cancellation poll count and
 all resulting routes across 200 positioned graphs, including 40 multi-edge cases.
 Go-derived worker fixtures also check flavor ordering, fatal worker panics,
@@ -108,6 +110,7 @@ TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 lay
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 layoutnodegeometry
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 layoutcompiled
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 layoutseedboundaries
+TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 layoutseednormalize
 go run scripts/upstream/random-fixtures.go > test/fixtures/upstream-random.json
 npm run test:parity
 ```

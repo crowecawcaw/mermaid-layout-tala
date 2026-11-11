@@ -73,6 +73,7 @@ const packages = {
   layoutopacity: '',
   layoutreroute: '',
   layoutseedselection: '',
+  layoutseednormalize: '',
   layoutseedboundaries: '',
   layoutedgeindex: '',
   layoutedgeconstraints: '',
