@@ -16,6 +16,13 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
   for (const input of fixture.input.nodes) {
     const node = new Node(BigInt(input.id), input.width, input.height);
     node.TopLeft = input.topLeft ? new Point(input.topLeft.x, input.topLeft.y) : null;
+    if ('fixedTopLeft' in input && input.fixedTopLeft) node.FixedTopLeft = new Point(input.fixedTopLeft.x, input.fixedTopLeft.y);
+    if ('desiredWidth' in input) node.DesiredWidth = input.desiredWidth ?? null;
+    if ('desiredHeight' in input) node.DesiredHeight = input.desiredHeight ?? null;
+    if ('isInvisible' in input) node.IsInvisible = input.isInvisible ?? false;
+    if ('is3D' in input) node.Is3D = input.is3D ?? false;
+    if ('isMultiple' in input) node.IsMultiple = input.isMultiple ?? false;
+    if ('forceHierarchy' in input) node.ForceHierarchy = input.forceHierarchy ?? false;
     node.FontSize = input.fontSize ?? null;
     node.D2ID = 'd2id' in input ? input.d2id ?? null : null;
     node.SetShape(input.shapeType);
@@ -135,6 +142,11 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
     for (const [actual, value] of [[node.TopLeft!.X, expected.x], [node.TopLeft!.Y, expected.y],
       [node.Width, expected.width], [node.Height, expected.height]])
       expect(Math.abs(actual! - value!)).toBeLessThanOrEqual(1e-7);
+    if ('fixedTopLeft' in expected && expected.fixedTopLeft) {
+      expect(node.FixedTopLeft).not.toBeNull();
+      expect(Math.abs(node.FixedTopLeft!.X - expected.fixedTopLeft.x)).toBeLessThanOrEqual(1e-7);
+      expect(Math.abs(node.FixedTopLeft!.Y - expected.fixedTopLeft.y)).toBeLessThanOrEqual(1e-7);
+    } else expect(node.FixedTopLeft).toBeNull();
     if ('label' in expected && expected.label) {
       expect(node.Label).not.toBeNull();
       expect(node.Label!.Text).toBe(expected.label.text);

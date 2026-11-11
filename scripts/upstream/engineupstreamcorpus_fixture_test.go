@@ -14,6 +14,7 @@ import (
 
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/graphjson"
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/layoutgraph"
+	"github.com/d2lang/d2/lib/geo"
 	"github.com/d2lang/d2/lib/shape"
 )
 
@@ -259,6 +260,37 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 		fuzzInputs[name] = data
 		cases = append(cases, struct{ name, path string }{name, ""})
 	}
+	for variant := 0; variant < 2; variant++ {
+		name := fmt.Sprintf("fixed-flags-%d", variant)
+		graph := layoutgraph.NewGraph()
+		nodes := []*layoutgraph.Node{}
+		for i := 0; i < 6; i++ {
+			node := layoutgraph.NewNode(int64(i+1), float64(50+i*5), float64(35+i*3))
+			if i == 0 || (variant == 1 && i == 3) {
+				node.TopLeft = geo.NewPoint(float64(i*100), float64(i*40))
+				node.FixedTopLeft = node.TopLeft.Copy()
+			}
+			node.Is3D = i == 1
+			node.IsMultiple = i == 2
+			node.IsInvisible = i == 4
+			graph.AddNewNodeToContainer(nil, node)
+			nodes = append(nodes, node)
+		}
+		for i := 0; i < len(nodes)-1; i++ {
+			edge := graph.Connect(nodes[i], nodes[i+1])
+			edge.ID = int64(len(graph.Edges))
+		}
+		if variant == 1 {
+			edge := graph.Connect(nodes[5], nodes[1])
+			edge.ID = int64(len(graph.Edges))
+		}
+		data, err := graphjson.Marshal(context.Background(), graph)
+		if err != nil {
+			t.Fatal(err)
+		}
+		fuzzInputs[name] = data
+		cases = append(cases, struct{ name, path string }{name, ""})
+	}
 	fixtures := []any{}
 	seedGoldens := map[string]string{
 		"clusters":                   "4f742ab0d3199a66b716e873fdba4c8bb9313d62c0a7a0102d710b7e82faf60f",
@@ -354,6 +386,9 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 				record := map[string]any{"id": n.IDValue(), "x": n.TopLeft.X, "y": n.TopLeft.Y, "width": n.Width, "height": n.Height,
 					"d2id": n.D2ID, "fontSize": n.FontSize, "shapeType": n.ShapeType(), "numColumns": n.NumColumns(),
 					"isInvisible": n.IsInvisible, "is3D": n.Is3D, "isMultiple": n.IsMultiple, "forceHierarchy": n.ForceHierarchy, "isContainer": n.IsContainer(), "nears": nears}
+				if n.FixedTopLeft != nil {
+					record["fixedTopLeft"] = n.FixedTopLeft
+				}
 				if n.Label != nil {
 					record["label"] = map[string]any{"text": n.Label.Text, "position": n.Label.Position.String(), "width": n.Label.Width, "height": n.Label.Height}
 				}
