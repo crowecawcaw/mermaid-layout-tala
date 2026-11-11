@@ -385,8 +385,8 @@ export function translateFlowchart(
     node.ForceHierarchy =
       (n.forceHierarchy ?? false) || n.shape?.toLowerCase() === 'hierarchy';
     const style = n.style;
-    const noFill = style?.fill?.toLowerCase() === 'transparent';
-    const noStroke = style?.stroke?.toLowerCase() === 'transparent' ||
+    const noFill = style?.fill !== undefined && equalFold(style.fill, 'transparent');
+    const noStroke = (style?.stroke !== undefined && equalFold(style.stroke, 'transparent')) ||
       (style?.strokeWidth !== undefined && Number(style.strokeWidth) === 0);
     const labelText = n.label ?? ((n.labelWidth ?? 0) > 0 || (n.labelHeight ?? 0) > 0 ? 'label' : '');
     const noLabel = labelText === '';
@@ -628,7 +628,7 @@ export function translateFlowchart(
     if (input.isInvisible) e.Style.Stroke = { Value: 'transparent' };
     e.IsInvisible =
       !!input.isInvisible ||
-      style?.stroke?.toLowerCase() === 'transparent' ||
+      (style?.stroke !== undefined && equalFold(style.stroke, 'transparent')) ||
       (style?.opacity !== undefined && parseGoFloat(style.opacity) === 0);
     const [sourceArrow, targetArrow] = arrowFlags(input);
     const sourceFilled = input.sourceArrowheadFilled ?? styleFilled(input.sourceArrowheadStyle);

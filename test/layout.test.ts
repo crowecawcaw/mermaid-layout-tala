@@ -176,6 +176,17 @@ describe('Mermaid flowchart layout slice', () => {
     expect(() => translateFlowchart([{ ...nodes[0]!, style: { strokeWidth: '-1' } }], [], {})).toThrow(/strokeWidth/);
   });
 
+  it('uses Go Unicode case folding for transparent styles', () => {
+    const nodes = [
+      { id: 'a', width: 60, height: 40, style: { fill: 'tranſparent', stroke: 'TRANſPARENT' } },
+      { id: 'b', width: 60, height: 40 },
+    ];
+    const edges = [{ id: 'e', from: 'a', to: 'b', style: { stroke: 'tranſparent' } }];
+    const { graph } = translateFlowchart(nodes, edges, {});
+    expect(graph.Nodes[0]!.IsInvisible).toBe(true);
+    expect(graph.Edges[0]!.IsInvisible).toBe(true);
+  });
+
   it('keeps D2 arrow flags separate from shape and fill attributes', () => {
     const nodes = ['a', 'b', 'c'].map((id) => ({ id, width: 40, height: 30 }));
     const { graph } = translateFlowchart(nodes, [

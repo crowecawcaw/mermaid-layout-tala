@@ -57,6 +57,7 @@ type orderingEdge struct {
 	TargetArrowheadFilled *bool               `json:"targetArrowheadFilled,omitempty"`
 	SourceArrowheadStyle  map[string]string   `json:"sourceArrowheadStyle,omitempty"`
 	TargetArrowheadStyle  map[string]string   `json:"targetArrowheadStyle,omitempty"`
+	Style                 map[string]string   `json:"style,omitempty"`
 	SourceArrowheadLabel  *orderingArrowLabel `json:"sourceArrowheadLabel,omitempty"`
 	TargetArrowheadLabel  *orderingArrowLabel `json:"targetArrowheadLabel,omitempty"`
 }
@@ -117,6 +118,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"node-style-metadata", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 30},
 		{"nested-near-path", [][2]int{{2, 3}, {2, 4}, {4, 3}, {3, 2}}, false, 31},
 		{"arrowhead-style-metadata", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 32},
+		{"unicode-transparent-styles", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 33},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -226,6 +228,12 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 					input.Style = styles[i]
 					if i == 3 {
 						input.Label, input.LabelWidth, input.LabelHeight = "visible", 30, 12
+					}
+				}
+				if test.shapeSet == 33 {
+					input.IsInvisible = false
+					if i < 2 {
+						input.Style = map[string]string{"fill": "tranſparent", "stroke": "TRANſPARENT"}
 					}
 				}
 				if test.shapeSet == 15 || test.shapeSet == 16 || test.shapeSet == 17 {
@@ -516,6 +524,10 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 						input.SourceArrow, input.TargetArrow = &src, &dst
 						edge.SrcArrow, edge.DstArrow = src, dst
 					}
+				}
+				if test.shapeSet == 33 && i%2 == 0 {
+					input.Style = map[string]string{"stroke": "tranſparent"}
+					edge.Style.Stroke = &d2graph.Scalar{Value: "tranſparent"}
 				}
 				edge.Label.Value = input.Label
 				edge.LabelDimensions = *d2target.NewTextDimensions(input.LabelWidth, input.LabelHeight)
