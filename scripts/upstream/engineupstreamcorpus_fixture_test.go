@@ -221,6 +221,44 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 		fuzzInputs[name] = data
 		cases = append(cases, struct{ name, path string }{name, ""})
 	}
+	for variant := 0; variant < 2; variant++ {
+		name := fmt.Sprintf("dense-nested-%d", variant)
+		graph := layoutgraph.NewGraph()
+		nodes := []*layoutgraph.Node{}
+		for i := 0; i < 11; i++ {
+			node := layoutgraph.NewNode(int64(i+1), float64(55+i*4), float64(35+(i%3)*8))
+			if i >= 3 && (i+variant)%3 == 0 {
+				node.Label = &layoutgraph.Label{Text: fmt.Sprintf("nested-%d", i), Width: 30, Height: 12}
+			}
+			var parent *layoutgraph.Node
+			switch i {
+			case 1, 5, 6:
+				parent = nodes[0]
+			case 3, 4:
+				parent = nodes[1]
+			case 7, 8:
+				parent = nodes[2]
+			}
+			graph.AddNewNodeToContainer(parent, node)
+			nodes = append(nodes, node)
+		}
+		for i := 3; i < len(nodes); i++ {
+			for _, shift := range []int{1, 3 + variant} {
+				target := 3 + (i-3+shift)%(len(nodes)-3)
+				edge := graph.Connect(nodes[i], nodes[target])
+				edge.ID = int64(len(graph.Edges))
+				if (i+shift)%5 == 0 {
+					edge.Label = &layoutgraph.Label{Text: fmt.Sprintf("cross-%d", i), Width: 22, Height: 10}
+				}
+			}
+		}
+		data, err := graphjson.Marshal(context.Background(), graph)
+		if err != nil {
+			t.Fatal(err)
+		}
+		fuzzInputs[name] = data
+		cases = append(cases, struct{ name, path string }{name, ""})
+	}
 	fixtures := []any{}
 	seedGoldens := map[string]string{
 		"clusters":                   "4f742ab0d3199a66b716e873fdba4c8bb9313d62c0a7a0102d710b7e82faf60f",

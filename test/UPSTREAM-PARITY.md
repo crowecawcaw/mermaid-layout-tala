@@ -36,7 +36,8 @@ uses absolute tolerance `1e-7`; generated 64-bit entity IDs are compared exactly
 The comparison also includes root and container directions and cached routing costs.
 It includes four additional connected eight-node, sixteen-edge graphs with
 cycles and labels, and four ten-node, twenty-edge cyclic graphs with mixed
-shapes, at two seeds each.
+shapes, at two seeds each. Two nested graphs also exercise dense cross-container
+edges and labels at both seeds.
 An additional 60 public layouts compare zero, negative, signed 64-bit boundary,
 and duplicate seed selections across all four directions.
 The straight-edge fallback separately matches Go's cancellation poll count and
