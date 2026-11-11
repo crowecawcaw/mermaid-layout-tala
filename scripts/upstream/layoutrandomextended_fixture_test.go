@@ -54,7 +54,7 @@ func TestExportTypeScriptLayoutrandomextendedFixtures(t *testing.T) {
 	dirs := []string{"TB", "BT", "LR", "RL"}
 	d2dirs := []string{"down", "up", "right", "left"}
 	shapes := []string{"", "diamond", "oval", "hexagon", "cylinder", "square", "callout", "stored_data", "class", "sql_table", "text", "code", "TEXT", "SQL_TABLE"}
-	for trial := 0; trial < 96; trial++ {
+	for trial := 0; trial < 160; trial++ {
 		g := d2graph.NewGraph()
 		g.Root.Direction.Value = d2dirs[trial%4]
 		if trial%5 == 0 {
