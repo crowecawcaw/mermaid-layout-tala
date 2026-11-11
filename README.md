@@ -153,7 +153,11 @@ policies; arrowhead labels are available in the direct flowchart input model.
 npm ci
 npm run build
 npm test
+npm run test:standalone
 ```
+
+The standalone check installs the packed library without Mermaid, then compiles
+and runs a graph layout through both public entry points.
 
 `npm run test:parity` compares complete layouts, upstream engine graphs, and standalone rerouting against
 pinned Go fixtures. It currently reports 633/633 layouts, 134/134 upstream engine graph-and-seed cases, 10/10 upstream visibility graph cases, 10/10 upstream visibility golden cases, 32/32 layout failures,
