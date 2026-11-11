@@ -307705,6 +307705,3182 @@
   {
     "edges": [
       {
+        "d2id": "(节点-0 -\u003e 节点-1)[1]",
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 1,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 32,
+            "y": 206
+          },
+          {
+            "x": 32,
+            "y": 307
+          },
+          {
+            "x": 206,
+            "y": 307
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-0 -\u003e 节点-2)[2]",
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 2,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 16,
+            "y": 206
+          },
+          {
+            "x": 16,
+            "y": 410
+          },
+          {
+            "x": 92,
+            "y": 410
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-1 -\u003e 节点-2)[1]",
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 3,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 217,
+            "y": 327
+          },
+          {
+            "x": 217,
+            "y": 403
+          },
+          {
+            "x": 154,
+            "y": 403
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-1 -\u003e 节点-3)[2]",
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 4,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 262,
+            "y": 307
+          },
+          {
+            "x": 294,
+            "y": 307
+          },
+          {
+            "x": 294,
+            "y": 387
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-2 -\u003e 节点-3)[1]",
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 5,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 154,
+            "y": 417
+          },
+          {
+            "x": 258,
+            "y": 417
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-2 -\u003e 节点-4)[2]",
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 6,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 123,
+            "y": 389
+          },
+          {
+            "x": 123,
+            "y": 249
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-3 -\u003e 节点-4)[1]",
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 7,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 326,
+            "y": 410
+          },
+          {
+            "x": 402,
+            "y": 410
+          },
+          {
+            "x": 402,
+            "y": 232
+          },
+          {
+            "x": 160,
+            "y": 232
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-3 -\u003e 节点-5)[2]",
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 8,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 326,
+            "y": 410
+          },
+          {
+            "x": 402,
+            "y": 410
+          },
+          {
+            "x": 402,
+            "y": 188
+          },
+          {
+            "x": 332,
+            "y": 188
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-4 -\u003e 节点-5)[1]",
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 9,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 134,
+            "y": 198
+          },
+          {
+            "x": 134,
+            "y": 172
+          },
+          {
+            "x": 252,
+            "y": 172
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-4 -\u003e 节点-6)[2]",
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 10,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 110,
+            "y": 198
+          },
+          {
+            "x": 110,
+            "y": 38
+          },
+          {
+            "x": 191,
+            "y": 38
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-5 -\u003e 节点-6)[1]",
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 11,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 304,
+            "y": 161
+          },
+          {
+            "x": 304,
+            "y": 29
+          },
+          {
+            "x": 277,
+            "y": 29
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-5 -\u003e 节点-0)[2]",
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 12,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 252,
+            "y": 184
+          },
+          {
+            "x": 50,
+            "y": 184
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-6 -\u003e 节点-0)[1]",
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 13,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 191,
+            "y": 19
+          },
+          {
+            "x": 32,
+            "y": 19
+          },
+          {
+            "x": 32,
+            "y": 171
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-6 -\u003e 节点-1)[2]",
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 14,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 229,
+            "y": 59
+          },
+          {
+            "x": 229,
+            "y": 288
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      }
+    ],
+    "input": {
+      "nodes": [
+        {
+          "id": 1,
+          "d2id": "group.0.节点-0",
+          "width": 50,
+          "height": 35,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 2,
+          "d2id": "group.0.节点-1",
+          "width": 56,
+          "height": 39,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 3,
+          "d2id": "group.0.节点-2",
+          "width": 62,
+          "height": 43,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 4,
+          "d2id": "group.0.节点-3",
+          "width": 68,
+          "height": 47,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 5,
+          "d2id": "group.0.节点-4",
+          "width": 74,
+          "height": 51,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 6,
+          "d2id": "group.0.节点-5",
+          "width": 80,
+          "height": 55,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 7,
+          "d2id": "group.0.节点-6",
+          "width": 86,
+          "height": 59,
+          "topLeft": null,
+          "shapeType": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": 1,
+          "d2id": "(节点-0 -\u003e 节点-1)[1]",
+          "from": 1,
+          "to": 2,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 2,
+          "d2id": "(节点-0 -\u003e 节点-2)[2]",
+          "from": 1,
+          "to": 3,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 3,
+          "d2id": "(节点-1 -\u003e 节点-2)[1]",
+          "from": 2,
+          "to": 3,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 4,
+          "d2id": "(节点-1 -\u003e 节点-3)[2]",
+          "from": 2,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 5,
+          "d2id": "(节点-2 -\u003e 节点-3)[1]",
+          "from": 3,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 6,
+          "d2id": "(节点-2 -\u003e 节点-4)[2]",
+          "from": 3,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 7,
+          "d2id": "(节点-3 -\u003e 节点-4)[1]",
+          "from": 4,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 8,
+          "d2id": "(节点-3 -\u003e 节点-5)[2]",
+          "from": 4,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 9,
+          "d2id": "(节点-4 -\u003e 节点-5)[1]",
+          "from": 5,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 10,
+          "d2id": "(节点-4 -\u003e 节点-6)[2]",
+          "from": 5,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 11,
+          "d2id": "(节点-5 -\u003e 节点-6)[1]",
+          "from": 6,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 12,
+          "d2id": "(节点-5 -\u003e 节点-0)[2]",
+          "from": 6,
+          "to": 1,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 13,
+          "d2id": "(节点-6 -\u003e 节点-0)[1]",
+          "from": 7,
+          "to": 1,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 14,
+          "d2id": "(节点-6 -\u003e 节点-1)[2]",
+          "from": 7,
+          "to": 2,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        }
+      ],
+      "CellSize": 0,
+      "containers": {
+        "0": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "crossingCost": 0,
+      "turnCost": 0,
+      "nonCenterPortCost": 0
+    },
+    "name": "upstream-input-identities-0-seed-1",
+    "nodes": [
+      {
+        "d2id": "group.0.节点-0",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 35,
+        "id": 1,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 50,
+        "x": 0,
+        "y": 171
+      },
+      {
+        "d2id": "group.0.节点-1",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 39,
+        "id": 2,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 56,
+        "x": 206,
+        "y": 288
+      },
+      {
+        "d2id": "group.0.节点-2",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 43,
+        "id": 3,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 62,
+        "x": 92,
+        "y": 389
+      },
+      {
+        "d2id": "group.0.节点-3",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 47,
+        "id": 4,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 68,
+        "x": 258,
+        "y": 387
+      },
+      {
+        "d2id": "group.0.节点-4",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 51,
+        "id": 5,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 74,
+        "x": 86,
+        "y": 198
+      },
+      {
+        "d2id": "group.0.节点-5",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 55,
+        "id": 6,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 80,
+        "x": 252,
+        "y": 161
+      },
+      {
+        "d2id": "group.0.节点-6",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 59,
+        "id": 7,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 86,
+        "x": 191,
+        "y": 0
+      }
+    ],
+    "seed": "1",
+    "structure": {
+      "cellSize": 86,
+      "clusterVessels": {},
+      "clusters": {},
+      "containers": {
+        "0": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ]
+      },
+      "costs": [
+        361.40172855215263,
+        418.1584627865374,
+        137.45724999999996
+      ],
+      "directions": {},
+      "hierarchies": null,
+      "hubs": {},
+      "isRootHierarchy": false,
+      "sequenceVessels": {},
+      "sequences": {},
+      "trees": {}
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2id": "(节点-0 -\u003e 节点-1)[1]",
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 1,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 514,
+            "y": 85
+          },
+          {
+            "x": 514,
+            "y": 18
+          },
+          {
+            "x": 286,
+            "y": 18
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-0 -\u003e 节点-2)[2]",
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 2,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 489,
+            "y": 111
+          },
+          {
+            "x": 312,
+            "y": 111
+          },
+          {
+            "x": 312,
+            "y": 165
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-1 -\u003e 节点-2)[1]",
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 3,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 286,
+            "y": 27
+          },
+          {
+            "x": 312,
+            "y": 27
+          },
+          {
+            "x": 312,
+            "y": 165
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-1 -\u003e 节点-3)[2]",
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 4,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 230,
+            "y": 19
+          },
+          {
+            "x": 34,
+            "y": 19
+          },
+          {
+            "x": 34,
+            "y": 79
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-2 -\u003e 节点-3)[1]",
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 5,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 276,
+            "y": 179
+          },
+          {
+            "x": 46,
+            "y": 179
+          },
+          {
+            "x": 46,
+            "y": 126
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-2 -\u003e 节点-4)[2]",
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 6,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 276,
+            "y": 193
+          },
+          {
+            "x": 87,
+            "y": 193
+          },
+          {
+            "x": 87,
+            "y": 247
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-3 -\u003e 节点-4)[1]",
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 7,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 25,
+            "y": 126
+          },
+          {
+            "x": 25,
+            "y": 272
+          },
+          {
+            "x": 50,
+            "y": 272
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-3 -\u003e 节点-5)[2]",
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 8,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 68,
+            "y": 102
+          },
+          {
+            "x": 172,
+            "y": 102
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-4 -\u003e 节点-5)[1]",
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 9,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 124,
+            "y": 264
+          },
+          {
+            "x": 212,
+            "y": 264
+          },
+          {
+            "x": 212,
+            "y": 130
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-4 -\u003e 节点-6)[2]",
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 10,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 124,
+            "y": 281
+          },
+          {
+            "x": 252,
+            "y": 281
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-5 -\u003e 节点-6)[1]",
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 11,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 252,
+            "y": 103
+          },
+          {
+            "x": 264,
+            "y": 103
+          },
+          {
+            "x": 264,
+            "y": 243
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-5 -\u003e 节点-0)[2]",
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 12,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 252,
+            "y": 103
+          },
+          {
+            "x": 489,
+            "y": 103
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-6 -\u003e 节点-0)[1]",
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 13,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 338,
+            "y": 262
+          },
+          {
+            "x": 514,
+            "y": 262
+          },
+          {
+            "x": 514,
+            "y": 120
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-6 -\u003e 节点-1)[2]",
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 14,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 338,
+            "y": 281
+          },
+          {
+            "x": 599,
+            "y": 281
+          },
+          {
+            "x": 599,
+            "y": 9
+          },
+          {
+            "x": 286,
+            "y": 9
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      }
+    ],
+    "input": {
+      "nodes": [
+        {
+          "id": 1,
+          "d2id": "group.0.节点-0",
+          "width": 50,
+          "height": 35,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 2,
+          "d2id": "group.0.节点-1",
+          "width": 56,
+          "height": 39,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 3,
+          "d2id": "group.0.节点-2",
+          "width": 62,
+          "height": 43,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 4,
+          "d2id": "group.0.节点-3",
+          "width": 68,
+          "height": 47,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 5,
+          "d2id": "group.0.节点-4",
+          "width": 74,
+          "height": 51,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 6,
+          "d2id": "group.0.节点-5",
+          "width": 80,
+          "height": 55,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 7,
+          "d2id": "group.0.节点-6",
+          "width": 86,
+          "height": 59,
+          "topLeft": null,
+          "shapeType": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": 1,
+          "d2id": "(节点-0 -\u003e 节点-1)[1]",
+          "from": 1,
+          "to": 2,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 2,
+          "d2id": "(节点-0 -\u003e 节点-2)[2]",
+          "from": 1,
+          "to": 3,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 3,
+          "d2id": "(节点-1 -\u003e 节点-2)[1]",
+          "from": 2,
+          "to": 3,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 4,
+          "d2id": "(节点-1 -\u003e 节点-3)[2]",
+          "from": 2,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 5,
+          "d2id": "(节点-2 -\u003e 节点-3)[1]",
+          "from": 3,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 6,
+          "d2id": "(节点-2 -\u003e 节点-4)[2]",
+          "from": 3,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 7,
+          "d2id": "(节点-3 -\u003e 节点-4)[1]",
+          "from": 4,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 8,
+          "d2id": "(节点-3 -\u003e 节点-5)[2]",
+          "from": 4,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 9,
+          "d2id": "(节点-4 -\u003e 节点-5)[1]",
+          "from": 5,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 10,
+          "d2id": "(节点-4 -\u003e 节点-6)[2]",
+          "from": 5,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 11,
+          "d2id": "(节点-5 -\u003e 节点-6)[1]",
+          "from": 6,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 12,
+          "d2id": "(节点-5 -\u003e 节点-0)[2]",
+          "from": 6,
+          "to": 1,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 13,
+          "d2id": "(节点-6 -\u003e 节点-0)[1]",
+          "from": 7,
+          "to": 1,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 14,
+          "d2id": "(节点-6 -\u003e 节点-1)[2]",
+          "from": 7,
+          "to": 2,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        }
+      ],
+      "CellSize": 0,
+      "containers": {
+        "0": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "crossingCost": 0,
+      "turnCost": 0,
+      "nonCenterPortCost": 0
+    },
+    "name": "upstream-input-identities-0-seed-123",
+    "nodes": [
+      {
+        "d2id": "group.0.节点-0",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 35,
+        "id": 1,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 50,
+        "x": 489,
+        "y": 85
+      },
+      {
+        "d2id": "group.0.节点-1",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 39,
+        "id": 2,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 56,
+        "x": 230,
+        "y": 0
+      },
+      {
+        "d2id": "group.0.节点-2",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 43,
+        "id": 3,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 62,
+        "x": 276,
+        "y": 165
+      },
+      {
+        "d2id": "group.0.节点-3",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 47,
+        "id": 4,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 68,
+        "x": 0,
+        "y": 79
+      },
+      {
+        "d2id": "group.0.节点-4",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 51,
+        "id": 5,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 74,
+        "x": 50,
+        "y": 247
+      },
+      {
+        "d2id": "group.0.节点-5",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 55,
+        "id": 6,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 80,
+        "x": 172,
+        "y": 75
+      },
+      {
+        "d2id": "group.0.节点-6",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 59,
+        "id": 7,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 86,
+        "x": 252,
+        "y": 243
+      }
+    ],
+    "seed": "123",
+    "structure": {
+      "cellSize": 86,
+      "clusterVessels": {},
+      "clusters": {},
+      "containers": {
+        "0": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ]
+      },
+      "costs": [
+        339.075072,
+        376.25,
+        142.25924999999995
+      ],
+      "directions": {},
+      "hierarchies": null,
+      "hubs": {},
+      "isRootHierarchy": false,
+      "sequenceVessels": {},
+      "sequences": {},
+      "trees": {}
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2id": "(节点-0 -\u003e 节点-1)[1]",
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 1,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 195,
+            "y": 109
+          },
+          {
+            "x": 274,
+            "y": 109
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-0 -\u003e 节点-3)[3]",
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 2,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 145,
+            "y": 109
+          },
+          {
+            "x": 68,
+            "y": 109
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-1 -\u003e 节点-2)[1]",
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 3,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 292,
+            "y": 129
+          },
+          {
+            "x": 292,
+            "y": 252
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-1 -\u003e 节点-4)[3]",
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 4,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 310,
+            "y": 90
+          },
+          {
+            "x": 310,
+            "y": 36
+          },
+          {
+            "x": 412,
+            "y": 36
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-2 -\u003e 节点-3)[1]",
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 5,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 271,
+            "y": 280
+          },
+          {
+            "x": 19,
+            "y": 280
+          },
+          {
+            "x": 19,
+            "y": 133
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-2 -\u003e 节点-5)[3]",
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 6,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 333,
+            "y": 273
+          },
+          {
+            "x": 409,
+            "y": 273
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-3 -\u003e 节点-4)[1]",
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 7,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 34,
+            "y": 86
+          },
+          {
+            "x": 34,
+            "y": 12
+          },
+          {
+            "x": 412,
+            "y": 12
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-3 -\u003e 节点-6)[3]",
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 8,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 38,
+            "y": 133
+          },
+          {
+            "x": 38,
+            "y": 222
+          },
+          {
+            "x": 59,
+            "y": 222
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-4 -\u003e 节点-5)[1]",
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 9,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 449,
+            "y": 51
+          },
+          {
+            "x": 449,
+            "y": 246
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-4 -\u003e 节点-0)[3]",
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 10,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 412,
+            "y": 24
+          },
+          {
+            "x": 177,
+            "y": 24
+          },
+          {
+            "x": 177,
+            "y": 92
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-5 -\u003e 节点-6)[1]",
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 11,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 449,
+            "y": 301
+          },
+          {
+            "x": 449,
+            "y": 371
+          },
+          {
+            "x": 87,
+            "y": 371
+          },
+          {
+            "x": 87,
+            "y": 252
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-5 -\u003e 节点-1)[3]",
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 12,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 429,
+            "y": 246
+          },
+          {
+            "x": 429,
+            "y": 109
+          },
+          {
+            "x": 330,
+            "y": 109
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-6 -\u003e 节点-0)[1]",
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 13,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 145,
+            "y": 222
+          },
+          {
+            "x": 161,
+            "y": 222
+          },
+          {
+            "x": 161,
+            "y": 127
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-6 -\u003e 节点-2)[3]",
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 14,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 115,
+            "y": 252
+          },
+          {
+            "x": 115,
+            "y": 266
+          },
+          {
+            "x": 271,
+            "y": 266
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      }
+    ],
+    "input": {
+      "nodes": [
+        {
+          "id": 1,
+          "d2id": "group.1.节点-0",
+          "width": 50,
+          "height": 35,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 2,
+          "d2id": "group.1.节点-1",
+          "width": 56,
+          "height": 39,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 3,
+          "d2id": "group.1.节点-2",
+          "width": 62,
+          "height": 43,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 4,
+          "d2id": "group.1.节点-3",
+          "width": 68,
+          "height": 47,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 5,
+          "d2id": "group.1.节点-4",
+          "width": 74,
+          "height": 51,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 6,
+          "d2id": "group.1.节点-5",
+          "width": 80,
+          "height": 55,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 7,
+          "d2id": "group.1.节点-6",
+          "width": 86,
+          "height": 59,
+          "topLeft": null,
+          "shapeType": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": 1,
+          "d2id": "(节点-0 -\u003e 节点-1)[1]",
+          "from": 1,
+          "to": 2,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 2,
+          "d2id": "(节点-0 -\u003e 节点-3)[3]",
+          "from": 1,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 3,
+          "d2id": "(节点-1 -\u003e 节点-2)[1]",
+          "from": 2,
+          "to": 3,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 4,
+          "d2id": "(节点-1 -\u003e 节点-4)[3]",
+          "from": 2,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 5,
+          "d2id": "(节点-2 -\u003e 节点-3)[1]",
+          "from": 3,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 6,
+          "d2id": "(节点-2 -\u003e 节点-5)[3]",
+          "from": 3,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 7,
+          "d2id": "(节点-3 -\u003e 节点-4)[1]",
+          "from": 4,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 8,
+          "d2id": "(节点-3 -\u003e 节点-6)[3]",
+          "from": 4,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 9,
+          "d2id": "(节点-4 -\u003e 节点-5)[1]",
+          "from": 5,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 10,
+          "d2id": "(节点-4 -\u003e 节点-0)[3]",
+          "from": 5,
+          "to": 1,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 11,
+          "d2id": "(节点-5 -\u003e 节点-6)[1]",
+          "from": 6,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 12,
+          "d2id": "(节点-5 -\u003e 节点-1)[3]",
+          "from": 6,
+          "to": 2,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 13,
+          "d2id": "(节点-6 -\u003e 节点-0)[1]",
+          "from": 7,
+          "to": 1,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 14,
+          "d2id": "(节点-6 -\u003e 节点-2)[3]",
+          "from": 7,
+          "to": 3,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        }
+      ],
+      "CellSize": 0,
+      "containers": {
+        "0": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "crossingCost": 0,
+      "turnCost": 0,
+      "nonCenterPortCost": 0
+    },
+    "name": "upstream-input-identities-1-seed-1",
+    "nodes": [
+      {
+        "d2id": "group.1.节点-0",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 35,
+        "id": 1,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 50,
+        "x": 145,
+        "y": 92
+      },
+      {
+        "d2id": "group.1.节点-1",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 39,
+        "id": 2,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 56,
+        "x": 274,
+        "y": 90
+      },
+      {
+        "d2id": "group.1.节点-2",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 43,
+        "id": 3,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 62,
+        "x": 271,
+        "y": 252
+      },
+      {
+        "d2id": "group.1.节点-3",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 47,
+        "id": 4,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 68,
+        "x": 0,
+        "y": 86
+      },
+      {
+        "d2id": "group.1.节点-4",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 51,
+        "id": 5,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 74,
+        "x": 412,
+        "y": 0
+      },
+      {
+        "d2id": "group.1.节点-5",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 55,
+        "id": 6,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 80,
+        "x": 409,
+        "y": 246
+      },
+      {
+        "d2id": "group.1.节点-6",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 59,
+        "id": 7,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 86,
+        "x": 59,
+        "y": 193
+      }
+    ],
+    "seed": "1",
+    "structure": {
+      "cellSize": 86,
+      "clusterVessels": {},
+      "clusters": {},
+      "containers": {
+        "0": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ]
+      },
+      "costs": [
+        553.8479601184112,
+        617.75,
+        207.5520073922738
+      ],
+      "directions": {},
+      "hierarchies": null,
+      "hubs": {},
+      "isRootHierarchy": false,
+      "sequenceVessels": {},
+      "sequences": {},
+      "trees": {}
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2id": "(节点-0 -\u003e 节点-1)[1]",
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 1,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 206,
+            "y": 281
+          },
+          {
+            "x": 36,
+            "y": 281
+          },
+          {
+            "x": 36,
+            "y": 344
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-0 -\u003e 节点-3)[3]",
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 2,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 256,
+            "y": 275
+          },
+          {
+            "x": 366,
+            "y": 275
+          },
+          {
+            "x": 366,
+            "y": 185
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-1 -\u003e 节点-2)[1]",
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 3,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 18,
+            "y": 344
+          },
+          {
+            "x": 18,
+            "y": 161
+          },
+          {
+            "x": 172,
+            "y": 161
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-1 -\u003e 节点-4)[3]",
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 4,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 18,
+            "y": 383
+          },
+          {
+            "x": 18,
+            "y": 455
+          },
+          {
+            "x": 378,
+            "y": 455
+          },
+          {
+            "x": 378,
+            "y": 395
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-2 -\u003e 节点-3)[1]",
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 5,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 234,
+            "y": 161
+          },
+          {
+            "x": 344,
+            "y": 161
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-2 -\u003e 节点-5)[3]",
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 6,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 189,
+            "y": 183
+          },
+          {
+            "x": 189,
+            "y": 336
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-3 -\u003e 节点-4)[1]",
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 7,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 388,
+            "y": 185
+          },
+          {
+            "x": 388,
+            "y": 344
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-3 -\u003e 节点-6)[3]",
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 8,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 378,
+            "y": 138
+          },
+          {
+            "x": 378,
+            "y": 29
+          },
+          {
+            "x": 344,
+            "y": 29
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-4 -\u003e 节点-5)[1]",
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 9,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 341,
+            "y": 367
+          },
+          {
+            "x": 243,
+            "y": 367
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-4 -\u003e 节点-0)[3]",
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 10,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 353,
+            "y": 344
+          },
+          {
+            "x": 353,
+            "y": 286
+          },
+          {
+            "x": 256,
+            "y": 286
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-5 -\u003e 节点-6)[1]",
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 11,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 243,
+            "y": 351
+          },
+          {
+            "x": 299,
+            "y": 351
+          },
+          {
+            "x": 299,
+            "y": 59
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-5 -\u003e 节点-1)[3]",
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 12,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 163,
+            "y": 363
+          },
+          {
+            "x": 56,
+            "y": 363
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-6 -\u003e 节点-0)[1]",
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 13,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 278,
+            "y": 59
+          },
+          {
+            "x": 278,
+            "y": 275
+          },
+          {
+            "x": 256,
+            "y": 275
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": "(节点-6 -\u003e 节点-2)[3]",
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 14,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 258,
+            "y": 29
+          },
+          {
+            "x": 203,
+            "y": 29
+          },
+          {
+            "x": 203,
+            "y": 140
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      }
+    ],
+    "input": {
+      "nodes": [
+        {
+          "id": 1,
+          "d2id": "group.1.节点-0",
+          "width": 50,
+          "height": 35,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 2,
+          "d2id": "group.1.节点-1",
+          "width": 56,
+          "height": 39,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 3,
+          "d2id": "group.1.节点-2",
+          "width": 62,
+          "height": 43,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 4,
+          "d2id": "group.1.节点-3",
+          "width": 68,
+          "height": 47,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 5,
+          "d2id": "group.1.节点-4",
+          "width": 74,
+          "height": 51,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 6,
+          "d2id": "group.1.节点-5",
+          "width": 80,
+          "height": 55,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 7,
+          "d2id": "group.1.节点-6",
+          "width": 86,
+          "height": 59,
+          "topLeft": null,
+          "shapeType": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": 1,
+          "d2id": "(节点-0 -\u003e 节点-1)[1]",
+          "from": 1,
+          "to": 2,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 2,
+          "d2id": "(节点-0 -\u003e 节点-3)[3]",
+          "from": 1,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 3,
+          "d2id": "(节点-1 -\u003e 节点-2)[1]",
+          "from": 2,
+          "to": 3,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 4,
+          "d2id": "(节点-1 -\u003e 节点-4)[3]",
+          "from": 2,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 5,
+          "d2id": "(节点-2 -\u003e 节点-3)[1]",
+          "from": 3,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 6,
+          "d2id": "(节点-2 -\u003e 节点-5)[3]",
+          "from": 3,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 7,
+          "d2id": "(节点-3 -\u003e 节点-4)[1]",
+          "from": 4,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 8,
+          "d2id": "(节点-3 -\u003e 节点-6)[3]",
+          "from": 4,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 9,
+          "d2id": "(节点-4 -\u003e 节点-5)[1]",
+          "from": 5,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 10,
+          "d2id": "(节点-4 -\u003e 节点-0)[3]",
+          "from": 5,
+          "to": 1,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 11,
+          "d2id": "(节点-5 -\u003e 节点-6)[1]",
+          "from": 6,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 12,
+          "d2id": "(节点-5 -\u003e 节点-1)[3]",
+          "from": 6,
+          "to": 2,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 13,
+          "d2id": "(节点-6 -\u003e 节点-0)[1]",
+          "from": 7,
+          "to": 1,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 14,
+          "d2id": "(节点-6 -\u003e 节点-2)[3]",
+          "from": 7,
+          "to": 3,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        }
+      ],
+      "CellSize": 0,
+      "containers": {
+        "0": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "crossingCost": 0,
+      "turnCost": 0,
+      "nonCenterPortCost": 0
+    },
+    "name": "upstream-input-identities-1-seed-123",
+    "nodes": [
+      {
+        "d2id": "group.1.节点-0",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 35,
+        "id": 1,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 50,
+        "x": 206,
+        "y": 264
+      },
+      {
+        "d2id": "group.1.节点-1",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 39,
+        "id": 2,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 56,
+        "x": 0,
+        "y": 344
+      },
+      {
+        "d2id": "group.1.节点-2",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 43,
+        "id": 3,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 62,
+        "x": 172,
+        "y": 140
+      },
+      {
+        "d2id": "group.1.节点-3",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 47,
+        "id": 4,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 68,
+        "x": 344,
+        "y": 138
+      },
+      {
+        "d2id": "group.1.节点-4",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 51,
+        "id": 5,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 74,
+        "x": 341,
+        "y": 344
+      },
+      {
+        "d2id": "group.1.节点-5",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 55,
+        "id": 6,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 80,
+        "x": 163,
+        "y": 336
+      },
+      {
+        "d2id": "group.1.节点-6",
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 59,
+        "id": 7,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 86,
+        "x": 258,
+        "y": 0
+      }
+    ],
+    "seed": "123",
+    "structure": {
+      "cellSize": 86,
+      "clusterVessels": {},
+      "clusters": {},
+      "containers": {
+        "0": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ]
+      },
+      "costs": [
+        445.90694399999995,
+        515.4307058179595,
+        171.07124999999996
+      ],
+      "directions": {},
+      "hierarchies": null,
+      "hubs": {},
+      "isRootHierarchy": false,
+      "sequenceVessels": {},
+      "sequences": {},
+      "trees": {}
+    }
+  },
+  {
+    "edges": [
+      {
         "d2id": null,
         "from": 1,
         "fromTableColumnIndex": null,

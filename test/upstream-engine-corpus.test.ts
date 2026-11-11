@@ -58,6 +58,7 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
   for (const input of fixture.input.edges) {
     const edge = graph.Connect(nodes.get(input.from)!, nodes.get(input.to)!);
     edge.ID = BigInt(input.id);
+    if ('d2id' in input) edge.D2ID = input.d2id ?? null;
     edge.SourceArrowhead = input.sourceArrowhead;
     edge.TargetArrowhead = input.targetArrowhead;
     if ('isInvisible' in input) edge.IsInvisible = input.isInvisible ?? false;
