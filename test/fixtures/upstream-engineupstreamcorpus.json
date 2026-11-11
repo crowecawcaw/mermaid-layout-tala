@@ -310891,6 +310891,3812 @@
         "minWidth": 0,
         "points": [
           {
+            "x": 230,
+            "y": 225
+          },
+          {
+            "x": 266,
+            "y": 225
+          },
+          {
+            "x": 266,
+            "y": 334
+          },
+          {
+            "x": 297,
+            "y": 334
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 2,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 205,
+            "y": 238
+          },
+          {
+            "x": 205,
+            "y": 320
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 3,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 297,
+            "y": 346
+          },
+          {
+            "x": 235,
+            "y": 346
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 4,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "stale-1",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 327,
+            "y": 360
+          },
+          {
+            "x": 327,
+            "y": 382
+          },
+          {
+            "x": 109,
+            "y": 382
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 5,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "stale-2",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 205,
+            "y": 361
+          },
+          {
+            "x": 205,
+            "y": 382
+          },
+          {
+            "x": 109,
+            "y": 382
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 6,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 175,
+            "y": 340
+          },
+          {
+            "x": 97,
+            "y": 340
+          },
+          {
+            "x": 97,
+            "y": 50
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 7,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 86,
+            "y": 360
+          },
+          {
+            "x": 86,
+            "y": 50
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 8,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 44,
+            "y": 382
+          },
+          {
+            "x": 22,
+            "y": 382
+          },
+          {
+            "x": 22,
+            "y": 210
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 9,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 42,
+            "y": 26
+          },
+          {
+            "x": 21,
+            "y": 26
+          },
+          {
+            "x": 21,
+            "y": 160
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 10,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "stale-4",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 112,
+            "y": 26
+          },
+          {
+            "x": 230,
+            "y": 26
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 11,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "stale-5",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 75,
+            "y": 181
+          },
+          {
+            "x": 257,
+            "y": 181
+          },
+          {
+            "x": 257,
+            "y": 53
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 12,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 75,
+            "y": 181
+          },
+          {
+            "x": 205,
+            "y": 181
+          },
+          {
+            "x": 205,
+            "y": 203
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 13,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 284,
+            "y": 53
+          },
+          {
+            "x": 284,
+            "y": 214
+          },
+          {
+            "x": 230,
+            "y": 214
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 14,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 303,
+            "y": 53
+          },
+          {
+            "x": 303,
+            "y": 322
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      }
+    ],
+    "input": {
+      "nodes": [
+        {
+          "id": 1,
+          "width": 50,
+          "height": 35,
+          "topLeft": {
+            "x": 0,
+            "y": 0
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 2,
+          "width": 55,
+          "height": 38,
+          "topLeft": {
+            "x": 110,
+            "y": 90
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 3,
+          "width": 60,
+          "height": 41,
+          "topLeft": {
+            "x": 220,
+            "y": 180
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 4,
+          "width": 65,
+          "height": 44,
+          "topLeft": {
+            "x": 330,
+            "y": 0
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 5,
+          "width": 70,
+          "height": 47,
+          "topLeft": {
+            "x": 440,
+            "y": 90
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 6,
+          "width": 75,
+          "height": 50,
+          "topLeft": {
+            "x": 550,
+            "y": 180
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 7,
+          "width": 80,
+          "height": 53,
+          "topLeft": {
+            "x": 660,
+            "y": 0
+          },
+          "shapeType": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": 1,
+          "from": 1,
+          "to": 2,
+          "points": [
+            {
+              "x": 0,
+              "y": 50
+            },
+            {
+              "x": 100,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 2,
+          "from": 1,
+          "to": 3,
+          "points": [
+            {
+              "x": 0,
+              "y": 50
+            },
+            {
+              "x": 100,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 3,
+          "from": 2,
+          "to": 3,
+          "points": [
+            {
+              "x": 10,
+              "y": 50
+            },
+            {
+              "x": 110,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 4,
+          "from": 2,
+          "to": 4,
+          "points": [
+            {
+              "x": 10,
+              "y": 50
+            },
+            {
+              "x": 110,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0.3,
+          "label": {
+            "Text": "stale-1",
+            "Position": "UNLOCKED_MIDDLE",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 5,
+          "from": 3,
+          "to": 4,
+          "points": [
+            {
+              "x": 20,
+              "y": 50
+            },
+            {
+              "x": 120,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0.3,
+          "label": {
+            "Text": "stale-2",
+            "Position": "UNLOCKED_MIDDLE",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 6,
+          "from": 3,
+          "to": 5,
+          "points": [
+            {
+              "x": 20,
+              "y": 50
+            },
+            {
+              "x": 120,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 7,
+          "from": 4,
+          "to": 5,
+          "points": [
+            {
+              "x": 30,
+              "y": 50
+            },
+            {
+              "x": 130,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 8,
+          "from": 4,
+          "to": 6,
+          "points": [
+            {
+              "x": 30,
+              "y": 50
+            },
+            {
+              "x": 130,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 9,
+          "from": 5,
+          "to": 6,
+          "points": [
+            {
+              "x": 40,
+              "y": 50
+            },
+            {
+              "x": 140,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 10,
+          "from": 5,
+          "to": 7,
+          "points": [
+            {
+              "x": 40,
+              "y": 50
+            },
+            {
+              "x": 140,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0.3,
+          "label": {
+            "Text": "stale-4",
+            "Position": "UNLOCKED_MIDDLE",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 11,
+          "from": 6,
+          "to": 7,
+          "points": [
+            {
+              "x": 50,
+              "y": 50
+            },
+            {
+              "x": 150,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0.3,
+          "label": {
+            "Text": "stale-5",
+            "Position": "UNLOCKED_MIDDLE",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 12,
+          "from": 6,
+          "to": 1,
+          "points": [
+            {
+              "x": 50,
+              "y": 50
+            },
+            {
+              "x": 150,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 13,
+          "from": 7,
+          "to": 1,
+          "points": [
+            {
+              "x": 60,
+              "y": 50
+            },
+            {
+              "x": 160,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 14,
+          "from": 7,
+          "to": 2,
+          "points": [
+            {
+              "x": 60,
+              "y": 50
+            },
+            {
+              "x": 160,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        }
+      ],
+      "CellSize": 0,
+      "containers": {
+        "0": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "crossingCost": 0,
+      "turnCost": 0,
+      "nonCenterPortCost": 0
+    },
+    "name": "upstream-stale-route-0-seed-1",
+    "nodes": [
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 35,
+        "id": 1,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 50,
+        "x": 180,
+        "y": 203
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 38,
+        "id": 2,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 55,
+        "x": 297,
+        "y": 322
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 41,
+        "id": 3,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 60,
+        "x": 175,
+        "y": 320
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 44,
+        "id": 4,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 65,
+        "x": 44,
+        "y": 360
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 47,
+        "id": 5,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 70,
+        "x": 42,
+        "y": 3
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 50,
+        "id": 6,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 75,
+        "x": 0,
+        "y": 160
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 53,
+        "id": 7,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 80,
+        "x": 230,
+        "y": 0
+      }
+    ],
+    "seed": "1",
+    "structure": {
+      "cellSize": 80,
+      "clusterVessels": {},
+      "clusters": {},
+      "containers": {
+        "0": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ]
+      },
+      "costs": [
+        451.68897647043906,
+        542.7821846744788,
+        186.07749999999996
+      ],
+      "directions": {},
+      "hierarchies": null,
+      "hubs": {},
+      "isRootHierarchy": false,
+      "sequenceVessels": {},
+      "sequences": {},
+      "trees": {}
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2id": null,
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 1,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 55,
+            "y": 205
+          },
+          {
+            "x": 131,
+            "y": 205
+          },
+          {
+            "x": 131,
+            "y": 226
+          },
+          {
+            "x": 210,
+            "y": 226
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 2,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 21,
+            "y": 217
+          },
+          {
+            "x": 21,
+            "y": 367
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 3,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 227,
+            "y": 245
+          },
+          {
+            "x": 227,
+            "y": 393
+          },
+          {
+            "x": 60,
+            "y": 393
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 4,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "stale-1",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 227,
+            "y": 245
+          },
+          {
+            "x": 227,
+            "y": 375
+          },
+          {
+            "x": 245,
+            "y": 375
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 5,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_BOTTOM_CENTER",
+          "text": "stale-2",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 60,
+            "y": 393
+          },
+          {
+            "x": 245,
+            "y": 393
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 6,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 60,
+            "y": 380
+          },
+          {
+            "x": 97,
+            "y": 380
+          },
+          {
+            "x": 97,
+            "y": 176
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 7,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 245,
+            "y": 386
+          },
+          {
+            "x": 114,
+            "y": 386
+          },
+          {
+            "x": 114,
+            "y": 176
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 8,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 287,
+            "y": 365
+          },
+          {
+            "x": 287,
+            "y": 177
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 9,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 150,
+            "y": 144
+          },
+          {
+            "x": 240,
+            "y": 144
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 10,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "stale-4",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 113,
+            "y": 129
+          },
+          {
+            "x": 113,
+            "y": 34
+          },
+          {
+            "x": 147,
+            "y": 34
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 11,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "stale-5",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 277,
+            "y": 127
+          },
+          {
+            "x": 277,
+            "y": 26
+          },
+          {
+            "x": 227,
+            "y": 26
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 12,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 240,
+            "y": 159
+          },
+          {
+            "x": 190,
+            "y": 159
+          },
+          {
+            "x": 190,
+            "y": 194
+          },
+          {
+            "x": 55,
+            "y": 194
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 13,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 147,
+            "y": 17
+          },
+          {
+            "x": 37,
+            "y": 17
+          },
+          {
+            "x": 37,
+            "y": 182
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 14,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 170,
+            "y": 53
+          },
+          {
+            "x": 170,
+            "y": 226
+          },
+          {
+            "x": 210,
+            "y": 226
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      }
+    ],
+    "input": {
+      "nodes": [
+        {
+          "id": 1,
+          "width": 50,
+          "height": 35,
+          "topLeft": {
+            "x": 0,
+            "y": 0
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 2,
+          "width": 55,
+          "height": 38,
+          "topLeft": {
+            "x": 110,
+            "y": 90
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 3,
+          "width": 60,
+          "height": 41,
+          "topLeft": {
+            "x": 220,
+            "y": 180
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 4,
+          "width": 65,
+          "height": 44,
+          "topLeft": {
+            "x": 330,
+            "y": 0
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 5,
+          "width": 70,
+          "height": 47,
+          "topLeft": {
+            "x": 440,
+            "y": 90
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 6,
+          "width": 75,
+          "height": 50,
+          "topLeft": {
+            "x": 550,
+            "y": 180
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 7,
+          "width": 80,
+          "height": 53,
+          "topLeft": {
+            "x": 660,
+            "y": 0
+          },
+          "shapeType": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": 1,
+          "from": 1,
+          "to": 2,
+          "points": [
+            {
+              "x": 0,
+              "y": 50
+            },
+            {
+              "x": 100,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 2,
+          "from": 1,
+          "to": 3,
+          "points": [
+            {
+              "x": 0,
+              "y": 50
+            },
+            {
+              "x": 100,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 3,
+          "from": 2,
+          "to": 3,
+          "points": [
+            {
+              "x": 10,
+              "y": 50
+            },
+            {
+              "x": 110,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 4,
+          "from": 2,
+          "to": 4,
+          "points": [
+            {
+              "x": 10,
+              "y": 50
+            },
+            {
+              "x": 110,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0.3,
+          "label": {
+            "Text": "stale-1",
+            "Position": "UNLOCKED_MIDDLE",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 5,
+          "from": 3,
+          "to": 4,
+          "points": [
+            {
+              "x": 20,
+              "y": 50
+            },
+            {
+              "x": 120,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0.3,
+          "label": {
+            "Text": "stale-2",
+            "Position": "UNLOCKED_MIDDLE",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 6,
+          "from": 3,
+          "to": 5,
+          "points": [
+            {
+              "x": 20,
+              "y": 50
+            },
+            {
+              "x": 120,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 7,
+          "from": 4,
+          "to": 5,
+          "points": [
+            {
+              "x": 30,
+              "y": 50
+            },
+            {
+              "x": 130,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 8,
+          "from": 4,
+          "to": 6,
+          "points": [
+            {
+              "x": 30,
+              "y": 50
+            },
+            {
+              "x": 130,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 9,
+          "from": 5,
+          "to": 6,
+          "points": [
+            {
+              "x": 40,
+              "y": 50
+            },
+            {
+              "x": 140,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 10,
+          "from": 5,
+          "to": 7,
+          "points": [
+            {
+              "x": 40,
+              "y": 50
+            },
+            {
+              "x": 140,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0.3,
+          "label": {
+            "Text": "stale-4",
+            "Position": "UNLOCKED_MIDDLE",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 11,
+          "from": 6,
+          "to": 7,
+          "points": [
+            {
+              "x": 50,
+              "y": 50
+            },
+            {
+              "x": 150,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0.3,
+          "label": {
+            "Text": "stale-5",
+            "Position": "UNLOCKED_MIDDLE",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 12,
+          "from": 6,
+          "to": 1,
+          "points": [
+            {
+              "x": 50,
+              "y": 50
+            },
+            {
+              "x": 150,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 13,
+          "from": 7,
+          "to": 1,
+          "points": [
+            {
+              "x": 60,
+              "y": 50
+            },
+            {
+              "x": 160,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 14,
+          "from": 7,
+          "to": 2,
+          "points": [
+            {
+              "x": 60,
+              "y": 50
+            },
+            {
+              "x": 160,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        }
+      ],
+      "CellSize": 0,
+      "containers": {
+        "0": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "crossingCost": 0,
+      "turnCost": 0,
+      "nonCenterPortCost": 0
+    },
+    "name": "upstream-stale-route-0-seed-123",
+    "nodes": [
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 35,
+        "id": 1,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 50,
+        "x": 5,
+        "y": 182
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 38,
+        "id": 2,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 55,
+        "x": 210,
+        "y": 207
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 41,
+        "id": 3,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 60,
+        "x": 0,
+        "y": 367
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 44,
+        "id": 4,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 65,
+        "x": 245,
+        "y": 365
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 47,
+        "id": 5,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 70,
+        "x": 80,
+        "y": 129
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 50,
+        "id": 6,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 75,
+        "x": 240,
+        "y": 127
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 53,
+        "id": 7,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 80,
+        "x": 147,
+        "y": 0
+      }
+    ],
+    "seed": "123",
+    "structure": {
+      "cellSize": 80,
+      "clusterVessels": {},
+      "clusters": {},
+      "containers": {
+        "0": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ]
+      },
+      "costs": [
+        335.9071387449262,
+        370.18188097204325,
+        126.97238517341081
+      ],
+      "directions": {},
+      "hierarchies": null,
+      "hubs": {},
+      "isRootHierarchy": false,
+      "sequenceVessels": {},
+      "sequences": {},
+      "trees": {}
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2id": null,
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 1,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 78,
+            "y": 249
+          },
+          {
+            "x": 78,
+            "y": 125
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 2,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_BOTTOM_CENTER",
+          "text": "stale-0",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 94,
+            "y": 284
+          },
+          {
+            "x": 94,
+            "y": 414
+          },
+          {
+            "x": 207,
+            "y": 414
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 3,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 115,
+            "y": 106
+          },
+          {
+            "x": 212,
+            "y": 106
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 4,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 104,
+            "y": 125
+          },
+          {
+            "x": 104,
+            "y": 164
+          },
+          {
+            "x": 201,
+            "y": 164
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 5,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "stale-2",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 242,
+            "y": 85
+          },
+          {
+            "x": 242,
+            "y": 60
+          },
+          {
+            "x": 0,
+            "y": 60
+          },
+          {
+            "x": 0,
+            "y": 428
+          },
+          {
+            "x": 207,
+            "y": 428
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 6,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 272,
+            "y": 98
+          },
+          {
+            "x": 357,
+            "y": 98
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 7,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 239,
+            "y": 400
+          },
+          {
+            "x": 239,
+            "y": 196
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 8,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "stale-3",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 272,
+            "y": 422
+          },
+          {
+            "x": 312,
+            "y": 422
+          },
+          {
+            "x": 312,
+            "y": 293
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 9,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 271,
+            "y": 172
+          },
+          {
+            "x": 394,
+            "y": 172
+          },
+          {
+            "x": 394,
+            "y": 130
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 10,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 201,
+            "y": 179
+          },
+          {
+            "x": 94,
+            "y": 179
+          },
+          {
+            "x": 94,
+            "y": 249
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 11,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "stale-5",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 394,
+            "y": 130
+          },
+          {
+            "x": 394,
+            "y": 266
+          },
+          {
+            "x": 352,
+            "y": 266
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 12,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 394,
+            "y": 80
+          },
+          {
+            "x": 394,
+            "y": 0
+          },
+          {
+            "x": 91,
+            "y": 0
+          },
+          {
+            "x": 91,
+            "y": 87
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 13,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 272,
+            "y": 266
+          },
+          {
+            "x": 112,
+            "y": 266
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 14,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "stale-6",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 312,
+            "y": 240
+          },
+          {
+            "x": 312,
+            "y": 111
+          },
+          {
+            "x": 272,
+            "y": 111
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      }
+    ],
+    "input": {
+      "nodes": [
+        {
+          "id": 1,
+          "width": 50,
+          "height": 35,
+          "topLeft": {
+            "x": 0,
+            "y": 0
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 2,
+          "width": 55,
+          "height": 38,
+          "topLeft": {
+            "x": 110,
+            "y": 90
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 3,
+          "width": 60,
+          "height": 41,
+          "topLeft": {
+            "x": 220,
+            "y": 180
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 4,
+          "width": 65,
+          "height": 44,
+          "topLeft": {
+            "x": 330,
+            "y": 0
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 5,
+          "width": 70,
+          "height": 47,
+          "topLeft": {
+            "x": 440,
+            "y": 90
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 6,
+          "width": 75,
+          "height": 50,
+          "topLeft": {
+            "x": 550,
+            "y": 180
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 7,
+          "width": 80,
+          "height": 53,
+          "topLeft": {
+            "x": 660,
+            "y": 0
+          },
+          "shapeType": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": 1,
+          "from": 1,
+          "to": 2,
+          "points": [
+            {
+              "x": 0,
+              "y": 50
+            },
+            {
+              "x": 100,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 2,
+          "from": 1,
+          "to": 4,
+          "points": [
+            {
+              "x": 0,
+              "y": 50
+            },
+            {
+              "x": 100,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0.3,
+          "label": {
+            "Text": "stale-0",
+            "Position": "UNLOCKED_MIDDLE",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 3,
+          "from": 2,
+          "to": 3,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 4,
+          "from": 2,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 5,
+          "from": 3,
+          "to": 4,
+          "points": [
+            {
+              "x": 20,
+              "y": 50
+            },
+            {
+              "x": 120,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0.3,
+          "label": {
+            "Text": "stale-2",
+            "Position": "UNLOCKED_MIDDLE",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 6,
+          "from": 3,
+          "to": 6,
+          "points": [
+            {
+              "x": 20,
+              "y": 50
+            },
+            {
+              "x": 120,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 7,
+          "from": 4,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 8,
+          "from": 4,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0.3,
+          "label": {
+            "Text": "stale-3",
+            "Position": "UNLOCKED_MIDDLE",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 9,
+          "from": 5,
+          "to": 6,
+          "points": [
+            {
+              "x": 40,
+              "y": 50
+            },
+            {
+              "x": 140,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 10,
+          "from": 5,
+          "to": 1,
+          "points": [
+            {
+              "x": 40,
+              "y": 50
+            },
+            {
+              "x": 140,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 11,
+          "from": 6,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0.3,
+          "label": {
+            "Text": "stale-5",
+            "Position": "UNLOCKED_MIDDLE",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 12,
+          "from": 6,
+          "to": 2,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 13,
+          "from": 7,
+          "to": 1,
+          "points": [
+            {
+              "x": 60,
+              "y": 50
+            },
+            {
+              "x": 160,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 14,
+          "from": 7,
+          "to": 3,
+          "points": [
+            {
+              "x": 60,
+              "y": 50
+            },
+            {
+              "x": 160,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0.3,
+          "label": {
+            "Text": "stale-6",
+            "Position": "UNLOCKED_MIDDLE",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        }
+      ],
+      "CellSize": 0,
+      "containers": {
+        "0": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "crossingCost": 0,
+      "turnCost": 0,
+      "nonCenterPortCost": 0
+    },
+    "name": "upstream-stale-route-1-seed-1",
+    "nodes": [
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 35,
+        "id": 1,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 50,
+        "x": 62,
+        "y": 249
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 38,
+        "id": 2,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 55,
+        "x": 60,
+        "y": 87
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 41,
+        "id": 3,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 60,
+        "x": 212,
+        "y": 85
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 44,
+        "id": 4,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 65,
+        "x": 207,
+        "y": 400
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 47,
+        "id": 5,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 70,
+        "x": 201,
+        "y": 149
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 50,
+        "id": 6,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 75,
+        "x": 357,
+        "y": 80
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 53,
+        "id": 7,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 80,
+        "x": 272,
+        "y": 240
+      }
+    ],
+    "seed": "1",
+    "structure": {
+      "cellSize": 80,
+      "clusterVessels": {},
+      "clusters": {},
+      "containers": {
+        "0": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ]
+      },
+      "costs": [
+        431.97235199999994,
+        479.5,
+        164.46849999999995
+      ],
+      "directions": {},
+      "hierarchies": null,
+      "hubs": {},
+      "isRootHierarchy": false,
+      "sequenceVessels": {},
+      "sequences": {},
+      "trees": {}
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2id": null,
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 1,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 246,
+            "y": 330
+          },
+          {
+            "x": 246,
+            "y": 462
+          },
+          {
+            "x": 173,
+            "y": 462
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 2,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_BOTTOM_CENTER",
+          "text": "stale-0",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 270,
+            "y": 295
+          },
+          {
+            "x": 270,
+            "y": 184
+          },
+          {
+            "x": 348,
+            "y": 184
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 3,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 118,
+            "y": 469
+          },
+          {
+            "x": 88,
+            "y": 469
+          },
+          {
+            "x": 88,
+            "y": 173
+          },
+          {
+            "x": 115,
+            "y": 173
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 4,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 173,
+            "y": 474
+          },
+          {
+            "x": 380,
+            "y": 474
+          },
+          {
+            "x": 380,
+            "y": 370
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 5,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_LEFT",
+          "text": "stale-2",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 175,
+            "y": 173
+          },
+          {
+            "x": 348,
+            "y": 173
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 6,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 145,
+            "y": 194
+          },
+          {
+            "x": 145,
+            "y": 320
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 7,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 380,
+            "y": 196
+          },
+          {
+            "x": 380,
+            "y": 323
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 8,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "stale-3",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 380,
+            "y": 152
+          },
+          {
+            "x": 380,
+            "y": 26
+          },
+          {
+            "x": 299,
+            "y": 26
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 9,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 345,
+            "y": 343
+          },
+          {
+            "x": 183,
+            "y": 343
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 10,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 345,
+            "y": 356
+          },
+          {
+            "x": 258,
+            "y": 356
+          },
+          {
+            "x": 258,
+            "y": 330
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 11,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "stale-5",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 108,
+            "y": 345
+          },
+          {
+            "x": 28,
+            "y": 345
+          },
+          {
+            "x": 28,
+            "y": 17
+          },
+          {
+            "x": 219,
+            "y": 17
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 12,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 145,
+            "y": 370
+          },
+          {
+            "x": 145,
+            "y": 450
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 13,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 258,
+            "y": 53
+          },
+          {
+            "x": 258,
+            "y": 295
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 14,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "stale-6",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 219,
+            "y": 34
+          },
+          {
+            "x": 145,
+            "y": 34
+          },
+          {
+            "x": 145,
+            "y": 153
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      }
+    ],
+    "input": {
+      "nodes": [
+        {
+          "id": 1,
+          "width": 50,
+          "height": 35,
+          "topLeft": {
+            "x": 0,
+            "y": 0
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 2,
+          "width": 55,
+          "height": 38,
+          "topLeft": {
+            "x": 110,
+            "y": 90
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 3,
+          "width": 60,
+          "height": 41,
+          "topLeft": {
+            "x": 220,
+            "y": 180
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 4,
+          "width": 65,
+          "height": 44,
+          "topLeft": {
+            "x": 330,
+            "y": 0
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 5,
+          "width": 70,
+          "height": 47,
+          "topLeft": {
+            "x": 440,
+            "y": 90
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 6,
+          "width": 75,
+          "height": 50,
+          "topLeft": {
+            "x": 550,
+            "y": 180
+          },
+          "shapeType": ""
+        },
+        {
+          "id": 7,
+          "width": 80,
+          "height": 53,
+          "topLeft": {
+            "x": 660,
+            "y": 0
+          },
+          "shapeType": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": 1,
+          "from": 1,
+          "to": 2,
+          "points": [
+            {
+              "x": 0,
+              "y": 50
+            },
+            {
+              "x": 100,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 2,
+          "from": 1,
+          "to": 4,
+          "points": [
+            {
+              "x": 0,
+              "y": 50
+            },
+            {
+              "x": 100,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0.3,
+          "label": {
+            "Text": "stale-0",
+            "Position": "UNLOCKED_MIDDLE",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 3,
+          "from": 2,
+          "to": 3,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 4,
+          "from": 2,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 5,
+          "from": 3,
+          "to": 4,
+          "points": [
+            {
+              "x": 20,
+              "y": 50
+            },
+            {
+              "x": 120,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0.3,
+          "label": {
+            "Text": "stale-2",
+            "Position": "UNLOCKED_MIDDLE",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 6,
+          "from": 3,
+          "to": 6,
+          "points": [
+            {
+              "x": 20,
+              "y": 50
+            },
+            {
+              "x": 120,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 7,
+          "from": 4,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 8,
+          "from": 4,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0.3,
+          "label": {
+            "Text": "stale-3",
+            "Position": "UNLOCKED_MIDDLE",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 9,
+          "from": 5,
+          "to": 6,
+          "points": [
+            {
+              "x": 40,
+              "y": 50
+            },
+            {
+              "x": 140,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 10,
+          "from": 5,
+          "to": 1,
+          "points": [
+            {
+              "x": 40,
+              "y": 50
+            },
+            {
+              "x": 140,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 11,
+          "from": 6,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0.3,
+          "label": {
+            "Text": "stale-5",
+            "Position": "UNLOCKED_MIDDLE",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 12,
+          "from": 6,
+          "to": 2,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 13,
+          "from": 7,
+          "to": 1,
+          "points": [
+            {
+              "x": 60,
+              "y": 50
+            },
+            {
+              "x": 160,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 14,
+          "from": 7,
+          "to": 3,
+          "points": [
+            {
+              "x": 60,
+              "y": 50
+            },
+            {
+              "x": 160,
+              "y": 100
+            }
+          ],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0.3,
+          "label": {
+            "Text": "stale-6",
+            "Position": "UNLOCKED_MIDDLE",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        }
+      ],
+      "CellSize": 0,
+      "containers": {
+        "0": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "crossingCost": 0,
+      "turnCost": 0,
+      "nonCenterPortCost": 0
+    },
+    "name": "upstream-stale-route-1-seed-123",
+    "nodes": [
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 35,
+        "id": 1,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 50,
+        "x": 234,
+        "y": 295
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 38,
+        "id": 2,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 55,
+        "x": 118,
+        "y": 450
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 41,
+        "id": 3,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 60,
+        "x": 115,
+        "y": 153
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 44,
+        "id": 4,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 65,
+        "x": 348,
+        "y": 152
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 47,
+        "id": 5,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 70,
+        "x": 345,
+        "y": 323
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 50,
+        "id": 6,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 75,
+        "x": 108,
+        "y": 320
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 53,
+        "id": 7,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 80,
+        "x": 219,
+        "y": 0
+      }
+    ],
+    "seed": "123",
+    "structure": {
+      "cellSize": 80,
+      "clusterVessels": {},
+      "clusters": {},
+      "containers": {
+        "0": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ]
+      },
+      "costs": [
+        433.703078412238,
+        542.5,
+        161.7169751033035
+      ],
+      "directions": {},
+      "hierarchies": null,
+      "hubs": {},
+      "isRootHierarchy": false,
+      "sequenceVessels": {},
+      "sequences": {},
+      "trees": {}
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2id": null,
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 1,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
             "x": 286,
             "y": 39
           },

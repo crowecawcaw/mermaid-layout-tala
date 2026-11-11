@@ -16,6 +16,7 @@ import (
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/graphjson"
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/layoutgraph"
 	"github.com/d2lang/d2/lib/geo"
+	"github.com/d2lang/d2/lib/label"
 	"github.com/d2lang/d2/lib/shape"
 )
 
@@ -419,6 +420,37 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 				id := fmt.Sprintf("(节点-%d -> 节点-%d)[%d]", i, (i+shift)%len(nodes), shift)
 				edge.D2ID = &id
 				edge.TargetArrowhead = "triangle"
+			}
+		}
+		data, err := graphjson.Marshal(context.Background(), graph)
+		if err != nil {
+			t.Fatal(err)
+		}
+		fuzzInputs[name] = data
+		cases = append(cases, struct{ name, path string }{name, ""})
+	}
+	for variant := 0; variant < 2; variant++ {
+		name := fmt.Sprintf("stale-route-%d", variant)
+		graph := layoutgraph.NewGraph()
+		nodes := []*layoutgraph.Node{}
+		for i := 0; i < 7; i++ {
+			node := layoutgraph.NewNode(int64(i+1), float64(50+i*5), float64(35+i*3))
+			node.TopLeft = geo.NewPoint(float64(i*110), float64((i%3)*90))
+			graph.AddNewNodeToContainer(nil, node)
+			nodes = append(nodes, node)
+		}
+		for i := 0; i < 7; i++ {
+			for _, shift := range []int{1, 2 + variant} {
+				edge := graph.Connect(nodes[i], nodes[(i+shift)%len(nodes)])
+				edge.ID = int64(len(graph.Edges))
+				edge.TargetArrowhead = "triangle"
+				if variant == 0 || i%2 == 0 {
+					edge.Points = []*geo.Point{geo.NewPoint(float64(i*10), 50), geo.NewPoint(float64(i*10+100), 100)}
+				}
+				if (i+shift)%3 == 0 {
+					edge.Label = &layoutgraph.Label{Text: fmt.Sprintf("stale-%d", i), Width: 22, Height: 10, Position: label.UnlockedMiddle}
+					edge.LabelPercentage = 0.3
+				}
 			}
 		}
 		data, err := graphjson.Marshal(context.Background(), graph)
