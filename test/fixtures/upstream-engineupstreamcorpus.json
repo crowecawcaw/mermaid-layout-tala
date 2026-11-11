@@ -1993,8 +1993,15 @@
           "3160886714"
         ]
       },
+      "costs": [
+        3678.7322879999997,
+        3988.875,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -3994,8 +4001,15 @@
           "3160886714"
         ]
       },
+      "costs": [
+        4269.95712,
+        4677.75,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -12527,6 +12541,12 @@
           "606384936"
         ]
       },
+      "costs": [
+        36914.608606243164,
+        41723.868596104556,
+        14311.28692846386
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "3859557458": [
@@ -12536,6 +12556,7 @@
           "501951850"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {
@@ -21170,6 +21191,12 @@
           "606384936"
         ]
       },
+      "costs": [
+        39885.1208495226,
+        15333,
+        5259.218999999998
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "3859557458": [
@@ -21179,6 +21206,7 @@
           "501951850"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {
@@ -35679,6 +35707,12 @@
           "606384936"
         ]
       },
+      "costs": [
+        54242.53365792324,
+        61309.28735568943,
+        21029.085563001467
+      ],
+      "directions": {},
       "hierarchies": [
         {
           "Levels": {
@@ -35769,6 +35803,7 @@
           "856466825"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -50018,6 +50053,12 @@
           "606384936"
         ]
       },
+      "costs": [
+        67677.00106894385,
+        76494.00619952602,
+        26237.444126437418
+      ],
+      "directions": {},
       "hierarchies": [
         {
           "Levels": {
@@ -50108,6 +50149,7 @@
           "856466825"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -53436,8 +53478,15 @@
           "606384936"
         ]
       },
+      "costs": [
+        2531.45088,
+        1102.5,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -56766,8 +56815,15 @@
           "606384936"
         ]
       },
+      "costs": [
+        1983.3569280000002,
+        1102.5,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -60459,6 +60515,12 @@
           "169877283"
         ]
       },
+      "costs": [
+        14317.826143208164,
+        0,
+        0
+      ],
+      "directions": {},
       "hierarchies": [
         {
           "Levels": {
@@ -60537,6 +60599,7 @@
           "2385258466"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -64184,6 +64247,12 @@
           "169877283"
         ]
       },
+      "costs": [
+        17990.648289413217,
+        0,
+        0
+      ],
+      "directions": {},
       "hierarchies": [
         {
           "Levels": {
@@ -64262,6 +64331,7 @@
           "2385258466"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -68717,6 +68787,12 @@
           "558549453"
         ]
       },
+      "costs": [
+        26256.79252426508,
+        0,
+        0
+      ],
+      "directions": {},
       "hierarchies": [
         {
           "Levels": {
@@ -68791,6 +68867,7 @@
           "404763949"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -73158,6 +73235,12 @@
           "558549453"
         ]
       },
+      "costs": [
+        30185.12896643293,
+        0,
+        0
+      ],
+      "directions": {},
       "hierarchies": [
         {
           "Levels": {
@@ -73232,6 +73315,7 @@
           "404763949"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -76366,12 +76450,19 @@
           "2414116196"
         ]
       },
+      "costs": [
+        3478.67136,
+        3751.875,
+        1286.8931249999998
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "3859557458": [
           "3792446982"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -79478,12 +79569,19 @@
           "2414116196"
         ]
       },
+      "costs": [
+        2919.366760604497,
+        3003.75,
+        1030.2862499999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "3859557458": [
           "3792446982"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -80561,8 +80659,15 @@
           "9"
         ]
       },
+      "costs": [
+        2165.39136,
+        2447.5,
+        817.1974999999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -81652,8 +81757,15 @@
           "9"
         ]
       },
+      "costs": [
+        2125.743948920524,
+        2402.6872975899296,
+        824.1217430733458
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -82500,12 +82612,19 @@
           "9"
         ]
       },
+      "costs": [
+        323.63811125729984,
+        365.8019016489663,
+        125.4700522655954
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "4": [
           "6"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {
@@ -83381,12 +83500,19 @@
           "9"
         ]
       },
+      "costs": [
+        323.63811125729984,
+        365.8019016489663,
+        125.4700522655954
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "4": [
           "6"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {
@@ -84510,8 +84636,15 @@
           "6"
         ]
       },
+      "costs": [
+        1292.26752,
+        1460.625,
+        500.9943749999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -85614,8 +85747,15 @@
           "6"
         ]
       },
+      "costs": [
+        2422.738944,
+        2698,
+        925.4139999999998
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -86191,8 +86331,15 @@
           "9"
         ]
       },
+      "costs": [
+        116.342784,
+        122.5,
+        42.01749999999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -86768,8 +86915,15 @@
           "9"
         ]
       },
+      "costs": [
+        116.342784,
+        122.5,
+        42.01749999999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -87427,8 +87581,15 @@
           "10"
         ]
       },
+      "costs": [
+        220.29926399999997,
+        207.75,
+        71.25824999999998
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -88086,8 +88247,15 @@
           "10"
         ]
       },
+      "costs": [
+        220.29926399999997,
+        207.75,
+        71.25824999999998
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -89542,8 +89710,15 @@
           "9"
         ]
       },
+      "costs": [
+        2927.702016,
+        3580.039998467196,
+        1199.4199093708799
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -90986,8 +91161,15 @@
           "9"
         ]
       },
+      "costs": [
+        3385.552896,
+        3750.5352972109195,
+        1083.3389904099874
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -93357,12 +93539,19 @@
           "13"
         ]
       },
+      "costs": [
+        6230.117757769303,
+        7015.75,
+        2399.9670982308926
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "6": [
           "8"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -95672,12 +95861,19 @@
           "13"
         ]
       },
+      "costs": [
+        5547.29472,
+        6784.924009338645,
+        2301.9774667100887
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "6": [
           "8"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -97613,8 +97809,15 @@
           "8"
         ]
       },
+      "costs": [
+        1941.553152,
+        1921.5,
+        659.0744999999998
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -99550,8 +99753,15 @@
           "8"
         ]
       },
+      "costs": [
+        2318.439791782065,
+        2580.375,
+        885.0686249999998
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -102448,12 +102658,19 @@
           "7"
         ]
       },
+      "costs": [
+        7635.09137318505,
+        8629.7523863666,
+        2961.36157922745
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "34": [
           "32"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -105326,12 +105543,19 @@
           "7"
         ]
       },
+      "costs": [
+        8217.124251131485,
+        9287.65671469397,
+        3185.6662531400316
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "34": [
           "32"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -107547,6 +107771,12 @@
           "3627018123"
         ]
       },
+      "costs": [
+        5086.568448,
+        5263.5,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "1445633463": [
@@ -107565,6 +107795,7 @@
           "2033587515"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -109844,6 +110075,12 @@
           "3627018123"
         ]
       },
+      "costs": [
+        5086.568448,
+        5292.5,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "1445633463": [
@@ -109862,6 +110099,7 @@
           "2033587515"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -111945,8 +112183,15 @@
           "2347931225"
         ]
       },
+      "costs": [
+        884.8051173002108,
+        1000.0781219484805,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {
@@ -114191,8 +114436,15 @@
           "2347931225"
         ]
       },
+      "costs": [
+        884.8051173002108,
+        1000.0781219484805,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {
@@ -120362,6 +120614,12 @@
           "1205852519"
         ]
       },
+      "costs": [
+        12426.860414593619,
+        14045.840131512246,
+        4817.7231651086995
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "1021739995": [
@@ -120392,6 +120650,7 @@
           "1458105184"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -126428,6 +126687,12 @@
           "1205852519"
         ]
       },
+      "costs": [
+        20584.208548874474,
+        17750.83167065701,
+        5842.69289891442
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "1021739995": [
@@ -126458,6 +126723,7 @@
           "1458105184"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -127606,6 +127872,12 @@
           "2924849578"
         ]
       },
+      "costs": [
+        1151.926272,
+        1212.75,
+        431.2796249999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "2677816460": [
@@ -127613,6 +127885,7 @@
           "2924849578"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -128773,6 +129046,12 @@
           "2924849578"
         ]
       },
+      "costs": [
+        1509.5808,
+        1622.25,
+        556.4317499999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "2677816460": [
@@ -128780,6 +129059,7 @@
           "2924849578"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -129421,8 +129701,15 @@
           "2628781501"
         ]
       },
+      "costs": [
+        119.43936,
+        135,
+        46.30499999999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {
@@ -130112,8 +130399,15 @@
           "2628781501"
         ]
       },
+      "costs": [
+        119.43936,
+        135,
+        46.30499999999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {
@@ -130438,8 +130732,15 @@
           "3869210129"
         ]
       },
+      "costs": [
+        58.61376,
+        66.25,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -130716,8 +131017,15 @@
           "3869210129"
         ]
       },
+      "costs": [
+        54.418456500229695,
+        41.815816385669194,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -131660,12 +131968,19 @@
           "3176490940"
         ]
       },
+      "costs": [
+        230.916096,
+        168.75,
+        57.88124999999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "55823958": [
           "1263536650"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -132608,12 +132923,19 @@
           "3176490940"
         ]
       },
+      "costs": [
+        234.89740799999998,
+        168.75,
+        57.88124999999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "55823958": [
           "1263536650"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -133434,6 +133756,12 @@
           "2508153565"
         ]
       },
+      "costs": [
+        256.57344,
+        187.5,
+        64.31249999999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "1107896814": [
@@ -133443,6 +133771,7 @@
           "1918322963"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -134263,6 +134592,12 @@
           "2508153565"
         ]
       },
+      "costs": [
+        256.57344,
+        187.5,
+        64.31249999999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "1107896814": [
@@ -134272,6 +134607,7 @@
           "1918322963"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -134677,8 +135013,15 @@
           "1384782272"
         ]
       },
+      "costs": [
+        21.233663999999997,
+        24,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -135084,8 +135427,15 @@
           "1384782272"
         ]
       },
+      "costs": [
+        21.233663999999997,
+        24,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -135681,12 +136031,19 @@
           "3652460139"
         ]
       },
+      "costs": [
+        514.916352,
+        210,
+        71.00099999999998
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "1764940401": [
           "4149177032"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -136294,12 +136651,19 @@
           "3652460139"
         ]
       },
+      "costs": [
+        198.18086399999999,
+        210,
+        72.02999999999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "1764940401": [
           "4149177032"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -137122,8 +137486,15 @@
           "1311065930"
         ]
       },
+      "costs": [
+        595.2710326101206,
+        674.3067852431859,
+        231.21172115144265
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -137942,8 +138313,15 @@
           "1311065930"
         ]
       },
+      "costs": [
+        595.2710326101206,
+        674.3067852431859,
+        231.21172115144265
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -138107,8 +138485,15 @@
           "3859557458"
         ]
       },
+      "costs": [
+        8.515584,
+        9.625,
+        38
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {
         "5577006791947779410": {
           "fontSize": null,
@@ -138304,8 +138689,15 @@
           "3859557458"
         ]
       },
+      "costs": [
+        8.515584,
+        9.625,
+        38
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {
         "5361704182646325489": {
           "fontSize": null,
@@ -139763,6 +140155,12 @@
           "190334323"
         ]
       },
+      "costs": [
+        1751.7772799999998,
+        1980,
+        679.1399999999998
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "1046703819": [
@@ -139779,6 +140177,7 @@
           "2616977708"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -141212,6 +141611,12 @@
           "190334323"
         ]
       },
+      "costs": [
+        1613.7584639999998,
+        1824,
+        599.9069999999998
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "1046703819": [
@@ -141228,6 +141633,7 @@
           "2616977708"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -141697,8 +142103,15 @@
           "1789065924"
         ]
       },
+      "costs": [
+        66.3552,
+        75,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {
@@ -142209,8 +142622,15 @@
           "1789065924"
         ]
       },
+      "costs": [
+        66.3552,
+        75,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {
@@ -142534,8 +142954,15 @@
           "2425351259"
         ]
       },
+      "costs": [
+        42.467327999999995,
+        48,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -142818,8 +143245,15 @@
           "2425351259"
         ]
       },
+      "costs": [
+        42.467327999999995,
+        48,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -144223,6 +144657,12 @@
           "2250051776"
         ]
       },
+      "costs": [
+        2260.945065897562,
+        0,
+        0
+      ],
+      "directions": {},
       "hierarchies": [
         {
           "Levels": {
@@ -144243,6 +144683,7 @@
         }
       ],
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -145646,6 +146087,12 @@
           "2250051776"
         ]
       },
+      "costs": [
+        2260.945065897562,
+        0,
+        0
+      ],
+      "directions": {},
       "hierarchies": [
         {
           "Levels": {
@@ -145666,6 +146113,7 @@
         }
       ],
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -147140,6 +147588,12 @@
           "4119080"
         ]
       },
+      "costs": [
+        358.31807999999995,
+        0,
+        0
+      ],
+      "directions": {},
       "hierarchies": [
         {
           "Levels": {
@@ -147172,6 +147626,7 @@
         }
       ],
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -148646,6 +149101,12 @@
           "4119080"
         ]
       },
+      "costs": [
+        358.31807999999995,
+        0,
+        0
+      ],
+      "directions": {},
       "hierarchies": [
         {
           "Levels": {
@@ -148678,6 +149139,7 @@
         }
       ],
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -150198,6 +150660,12 @@
           "3056141971"
         ]
       },
+      "costs": [
+        1017.225216,
+        1149.75,
+        394.3642499999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "557540811": [
@@ -150205,6 +150673,7 @@
           "1364103258"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -151713,6 +152182,12 @@
           "3056141971"
         ]
       },
+      "costs": [
+        582.930432,
+        588,
+        180.07499999999996
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "557540811": [
@@ -151720,6 +152195,7 @@
           "1364103258"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -152789,6 +153265,12 @@
           "485174231"
         ]
       },
+      "costs": [
+        288.0611458714932,
+        325.5899453300117,
+        111.67735124819399
+      ],
+      "directions": {},
       "hierarchies": [
         {
           "Levels": {
@@ -152801,6 +153283,7 @@
         }
       ],
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -153866,6 +154349,12 @@
           "485174231"
         ]
       },
+      "costs": [
+        288.0611458714932,
+        325.5899453300117,
+        111.67735124819399
+      ],
+      "directions": {},
       "hierarchies": [
         {
           "Levels": {
@@ -153878,6 +154367,7 @@
         }
       ],
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -155399,6 +155889,12 @@
           "2233127062"
         ]
       },
+      "costs": [
+        3452.6839119862702,
+        0,
+        0
+      ],
+      "directions": {},
       "hierarchies": [
         {
           "Levels": {
@@ -155451,6 +155947,7 @@
           "2301370371"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -156976,6 +157473,12 @@
           "2233127062"
         ]
       },
+      "costs": [
+        3813.3247517707114,
+        0,
+        0
+      ],
+      "directions": {},
       "hierarchies": [
         {
           "Levels": {
@@ -157028,6 +157531,7 @@
           "2301370371"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -160198,8 +160702,15 @@
           "3056394578"
         ]
       },
+      "costs": [
+        5501.965760072843,
+        10744.42785819701,
+        4146.869999999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -163366,8 +163877,15 @@
           "3056394578"
         ]
       },
+      "costs": [
+        4654.795287668646,
+        10400.124278103604,
+        3944.156999999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -164463,6 +164981,12 @@
           "2812665075"
         ]
       },
+      "costs": [
+        580.386816,
+        656,
+        225.00799999999995
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "1135137352": [
@@ -164472,6 +164996,7 @@
           "1551879755"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {
@@ -165636,6 +166161,12 @@
           "2812665075"
         ]
       },
+      "costs": [
+        580.386816,
+        656,
+        225.00799999999995
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "1135137352": [
@@ -165645,6 +166176,7 @@
           "1551879755"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {
@@ -166324,8 +166856,15 @@
           "3889769091"
         ]
       },
+      "costs": [
+        945.5616,
+        1068.75,
+        366.5812499999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -166928,8 +167467,15 @@
           "3889769091"
         ]
       },
+      "costs": [
+        945.5616,
+        1068.75,
+        366.5812499999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -167115,8 +167661,15 @@
           "2019098418"
         ]
       },
+      "costs": [
+        53.08416,
+        56.25,
+        53.333333333333336
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -167302,8 +167855,15 @@
           "2019098418"
         ]
       },
+      "costs": [
+        53.08416,
+        56.25,
+        53.333333333333336
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -169115,8 +169675,15 @@
           "4078530643"
         ]
       },
+      "costs": [
+        2189.7216,
+        2599.2213858192226,
+        891.5329353359931
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -170912,8 +171479,15 @@
           "4078530643"
         ]
       },
+      "costs": [
+        1796.1057110339618,
+        1881,
+        646.5777506441606
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -171199,8 +171773,15 @@
           "3859557458"
         ]
       },
+      "costs": [
+        26.54208,
+        30,
+        38
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {
         "5577006791947779410": {
           "fontSize": null,
@@ -171518,8 +172099,15 @@
           "3859557458"
         ]
       },
+      "costs": [
+        26.54208,
+        30,
+        38
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {
         "5361704182646325489": {
           "fontSize": null,
@@ -171959,8 +172547,15 @@
           "4272828346"
         ]
       },
+      "costs": [
+        124.63576111343967,
+        140.87339173882341,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {
@@ -172401,8 +172996,15 @@
           "4272828346"
         ]
       },
+      "costs": [
+        124.63576111343967,
+        140.87339173882341,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {
@@ -172955,6 +173557,12 @@
           "3479206734"
         ]
       },
+      "costs": [
+        756.178612628482,
+        0,
+        0
+      ],
+      "directions": {},
       "hierarchies": [
         {
           "Levels": {
@@ -172974,6 +173582,7 @@
           "2724280054"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -173493,6 +174102,12 @@
           "3479206734"
         ]
       },
+      "costs": [
+        756.178612628482,
+        0,
+        0
+      ],
+      "directions": {},
       "hierarchies": [
         {
           "Levels": {
@@ -173512,6 +174127,7 @@
           "2724280054"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -174347,6 +174963,12 @@
           "3648956689"
         ]
       },
+      "costs": [
+        203.48928,
+        187.5,
+        64.31249999999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "1980807609": [
@@ -174354,6 +174976,7 @@
           "1775358289"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -175189,6 +175812,12 @@
           "3648956689"
         ]
       },
+      "costs": [
+        203.48928,
+        187.5,
+        64.31249999999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "1980807609": [
@@ -175196,6 +175825,7 @@
           "1775358289"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -177102,8 +177732,15 @@
           "3471367806"
         ]
       },
+      "costs": [
+        3029.4601322630933,
+        3333.6113230436745,
+        1143.4286838039802
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -178994,8 +179631,15 @@
           "3471367806"
         ]
       },
+      "costs": [
+        3478.1183999999994,
+        3931.25,
+        1348.4187499999996
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -183811,8 +184455,15 @@
           "4077666505"
         ]
       },
+      "costs": [
+        437.94432,
+        495,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -188628,8 +189279,15 @@
           "4077666505"
         ]
       },
+      "costs": [
+        437.94432,
+        495,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -191764,12 +192422,19 @@
           "2414116196"
         ]
       },
+      "costs": [
+        3478.67136,
+        3751.875,
+        1286.8931249999998
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "3859557458": [
           "3792446982"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -194876,12 +195541,19 @@
           "2414116196"
         ]
       },
+      "costs": [
+        2919.366760604497,
+        3003.75,
+        1030.2862499999999
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {
         "3859557458": [
           "3792446982"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -195184,8 +195856,15 @@
           "609645424"
         ]
       },
+      "costs": [
+        33.619968,
+        37.5,
+        38
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {
         "5577006791947779410": {
           "fontSize": null,
@@ -195565,8 +196244,15 @@
           "727088757"
         ]
       },
+      "costs": [
+        33.619968,
+        37.5,
+        38
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {
         "241876450138978746": {
           "fontSize": null,
@@ -196424,6 +197110,12 @@
           "4077834250"
         ]
       },
+      "costs": [
+        119.86989284753004,
+        135.48662295592138,
+        0
+      ],
+      "directions": {},
       "hierarchies": [
         {
           "Levels": {
@@ -196442,6 +197134,7 @@
           "4212348398"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -197230,6 +197923,12 @@
           "4077834250"
         ]
       },
+      "costs": [
+        162.04592570243958,
+        183.15737768378318,
+        0
+      ],
+      "directions": {},
       "hierarchies": [
         {
           "Levels": {
@@ -197248,6 +197947,7 @@
           "4212348398"
         ]
       },
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {}
@@ -197514,8 +198214,15 @@
           "3758891744"
         ]
       },
+      "costs": [
+        22.339584,
+        25.25,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {
         "5577006791947779410": {
           "fontSize": null,
@@ -197821,8 +198528,15 @@
           "3758891744"
         ]
       },
+      "costs": [
+        22.339584,
+        25.25,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {
         "5361704182646325489": {
           "fontSize": null,
@@ -199429,8 +200143,15 @@
           "906799682"
         ]
       },
+      "costs": [
+        989.005551764094,
+        1117.853858963684,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {
@@ -201141,8 +201862,15 @@
           "906799682"
         ]
       },
+      "costs": [
+        989.005551764094,
+        1117.853858963684,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {
@@ -201609,8 +202337,15 @@
           "974102386"
         ]
       },
+      "costs": [
+        49.987584,
+        56.5,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {
@@ -201963,8 +202698,15 @@
           "974102386"
         ]
       },
+      "costs": [
+        49.987584,
+        56.5,
+        0
+      ],
+      "directions": {},
       "hierarchies": null,
       "hubs": {},
+      "isRootHierarchy": false,
       "sequenceVessels": {},
       "sequences": {},
       "trees": {

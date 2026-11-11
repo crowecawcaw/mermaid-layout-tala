@@ -28,6 +28,7 @@ visibility, fonts and labels; edge endpoints, arrowheads, table ports and
 labels; every route vertex in order; node proximity relationships; and the resulting containers, hubs,
 clusters, sequences, vessel geometry, tree topology, and hierarchy ranks. Floating-point geometry
 uses absolute tolerance `1e-7`; generated 64-bit entity IDs are compared exactly.
+The comparison also includes root and container directions and cached routing costs.
 For seed 123, fixture generation also verifies the 34 upstream layout results
 against the upstream checked-in golden geometry and routes.
 The OVG corpus compares node and edge coordinates, distances and port ownership metadata;

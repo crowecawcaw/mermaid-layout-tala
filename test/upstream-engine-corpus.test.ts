@@ -6,6 +6,7 @@ import { Node } from '../src/upstream/layoutgraph/node.js';
 import { Label, type EdgeAbduction, type Tree } from '../src/upstream/layoutgraph/records.js';
 import { FromString, String as labelPositionString } from '../src/upstream/label/label.js';
 import { Point } from '../src/upstream/geo/point.js';
+import { Orientation } from '../src/upstream/geo/orientation.js';
 import { Layout } from '../src/upstream/engine/pipeline.js';
 
 it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
@@ -80,6 +81,10 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
   const tree = (value: Tree): unknown => ({ node: id(value.Node), edge: String(value.SentinelEdge?.ID ?? 0n),
     orientation: value.Orientation, children: value.Children.map(tree) });
   const trees = Object.fromEntries([...result.Trees].map(([parent, roots]) => [id(parent), roots.map(tree)]));
+  const directionName = (direction: Orientation) => ({
+    [Orientation.Top]: 'up', [Orientation.Bottom]: 'down', [Orientation.Left]: 'left', [Orientation.Right]: 'right',
+  }[direction] ?? '');
+  const directions = Object.fromEntries([...result.Directions].map(([node, direction]) => [id(node), directionName(direction)]));
   const seenHierarchies = new Set();
   const hierarchies = [];
   for (const node of result.Nodes) {
@@ -87,8 +92,11 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
     seenHierarchies.add(node.Hierarchy);
     hierarchies.push({ Levels: Object.fromEntries([...node.Hierarchy.Levels()].map(([member, level]) => [String(member.ID), level])) });
   }
-  const { clusterVessels, sequenceVessels, ...expectedStructure } = fixture.structure;
-  expect({ cellSize: result.CellSize, containers, hubs, clusters, sequences, trees, hierarchies: hierarchies.length ? hierarchies : null }).toEqual(expectedStructure);
+  const { clusterVessels, sequenceVessels, costs, ...expectedStructure } = fixture.structure;
+  expect({ cellSize: result.CellSize, containers, hubs, clusters, sequences, trees, directions,
+    isRootHierarchy: result.IsRootHierarchy, hierarchies: hierarchies.length ? hierarchies : null }).toEqual(expectedStructure);
+  [result.crossingCost, result.turnCost, result.nonCenterPortCost].forEach((value, i) =>
+    expect(Math.abs(value - costs[i]!)).toBeLessThanOrEqual(1e-7));
   for (const [actual, expected] of [[result.Clusters, clusterVessels], [result.Sequences, sequenceVessels]] as const) {
     expect([...actual.keys()].map(id).sort()).toEqual(Object.keys(expected).sort());
     for (const vessel of actual.keys()) {

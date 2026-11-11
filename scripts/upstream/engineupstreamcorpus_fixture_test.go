@@ -87,7 +87,8 @@ func corpusStructure(graph *graphjson.SerializedGraph) map[string]any {
 	}
 	return map[string]any{"cellSize": graph.CellSize, "containers": containers, "hubs": hubs, "clusters": clusters, "sequences": sequences,
 		"clusterVessels": corpusVessels(graph.ClusterVessels), "sequenceVessels": corpusVessels(graph.SequenceVessels),
-		"trees": trees, "hierarchies": graph.Hierarchies}
+		"trees": trees, "hierarchies": graph.Hierarchies, "isRootHierarchy": graph.IsRootHierarchy, "directions": graph.Directions,
+		"costs": []float64{graph.CrossingCost, graph.TurnCost, graph.NonCenterPortCost}}
 }
 
 func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
