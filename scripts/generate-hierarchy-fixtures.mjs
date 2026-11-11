@@ -53,6 +53,7 @@ const packages = {
   enginecancellation: 'internal/engine',
   enginefallbacksnapshot: 'internal/engine',
   enginewideids: 'internal/engine',
+  sequenceidallocation: 'internal/grouping',
   engineovggoldens: 'internal/engine',
   enginecompound: 'internal/engine',
   enginecompoundroutes: 'internal/engine',

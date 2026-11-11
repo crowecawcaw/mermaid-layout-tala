@@ -1,0 +1,98 @@
+[
+  {
+    "active": [],
+    "candidate": "42",
+    "cluster": [],
+    "expected": "42",
+    "name": "empty",
+    "sequence": [],
+    "tree": [],
+    "unavailable": []
+  },
+  {
+    "active": [
+      "9223372036854775807",
+      "0"
+    ],
+    "candidate": "9223372036854775807",
+    "cluster": [],
+    "expected": "2",
+    "name": "active-wrap",
+    "sequence": [],
+    "tree": [],
+    "unavailable": [
+      "1"
+    ]
+  },
+  {
+    "active": [],
+    "candidate": "9223372036854775807",
+    "cluster": [
+      "9223372036854775807",
+      "0"
+    ],
+    "expected": "2",
+    "name": "cluster-wrap",
+    "sequence": [],
+    "tree": [],
+    "unavailable": [
+      "1"
+    ]
+  },
+  {
+    "active": [],
+    "candidate": "123",
+    "cluster": [],
+    "expected": "128",
+    "name": "sequence-tree",
+    "sequence": [
+      "123",
+      "124"
+    ],
+    "tree": [
+      "125",
+      "126"
+    ],
+    "unavailable": [
+      "127"
+    ]
+  },
+  {
+    "active": [
+      "-9223372036854775808",
+      "-9223372036854775807"
+    ],
+    "candidate": "-9223372036854775808",
+    "cluster": [],
+    "expected": "-9223372036854775805",
+    "name": "negative-run",
+    "sequence": [],
+    "tree": [],
+    "unavailable": [
+      "-9223372036854775806"
+    ]
+  },
+  {
+    "active": [
+      "40"
+    ],
+    "candidate": "40",
+    "cluster": [
+      "41",
+      "42"
+    ],
+    "expected": "48",
+    "name": "all-owners",
+    "sequence": [
+      "43",
+      "44"
+    ],
+    "tree": [
+      "45",
+      "46"
+    ],
+    "unavailable": [
+      "47"
+    ]
+  }
+]
