@@ -3,7 +3,7 @@ import fixtures from './fixtures/upstream-engineupstreamcorpus.json';
 import { Background } from '../src/upstream/limits/context.js';
 import { Graph } from '../src/upstream/layoutgraph/graph.js';
 import { Node } from '../src/upstream/layoutgraph/node.js';
-import { Label } from '../src/upstream/layoutgraph/records.js';
+import { Label, type EdgeAbduction, type Tree } from '../src/upstream/layoutgraph/records.js';
 import { FromString, String as labelPositionString } from '../src/upstream/label/label.js';
 import { Point } from '../src/upstream/geo/point.js';
 import { Layout } from '../src/upstream/engine/pipeline.js';
@@ -61,6 +61,33 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
     edge.Points = input.points.map((point: { x: number; y: number }) => new Point(point.x, point.y));
   }
   const result = Layout(Background, graph, { Seed: BigInt(fixture.seed) });
+  const id = (node: Node | null) => String(node?.ID ?? 0n);
+  const containers = Object.fromEntries([...result.Containers].map(([parent, children]) =>
+    [id(parent), children.map(id)]));
+  const hubs = Object.fromEntries([...result.Hubs].map(([hub, spokes]) =>
+    [id(hub), spokes.map(id)]));
+  const abductions = (values: EdgeAbduction[]) => values.map((value) => ({
+    edge: String(value.Edge.ID), originallyFrom: id(value.OriginallyFrom), originallyTo: id(value.OriginallyTo),
+    currentFrom: id(value.CurrentFrom), currentTo: id(value.CurrentTo),
+  }));
+  const clusters = Object.fromEntries([...result.Clusters].map(([vessel, cluster]) => [id(vessel), {
+    nodes: cluster.Nodes.map(id), arrangement: cluster.Arrangement, desiredArrangement: cluster.DesiredArrangement,
+    container: id(cluster.Container), abductions: abductions(cluster.EdgeAbductions), padding: cluster.Padding, fixedSize: cluster.FixedSize,
+  }]));
+  const sequences = Object.fromEntries([...result.Sequences].map(([vessel, sequence]) => [id(vessel), {
+    nodes: sequence.Nodes.map(id), container: id(sequence.Container), abductions: abductions(sequence.EdgeAbductions),
+  }]));
+  const tree = (value: Tree): unknown => ({ node: id(value.Node), edge: String(value.SentinelEdge?.ID ?? 0n),
+    orientation: value.Orientation, children: value.Children.map(tree) });
+  const trees = Object.fromEntries([...result.Trees].map(([parent, roots]) => [id(parent), roots.map(tree)]));
+  const seenHierarchies = new Set();
+  const hierarchies = [];
+  for (const node of result.Nodes) {
+    if (!node.Hierarchy || seenHierarchies.has(node.Hierarchy)) continue;
+    seenHierarchies.add(node.Hierarchy);
+    hierarchies.push({ Levels: Object.fromEntries([...node.Hierarchy.Levels()].map(([member, level]) => [String(member.ID), level])) });
+  }
+  expect({ cellSize: result.CellSize, containers, hubs, clusters, sequences, trees, hierarchies: hierarchies.length ? hierarchies : null }).toEqual(fixture.structure);
   expect(result.Nodes).toHaveLength(fixture.nodes.length);
   expect(result.Edges).toHaveLength(fixture.edges.length);
   const resultNodes = new Map(result.Nodes.map((node) => [Number(node.ID), node]));

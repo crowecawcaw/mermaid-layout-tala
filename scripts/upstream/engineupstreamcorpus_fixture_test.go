@@ -15,6 +15,69 @@ import (
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/layoutgraph"
 )
 
+func corpusID(id int64) string { return fmt.Sprint(id) }
+
+func corpusIDs(ids []int64) []string {
+	out := make([]string, len(ids))
+	for i, id := range ids {
+		out[i] = corpusID(id)
+	}
+	return out
+}
+
+func corpusAbductions(values []graphjson.SerializedEdgeAbduction) []any {
+	out := make([]any, 0, len(values))
+	for _, value := range values {
+		out = append(out, map[string]string{
+			"edge": corpusID(value.Edge), "originallyFrom": corpusID(value.OriginallyFromNode), "originallyTo": corpusID(value.OriginallyToNode),
+			"currentFrom": corpusID(value.CurrentFromNode), "currentTo": corpusID(value.CurrentToNode),
+		})
+	}
+	return out
+}
+
+func corpusTree(tree graphjson.SerializedTree) map[string]any {
+	children := make([]any, 0, len(tree.Children))
+	for _, child := range tree.Children {
+		children = append(children, corpusTree(child))
+	}
+	edgeID := tree.SentinelEdge.ID
+	if tree.SentinelEdge.OriginalID != nil {
+		edgeID = *tree.SentinelEdge.OriginalID
+	}
+	return map[string]any{"node": corpusID(tree.Node.ID), "edge": corpusID(edgeID), "orientation": tree.Orientation, "children": children}
+}
+
+func corpusStructure(graph *graphjson.SerializedGraph) map[string]any {
+	containers := map[string][]string{}
+	for id, children := range graph.Containers {
+		containers[corpusID(id)] = corpusIDs(children)
+	}
+	hubs := map[string][]string{}
+	for id, spokes := range graph.Hubs {
+		hubs[corpusID(id)] = corpusIDs(spokes)
+	}
+	clusters := map[string]any{}
+	for id, cluster := range graph.Clusters {
+		clusters[corpusID(id)] = map[string]any{"nodes": corpusIDs(cluster.Nodes), "arrangement": cluster.Arrangement,
+			"desiredArrangement": cluster.DesiredArrangement, "container": corpusID(cluster.Container), "abductions": corpusAbductions(cluster.EdgeAbductions),
+			"padding": cluster.Padding, "fixedSize": cluster.FixedSize}
+	}
+	sequences := map[string]any{}
+	for id, sequence := range graph.Sequences {
+		sequences[corpusID(id)] = map[string]any{"nodes": corpusIDs(sequence.Nodes), "container": corpusID(sequence.Container), "abductions": corpusAbductions(sequence.EdgeAbductions)}
+	}
+	trees := map[string][]any{}
+	for id, roots := range graph.Trees {
+		values := make([]any, 0, len(roots))
+		for _, root := range roots {
+			values = append(values, corpusTree(root))
+		}
+		trees[corpusID(id)] = values
+	}
+	return map[string]any{"cellSize": graph.CellSize, "containers": containers, "hubs": hubs, "clusters": clusters, "sequences": sequences, "trees": trees, "hierarchies": graph.Hierarchies}
+}
+
 func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 	path := os.Getenv("TALA_ENGINEUPSTREAMCORPUS_FIXTURES")
 	if path == "" {
@@ -142,7 +205,12 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 				}
 				edges = append(edges, record)
 			}
-			fixtures = append(fixtures, map[string]any{"name": fmt.Sprintf("upstream-%s-seed-%d", c.name, seed), "seed": seed, "input": json.RawMessage(data), "nodes": nodes, "edges": edges})
+			serialized, err := graphjson.Serialize(context.Background(), result)
+			if err != nil {
+				t.Fatalf("%s seed %d serialize: %v", c.name, seed, err)
+			}
+			structure := corpusStructure(serialized)
+			fixtures = append(fixtures, map[string]any{"name": fmt.Sprintf("upstream-%s-seed-%d", c.name, seed), "seed": seed, "input": json.RawMessage(data), "nodes": nodes, "edges": edges, "structure": structure})
 		}
 	}
 	data, err := json.MarshalIndent(fixtures, "", "  ")
