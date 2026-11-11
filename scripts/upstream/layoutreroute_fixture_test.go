@@ -66,14 +66,14 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 	fixtures := []any{}
 	failures := []any{}
 	for _, direction := range []string{"TB", "BT", "LR", "RL", "DEFAULT"} {
-		for trial := 0; trial < 17; trial++ {
+		for trial := 0; trial < 19; trial++ {
 			g := d2graph.NewGraph()
 			if trial >= 6 && trial < 13 {
 				g.Root.Shape.Value = "sequence_diagram"
 			}
 			g.Root.Direction.Value = dirs[direction]
 			nodes := []rerouteNode{{ID: "a", Width: 80, Height: 60, X: 40, Y: 30}, {ID: "b", Width: 80, Height: 60, X: 240, Y: 30}, {ID: "c", Width: 70, Height: 50, X: float64(85 + trial*25), Y: 165}}
-			if trial >= 13 {
+			if trial >= 13 && trial < 17 {
 				shapes := []string{"diamond", "oval", "callout", "cylinder"}
 				nodes[0].Shape = shapes[trial-13]
 				nodes[1].Shape = shapes[(trial-12)%len(shapes)]
@@ -160,6 +160,9 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 			}
 			selected := []*d2graph.Edge{}
 			selectedIDs := []string{"e1"}
+			if trial == 17 || trial == 18 {
+				selectedIDs = []string{}
+			}
 			for i, in := range inputs {
 				e := &d2graph.Edge{Index: in.D2Index, Src: objects[in.From], Dst: objects[in.To], SrcArrow: in.SourceArrow, DstArrow: in.TargetArrow, IsCurve: in.IsCurve, Attributes: d2graph.Attributes{}}
 				if e.Dst == nil {
@@ -190,9 +193,11 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 					e.Route = append(e.Route, geo.NewPoint(p.X, p.Y))
 				}
 				g.Edges = append(g.Edges, e)
-				if i == 1 || (i == 2 && trial%2 == 1) {
+				if trial == 18 || (trial != 17 && (i == 1 || (i == 2 && trial%2 == 1))) {
 					selected = append(selected, e)
-					if i == 2 {
+					if trial == 18 {
+						selectedIDs = append(selectedIDs, in.ID)
+					} else if i == 2 {
 						selectedIDs = append(selectedIDs, in.ID)
 					}
 				}
