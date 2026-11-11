@@ -18,6 +18,11 @@ full parity. The prior WebAssembly replacement remains reverted; the public
 | Resource accounting | Translated work guards, stage rollback, and public cancellation contexts | Go comparisons cover pre-canceled layout, routing and seed coordination, plus engine cancellation checkpoints on empty and nonempty graphs. Routing can perform a different number of cancellation checks, and same-event-loop callbacks cannot interrupt synchronous TypeScript calls; expand cancellation and failure tests through the complete public pipeline |
 | Standalone edge rerouting | Additional-edge routing, the guarded `RouteEdges` transaction, and the public positioned-graph adapter are translated | 32 coordinator, 76 transaction, 90 public success and 5 public failure Go comparisons cover empty and full selections, nested graphs, alternate shapes, existing routes, arrowhead labels, SQL ports, reversed and parallel edges, lifelines and work limits; broaden sequence coverage |
 
+The production playground was also checked in headless Chromium 155 on Linux:
+all 10 bundled examples rendered an SVG with TALA, including nested containers,
+cycles, service meshes and pipelines. This is a rendering smoke test, not a
+cross-browser or visual-equivalence test.
+
 `upstream-opacity.test.ts` also compares node and edge opacity validation and
 visibility against Go, including decimal and hexadecimal float syntax and
 rounding at floating-point boundaries.
@@ -48,7 +53,7 @@ parity with Go has not been established.
    larger and nested graphs, labels, alternate shapes and fixed ports.
 2. Extend the Mermaid input mapping and result validation for upstream features
    that the current flowchart API cannot represent.
-3. Verify browser rendering and performance on representative Mermaid diagrams.
+3. Expand browser rendering and performance checks across browsers and representative Mermaid diagrams.
 4. Continue differential testing of seed choices, cancellation and resource
    limits across the entire pipeline.
 
