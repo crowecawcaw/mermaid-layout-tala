@@ -583,6 +583,10 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 		seeds := []int64{1, 123}
 		if seed, ok := fuzzSeeds[c.name]; ok {
 			seeds = []int64{seed}
+			switch c.name {
+			case "regression-container_escape_1", "regression-container_escape_2", "regression-edge_balance_1", "regression-cluster_overlap", "regression-path_not_found":
+				seeds = append(seeds, 1, 123)
+			}
 		} else if _, ok := seedGoldens[c.name]; ok && strings.HasPrefix(c.path, "layout/") {
 			seeds = append(seeds, 8675309, 0, -1, math.MinInt64, math.MaxInt64)
 		}
