@@ -52,6 +52,7 @@ const packages = {
   engineupstreamcorpus: 'internal/engine',
   enginecancellation: 'internal/engine',
   enginefallbacksnapshot: 'internal/engine',
+  enginewideids: 'internal/engine',
   engineovggoldens: 'internal/engine',
   enginecompound: 'internal/engine',
   enginecompoundroutes: 'internal/engine',

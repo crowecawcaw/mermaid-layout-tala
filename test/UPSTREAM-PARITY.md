@@ -47,6 +47,8 @@ node and edge identities through layout, and two exercise stale and partially
 populated routes and edge-label positions. Two trees include multiple unset
 edge IDs and mixtures of unset and assigned IDs. Five upstream regression graphs
 also run at seeds 1 and 123 in addition to their original seeds.
+Four additional layouts compare exact positive and negative 64-bit node IDs and
+large or unset edge IDs without converting them to JavaScript numbers.
 An additional 60 public layouts compare zero, negative, signed 64-bit boundary,
 and duplicate seed selections across all four directions.
 Thirteen seed-normalization cases also compare duplicate handling, empty input,
@@ -102,6 +104,7 @@ TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 lay
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 engineupstreamcorpus
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 enginecancellation
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 enginefallbacksnapshot
+TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 enginewideids
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 routingflavorworkers
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 layoutcontextpoll
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 ovgupstreamcorpus
