@@ -189,7 +189,7 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 		if seed, ok := fuzzSeeds[c.name]; ok {
 			seeds = []int64{seed}
 		} else if _, ok := seedGoldens[c.name]; ok && strings.HasPrefix(c.path, "layout/") {
-			seeds = append(seeds, 8675309)
+			seeds = append(seeds, 8675309, 0, -1, math.MinInt64, math.MaxInt64)
 		}
 		for _, seed := range seeds {
 			graph := layoutgraph.NewGraph()
