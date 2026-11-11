@@ -48,6 +48,16 @@ func corpusTree(tree graphjson.SerializedTree) map[string]any {
 	return map[string]any{"node": corpusID(tree.Node.ID), "edge": corpusID(edgeID), "orientation": tree.Orientation, "children": children}
 }
 
+func corpusVessels(values map[int64]graphjson.SerializedNode) map[string]any {
+	out := map[string]any{}
+	for id, node := range values {
+		out[corpusID(id)] = map[string]any{"width": node.Width, "height": node.Height, "topLeft": node.TopLeft,
+			"shapeType": node.ShapeType, "fontSize": node.FontSize, "isInvisible": node.IsInvisible,
+			"is3D": node.Is3D, "isMultiple": node.IsMultiple, "forceHierarchy": node.ForceHierarchy}
+	}
+	return out
+}
+
 func corpusStructure(graph *graphjson.SerializedGraph) map[string]any {
 	containers := map[string][]string{}
 	for id, children := range graph.Containers {
@@ -75,7 +85,9 @@ func corpusStructure(graph *graphjson.SerializedGraph) map[string]any {
 		}
 		trees[corpusID(id)] = values
 	}
-	return map[string]any{"cellSize": graph.CellSize, "containers": containers, "hubs": hubs, "clusters": clusters, "sequences": sequences, "trees": trees, "hierarchies": graph.Hierarchies}
+	return map[string]any{"cellSize": graph.CellSize, "containers": containers, "hubs": hubs, "clusters": clusters, "sequences": sequences,
+		"clusterVessels": corpusVessels(graph.ClusterVessels), "sequenceVessels": corpusVessels(graph.SequenceVessels),
+		"trees": trees, "hierarchies": graph.Hierarchies}
 }
 
 func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {

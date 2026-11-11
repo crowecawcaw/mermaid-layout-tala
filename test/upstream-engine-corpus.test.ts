@@ -87,7 +87,27 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
     seenHierarchies.add(node.Hierarchy);
     hierarchies.push({ Levels: Object.fromEntries([...node.Hierarchy.Levels()].map(([member, level]) => [String(member.ID), level])) });
   }
-  expect({ cellSize: result.CellSize, containers, hubs, clusters, sequences, trees, hierarchies: hierarchies.length ? hierarchies : null }).toEqual(fixture.structure);
+  const { clusterVessels, sequenceVessels, ...expectedStructure } = fixture.structure;
+  expect({ cellSize: result.CellSize, containers, hubs, clusters, sequences, trees, hierarchies: hierarchies.length ? hierarchies : null }).toEqual(expectedStructure);
+  for (const [actual, expected] of [[result.Clusters, clusterVessels], [result.Sequences, sequenceVessels]] as const) {
+    expect([...actual.keys()].map(id).sort()).toEqual(Object.keys(expected).sort());
+    for (const vessel of actual.keys()) {
+      const record = expected[id(vessel) as keyof typeof expected];
+      expect(record).toBeDefined();
+      expect(Math.abs(vessel.Width - record.width)).toBeLessThanOrEqual(1e-7);
+      expect(Math.abs(vessel.Height - record.height)).toBeLessThanOrEqual(1e-7);
+      if (record.topLeft) {
+        expect(vessel.TopLeft).not.toBeNull();
+        expect(Math.abs(vessel.TopLeft!.X - record.topLeft.x)).toBeLessThanOrEqual(1e-7);
+        expect(Math.abs(vessel.TopLeft!.Y - record.topLeft.y)).toBeLessThanOrEqual(1e-7);
+      } else expect(vessel.TopLeft).toBeNull();
+      expect({ shapeType: vessel.ShapeType(), fontSize: vessel.FontSize, isInvisible: vessel.IsInvisible,
+        is3D: vessel.Is3D, isMultiple: vessel.IsMultiple, forceHierarchy: vessel.ForceHierarchy }).toEqual({
+        shapeType: record.shapeType, fontSize: record.fontSize, isInvisible: record.isInvisible,
+        is3D: record.is3D, isMultiple: record.isMultiple, forceHierarchy: record.forceHierarchy,
+      });
+    }
+  }
   expect(result.Nodes).toHaveLength(fixture.nodes.length);
   expect(result.Edges).toHaveLength(fixture.edges.length);
   const resultNodes = new Map(result.Nodes.map((node) => [Number(node.ID), node]));

@@ -26,7 +26,7 @@ arrowhead-label size limits, including transparent edges.
 The upstream engine corpus comparisons check node coordinates, size, shapes,
 visibility, fonts and labels; edge endpoints, arrowheads, table ports and
 labels; every route vertex in order; node proximity relationships; and the resulting containers, hubs,
-clusters, sequences, tree topology, and hierarchy ranks. Floating-point geometry
+clusters, sequences, vessel geometry, tree topology, and hierarchy ranks. Floating-point geometry
 uses absolute tolerance `1e-7`; generated 64-bit entity IDs are compared exactly.
 For seed 123, fixture generation also verifies the 34 upstream layout results
 against the upstream checked-in golden geometry and routes.

@@ -1969,6 +1969,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 167,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -1994,6 +1995,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -3968,6 +3970,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 167,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -3993,6 +3996,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -12046,6 +12050,50 @@
     "seed": 1,
     "structure": {
       "cellSize": 165,
+      "clusterVessels": {
+        "5577006791947779410": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 916,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 2419,
+            "y": 234
+          },
+          "width": 156
+        },
+        "6129484611666145821": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 1440,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 915,
+            "y": -27
+          },
+          "width": 153
+        },
+        "8674665223082153551": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 735,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 1688,
+            "y": 325
+          },
+          "width": 151
+        }
+      },
       "clusters": {
         "5577006791947779410": {
           "abductions": [
@@ -12488,6 +12536,7 @@
           "501951850"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {
         "873244444": [
@@ -20644,6 +20693,50 @@
     "seed": 123,
     "structure": {
       "cellSize": 165,
+      "clusterVessels": {
+        "2305561650894865143": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 1440,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 527,
+            "y": 1435
+          },
+          "width": 153
+        },
+        "241876450138978746": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 735,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 1293,
+            "y": 1788
+          },
+          "width": 151
+        },
+        "5361704182646325489": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 916,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 2019,
+            "y": 1698
+          },
+          "width": 156
+        }
+      },
       "clusters": {
         "2305561650894865143": {
           "abductions": [
@@ -21086,6 +21179,7 @@
           "501951850"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {
         "873244444": [
@@ -34787,6 +34881,134 @@
     "seed": 1,
     "structure": {
       "cellSize": 165,
+      "clusterVessels": {
+        "1443635317331776148": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 5242,
+            "y": 2974
+          },
+          "width": 409
+        },
+        "3916589616287113937": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 4707,
+            "y": 4750
+          },
+          "width": 264
+        },
+        "4037200794235010051": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 5053,
+            "y": 4750
+          },
+          "width": 250
+        },
+        "5577006791947779410": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 916,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 2209,
+            "y": 5152
+          },
+          "width": 156
+        },
+        "605394647632969758": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 5316,
+            "y": 3802
+          },
+          "width": 262
+        },
+        "6129484611666145821": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 1440,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 370,
+            "y": 4889
+          },
+          "width": 153
+        },
+        "6334824724549167320": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 5235,
+            "y": 5026
+          },
+          "width": 412
+        },
+        "8674665223082153551": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 735,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 1311,
+            "y": 5242
+          },
+          "width": 151
+        },
+        "894385949183117216": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 4905,
+            "y": 2974
+          },
+          "width": 266
+        }
+      },
       "clusters": {
         "1443635317331776148": {
           "abductions": [
@@ -35547,6 +35769,7 @@
           "856466825"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -48997,6 +49220,134 @@
     "seed": 123,
     "structure": {
       "cellSize": 165,
+      "clusterVessels": {
+        "2116592265311177487": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 5861,
+            "y": 1728
+          },
+          "width": 264
+        },
+        "2305561650894865143": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 1440,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 2971,
+            "y": 3900
+          },
+          "width": 153
+        },
+        "241876450138978746": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 735,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 3744,
+            "y": 4253
+          },
+          "width": 151
+        },
+        "4139441442680080991": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 6155,
+            "y": 828
+          },
+          "width": 409
+        },
+        "5361704182646325489": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 916,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 4475,
+            "y": 4163
+          },
+          "width": 156
+        },
+        "5680255032342805883": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 5529,
+            "y": 1728
+          },
+          "width": 250
+        },
+        "5870668988303546563": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 5616,
+            "y": 2172
+          },
+          "width": 412
+        },
+        "591206867823888648": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 5957,
+            "y": 276
+          },
+          "width": 262
+        },
+        "7425079853101837275": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 6226,
+            "y": 0
+          },
+          "width": 266
+        }
+      },
       "clusters": {
         "2116592265311177487": {
           "abductions": [
@@ -49757,6 +50108,7 @@
           "856466825"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -52652,6 +53004,50 @@
     "seed": 1,
     "structure": {
       "cellSize": 189,
+      "clusterVessels": {
+        "5577006791947779410": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 916,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 2038,
+            "y": -17
+          },
+          "width": 156
+        },
+        "6129484611666145821": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 1440,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 534,
+            "y": -280
+          },
+          "width": 153
+        },
+        "8674665223082153551": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 735,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 1307,
+            "y": 73
+          },
+          "width": 151
+        }
+      },
       "clusters": {
         "5577006791947779410": {
           "abductions": [
@@ -53042,6 +53438,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -55937,6 +56334,50 @@
     "seed": 123,
     "structure": {
       "cellSize": 189,
+      "clusterVessels": {
+        "2305561650894865143": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 1440,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 723,
+            "y": -280
+          },
+          "width": 153
+        },
+        "241876450138978746": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 735,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 1496,
+            "y": 73
+          },
+          "width": 151
+        },
+        "5361704182646325489": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 916,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 2227,
+            "y": -17
+          },
+          "width": 156
+        }
+      },
       "clusters": {
         "2305561650894865143": {
           "abductions": [
@@ -56327,6 +56768,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -59970,6 +60412,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 255,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -60094,6 +60537,7 @@
           "2385258466"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -63693,6 +64137,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 255,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -63817,6 +64262,7 @@
           "2385258466"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -68176,6 +68622,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 189,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -68344,6 +68791,7 @@
           "404763949"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -72615,6 +73063,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 189,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -72783,6 +73232,7 @@
           "404763949"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -75891,6 +76341,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 165,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -75921,6 +76372,7 @@
           "3792446982"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -79001,6 +79453,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 165,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -79031,6 +79484,7 @@
           "3792446982"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -80083,6 +80537,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 210,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -80108,6 +80563,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -81172,6 +81628,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 210,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -81197,6 +81654,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -82021,6 +82479,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 120,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -82047,6 +82506,7 @@
           "6"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {
         "8": [
@@ -82900,6 +83360,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 120,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -82926,6 +83387,7 @@
           "6"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {
         "8": [
@@ -84026,6 +84488,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 90,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -84049,6 +84512,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -85128,6 +85592,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 90,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -85151,6 +85616,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -85702,6 +86168,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 75,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -85726,6 +86193,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -86277,6 +86745,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 75,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -86301,6 +86770,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -86928,6 +87398,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 107,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -86958,6 +87429,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -87585,6 +88057,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 107,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -87615,6 +88088,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -89034,6 +89508,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 132,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -89069,6 +89544,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -90476,6 +90952,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 132,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -90511,6 +90988,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -92833,6 +93311,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 92,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -92884,6 +93363,7 @@
           "8"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -95146,6 +95626,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 92,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -95197,6 +95678,7 @@
           "8"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -97069,6 +97551,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 83,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -97132,6 +97615,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -99004,6 +99488,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 83,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -99067,6 +99552,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -101894,6 +102380,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 111,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -101967,6 +102454,7 @@
           "32"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -104770,6 +105258,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 111,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -104843,6 +105332,7 @@
           "32"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -107018,6 +107508,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 167,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -107074,6 +107565,7 @@
           "2033587515"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -109313,6 +109805,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 167,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -109369,6 +109862,7 @@
           "2033587515"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -111419,6 +111913,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 126,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -111452,6 +111947,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {
         "822911587": [
@@ -113663,6 +114159,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 126,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -113696,6 +114193,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {
         "822911587": [
@@ -119808,6 +120306,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 160,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -119893,6 +120392,7 @@
           "1458105184"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -125872,6 +126372,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 160,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -125957,6 +126458,7 @@
           "1458105184"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -127083,6 +127585,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 156,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -127110,6 +127613,7 @@
           "2924849578"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -128248,6 +128752,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 156,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -128275,6 +128780,7 @@
           "2924849578"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -128900,6 +129406,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 120,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -128916,6 +129423,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {
         "303608681": [
@@ -129589,6 +130097,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 120,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -129605,6 +130114,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {
         "303608681": [
@@ -129873,6 +130383,22 @@
     "seed": 1,
     "structure": {
       "cellSize": 189,
+      "clusterVessels": {
+        "5577006791947779410": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 272,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 450,
+            "y": 146
+          },
+          "width": 137
+        }
+      },
       "clusters": {
         "5577006791947779410": {
           "abductions": [
@@ -129914,6 +130440,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -130134,6 +130661,22 @@
     "seed": 123,
     "structure": {
       "cellSize": 189,
+      "clusterVessels": {
+        "5361704182646325489": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": -55,
+            "y": 244
+          },
+          "width": 294
+        }
+      },
       "clusters": {
         "5361704182646325489": {
           "abductions": [
@@ -130175,6 +130718,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -131041,6 +131585,22 @@
     "seed": 1,
     "structure": {
       "cellSize": 150,
+      "clusterVessels": {
+        "5577006791947779410": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 276,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 168,
+            "y": -920
+          },
+          "width": 128
+        }
+      },
       "clusters": {
         "5577006791947779410": {
           "abductions": [
@@ -131106,6 +131666,7 @@
           "1263536650"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -131972,6 +132533,22 @@
     "seed": 123,
     "structure": {
       "cellSize": 150,
+      "clusterVessels": {
+        "5361704182646325489": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 276,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 82,
+            "y": 622
+          },
+          "width": 128
+        }
+      },
       "clusters": {
         "5361704182646325489": {
           "abductions": [
@@ -132037,6 +132614,7 @@
           "1263536650"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -132790,6 +133368,22 @@
     "seed": 1,
     "structure": {
       "cellSize": 162,
+      "clusterVessels": {
+        "5577006791947779410": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 276,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 10,
+            "y": 438
+          },
+          "width": 128
+        }
+      },
       "clusters": {
         "5577006791947779410": {
           "abductions": [
@@ -132849,6 +133443,7 @@
           "1918322963"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -133602,6 +134197,22 @@
     "seed": 123,
     "structure": {
       "cellSize": 162,
+      "clusterVessels": {
+        "5361704182646325489": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 276,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 140,
+            "y": 94
+          },
+          "width": 128
+        }
+      },
       "clusters": {
         "5361704182646325489": {
           "abductions": [
@@ -133661,6 +134272,7 @@
           "1918322963"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -134006,6 +134618,22 @@
     "seed": 1,
     "structure": {
       "cellSize": 286,
+      "clusterVessels": {
+        "5577006791947779410": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 246,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": -286,
+            "y": 348
+          },
+          "width": 592
+        }
+      },
       "clusters": {
         "5577006791947779410": {
           "abductions": [
@@ -134051,6 +134679,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -134396,6 +135025,22 @@
     "seed": 123,
     "structure": {
       "cellSize": 286,
+      "clusterVessels": {
+        "5361704182646325489": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 246,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": -286,
+            "y": 348
+          },
+          "width": 592
+        }
+      },
       "clusters": {
         "5361704182646325489": {
           "abductions": [
@@ -134441,6 +135086,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -135017,6 +135663,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 126,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -135040,6 +135687,7 @@
           "4149177032"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -135628,6 +136276,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 126,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -135651,6 +136300,7 @@
           "4149177032"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -136396,6 +137046,22 @@
     "seed": 1,
     "structure": {
       "cellSize": 99,
+      "clusterVessels": {
+        "5577006791947779410": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 152,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 714,
+            "y": 205
+          },
+          "width": 149
+        }
+      },
       "clusters": {
         "5577006791947779410": {
           "abductions": [
@@ -136458,6 +137124,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -137199,6 +137866,22 @@
     "seed": 123,
     "structure": {
       "cellSize": 99,
+      "clusterVessels": {
+        "5361704182646325489": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 152,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 722,
+            "y": 205
+          },
+          "width": 149
+        }
+      },
       "clusters": {
         "5361704182646325489": {
           "abductions": [
@@ -137261,6 +137944,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -137414,6 +138098,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 126,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -137424,6 +138109,22 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {
+        "5577006791947779410": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 0,
+            "y": 203
+          },
+          "width": 203
+        }
+      },
       "sequences": {
         "5577006791947779410": {
           "abductions": [
@@ -137594,6 +138295,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 126,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -137604,6 +138306,22 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {
+        "5361704182646325489": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 0,
+            "y": 203
+          },
+          "width": 203
+        }
+      },
       "sequences": {
         "5361704182646325489": {
           "abductions": [
@@ -139016,6 +139734,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 57,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -139060,6 +139779,7 @@
           "2616977708"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -140463,6 +141183,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 57,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -140507,6 +141228,7 @@
           "2616977708"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -140962,6 +141684,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 108,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -140976,6 +141699,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {
         "659422876": [
@@ -141472,6 +142196,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 108,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -141486,6 +142211,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {
         "659422876": [
@@ -141753,6 +142479,22 @@
     "seed": 1,
     "structure": {
       "cellSize": 240,
+      "clusterVessels": {
+        "5577006791947779410": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 236,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 0,
+            "y": -16
+          },
+          "width": 108
+        }
+      },
       "clusters": {
         "5577006791947779410": {
           "abductions": [
@@ -141794,6 +142536,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -142020,6 +142763,22 @@
     "seed": 123,
     "structure": {
       "cellSize": 240,
+      "clusterVessels": {
+        "5361704182646325489": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 236,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 0,
+            "y": -16
+          },
+          "width": 108
+        }
+      },
       "clusters": {
         "5361704182646325489": {
           "abductions": [
@@ -142061,6 +142820,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -143444,6 +144204,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 221,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -143482,6 +144243,7 @@
         }
       ],
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -144865,6 +145627,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 221,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -144903,6 +145666,7 @@
         }
       ],
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -146325,6 +147089,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 171,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -146407,6 +147172,7 @@
         }
       ],
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -147829,6 +148595,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 171,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -147911,6 +148678,7 @@
         }
       ],
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -149402,6 +150170,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 168,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -149436,6 +150205,7 @@
           "1364103258"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -150915,6 +151685,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 168,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -150949,6 +151720,7 @@
           "1364103258"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -151997,6 +152769,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 126,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -152028,6 +152801,7 @@
         }
       ],
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -153072,6 +153846,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 126,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -153103,6 +153878,7 @@
         }
       ],
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -154596,6 +155372,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 205,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -154674,6 +155451,7 @@
           "2301370371"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -156171,6 +156949,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 205,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -156249,6 +157028,7 @@
           "2301370371"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -159104,6 +159884,50 @@
     "seed": 1,
     "structure": {
       "cellSize": 197,
+      "clusterVessels": {
+        "5577006791947779410": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 584,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 1509,
+            "y": 1374
+          },
+          "width": 314
+        },
+        "6129484611666145821": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 2059,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 2532,
+            "y": 2682
+          },
+          "width": 687
+        },
+        "8674665223082153551": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 1064,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 2532,
+            "y": 795
+          },
+          "width": 455
+        }
+      },
       "clusters": {
         "5577006791947779410": {
           "abductions": [
@@ -159376,6 +160200,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -162227,6 +163052,50 @@
     "seed": 123,
     "structure": {
       "cellSize": 197,
+      "clusterVessels": {
+        "2305561650894865143": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 2059,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 2599,
+            "y": 2000
+          },
+          "width": 687
+        },
+        "241876450138978746": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 1064,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 2599,
+            "y": 113
+          },
+          "width": 455
+        },
+        "5361704182646325489": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 584,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 1571,
+            "y": 692
+          },
+          "width": 314
+        }
+      },
       "clusters": {
         "2305561650894865143": {
           "abductions": [
@@ -162499,6 +163368,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -163571,6 +164441,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 120,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -163601,6 +164472,7 @@
           "1551879755"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {
         "1135137352": [
@@ -164742,6 +165614,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 120,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -164772,6 +165645,7 @@
           "1551879755"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {
         "1135137352": [
@@ -165433,6 +166307,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 197,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -165451,6 +166326,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -166035,6 +166911,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 197,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -166053,6 +166930,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -166229,6 +167107,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 160,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -166238,6 +167117,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -166414,6 +167294,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 160,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -166423,6 +167304,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -168205,6 +169087,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 120,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -168234,6 +169117,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -170000,6 +170884,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 120,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -170029,6 +170914,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -170302,6 +171188,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 126,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -170314,6 +171201,22 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {
+        "5577006791947779410": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 194,
+            "y": 194
+          },
+          "width": 194
+        }
+      },
       "sequences": {
         "5577006791947779410": {
           "abductions": [
@@ -170604,6 +171507,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 126,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -170616,6 +171520,22 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {
+        "5361704182646325489": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 194,
+            "y": 194
+          },
+          "width": 194
+        }
+      },
       "sequences": {
         "5361704182646325489": {
           "abductions": [
@@ -171027,6 +171947,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 162,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -171040,6 +171961,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {
         "1487447415": [
@@ -171467,6 +172389,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 162,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -171480,6 +172403,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {
         "1487447415": [
@@ -172015,6 +172939,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 150,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -172049,6 +172974,7 @@
           "2724280054"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -172551,6 +173477,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 150,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -172585,6 +173512,7 @@
           "2724280054"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -173351,6 +174279,22 @@
     "seed": 1,
     "structure": {
       "cellSize": 150,
+      "clusterVessels": {
+        "5577006791947779410": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 276,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 46,
+            "y": 416
+          },
+          "width": 128
+        }
+      },
       "clusters": {
         "5577006791947779410": {
           "abductions": [
@@ -173410,6 +174354,7 @@
           "1775358289"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -174176,6 +175121,22 @@
     "seed": 123,
     "structure": {
       "cellSize": 150,
+      "clusterVessels": {
+        "5361704182646325489": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 276,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 182,
+            "y": 388
+          },
+          "width": 128
+        }
+      },
       "clusters": {
         "5361704182646325489": {
           "abductions": [
@@ -174235,6 +175196,7 @@
           "1775358289"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -176102,6 +177064,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 75,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -176141,6 +177104,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -177992,6 +178956,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 75,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -178031,6 +178996,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -182817,6 +183783,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 60,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -182846,6 +183813,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -187632,6 +188600,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 60,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -187661,6 +188630,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -190769,6 +191739,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 165,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -190799,6 +191770,7 @@
           "3792446982"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -193879,6 +194851,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 165,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -193909,6 +194882,7 @@
           "3792446982"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -194196,6 +195170,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 171,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -194211,6 +195186,36 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {
+        "5577006791947779410": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 60,
+            "y": 60
+          },
+          "width": 199
+        },
+        "8674665223082153551": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 60,
+            "y": 336
+          },
+          "width": 278
+        }
+      },
       "sequences": {
         "5577006791947779410": {
           "abductions": [
@@ -194546,6 +195551,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 171,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -194561,6 +195567,36 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {
+        "241876450138978746": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 60,
+            "y": 336
+          },
+          "width": 278
+        },
+        "5361704182646325489": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 60,
+            "y": 60
+          },
+          "width": 199
+        }
+      },
       "sequences": {
         "241876450138978746": {
           "abductions": [
@@ -195362,6 +196398,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 189,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -195405,6 +196442,7 @@
           "4212348398"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -196166,6 +197204,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 189,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -196209,6 +197248,7 @@
           "4212348398"
         ]
       },
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {}
     }
@@ -196463,6 +197503,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 126,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -196475,6 +197516,22 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {
+        "5577006791947779410": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 0,
+            "y": 302
+          },
+          "width": 194
+        }
+      },
       "sequences": {
         "5577006791947779410": {
           "abductions": [],
@@ -196753,6 +197810,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 126,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -196765,6 +197823,22 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {
+        "5361704182646325489": {
+          "fontSize": null,
+          "forceHierarchy": false,
+          "height": 126,
+          "is3D": false,
+          "isInvisible": false,
+          "isMultiple": false,
+          "shapeType": "",
+          "topLeft": {
+            "x": 0,
+            "y": 302
+          },
+          "width": 194
+        }
+      },
       "sequences": {
         "5361704182646325489": {
           "abductions": [],
@@ -198326,6 +199400,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 126,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -198356,6 +199431,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {
         "890022063": [
@@ -200036,6 +201112,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 126,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -200066,6 +201143,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {
         "890022063": [
@@ -200520,6 +201598,7 @@
     "seed": 1,
     "structure": {
       "cellSize": 191,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -200532,6 +201611,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {
         "3607948159": [
@@ -200872,6 +201952,7 @@
     "seed": 123,
     "structure": {
       "cellSize": 191,
+      "clusterVessels": {},
       "clusters": {},
       "containers": {
         "0": [
@@ -200884,6 +201965,7 @@
       },
       "hierarchies": null,
       "hubs": {},
+      "sequenceVessels": {},
       "sequences": {},
       "trees": {
         "3607948159": [
