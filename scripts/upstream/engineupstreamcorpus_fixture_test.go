@@ -20,12 +20,17 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 	if path == "" {
 		t.Skip("set TALA_ENGINEUPSTREAMCORPUS_FIXTURES")
 	}
-	cases := []struct{ name, path string }{
-		{"trees_26nodes", "benchmark/trees_26nodes.json"},
-		{"18tables", "benchmark/18tables.json"},
-		{"clusters_28nodes", "benchmark/clusters_28nodes.json"},
-		{"hierarchy_nested", "benchmark/hierarchy_nested.json"},
-		{"generated_nested", "benchmark/nodes10_edges20_containers5_width4441_height4198.json"},
+	cases := []struct{ name, path string }{}
+	benchmarks, err := os.ReadDir(filepath.Join("..", "testdata", "benchmark"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, entry := range benchmarks {
+		name := entry.Name()
+		if entry.IsDir() || !strings.HasSuffix(name, ".json") || name == "big_connected.json" || name == "big_many_subgraphs.json" || name == "us_map.json" {
+			continue
+		}
+		cases = append(cases, struct{ name, path string }{strings.TrimSuffix(name, ".json"), filepath.Join("benchmark", name)})
 	}
 	entries, err := os.ReadDir(filepath.Join("..", "testdata", "layout"))
 	if err != nil {
