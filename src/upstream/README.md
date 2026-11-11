@@ -9,7 +9,8 @@ routing strategies. Preserve upstream package boundaries and function names
 where possible so changes can be reviewed beside their Go source.
 
 The public flowchart API now uses these modules in the upstream stage order.
-The checked-in 633-case full-layout corpus matches the pinned Go implementation.
+The checked-in 633-case full-layout corpus and 60 additional public seed cases
+match the pinned Go implementation.
 That does not establish complete parity for inputs or D2 features outside the
 adapter model; extend the differential corpus as those are added.
 
@@ -440,8 +441,8 @@ coverage. Regenerate `routingslingshot` and `routingsshape`.
 `routing/generate-routes.ts` connects slingshot, Dijkstra and straight-line
 fallback in the upstream route-generation order. One hundred ninety-two Go
 cases compare complete route sets across all four flavors, including duplicate
-edges and arrowhead labels. Graph-stage orchestration, post-processing and the
-public adapter remain in progress. Regenerate `routinggenerate`.
+edges and arrowhead labels. Whole-graph orchestration, post-processing and the
+public adapter have separate comparisons below. Regenerate `routinggenerate`.
 
 `routing/selected-routes.ts` translates parallel-route ordering and the atomic
 commit of selected route points. Six hundred Go cases compare route ownership,
@@ -456,7 +457,8 @@ additional coverage. Regenerate `routingsentinel`.
 routes, route flavors and selected-route commit. One hundred Go cases compare
 complete subgraph edge routes, including duplicate connections and labels.
 Flavor execution is currently sequential in TypeScript, so Go worker panic and
-cancellation ordering differ. The whole-graph atomic stage remains pending.
+cancellation ordering differ. Whole-graph atomic routing is translated in
+`routing/graph-stage.ts` below.
 Regenerate `routingcoordinator`.
 
 `graphbounds/bounds.ts` translates guarded node and fixed-origin bounds used
