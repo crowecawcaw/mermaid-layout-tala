@@ -12,7 +12,7 @@ full parity. The prior WebAssembly replacement remains reverted; the public
 | --- | --- | --- |
 | Engine and graph model | Direct TypeScript translation of the upstream pipeline and graph stages | `upstream-enginepipeline.test.ts` compares complete single-seed layouts; `upstream-engine-corpus.test.ts` compares all 34 upstream layout inputs and all 19 benchmark graphs at seeds 1 and 123, including a 130-node graph, table-routing benchmarks, and labeled self-loops across shapes. Broaden cancellation coverage |
 | Hierarchy, placement and packing | Translated upstream algorithms, including compound hierarchy placement | Go differential fixtures cover rank assignment, ordering, alignment, gap normalization, recursive packing and grouped layouts; more complex graphs remain to be tested |
-| Routing and labels | Translated upstream OVG routing, cleanup, port swaps, segment balancing, channel nudging, shortcutting and label placement | Go differential fixtures cover stages and work limits; all 10 upstream OVG input topologies are compared with positioned nodes, including port metadata. Broader cluster and cancellation coverage remains |
+| Routing and labels | Translated upstream OVG routing, cleanup, port swaps, segment balancing, channel nudging, shortcutting and label placement | Go differential fixtures cover stages and work limits; all 10 upstream OVG input topologies are compared with positioned nodes, including port metadata, and all 11 upstream OVG golden snapshots match at their original pipeline stage. Broader cluster and cancellation coverage remains |
 | Candidate selection | Go-compatible random stream, upstream penalty/area scoring and compound refinement | Scoring and refinement have differential fixtures; public adapter validation and additional D2 metadata need coverage |
 | Mermaid adapter | Maps the supported flowchart input to the translated graph | 549/549 pinned full-layout fixtures pass, including 40-node labeled and 24-node cyclic graphs, nested container directions, Unicode style folding, arrowhead styles, nested near paths, Unicode hash collisions, randomized nested graphs, authored ordering and explicit D2 edge indices. The input model does not expose all D2 shape and style features |
 | Resource accounting | Translated work guards, stage rollback, and public cancellation contexts | Go comparisons cover pre-canceled layout, routing and seed coordination; expand cancellation and failure tests through the complete public pipeline |
@@ -33,6 +33,8 @@ against the upstream checked-in golden geometry and routes.
 The OVG corpus compares node and edge coordinates, distances and port ownership metadata;
 seven upstream inputs that start unpositioned are given a deterministic grid
 before building the visibility graph.
+Separately, the full pipeline is run with upstream's seed 123 and compared
+against all 11 checked-in OVG golden snapshots at the routing stage.
 Thirty-two randomized deep hierarchies that fail in upstream are also checked against
 the complete upstream error messages, rather than being excluded from the corpus.
 The 24-node cyclic fixtures are substantially slower in TypeScript: the four
@@ -72,6 +74,7 @@ TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 qua
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 layout
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 engineupstreamcorpus
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 ovgupstreamcorpus
+TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 engineovggoldens
 go run scripts/upstream/random-fixtures.go > test/fixtures/upstream-random.json
 npm run test:parity
 ```
