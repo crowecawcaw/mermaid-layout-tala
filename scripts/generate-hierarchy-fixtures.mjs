@@ -178,6 +178,7 @@ const packages = {
   ovghierarchy: 'internal/routing',
   ovgbuild: 'internal/routing',
   ovgbuildmulti: 'internal/routing',
+  ovgupstreamcorpus: 'internal/routing',
   routingsortedge: 'internal/routing',
   slingshotgeometry: 'internal/routing',
   routingbest: 'internal/routing',
