@@ -10,7 +10,7 @@ import type {
   EdgeStyleInput,
 } from '../../layout.js';
 import { getTalaSeeds, normalizeSeeds } from '../../random.js';
-import { Background, type Context } from '../limits/context.js';
+import { Background, WithCancel, type Context } from '../limits/context.js';
 import {
   MaxEngineNodes,
   MaxEngineEdges,
@@ -215,6 +215,8 @@ export function translateFlowchart(
   )
     throw new Error('orderingPasses must be finite');
   const byId = new Map<string, LayoutNode>();
+  // collectD2ObjectVisits polls once for the D2 root before its children.
+  checkContext();
   for (const n of inputNodes) {
     checkContext();
     if (byId.has(n.id)) throw new Error('duplicate node ID');
@@ -752,204 +754,211 @@ export function layoutFlowchartTranslated(
     inputNodes = [...inputNodes].sort((a, b) => compareIdentifiers(a.id, b.id));
     inputEdges = [...inputEdges].sort((a, b) => compareIdentifiers(a.id, b.id));
   }
-  const seeds =
-      options.seeds === undefined
-        ? getTalaSeeds()
-        : normalizeSeeds(options.seeds),
-    { graph, nodeIDs, edgeIDs, reversed, lifelines } = translateFlowchart(
-      inputNodes,
-      inputEdges,
-      options,
-    );
-  const initial = coordinateLocalSeeds(seeds, (seed) => {
-    const candidate = Layout(ctx, graph, { Seed: seed });
-    return { value: candidate, score: evaluateCandidate(ctx, graph, candidate) };
-  }, ctx);
-  let best = initial.value, bestScore = initial.score;
-  const ordinary = best;
+  const seeds = options.seeds === undefined
+    ? getTalaSeeds()
+    : normalizeSeeds(options.seeds);
+  // newSeedInput checks the caller's context before translating the graph.
+  const beforeTranslation = ctx.Err();
+  if (beforeTranslation) throw beforeTranslation;
+  const { graph, nodeIDs, edgeIDs, reversed, lifelines } = translateFlowchart(
+    inputNodes,
+    inputEdges,
+    options,
+  );
+  const [workCtx, cancelWork] = ctx.Done() === null ? WithCancel(ctx) : [ctx, () => {}];
   try {
-    const candidate = CompoundCandidate(ctx, best);
-    if (candidate !== best) {
-      const score = evaluateCandidate(ctx, graph, candidate);
-      if (score.Compare(bestScore) < 0) {
-        best = candidate;
-        bestScore = score;
-      }
-    }
-  } catch {
-    const error = ctx.Err();
-    if (error) throw error;
-    /* Optional upstream candidate retains the incumbent. */
-  }
-  if (best !== ordinary)
+    const initial = coordinateLocalSeeds(seeds, (seed) => {
+      const candidate = Layout(workCtx, graph, { Seed: seed });
+      return { value: candidate, score: evaluateCandidate(workCtx, graph, candidate) };
+    }, workCtx);
+    let best = initial.value, bestScore = initial.score;
+    const ordinary = best;
     try {
-      const refined = PreserveCompoundRoutes(ctx, ordinary, best);
-      evaluateCandidate(ctx, graph, refined);
-      best = refined;
+      const candidate = CompoundCandidate(workCtx, best);
+      if (candidate !== best) {
+        const score = evaluateCandidate(workCtx, graph, candidate);
+        if (score.Compare(bestScore) < 0) {
+          best = candidate;
+          bestScore = score;
+        }
+      }
     } catch {
-      const error = ctx.Err();
+      const error = workCtx.Err();
       if (error) throw error;
-      /* Optional upstream refinement retains the selected placement. */
+      /* Optional upstream candidate retains the incumbent. */
     }
-  const canceledBeforeApply = ctx.Err();
-  if (canceledBeforeApply) throw new Error(`TALA layout canceled before apply: ${canceledBeforeApply.message}`, { cause: canceledBeforeApply });
-  // Ranks are public metadata; upstream layout itself does not use this pass.
-  let rankWork = 0;
-  const checkRankContext = () => {
-    if (++rankWork % 256 === 0) { const error = ctx.Err(); if (error) throw error; }
-  };
-  const colors = new Map(inputNodes.map((n) => [n.id, 0]));
-  const outgoing = new Map(inputNodes.map((n) => [n.id, [] as LayoutEdge[]]));
-  for (const edge of inputEdges)
-    { checkRankContext(); if (edge.from !== edge.to && outgoing.has(edge.to)) outgoing.get(edge.from)!.push(edge); }
-  const dag: LayoutEdge[] = [];
-  const visitRank = (start: string): void => {
-    const stack: { id: string; index: number }[] = [{ id: start, index: 0 }];
-    colors.set(start, 1);
-    while (stack.length) {
+    if (best !== ordinary)
+      try {
+        const refined = PreserveCompoundRoutes(workCtx, ordinary, best);
+        evaluateCandidate(workCtx, graph, refined);
+        best = refined;
+      } catch {
+        const error = workCtx.Err();
+        if (error) throw error;
+        /* Optional upstream refinement retains the selected placement. */
+      }
+    const canceledBeforeApply = workCtx.Err();
+    if (canceledBeforeApply) throw new Error(`TALA layout canceled before apply: ${canceledBeforeApply.message}`, { cause: canceledBeforeApply });
+    // Ranks are public metadata; upstream layout itself does not use this pass.
+    let rankWork = 0;
+    const checkRankContext = () => {
+      if (++rankWork % 256 === 0) { const error = workCtx.Err(); if (error) throw error; }
+    };
+    const colors = new Map(inputNodes.map((n) => [n.id, 0]));
+    const outgoing = new Map(inputNodes.map((n) => [n.id, [] as LayoutEdge[]]));
+    for (const edge of inputEdges)
+      { checkRankContext(); if (edge.from !== edge.to && outgoing.has(edge.to)) outgoing.get(edge.from)!.push(edge); }
+    const dag: LayoutEdge[] = [];
+    const visitRank = (start: string): void => {
+      const stack: { id: string; index: number }[] = [{ id: start, index: 0 }];
+      colors.set(start, 1);
+      while (stack.length) {
+        checkRankContext();
+        const frame = stack[stack.length - 1]!,
+          edges = outgoing.get(frame.id)!;
+        if (frame.index >= edges.length) {
+          colors.set(frame.id, 2);
+          stack.pop();
+          continue;
+        }
+        const edge = edges[frame.index++]!,
+          color = colors.get(edge.to)!;
+        if (color === 1) continue;
+        dag.push(edge);
+        if (color === 0) {
+          colors.set(edge.to, 1);
+          stack.push({ id: edge.to, index: 0 });
+        }
+      }
+    };
+    for (const n of inputNodes) if (colors.get(n.id) === 0) visitRank(n.id);
+    const ranks = new Map(inputNodes.map((n) => [n.id, 0]));
+    const indegrees = new Map(inputNodes.map((n) => [n.id, 0]));
+    const rankOutgoing = new Map(inputNodes.map((n) => [n.id, [] as string[]]));
+    for (const e of dag) {
       checkRankContext();
-      const frame = stack[stack.length - 1]!,
-        edges = outgoing.get(frame.id)!;
-      if (frame.index >= edges.length) {
-        colors.set(frame.id, 2);
-        stack.pop();
-        continue;
-      }
-      const edge = edges[frame.index++]!,
-        color = colors.get(edge.to)!;
-      if (color === 1) continue;
-      dag.push(edge);
-      if (color === 0) {
-        colors.set(edge.to, 1);
-        stack.push({ id: edge.to, index: 0 });
+      indegrees.set(e.to, indegrees.get(e.to)! + 1);
+      rankOutgoing.get(e.from)!.push(e.to);
+    }
+    const ready = inputNodes
+      .filter((n) => indegrees.get(n.id) === 0)
+      .map((n) => n.id);
+    for (let i = 0; i < ready.length; i++) {
+      checkRankContext();
+      const id = ready[i]!;
+      for (const to of rankOutgoing.get(id)!) {
+        ranks.set(to, Math.max(ranks.get(to)!, ranks.get(id)! + 1));
+        indegrees.set(to, indegrees.get(to)! - 1);
+        if (indegrees.get(to) === 0) ready.push(to);
       }
     }
-  };
-  for (const n of inputNodes) if (colors.get(n.id) === 0) visitRank(n.id);
-  const ranks = new Map(inputNodes.map((n) => [n.id, 0]));
-  const indegrees = new Map(inputNodes.map((n) => [n.id, 0]));
-  const rankOutgoing = new Map(inputNodes.map((n) => [n.id, [] as string[]]));
-  for (const e of dag) {
-    checkRankContext();
-    indegrees.set(e.to, indegrees.get(e.to)! + 1);
-    rankOutgoing.get(e.from)!.push(e.to);
-  }
-  const ready = inputNodes
-    .filter((n) => indegrees.get(n.id) === 0)
-    .map((n) => n.id);
-  for (let i = 0; i < ready.length; i++) {
-    checkRankContext();
-    const id = ready[i]!;
-    for (const to of rankOutgoing.get(id)!) {
-      ranks.set(to, Math.max(ranks.get(to)!, ranks.get(id)! + 1));
-      indegrees.set(to, indegrees.get(to)! - 1);
-      if (indegrees.get(to) === 0) ready.push(to);
-    }
-  }
-  const nodesByID = new Map(best.Nodes.map((n) => [n.ID, n])),
-    edgesByID = new Map(best.Edges.map((e) => [e.ID, e]));
-  const result: LayoutResult = {
-    nodes: inputNodes.map((input, index) => {
-      const error = ctx.Err(); if (error) throw error;
-      const n = nodesByID.get(nodeIDs.get(input.id)!)!;
-      const label = n.Label
-        ? LabelTopLeft(n, n.Label.Position, n.Label.Width, n.Label.Height)
-        : null;
-      return {
-        ...input,
-        x: n.TopLeft!.X + n.Width / 2,
-        y: n.TopLeft!.Y + n.Height / 2,
-        width: n.Width,
-        height: n.Height,
-        rank: ranks.get(input.id) ?? 0,
-        order: index,
-        ...(n.FontSize !== null ? { fontSize: n.FontSize } : {}),
-        ...(n.Icon
-          ? { iconPosition: LabelPositionString(n.Icon.Position) }
-          : {}),
-        ...(label
-          ? {
-              labelX: label.X + n.Label!.Width / 2,
-              labelY: label.Y + n.Label!.Height / 2,
-              labelWidth: n.Label!.Width,
-              labelHeight: n.Label!.Height,
-              labelPosition: LabelPositionString(n.Label!.Position),
-            }
-          : {}),
-      };
-    }),
-    edges: inputEdges.flatMap((input, index) => {
-      const error = ctx.Err(); if (error) throw error;
-      const edge = edgesByID.get(edgeIDs[index]!);
-      if (!edge) return [];
-      const points = (
-        reversed[index] ? [...edge.Points].reverse() : edge.Points
-      ).map((p) => ({ x: p.X, y: p.Y }));
-      const label = edge.Label
-        ? EdgeLabelTopLeft(
-            edge,
-            edge.Label.Position,
-            edge.Label.Width,
-            edge.Label.Height,
-          )
-        : null;
-      const center = label
-        ? {
-            x: label.X + edge.Label!.Width / 2,
-            y: label.Y + edge.Label!.Height / 2,
-          }
-        : routeMidpoint(points);
-      const sourceArrow = PositionArrowheadLabel(
-        edge,
-        !!reversed[index],
-        edge.Points,
-      );
-      const targetArrow = PositionArrowheadLabel(
-        edge,
-        !reversed[index],
-        edge.Points,
-      );
-      return [
-        {
+    const nodesByID = new Map(best.Nodes.map((n) => [n.ID, n])),
+      edgesByID = new Map(best.Edges.map((e) => [e.ID, e]));
+    const result: LayoutResult = {
+      nodes: inputNodes.map((input, index) => {
+        const error = workCtx.Err(); if (error) throw error;
+        const n = nodesByID.get(nodeIDs.get(input.id)!)!;
+        const label = n.Label
+          ? LabelTopLeft(n, n.Label.Position, n.Label.Width, n.Label.Height)
+          : null;
+        return {
           ...input,
-          ...(lifelines[index] ? { to: input.from } : {}),
-          points,
-          ...(sourceArrow
+          x: n.TopLeft!.X + n.Width / 2,
+          y: n.TopLeft!.Y + n.Height / 2,
+          width: n.Width,
+          height: n.Height,
+          rank: ranks.get(input.id) ?? 0,
+          order: index,
+          ...(n.FontSize !== null ? { fontSize: n.FontSize } : {}),
+          ...(n.Icon
+            ? { iconPosition: LabelPositionString(n.Icon.Position) }
+            : {}),
+          ...(label
             ? {
-                sourceArrowheadLabelPosition: {
-                  x: sourceArrow.Box.TopLeft.X + sourceArrow.Box.Width / 2,
-                  y: sourceArrow.Box.TopLeft.Y + sourceArrow.Box.Height / 2,
-                },
+                labelX: label.X + n.Label!.Width / 2,
+                labelY: label.Y + n.Label!.Height / 2,
+                labelWidth: n.Label!.Width,
+                labelHeight: n.Label!.Height,
+                labelPosition: LabelPositionString(n.Label!.Position),
               }
             : {}),
-          ...(targetArrow
-            ? {
-                targetArrowheadLabelPosition: {
-                  x: targetArrow.Box.TopLeft.X + targetArrow.Box.Width / 2,
-                  y: targetArrow.Box.TopLeft.Y + targetArrow.Box.Height / 2,
-                },
-              }
-            : {}),
-          x: center.x,
-          y: center.y,
-          isCurve: edge.IsCurve,
-          ...(edge.Label
-            ? {
-                labelPosition: LabelPositionString(
-                  reversed[index]
-                    ? Mirrored(edge.Label.Position)
-                    : edge.Label.Position,
-                ),
-                labelPercentage: reversed[index]
-                  ? 1 - edge.LabelPercentage
-                  : edge.LabelPercentage,
-              }
-            : {}),
-        },
-      ];
-    }),
-  };
-  const canceledBeforeCommit = ctx.Err();
-  if (canceledBeforeCommit) throw new Error(`tala layout stopped before commit: ${canceledBeforeCommit.message}`, { cause: canceledBeforeCommit });
-  return result;
+        };
+      }),
+      edges: inputEdges.flatMap((input, index) => {
+        const error = workCtx.Err(); if (error) throw error;
+        const edge = edgesByID.get(edgeIDs[index]!);
+        if (!edge) return [];
+        const points = (
+          reversed[index] ? [...edge.Points].reverse() : edge.Points
+        ).map((p) => ({ x: p.X, y: p.Y }));
+        const label = edge.Label
+          ? EdgeLabelTopLeft(
+              edge,
+              edge.Label.Position,
+              edge.Label.Width,
+              edge.Label.Height,
+            )
+          : null;
+        const center = label
+          ? {
+              x: label.X + edge.Label!.Width / 2,
+              y: label.Y + edge.Label!.Height / 2,
+            }
+          : routeMidpoint(points);
+        const sourceArrow = PositionArrowheadLabel(
+          edge,
+          !!reversed[index],
+          edge.Points,
+        );
+        const targetArrow = PositionArrowheadLabel(
+          edge,
+          !reversed[index],
+          edge.Points,
+        );
+        return [
+          {
+            ...input,
+            ...(lifelines[index] ? { to: input.from } : {}),
+            points,
+            ...(sourceArrow
+              ? {
+                  sourceArrowheadLabelPosition: {
+                    x: sourceArrow.Box.TopLeft.X + sourceArrow.Box.Width / 2,
+                    y: sourceArrow.Box.TopLeft.Y + sourceArrow.Box.Height / 2,
+                  },
+                }
+              : {}),
+            ...(targetArrow
+              ? {
+                  targetArrowheadLabelPosition: {
+                    x: targetArrow.Box.TopLeft.X + targetArrow.Box.Width / 2,
+                    y: targetArrow.Box.TopLeft.Y + targetArrow.Box.Height / 2,
+                  },
+                }
+              : {}),
+            x: center.x,
+            y: center.y,
+            isCurve: edge.IsCurve,
+            ...(edge.Label
+              ? {
+                  labelPosition: LabelPositionString(
+                    reversed[index]
+                      ? Mirrored(edge.Label.Position)
+                      : edge.Label.Position,
+                  ),
+                  labelPercentage: reversed[index]
+                    ? 1 - edge.LabelPercentage
+                    : edge.LabelPercentage,
+                }
+              : {}),
+          },
+        ];
+      }),
+    };
+    const canceledBeforeCommit = workCtx.Err();
+    if (canceledBeforeCommit) throw new Error(`tala layout stopped before commit: ${canceledBeforeCommit.message}`, { cause: canceledBeforeCommit });
+    return result;
+  } finally {
+    cancelWork();
+  }
 }

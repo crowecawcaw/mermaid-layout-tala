@@ -135,7 +135,9 @@ Both `layoutFlowchart` and `routeEdges` accept a `context` option. Use
 `withCancel()` to create a context and cancellation function, or implement
 `TalaContext` to observe cancellation from shared state. Calls are synchronous,
 so a cancellation callback on the same JavaScript event loop cannot run until
-the call returns. Seed attempts execute sequentially; Go's `MaxConcurrency`
+the call returns. A custom context must report a closed `Done()` when `Err()`
+becomes non-null; `Done() === null` means it cannot be canceled, as in Go.
+Seed attempts execute sequentially; Go's `MaxConcurrency`
 setting has no synchronous TypeScript equivalent. `withCancel(parent)` inherits
 the parent's values and cancellation.
 

@@ -4,6 +4,7 @@ export interface Done {
 }
 export interface Context {
   Value?(key: symbol): unknown;
+  /** Null means never canceled; otherwise the signal closes before Err becomes non-null. */
   Done(): Done | null;
   Err(): Error | null;
 }

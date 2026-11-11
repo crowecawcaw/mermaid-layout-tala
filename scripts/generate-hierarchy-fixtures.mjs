@@ -81,6 +81,7 @@ const packages = {
   layoutcompiled: '',
   layoutarrowvalidation: '',
   layoutcancellation: '',
+  layoutcontextpoll: '',
   resultvalidation: '',
   resultmetadata: '',
   loops: 'internal/loops',
