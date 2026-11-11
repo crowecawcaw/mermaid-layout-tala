@@ -14,6 +14,7 @@ import proximity from './fixtures/upstream-layoutproximity.json';
 import sequence from './fixtures/upstream-layoutsequence.json';
 import styles from './fixtures/upstream-layoutstyles.json';
 import ordering from './fixtures/upstream-layoutordering.json';
+import compiled from './fixtures/upstream-layoutcompiled.json';
 import {
   layoutFlowchart,
   type LayoutDirection,
@@ -34,6 +35,7 @@ it.each([
   ...sequence,
   ...styles,
   ...ordering,
+  ...compiled,
 ])('matches pinned Go public layout $name', (fixture) => {
   const actual = layoutFlowchart(fixture.nodes, fixture.edges, {
     ...fixture.options,

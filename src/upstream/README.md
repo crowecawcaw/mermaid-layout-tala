@@ -9,7 +9,7 @@ routing strategies. Preserve upstream package boundaries and function names
 where possible so changes can be reviewed beside their Go source.
 
 The public flowchart API now uses these modules in the upstream stage order.
-The checked-in 557-case full-layout corpus matches the pinned Go implementation.
+The checked-in 601-case full-layout corpus matches the pinned Go implementation.
 That does not establish complete parity for inputs or D2 features outside the
 adapter model; extend the differential corpus as those are added.
 

@@ -13,9 +13,9 @@ full parity. The prior WebAssembly replacement remains reverted; the public
 | Engine and graph model | Direct TypeScript translation of the upstream pipeline and graph stages | `upstream-enginepipeline.test.ts` compares complete single-seed layouts; `upstream-engine-corpus.test.ts` compares all 34 upstream layout inputs and all 19 benchmark graphs at seeds 1 and 123, plus all six upstream fuzz seeds. These include a 130-node graph, table-routing benchmarks, and labeled self-loops across shapes. Broaden cancellation coverage |
 | Hierarchy, placement and packing | Translated upstream algorithms, including compound hierarchy placement | Go differential fixtures cover rank assignment, ordering, alignment, gap normalization, recursive packing and grouped layouts; more complex graphs remain to be tested |
 | Routing and labels | Translated upstream OVG routing, cleanup, port swaps, segment balancing, channel nudging, shortcutting and label placement | Go differential fixtures cover stages and work limits; all 10 upstream OVG input topologies are compared with positioned nodes, including port metadata, and all 11 upstream OVG golden snapshots match at their original pipeline stage. Broader cluster and cancellation coverage remains |
-| Candidate selection | Go-compatible random stream, upstream penalty/area scoring and compound refinement | Scoring and refinement have differential fixtures; public adapter validation and additional D2 metadata need coverage |
-| Mermaid adapter | Maps the supported flowchart input to the translated graph | 557/557 pinned full-layout fixtures pass, including existing node and edge geometry, 40-node labeled and 24-node cyclic graphs, nested container directions, Unicode style folding, arrowhead styles, nested near paths, Unicode hash collisions, randomized nested graphs, authored ordering and explicit D2 edge indices. The input model does not expose all D2 shape and style features |
-| Resource accounting | Translated work guards, stage rollback, and public cancellation contexts | Go comparisons cover pre-canceled layout, routing and seed coordination; expand cancellation and failure tests through the complete public pipeline |
+| Candidate selection | Go-compatible random stream, upstream penalty/area scoring and compound refinement | Seed attempts run sequentially; Go can run them concurrently and exposes `MaxConcurrency`. Scoring and refinement have differential fixtures |
+| Mermaid adapter | Maps the supported flowchart input to the translated graph | 601/601 pinned full-layout fixtures pass, including 44 graphs compiled and measured by D2, existing node and edge geometry, 40-node labeled and 24-node cyclic graphs, nested container directions, Unicode style folding, arrowhead styles, nested near paths, Unicode hash collisions, randomized nested graphs, authored ordering and explicit D2 edge indices. The input model does not expose all D2 graph metadata |
+| Resource accounting | Translated work guards, stage rollback, and public cancellation contexts | Go comparisons cover pre-canceled layout, routing and seed coordination. Same-event-loop callbacks cannot interrupt synchronous TypeScript calls; expand cancellation and failure tests through the complete public pipeline |
 | Standalone edge rerouting | Additional-edge routing, the guarded `RouteEdges` transaction, and the public positioned-graph adapter are translated | 32 coordinator, 76 transaction, 90 public success and 5 public failure Go comparisons cover empty and full selections, nested graphs, alternate shapes, existing routes, arrowhead labels, SQL ports, reversed and parallel edges, lifelines and work limits; broaden sequence coverage |
 
 `upstream-opacity.test.ts` also compares node and edge opacity validation and
@@ -44,7 +44,7 @@ parity with Go has not been established.
 
 ## Acceptance work still required
 
-1. Expand end-to-end Go comparisons beyond the current 557 cases, including
+1. Expand end-to-end Go comparisons beyond the current 601 cases, including
    larger and nested graphs, labels, alternate shapes and fixed ports.
 2. Extend the Mermaid input mapping and result validation for upstream features
    that the current flowchart API cannot represent.
@@ -78,6 +78,7 @@ TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 ovg
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 engineovggoldens
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 layoutinputgeometry
 TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 layoutnodegeometry
+TALA_GO=/path/to/go node scripts/generate-hierarchy-fixtures.mjs /path/to/d2 layoutcompiled
 go run scripts/upstream/random-fixtures.go > test/fixtures/upstream-random.json
 npm run test:parity
 ```

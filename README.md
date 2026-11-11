@@ -70,7 +70,7 @@ runs the default seeds `[1, 2, 3]` using a Go-compatible random stream and selec
 the result by upstream penalty, then area, with later seeds winning exact ties.
 
 The public layout now runs the translated upstream TALA pipeline. The pinned
-full-layout corpus matches all 557 cases, including nested groups, loops, parallel
+full-layout corpus matches all 601 cases, including D2-compiled graphs, nested groups, loops, parallel
 edges and all four directions. This corpus is a useful baseline, not proof of
 parity for every graph or all D2 features. See the [parity matrix](./test/UPSTREAM-PARITY.md).
 
@@ -135,8 +135,9 @@ Both `layoutFlowchart` and `routeEdges` accept a `context` option. Use
 `withCancel()` to create a context and cancellation function, or implement
 `TalaContext` to observe cancellation from shared state. Calls are synchronous,
 so a cancellation callback on the same JavaScript event loop cannot run until
-the call returns. `withCancel(parent)` inherits the parent's values and
-cancellation.
+the call returns. Seed attempts execute sequentially; Go's `MaxConcurrency`
+setting has no synchronous TypeScript equivalent. `withCancel(parent)` inherits
+the parent's values and cancellation.
 
 Use `setTalaSeeds([1, 2, 3])` to configure defaults, or pass `seeds` in the direct
 API's options. Seeds accept safe integer numbers or signed 64-bit `bigint`
@@ -155,7 +156,7 @@ npm test
 ```
 
 `npm run test:parity` compares complete layouts, upstream engine graphs, and standalone rerouting against
-pinned Go fixtures. It currently reports 557/557 layouts, 112/112 upstream engine graph-and-seed cases, 10/10 upstream visibility graph cases, 10/10 upstream visibility golden cases, 32/32 layout failures,
+pinned Go fixtures. It currently reports 601/601 layouts, 112/112 upstream engine graph-and-seed cases, 10/10 upstream visibility graph cases, 10/10 upstream visibility golden cases, 32/32 layout failures,
 90/90 rerouting cases, and 5/5 rerouting failures matching. Additional upstream features and graph shapes still need
 differential coverage.
 
