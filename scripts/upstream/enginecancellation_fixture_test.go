@@ -35,7 +35,7 @@ func TestExportTypeScriptEnginecancellationFixtures(t *testing.T) {
 	}
 	results := []any{}
 	cases := []struct{ size, limit int }{}
-	for _, limit := range []int{0, 1, 2, 3, 5, 10, 20, 40, 80, 160, 320, 640, 1280, 2560, 5120, 10240} {
+	for _, limit := range []int{0, 1, 2, 3, 5, 10, 20, 40, 80, 160, 320, 640, 1280, 2560, 5120, 10240, 20000, 50000, 100000, 250000, 350000, 375000, 380000, 383000, 384000, 384100, 384200, 384230, 500000} {
 		cases = append(cases, struct{ size, limit int }{6, limit})
 	}
 	for _, limit := range []int{0, 1, 2, 3} {

@@ -112,6 +112,97 @@
     "size": 6
   },
   {
+    "checks": 20001,
+    "error": "sizelessOptimizer.optimize: context canceled",
+    "hasResult": false,
+    "limit": 20000,
+    "size": 6
+  },
+  {
+    "checks": 50001,
+    "error": "EdgeLength: context canceled",
+    "hasResult": false,
+    "limit": 50000,
+    "size": 6
+  },
+  {
+    "checks": 100001,
+    "error": "EdgeLength: context canceled",
+    "hasResult": false,
+    "limit": 100000,
+    "size": 6
+  },
+  {
+    "checks": 250001,
+    "error": "EdgeLength: context canceled",
+    "hasResult": false,
+    "limit": 250000,
+    "size": 6
+  },
+  {
+    "checks": 350001,
+    "error": "EdgeLength: context canceled",
+    "hasResult": false,
+    "limit": 350000,
+    "size": 6
+  },
+  {
+    "checks": 375001,
+    "error": "EdgeLength: context canceled",
+    "hasResult": false,
+    "limit": 375000,
+    "size": 6
+  },
+  {
+    "checks": 380001,
+    "error": "EdgeLength: context canceled",
+    "hasResult": false,
+    "limit": 380000,
+    "size": 6
+  },
+  {
+    "checks": 383001,
+    "error": "context canceled",
+    "hasResult": false,
+    "limit": 383000,
+    "size": 6
+  },
+  {
+    "checks": 384001,
+    "error": "EdgeRouting: context canceled",
+    "hasResult": false,
+    "limit": 384000,
+    "size": 6
+  },
+  {
+    "checks": 384101,
+    "error": "EdgeRouting: context canceled",
+    "hasResult": false,
+    "limit": 384100,
+    "size": 6
+  },
+  {
+    "checks": 384201,
+    "error": "EdgeRouting: context canceled",
+    "hasResult": false,
+    "limit": 384200,
+    "size": 6
+  },
+  {
+    "checks": 384231,
+    "error": "PlaceLabels: context canceled",
+    "hasResult": false,
+    "limit": 384230,
+    "size": 6
+  },
+  {
+    "checks": 384246,
+    "error": "",
+    "hasResult": true,
+    "limit": 500000,
+    "size": 6
+  },
+  {
     "checks": 1,
     "error": "Autolayout: context canceled",
     "hasResult": false,
