@@ -3,6 +3,7 @@ package engine
 
 import (
 	"context"
+	"crypto/sha256"
 	"encoding/json"
 	"fmt"
 	"math"
@@ -169,6 +170,12 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 		cases = append(cases, struct{ name, path string }{f.name, ""})
 	}
 	fixtures := []any{}
+	seedGoldens := map[string]string{
+		"clusters":                   "4f742ab0d3199a66b716e873fdba4c8bb9313d62c0a7a0102d710b7e82faf60f",
+		"hierarchy_subgraphs":        "c3566b4aac683d5571016b8db25bac771dd1e038199d55cd6a70bf8f6747efff",
+		"simple_container_hierarchy": "d7e4ef56bef99c4ae854a5a44d45dcffd93513a09b1b88719a5c5cb261101485",
+		"tree-n-seq":                 "68f40e15b4794a5b6704dccf6fd93a9de446780bb2195ada80192919b6ddf0a9",
+	}
 	for _, c := range cases {
 		data := fuzzInputs[c.name]
 		if c.path != "" {
@@ -181,6 +188,8 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 		seeds := []int64{1, 123}
 		if seed, ok := fuzzSeeds[c.name]; ok {
 			seeds = []int64{seed}
+		} else if _, ok := seedGoldens[c.name]; ok && strings.HasPrefix(c.path, "layout/") {
+			seeds = append(seeds, 8675309)
 		}
 		for _, seed := range seeds {
 			graph := layoutgraph.NewGraph()
@@ -276,6 +285,15 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 			serialized, err := graphjson.Serialize(context.Background(), result)
 			if err != nil {
 				t.Fatalf("%s seed %d serialize: %v", c.name, seed, err)
+			}
+			if seed == 8675309 {
+				data, err := json.Marshal(serialized)
+				if err != nil {
+					t.Fatal(err)
+				}
+				if got, want := fmt.Sprintf("%x", sha256.Sum256(data)), seedGoldens[c.name]; got != want {
+					t.Fatalf("%s seed %d: upstream fingerprint %s, want %s", c.name, seed, got, want)
+				}
 			}
 			structure := corpusStructure(serialized)
 			fixtures = append(fixtures, map[string]any{"name": fmt.Sprintf("upstream-%s-seed-%d", c.name, seed), "seed": fmt.Sprint(seed), "input": json.RawMessage(data), "nodes": nodes, "edges": edges, "structure": structure})
