@@ -147,6 +147,19 @@ describe('Mermaid flowchart layout slice', () => {
       expect(() => translateFlowchart([{ id: 'bad', width: 80, height: 50, desiredWidth }], [], {})).toThrow(/desiredWidth/);
   });
 
+  it('validates and applies D2 node style metadata', () => {
+    const nodes = [
+      { id: 'style', width: 80, height: 50, style: { fontSize: '+25', threeDee: 'true', multiple: 'TRUE' } },
+      { id: 'override', width: 80, height: 50, fontSize: 19, is3D: false, style: { fontSize: '25', threeDee: 'true', multiple: 'true' } },
+    ];
+    const { graph } = translateFlowchart(nodes, [], {});
+    expect(graph.Nodes.map((n) => [n.FontSize, n.Is3D, n.IsMultiple])).toEqual([
+      [25, true, false], [19, false, true],
+    ]);
+    for (const style of [{ fontSize: '0' }, { fontSize: '25\n' }, { multiple: 'yes' }, { underline: 'true\n' }])
+      expect(() => translateFlowchart([{ id: 'bad', width: 80, height: 50, style }], [], {})).toThrow(/invalid/);
+  });
+
   it('derives node visibility from D2 styles, labels and icons', () => {
     const transparent = { fill: 'transparent', strokeWidth: '0' };
     const nodes = [

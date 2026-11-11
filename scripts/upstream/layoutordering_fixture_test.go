@@ -111,6 +111,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"empty-arrowhead-shapes", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 27},
 		{"independent-fixed-sizes", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 28},
 		{"unicode-hash-collision", [][2]int{{0, 2}, {1, 2}, {2, 3}, {3, 4}, {4, 0}}, false, 29},
+		{"node-style-metadata", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 30},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -269,6 +270,16 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 						input.DesiredHeight = &height
 					}
 				}
+				if test.shapeSet == 30 {
+					styles := []map[string]string{
+						{"fontSize": "25", "threeDee": "true", "bold": "TRUE"},
+						{"fontSize": "18", "multiple": "true", "italic": "1"},
+						{"threeDee": "TRUE", "multiple": "1"},
+						{"fontSize": "+22", "underline": "False"},
+						{"shadow": "t", "filled": "0"},
+					}
+					input.Style = styles[i]
+				}
 				if test.shapeSet == 26 {
 					id := []string{"outer", "", "leaf", "other", "solo"}[i]
 					input.D2ID = &id
@@ -355,6 +366,30 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 				}
 				if v, ok := input.Style["strokeWidth"]; ok {
 					obj.Style.StrokeWidth = &d2graph.Scalar{Value: v}
+				}
+				if v, ok := input.Style["fontSize"]; ok {
+					obj.Style.FontSize = &d2graph.Scalar{Value: v}
+				}
+				if v, ok := input.Style["threeDee"]; ok {
+					obj.Style.ThreeDee = &d2graph.Scalar{Value: v}
+				}
+				if v, ok := input.Style["multiple"]; ok {
+					obj.Style.Multiple = &d2graph.Scalar{Value: v}
+				}
+				if v, ok := input.Style["bold"]; ok {
+					obj.Style.Bold = &d2graph.Scalar{Value: v}
+				}
+				if v, ok := input.Style["italic"]; ok {
+					obj.Style.Italic = &d2graph.Scalar{Value: v}
+				}
+				if v, ok := input.Style["underline"]; ok {
+					obj.Style.Underline = &d2graph.Scalar{Value: v}
+				}
+				if v, ok := input.Style["shadow"]; ok {
+					obj.Style.Shadow = &d2graph.Scalar{Value: v}
+				}
+				if v, ok := input.Style["filled"]; ok {
+					obj.Style.Filled = &d2graph.Scalar{Value: v}
 				}
 				parent.Children[strings.ToLower(d2ID)] = obj
 				parent.ChildrenArray = append(parent.ChildrenArray, obj)

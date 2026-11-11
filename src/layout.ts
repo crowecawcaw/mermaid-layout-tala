@@ -5,13 +5,8 @@ import { layoutFlowchartTranslated } from './upstream/adapter/flowchart.js';
 
 export type LayoutDirection = 'TB' | 'BT' | 'LR' | 'RL';
 
-/** D2 style fields that determine whether a node participates as visible. */
-export interface NodeStyleInput {
-  opacity?: string;
-  fill?: string;
-  stroke?: string;
-  strokeWidth?: string;
-}
+/** D2 node style attributes. */
+export interface NodeStyleInput extends EdgeStyleInput {}
 
 export interface LayoutNode extends RankNode {
   /** Original local D2 object ID when it differs from the unique API ID. */

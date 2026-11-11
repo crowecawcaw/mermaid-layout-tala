@@ -8,6 +8,7 @@ import type {
   LayoutDirection,
   RoutingNode,
   RoutingEdge,
+  EdgeStyleInput,
 } from '../../layout.js';
 import { getTalaSeeds, normalizeSeeds } from '../../random.js';
 import { Background, type Context } from '../limits/context.js';
@@ -142,6 +143,25 @@ function arrowFlags(e: LayoutEdge): [boolean, boolean] {
     e.targetArrow ?? (e.targetArrowhead === undefined || (e.targetArrowhead !== '' && e.targetArrowhead !== 'none' && e.targetArrowhead !== 'arrow_open')),
   ];
 }
+function validateStyle(style: EdgeStyleInput | undefined, owner: string): void {
+  if (!style) return;
+  if (style.opacity !== undefined) {
+    const opacity = parseGoFloat(style.opacity);
+    if (!Number.isFinite(opacity) || opacity < 0 || opacity > 1)
+      throw new Error(`${owner} has invalid opacity`);
+  }
+  for (const key of ['strokeWidth', 'fontSize'] as const)
+    if (style[key] !== undefined &&
+        (!/^[+-]?\d+(?![\s\S])/.test(style[key]!) ||
+         Number(style[key]) < (key === 'fontSize' ? 1 : 0) ||
+         Number(style[key]) > 1_000_000_000))
+      throw new Error(`${owner} has invalid ${key}`);
+  for (const key of ['animated', 'bold', 'doubleBorder', 'filled', 'italic',
+    'multiple', 'shadow', 'threeDee', 'underline'] as const)
+    if (style[key] !== undefined &&
+        !/^(?:1|0|t|T|f|F|true|false|TRUE|FALSE|True|False)(?![\s\S])/.test(style[key]!))
+      throw new Error(`${owner} has invalid ${key}`);
+}
 export function translateFlowchart(
   inputNodes: readonly LayoutNode[],
   inputEdges: readonly LayoutEdge[],
@@ -203,15 +223,7 @@ export function translateFlowchart(
           Math.abs(x + n.width) > 1_000_000_000 || Math.abs(y + n.height) > 1_000_000_000)
         throw new Error(`node ${n.id} has an invalid existing position`);
     }
-    if (n.style?.opacity !== undefined) {
-      const opacity = parseGoFloat(n.style.opacity);
-      if (!Number.isFinite(opacity) || opacity < 0 || opacity > 1)
-        throw new Error(`node ${n.id} has invalid opacity`);
-    }
-    if (n.style?.strokeWidth !== undefined &&
-        (!/^[+-]?\d+$/.test(n.style.strokeWidth) || Number(n.style.strokeWidth) < 0 ||
-         Number(n.style.strokeWidth) > 1_000_000_000))
-      throw new Error(`node ${n.id} has invalid strokeWidth`);
+    validateStyle(n.style, `node ${n.id}`);
     if (
       !Number.isFinite(n.width) ||
       n.width <= 0 ||
@@ -377,8 +389,8 @@ export function translateFlowchart(
     node.IsInvisible = !!n.isInvisible ||
       (style?.opacity !== undefined && parseGoFloat(style.opacity) === 0) ||
       (!!noFill && !!noStroke && noLabel && n.icon === undefined);
-    node.Is3D = n.is3D ?? false;
-    node.IsMultiple = n.isMultiple ?? false;
+    node.Is3D = n.is3D ?? (style?.threeDee === 'true');
+    node.IsMultiple = n.isMultiple ?? (style?.multiple === 'true');
     if (n.fixedPosition)
       node.FixedTopLeft = new Point(n.fixedPosition.x, n.fixedPosition.y);
     if (n.icon !== undefined) {
@@ -391,7 +403,7 @@ export function translateFlowchart(
       if (byId.get(parent)?.shape === 'sequence_diagram') insideSequence = true;
     }
     node.FontSize =
-      n.fontSize ??
+      n.fontSize ?? (style?.fontSize !== undefined ? Number(style.fontSize) : undefined) ??
       (((n.isGroup && (children.get(n.id)?.length ?? 0) > 0) || n.isGrid) && n.shape !== 'text' && !insideSequence
         ? ([28, 24, 20][depth - 1] ?? 16)
         : n.tableColumns !== undefined || n.hasClassData
@@ -575,35 +587,7 @@ export function translateFlowchart(
         const value = style[key];
         if (value !== undefined) e.Style[fields[key]] = { Value: value };
       }
-      if (style.opacity !== undefined) {
-        const opacity = parseGoFloat(style.opacity);
-        if (!Number.isFinite(opacity) || opacity < 0 || opacity > 1)
-          throw new Error(`edge ${input.id} has invalid opacity`);
-      }
-      for (const key of ['strokeWidth', 'fontSize'] as const)
-        if (
-          style[key] !== undefined &&
-          (!/^[+-]?\d+$/.test(style[key]!) ||
-            Number(style[key]) < (key === 'fontSize' ? 1 : 0) ||
-            Number(style[key]) > 1_000_000_000)
-        )
-          throw new Error(`edge ${input.id} has invalid ${key}`);
-      for (const key of [
-        'animated',
-        'bold',
-        'doubleBorder',
-        'filled',
-        'italic',
-        'multiple',
-        'shadow',
-        'threeDee',
-        'underline',
-      ] as const)
-        if (
-          style[key] !== undefined &&
-          !/^(1|0|t|T|f|F|true|false|TRUE|FALSE|True|False)$/.test(style[key]!)
-        )
-          throw new Error(`edge ${input.id} has invalid ${key}`);
+      validateStyle(style, `edge ${input.id}`);
     }
     if (input.isInvisible) e.Style.Stroke = { Value: 'transparent' };
     e.IsInvisible =

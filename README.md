@@ -70,14 +70,15 @@ runs the default seeds `[1, 2, 3]` using a Go-compatible random stream and selec
 the result by upstream penalty, then area, with later seeds winning exact ties.
 
 The public layout now runs the translated upstream TALA pipeline. The pinned
-full-layout corpus matches all 453 cases, including nested groups, loops, parallel
+full-layout corpus matches all 457 cases, including nested groups, loops, parallel
 edges and all four directions. This corpus is a useful baseline, not proof of
 parity for every graph or all D2 features. See the [parity matrix](./test/UPSTREAM-PARITY.md).
 
 The synchronous `layoutFlowchart(nodes, edges, options)` API is preserved. Nodes
 can specify `parentId`, `isGroup`, `direction`, `shape`, measured labels,
 icon placement, font size, class metadata, fixed positions, `nearId` relationships, and D2
-visibility styles (`opacity`, `fill`, `stroke`, and `strokeWidth`). Edges can specify measured
+styles, including `fontSize`, `threeDee`, and `multiple`. The convenience fields
+`fontSize`, `is3D`, and `isMultiple` take precedence over their style equivalents. Edges can specify measured
 labels, arrow flags, arrowhead types and fill. Nodes can request fixed dimensions with `fixedSize: true`, or set `desiredWidth` and `desiredHeight` independently. Invalid parent references and cycles
 are rejected. The legacy `nodeSpacing`, `rankSpacing`, `orderingPasses`, and
 `containerPadding` options are accepted for compatibility; upstream TALA uses
@@ -145,7 +146,7 @@ npm test
 ```
 
 `npm run test:parity` compares complete layouts and standalone rerouting against
-pinned Go fixtures. It currently reports 453/453 layouts and 45/45 rerouting
+pinned Go fixtures. It currently reports 457/457 layouts and 45/45 rerouting
 cases matching. Additional upstream features and graph shapes still need
 differential coverage.
 
