@@ -43,6 +43,36 @@ func TestExportTypeScriptLayoutlargeFixtures(t *testing.T) {
 		{"twelve", 12, [][2]int{{0, 2}, {0, 3}, {1, 3}, {1, 4}, {2, 5}, {3, 5}, {3, 6}, {4, 6}, {5, 7}, {5, 8}, {6, 8}, {6, 9}, {7, 10}, {8, 10}, {8, 11}, {9, 11}}},
 		{"large-cyclic", 8, [][2]int{{0, 1}, {1, 2}, {2, 3}, {3, 0}, {1, 4}, {4, 5}, {5, 2}, {3, 6}, {6, 7}, {7, 4}, {0, 5}, {2, 6}, {5, 7}, {7, 7}}},
 	}
+	pairs := [][2]int{}
+	for layer := 0; layer < 5; layer++ {
+		for column := 0; column < 4; column++ {
+			from := layer*4 + column
+			pairs = append(pairs, [2]int{from, (layer+1)*4 + column})
+			if column < 3 {
+				pairs = append(pairs, [2]int{from, (layer+1)*4 + column + 1})
+			}
+		}
+	}
+	cases = append(cases, struct {
+		name  string
+		count int
+		pairs [][2]int
+	}{"twenty-four-layered", 24, pairs})
+	pairs = [][2]int{}
+	for layer := 0; layer < 7; layer++ {
+		for column := 0; column < 5; column++ {
+			from := layer*5 + column
+			pairs = append(pairs, [2]int{from, (layer+1)*5 + column})
+			if column < 4 {
+				pairs = append(pairs, [2]int{from, (layer+1)*5 + column + 1})
+			}
+		}
+	}
+	cases = append(cases, struct {
+		name  string
+		count int
+		pairs [][2]int
+	}{"forty-layered", 40, pairs})
 	for _, test := range cases {
 		for _, direction := range []string{"TB", "BT", "LR", "RL"} {
 			g := d2graph.NewGraph()
@@ -79,7 +109,7 @@ func TestExportTypeScriptLayoutlargeFixtures(t *testing.T) {
 			for i, pair := range test.pairs {
 				input := nativeEdgeInput{D2Index: i, ID: fmt.Sprintf("e%d", i), From: fmt.Sprintf("n%d", pair[0]), To: fmt.Sprintf("n%d", pair[1])}
 				edge := &d2graph.Edge{Index: i, Src: objects[input.From], Dst: objects[input.To], DstArrow: true, Attributes: d2graph.Attributes{}}
-				if test.name == "labelled" || test.name == "multiedges" {
+				if test.name == "labelled" || test.name == "multiedges" || (test.name == "twenty-four-layered" && i%3 == 0) || (test.name == "forty-layered" && i%5 == 0) {
 					input.LabelWidth = 40
 					input.LabelHeight = 20
 					edge.Label.Value = "label"
@@ -104,7 +134,14 @@ func TestExportTypeScriptLayoutlargeFixtures(t *testing.T) {
 				for _, p := range edge.Route {
 					points = append(points, map[string]float64{"x": p.X, "y": p.Y})
 				}
-				outEdges = append(outEdges, map[string]any{"id": edges[i].ID, "points": points})
+				record := map[string]any{"id": edges[i].ID, "points": points}
+				if edge.LabelPosition != nil {
+					record["labelPosition"] = *edge.LabelPosition
+				}
+				if edge.LabelPercentage != nil {
+					record["labelPercentage"] = *edge.LabelPercentage
+				}
+				outEdges = append(outEdges, record)
 			}
 			fixtures = append(fixtures, map[string]any{"name": test.name + "-" + direction, "nodes": nodes, "edges": edges, "options": map[string]any{"direction": direction, "seeds": []int{1, 2, 3}}, "expected": map[string]any{"nodes": outNodes, "edges": outEdges}})
 		}
