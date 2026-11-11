@@ -1,7 +1,7 @@
 // Translated from internal/engine/pipeline.go at D2 bf337903. MPL-2.0.
 // Copyright Terrastruct Inc. and contributors.
 import { GoRandom } from '../../random.js';
-import type { Context } from '../limits/context.js';
+import { WithCancel, type Context } from '../limits/context.js';
 import { MaxGraphSize } from '../limits/work.js';
 import type { Graph } from '../layoutgraph/graph.js';
 import { Clone } from '../layoutgraph/clone.js';
@@ -232,15 +232,12 @@ export function Layout(
   const beforeRun = ctx.Err();
   if (beforeRun) throw new Error(`Autolayout: ${beforeRun.message}`, { cause: beforeRun });
   if (workspace.Nodes.length) {
-    const workCtx: Context =
-      ctx.Done() === null
-        ? {
-            Done: () => ({ closed: false }),
-            Err: () => ctx.Err(),
-            Value: (key) => ctx.Value?.(key),
-          }
-        : ctx;
-    new Pipeline(workspace, options.Seed).runAllStages(workCtx);
+    const [workCtx, cancelWork] = ctx.Done() === null ? WithCancel(ctx) : [ctx, () => {}];
+    try {
+      new Pipeline(workspace, options.Seed).runAllStages(workCtx);
+    } finally {
+      cancelWork();
+    }
   }
   const error = ctx.Err();
   if (error) throw new Error(`Autolayout: ${error.message}`, { cause: error });

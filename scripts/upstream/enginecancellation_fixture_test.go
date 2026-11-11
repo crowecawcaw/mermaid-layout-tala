@@ -33,12 +33,19 @@ func TestExportTypeScriptEnginecancellationFixtures(t *testing.T) {
 		t.Skip()
 	}
 	results := []any{}
-	cases := []struct{ size, limit int }{}
+	type pollCase struct {
+		size, limit int
+		nilDone     bool
+	}
+	cases := []pollCase{}
 	for _, limit := range []int{0, 1, 2, 3, 5, 10, 20, 40, 80, 160, 320, 640, 1280, 2560, 5120, 10240, 20000, 50000, 100000, 250000, 350000, 375000, 380000, 383000, 384000, 384100, 384200, 384230, 500000} {
-		cases = append(cases, struct{ size, limit int }{6, limit})
+		cases = append(cases, pollCase{6, limit, false})
 	}
 	for _, limit := range []int{0, 1, 2, 3} {
-		cases = append(cases, struct{ size, limit int }{0, limit})
+		cases = append(cases, pollCase{0, limit, false})
+	}
+	for _, limit := range []int{0, 1, 2, 3, 5, 10, 20, 40, 80, 160, 320, 640, 1000} {
+		cases = append(cases, pollCase{6, limit, true})
 	}
 	for _, tc := range cases {
 		limit := tc.limit
@@ -56,7 +63,10 @@ func TestExportTypeScriptEnginecancellationFixtures(t *testing.T) {
 		if err != nil {
 			t.Fatal(err)
 		}
-		ctx := &corpusCancelContext{Context: context.Background(), limit: int64(limit), done: make(chan struct{})}
+		ctx := &corpusCancelContext{Context: context.Background(), limit: int64(limit)}
+		if !tc.nilDone {
+			ctx.done = make(chan struct{})
+		}
 		result, layoutErr := Layout(ctx, graph, LayoutOptions{Seed: 1})
 		after, err := graphjson.Marshal(context.Background(), graph)
 		if err != nil {
@@ -69,7 +79,7 @@ func TestExportTypeScriptEnginecancellationFixtures(t *testing.T) {
 		if layoutErr != nil {
 			message = layoutErr.Error()
 		}
-		results = append(results, map[string]any{"size": tc.size, "limit": limit, "checks": ctx.checks.Load(), "error": message, "hasResult": result != nil})
+		results = append(results, map[string]any{"size": tc.size, "limit": limit, "nilDone": tc.nilDone, "checks": ctx.checks.Load(), "error": message, "hasResult": result != nil})
 	}
 	data, err := json.MarshalIndent(results, "", "  ")
 	if err != nil {

@@ -5,7 +5,7 @@ import { Graph } from '../src/upstream/layoutgraph/graph.js';
 import { Node } from '../src/upstream/layoutgraph/node.js';
 import type { Context } from '../src/upstream/limits/context.js';
 
-it.each(fixtures)('matches Go engine cancellation after $limit checks with $size nodes without mutating the input', (fixture) => {
+it.each(fixtures)('matches Go engine cancellation after $limit checks with $size nodes and nilDone=$nilDone without mutating the input', (fixture) => {
   const graph = new Graph();
   const nodes = Array.from({ length: fixture.size }, (_, i) => new Node(BigInt(i + 1), 40, 30));
   for (const node of nodes) graph.AddNewNodeToContainer(null, node);
@@ -16,7 +16,7 @@ it.each(fixtures)('matches Go engine cancellation after $limit checks with $size
   });
   const before = snapshot();
   let checks = 0;
-  const ctx: Context = { Done: () => ({ closed: false }), Err: () => ++checks > fixture.limit ? new Error('context canceled') : null };
+  const ctx: Context = { Done: () => fixture.nilDone ? null : ({ closed: false }), Err: () => ++checks > fixture.limit ? new Error('context canceled') : null };
   if (fixture.hasResult) expect(Layout(ctx, graph, { Seed: 1n })).toBeInstanceOf(Graph);
   else expect(() => Layout(ctx, graph, { Seed: 1n })).toThrow(fixture.error);
   expect(checks).toBe(fixture.checks);

@@ -4,6 +4,7 @@
     "error": "Autolayout: context canceled",
     "hasResult": false,
     "limit": 0,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -11,6 +12,7 @@
     "error": "Autolayout: context canceled",
     "hasResult": false,
     "limit": 1,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -18,6 +20,7 @@
     "error": "Prescale: context canceled",
     "hasResult": false,
     "limit": 2,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -25,6 +28,7 @@
     "error": "Prescale: context canceled",
     "hasResult": false,
     "limit": 3,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -32,6 +36,7 @@
     "error": "PreprocessSequences: context canceled",
     "hasResult": false,
     "limit": 5,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -39,6 +44,7 @@
     "error": "PreprocessHierarchies: context canceled",
     "hasResult": false,
     "limit": 10,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -46,6 +52,7 @@
     "error": "PlaceChildrenOrder: context canceled",
     "hasResult": false,
     "limit": 20,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -53,6 +60,7 @@
     "error": "InitializeNodes: context canceled",
     "hasResult": false,
     "limit": 40,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -60,6 +68,7 @@
     "error": "EdgeLength: context canceled",
     "hasResult": false,
     "limit": 80,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -67,6 +76,7 @@
     "error": "EdgeLength: context canceled",
     "hasResult": false,
     "limit": 160,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -74,6 +84,7 @@
     "error": "EdgeLength: context canceled",
     "hasResult": false,
     "limit": 320,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -81,6 +92,7 @@
     "error": "EdgeLength: context canceled",
     "hasResult": false,
     "limit": 640,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -88,6 +100,7 @@
     "error": "EdgeLength: context canceled",
     "hasResult": false,
     "limit": 1280,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -95,6 +108,7 @@
     "error": "EdgeLength: context canceled",
     "hasResult": false,
     "limit": 2560,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -102,6 +116,7 @@
     "error": "EdgeLength: context canceled",
     "hasResult": false,
     "limit": 5120,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -109,6 +124,7 @@
     "error": "EdgeLength: context canceled",
     "hasResult": false,
     "limit": 10240,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -116,6 +132,7 @@
     "error": "sizelessOptimizer.optimize: context canceled",
     "hasResult": false,
     "limit": 20000,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -123,6 +140,7 @@
     "error": "EdgeLength: context canceled",
     "hasResult": false,
     "limit": 50000,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -130,6 +148,7 @@
     "error": "EdgeLength: context canceled",
     "hasResult": false,
     "limit": 100000,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -137,6 +156,7 @@
     "error": "EdgeLength: context canceled",
     "hasResult": false,
     "limit": 250000,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -144,6 +164,7 @@
     "error": "EdgeLength: context canceled",
     "hasResult": false,
     "limit": 350000,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -151,6 +172,7 @@
     "error": "EdgeLength: context canceled",
     "hasResult": false,
     "limit": 375000,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -158,6 +180,7 @@
     "error": "EdgeLength: context canceled",
     "hasResult": false,
     "limit": 380000,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -165,6 +188,7 @@
     "error": "context canceled",
     "hasResult": false,
     "limit": 383000,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -172,6 +196,7 @@
     "error": "EdgeRouting: context canceled",
     "hasResult": false,
     "limit": 384000,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -179,6 +204,7 @@
     "error": "EdgeRouting: context canceled",
     "hasResult": false,
     "limit": 384100,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -186,6 +212,7 @@
     "error": "EdgeRouting: context canceled",
     "hasResult": false,
     "limit": 384200,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -193,6 +220,7 @@
     "error": "PlaceLabels: context canceled",
     "hasResult": false,
     "limit": 384230,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -200,6 +228,7 @@
     "error": "",
     "hasResult": true,
     "limit": 500000,
+    "nilDone": false,
     "size": 6
   },
   {
@@ -207,6 +236,7 @@
     "error": "Autolayout: context canceled",
     "hasResult": false,
     "limit": 0,
+    "nilDone": false,
     "size": 0
   },
   {
@@ -214,6 +244,7 @@
     "error": "Autolayout: context canceled",
     "hasResult": false,
     "limit": 1,
+    "nilDone": false,
     "size": 0
   },
   {
@@ -221,6 +252,7 @@
     "error": "Autolayout: context canceled",
     "hasResult": false,
     "limit": 2,
+    "nilDone": false,
     "size": 0
   },
   {
@@ -228,6 +260,111 @@
     "error": "",
     "hasResult": true,
     "limit": 3,
+    "nilDone": false,
     "size": 0
+  },
+  {
+    "checks": 1,
+    "error": "Autolayout: context canceled",
+    "hasResult": false,
+    "limit": 0,
+    "nilDone": true,
+    "size": 6
+  },
+  {
+    "checks": 3,
+    "error": "Autolayout: context canceled",
+    "hasResult": false,
+    "limit": 1,
+    "nilDone": true,
+    "size": 6
+  },
+  {
+    "checks": 4,
+    "error": "Autolayout: context canceled",
+    "hasResult": false,
+    "limit": 2,
+    "nilDone": true,
+    "size": 6
+  },
+  {
+    "checks": 5,
+    "error": "Autolayout: context canceled",
+    "hasResult": false,
+    "limit": 3,
+    "nilDone": true,
+    "size": 6
+  },
+  {
+    "checks": 7,
+    "error": "Autolayout: context canceled",
+    "hasResult": false,
+    "limit": 5,
+    "nilDone": true,
+    "size": 6
+  },
+  {
+    "checks": 12,
+    "error": "Autolayout: context canceled",
+    "hasResult": false,
+    "limit": 10,
+    "nilDone": true,
+    "size": 6
+  },
+  {
+    "checks": 16,
+    "error": "",
+    "hasResult": true,
+    "limit": 20,
+    "nilDone": true,
+    "size": 6
+  },
+  {
+    "checks": 16,
+    "error": "",
+    "hasResult": true,
+    "limit": 40,
+    "nilDone": true,
+    "size": 6
+  },
+  {
+    "checks": 16,
+    "error": "",
+    "hasResult": true,
+    "limit": 80,
+    "nilDone": true,
+    "size": 6
+  },
+  {
+    "checks": 16,
+    "error": "",
+    "hasResult": true,
+    "limit": 160,
+    "nilDone": true,
+    "size": 6
+  },
+  {
+    "checks": 16,
+    "error": "",
+    "hasResult": true,
+    "limit": 320,
+    "nilDone": true,
+    "size": 6
+  },
+  {
+    "checks": 16,
+    "error": "",
+    "hasResult": true,
+    "limit": 640,
+    "nilDone": true,
+    "size": 6
+  },
+  {
+    "checks": 16,
+    "error": "",
+    "hasResult": true,
+    "limit": 1000,
+    "nilDone": true,
+    "size": 6
   }
 ]
