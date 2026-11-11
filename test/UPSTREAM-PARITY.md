@@ -44,7 +44,8 @@ compared at both seeds. Twenty reproducibly generated connected graphs add
 mixed shapes, cycles, labels and edge styles. Four directed hierarchy inputs
 cover root and container directions at both seeds. Two more preserve Unicode
 node and edge identities through layout, and two exercise stale and partially
-populated routes and edge-label positions.
+populated routes and edge-label positions. Two trees include multiple unset
+edge IDs and mixtures of unset and assigned IDs.
 An additional 60 public layouts compare zero, negative, signed 64-bit boundary,
 and duplicate seed selections across all four directions.
 The straight-edge fallback separately matches Go's cancellation poll count and

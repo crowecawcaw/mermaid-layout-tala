@@ -460,6 +460,29 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 		fuzzInputs[name] = data
 		cases = append(cases, struct{ name, path string }{name, ""})
 	}
+	for variant := 0; variant < 2; variant++ {
+		name := fmt.Sprintf("unset-edge-ids-%d", variant)
+		graph := layoutgraph.NewGraph()
+		nodes := []*layoutgraph.Node{}
+		for i := 0; i < 6; i++ {
+			node := layoutgraph.NewNode(int64(i+1), float64(50+i*5), float64(35+i*3))
+			graph.AddNewNodeToContainer(nil, node)
+			nodes = append(nodes, node)
+		}
+		for i := 1; i < len(nodes); i++ {
+			edge := graph.Connect(nodes[(i-1)/2], nodes[i])
+			edge.TargetArrowhead = "triangle"
+			if variant == 1 && i == 3 {
+				edge.ID = 100
+			}
+		}
+		data, err := graphjson.Marshal(context.Background(), graph)
+		if err != nil {
+			t.Fatal(err)
+		}
+		fuzzInputs[name] = data
+		cases = append(cases, struct{ name, path string }{name, ""})
+	}
 	random := rand.New(rand.NewSource(8675309))
 	for trial := 0; trial < 20; trial++ {
 		name := fmt.Sprintf("random-connected-%02d", trial)

@@ -57,7 +57,7 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
   }
   for (const input of fixture.input.edges) {
     const edge = graph.Connect(nodes.get(input.from)!, nodes.get(input.to)!);
-    edge.ID = BigInt(input.id);
+    edge.ID = BigInt('originalId' in input && input.originalId !== null ? input.originalId : input.id);
     if ('d2id' in input) edge.D2ID = input.d2id ?? null;
     edge.SourceArrowhead = input.sourceArrowhead;
     edge.TargetArrowhead = input.targetArrowhead;
@@ -152,7 +152,6 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
   expect(result.Nodes.map((node) => Number(node.ID))).toEqual(fixture.nodes.map((node) => node.id));
   expect(result.Edges.map((edge) => Number(edge.ID))).toEqual(fixture.edges.map((edge) => edge.id));
   const resultNodes = new Map(result.Nodes.map((node) => [Number(node.ID), node]));
-  const resultEdges = new Map(result.Edges.map((edge) => [Number(edge.ID), edge]));
   for (const expected of fixture.nodes) {
     const node = resultNodes.get(expected.id)!;
     expect(node).toBeDefined();
@@ -182,8 +181,8 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
     } else expect(node.Label).toBeNull();
     if ('iconPosition' in expected) expect(labelPositionString(node.Icon!.Position)).toBe(expected.iconPosition);
   }
-  for (const expected of fixture.edges) {
-    const edge = resultEdges.get(expected.id)!;
+  for (const [index, expected] of fixture.edges.entries()) {
+    const edge = result.Edges[index]!;
     expect(edge).toBeDefined();
     const style: Record<string, string> = {};
     for (const [key, value] of [['stroke', edge.Style.Stroke], ['strokeDash', edge.Style.StrokeDash], ['animated', edge.Style.Animated]] as const)
