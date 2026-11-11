@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"os"
+	"sync/atomic"
 	"testing"
 
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/graphjson"
@@ -13,18 +14,16 @@ import (
 
 type corpusCancelContext struct {
 	context.Context
-	remaining int
-	checks    int
-	done      chan struct{}
+	limit  int64
+	checks atomic.Int64
+	done   chan struct{}
 }
 
 func (c *corpusCancelContext) Done() <-chan struct{} { return c.done }
 func (c *corpusCancelContext) Err() error {
-	c.checks++
-	if c.remaining == 0 {
+	if c.checks.Add(1) > c.limit {
 		return context.Canceled
 	}
-	c.remaining--
 	return nil
 }
 
@@ -57,7 +56,7 @@ func TestExportTypeScriptEnginecancellationFixtures(t *testing.T) {
 		if err != nil {
 			t.Fatal(err)
 		}
-		ctx := &corpusCancelContext{Context: context.Background(), remaining: limit, done: make(chan struct{})}
+		ctx := &corpusCancelContext{Context: context.Background(), limit: int64(limit), done: make(chan struct{})}
 		result, layoutErr := Layout(ctx, graph, LayoutOptions{Seed: 1})
 		after, err := graphjson.Marshal(context.Background(), graph)
 		if err != nil {
@@ -70,7 +69,7 @@ func TestExportTypeScriptEnginecancellationFixtures(t *testing.T) {
 		if layoutErr != nil {
 			message = layoutErr.Error()
 		}
-		results = append(results, map[string]any{"size": tc.size, "limit": limit, "checks": ctx.checks, "error": message, "hasResult": result != nil})
+		results = append(results, map[string]any{"size": tc.size, "limit": limit, "checks": ctx.checks.Load(), "error": message, "hasResult": result != nil})
 	}
 	data, err := json.MarshalIndent(results, "", "  ")
 	if err != nil {

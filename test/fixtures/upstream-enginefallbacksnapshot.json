@@ -1,0 +1,461 @@
+{
+  "after": {
+    "edges": [
+      {
+        "from": 1,
+        "id": 0,
+        "points": [
+          {
+            "x": 1600,
+            "y": 1015
+          },
+          {
+            "x": 1520,
+            "y": 1015
+          }
+        ],
+        "to": 2
+      },
+      {
+        "from": 2,
+        "id": 0,
+        "points": [
+          {
+            "x": 1480,
+            "y": 1015
+          },
+          {
+            "x": 1400,
+            "y": 1015
+          }
+        ],
+        "to": 3
+      },
+      {
+        "from": 3,
+        "id": 0,
+        "points": [
+          {
+            "x": 1360,
+            "y": 1015
+          },
+          {
+            "x": 1280,
+            "y": 1015
+          }
+        ],
+        "to": 4
+      },
+      {
+        "from": 4,
+        "id": 0,
+        "points": [
+          {
+            "x": 1240,
+            "y": 1015
+          },
+          {
+            "x": 1160,
+            "y": 1015
+          }
+        ],
+        "to": 5
+      },
+      {
+        "from": 5,
+        "id": 0,
+        "points": [
+          {
+            "x": 1120,
+            "y": 1015
+          },
+          {
+            "x": 1040,
+            "y": 1015
+          }
+        ],
+        "to": 6
+      }
+    ],
+    "nodes": [
+      {
+        "height": 30,
+        "id": 1,
+        "topLeft": {
+          "x": 1600,
+          "y": 1000
+        },
+        "width": 40
+      },
+      {
+        "height": 30,
+        "id": 2,
+        "topLeft": {
+          "x": 1480,
+          "y": 1000
+        },
+        "width": 40
+      },
+      {
+        "height": 30,
+        "id": 3,
+        "topLeft": {
+          "x": 1360,
+          "y": 1000
+        },
+        "width": 40
+      },
+      {
+        "height": 30,
+        "id": 4,
+        "topLeft": {
+          "x": 1240,
+          "y": 1000
+        },
+        "width": 40
+      },
+      {
+        "height": 30,
+        "id": 5,
+        "topLeft": {
+          "x": 1120,
+          "y": 1000
+        },
+        "width": 40
+      },
+      {
+        "height": 30,
+        "id": 6,
+        "topLeft": {
+          "x": 1000,
+          "y": 1000
+        },
+        "width": 40
+      }
+    ]
+  },
+  "afterChecks": 384209,
+  "before": {
+    "edges": [
+      {
+        "from": 1,
+        "id": 0,
+        "points": [
+          {
+            "x": 1600,
+            "y": 1015
+          },
+          {
+            "x": 1520,
+            "y": 1015
+          }
+        ],
+        "to": 2
+      },
+      {
+        "from": 2,
+        "id": 0,
+        "points": [
+          {
+            "x": 1480,
+            "y": 1015
+          },
+          {
+            "x": 1400,
+            "y": 1015
+          }
+        ],
+        "to": 3
+      },
+      {
+        "from": 3,
+        "id": 0,
+        "points": [
+          {
+            "x": 1360,
+            "y": 1015
+          },
+          {
+            "x": 1280,
+            "y": 1015
+          }
+        ],
+        "to": 4
+      },
+      {
+        "from": 4,
+        "id": 0,
+        "points": [
+          {
+            "x": 1240,
+            "y": 1015
+          },
+          {
+            "x": 1160,
+            "y": 1015
+          }
+        ],
+        "to": 5
+      },
+      {
+        "from": 5,
+        "id": 0,
+        "points": [
+          {
+            "x": 1120,
+            "y": 1015
+          },
+          {
+            "x": 1040,
+            "y": 1015
+          }
+        ],
+        "to": 6
+      }
+    ],
+    "nodes": [
+      {
+        "height": 30,
+        "id": 1,
+        "topLeft": {
+          "x": 1600,
+          "y": 1000
+        },
+        "width": 40
+      },
+      {
+        "height": 30,
+        "id": 2,
+        "topLeft": {
+          "x": 1480,
+          "y": 1000
+        },
+        "width": 40
+      },
+      {
+        "height": 30,
+        "id": 3,
+        "topLeft": {
+          "x": 1360,
+          "y": 1000
+        },
+        "width": 40
+      },
+      {
+        "height": 30,
+        "id": 4,
+        "topLeft": {
+          "x": 1240,
+          "y": 1000
+        },
+        "width": 40
+      },
+      {
+        "height": 30,
+        "id": 5,
+        "topLeft": {
+          "x": 1120,
+          "y": 1000
+        },
+        "width": 40
+      },
+      {
+        "height": 30,
+        "id": 6,
+        "topLeft": {
+          "x": 1000,
+          "y": 1000
+        },
+        "width": 40
+      }
+    ]
+  },
+  "beforeChecks": 383858,
+  "counts": [
+    {
+      "after": 1,
+      "before": 1,
+      "name": "Prescale"
+    },
+    {
+      "after": 3,
+      "before": 3,
+      "name": "PreprocessSequences"
+    },
+    {
+      "after": 5,
+      "before": 5,
+      "name": "Preprocess"
+    },
+    {
+      "after": 7,
+      "before": 7,
+      "name": "PreprocessTrees"
+    },
+    {
+      "after": 10,
+      "before": 9,
+      "name": "PreprocessHierarchies"
+    },
+    {
+      "after": 12,
+      "before": 12,
+      "name": "PreprocessClusters"
+    },
+    {
+      "after": 14,
+      "before": 14,
+      "name": "PreprocessHubs"
+    },
+    {
+      "after": 368441,
+      "before": 16,
+      "name": "NodePlacement"
+    },
+    {
+      "after": 376334,
+      "before": 368443,
+      "name": "SwapStuff"
+    },
+    {
+      "after": 378967,
+      "before": 376336,
+      "name": "Transpose"
+    },
+    {
+      "after": 378971,
+      "before": 378969,
+      "name": "AlignAxes"
+    },
+    {
+      "after": 382349,
+      "before": 378973,
+      "name": "GapNormalization"
+    },
+    {
+      "after": 382513,
+      "before": 382351,
+      "name": "AlignAxes"
+    },
+    {
+      "after": 382515,
+      "before": 382515,
+      "name": "OptimizeClusters"
+    },
+    {
+      "after": 382517,
+      "before": 382517,
+      "name": "AlignAxes"
+    },
+    {
+      "after": 382519,
+      "before": 382519,
+      "name": "BalanceSymmetry"
+    },
+    {
+      "after": 383763,
+      "before": 382521,
+      "name": "Equidistance"
+    },
+    {
+      "after": 383767,
+      "before": 383765,
+      "name": "AlignAxes"
+    },
+    {
+      "after": 383769,
+      "before": 383769,
+      "name": "BinPack"
+    },
+    {
+      "after": 383771,
+      "before": 383771,
+      "name": "CleanupStuff"
+    },
+    {
+      "after": 383773,
+      "before": 383773,
+      "name": "Rescale"
+    },
+    {
+      "after": 383776,
+      "before": 383775,
+      "name": "EdgeRouting"
+    },
+    {
+      "after": 383778,
+      "before": 383778,
+      "name": "Crosshatch"
+    },
+    {
+      "after": 383850,
+      "before": 383780,
+      "name": "Dejitter"
+    },
+    {
+      "after": 383852,
+      "before": 383852,
+      "name": "EdgeRouting"
+    },
+    {
+      "after": 383854,
+      "before": 383854,
+      "name": "SimplifyEdgeRoutes"
+    },
+    {
+      "after": 383856,
+      "before": 383856,
+      "name": "SwapEdgePorts"
+    },
+    {
+      "after": 384209,
+      "before": 383858,
+      "name": "StraightEdgesFallback"
+    },
+    {
+      "after": 384211,
+      "before": 384211,
+      "name": "BalanceEdgeSegments"
+    },
+    {
+      "after": 384213,
+      "before": 384213,
+      "name": "FixClusterEdgeBranching"
+    },
+    {
+      "after": 384215,
+      "before": 384215,
+      "name": "TraceEdgesToShapeBorder"
+    },
+    {
+      "after": 384224,
+      "before": 384217,
+      "name": "ReorderDuplicates"
+    },
+    {
+      "after": 384226,
+      "before": 384226,
+      "name": "BinPack"
+    },
+    {
+      "after": 384234,
+      "before": 384228,
+      "name": "PlaceLabels"
+    },
+    {
+      "after": 384237,
+      "before": 384236,
+      "name": "NudgeEdgeChannels"
+    },
+    {
+      "after": 384240,
+      "before": 384239,
+      "name": "ShortcutEdgeRoutes"
+    },
+    {
+      "after": 384242,
+      "before": 384242,
+      "name": "Normalize"
+    }
+  ]
+}
