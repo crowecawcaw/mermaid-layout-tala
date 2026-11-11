@@ -1,0 +1,142 @@
+[
+  {
+    "checks": 1,
+    "error": "Autolayout: context canceled",
+    "hasResult": false,
+    "limit": 0,
+    "size": 6
+  },
+  {
+    "checks": 2,
+    "error": "Autolayout: context canceled",
+    "hasResult": false,
+    "limit": 1,
+    "size": 6
+  },
+  {
+    "checks": 3,
+    "error": "Prescale: context canceled",
+    "hasResult": false,
+    "limit": 2,
+    "size": 6
+  },
+  {
+    "checks": 4,
+    "error": "Prescale: context canceled",
+    "hasResult": false,
+    "limit": 3,
+    "size": 6
+  },
+  {
+    "checks": 6,
+    "error": "PreprocessSequences: context canceled",
+    "hasResult": false,
+    "limit": 5,
+    "size": 6
+  },
+  {
+    "checks": 11,
+    "error": "PreprocessHierarchies: context canceled",
+    "hasResult": false,
+    "limit": 10,
+    "size": 6
+  },
+  {
+    "checks": 21,
+    "error": "PlaceChildrenOrder: context canceled",
+    "hasResult": false,
+    "limit": 20,
+    "size": 6
+  },
+  {
+    "checks": 41,
+    "error": "InitializeNodes: context canceled",
+    "hasResult": false,
+    "limit": 40,
+    "size": 6
+  },
+  {
+    "checks": 81,
+    "error": "EdgeLength: context canceled",
+    "hasResult": false,
+    "limit": 80,
+    "size": 6
+  },
+  {
+    "checks": 161,
+    "error": "EdgeLength: context canceled",
+    "hasResult": false,
+    "limit": 160,
+    "size": 6
+  },
+  {
+    "checks": 321,
+    "error": "EdgeLength: context canceled",
+    "hasResult": false,
+    "limit": 320,
+    "size": 6
+  },
+  {
+    "checks": 641,
+    "error": "EdgeLength: context canceled",
+    "hasResult": false,
+    "limit": 640,
+    "size": 6
+  },
+  {
+    "checks": 1281,
+    "error": "EdgeLength: context canceled",
+    "hasResult": false,
+    "limit": 1280,
+    "size": 6
+  },
+  {
+    "checks": 2561,
+    "error": "EdgeLength: context canceled",
+    "hasResult": false,
+    "limit": 2560,
+    "size": 6
+  },
+  {
+    "checks": 5121,
+    "error": "EdgeLength: context canceled",
+    "hasResult": false,
+    "limit": 5120,
+    "size": 6
+  },
+  {
+    "checks": 10241,
+    "error": "EdgeLength: context canceled",
+    "hasResult": false,
+    "limit": 10240,
+    "size": 6
+  },
+  {
+    "checks": 1,
+    "error": "Autolayout: context canceled",
+    "hasResult": false,
+    "limit": 0,
+    "size": 0
+  },
+  {
+    "checks": 2,
+    "error": "Autolayout: context canceled",
+    "hasResult": false,
+    "limit": 1,
+    "size": 0
+  },
+  {
+    "checks": 3,
+    "error": "Autolayout: context canceled",
+    "hasResult": false,
+    "limit": 2,
+    "size": 0
+  },
+  {
+    "checks": 3,
+    "error": "",
+    "hasResult": true,
+    "limit": 3,
+    "size": 0
+  }
+]

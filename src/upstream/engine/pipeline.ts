@@ -220,17 +220,28 @@ export function Layout(
   if (initial)
     throw new Error(`Autolayout: ${initial.message}`, { cause: initial });
   if (!graph) throw new Error('TALA Autolayout requires a graph');
-  const workspace = Clone(ctx, graph);
-  if (!workspace.Nodes.length) return workspace;
-  const workCtx: Context =
-    ctx.Done() === null
-      ? {
-          Done: () => ({ closed: false }),
-          Err: () => ctx.Err(),
-          Value: (key) => ctx.Value?.(key),
-        }
-      : ctx;
-  new Pipeline(workspace, options.Seed).runAllStages(workCtx);
+  let workspace: Graph;
+  try {
+    workspace = Clone(ctx, graph);
+  } catch (error) {
+    const canceled = ctx.Err();
+    if (canceled) throw new Error(`Autolayout: ${canceled.message}`, { cause: canceled });
+    throw error;
+  }
+  // Go's runLayout checks the context again before it handles an empty graph.
+  const beforeRun = ctx.Err();
+  if (beforeRun) throw new Error(`Autolayout: ${beforeRun.message}`, { cause: beforeRun });
+  if (workspace.Nodes.length) {
+    const workCtx: Context =
+      ctx.Done() === null
+        ? {
+            Done: () => ({ closed: false }),
+            Err: () => ctx.Err(),
+            Value: (key) => ctx.Value?.(key),
+          }
+        : ctx;
+    new Pipeline(workspace, options.Seed).runAllStages(workCtx);
+  }
   const error = ctx.Err();
   if (error) throw new Error(`Autolayout: ${error.message}`, { cause: error });
   return workspace;
