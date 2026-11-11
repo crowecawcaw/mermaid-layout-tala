@@ -1,0 +1,121 @@
+[
+  {
+    "edge": {
+      "id": "e",
+      "from": "a",
+      "to": "b"
+    },
+    "name": "input-geometry-0",
+    "valid": true
+  },
+  {
+    "edge": {
+      "id": "e",
+      "from": "a",
+      "to": "b",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 30,
+          "y": 20
+        }
+      ],
+      "labelPosition": "UNLOCKED_TOP",
+      "labelPercentage": 0.25
+    },
+    "name": "input-geometry-1",
+    "valid": true
+  },
+  {
+    "edge": {
+      "id": "e",
+      "from": "a",
+      "to": "b",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        }
+      ]
+    },
+    "name": "input-geometry-2",
+    "valid": false
+  },
+  {
+    "edge": {
+      "id": "e",
+      "from": "a",
+      "to": "b",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 0
+        }
+      ]
+    },
+    "name": "input-geometry-3",
+    "valid": false
+  },
+  {
+    "edge": {
+      "id": "e",
+      "from": "a",
+      "to": "b",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 1000000001,
+          "y": 0
+        }
+      ]
+    },
+    "name": "input-geometry-4",
+    "valid": false
+  },
+  {
+    "edge": {
+      "id": "e",
+      "from": "a",
+      "to": "b",
+      "points": [
+        null,
+        {
+          "x": 30,
+          "y": 20
+        }
+      ]
+    },
+    "name": "input-geometry-5",
+    "valid": false
+  },
+  {
+    "edge": {
+      "id": "e",
+      "from": "a",
+      "to": "b",
+      "labelPosition": "INSIDE_TOP_LEFT"
+    },
+    "name": "input-geometry-6",
+    "valid": false
+  },
+  {
+    "edge": {
+      "id": "e",
+      "from": "a",
+      "to": "b",
+      "labelPercentage": 1.1
+    },
+    "name": "input-geometry-7",
+    "valid": false
+  }
+]

@@ -98,6 +98,11 @@ export interface LayoutEdge {
   isInvisible?: boolean;
   labelWidth?: number;
   labelHeight?: number;
+  /** Existing geometry is validated on layout and reused by standalone rerouting. */
+  points?: Point[];
+  labelPosition?: string;
+  labelPercentage?: number;
+  isCurve?: boolean;
 }
 
 export interface LayoutOptions {
@@ -153,12 +158,7 @@ export interface RoutingNode extends LayoutNode {
 }
 
 /** Existing edge geometry; selected edges may have no route yet. */
-export interface RoutingEdge extends LayoutEdge {
-  points?: Point[];
-  labelPosition?: string;
-  labelPercentage?: number;
-  isCurve?: boolean;
-}
+export interface RoutingEdge extends LayoutEdge {}
 
 export interface RoutingResult {
   nodes: RoutingNode[];

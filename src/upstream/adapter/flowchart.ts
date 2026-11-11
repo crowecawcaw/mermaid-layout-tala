@@ -7,7 +7,6 @@ import type {
   LayoutResult,
   LayoutDirection,
   RoutingNode,
-  RoutingEdge,
   EdgeStyleInput,
 } from '../../layout.js';
 import { getTalaSeeds, normalizeSeeds } from '../../random.js';
@@ -185,7 +184,7 @@ export function translateFlowchart(
     throw new Error(`D2 object count exceeds limit ${MaxEngineNodes}`);
   if (inputEdges.length > MaxEngineEdges)
     throw new Error(`D2 edge count exceeds limit ${MaxEngineEdges}`);
-  if (loadExistingLayout && inputEdges.reduce((sum, edge) => sum + ((edge as RoutingEdge).points?.length ?? 0), 0) > MaxEngineRoutePoints)
+  if (inputEdges.reduce((sum, edge) => sum + (edge.points?.length ?? 0), 0) > MaxEngineRoutePoints)
     throw new Error(`D2 route point count exceeds limit ${MaxEngineRoutePoints}`);
   const totalColumns = inputNodes.reduce(
     (count, node) => count + (node.tableColumns ?? 0),
@@ -503,21 +502,18 @@ export function translateFlowchart(
       ].includes(value))
         throw new Error(`edge ${e.id} has unsupported ${name} arrowhead ${JSON.stringify(value)}`);
     }
-    if (loadExistingLayout) {
-      const existing = e as RoutingEdge;
-      if (existing.labelPosition !== undefined && !IsEdgePosition(FromString(existing.labelPosition)))
-        throw new Error(`edge ${e.id} has an invalid label position`);
-      if (existing.labelPercentage !== undefined && (!Number.isFinite(existing.labelPercentage) || existing.labelPercentage < 0 || existing.labelPercentage > 1))
-        throw new Error(`edge ${e.id} has an invalid label percentage`);
-      if (existing.points?.length === 1) throw new Error(`edge ${e.id} has an incomplete route`);
-      for (let j = 0; j < (existing.points?.length ?? 0); j++) {
-        const point = existing.points![j]!;
-        if (!point || !Number.isFinite(point.x) || !Number.isFinite(point.y) || Math.abs(point.x) > 1_000_000_000 || Math.abs(point.y) > 1_000_000_000)
-          throw new Error(`edge ${e.id} has an invalid route point`);
-        const previous = existing.points![j - 1];
-        if (previous && previous.x === point.x && previous.y === point.y)
-          throw new Error(`edge ${e.id} has a degenerate route segment`);
-      }
+    if (e.labelPosition !== undefined && !IsEdgePosition(FromString(e.labelPosition)))
+      throw new Error(`edge ${e.id} has an invalid label position`);
+    if (e.labelPercentage !== undefined && (!Number.isFinite(e.labelPercentage) || e.labelPercentage < 0 || e.labelPercentage > 1))
+      throw new Error(`edge ${e.id} has an invalid label percentage`);
+    if (e.points?.length === 1) throw new Error(`edge ${e.id} has an incomplete route`);
+    for (let j = 0; j < (e.points?.length ?? 0); j++) {
+      const point = e.points![j]!;
+      if (!point || !Number.isFinite(point.x) || !Number.isFinite(point.y) || Math.abs(point.x) > 1_000_000_000 || Math.abs(point.y) > 1_000_000_000)
+        throw new Error(`edge ${e.id} has an invalid route point`);
+      const previous = e.points![j - 1];
+      if (previous && previous.x === point.x && previous.y === point.y)
+        throw new Error(`edge ${e.id} has a degenerate route segment`);
     }
     if (e.d2Index !== undefined) {
       const index = e.d2Index;
@@ -592,7 +588,7 @@ export function translateFlowchart(
     e.ID = edgeIDs[i]!;
     e.D2ID = edgeAbs[i]!;
     if (loadExistingLayout) {
-      const points = (input as RoutingEdge).points ?? [];
+      const points = input.points ?? [];
       e.Points = (reversed[i] ? [...points].reverse() : points).map((p) => new Point(p.x, p.y));
     }
     const style = input.style;
@@ -698,7 +694,7 @@ export function translateFlowchart(
       e.Label.Text = labelText;
       e.Label.Width = input.labelWidth ?? 0;
       e.Label.Height = input.labelHeight ?? 0;
-      const existing = input as RoutingEdge;
+      const existing = input;
       if (loadExistingLayout && existing.labelPosition !== undefined) {
         e.Label.Position = FromString(existing.labelPosition);
         if (existing.labelPercentage !== undefined) e.LabelPercentage = existing.labelPercentage;

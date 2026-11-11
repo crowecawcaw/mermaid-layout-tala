@@ -61,6 +61,10 @@ type orderingEdge struct {
 	Style                 map[string]string   `json:"style,omitempty"`
 	SourceArrowheadLabel  *orderingArrowLabel `json:"sourceArrowheadLabel,omitempty"`
 	TargetArrowheadLabel  *orderingArrowLabel `json:"targetArrowheadLabel,omitempty"`
+	Points                []*geo.Point        `json:"points,omitempty"`
+	LabelPosition         *string             `json:"labelPosition,omitempty"`
+	LabelPercentage       *float64            `json:"labelPercentage,omitempty"`
+	IsCurve               bool                `json:"isCurve,omitempty"`
 }
 type orderingArrowLabel struct {
 	Text   string `json:"text"`
@@ -121,6 +125,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"arrowhead-style-metadata", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 32},
 		{"unicode-transparent-styles", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 33},
 		{"nested-container-directions", [][2]int{{2, 4}, {4, 5}, {5, 3}, {3, 6}}, false, 34},
+		{"existing-edge-geometry", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 35},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -451,6 +456,13 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 					input.Label = ""
 				}
 				edge := &d2graph.Edge{Index: index, Src: objects[input.From], Dst: objects[input.To], DstArrow: true, Attributes: d2graph.Attributes{}}
+				if test.shapeSet == 35 {
+					position, percentage := "UNLOCKED_TOP", 0.25
+					input.LabelPosition, input.LabelPercentage, input.IsCurve = &position, &percentage, true
+					input.Points = []*geo.Point{geo.NewPoint(float64(i*40), 0), geo.NewPoint(float64(i*40+20), 30)}
+					edge.LabelPosition, edge.LabelPercentage, edge.IsCurve = input.LabelPosition, input.LabelPercentage, input.IsCurve
+					edge.Route = input.Points
+				}
 				if (test.shapeSet == 10 || test.shapeSet == 25) && i != 1 {
 					src, dst := false, false
 					input.SourceArrow, input.TargetArrow = &src, &dst

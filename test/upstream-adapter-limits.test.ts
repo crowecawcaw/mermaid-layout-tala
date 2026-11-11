@@ -19,6 +19,10 @@ describe('flowchart adapter input bounds', () => {
     expect(() =>
       translateFlowchart([{ id: 'n0', width: 10, height: 10 }], edges, {}),
     ).toThrow(/edge count exceeds limit 50000/);
+    const points = Array(1_000_001).fill({ x: 0, y: 0 });
+    expect(() => translateFlowchart([{ id: 'n0', width: 10, height: 10 }], [
+      { id: 'e', from: 'n0', to: 'n0', points },
+    ], {})).toThrow(/route point count exceeds limit 1000000/);
   });
   it('rejects excessive nesting, table columns and unsupported geometry', () => {
     const nested = Array.from({ length: 257 }, (_, i) => ({
