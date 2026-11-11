@@ -23,8 +23,9 @@ visibility against Go, including decimal and hexadecimal float syntax and
 rounding at floating-point boundaries.
 `upstream-edgeconstraints.test.ts` checks Go's combined edge-label and
 arrowhead-label size limits, including transparent edges.
-The upstream engine corpus comparisons check every node's coordinates and size,
-label metadata, and every route vertex in order, with absolute tolerance `1e-7`.
+The upstream engine corpus comparisons check node coordinates, size, shapes,
+visibility, fonts and labels; edge endpoints, arrowheads, table ports and
+labels; and every route vertex in order, with absolute tolerance `1e-7`.
 For seed 123, fixture generation also verifies the 34 upstream layout results
 against the upstream checked-in golden geometry and routes.
 Thirty-two randomized deep hierarchies that fail in upstream are also checked against

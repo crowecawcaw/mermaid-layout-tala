@@ -68,11 +68,19 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
   for (const expected of fixture.nodes) {
     const node = resultNodes.get(expected.id)!;
     expect(node).toBeDefined();
+    expect({ d2id: node.D2ID, fontSize: node.FontSize, shapeType: node.ShapeType(), numColumns: node.NumColumns(),
+      isInvisible: node.IsInvisible, is3D: node.Is3D, isMultiple: node.IsMultiple,
+      forceHierarchy: node.ForceHierarchy, isContainer: node.IsContainer() }).toEqual({
+      d2id: expected.d2id, fontSize: expected.fontSize, shapeType: expected.shapeType, numColumns: expected.numColumns,
+      isInvisible: expected.isInvisible, is3D: expected.is3D, isMultiple: expected.isMultiple,
+      forceHierarchy: expected.forceHierarchy, isContainer: expected.isContainer,
+    });
     for (const [actual, value] of [[node.TopLeft!.X, expected.x], [node.TopLeft!.Y, expected.y],
       [node.Width, expected.width], [node.Height, expected.height]])
       expect(Math.abs(actual! - value!)).toBeLessThanOrEqual(1e-7);
     if ('label' in expected && expected.label) {
       expect(node.Label).not.toBeNull();
+      expect(node.Label!.Text).toBe(expected.label.text);
       expect(labelPositionString(node.Label!.Position)).toBe(expected.label.position);
       expect(node.Label!.Width).toBe(expected.label.width);
       expect(node.Label!.Height).toBe(expected.label.height);
@@ -82,9 +90,17 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
   for (const expected of fixture.edges) {
     const edge = resultEdges.get(expected.id)!;
     expect(edge).toBeDefined();
+    expect({ d2id: edge.D2ID, from: Number(edge.From.ID), to: Number(edge.To.ID), sourceArrowhead: edge.SourceArrowhead,
+      targetArrowhead: edge.TargetArrowhead, minWidth: edge.MinWidth, minHeight: edge.MinHeight,
+      fromTableColumnIndex: edge.FromTableColumnIndex, toTableColumnIndex: edge.ToTableColumnIndex, isInvisible: edge.IsInvisible }).toEqual({
+      d2id: expected.d2id, from: expected.from, to: expected.to, sourceArrowhead: expected.sourceArrowhead,
+      targetArrowhead: expected.targetArrowhead, minWidth: expected.minWidth, minHeight: expected.minHeight,
+      fromTableColumnIndex: expected.fromTableColumnIndex, toTableColumnIndex: expected.toTableColumnIndex, isInvisible: expected.isInvisible,
+    });
     expect(edge.IsCurve).toBe(expected.isCurve);
     if ('label' in expected && expected.label) {
       expect(edge.Label).not.toBeNull();
+      expect(edge.Label!.Text).toBe(expected.label.text);
       expect(labelPositionString(edge.Label!.Position)).toBe(expected.label.position);
       expect(edge.Label!.Width).toBe(expected.label.width);
       expect(edge.Label!.Height).toBe(expected.label.height);

@@ -121,9 +121,11 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 			nodes := []any{}
 			edges := []any{}
 			for _, n := range result.Nodes {
-				record := map[string]any{"id": n.IDValue(), "x": n.TopLeft.X, "y": n.TopLeft.Y, "width": n.Width, "height": n.Height}
+				record := map[string]any{"id": n.IDValue(), "x": n.TopLeft.X, "y": n.TopLeft.Y, "width": n.Width, "height": n.Height,
+					"d2id": n.D2ID, "fontSize": n.FontSize, "shapeType": n.ShapeType(), "numColumns": n.NumColumns(),
+					"isInvisible": n.IsInvisible, "is3D": n.Is3D, "isMultiple": n.IsMultiple, "forceHierarchy": n.ForceHierarchy, "isContainer": n.IsContainer()}
 				if n.Label != nil {
-					record["label"] = map[string]any{"position": n.Label.Position.String(), "width": n.Label.Width, "height": n.Label.Height}
+					record["label"] = map[string]any{"text": n.Label.Text, "position": n.Label.Position.String(), "width": n.Label.Width, "height": n.Label.Height}
 				}
 				if n.Icon != nil {
 					record["iconPosition"] = n.Icon.Position.String()
@@ -131,9 +133,12 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 				nodes = append(nodes, record)
 			}
 			for _, e := range result.Edges {
-				record := map[string]any{"id": e.ID, "points": e.Points, "isCurve": e.IsCurve}
+				record := map[string]any{"id": e.ID, "points": e.Points, "isCurve": e.IsCurve, "d2id": e.D2ID,
+					"from": e.From.IDValue(), "to": e.To.IDValue(), "sourceArrowhead": e.SourceArrowhead,
+					"targetArrowhead": e.TargetArrowhead, "minWidth": e.MinWidth, "minHeight": e.MinHeight,
+					"fromTableColumnIndex": e.FromTableColumnIndex, "toTableColumnIndex": e.ToTableColumnIndex, "isInvisible": e.IsInvisible}
 				if e.Label != nil {
-					record["label"] = map[string]any{"position": e.Label.Position.String(), "percentage": e.LabelPercentage, "width": e.Label.Width, "height": e.Label.Height}
+					record["label"] = map[string]any{"text": e.Label.Text, "position": e.Label.Position.String(), "percentage": e.LabelPercentage, "width": e.Label.Width, "height": e.Label.Height}
 				}
 				edges = append(edges, record)
 			}
