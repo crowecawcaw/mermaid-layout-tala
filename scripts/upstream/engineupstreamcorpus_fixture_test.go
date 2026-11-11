@@ -222,12 +222,22 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 		fuzzInputs[name] = data
 		cases = append(cases, struct{ name, path string }{name, ""})
 	}
-	for variant := 0; variant < 2; variant++ {
+	for variant := 0; variant < 4; variant++ {
 		name := fmt.Sprintf("dense-nested-%d", variant)
 		graph := layoutgraph.NewGraph()
 		nodes := []*layoutgraph.Node{}
 		for i := 0; i < 11; i++ {
 			node := layoutgraph.NewNode(int64(i+1), float64(55+i*4), float64(35+(i%3)*8))
+			if variant >= 2 && i < 3 {
+				width, height := 700.0, 500.0
+				if i == 1 {
+					width, height = 300, 200
+				}
+				node.DesiredWidth = &width
+				if variant == 2 || i == 1 {
+					node.DesiredHeight = &height
+				}
+			}
 			if i >= 3 && (i+variant)%3 == 0 {
 				node.Label = &layoutgraph.Label{Text: fmt.Sprintf("nested-%d", i), Width: 30, Height: 12}
 			}
@@ -448,6 +458,12 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 					"isInvisible": n.IsInvisible, "is3D": n.Is3D, "isMultiple": n.IsMultiple, "forceHierarchy": n.ForceHierarchy, "isContainer": n.IsContainer(), "nears": nears}
 				if n.FixedTopLeft != nil {
 					record["fixedTopLeft"] = n.FixedTopLeft
+				}
+				if n.DesiredWidth != nil {
+					record["desiredWidth"] = *n.DesiredWidth
+				}
+				if n.DesiredHeight != nil {
+					record["desiredHeight"] = *n.DesiredHeight
 				}
 				if n.Label != nil {
 					record["label"] = map[string]any{"text": n.Label.Text, "position": n.Label.Position.String(), "width": n.Label.Width, "height": n.Label.Height}

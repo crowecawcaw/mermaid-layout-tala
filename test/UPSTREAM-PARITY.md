@@ -36,8 +36,8 @@ uses absolute tolerance `1e-7`; generated 64-bit entity IDs are compared exactly
 The comparison also includes root and container directions and cached routing costs.
 It includes four additional connected eight-node, sixteen-edge graphs with
 cycles and labels, and four ten-node, twenty-edge cyclic graphs with mixed
-shapes, at two seeds each. Two nested graphs also exercise dense cross-container
-edges and labels at both seeds; two more exercise fixed positions and node flags.
+shapes, at two seeds each. Four nested graphs also exercise dense cross-container
+edges, labels and size constraints at both seeds; two more exercise fixed positions and node flags.
 Four additional cyclic graphs exercise source and target arrowhead labels,
 edge styles and visibility.
 An additional 60 public layouts compare zero, negative, signed 64-bit boundary,

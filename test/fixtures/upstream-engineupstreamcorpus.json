@@ -283984,6 +283984,4250 @@
     "edges": [
       {
         "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 1,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 283,
+            "y": 131
+          },
+          {
+            "x": 155,
+            "y": 131
+          },
+          {
+            "x": 155,
+            "y": 153
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 2,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 283,
+            "y": 142
+          },
+          {
+            "x": 208,
+            "y": 142
+          },
+          {
+            "x": 208,
+            "y": 733
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 9,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 3,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "cross-4",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 191,
+            "y": 175
+          },
+          {
+            "x": 249,
+            "y": 175
+          },
+          {
+            "x": 249,
+            "y": 417
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 4,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 165,
+            "y": 196
+          },
+          {
+            "x": 165,
+            "y": 583
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 10,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 5,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 216,
+            "y": 442
+          },
+          {
+            "x": 139,
+            "y": 442
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 6,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "cross-5",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 291,
+            "y": 442
+          },
+          {
+            "x": 320,
+            "y": 442
+          },
+          {
+            "x": 320,
+            "y": 579
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 11,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 7,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 85,
+            "y": 460
+          },
+          {
+            "x": 85,
+            "y": 978
+          },
+          {
+            "x": 385,
+            "y": 978
+          },
+          {
+            "x": 385,
+            "y": 780
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 8,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 8,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 102,
+            "y": 425
+          },
+          {
+            "x": 102,
+            "y": 131
+          },
+          {
+            "x": 283,
+            "y": 131
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 8,
+        "fromTableColumnIndex": null,
+        "id": 9,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 344,
+            "y": 758
+          },
+          {
+            "x": 257,
+            "y": 758
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 9,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 8,
+        "fromTableColumnIndex": null,
+        "id": 10,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 387,
+            "y": 737
+          },
+          {
+            "x": 387,
+            "y": 175
+          },
+          {
+            "x": 191,
+            "y": 175
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 9,
+        "fromTableColumnIndex": null,
+        "id": 11,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 236,
+            "y": 733
+          },
+          {
+            "x": 236,
+            "y": 600
+          },
+          {
+            "x": 201,
+            "y": 600
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 10,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 9,
+        "fromTableColumnIndex": null,
+        "id": 12,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 236,
+            "y": 733
+          },
+          {
+            "x": 236,
+            "y": 468
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 10,
+        "fromTableColumnIndex": null,
+        "id": 13,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_RIGHT",
+          "text": "cross-9",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 201,
+            "y": 600
+          },
+          {
+            "x": 269,
+            "y": 600
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 11,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 10,
+        "fromTableColumnIndex": null,
+        "id": 14,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 110,
+            "y": 600
+          },
+          {
+            "x": 85,
+            "y": 600
+          },
+          {
+            "x": 85,
+            "y": 460
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 11,
+        "fromTableColumnIndex": null,
+        "id": 15,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 320,
+            "y": 579
+          },
+          {
+            "x": 320,
+            "y": 155
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 11,
+        "fromTableColumnIndex": null,
+        "id": 16,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_BOTTOM_CENTER",
+          "text": "cross-10",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 364,
+            "y": 600
+          },
+          {
+            "x": 375,
+            "y": 600
+          },
+          {
+            "x": 375,
+            "y": 737
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 8,
+        "toTableColumnIndex": null
+      }
+    ],
+    "input": {
+      "nodes": [
+        {
+          "id": 1,
+          "width": 55,
+          "height": 35,
+          "topLeft": null,
+          "desiredWidth": 700,
+          "desiredHeight": 500,
+          "shapeType": ""
+        },
+        {
+          "id": 2,
+          "width": 59,
+          "height": 43,
+          "topLeft": null,
+          "desiredWidth": 300,
+          "desiredHeight": 200,
+          "shapeType": ""
+        },
+        {
+          "id": 3,
+          "width": 63,
+          "height": 51,
+          "topLeft": null,
+          "desiredWidth": 700,
+          "desiredHeight": 500,
+          "shapeType": ""
+        },
+        {
+          "id": 4,
+          "width": 67,
+          "height": 35,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 5,
+          "width": 71,
+          "height": 43,
+          "topLeft": null,
+          "shapeType": "",
+          "label": {
+            "Text": "nested-4",
+            "Position": "",
+            "Width": 30,
+            "Height": 12
+          }
+        },
+        {
+          "id": 6,
+          "width": 75,
+          "height": 51,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 7,
+          "width": 79,
+          "height": 35,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 8,
+          "width": 83,
+          "height": 43,
+          "topLeft": null,
+          "shapeType": "",
+          "label": {
+            "Text": "nested-7",
+            "Position": "",
+            "Width": 30,
+            "Height": 12
+          }
+        },
+        {
+          "id": 9,
+          "width": 87,
+          "height": 51,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 10,
+          "width": 91,
+          "height": 35,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 11,
+          "width": 95,
+          "height": 43,
+          "topLeft": null,
+          "shapeType": "",
+          "label": {
+            "Text": "nested-10",
+            "Position": "",
+            "Width": 30,
+            "Height": 12
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": 1,
+          "from": 4,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 2,
+          "from": 4,
+          "to": 9,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 3,
+          "from": 5,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "label": {
+            "Text": "cross-4",
+            "Position": "",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 4,
+          "from": 5,
+          "to": 10,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 5,
+          "from": 6,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 6,
+          "from": 6,
+          "to": 11,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "label": {
+            "Text": "cross-5",
+            "Position": "",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 7,
+          "from": 7,
+          "to": 8,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 8,
+          "from": 7,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 9,
+          "from": 8,
+          "to": 9,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 10,
+          "from": 8,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 11,
+          "from": 9,
+          "to": 10,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 12,
+          "from": 9,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 13,
+          "from": 10,
+          "to": 11,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "label": {
+            "Text": "cross-9",
+            "Position": "",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 14,
+          "from": 10,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 15,
+          "from": 11,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 16,
+          "from": 11,
+          "to": 8,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "label": {
+            "Text": "cross-10",
+            "Position": "",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        }
+      ],
+      "CellSize": 0,
+      "containers": {
+        "0": [
+          1,
+          3,
+          10,
+          11
+        ],
+        "1": [
+          2,
+          6,
+          7
+        ],
+        "2": [
+          4,
+          5
+        ],
+        "3": [
+          8,
+          9
+        ]
+      },
+      "crossingCost": 0,
+      "turnCost": 0,
+      "nonCenterPortCost": 0
+    },
+    "name": "upstream-dense-nested-2-seed-1",
+    "nodes": [
+      {
+        "d2id": null,
+        "desiredHeight": 500,
+        "desiredWidth": 700,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 528,
+        "id": 1,
+        "is3D": false,
+        "isContainer": true,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 700,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "d2id": null,
+        "desiredHeight": 200,
+        "desiredWidth": 300,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 200,
+        "id": 2,
+        "is3D": false,
+        "isContainer": true,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 350,
+        "x": 60,
+        "y": 60
+      },
+      {
+        "d2id": null,
+        "desiredHeight": 500,
+        "desiredWidth": 700,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 500,
+        "id": 3,
+        "is3D": false,
+        "isContainer": true,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 700,
+        "x": 110,
+        "y": 673
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 35,
+        "id": 4,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 67,
+        "x": 283,
+        "y": 120
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 43,
+        "id": 5,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "label": {
+          "height": 12,
+          "position": "INSIDE_MIDDLE_CENTER",
+          "text": "nested-4",
+          "width": 30
+        },
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 71,
+        "x": 120,
+        "y": 153
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 51,
+        "id": 6,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 75,
+        "x": 216,
+        "y": 417
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 35,
+        "id": 7,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 79,
+        "x": 60,
+        "y": 425
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 43,
+        "id": 8,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "label": {
+          "height": 12,
+          "position": "INSIDE_MIDDLE_CENTER",
+          "text": "nested-7",
+          "width": 30
+        },
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 83,
+        "x": 344,
+        "y": 737
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 51,
+        "id": 9,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 87,
+        "x": 170,
+        "y": 733
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 35,
+        "id": 10,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 91,
+        "x": 110,
+        "y": 583
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 43,
+        "id": 11,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "label": {
+          "height": 12,
+          "position": "INSIDE_MIDDLE_CENTER",
+          "text": "nested-10",
+          "width": 30
+        },
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 95,
+        "x": 269,
+        "y": 579
+      }
+    ],
+    "seed": "1",
+    "structure": {
+      "cellSize": 53,
+      "clusterVessels": {},
+      "clusters": {},
+      "containers": {
+        "0": [
+          "1",
+          "3",
+          "10",
+          "11"
+        ],
+        "1": [
+          "2",
+          "6",
+          "7"
+        ],
+        "2": [
+          "4",
+          "5"
+        ],
+        "3": [
+          "8",
+          "9"
+        ]
+      },
+      "costs": [
+        1070.5832041535257,
+        1173.1530164475562,
+        412.3567626461338
+      ],
+      "directions": {},
+      "hierarchies": null,
+      "hubs": {},
+      "isRootHierarchy": false,
+      "sequenceVessels": {},
+      "sequences": {},
+      "trees": {}
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 1,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 280,
+            "y": 141
+          },
+          {
+            "x": 193,
+            "y": 141
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 2,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 323,
+            "y": 159
+          },
+          {
+            "x": 323,
+            "y": 373
+          },
+          {
+            "x": 89,
+            "y": 373
+          },
+          {
+            "x": 89,
+            "y": 696
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 9,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 3,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "cross-4",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 122,
+            "y": 141
+          },
+          {
+            "x": 94,
+            "y": 141
+          },
+          {
+            "x": 94,
+            "y": 280
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 4,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 167,
+            "y": 163
+          },
+          {
+            "x": 167,
+            "y": 542
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 10,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 5,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 141,
+            "y": 299
+          },
+          {
+            "x": 220,
+            "y": 299
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 6,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "cross-5",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 77,
+            "y": 331
+          },
+          {
+            "x": 77,
+            "y": 415
+          },
+          {
+            "x": 294,
+            "y": 415
+          },
+          {
+            "x": 294,
+            "y": 538
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 11,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 7,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 243,
+            "y": 323
+          },
+          {
+            "x": 243,
+            "y": 700
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 8,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 8,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 231,
+            "y": 288
+          },
+          {
+            "x": 231,
+            "y": 141
+          },
+          {
+            "x": 280,
+            "y": 141
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 8,
+        "fromTableColumnIndex": null,
+        "id": 9,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 218,
+            "y": 728
+          },
+          {
+            "x": 147,
+            "y": 728
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 9,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 8,
+        "fromTableColumnIndex": null,
+        "id": 10,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 230,
+            "y": 700
+          },
+          {
+            "x": 230,
+            "y": 457
+          },
+          {
+            "x": 167,
+            "y": 457
+          },
+          {
+            "x": 167,
+            "y": 163
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 9,
+        "fromTableColumnIndex": null,
+        "id": 11,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 147,
+            "y": 714
+          },
+          {
+            "x": 185,
+            "y": 714
+          },
+          {
+            "x": 185,
+            "y": 577
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 10,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 9,
+        "fromTableColumnIndex": null,
+        "id": 12,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 89,
+            "y": 696
+          },
+          {
+            "x": 89,
+            "y": 331
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 10,
+        "fromTableColumnIndex": null,
+        "id": 13,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_LEFT",
+          "text": "cross-9",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 203,
+            "y": 559
+          },
+          {
+            "x": 266,
+            "y": 559
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 11,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 10,
+        "fromTableColumnIndex": null,
+        "id": 14,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 185,
+            "y": 542
+          },
+          {
+            "x": 185,
+            "y": 310
+          },
+          {
+            "x": 220,
+            "y": 310
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 11,
+        "fromTableColumnIndex": null,
+        "id": 15,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 323,
+            "y": 538
+          },
+          {
+            "x": 323,
+            "y": 159
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 11,
+        "fromTableColumnIndex": null,
+        "id": 16,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "cross-10",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 331,
+            "y": 581
+          },
+          {
+            "x": 331,
+            "y": 721
+          },
+          {
+            "x": 301,
+            "y": 721
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 8,
+        "toTableColumnIndex": null
+      }
+    ],
+    "input": {
+      "nodes": [
+        {
+          "id": 1,
+          "width": 55,
+          "height": 35,
+          "topLeft": null,
+          "desiredWidth": 700,
+          "desiredHeight": 500,
+          "shapeType": ""
+        },
+        {
+          "id": 2,
+          "width": 59,
+          "height": 43,
+          "topLeft": null,
+          "desiredWidth": 300,
+          "desiredHeight": 200,
+          "shapeType": ""
+        },
+        {
+          "id": 3,
+          "width": 63,
+          "height": 51,
+          "topLeft": null,
+          "desiredWidth": 700,
+          "desiredHeight": 500,
+          "shapeType": ""
+        },
+        {
+          "id": 4,
+          "width": 67,
+          "height": 35,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 5,
+          "width": 71,
+          "height": 43,
+          "topLeft": null,
+          "shapeType": "",
+          "label": {
+            "Text": "nested-4",
+            "Position": "",
+            "Width": 30,
+            "Height": 12
+          }
+        },
+        {
+          "id": 6,
+          "width": 75,
+          "height": 51,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 7,
+          "width": 79,
+          "height": 35,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 8,
+          "width": 83,
+          "height": 43,
+          "topLeft": null,
+          "shapeType": "",
+          "label": {
+            "Text": "nested-7",
+            "Position": "",
+            "Width": 30,
+            "Height": 12
+          }
+        },
+        {
+          "id": 9,
+          "width": 87,
+          "height": 51,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 10,
+          "width": 91,
+          "height": 35,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 11,
+          "width": 95,
+          "height": 43,
+          "topLeft": null,
+          "shapeType": "",
+          "label": {
+            "Text": "nested-10",
+            "Position": "",
+            "Width": 30,
+            "Height": 12
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": 1,
+          "from": 4,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 2,
+          "from": 4,
+          "to": 9,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 3,
+          "from": 5,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "label": {
+            "Text": "cross-4",
+            "Position": "",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 4,
+          "from": 5,
+          "to": 10,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 5,
+          "from": 6,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 6,
+          "from": 6,
+          "to": 11,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "label": {
+            "Text": "cross-5",
+            "Position": "",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 7,
+          "from": 7,
+          "to": 8,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 8,
+          "from": 7,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 9,
+          "from": 8,
+          "to": 9,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 10,
+          "from": 8,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 11,
+          "from": 9,
+          "to": 10,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 12,
+          "from": 9,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 13,
+          "from": 10,
+          "to": 11,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "label": {
+            "Text": "cross-9",
+            "Position": "",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 14,
+          "from": 10,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 15,
+          "from": 11,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 16,
+          "from": 11,
+          "to": 8,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "label": {
+            "Text": "cross-10",
+            "Position": "",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        }
+      ],
+      "CellSize": 0,
+      "containers": {
+        "0": [
+          1,
+          3,
+          10,
+          11
+        ],
+        "1": [
+          2,
+          6,
+          7
+        ],
+        "2": [
+          4,
+          5
+        ],
+        "3": [
+          8,
+          9
+        ]
+      },
+      "crossingCost": 0,
+      "turnCost": 0,
+      "nonCenterPortCost": 0
+    },
+    "name": "upstream-dense-nested-2-seed-123",
+    "nodes": [
+      {
+        "d2id": null,
+        "desiredHeight": 500,
+        "desiredWidth": 700,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 500,
+        "id": 1,
+        "is3D": false,
+        "isContainer": true,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 700,
+        "x": 2,
+        "y": 0
+      },
+      {
+        "d2id": null,
+        "desiredHeight": 200,
+        "desiredWidth": 300,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 200,
+        "id": 2,
+        "is3D": false,
+        "isContainer": true,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 345,
+        "x": 62,
+        "y": 60
+      },
+      {
+        "d2id": null,
+        "desiredHeight": 500,
+        "desiredWidth": 700,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 500,
+        "id": 3,
+        "is3D": false,
+        "isContainer": true,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 700,
+        "x": 0,
+        "y": 636
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 35,
+        "id": 4,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 67,
+        "x": 280,
+        "y": 124
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 43,
+        "id": 5,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "label": {
+          "height": 12,
+          "position": "INSIDE_MIDDLE_CENTER",
+          "text": "nested-4",
+          "width": 30
+        },
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 71,
+        "x": 122,
+        "y": 120
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 51,
+        "id": 6,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 75,
+        "x": 66,
+        "y": 280
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 35,
+        "id": 7,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 79,
+        "x": 220,
+        "y": 288
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 43,
+        "id": 8,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "label": {
+          "height": 12,
+          "position": "INSIDE_MIDDLE_CENTER",
+          "text": "nested-7",
+          "width": 30
+        },
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 83,
+        "x": 218,
+        "y": 700
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 51,
+        "id": 9,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 87,
+        "x": 60,
+        "y": 696
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 35,
+        "id": 10,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 91,
+        "x": 112,
+        "y": 542
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 43,
+        "id": 11,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "label": {
+          "height": 12,
+          "position": "INSIDE_MIDDLE_CENTER",
+          "text": "nested-10",
+          "width": 30
+        },
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 95,
+        "x": 266,
+        "y": 538
+      }
+    ],
+    "seed": "123",
+    "structure": {
+      "cellSize": 53,
+      "clusterVessels": {},
+      "clusters": {},
+      "containers": {
+        "0": [
+          "1",
+          "3",
+          "10",
+          "11"
+        ],
+        "1": [
+          "2",
+          "6",
+          "7"
+        ],
+        "2": [
+          "4",
+          "5"
+        ],
+        "3": [
+          "8",
+          "9"
+        ]
+      },
+      "costs": [
+        1069.904481043964,
+        1114.2172140117025,
+        414.78727778464946
+      ],
+      "directions": {},
+      "hierarchies": null,
+      "hubs": {},
+      "isRootHierarchy": false,
+      "sequenceVessels": {},
+      "sequences": {},
+      "trees": {}
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 1,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 295,
+            "y": 750
+          },
+          {
+            "x": 231,
+            "y": 750
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 2,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 315,
+            "y": 733
+          },
+          {
+            "x": 315,
+            "y": 283
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 10,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 3,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_RIGHT",
+          "text": "cross-4",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 231,
+            "y": 750
+          },
+          {
+            "x": 252,
+            "y": 750
+          },
+          {
+            "x": 252,
+            "y": 573
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 4,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "cross-4",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 160,
+            "y": 750
+          },
+          {
+            "x": 76,
+            "y": 750
+          },
+          {
+            "x": 76,
+            "y": 278
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 11,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 5,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 199,
+            "y": 547
+          },
+          {
+            "x": 167,
+            "y": 547
+          },
+          {
+            "x": 167,
+            "y": 436
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 6,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 274,
+            "y": 547
+          },
+          {
+            "x": 305,
+            "y": 547
+          },
+          {
+            "x": 305,
+            "y": 733
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 7,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 207,
+            "y": 401
+          },
+          {
+            "x": 207,
+            "y": 92
+          },
+          {
+            "x": 249,
+            "y": 92
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 8,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 8,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 179,
+            "y": 436
+          },
+          {
+            "x": 179,
+            "y": 729
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 8,
+        "fromTableColumnIndex": null,
+        "id": 9,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 249,
+            "y": 78
+          },
+          {
+            "x": 180,
+            "y": 78
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 9,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 8,
+        "fromTableColumnIndex": null,
+        "id": 10,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 265,
+            "y": 107
+          },
+          {
+            "x": 265,
+            "y": 139
+          },
+          {
+            "x": 240,
+            "y": 139
+          },
+          {
+            "x": 240,
+            "y": 522
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 9,
+        "fromTableColumnIndex": null,
+        "id": 11,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 152,
+            "y": 111
+          },
+          {
+            "x": 152,
+            "y": 263
+          },
+          {
+            "x": 245,
+            "y": 263
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 10,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 9,
+        "fromTableColumnIndex": null,
+        "id": 12,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 125,
+            "y": 111
+          },
+          {
+            "x": 125,
+            "y": 418
+          },
+          {
+            "x": 156,
+            "y": 418
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 10,
+        "fromTableColumnIndex": null,
+        "id": 13,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "cross-9",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 245,
+            "y": 263
+          },
+          {
+            "x": 95,
+            "y": 263
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 11,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 10,
+        "fromTableColumnIndex": null,
+        "id": 14,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "cross-9",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 282,
+            "y": 248
+          },
+          {
+            "x": 282,
+            "y": 107
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 8,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 11,
+        "fromTableColumnIndex": null,
+        "id": 15,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 58,
+            "y": 278
+          },
+          {
+            "x": 58,
+            "y": 479
+          },
+          {
+            "x": 338,
+            "y": 479
+          },
+          {
+            "x": 338,
+            "y": 733
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 11,
+        "fromTableColumnIndex": null,
+        "id": 16,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 63,
+            "y": 235
+          },
+          {
+            "x": 63,
+            "y": 85
+          },
+          {
+            "x": 93,
+            "y": 85
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 9,
+        "toTableColumnIndex": null
+      }
+    ],
+    "input": {
+      "nodes": [
+        {
+          "id": 1,
+          "width": 55,
+          "height": 35,
+          "topLeft": null,
+          "desiredWidth": 700,
+          "shapeType": ""
+        },
+        {
+          "id": 2,
+          "width": 59,
+          "height": 43,
+          "topLeft": null,
+          "desiredWidth": 300,
+          "desiredHeight": 200,
+          "shapeType": ""
+        },
+        {
+          "id": 3,
+          "width": 63,
+          "height": 51,
+          "topLeft": null,
+          "desiredWidth": 700,
+          "shapeType": ""
+        },
+        {
+          "id": 4,
+          "width": 67,
+          "height": 35,
+          "topLeft": null,
+          "shapeType": "",
+          "label": {
+            "Text": "nested-3",
+            "Position": "",
+            "Width": 30,
+            "Height": 12
+          }
+        },
+        {
+          "id": 5,
+          "width": 71,
+          "height": 43,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 6,
+          "width": 75,
+          "height": 51,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 7,
+          "width": 79,
+          "height": 35,
+          "topLeft": null,
+          "shapeType": "",
+          "label": {
+            "Text": "nested-6",
+            "Position": "",
+            "Width": 30,
+            "Height": 12
+          }
+        },
+        {
+          "id": 8,
+          "width": 83,
+          "height": 43,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 9,
+          "width": 87,
+          "height": 51,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 10,
+          "width": 91,
+          "height": 35,
+          "topLeft": null,
+          "shapeType": "",
+          "label": {
+            "Text": "nested-9",
+            "Position": "",
+            "Width": 30,
+            "Height": 12
+          }
+        },
+        {
+          "id": 11,
+          "width": 95,
+          "height": 43,
+          "topLeft": null,
+          "shapeType": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": 1,
+          "from": 4,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 2,
+          "from": 4,
+          "to": 10,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 3,
+          "from": 5,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "label": {
+            "Text": "cross-4",
+            "Position": "",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 4,
+          "from": 5,
+          "to": 11,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "label": {
+            "Text": "cross-4",
+            "Position": "",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 5,
+          "from": 6,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 6,
+          "from": 6,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 7,
+          "from": 7,
+          "to": 8,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 8,
+          "from": 7,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 9,
+          "from": 8,
+          "to": 9,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 10,
+          "from": 8,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 11,
+          "from": 9,
+          "to": 10,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 12,
+          "from": 9,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 13,
+          "from": 10,
+          "to": 11,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "label": {
+            "Text": "cross-9",
+            "Position": "",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 14,
+          "from": 10,
+          "to": 8,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "label": {
+            "Text": "cross-9",
+            "Position": "",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 15,
+          "from": 11,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 16,
+          "from": 11,
+          "to": 9,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        }
+      ],
+      "CellSize": 0,
+      "containers": {
+        "0": [
+          1,
+          3,
+          10,
+          11
+        ],
+        "1": [
+          2,
+          6,
+          7
+        ],
+        "2": [
+          4,
+          5
+        ],
+        "3": [
+          8,
+          9
+        ]
+      },
+      "crossingCost": 0,
+      "turnCost": 0,
+      "nonCenterPortCost": 0
+    },
+    "name": "upstream-dense-nested-3-seed-1",
+    "nodes": [
+      {
+        "d2id": null,
+        "desiredWidth": 700,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 588,
+        "id": 1,
+        "is3D": false,
+        "isContainer": true,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 700,
+        "x": 40,
+        "y": 341
+      },
+      {
+        "d2id": null,
+        "desiredHeight": 200,
+        "desiredWidth": 300,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 200,
+        "id": 2,
+        "is3D": false,
+        "isContainer": true,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 322,
+        "x": 100,
+        "y": 669
+      },
+      {
+        "d2id": null,
+        "desiredWidth": 700,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 171,
+        "id": 3,
+        "is3D": false,
+        "isContainer": true,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 700,
+        "x": 33,
+        "y": 0
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 35,
+        "id": 4,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "label": {
+          "height": 12,
+          "position": "INSIDE_MIDDLE_CENTER",
+          "text": "nested-3",
+          "width": 30
+        },
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 67,
+        "x": 295,
+        "y": 733
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 43,
+        "id": 5,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 71,
+        "x": 160,
+        "y": 729
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 51,
+        "id": 6,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 75,
+        "x": 199,
+        "y": 522
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 35,
+        "id": 7,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "label": {
+          "height": 12,
+          "position": "INSIDE_MIDDLE_CENTER",
+          "text": "nested-6",
+          "width": 30
+        },
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 79,
+        "x": 156,
+        "y": 401
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 43,
+        "id": 8,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 83,
+        "x": 249,
+        "y": 64
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 51,
+        "id": 9,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 87,
+        "x": 93,
+        "y": 60
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 35,
+        "id": 10,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "label": {
+          "height": 12,
+          "position": "INSIDE_MIDDLE_CENTER",
+          "text": "nested-9",
+          "width": 30
+        },
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 91,
+        "x": 245,
+        "y": 248
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 43,
+        "id": 11,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 95,
+        "x": 0,
+        "y": 235
+      }
+    ],
+    "seed": "1",
+    "structure": {
+      "cellSize": 53,
+      "clusterVessels": {},
+      "clusters": {},
+      "containers": {
+        "0": [
+          "1",
+          "3",
+          "10",
+          "11"
+        ],
+        "1": [
+          "2",
+          "6",
+          "7"
+        ],
+        "2": [
+          "4",
+          "5"
+        ],
+        "3": [
+          "8",
+          "9"
+        ]
+      },
+      "costs": [
+        817.9861604160187,
+        1010,
+        340.95304207471145
+      ],
+      "directions": {},
+      "hierarchies": null,
+      "hubs": {},
+      "isRootHierarchy": false,
+      "sequenceVessels": {},
+      "sequences": {},
+      "trees": {}
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 1,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 295,
+            "y": 750
+          },
+          {
+            "x": 231,
+            "y": 750
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 2,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 315,
+            "y": 733
+          },
+          {
+            "x": 315,
+            "y": 283
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 10,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 3,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_LEFT",
+          "text": "cross-4",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 231,
+            "y": 750
+          },
+          {
+            "x": 252,
+            "y": 750
+          },
+          {
+            "x": 252,
+            "y": 558
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 4,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "cross-4",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 160,
+            "y": 750
+          },
+          {
+            "x": 76,
+            "y": 750
+          },
+          {
+            "x": 76,
+            "y": 278
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 11,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 5,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 199,
+            "y": 532
+          },
+          {
+            "x": 167,
+            "y": 532
+          },
+          {
+            "x": 167,
+            "y": 436
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 6,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 274,
+            "y": 532
+          },
+          {
+            "x": 305,
+            "y": 532
+          },
+          {
+            "x": 305,
+            "y": 733
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 7,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 207,
+            "y": 401
+          },
+          {
+            "x": 207,
+            "y": 92
+          },
+          {
+            "x": 249,
+            "y": 92
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 8,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 8,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 179,
+            "y": 436
+          },
+          {
+            "x": 179,
+            "y": 729
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 8,
+        "fromTableColumnIndex": null,
+        "id": 9,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 249,
+            "y": 78
+          },
+          {
+            "x": 180,
+            "y": 78
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 9,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 8,
+        "fromTableColumnIndex": null,
+        "id": 10,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 265,
+            "y": 107
+          },
+          {
+            "x": 265,
+            "y": 139
+          },
+          {
+            "x": 240,
+            "y": 139
+          },
+          {
+            "x": 240,
+            "y": 507
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 9,
+        "fromTableColumnIndex": null,
+        "id": 11,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 152,
+            "y": 111
+          },
+          {
+            "x": 152,
+            "y": 263
+          },
+          {
+            "x": 245,
+            "y": 263
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 10,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 9,
+        "fromTableColumnIndex": null,
+        "id": 12,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 125,
+            "y": 111
+          },
+          {
+            "x": 125,
+            "y": 418
+          },
+          {
+            "x": 156,
+            "y": 418
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 10,
+        "fromTableColumnIndex": null,
+        "id": 13,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "cross-9",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 245,
+            "y": 263
+          },
+          {
+            "x": 95,
+            "y": 263
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 11,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 10,
+        "fromTableColumnIndex": null,
+        "id": 14,
+        "isCurve": false,
+        "isInvisible": false,
+        "label": {
+          "height": 10,
+          "percentage": 0,
+          "position": "OUTSIDE_TOP_CENTER",
+          "text": "cross-9",
+          "width": 22
+        },
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 282,
+            "y": 248
+          },
+          {
+            "x": 282,
+            "y": 107
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 8,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 11,
+        "fromTableColumnIndex": null,
+        "id": 15,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 58,
+            "y": 278
+          },
+          {
+            "x": 58,
+            "y": 471
+          },
+          {
+            "x": 338,
+            "y": 471
+          },
+          {
+            "x": 338,
+            "y": 733
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 11,
+        "fromTableColumnIndex": null,
+        "id": 16,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 63,
+            "y": 235
+          },
+          {
+            "x": 63,
+            "y": 85
+          },
+          {
+            "x": 93,
+            "y": 85
+          }
+        ],
+        "sourceArrowhead": "",
+        "targetArrowhead": "",
+        "to": 9,
+        "toTableColumnIndex": null
+      }
+    ],
+    "input": {
+      "nodes": [
+        {
+          "id": 1,
+          "width": 55,
+          "height": 35,
+          "topLeft": null,
+          "desiredWidth": 700,
+          "shapeType": ""
+        },
+        {
+          "id": 2,
+          "width": 59,
+          "height": 43,
+          "topLeft": null,
+          "desiredWidth": 300,
+          "desiredHeight": 200,
+          "shapeType": ""
+        },
+        {
+          "id": 3,
+          "width": 63,
+          "height": 51,
+          "topLeft": null,
+          "desiredWidth": 700,
+          "shapeType": ""
+        },
+        {
+          "id": 4,
+          "width": 67,
+          "height": 35,
+          "topLeft": null,
+          "shapeType": "",
+          "label": {
+            "Text": "nested-3",
+            "Position": "",
+            "Width": 30,
+            "Height": 12
+          }
+        },
+        {
+          "id": 5,
+          "width": 71,
+          "height": 43,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 6,
+          "width": 75,
+          "height": 51,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 7,
+          "width": 79,
+          "height": 35,
+          "topLeft": null,
+          "shapeType": "",
+          "label": {
+            "Text": "nested-6",
+            "Position": "",
+            "Width": 30,
+            "Height": 12
+          }
+        },
+        {
+          "id": 8,
+          "width": 83,
+          "height": 43,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 9,
+          "width": 87,
+          "height": 51,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 10,
+          "width": 91,
+          "height": 35,
+          "topLeft": null,
+          "shapeType": "",
+          "label": {
+            "Text": "nested-9",
+            "Position": "",
+            "Width": 30,
+            "Height": 12
+          }
+        },
+        {
+          "id": 11,
+          "width": 95,
+          "height": 43,
+          "topLeft": null,
+          "shapeType": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": 1,
+          "from": 4,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 2,
+          "from": 4,
+          "to": 10,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 3,
+          "from": 5,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "label": {
+            "Text": "cross-4",
+            "Position": "",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 4,
+          "from": 5,
+          "to": 11,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "label": {
+            "Text": "cross-4",
+            "Position": "",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 5,
+          "from": 6,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 6,
+          "from": 6,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 7,
+          "from": 7,
+          "to": 8,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 8,
+          "from": 7,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 9,
+          "from": 8,
+          "to": 9,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 10,
+          "from": 8,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 11,
+          "from": 9,
+          "to": 10,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 12,
+          "from": 9,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 13,
+          "from": 10,
+          "to": 11,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "label": {
+            "Text": "cross-9",
+            "Position": "",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 14,
+          "from": 10,
+          "to": 8,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "label": {
+            "Text": "cross-9",
+            "Position": "",
+            "Width": 22,
+            "Height": 10
+          },
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 15,
+          "from": 11,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        },
+        {
+          "id": 16,
+          "from": 11,
+          "to": 9,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {},
+          "sourceArrowhead": "",
+          "targetArrowhead": ""
+        }
+      ],
+      "CellSize": 0,
+      "containers": {
+        "0": [
+          1,
+          3,
+          10,
+          11
+        ],
+        "1": [
+          2,
+          6,
+          7
+        ],
+        "2": [
+          4,
+          5
+        ],
+        "3": [
+          8,
+          9
+        ]
+      },
+      "crossingCost": 0,
+      "turnCost": 0,
+      "nonCenterPortCost": 0
+    },
+    "name": "upstream-dense-nested-3-seed-123",
+    "nodes": [
+      {
+        "d2id": null,
+        "desiredWidth": 700,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 588,
+        "id": 1,
+        "is3D": false,
+        "isContainer": true,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 700,
+        "x": 40,
+        "y": 341
+      },
+      {
+        "d2id": null,
+        "desiredHeight": 200,
+        "desiredWidth": 300,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 200,
+        "id": 2,
+        "is3D": false,
+        "isContainer": true,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 322,
+        "x": 100,
+        "y": 669
+      },
+      {
+        "d2id": null,
+        "desiredWidth": 700,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 171,
+        "id": 3,
+        "is3D": false,
+        "isContainer": true,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 700,
+        "x": 33,
+        "y": 0
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 35,
+        "id": 4,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "label": {
+          "height": 12,
+          "position": "INSIDE_MIDDLE_CENTER",
+          "text": "nested-3",
+          "width": 30
+        },
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 67,
+        "x": 295,
+        "y": 733
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 43,
+        "id": 5,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 71,
+        "x": 160,
+        "y": 729
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 51,
+        "id": 6,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 75,
+        "x": 199,
+        "y": 507
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 35,
+        "id": 7,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "label": {
+          "height": 12,
+          "position": "INSIDE_MIDDLE_CENTER",
+          "text": "nested-6",
+          "width": 30
+        },
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 79,
+        "x": 156,
+        "y": 401
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 43,
+        "id": 8,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 83,
+        "x": 249,
+        "y": 64
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 51,
+        "id": 9,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 87,
+        "x": 93,
+        "y": 60
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 35,
+        "id": 10,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "label": {
+          "height": 12,
+          "position": "INSIDE_MIDDLE_CENTER",
+          "text": "nested-9",
+          "width": 30
+        },
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 91,
+        "x": 245,
+        "y": 248
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 43,
+        "id": 11,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 95,
+        "x": 0,
+        "y": 235
+      }
+    ],
+    "seed": "123",
+    "structure": {
+      "cellSize": 53,
+      "clusterVessels": {},
+      "clusters": {},
+      "containers": {
+        "0": [
+          "1",
+          "3",
+          "10",
+          "11"
+        ],
+        "1": [
+          "2",
+          "6",
+          "7"
+        ],
+        "2": [
+          "4",
+          "5"
+        ],
+        "3": [
+          "8",
+          "9"
+        ]
+      },
+      "costs": [
+        817.9861604160187,
+        973.9322358357382,
+        340.95304207471145
+      ],
+      "directions": {},
+      "hierarchies": null,
+      "hubs": {},
+      "isRootHierarchy": false,
+      "sequenceVessels": {},
+      "sequences": {},
+      "trees": {}
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2id": null,
         "from": 1,
         "fromTableColumnIndex": null,
         "id": 1,

@@ -164,6 +164,8 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
       expect(Math.abs(node.FixedTopLeft!.X - expected.fixedTopLeft.x)).toBeLessThanOrEqual(1e-7);
       expect(Math.abs(node.FixedTopLeft!.Y - expected.fixedTopLeft.y)).toBeLessThanOrEqual(1e-7);
     } else expect(node.FixedTopLeft).toBeNull();
+    expect(node.DesiredWidth).toBe('desiredWidth' in expected ? expected.desiredWidth : null);
+    expect(node.DesiredHeight).toBe('desiredHeight' in expected ? expected.desiredHeight : null);
     if ('label' in expected && expected.label) {
       expect(node.Label).not.toBeNull();
       expect(node.Label!.Text).toBe(expected.label.text);
