@@ -125,6 +125,20 @@ describe('upstream work accounting', () => {
     );
     expect(z.Used()).toBe(0n);
   });
+  it('optimization steps preserve the cancellation boundary and limit order', () => {
+    const [ctx, cancel] = WithCancel();
+    const g = new OptimizationWorkGuard(ctx, 'steps', 64n);
+    for (let i = 0; i < 63; i++) g.Step();
+    cancel();
+    expect(() => g.Step()).toThrow(expect.objectContaining({ cause: Canceled }));
+    expect(g.Used()).toBe(64n);
+    const [limitedCtx, cancelLimited] = WithCancel();
+    const limited = new OptimizationWorkGuard(limitedCtx, 'steps', 63n);
+    for (let i = 0; i < 63; i++) limited.Step();
+    cancelLimited();
+    expect(() => limited.Step()).toThrow(expect.objectContaining({ cause: ErrOptimizationResourceLimit }));
+    expect(limited.Used()).toBe(63n);
+  });
   it.each([0, 1, 2, 3, 10, 127, 1024])(
     'guarded shuffle preserves values and random draw order for %i entries',
     (count) => {

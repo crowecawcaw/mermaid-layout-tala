@@ -17,6 +17,12 @@ export class OptimizationWorkGuard {
     this.Finish();
   }
   Step(): void {
+    const next = this.used + 1n;
+    if (next <= this.limit && next <= MaxUint64) {
+      this.used = next;
+      if ((next & 63n) === 0n) this.Check();
+      return;
+    }
     this.Add(1n);
   }
   Add(amount: bigint): void {
