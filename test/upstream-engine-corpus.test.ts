@@ -54,6 +54,12 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
     edge.ID = BigInt(input.id);
     edge.SourceArrowhead = input.sourceArrowhead;
     edge.TargetArrowhead = input.targetArrowhead;
+    if ('isInvisible' in input) edge.IsInvisible = input.isInvisible ?? false;
+    if ('style' in input && input.style) {
+      const style = input.style as Record<string, { value: string } | undefined>;
+      for (const [key, destination] of [['stroke', 'Stroke'], ['strokeDash', 'StrokeDash'], ['animated', 'Animated']] as const)
+        if (style[key]) edge.Style[destination] = { Value: style[key]!.value };
+    }
     if ('minWidth' in input) edge.MinWidth = input.minWidth ?? 0;
     if ('minHeight' in input) edge.MinHeight = input.minHeight ?? 0;
     if ('labelPercentage' in input) edge.LabelPercentage = input.labelPercentage ?? 0;
@@ -170,6 +176,10 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
   for (const expected of fixture.edges) {
     const edge = resultEdges.get(expected.id)!;
     expect(edge).toBeDefined();
+    const style: Record<string, string> = {};
+    for (const [key, value] of [['stroke', edge.Style.Stroke], ['strokeDash', edge.Style.StrokeDash], ['animated', edge.Style.Animated]] as const)
+      if (value) style[key] = value.Value;
+    expect(style).toEqual('style' in expected ? expected.style : {});
     for (const [key, actual] of [['sourceArrowheadLabel', edge.SourceArrowheadLabel], ['targetArrowheadLabel', edge.TargetArrowheadLabel]] as const) {
       if (key in expected && expected[key]) {
         const value = expected[key];

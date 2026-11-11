@@ -320,6 +320,37 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 		fuzzInputs[name] = data
 		cases = append(cases, struct{ name, path string }{name, ""})
 	}
+	for variant := 0; variant < 2; variant++ {
+		name := fmt.Sprintf("styled-edges-%d", variant)
+		graph := layoutgraph.NewGraph()
+		nodes := []*layoutgraph.Node{}
+		for i := 0; i < 7; i++ {
+			node := layoutgraph.NewNode(int64(i+1), float64(60+i*5), float64(40+i*2))
+			graph.AddNewNodeToContainer(nil, node)
+			nodes = append(nodes, node)
+		}
+		for i := 0; i < 7; i++ {
+			for _, shift := range []int{1, 2 + variant} {
+				edge := graph.Connect(nodes[i], nodes[(i+shift)%len(nodes)])
+				edge.ID = int64(len(graph.Edges))
+				edge.TargetArrowhead = "triangle"
+				edge.Style.Stroke = &layoutgraph.StyleScalar{Value: []string{"red", "blue", "green"}[(i+shift)%3]}
+				edge.Style.StrokeDash = &layoutgraph.StyleScalar{Value: fmt.Sprint((i + variant) % 4)}
+				if i%3 == 0 {
+					edge.Style.Animated = &layoutgraph.StyleScalar{Value: "true"}
+				}
+				if i == 5 && shift == 1 {
+					edge.IsInvisible = true
+				}
+			}
+		}
+		data, err := graphjson.Marshal(context.Background(), graph)
+		if err != nil {
+			t.Fatal(err)
+		}
+		fuzzInputs[name] = data
+		cases = append(cases, struct{ name, path string }{name, ""})
+	}
 	fixtures := []any{}
 	seedGoldens := map[string]string{
 		"clusters":                   "4f742ab0d3199a66b716e873fdba4c8bb9313d62c0a7a0102d710b7e82faf60f",
@@ -439,6 +470,19 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 				}
 				if e.TargetArrowheadLabel != nil {
 					record["targetArrowheadLabel"] = map[string]any{"text": e.TargetArrowheadLabel.Text, "position": e.TargetArrowheadLabel.Position.String(), "width": e.TargetArrowheadLabel.Width, "height": e.TargetArrowheadLabel.Height}
+				}
+				style := map[string]string{}
+				if e.Style.Stroke != nil {
+					style["stroke"] = e.Style.Stroke.Value
+				}
+				if e.Style.StrokeDash != nil {
+					style["strokeDash"] = e.Style.StrokeDash.Value
+				}
+				if e.Style.Animated != nil {
+					style["animated"] = e.Style.Animated.Value
+				}
+				if len(style) > 0 {
+					record["style"] = style
 				}
 				edges = append(edges, record)
 			}

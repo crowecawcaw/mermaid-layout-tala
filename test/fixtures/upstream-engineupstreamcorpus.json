@@ -289295,5 +289295,3813 @@
       "sequences": {},
       "trees": {}
     }
+  },
+  {
+    "edges": [
+      {
+        "d2id": null,
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 1,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 511,
+            "y": 266
+          },
+          {
+            "x": 511,
+            "y": 232
+          },
+          {
+            "x": 490,
+            "y": 232
+          },
+          {
+            "x": 490,
+            "y": 131
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "blue",
+          "strokeDash": "0"
+        },
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 2,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 532,
+            "y": 266
+          },
+          {
+            "x": 532,
+            "y": 22
+          },
+          {
+            "x": 340,
+            "y": 22
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "green",
+          "strokeDash": "0"
+        },
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 3,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 450,
+            "y": 103
+          },
+          {
+            "x": 315,
+            "y": 103
+          },
+          {
+            "x": 315,
+            "y": 44
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "green",
+          "strokeDash": "1"
+        },
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 4,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 470,
+            "y": 131
+          },
+          {
+            "x": 470,
+            "y": 198
+          },
+          {
+            "x": 310,
+            "y": 198
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "red",
+          "strokeDash": "1"
+        },
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 5,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 290,
+            "y": 44
+          },
+          {
+            "x": 290,
+            "y": 175
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "red",
+          "strokeDash": "2"
+        },
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 6,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 270,
+            "y": 22
+          },
+          {
+            "x": 43,
+            "y": 22
+          },
+          {
+            "x": 43,
+            "y": 86
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "blue",
+          "strokeDash": "2"
+        },
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 7,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 235,
+            "y": 198
+          },
+          {
+            "x": 55,
+            "y": 198
+          },
+          {
+            "x": 55,
+            "y": 134
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "blue",
+          "strokeDash": "3"
+        },
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 8,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 272,
+            "y": 221
+          },
+          {
+            "x": 272,
+            "y": 301
+          },
+          {
+            "x": 85,
+            "y": 301
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "green",
+          "strokeDash": "3"
+        },
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 9,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 29,
+            "y": 134
+          },
+          {
+            "x": 29,
+            "y": 261
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "green",
+          "strokeDash": "0"
+        },
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 10,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 83,
+            "y": 110
+          },
+          {
+            "x": 180,
+            "y": 110
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "red",
+          "strokeDash": "0"
+        },
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 11,
+        "isCurve": false,
+        "isInvisible": true,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 85,
+            "y": 270
+          },
+          {
+            "x": 198,
+            "y": 270
+          },
+          {
+            "x": 198,
+            "y": 136
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "red",
+          "strokeDash": "1"
+        },
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 12,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 85,
+            "y": 292
+          },
+          {
+            "x": 490,
+            "y": 292
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "blue",
+          "strokeDash": "1"
+        },
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 13,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 216,
+            "y": 136
+          },
+          {
+            "x": 216,
+            "y": 279
+          },
+          {
+            "x": 490,
+            "y": 279
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "blue",
+          "strokeDash": "2"
+        },
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 14,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 270,
+            "y": 117
+          },
+          {
+            "x": 450,
+            "y": 117
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "green",
+          "strokeDash": "2"
+        },
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      }
+    ],
+    "input": {
+      "nodes": [
+        {
+          "id": 1,
+          "width": 60,
+          "height": 40,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 2,
+          "width": 65,
+          "height": 42,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 3,
+          "width": 70,
+          "height": 44,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 4,
+          "width": 75,
+          "height": 46,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 5,
+          "width": 80,
+          "height": 48,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 6,
+          "width": 85,
+          "height": 50,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 7,
+          "width": 90,
+          "height": 52,
+          "topLeft": null,
+          "shapeType": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": 1,
+          "from": 1,
+          "to": 2,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "blue"
+            },
+            "strokeDash": {
+              "value": "0"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 2,
+          "from": 1,
+          "to": 3,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "green"
+            },
+            "strokeDash": {
+              "value": "0"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 3,
+          "from": 2,
+          "to": 3,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "green"
+            },
+            "strokeDash": {
+              "value": "1"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 4,
+          "from": 2,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "red"
+            },
+            "strokeDash": {
+              "value": "1"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 5,
+          "from": 3,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "red"
+            },
+            "strokeDash": {
+              "value": "2"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 6,
+          "from": 3,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "blue"
+            },
+            "strokeDash": {
+              "value": "2"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 7,
+          "from": 4,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "blue"
+            },
+            "strokeDash": {
+              "value": "3"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 8,
+          "from": 4,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "green"
+            },
+            "strokeDash": {
+              "value": "3"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 9,
+          "from": 5,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "green"
+            },
+            "strokeDash": {
+              "value": "0"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 10,
+          "from": 5,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "red"
+            },
+            "strokeDash": {
+              "value": "0"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 11,
+          "from": 6,
+          "isInvisible": true,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "red"
+            },
+            "strokeDash": {
+              "value": "1"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 12,
+          "from": 6,
+          "to": 1,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "blue"
+            },
+            "strokeDash": {
+              "value": "1"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 13,
+          "from": 7,
+          "to": 1,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "blue"
+            },
+            "strokeDash": {
+              "value": "2"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 14,
+          "from": 7,
+          "to": 2,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "green"
+            },
+            "strokeDash": {
+              "value": "2"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        }
+      ],
+      "CellSize": 0,
+      "containers": {
+        "0": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "crossingCost": 0,
+      "turnCost": 0,
+      "nonCenterPortCost": 0
+    },
+    "name": "upstream-styled-edges-0-seed-1",
+    "nodes": [
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 40,
+        "id": 1,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 60,
+        "x": 490,
+        "y": 266
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 42,
+        "id": 2,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 65,
+        "x": 450,
+        "y": 89
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 44,
+        "id": 3,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 70,
+        "x": 270,
+        "y": 0
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 46,
+        "id": 4,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 75,
+        "x": 235,
+        "y": 175
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 48,
+        "id": 5,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 80,
+        "x": 3,
+        "y": 86
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 50,
+        "id": 6,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 85,
+        "x": 0,
+        "y": 261
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 52,
+        "id": 7,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 90,
+        "x": 180,
+        "y": 84
+      }
+    ],
+    "seed": "1",
+    "structure": {
+      "cellSize": 90,
+      "clusterVessels": {},
+      "clusters": {},
+      "containers": {
+        "0": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ]
+      },
+      "costs": [
+        390.7702241229912,
+        708.75,
+        243.10124999999994
+      ],
+      "directions": {},
+      "hierarchies": null,
+      "hubs": {},
+      "isRootHierarchy": false,
+      "sequenceVessels": {},
+      "sequences": {},
+      "trees": {}
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2id": null,
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 1,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 264,
+            "y": 256
+          },
+          {
+            "x": 264,
+            "y": 33
+          },
+          {
+            "x": 305,
+            "y": 33
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "blue",
+          "strokeDash": "0"
+        },
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 2,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 277,
+            "y": 276
+          },
+          {
+            "x": 420,
+            "y": 276
+          },
+          {
+            "x": 420,
+            "y": 227
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "green",
+          "strokeDash": "0"
+        },
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 3,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 370,
+            "y": 33
+          },
+          {
+            "x": 432,
+            "y": 33
+          },
+          {
+            "x": 432,
+            "y": 183
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "green",
+          "strokeDash": "1"
+        },
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 4,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 370,
+            "y": 19
+          },
+          {
+            "x": 518,
+            "y": 19
+          },
+          {
+            "x": 518,
+            "y": 376
+          },
+          {
+            "x": 342,
+            "y": 376
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "red",
+          "strokeDash": "1"
+        },
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 5,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 443,
+            "y": 227
+          },
+          {
+            "x": 443,
+            "y": 361
+          },
+          {
+            "x": 342,
+            "y": 361
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "red",
+          "strokeDash": "2"
+        },
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 6,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 397,
+            "y": 203
+          },
+          {
+            "x": 212,
+            "y": 203
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "blue",
+          "strokeDash": "2"
+        },
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 7,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 267,
+            "y": 357
+          },
+          {
+            "x": 183,
+            "y": 357
+          },
+          {
+            "x": 183,
+            "y": 223
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "blue",
+          "strokeDash": "3"
+        },
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 8,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 267,
+            "y": 368
+          },
+          {
+            "x": 155,
+            "y": 368
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "green",
+          "strokeDash": "3"
+        },
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 9,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 132,
+            "y": 199
+          },
+          {
+            "x": 101,
+            "y": 199
+          },
+          {
+            "x": 101,
+            "y": 344
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "green",
+          "strokeDash": "0"
+        },
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 10,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 172,
+            "y": 175
+          },
+          {
+            "x": 172,
+            "y": 52
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "red",
+          "strokeDash": "0"
+        },
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 11,
+        "isCurve": false,
+        "isInvisible": true,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 70,
+            "y": 369
+          },
+          {
+            "x": 0,
+            "y": 369
+          },
+          {
+            "x": 0,
+            "y": 26
+          },
+          {
+            "x": 127,
+            "y": 26
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "red",
+          "strokeDash": "1"
+        },
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 12,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 155,
+            "y": 357
+          },
+          {
+            "x": 242,
+            "y": 357
+          },
+          {
+            "x": 242,
+            "y": 296
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "blue",
+          "strokeDash": "1"
+        },
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 13,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 217,
+            "y": 42
+          },
+          {
+            "x": 253,
+            "y": 42
+          },
+          {
+            "x": 253,
+            "y": 256
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "blue",
+          "strokeDash": "2"
+        },
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 14,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 217,
+            "y": 19
+          },
+          {
+            "x": 305,
+            "y": 19
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "green",
+          "strokeDash": "2"
+        },
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      }
+    ],
+    "input": {
+      "nodes": [
+        {
+          "id": 1,
+          "width": 60,
+          "height": 40,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 2,
+          "width": 65,
+          "height": 42,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 3,
+          "width": 70,
+          "height": 44,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 4,
+          "width": 75,
+          "height": 46,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 5,
+          "width": 80,
+          "height": 48,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 6,
+          "width": 85,
+          "height": 50,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 7,
+          "width": 90,
+          "height": 52,
+          "topLeft": null,
+          "shapeType": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": 1,
+          "from": 1,
+          "to": 2,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "blue"
+            },
+            "strokeDash": {
+              "value": "0"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 2,
+          "from": 1,
+          "to": 3,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "green"
+            },
+            "strokeDash": {
+              "value": "0"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 3,
+          "from": 2,
+          "to": 3,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "green"
+            },
+            "strokeDash": {
+              "value": "1"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 4,
+          "from": 2,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "red"
+            },
+            "strokeDash": {
+              "value": "1"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 5,
+          "from": 3,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "red"
+            },
+            "strokeDash": {
+              "value": "2"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 6,
+          "from": 3,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "blue"
+            },
+            "strokeDash": {
+              "value": "2"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 7,
+          "from": 4,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "blue"
+            },
+            "strokeDash": {
+              "value": "3"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 8,
+          "from": 4,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "green"
+            },
+            "strokeDash": {
+              "value": "3"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 9,
+          "from": 5,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "green"
+            },
+            "strokeDash": {
+              "value": "0"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 10,
+          "from": 5,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "red"
+            },
+            "strokeDash": {
+              "value": "0"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 11,
+          "from": 6,
+          "isInvisible": true,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "red"
+            },
+            "strokeDash": {
+              "value": "1"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 12,
+          "from": 6,
+          "to": 1,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "blue"
+            },
+            "strokeDash": {
+              "value": "1"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 13,
+          "from": 7,
+          "to": 1,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "blue"
+            },
+            "strokeDash": {
+              "value": "2"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 14,
+          "from": 7,
+          "to": 2,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "green"
+            },
+            "strokeDash": {
+              "value": "2"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        }
+      ],
+      "CellSize": 0,
+      "containers": {
+        "0": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "crossingCost": 0,
+      "turnCost": 0,
+      "nonCenterPortCost": 0
+    },
+    "name": "upstream-styled-edges-0-seed-123",
+    "nodes": [
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 40,
+        "id": 1,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 60,
+        "x": 217,
+        "y": 256
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 42,
+        "id": 2,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 65,
+        "x": 305,
+        "y": 5
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 44,
+        "id": 3,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 70,
+        "x": 397,
+        "y": 183
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 46,
+        "id": 4,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 75,
+        "x": 267,
+        "y": 346
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 48,
+        "id": 5,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 80,
+        "x": 132,
+        "y": 175
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 50,
+        "id": 6,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 85,
+        "x": 70,
+        "y": 344
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 52,
+        "id": 7,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 90,
+        "x": 127,
+        "y": 0
+      }
+    ],
+    "seed": "123",
+    "structure": {
+      "cellSize": 90,
+      "clusterVessels": {},
+      "clusters": {},
+      "containers": {
+        "0": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ]
+      },
+      "costs": [
+        388.64496112911394,
+        547.75,
+        179.47474999999994
+      ],
+      "directions": {},
+      "hierarchies": null,
+      "hubs": {},
+      "isRootHierarchy": false,
+      "sequenceVessels": {},
+      "sequences": {},
+      "trees": {}
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2id": null,
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 1,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 342,
+            "y": 32
+          },
+          {
+            "x": 277,
+            "y": 32
+          },
+          {
+            "x": 277,
+            "y": 175
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "blue",
+          "strokeDash": "1"
+        },
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 2,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 372,
+            "y": 46
+          },
+          {
+            "x": 372,
+            "y": 143
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "red",
+          "strokeDash": "1"
+        },
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 3,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 245,
+            "y": 202
+          },
+          {
+            "x": 172,
+            "y": 202
+          },
+          {
+            "x": 172,
+            "y": 163
+          },
+          {
+            "x": 148,
+            "y": 163
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "green",
+          "strokeDash": "2"
+        },
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 4,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 287,
+            "y": 217
+          },
+          {
+            "x": 287,
+            "y": 362
+          },
+          {
+            "x": 331,
+            "y": 362
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "blue",
+          "strokeDash": "2"
+        },
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 5,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 148,
+            "y": 159
+          },
+          {
+            "x": 334,
+            "y": 159
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "red",
+          "strokeDash": "3"
+        },
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 6,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 113,
+            "y": 188
+          },
+          {
+            "x": 113,
+            "y": 345
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "green",
+          "strokeDash": "3"
+        },
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 7,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 371,
+            "y": 189
+          },
+          {
+            "x": 371,
+            "y": 346
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "blue",
+          "strokeDash": "0"
+        },
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 8,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 334,
+            "y": 167
+          },
+          {
+            "x": 197,
+            "y": 167
+          },
+          {
+            "x": 197,
+            "y": 52
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "red",
+          "strokeDash": "0"
+        },
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 9,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 331,
+            "y": 378
+          },
+          {
+            "x": 155,
+            "y": 378
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "green",
+          "strokeDash": "1"
+        },
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 10,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 411,
+            "y": 370
+          },
+          {
+            "x": 481,
+            "y": 370
+          },
+          {
+            "x": 481,
+            "y": 26
+          },
+          {
+            "x": 402,
+            "y": 26
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "blue",
+          "strokeDash": "1"
+        },
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 11,
+        "isCurve": false,
+        "isInvisible": true,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 70,
+            "y": 370
+          },
+          {
+            "x": 0,
+            "y": 370
+          },
+          {
+            "x": 0,
+            "y": 17
+          },
+          {
+            "x": 152,
+            "y": 17
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "red",
+          "strokeDash": "2"
+        },
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 12,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 155,
+            "y": 353
+          },
+          {
+            "x": 266,
+            "y": 353
+          },
+          {
+            "x": 266,
+            "y": 217
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "green",
+          "strokeDash": "2"
+        },
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 13,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 242,
+            "y": 19
+          },
+          {
+            "x": 342,
+            "y": 19
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "blue",
+          "strokeDash": "3"
+        },
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 14,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 152,
+            "y": 34
+          },
+          {
+            "x": 113,
+            "y": 34
+          },
+          {
+            "x": 113,
+            "y": 144
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "red",
+          "strokeDash": "3"
+        },
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      }
+    ],
+    "input": {
+      "nodes": [
+        {
+          "id": 1,
+          "width": 60,
+          "height": 40,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 2,
+          "width": 65,
+          "height": 42,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 3,
+          "width": 70,
+          "height": 44,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 4,
+          "width": 75,
+          "height": 46,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 5,
+          "width": 80,
+          "height": 48,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 6,
+          "width": 85,
+          "height": 50,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 7,
+          "width": 90,
+          "height": 52,
+          "topLeft": null,
+          "shapeType": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": 1,
+          "from": 1,
+          "to": 2,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "blue"
+            },
+            "strokeDash": {
+              "value": "1"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 2,
+          "from": 1,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "red"
+            },
+            "strokeDash": {
+              "value": "1"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 3,
+          "from": 2,
+          "to": 3,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "green"
+            },
+            "strokeDash": {
+              "value": "2"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 4,
+          "from": 2,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "blue"
+            },
+            "strokeDash": {
+              "value": "2"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 5,
+          "from": 3,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "red"
+            },
+            "strokeDash": {
+              "value": "3"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 6,
+          "from": 3,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "green"
+            },
+            "strokeDash": {
+              "value": "3"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 7,
+          "from": 4,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "blue"
+            },
+            "strokeDash": {
+              "value": "0"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 8,
+          "from": 4,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "red"
+            },
+            "strokeDash": {
+              "value": "0"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 9,
+          "from": 5,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "green"
+            },
+            "strokeDash": {
+              "value": "1"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 10,
+          "from": 5,
+          "to": 1,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "blue"
+            },
+            "strokeDash": {
+              "value": "1"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 11,
+          "from": 6,
+          "isInvisible": true,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "red"
+            },
+            "strokeDash": {
+              "value": "2"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 12,
+          "from": 6,
+          "to": 2,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "green"
+            },
+            "strokeDash": {
+              "value": "2"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 13,
+          "from": 7,
+          "to": 1,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "blue"
+            },
+            "strokeDash": {
+              "value": "3"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 14,
+          "from": 7,
+          "to": 3,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "red"
+            },
+            "strokeDash": {
+              "value": "3"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        }
+      ],
+      "CellSize": 0,
+      "containers": {
+        "0": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "crossingCost": 0,
+      "turnCost": 0,
+      "nonCenterPortCost": 0
+    },
+    "name": "upstream-styled-edges-1-seed-1",
+    "nodes": [
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 40,
+        "id": 1,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 60,
+        "x": 342,
+        "y": 6
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 42,
+        "id": 2,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 65,
+        "x": 245,
+        "y": 175
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 44,
+        "id": 3,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 70,
+        "x": 78,
+        "y": 144
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 46,
+        "id": 4,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 75,
+        "x": 334,
+        "y": 143
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 48,
+        "id": 5,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 80,
+        "x": 331,
+        "y": 346
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 50,
+        "id": 6,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 85,
+        "x": 70,
+        "y": 345
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 52,
+        "id": 7,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 90,
+        "x": 152,
+        "y": 0
+      }
+    ],
+    "seed": "1",
+    "structure": {
+      "cellSize": 90,
+      "clusterVessels": {},
+      "clusters": {},
+      "containers": {
+        "0": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ]
+      },
+      "costs": [
+        497.62467684643127,
+        549.5,
+        180.07499999999996
+      ],
+      "directions": {},
+      "hierarchies": null,
+      "hubs": {},
+      "isRootHierarchy": false,
+      "sequenceVessels": {},
+      "sequences": {},
+      "trees": {}
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2id": null,
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 1,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 480,
+            "y": 176
+          },
+          {
+            "x": 480,
+            "y": 257
+          },
+          {
+            "x": 210,
+            "y": 257
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "blue",
+          "strokeDash": "1"
+        },
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 1,
+        "fromTableColumnIndex": null,
+        "id": 2,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 490,
+            "y": 136
+          },
+          {
+            "x": 490,
+            "y": 23
+          },
+          {
+            "x": 432,
+            "y": 23
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "red",
+          "strokeDash": "1"
+        },
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 3,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 177,
+            "y": 271
+          },
+          {
+            "x": 177,
+            "y": 340
+          },
+          {
+            "x": 360,
+            "y": 340
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "green",
+          "strokeDash": "2"
+        },
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 2,
+        "fromTableColumnIndex": null,
+        "id": 4,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 210,
+            "y": 243
+          },
+          {
+            "x": 231,
+            "y": 243
+          },
+          {
+            "x": 231,
+            "y": 90
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "blue",
+          "strokeDash": "2"
+        },
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 5,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 395,
+            "y": 318
+          },
+          {
+            "x": 395,
+            "y": 46
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "red",
+          "strokeDash": "3"
+        },
+        "targetArrowhead": "triangle",
+        "to": 4,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 3,
+        "fromTableColumnIndex": null,
+        "id": 6,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 360,
+            "y": 351
+          },
+          {
+            "x": 42,
+            "y": 351
+          },
+          {
+            "x": 42,
+            "y": 275
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "green",
+          "strokeDash": "3"
+        },
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 7,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 357,
+            "y": 21
+          },
+          {
+            "x": 212,
+            "y": 21
+          },
+          {
+            "x": 212,
+            "y": 42
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "blue",
+          "strokeDash": "0"
+        },
+        "targetArrowhead": "triangle",
+        "to": 5,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 4,
+        "fromTableColumnIndex": null,
+        "id": 8,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 357,
+            "y": 33
+          },
+          {
+            "x": 313,
+            "y": 33
+          },
+          {
+            "x": 313,
+            "y": 130
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "red",
+          "strokeDash": "0"
+        },
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 9,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 172,
+            "y": 66
+          },
+          {
+            "x": 28,
+            "y": 66
+          },
+          {
+            "x": 28,
+            "y": 225
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "green",
+          "strokeDash": "1"
+        },
+        "targetArrowhead": "triangle",
+        "to": 6,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 5,
+        "fromTableColumnIndex": null,
+        "id": 10,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 252,
+            "y": 68
+          },
+          {
+            "x": 470,
+            "y": 68
+          },
+          {
+            "x": 470,
+            "y": 136
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "blue",
+          "strokeDash": "1"
+        },
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 11,
+        "isCurve": false,
+        "isInvisible": true,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 56,
+            "y": 225
+          },
+          {
+            "x": 56,
+            "y": 156
+          },
+          {
+            "x": 270,
+            "y": 156
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "red",
+          "strokeDash": "2"
+        },
+        "targetArrowhead": "triangle",
+        "to": 7,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 6,
+        "fromTableColumnIndex": null,
+        "id": 12,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 85,
+            "y": 250
+          },
+          {
+            "x": 145,
+            "y": 250
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "stroke": "green",
+          "strokeDash": "2"
+        },
+        "targetArrowhead": "triangle",
+        "to": 2,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 13,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 360,
+            "y": 156
+          },
+          {
+            "x": 450,
+            "y": 156
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "blue",
+          "strokeDash": "3"
+        },
+        "targetArrowhead": "triangle",
+        "to": 1,
+        "toTableColumnIndex": null
+      },
+      {
+        "d2id": null,
+        "from": 7,
+        "fromTableColumnIndex": null,
+        "id": 14,
+        "isCurve": false,
+        "isInvisible": false,
+        "minHeight": 0,
+        "minWidth": 0,
+        "points": [
+          {
+            "x": 315,
+            "y": 182
+          },
+          {
+            "x": 315,
+            "y": 329
+          },
+          {
+            "x": 360,
+            "y": 329
+          }
+        ],
+        "sourceArrowhead": "",
+        "style": {
+          "animated": "true",
+          "stroke": "red",
+          "strokeDash": "3"
+        },
+        "targetArrowhead": "triangle",
+        "to": 3,
+        "toTableColumnIndex": null
+      }
+    ],
+    "input": {
+      "nodes": [
+        {
+          "id": 1,
+          "width": 60,
+          "height": 40,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 2,
+          "width": 65,
+          "height": 42,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 3,
+          "width": 70,
+          "height": 44,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 4,
+          "width": 75,
+          "height": 46,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 5,
+          "width": 80,
+          "height": 48,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 6,
+          "width": 85,
+          "height": 50,
+          "topLeft": null,
+          "shapeType": ""
+        },
+        {
+          "id": 7,
+          "width": 90,
+          "height": 52,
+          "topLeft": null,
+          "shapeType": ""
+        }
+      ],
+      "edges": [
+        {
+          "id": 1,
+          "from": 1,
+          "to": 2,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "blue"
+            },
+            "strokeDash": {
+              "value": "1"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 2,
+          "from": 1,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "red"
+            },
+            "strokeDash": {
+              "value": "1"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 3,
+          "from": 2,
+          "to": 3,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "green"
+            },
+            "strokeDash": {
+              "value": "2"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 4,
+          "from": 2,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "blue"
+            },
+            "strokeDash": {
+              "value": "2"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 5,
+          "from": 3,
+          "to": 4,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "red"
+            },
+            "strokeDash": {
+              "value": "3"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 6,
+          "from": 3,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "green"
+            },
+            "strokeDash": {
+              "value": "3"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 7,
+          "from": 4,
+          "to": 5,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "blue"
+            },
+            "strokeDash": {
+              "value": "0"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 8,
+          "from": 4,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "red"
+            },
+            "strokeDash": {
+              "value": "0"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 9,
+          "from": 5,
+          "to": 6,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "green"
+            },
+            "strokeDash": {
+              "value": "1"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 10,
+          "from": 5,
+          "to": 1,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "blue"
+            },
+            "strokeDash": {
+              "value": "1"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 11,
+          "from": 6,
+          "isInvisible": true,
+          "to": 7,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "red"
+            },
+            "strokeDash": {
+              "value": "2"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 12,
+          "from": 6,
+          "to": 2,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "green"
+            },
+            "strokeDash": {
+              "value": "2"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 13,
+          "from": 7,
+          "to": 1,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "blue"
+            },
+            "strokeDash": {
+              "value": "3"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        },
+        {
+          "id": 14,
+          "from": 7,
+          "to": 3,
+          "points": [],
+          "minWidth": 0,
+          "minHeight": 0,
+          "labelPercentage": 0,
+          "style": {
+            "stroke": {
+              "value": "red"
+            },
+            "strokeDash": {
+              "value": "3"
+            },
+            "animated": {
+              "value": "true"
+            }
+          },
+          "sourceArrowhead": "",
+          "targetArrowhead": "triangle"
+        }
+      ],
+      "CellSize": 0,
+      "containers": {
+        "0": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "crossingCost": 0,
+      "turnCost": 0,
+      "nonCenterPortCost": 0
+    },
+    "name": "upstream-styled-edges-1-seed-123",
+    "nodes": [
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 40,
+        "id": 1,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 60,
+        "x": 450,
+        "y": 136
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 42,
+        "id": 2,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 65,
+        "x": 145,
+        "y": 229
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 44,
+        "id": 3,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 70,
+        "x": 360,
+        "y": 318
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 46,
+        "id": 4,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 75,
+        "x": 357,
+        "y": 0
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 48,
+        "id": 5,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 80,
+        "x": 172,
+        "y": 42
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 50,
+        "id": 6,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 85,
+        "x": 0,
+        "y": 225
+      },
+      {
+        "d2id": null,
+        "fontSize": null,
+        "forceHierarchy": false,
+        "height": 52,
+        "id": 7,
+        "is3D": false,
+        "isContainer": false,
+        "isInvisible": false,
+        "isMultiple": false,
+        "nears": [],
+        "numColumns": 0,
+        "shapeType": "",
+        "width": 90,
+        "x": 270,
+        "y": 130
+      }
+    ],
+    "seed": "123",
+    "structure": {
+      "cellSize": 90,
+      "clusterVessels": {},
+      "clusters": {},
+      "containers": {
+        "0": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ]
+      },
+      "costs": [
+        489.25900799999994,
+        553,
+        167.07449548666904
+      ],
+      "directions": {},
+      "hierarchies": null,
+      "hubs": {},
+      "isRootHierarchy": false,
+      "sequenceVessels": {},
+      "sequences": {},
+      "trees": {}
+    }
   }
 ]
