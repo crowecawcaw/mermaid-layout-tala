@@ -21,7 +21,7 @@ func TestExportTypeScriptEnginewideidsFixtures(t *testing.T) {
 		t.Skip()
 	}
 	fixtures := []any{}
-	for variant := 0; variant < 10; variant++ {
+	for variant := 0; variant < 12; variant++ {
 		for _, seed := range []int64{1, 123} {
 			graph := layoutgraph.NewGraph()
 			nodes := []*layoutgraph.Node{}
@@ -31,6 +31,9 @@ func TestExportTypeScriptEnginewideidsFixtures(t *testing.T) {
 			count := 9
 			if variant >= 6 {
 				count = 20
+			}
+			if variant >= 10 {
+				count = 9
 			}
 			for i := 0; i < count; i++ {
 				id := int64(1<<60) + int64(i*101+1)
@@ -50,9 +53,12 @@ func TestExportTypeScriptEnginewideidsFixtures(t *testing.T) {
 					}
 				}
 				n := layoutgraph.NewNode(id, float64(40+i*5), float64(30+(i%4)*8))
-				if variant >= 6 && (i == 7 || i == 8) {
+				if variant >= 6 && variant < 10 && (i == 7 || i == 8) {
 					n.Width, n.Height = 128, 128
 					n.SetShape(shape.OVAL_TYPE)
+				}
+				if variant >= 10 && i >= 1 && i <= 4 {
+					n.SetShape(shape.STEP_TYPE)
 				}
 				var parent *layoutgraph.Node
 				if variant >= 2 && variant < 6 {
@@ -63,7 +69,7 @@ func TestExportTypeScriptEnginewideidsFixtures(t *testing.T) {
 						parent = nodes[3]
 					}
 				}
-				if variant >= 6 {
+				if variant >= 6 && variant < 10 {
 					switch i {
 					case 1, 2, 3:
 						parent = nodes[0]
@@ -82,7 +88,9 @@ func TestExportTypeScriptEnginewideidsFixtures(t *testing.T) {
 				inputNodes = append(inputNodes, record)
 			}
 			pairs := [][2]int{}
-			if variant >= 6 {
+			if variant >= 10 {
+				pairs = [][2]int{{0, 1}, {1, 2}, {2, 3}, {3, 4}, {4, 5}, {6, 1}, {4, 7}, {7, 8}}
+			} else if variant >= 6 {
 				pairs = [][2]int{{1, 2}, {1, 3}, {3, 2}, {4, 5}, {0, 5}, {6, 0}, {5, 4}, {7, 0}, {8, 0}}
 			} else {
 				for i := 0; i < 9; i++ {
@@ -117,13 +125,18 @@ func TestExportTypeScriptEnginewideidsFixtures(t *testing.T) {
 			if err != nil {
 				t.Fatal(err)
 			}
-			if variant >= 6 {
+			if variant >= 6 && variant < 10 {
 				offset := int64(1)
 				if variant >= 8 {
 					offset = 3
 				}
 				if _, ok := serialized.Clusters[nodes[0].IDValue()+offset]; !ok {
 					t.Fatalf("variant %d seed %d: expected a cluster ID collision with node %d", variant, seed, nodes[0].IDValue())
+				}
+			}
+			if variant >= 10 {
+				if _, ok := serialized.Sequences[nodes[0].IDValue()+3]; !ok {
+					t.Fatalf("variant %d seed %d: expected a sequence ID collision with node %d", variant, seed, nodes[0].IDValue())
 				}
 			}
 			ids := func(values []int64) []string {
