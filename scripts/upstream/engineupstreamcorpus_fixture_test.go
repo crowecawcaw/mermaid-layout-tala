@@ -183,16 +183,22 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 		fuzzInputs[f.name], fuzzSeeds[f.name] = data, f.seed
 		cases = append(cases, struct{ name, path string }{f.name, ""})
 	}
-	for variant := 0; variant < 8; variant++ {
+	for variant := 0; variant < 9; variant++ {
 		name := fmt.Sprintf("dense-cycle-%d", variant)
 		if variant >= 4 {
 			name = fmt.Sprintf("dense-shape-%d", variant-4)
+		}
+		if variant == 8 {
+			name = "stress-mixed-cycle"
 		}
 		graph := layoutgraph.NewGraph()
 		nodes := []*layoutgraph.Node{}
 		count := 8
 		if variant >= 4 {
 			count = 10
+		}
+		if variant == 8 {
+			count = 16
 		}
 		for i := 0; i < count; i++ {
 			node := layoutgraph.NewNode(int64(i+1), float64(45+i*5), float64(30+(i%4)*7))
