@@ -45,6 +45,12 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
     const parent = container === '0' ? null : nodes.get(Number(container))!;
     for (const child of children) graph.AddNodeToContainer(parent, nodes.get(child)!);
   }
+  if ('isRootHierarchy' in fixture.input) graph.IsRootHierarchy = fixture.input.isRootHierarchy ?? false;
+  if ('directions' in fixture.input && fixture.input.directions) {
+    const orientations: Record<string, Orientation> = { up: Orientation.Top, right: Orientation.Right, down: Orientation.Bottom, left: Orientation.Left };
+    for (const [node, direction] of Object.entries(fixture.input.directions))
+      graph.Directions.set(node === '0' ? null : nodes.get(Number(node))!, orientations[direction as string]!);
+  }
   for (const input of fixture.input.nodes) {
     if ('nears' in input)
       for (const near of input.nears ?? []) nodes.get(input.id)!.AddNear(nodes.get(near)!);

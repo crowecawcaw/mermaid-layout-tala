@@ -368,6 +368,39 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 		fuzzInputs[name] = data
 		cases = append(cases, struct{ name, path string }{name, ""})
 	}
+	for variant, direction := range []geo.Orientation{geo.Top, geo.Right, geo.Bottom, geo.Left} {
+		name := fmt.Sprintf("input-direction-%d", variant)
+		graph := layoutgraph.NewGraph()
+		graph.IsRootHierarchy = variant%2 == 0
+		graph.Directions[nil] = direction
+		group := layoutgraph.NewNode(1, 160, 100)
+		group.ForceHierarchy = true
+		graph.AddNewNodeToContainer(nil, group)
+		graph.Directions[group] = direction.GetOpposite()
+		nodes := []*layoutgraph.Node{}
+		for i := 0; i < 7; i++ {
+			node := layoutgraph.NewNode(int64(i+2), float64(50+i*4), float64(32+i*3))
+			var parent *layoutgraph.Node
+			if i < 4 {
+				parent = group
+			}
+			graph.AddNewNodeToContainer(parent, node)
+			nodes = append(nodes, node)
+		}
+		for i := 0; i < 7; i++ {
+			for _, shift := range []int{1, 3} {
+				edge := graph.Connect(nodes[i], nodes[(i+shift)%len(nodes)])
+				edge.ID = int64(len(graph.Edges))
+				edge.TargetArrowhead = "triangle"
+			}
+		}
+		data, err := graphjson.Marshal(context.Background(), graph)
+		if err != nil {
+			t.Fatal(err)
+		}
+		fuzzInputs[name] = data
+		cases = append(cases, struct{ name, path string }{name, ""})
+	}
 	random := rand.New(rand.NewSource(8675309))
 	for trial := 0; trial < 20; trial++ {
 		name := fmt.Sprintf("random-connected-%02d", trial)
