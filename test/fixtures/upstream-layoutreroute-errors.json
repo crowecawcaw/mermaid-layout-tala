@@ -1,0 +1,491 @@
+[
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "a",
+        "to": "b",
+        "d2Index": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "isCurve": true,
+        "label": "existing",
+        "labelWidth": 30,
+        "labelHeight": 10,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.5
+      },
+      {
+        "id": "e1",
+        "from": "a",
+        "to": "a-lifeline-end-2251863791",
+        "d2Index": 1,
+        "sourceArrow": false,
+        "targetArrow": false,
+        "points": [],
+        "isCurve": true,
+        "label": "selected",
+        "labelWidth": 24,
+        "labelHeight": 12
+      },
+      {
+        "id": "e2",
+        "from": "b",
+        "to": "c",
+        "d2Index": 2,
+        "sourceArrow": true,
+        "targetArrow": false,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 310,
+            "y": 140
+          }
+        ],
+        "isCurve": true,
+        "label": "reversed",
+        "labelWidth": 25,
+        "labelHeight": 10,
+        "labelPosition": "UNLOCKED_TOP",
+        "labelPercentage": 0.25
+      }
+    ],
+    "error": "layout invariant violated: Route 'a -- a: selected' has size 1",
+    "name": "TB-9",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 80,
+        "height": 60,
+        "x": 40,
+        "y": 30
+      },
+      {
+        "id": "b",
+        "width": 80,
+        "height": 60,
+        "x": 240,
+        "y": 30
+      },
+      {
+        "id": "c",
+        "width": 70,
+        "height": 50,
+        "x": 310,
+        "y": 165
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "rootSequence": true
+    },
+    "selected": [
+      "e1",
+      "e2"
+    ]
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "a",
+        "to": "b",
+        "d2Index": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "isCurve": true,
+        "label": "existing",
+        "labelWidth": 30,
+        "labelHeight": 10,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.5
+      },
+      {
+        "id": "e1",
+        "from": "a",
+        "to": "a-lifeline-end-2251863791",
+        "d2Index": 1,
+        "sourceArrow": false,
+        "targetArrow": false,
+        "points": [],
+        "isCurve": true,
+        "label": "selected",
+        "labelWidth": 24,
+        "labelHeight": 12
+      },
+      {
+        "id": "e2",
+        "from": "b",
+        "to": "c",
+        "d2Index": 2,
+        "sourceArrow": true,
+        "targetArrow": false,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 310,
+            "y": 140
+          }
+        ],
+        "isCurve": true,
+        "label": "reversed",
+        "labelWidth": 25,
+        "labelHeight": 10,
+        "labelPosition": "UNLOCKED_TOP",
+        "labelPercentage": 0.25
+      }
+    ],
+    "error": "layout invariant violated: Route 'a -- a: selected' has size 1",
+    "name": "BT-9",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 80,
+        "height": 60,
+        "x": 40,
+        "y": 30
+      },
+      {
+        "id": "b",
+        "width": 80,
+        "height": 60,
+        "x": 240,
+        "y": 30
+      },
+      {
+        "id": "c",
+        "width": 70,
+        "height": 50,
+        "x": 310,
+        "y": 165
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "rootSequence": true
+    },
+    "selected": [
+      "e1",
+      "e2"
+    ]
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "a",
+        "to": "b",
+        "d2Index": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "isCurve": true,
+        "label": "existing",
+        "labelWidth": 30,
+        "labelHeight": 10,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.5
+      },
+      {
+        "id": "e1",
+        "from": "a",
+        "to": "a-lifeline-end-2251863791",
+        "d2Index": 1,
+        "sourceArrow": false,
+        "targetArrow": false,
+        "points": [],
+        "isCurve": true,
+        "label": "selected",
+        "labelWidth": 24,
+        "labelHeight": 12
+      },
+      {
+        "id": "e2",
+        "from": "b",
+        "to": "c",
+        "d2Index": 2,
+        "sourceArrow": true,
+        "targetArrow": false,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 310,
+            "y": 140
+          }
+        ],
+        "isCurve": true,
+        "label": "reversed",
+        "labelWidth": 25,
+        "labelHeight": 10,
+        "labelPosition": "UNLOCKED_TOP",
+        "labelPercentage": 0.25
+      }
+    ],
+    "error": "layout invariant violated: Route 'a -- a: selected' has size 1",
+    "name": "LR-9",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 80,
+        "height": 60,
+        "x": 40,
+        "y": 30
+      },
+      {
+        "id": "b",
+        "width": 80,
+        "height": 60,
+        "x": 240,
+        "y": 30
+      },
+      {
+        "id": "c",
+        "width": 70,
+        "height": 50,
+        "x": 310,
+        "y": 165
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "rootSequence": true
+    },
+    "selected": [
+      "e1",
+      "e2"
+    ]
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "a",
+        "to": "b",
+        "d2Index": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "isCurve": true,
+        "label": "existing",
+        "labelWidth": 30,
+        "labelHeight": 10,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.5
+      },
+      {
+        "id": "e1",
+        "from": "a",
+        "to": "a-lifeline-end-2251863791",
+        "d2Index": 1,
+        "sourceArrow": false,
+        "targetArrow": false,
+        "points": [],
+        "isCurve": true,
+        "label": "selected",
+        "labelWidth": 24,
+        "labelHeight": 12
+      },
+      {
+        "id": "e2",
+        "from": "b",
+        "to": "c",
+        "d2Index": 2,
+        "sourceArrow": true,
+        "targetArrow": false,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 310,
+            "y": 140
+          }
+        ],
+        "isCurve": true,
+        "label": "reversed",
+        "labelWidth": 25,
+        "labelHeight": 10,
+        "labelPosition": "UNLOCKED_TOP",
+        "labelPercentage": 0.25
+      }
+    ],
+    "error": "layout invariant violated: Route 'a -- a: selected' has size 1",
+    "name": "RL-9",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 80,
+        "height": 60,
+        "x": 40,
+        "y": 30
+      },
+      {
+        "id": "b",
+        "width": 80,
+        "height": 60,
+        "x": 240,
+        "y": 30
+      },
+      {
+        "id": "c",
+        "width": 70,
+        "height": 50,
+        "x": 310,
+        "y": 165
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "rootSequence": true
+    },
+    "selected": [
+      "e1",
+      "e2"
+    ]
+  },
+  {
+    "edges": [
+      {
+        "id": "e0",
+        "from": "a",
+        "to": "b",
+        "d2Index": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "points": [
+          {
+            "x": 80,
+            "y": 30
+          },
+          {
+            "x": 200,
+            "y": 30
+          }
+        ],
+        "isCurve": true,
+        "label": "existing",
+        "labelWidth": 30,
+        "labelHeight": 10,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelPercentage": 0.5
+      },
+      {
+        "id": "e1",
+        "from": "a",
+        "to": "a-lifeline-end-2251863791",
+        "d2Index": 1,
+        "sourceArrow": false,
+        "targetArrow": false,
+        "points": [],
+        "isCurve": true,
+        "label": "selected",
+        "labelWidth": 24,
+        "labelHeight": 12
+      },
+      {
+        "id": "e2",
+        "from": "b",
+        "to": "c",
+        "d2Index": 2,
+        "sourceArrow": true,
+        "targetArrow": false,
+        "points": [
+          {
+            "x": 240,
+            "y": 60
+          },
+          {
+            "x": 310,
+            "y": 140
+          }
+        ],
+        "isCurve": true,
+        "label": "reversed",
+        "labelWidth": 25,
+        "labelHeight": 10,
+        "labelPosition": "UNLOCKED_TOP",
+        "labelPercentage": 0.25
+      }
+    ],
+    "error": "layout invariant violated: Route 'a -- a: selected' has size 1",
+    "name": "DEFAULT-9",
+    "nodes": [
+      {
+        "id": "a",
+        "width": 80,
+        "height": 60,
+        "x": 40,
+        "y": 30
+      },
+      {
+        "id": "b",
+        "width": 80,
+        "height": 60,
+        "x": 240,
+        "y": 30
+      },
+      {
+        "id": "c",
+        "width": 70,
+        "height": 50,
+        "x": 310,
+        "y": 165
+      }
+    ],
+    "options": {
+      "rootSequence": true
+    },
+    "selected": [
+      "e1",
+      "e2"
+    ]
+  }
+]

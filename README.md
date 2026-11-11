@@ -153,8 +153,7 @@ npm test
 
 `npm run test:parity` compares complete layouts and standalone rerouting against
 pinned Go fixtures. It currently reports 491/491 layouts, 10/10 layout failures,
-and 45/45 rerouting
-cases matching. Additional upstream features and graph shapes still need
+50/50 rerouting cases, and 5/5 rerouting failures matching. Additional upstream features and graph shapes still need
 differential coverage.
 
 Run the playground with `npm run demo -- --port 4173`, then open

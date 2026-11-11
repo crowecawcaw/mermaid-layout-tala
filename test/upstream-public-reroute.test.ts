@@ -1,5 +1,6 @@
 import { expect, it } from 'vitest';
 import fixtures from './fixtures/upstream-layoutreroute.json';
+import failures from './fixtures/upstream-layoutreroute-errors.json';
 import { routeEdges, type LayoutDirection } from '../src/index.js';
 import { compare } from './helpers/compare.js';
 
@@ -22,6 +23,15 @@ it.each(fixtures)('matches pinned Go RouteEdges $name', (fixture) => {
     if (!fixture.selected.includes(expected.id))
       expect(actual).toBe(fixture.edges.find((edge) => edge.id === expected.id));
   }
+});
+
+it.each(failures)('matches pinned Go RouteEdges failure $name without changing inputs', (fixture) => {
+  const before = structuredClone({ nodes: fixture.nodes, edges: fixture.edges });
+  expect(() => routeEdges(fixture.nodes, fixture.edges, fixture.selected, {
+    ...fixture.options,
+    direction: fixture.options.direction as LayoutDirection | undefined,
+  })).toThrow(fixture.error);
+  expect({ nodes: fixture.nodes, edges: fixture.edges }).toEqual(before);
 });
 
 it('validates selections and existing geometry without mutating inputs', () => {

@@ -6,9 +6,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"strings"
 	"testing"
 
 	"github.com/d2lang/d2/d2graph"
+	"github.com/d2lang/d2/d2layouts/d2sequence"
 	"github.com/d2lang/d2/d2target"
 	"github.com/d2lang/d2/lib/geo"
 )
@@ -53,8 +55,9 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 	}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
 	fixtures := []any{}
+	failures := []any{}
 	for _, direction := range []string{"TB", "BT", "LR", "RL", "DEFAULT"} {
-		for trial := 0; trial < 9; trial++ {
+		for trial := 0; trial < 11; trial++ {
 			g := d2graph.NewGraph()
 			if trial >= 6 {
 				g.Root.Shape.Value = "sequence_diagram"
@@ -104,6 +107,14 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 				{ID: "e1", From: "a", To: "c", D2Index: 1, TargetArrow: true, Points: []reroutePoint{}, IsCurve: true, Label: "selected", LabelWidth: 24, LabelHeight: 12},
 				{ID: "e2", From: "b", To: "c", D2Index: 2, SourceArrow: true, Points: []reroutePoint{{240, 60}, {objects["c"].TopLeft.X + objects["c"].Width/2, 140}}, IsCurve: true},
 			}
+			if trial == 9 {
+				inputs[1].To = d2sequence.LifelineEndID("a")
+				inputs[1].TargetArrow = false
+			}
+			if trial == 10 {
+				inputs[0].To = d2sequence.LifelineEndID("a")
+				inputs[0].TargetArrow = false
+			}
 			position := "OUTSIDE_TOP_CENTER"
 			percent := 0.5
 			inputs[0].LabelPosition = &position
@@ -130,6 +141,9 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 			selectedIDs := []string{"e1"}
 			for i, in := range inputs {
 				e := &d2graph.Edge{Index: in.D2Index, Src: objects[in.From], Dst: objects[in.To], SrcArrow: in.SourceArrow, DstArrow: in.TargetArrow, IsCurve: in.IsCurve, Attributes: d2graph.Attributes{}}
+				if e.Dst == nil {
+					e.Dst = &d2graph.Object{ID: in.To}
+				}
 				e.SrcTableColumnIndex = in.SourceTableColumnIndex
 				e.Label.Value = in.Label
 				e.LabelDimensions = *d2target.NewTextDimensions(in.LabelWidth, in.LabelHeight)
@@ -146,8 +160,16 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 					}
 				}
 			}
+			options := map[string]any{"direction": direction}
+			if trial >= 6 {
+				options["rootSequence"] = true
+			}
+			if direction == "DEFAULT" {
+				delete(options, "direction")
+			}
 			if err := RouteEdges(context.Background(), g, selected); err != nil {
-				t.Fatalf("%s %d: %v", direction, trial, err)
+				failures = append(failures, map[string]any{"name": fmt.Sprintf("%s-%d", direction, trial), "nodes": nodes, "edges": inputs, "selected": selectedIDs, "options": options, "error": err.Error()})
+				continue
 			}
 			out := []map[string]any{}
 			for i, e := range g.Edges {
@@ -155,7 +177,11 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 				for _, p := range e.Route {
 					points = append(points, reroutePoint{p.X, p.Y})
 				}
-				record := map[string]any{"id": inputs[i].ID, "points": points, "isCurve": e.IsCurve, "to": inputs[i].To}
+				to := inputs[i].To
+				if e.Dst == e.Src {
+					to = inputs[i].From
+				}
+				record := map[string]any{"id": inputs[i].ID, "points": points, "isCurve": e.IsCurve, "to": to}
 				if e.LabelPosition != nil {
 					record["labelPosition"] = *e.LabelPosition
 				}
@@ -163,13 +189,6 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 					record["labelPercentage"] = *e.LabelPercentage
 				}
 				out = append(out, record)
-			}
-			options := map[string]any{"direction": direction}
-			if trial >= 6 {
-				options["rootSequence"] = true
-			}
-			if direction == "DEFAULT" {
-				delete(options, "direction")
 			}
 			fixtures = append(fixtures, map[string]any{"name": fmt.Sprintf("%s-%d", direction, trial), "nodes": nodes, "edges": inputs, "selected": selectedIDs, "options": options, "expected": out})
 		}
@@ -179,6 +198,13 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 		t.Fatal(err)
 	}
 	if err = os.WriteFile(path, append(data, '\n'), 0644); err != nil {
+		t.Fatal(err)
+	}
+	data, err = json.MarshalIndent(failures, "", "  ")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err = os.WriteFile(strings.TrimSuffix(path, ".json")+"-errors.json", append(data, '\n'), 0644); err != nil {
 		t.Fatal(err)
 	}
 }
