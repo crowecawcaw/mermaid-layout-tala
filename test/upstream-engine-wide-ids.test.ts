@@ -26,4 +26,11 @@ it.each(fixtures)('matches Go with exact signed 64-bit entity IDs: $name', (fixt
   expect(actualEdges).toHaveLength(fixture.expectedEdges.length);
   compare(actualNodes, fixture.expectedNodes);
   compare(actualEdges, fixture.expectedEdges);
+  const id = (node: Node | null) => String(node?.ID ?? 0n);
+  expect({
+    containers: Object.fromEntries([...result.Containers].map(([parent, children]) => [id(parent), children.map(id)])),
+    hubs: Object.fromEntries([...result.Hubs].map(([hub, spokes]) => [id(hub), spokes.map(id)])),
+    clusters: Object.fromEntries([...result.Clusters].map(([vessel, cluster]) => [id(vessel), cluster.Nodes.map(id)])),
+    sequences: Object.fromEntries([...result.Sequences].map(([vessel, sequence]) => [id(vessel), sequence.Nodes.map(id)])),
+  }).toEqual(fixture.structure);
 }, 60_000);

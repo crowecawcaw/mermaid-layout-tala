@@ -9,6 +9,7 @@ import (
 	"os"
 	"testing"
 
+	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/graphjson"
 	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/layoutgraph"
 )
 
@@ -71,7 +72,31 @@ func TestExportTypeScriptEnginewideidsFixtures(t *testing.T) {
 			for _, e := range result.Edges {
 				outEdges = append(outEdges, map[string]any{"id": fmt.Sprint(e.ID), "from": fmt.Sprint(e.From.IDValue()), "to": fmt.Sprint(e.To.IDValue()), "points": e.Points})
 			}
-			fixtures = append(fixtures, map[string]any{"name": fmt.Sprintf("wide-%d-%d", variant, seed), "seed": fmt.Sprint(seed), "nodes": inputNodes, "edges": inputEdges, "expectedNodes": outNodes, "expectedEdges": outEdges})
+			serialized, err := graphjson.Serialize(context.Background(), result)
+			if err != nil {
+				t.Fatal(err)
+			}
+			ids := func(values []int64) []string {
+				result := make([]string, 0, len(values))
+				for _, value := range values {
+					result = append(result, fmt.Sprint(value))
+				}
+				return result
+			}
+			containers, hubs, clusters, sequences := map[string][]string{}, map[string][]string{}, map[string][]string{}, map[string][]string{}
+			for id, children := range serialized.Containers {
+				containers[fmt.Sprint(id)] = ids(children)
+			}
+			for id, spokes := range serialized.Hubs {
+				hubs[fmt.Sprint(id)] = ids(spokes)
+			}
+			for id, cluster := range serialized.Clusters {
+				clusters[fmt.Sprint(id)] = ids(cluster.Nodes)
+			}
+			for id, sequence := range serialized.Sequences {
+				sequences[fmt.Sprint(id)] = ids(sequence.Nodes)
+			}
+			fixtures = append(fixtures, map[string]any{"name": fmt.Sprintf("wide-%d-%d", variant, seed), "seed": fmt.Sprint(seed), "nodes": inputNodes, "edges": inputEdges, "expectedNodes": outNodes, "expectedEdges": outEdges, "structure": map[string]any{"containers": containers, "hubs": hubs, "clusters": clusters, "sequences": sequences}})
 		}
 	}
 	data, err := json.MarshalIndent(fixtures, "", "  ")
