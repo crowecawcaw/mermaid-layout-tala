@@ -60,7 +60,7 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
     }
     edge.Points = input.points.map((point: { x: number; y: number }) => new Point(point.x, point.y));
   }
-  const result = Layout(Background, graph, { Seed: 1n });
+  const result = Layout(Background, graph, { Seed: BigInt(fixture.seed) });
   expect(result.Nodes).toHaveLength(fixture.nodes.length);
   expect(result.Edges).toHaveLength(fixture.edges.length);
   const resultNodes = new Map(result.Nodes.map((node) => [Number(node.ID), node]));

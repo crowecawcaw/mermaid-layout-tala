@@ -48,34 +48,36 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 		if err != nil {
 			t.Fatal(err)
 		}
-		graph := layoutgraph.NewGraph()
-		if err := graphjson.Unmarshal(context.Background(), data, graph); err != nil {
-			t.Fatal(err)
-		}
-		result, err := Layout(context.Background(), graph, LayoutOptions{Seed: 1})
-		if err != nil {
-			t.Fatalf("%s: %v", c.name, err)
-		}
-		nodes := []any{}
-		edges := []any{}
-		for _, n := range result.Nodes {
-			record := map[string]any{"id": n.IDValue(), "x": n.TopLeft.X, "y": n.TopLeft.Y, "width": n.Width, "height": n.Height}
-			if n.Label != nil {
-				record["label"] = map[string]any{"position": n.Label.Position.String(), "width": n.Label.Width, "height": n.Label.Height}
+		for _, seed := range []int64{1, 123} {
+			graph := layoutgraph.NewGraph()
+			if err := graphjson.Unmarshal(context.Background(), data, graph); err != nil {
+				t.Fatal(err)
 			}
-			if n.Icon != nil {
-				record["iconPosition"] = n.Icon.Position.String()
+			result, err := Layout(context.Background(), graph, LayoutOptions{Seed: seed})
+			if err != nil {
+				t.Fatalf("%s seed %d: %v", c.name, seed, err)
 			}
-			nodes = append(nodes, record)
-		}
-		for _, e := range result.Edges {
-			record := map[string]any{"id": e.ID, "points": e.Points, "isCurve": e.IsCurve}
-			if e.Label != nil {
-				record["label"] = map[string]any{"position": e.Label.Position.String(), "percentage": e.LabelPercentage, "width": e.Label.Width, "height": e.Label.Height}
+			nodes := []any{}
+			edges := []any{}
+			for _, n := range result.Nodes {
+				record := map[string]any{"id": n.IDValue(), "x": n.TopLeft.X, "y": n.TopLeft.Y, "width": n.Width, "height": n.Height}
+				if n.Label != nil {
+					record["label"] = map[string]any{"position": n.Label.Position.String(), "width": n.Label.Width, "height": n.Label.Height}
+				}
+				if n.Icon != nil {
+					record["iconPosition"] = n.Icon.Position.String()
+				}
+				nodes = append(nodes, record)
 			}
-			edges = append(edges, record)
+			for _, e := range result.Edges {
+				record := map[string]any{"id": e.ID, "points": e.Points, "isCurve": e.IsCurve}
+				if e.Label != nil {
+					record["label"] = map[string]any{"position": e.Label.Position.String(), "percentage": e.LabelPercentage, "width": e.Label.Width, "height": e.Label.Height}
+				}
+				edges = append(edges, record)
+			}
+			fixtures = append(fixtures, map[string]any{"name": fmt.Sprintf("upstream-%s-seed-%d", c.name, seed), "seed": seed, "input": json.RawMessage(data), "nodes": nodes, "edges": edges})
 		}
-		fixtures = append(fixtures, map[string]any{"name": fmt.Sprintf("upstream-%s", c.name), "input": json.RawMessage(data), "nodes": nodes, "edges": edges})
 	}
 	data, err := json.MarshalIndent(fixtures, "", "  ")
 	if err != nil {
