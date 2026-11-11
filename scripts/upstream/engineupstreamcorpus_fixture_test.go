@@ -127,6 +127,25 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 	}
 	fuzzInputs := map[string][]byte{}
 	fuzzSeeds := map[string]int64{}
+	regressions := []struct {
+		name string
+		seed int64
+	}{
+		{"container_escape_1", 4397197029139916149}, {"container_escape_2", 2314505960588799500},
+		{"container_escape_3", 5902913841169428614}, {"container_escape_4", 3171783035589032342},
+		{"container_escape_5", 7778691377623283929}, {"container_escape_6", 1636470363569335365},
+		{"container_escape_7", 139599530801109251}, {"node_placement_shift_1", 1654996031387964605},
+		{"node_placement_shift_2", 2432142976454602351}, {"clustering_near", 4970705388244523053},
+		{"cloud_port_index", 1475938678302850746}, {"edge_balance_never_ending", 123},
+		{"edge_balance_1", 9034163656351675339}, {"edge_balance_2", 4429140665999086830},
+		{"edge_balance_3", 8661428079105679616}, {"cluster_overlap", 2029887799644317101},
+		{"cluster_overlap_2", 4483618397761874234}, {"path_not_found", 562018869481995924},
+	}
+	for _, regression := range regressions {
+		name := "regression-" + regression.name
+		fuzzSeeds[name] = regression.seed
+		cases = append(cases, struct{ name, path string }{name, filepath.Join("regression", regression.name+".json")})
+	}
 	fuzzCases := []struct {
 		name                                                                   string
 		seed                                                                   int64
@@ -259,7 +278,7 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 				t.Fatalf("%s seed %d serialize: %v", c.name, seed, err)
 			}
 			structure := corpusStructure(serialized)
-			fixtures = append(fixtures, map[string]any{"name": fmt.Sprintf("upstream-%s-seed-%d", c.name, seed), "seed": seed, "input": json.RawMessage(data), "nodes": nodes, "edges": edges, "structure": structure})
+			fixtures = append(fixtures, map[string]any{"name": fmt.Sprintf("upstream-%s-seed-%d", c.name, seed), "seed": fmt.Sprint(seed), "input": json.RawMessage(data), "nodes": nodes, "edges": edges, "structure": structure})
 		}
 	}
 	data, err := json.MarshalIndent(fixtures, "", "  ")
