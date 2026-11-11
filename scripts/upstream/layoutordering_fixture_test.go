@@ -110,6 +110,7 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		{"empty-local-id", [][2]int{{2, 3}, {3, 4}}, false, 26},
 		{"empty-arrowhead-shapes", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 27},
 		{"independent-fixed-sizes", [][2]int{{0, 1}, {0, 2}, {1, 3}, {2, 3}, {3, 4}}, false, 28},
+		{"unicode-hash-collision", [][2]int{{0, 2}, {1, 2}, {2, 3}, {3, 4}, {4, 0}}, false, 29},
 	}
 	indices := []int{0, 1, 0, 1, 0, 0, 0}
 	dirs := map[string]string{"TB": "down", "BT": "up", "LR": "right", "RL": "left"}
@@ -140,6 +141,9 @@ func TestExportTypeScriptLayoutorderingFixtures(t *testing.T) {
 		}
 		if test.shapeSet == 26 {
 			names = []string{"outer-api", "empty-api", "leaf-api", "other-api", "solo-api"}
+		}
+		if test.shapeSet == 29 {
+			names = []string{"𐀀1ti7zkx", "\ue000zvtd6b", "one", "two", "three"}
 		}
 		if test.shapeSet == 15 || test.shapeSet == 16 || test.shapeSet == 17 {
 			names = []string{"seq", "inner", "leaf", "other", "solo"}

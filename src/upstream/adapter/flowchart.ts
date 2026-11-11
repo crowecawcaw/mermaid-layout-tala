@@ -63,6 +63,14 @@ function fnv32(value: string): number {
   }
   return h >>> 0;
 }
+// Go compares strings byte by byte; JavaScript compares UTF-16 code units.
+function compareGoStrings(a: string, b: string): number {
+  const encoder = new TextEncoder(), left = encoder.encode(a), right = encoder.encode(b);
+  for (let i = 0; i < Math.min(left.length, right.length); i++) {
+    if (left[i] !== right[i]) return left[i]! - right[i]!;
+  }
+  return left.length - right.length;
+}
 /** Construct the synthetic destination ID used by a D2 sequence lifeline. */
 export function d2LifelineEndId(actorId: string): string {
   const prefix = `${actorId}-lifeline-end`;
@@ -85,7 +93,7 @@ export function allocateEntityIDs(values: string[], ctx: Context = Background): 
       .sort(
         (a, b) =>
           a.hash - b.hash ||
-          (a.value < b.value ? -1 : a.value > b.value ? 1 : 0),
+          compareGoStrings(a.value, b.value),
       );
   for (const e of entries)
     if (e.hash !== 0 && counts.get(e.hash) === 1) ids[e.index] = BigInt(e.hash);

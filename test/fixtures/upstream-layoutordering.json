@@ -29891,5 +29891,1013 @@
         3
       ]
     }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "𐀀1ti7zkx",
+        "to": "one",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "zvtd6b",
+        "to": "one",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "one",
+        "to": "two",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "two",
+        "to": "three",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge16",
+        "from": "three",
+        "to": "𐀀1ti7zkx",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 362,
+          "labelY": 63,
+          "points": [
+            {
+              "x": 302,
+              "y": 75
+            },
+            {
+              "x": 391,
+              "y": 75
+            },
+            {
+              "x": 391,
+              "y": 106
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 433,
+          "labelY": 71,
+          "points": [
+            {
+              "x": 411,
+              "y": 35
+            },
+            {
+              "x": 411,
+              "y": 106
+            }
+          ]
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 337,
+          "labelY": 145,
+          "points": [
+            {
+              "x": 371,
+              "y": 132
+            },
+            {
+              "x": 336,
+              "y": 132
+            },
+            {
+              "x": 302,
+              "y": 132
+            }
+          ]
+        },
+        {
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 135,
+          "labelY": 128,
+          "points": [
+            {
+              "x": 212,
+              "y": 140
+            },
+            {
+              "x": 156,
+              "y": 140
+            },
+            {
+              "x": 156,
+              "y": 115
+            },
+            {
+              "x": 100,
+              "y": 115
+            }
+          ]
+        },
+        {
+          "id": "edge16",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 135,
+          "labelY": 87,
+          "points": [
+            {
+              "x": 100,
+              "y": 99
+            },
+            {
+              "x": 156,
+              "y": 99
+            },
+            {
+              "x": 156,
+              "y": 75
+            },
+            {
+              "x": 212,
+              "y": 75
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "𐀀1ti7zkx",
+          "width": 90,
+          "x": 257,
+          "y": 75.5
+        },
+        {
+          "fontSize": 16,
+          "height": 35,
+          "id": "zvtd6b",
+          "width": 70,
+          "x": 411,
+          "y": 17.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "one",
+          "width": 80,
+          "x": 411,
+          "y": 126
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "two",
+          "width": 90,
+          "x": 257,
+          "y": 140.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "three",
+          "width": 100,
+          "x": 50,
+          "y": 108
+        }
+      ]
+    },
+    "name": "unicode-hash-collision-TB",
+    "nodes": [
+      {
+        "id": "𐀀1ti7zkx",
+        "width": 60,
+        "height": 30,
+        "label": ""
+      },
+      {
+        "id": "zvtd6b",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "one",
+        "width": 80,
+        "height": 40,
+        "label": ""
+      },
+      {
+        "id": "two",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "three",
+        "width": 100,
+        "height": 50,
+        "label": ""
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "𐀀1ti7zkx",
+        "to": "one",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "zvtd6b",
+        "to": "one",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "one",
+        "to": "two",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "two",
+        "to": "three",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge16",
+        "from": "three",
+        "to": "𐀀1ti7zkx",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 348,
+          "labelY": 35,
+          "points": [
+            {
+              "x": 281,
+              "y": 22
+            },
+            {
+              "x": 326,
+              "y": 22
+            },
+            {
+              "x": 326,
+              "y": 48
+            },
+            {
+              "x": 371,
+              "y": 48
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 390,
+          "labelY": 108,
+          "points": [
+            {
+              "x": 411,
+              "y": 141
+            },
+            {
+              "x": 411,
+              "y": 75
+            }
+          ]
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 348,
+          "labelY": 74,
+          "points": [
+            {
+              "x": 371,
+              "y": 61
+            },
+            {
+              "x": 326,
+              "y": 61
+            },
+            {
+              "x": 326,
+              "y": 87
+            },
+            {
+              "x": 281,
+              "y": 87
+            }
+          ]
+        },
+        {
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_LEFT",
+          "labelX": 164,
+          "labelY": 100,
+          "points": [
+            {
+              "x": 191,
+              "y": 87
+            },
+            {
+              "x": 145,
+              "y": 87
+            },
+            {
+              "x": 145,
+              "y": 70
+            },
+            {
+              "x": 100,
+              "y": 70
+            }
+          ]
+        },
+        {
+          "id": "edge16",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 105,
+          "labelY": 10,
+          "points": [
+            {
+              "x": 50,
+              "y": 53
+            },
+            {
+              "x": 50,
+              "y": 22
+            },
+            {
+              "x": 191,
+              "y": 22
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "𐀀1ti7zkx",
+          "width": 90,
+          "x": 236,
+          "y": 22.5
+        },
+        {
+          "fontSize": 16,
+          "height": 35,
+          "id": "zvtd6b",
+          "width": 70,
+          "x": 411,
+          "y": 158.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "one",
+          "width": 80,
+          "x": 411,
+          "y": 55
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "two",
+          "width": 90,
+          "x": 236,
+          "y": 87.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "three",
+          "width": 100,
+          "x": 50,
+          "y": 78
+        }
+      ]
+    },
+    "name": "unicode-hash-collision-BT",
+    "nodes": [
+      {
+        "id": "𐀀1ti7zkx",
+        "width": 60,
+        "height": 30,
+        "label": ""
+      },
+      {
+        "id": "zvtd6b",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "one",
+        "width": 80,
+        "height": 40,
+        "label": ""
+      },
+      {
+        "id": "two",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "three",
+        "width": 100,
+        "height": 50,
+        "label": ""
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "𐀀1ti7zkx",
+        "to": "one",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "zvtd6b",
+        "to": "one",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "one",
+        "to": "two",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "two",
+        "to": "three",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge16",
+        "from": "three",
+        "to": "𐀀1ti7zkx",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 244,
+          "labelY": 35,
+          "points": [
+            {
+              "x": 318,
+              "y": 22
+            },
+            {
+              "x": 199,
+              "y": 22
+            },
+            {
+              "x": 199,
+              "y": 51
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 115,
+          "labelY": 58,
+          "points": [
+            {
+              "x": 70,
+              "y": 70
+            },
+            {
+              "x": 159,
+              "y": 70
+            }
+          ]
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 279,
+          "labelY": 66,
+          "points": [
+            {
+              "x": 239,
+              "y": 78
+            },
+            {
+              "x": 278,
+              "y": 78
+            },
+            {
+              "x": 318,
+              "y": 78
+            }
+          ]
+        },
+        {
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 443,
+          "labelY": 72,
+          "points": [
+            {
+              "x": 408,
+              "y": 84
+            },
+            {
+              "x": 442,
+              "y": 84
+            },
+            {
+              "x": 477,
+              "y": 84
+            }
+          ]
+        },
+        {
+          "id": "edge16",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 483,
+          "labelY": 35,
+          "points": [
+            {
+              "x": 527,
+              "y": 53
+            },
+            {
+              "x": 527,
+              "y": 22
+            },
+            {
+              "x": 408,
+              "y": 22
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "𐀀1ti7zkx",
+          "width": 90,
+          "x": 363,
+          "y": 22.5
+        },
+        {
+          "fontSize": 16,
+          "height": 35,
+          "id": "zvtd6b",
+          "width": 70,
+          "x": 35,
+          "y": 70.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "one",
+          "width": 80,
+          "x": 199,
+          "y": 71
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "two",
+          "width": 90,
+          "x": 363,
+          "y": 87.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "three",
+          "width": 100,
+          "x": 527,
+          "y": 78
+        }
+      ]
+    },
+    "name": "unicode-hash-collision-LR",
+    "nodes": [
+      {
+        "id": "𐀀1ti7zkx",
+        "width": 60,
+        "height": 30,
+        "label": ""
+      },
+      {
+        "id": "zvtd6b",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "one",
+        "width": 80,
+        "height": 40,
+        "label": ""
+      },
+      {
+        "id": "two",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "three",
+        "width": 100,
+        "height": 50,
+        "label": ""
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "id": "edge20",
+        "from": "𐀀1ti7zkx",
+        "to": "one",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge19",
+        "from": "zvtd6b",
+        "to": "one",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge18",
+        "from": "one",
+        "to": "two",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge17",
+        "from": "two",
+        "to": "three",
+        "d2Index": 1,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      },
+      {
+        "id": "edge16",
+        "from": "three",
+        "to": "𐀀1ti7zkx",
+        "d2Index": 0,
+        "label": "link",
+        "labelWidth": 30,
+        "labelHeight": 12
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "edge20",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 355,
+          "labelY": 10,
+          "points": [
+            {
+              "x": 277,
+              "y": 22
+            },
+            {
+              "x": 404,
+              "y": 22
+            },
+            {
+              "x": 404,
+              "y": 51
+            }
+          ]
+        },
+        {
+          "id": "edge19",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 487,
+          "labelY": 83,
+          "points": [
+            {
+              "x": 530,
+              "y": 70
+            },
+            {
+              "x": 444,
+              "y": 70
+            }
+          ]
+        },
+        {
+          "id": "edge18",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_RIGHT",
+          "labelX": 304,
+          "labelY": 103,
+          "points": [
+            {
+              "x": 364,
+              "y": 71
+            },
+            {
+              "x": 320,
+              "y": 71
+            },
+            {
+              "x": 320,
+              "y": 90
+            },
+            {
+              "x": 277,
+              "y": 90
+            }
+          ]
+        },
+        {
+          "id": "edge17",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_LEFT",
+          "labelX": 161,
+          "labelY": 100,
+          "points": [
+            {
+              "x": 187,
+              "y": 87
+            },
+            {
+              "x": 143,
+              "y": 87
+            },
+            {
+              "x": 143,
+              "y": 70
+            },
+            {
+              "x": 100,
+              "y": 70
+            }
+          ]
+        },
+        {
+          "id": "edge16",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 103,
+          "labelY": 10,
+          "points": [
+            {
+              "x": 50,
+              "y": 53
+            },
+            {
+              "x": 50,
+              "y": 22
+            },
+            {
+              "x": 187,
+              "y": 22
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "𐀀1ti7zkx",
+          "width": 90,
+          "x": 232,
+          "y": 22.5
+        },
+        {
+          "fontSize": 16,
+          "height": 35,
+          "id": "zvtd6b",
+          "width": 70,
+          "x": 565,
+          "y": 70.5
+        },
+        {
+          "fontSize": 16,
+          "height": 40,
+          "id": "one",
+          "width": 80,
+          "x": 404,
+          "y": 71
+        },
+        {
+          "fontSize": 16,
+          "height": 45,
+          "id": "two",
+          "width": 90,
+          "x": 232,
+          "y": 87.5
+        },
+        {
+          "fontSize": 16,
+          "height": 50,
+          "id": "three",
+          "width": 100,
+          "x": 50,
+          "y": 78
+        }
+      ]
+    },
+    "name": "unicode-hash-collision-RL",
+    "nodes": [
+      {
+        "id": "𐀀1ti7zkx",
+        "width": 60,
+        "height": 30,
+        "label": ""
+      },
+      {
+        "id": "zvtd6b",
+        "width": 70,
+        "height": 35,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "one",
+        "width": 80,
+        "height": 40,
+        "label": ""
+      },
+      {
+        "id": "two",
+        "width": 90,
+        "height": 45,
+        "isInvisible": true,
+        "label": ""
+      },
+      {
+        "id": "three",
+        "width": 100,
+        "height": 50,
+        "label": ""
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "inputOrder": "authored",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
   }
 ]
