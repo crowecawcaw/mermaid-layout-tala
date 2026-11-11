@@ -125,13 +125,45 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 		}
 		cases = append(cases, struct{ name, path string }{entry.Name(), input})
 	}
+	fuzzInputs := map[string][]byte{}
+	fuzzSeeds := map[string]int64{}
+	fuzzCases := []struct {
+		name                                                                   string
+		seed                                                                   int64
+		maxNodes, iterations, compaction, subset, minConnection, maxConnection uint8
+	}{
+		{"fuzz-default-1", 1, 10, 2, 50, 40, 10, 40},
+		{"fuzz-default-2", 2, 15, 4, 60, 60, 25, 65},
+		{"fuzz-default-3", 3, 20, 5, 40, 80, 45, 80},
+		{"fuzz-17640421aa66af00", 65, 80, 49, 118, 240, 9, 106},
+		{"fuzz-41c61ccd88c1b87f", 11, 23, 2, 81, 110, 13, 66},
+		{"fuzz-5e5764be2ee6224a", 46, 11, 5, 4, 110, 39, 91},
+	}
+	for _, f := range fuzzCases {
+		config := normalizeFuzzerConfig(f.seed, f.maxNodes, f.iterations, f.compaction, f.subset, f.minConnection, f.maxConnection)
+		graph := createRandomGraph(withTestLogger(context.Background(), t), config)
+		data, err := graphjson.Marshal(context.Background(), graph)
+		if err != nil {
+			t.Fatalf("%s: %v", f.name, err)
+		}
+		fuzzInputs[f.name], fuzzSeeds[f.name] = data, f.seed
+		cases = append(cases, struct{ name, path string }{f.name, ""})
+	}
 	fixtures := []any{}
 	for _, c := range cases {
-		data, err := os.ReadFile(filepath.Join("..", "testdata", c.path))
-		if err != nil {
-			t.Fatal(err)
+		data := fuzzInputs[c.name]
+		if c.path != "" {
+			var err error
+			data, err = os.ReadFile(filepath.Join("..", "testdata", c.path))
+			if err != nil {
+				t.Fatal(err)
+			}
 		}
-		for _, seed := range []int64{1, 123} {
+		seeds := []int64{1, 123}
+		if seed, ok := fuzzSeeds[c.name]; ok {
+			seeds = []int64{seed}
+		}
+		for _, seed := range seeds {
 			graph := layoutgraph.NewGraph()
 			if err := graphjson.Unmarshal(context.Background(), data, graph); err != nil {
 				t.Fatal(err)
