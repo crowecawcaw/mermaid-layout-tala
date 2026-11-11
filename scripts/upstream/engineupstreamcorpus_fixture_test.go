@@ -19,18 +19,28 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 		t.Skip("set TALA_ENGINEUPSTREAMCORPUS_FIXTURES")
 	}
 	cases := []struct{ name, path string }{
-		{"multiple_connections", "layout/multiple_connections/graph.input.json"},
-		{"basic_tree", "layout/basic_tree/graph.input.json"},
-		{"all_shapes", "layout/all_shapes/graph.input.json"},
-		{"one_container", "layout/one_container/graph.input.json"},
-		{"dense", "layout/dense/graph.input.json"},
-		{"self_edges_large", "layout/self_edges_large/graph.input.json"},
-		{"self_edges_all_shapes", "layout/self_edges_all_shapes/graph.input.json"},
 		{"trees_26nodes", "benchmark/trees_26nodes.json"},
 		{"18tables", "benchmark/18tables.json"},
 		{"clusters_28nodes", "benchmark/clusters_28nodes.json"},
 		{"hierarchy_nested", "benchmark/hierarchy_nested.json"},
 		{"generated_nested", "benchmark/nodes10_edges20_containers5_width4441_height4198.json"},
+	}
+	entries, err := os.ReadDir(filepath.Join("..", "testdata", "layout"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, entry := range entries {
+		if !entry.IsDir() {
+			continue
+		}
+		input := filepath.Join("layout", entry.Name(), "graph.input.json")
+		if _, err := os.Stat(filepath.Join("..", "testdata", input)); err != nil {
+			if os.IsNotExist(err) {
+				continue
+			}
+			t.Fatal(err)
+		}
+		cases = append(cases, struct{ name, path string }{entry.Name(), input})
 	}
 	fixtures := []any{}
 	for _, c := range cases {

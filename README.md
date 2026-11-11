@@ -153,7 +153,7 @@ npm test
 ```
 
 `npm run test:parity` compares complete layouts, upstream engine graphs, and standalone rerouting against
-pinned Go fixtures. It currently reports 549/549 layouts, 12/12 upstream engine graphs, 32/32 layout failures,
+pinned Go fixtures. It currently reports 549/549 layouts, 39/39 upstream engine graphs, 32/32 layout failures,
 90/90 rerouting cases, and 5/5 rerouting failures matching. Additional upstream features and graph shapes still need
 differential coverage.
 

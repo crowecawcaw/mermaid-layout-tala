@@ -10,7 +10,7 @@ full parity. The prior WebAssembly replacement remains reverted; the public
 
 | Domain | Current implementation | Evidence / remaining work |
 | --- | --- | --- |
-| Engine and graph model | Direct TypeScript translation of the upstream pipeline and graph stages | `upstream-enginepipeline.test.ts` compares complete single-seed layouts; `upstream-engine-corpus.test.ts` compares 12 graphs from upstream's own layout and benchmark corpus, including a 57-node nested hierarchy, an 18-table graph, and labeled self-loops across shapes. Broaden cancellation coverage |
+| Engine and graph model | Direct TypeScript translation of the upstream pipeline and graph stages | `upstream-enginepipeline.test.ts` compares complete single-seed layouts; `upstream-engine-corpus.test.ts` compares all 34 upstream layout inputs plus five benchmark graphs, including a 69-node nested graph, an 18-table graph, and labeled self-loops across shapes. Broaden cancellation coverage |
 | Hierarchy, placement and packing | Translated upstream algorithms, including compound hierarchy placement | Go differential fixtures cover rank assignment, ordering, alignment, gap normalization, recursive packing and grouped layouts; more complex graphs remain to be tested |
 | Routing and labels | Translated upstream OVG routing, cleanup, port swaps, segment balancing, channel nudging, shortcutting and label placement | Go differential fixtures cover stages and work limits; shapes, clusters, aliases and larger diagrams need broader coverage |
 | Candidate selection | Go-compatible random stream, upstream penalty/area scoring and compound refinement | Scoring and refinement have differential fixtures; public adapter validation and additional D2 metadata need coverage |
