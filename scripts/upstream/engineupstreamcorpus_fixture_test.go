@@ -27,7 +27,7 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 	}
 	for _, entry := range benchmarks {
 		name := entry.Name()
-		if entry.IsDir() || !strings.HasSuffix(name, ".json") || name == "big_connected.json" || name == "big_many_subgraphs.json" || name == "us_map.json" {
+		if entry.IsDir() || !strings.HasSuffix(name, ".json") || name == "big_many_subgraphs.json" {
 			continue
 		}
 		cases = append(cases, struct{ name, path string }{strings.TrimSuffix(name, ".json"), filepath.Join("benchmark", name)})
