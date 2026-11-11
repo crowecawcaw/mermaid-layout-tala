@@ -66,13 +66,19 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 	fixtures := []any{}
 	failures := []any{}
 	for _, direction := range []string{"TB", "BT", "LR", "RL", "DEFAULT"} {
-		for trial := 0; trial < 13; trial++ {
+		for trial := 0; trial < 17; trial++ {
 			g := d2graph.NewGraph()
-			if trial >= 6 {
+			if trial >= 6 && trial < 13 {
 				g.Root.Shape.Value = "sequence_diagram"
 			}
 			g.Root.Direction.Value = dirs[direction]
 			nodes := []rerouteNode{{ID: "a", Width: 80, Height: 60, X: 40, Y: 30}, {ID: "b", Width: 80, Height: 60, X: 240, Y: 30}, {ID: "c", Width: 70, Height: 50, X: float64(85 + trial*25), Y: 165}}
+			if trial >= 13 {
+				shapes := []string{"diamond", "oval", "callout", "cylinder"}
+				nodes[0].Shape = shapes[trial-13]
+				nodes[1].Shape = shapes[(trial-12)%len(shapes)]
+				nodes[2].Shape = shapes[(trial-11)%len(shapes)]
+			}
 			if trial >= 4 && trial < 8 {
 				nodes[0].ParentID, nodes[1].ParentID = "group", "group"
 				group := rerouteNode{ID: "group", Width: 400, Height: 160, X: 140, Y: 30, IsGroup: true}
@@ -192,7 +198,7 @@ func TestExportTypeScriptLayoutrerouteFixtures(t *testing.T) {
 				}
 			}
 			options := map[string]any{"direction": direction}
-			if trial >= 6 {
+			if trial >= 6 && trial < 13 {
 				options["rootSequence"] = true
 			}
 			if direction == "DEFAULT" {
