@@ -23,7 +23,7 @@ visibility against Go, including decimal and hexadecimal float syntax and
 rounding at floating-point boundaries.
 `upstream-edgeconstraints.test.ts` checks Go's combined edge-label and
 arrowhead-label size limits, including transparent edges.
-The upstream engine corpus comparisons check node coordinates, size, shapes,
+The upstream engine corpus comparisons check node and edge order, node coordinates, size, shapes,
 visibility, fonts and labels; edge endpoints, arrowheads, table ports and
 labels; every route vertex in order; node proximity relationships; and the resulting containers, hubs,
 clusters, sequences, vessel geometry, tree topology, and hierarchy ranks. Floating-point geometry

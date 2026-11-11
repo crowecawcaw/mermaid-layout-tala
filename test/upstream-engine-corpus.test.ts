@@ -110,6 +110,8 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
   }
   expect(result.Nodes).toHaveLength(fixture.nodes.length);
   expect(result.Edges).toHaveLength(fixture.edges.length);
+  expect(result.Nodes.map((node) => Number(node.ID))).toEqual(fixture.nodes.map((node) => node.id));
+  expect(result.Edges.map((edge) => Number(edge.ID))).toEqual(fixture.edges.map((edge) => edge.id));
   const resultNodes = new Map(result.Nodes.map((node) => [Number(node.ID), node]));
   const resultEdges = new Map(result.Edges.map((edge) => [Number(edge.ID), edge]));
   for (const expected of fixture.nodes) {
