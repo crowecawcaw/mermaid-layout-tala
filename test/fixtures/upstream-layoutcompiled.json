@@ -53,6 +53,8 @@
           "isCurve": false,
           "labelPercentage": 0.8142857142857143,
           "labelPosition": "UNLOCKED_BOTTOM",
+          "labelX": 24.5,
+          "labelY": 106.5,
           "points": [
             {
               "x": 102,
@@ -77,6 +79,8 @@
           "isCurve": false,
           "labelPercentage": 0.8142857142857143,
           "labelPosition": "UNLOCKED_TOP",
+          "labelX": 172.5,
+          "labelY": 106.5,
           "points": [
             {
               "x": 102,
@@ -146,6 +150,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "a",
+          "labelX": 102.5,
+          "labelY": 33,
           "width": 53,
           "x": 102.5,
           "y": 33
@@ -154,6 +160,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "b",
+          "labelX": 65.5,
+          "labelY": 159,
           "width": 53,
           "x": 65.5,
           "y": 159
@@ -162,6 +170,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "c",
+          "labelX": 138.5,
+          "labelY": 159,
           "width": 53,
           "x": 138.5,
           "y": 159
@@ -170,6 +180,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "d",
+          "labelX": 102,
+          "labelY": 285,
           "width": 54,
           "x": 102,
           "y": 285
@@ -282,6 +294,8 @@
           "isCurve": false,
           "labelPercentage": 0.8142857142857143,
           "labelPosition": "UNLOCKED_TOP",
+          "labelX": 24.5,
+          "labelY": 211.5,
           "points": [
             {
               "x": 102,
@@ -306,6 +320,8 @@
           "isCurve": false,
           "labelPercentage": 0.8142857142857143,
           "labelPosition": "UNLOCKED_BOTTOM",
+          "labelX": 172.5,
+          "labelY": 211.5,
           "points": [
             {
               "x": 102,
@@ -375,6 +391,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "a",
+          "labelX": 102.5,
+          "labelY": 285,
           "width": 53,
           "x": 102.5,
           "y": 285
@@ -383,6 +401,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "b",
+          "labelX": 65.5,
+          "labelY": 159,
           "width": 53,
           "x": 65.5,
           "y": 159
@@ -391,6 +411,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "c",
+          "labelX": 138.5,
+          "labelY": 159,
           "width": 53,
           "x": 138.5,
           "y": 159
@@ -399,6 +421,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "d",
+          "labelX": 102,
+          "labelY": 33,
           "width": 54,
           "x": 102,
           "y": 33
@@ -511,6 +535,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_RIGHT",
+          "labelX": 94.5,
+          "labelY": 9.5,
           "points": [
             {
               "x": 53,
@@ -535,6 +561,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_BOTTOM_RIGHT",
+          "labelX": 94.5,
+          "labelY": 153.5,
           "points": [
             {
               "x": 53,
@@ -604,6 +632,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "a",
+          "labelX": 26.5,
+          "labelY": 82,
           "width": 53,
           "x": 26.5,
           "y": 82
@@ -612,6 +642,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "b",
+          "labelX": 152.5,
+          "labelY": 39,
           "width": 53,
           "x": 152.5,
           "y": 39
@@ -620,6 +652,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "c",
+          "labelX": 152.5,
+          "labelY": 125,
           "width": 53,
           "x": 152.5,
           "y": 125
@@ -628,6 +662,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "d",
+          "labelX": 356,
+          "labelY": 82,
           "width": 54,
           "x": 356,
           "y": 82
@@ -740,6 +776,8 @@
           "isCurve": false,
           "labelPercentage": 0.7435233160621761,
           "labelPosition": "UNLOCKED_BOTTOM",
+          "labelX": 228.5,
+          "labelY": 16.5,
           "points": [
             {
               "x": 329,
@@ -764,6 +802,8 @@
           "isCurve": false,
           "labelPercentage": 0.7072538860103627,
           "labelPosition": "UNLOCKED_TOP",
+          "labelX": 235.5,
+          "labelY": 136.5,
           "points": [
             {
               "x": 329,
@@ -833,6 +873,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "a",
+          "labelX": 355.5,
+          "labelY": 76,
           "width": 53,
           "x": 355.5,
           "y": 76
@@ -841,6 +883,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "b",
+          "labelX": 152.5,
+          "labelY": 33,
           "width": 53,
           "x": 152.5,
           "y": 33
@@ -849,6 +893,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "c",
+          "labelX": 152.5,
+          "labelY": 119,
           "width": 53,
           "x": 152.5,
           "y": 119
@@ -857,6 +903,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "d",
+          "labelX": 27,
+          "labelY": 76,
           "width": 54,
           "x": 27,
           "y": 76
@@ -958,6 +1006,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 183,
+          "labelY": 76.5,
           "points": [
             {
               "x": 127,
@@ -974,6 +1024,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 392.5,
+          "labelY": 76.5,
           "points": [
             {
               "x": 336,
@@ -990,6 +1042,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 119.5,
+          "labelY": 211.5,
           "points": [
             {
               "x": 93,
@@ -1007,6 +1061,8 @@
           "fontSize": 28,
           "height": 186,
           "id": "service",
+          "labelX": 297,
+          "labelY": 23,
           "width": 594,
           "x": 297,
           "y": 93
@@ -1015,6 +1071,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "service.api",
+          "labelX": 93.5,
+          "labelY": 93,
           "width": 67,
           "x": 93.5,
           "y": 93
@@ -1023,6 +1081,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "service.worker",
+          "labelX": 287.5,
+          "labelY": 93,
           "width": 97,
           "x": 287.5,
           "y": 93
@@ -1031,6 +1091,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "service.cache",
+          "labelX": 491,
+          "labelY": 93,
           "width": 86,
           "x": 491,
           "y": 93
@@ -1039,6 +1101,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "database",
+          "labelX": 94,
+          "labelY": 330,
           "width": 110,
           "x": 94,
           "y": 330
@@ -1154,6 +1218,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 183,
+          "labelY": 274.5,
           "points": [
             {
               "x": 127,
@@ -1170,6 +1236,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 392.5,
+          "labelY": 274.5,
           "points": [
             {
               "x": 336,
@@ -1186,6 +1254,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 67.5,
+          "labelY": 162.5,
           "points": [
             {
               "x": 93,
@@ -1203,6 +1273,8 @@
           "fontSize": 28,
           "height": 186,
           "id": "service",
+          "labelX": 297,
+          "labelY": 221,
           "width": 594,
           "x": 297,
           "y": 291
@@ -1211,6 +1283,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "service.api",
+          "labelX": 93.5,
+          "labelY": 291,
           "width": 67,
           "x": 93.5,
           "y": 291
@@ -1219,6 +1293,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "service.worker",
+          "labelX": 287.5,
+          "labelY": 291,
           "width": 97,
           "x": 287.5,
           "y": 291
@@ -1227,6 +1303,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "service.cache",
+          "labelX": 491,
+          "labelY": 291,
           "width": 86,
           "x": 491,
           "y": 291
@@ -1235,6 +1313,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "database",
+          "labelX": 94,
+          "labelY": 33,
           "width": 110,
           "x": 94,
           "y": 33
@@ -1350,6 +1430,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 183,
+          "labelY": 76.5,
           "points": [
             {
               "x": 127,
@@ -1366,6 +1448,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 392.5,
+          "labelY": 76.5,
           "points": [
             {
               "x": 336,
@@ -1382,6 +1466,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 119.5,
+          "labelY": 211.5,
           "points": [
             {
               "x": 93,
@@ -1399,6 +1485,8 @@
           "fontSize": 28,
           "height": 186,
           "id": "service",
+          "labelX": 297,
+          "labelY": 23,
           "width": 594,
           "x": 297,
           "y": 93
@@ -1407,6 +1495,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "service.api",
+          "labelX": 93.5,
+          "labelY": 93,
           "width": 67,
           "x": 93.5,
           "y": 93
@@ -1415,6 +1505,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "service.worker",
+          "labelX": 287.5,
+          "labelY": 93,
           "width": 97,
           "x": 287.5,
           "y": 93
@@ -1423,6 +1515,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "service.cache",
+          "labelX": 491,
+          "labelY": 93,
           "width": 86,
           "x": 491,
           "y": 93
@@ -1431,6 +1525,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "database",
+          "labelX": 94,
+          "labelY": 330,
           "width": 110,
           "x": 94,
           "y": 330
@@ -1546,6 +1642,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 364,
+          "labelY": 76.5,
           "points": [
             {
               "x": 302,
@@ -1562,6 +1660,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 584.5,
+          "labelY": 76.5,
           "points": [
             {
               "x": 523,
@@ -1578,6 +1678,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_LEFT",
+          "labelX": 203.5,
+          "labelY": 110.5,
           "points": [
             {
               "x": 235,
@@ -1595,6 +1697,8 @@
           "fontSize": 28,
           "height": 186,
           "id": "service",
+          "labelX": 483.5,
+          "labelY": 23,
           "width": 617,
           "x": 483.5,
           "y": 93
@@ -1603,6 +1707,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "service.api",
+          "labelX": 268.5,
+          "labelY": 93,
           "width": 67,
           "x": 268.5,
           "y": 93
@@ -1611,6 +1717,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "service.worker",
+          "labelX": 474.5,
+          "labelY": 93,
           "width": 97,
           "x": 474.5,
           "y": 93
@@ -1619,6 +1727,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "service.cache",
+          "labelX": 689,
+          "labelY": 93,
           "width": 86,
           "x": 689,
           "y": 93
@@ -1627,6 +1737,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "database",
+          "labelX": 55,
+          "labelY": 93,
           "width": 110,
           "x": 55,
           "y": 93
@@ -1731,6 +1843,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 67,
+          "labelY": 315.5,
           "points": [
             {
               "x": 100,
@@ -1747,6 +1861,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 164,
+          "labelY": 315.5,
           "points": [
             {
               "x": 140,
@@ -1764,6 +1880,8 @@
           "fontSize": 28,
           "height": 240,
           "id": "zoneA",
+          "labelX": 120,
+          "labelY": 607,
           "width": 240,
           "x": 120,
           "y": 510
@@ -1772,6 +1890,8 @@
           "fontSize": 24,
           "height": 120,
           "id": "zoneA.item",
+          "labelX": 120,
+          "labelY": 510,
           "width": 120,
           "x": 120,
           "y": 510
@@ -1780,6 +1900,8 @@
           "fontSize": 28,
           "height": 240,
           "id": "zoneB",
+          "labelX": 120,
+          "labelY": 23,
           "width": 240,
           "x": 120,
           "y": 120
@@ -1788,6 +1910,8 @@
           "fontSize": 24,
           "height": 120,
           "id": "zoneB.item",
+          "labelX": 120,
+          "labelY": 120,
           "width": 120,
           "x": 120,
           "y": 120
@@ -1882,6 +2006,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 67,
+          "labelY": 315.5,
           "points": [
             {
               "x": 100,
@@ -1898,6 +2024,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 164,
+          "labelY": 315.5,
           "points": [
             {
               "x": 140,
@@ -1915,6 +2043,8 @@
           "fontSize": 28,
           "height": 240,
           "id": "zoneA",
+          "labelX": 120,
+          "labelY": 607,
           "width": 240,
           "x": 120,
           "y": 510
@@ -1923,6 +2053,8 @@
           "fontSize": 24,
           "height": 120,
           "id": "zoneA.item",
+          "labelX": 120,
+          "labelY": 510,
           "width": 120,
           "x": 120,
           "y": 510
@@ -1931,6 +2063,8 @@
           "fontSize": 28,
           "height": 240,
           "id": "zoneB",
+          "labelX": 120,
+          "labelY": 23,
           "width": 240,
           "x": 120,
           "y": 120
@@ -1939,6 +2073,8 @@
           "fontSize": 24,
           "height": 120,
           "id": "zoneB.item",
+          "labelX": 120,
+          "labelY": 120,
           "width": 120,
           "x": 120,
           "y": 120
@@ -2033,6 +2169,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 67,
+          "labelY": 315.5,
           "points": [
             {
               "x": 100,
@@ -2049,6 +2187,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 164,
+          "labelY": 315.5,
           "points": [
             {
               "x": 140,
@@ -2066,6 +2206,8 @@
           "fontSize": 28,
           "height": 240,
           "id": "zoneA",
+          "labelX": 120,
+          "labelY": 607,
           "width": 240,
           "x": 120,
           "y": 510
@@ -2074,6 +2216,8 @@
           "fontSize": 24,
           "height": 120,
           "id": "zoneA.item",
+          "labelX": 120,
+          "labelY": 510,
           "width": 120,
           "x": 120,
           "y": 510
@@ -2082,6 +2226,8 @@
           "fontSize": 28,
           "height": 240,
           "id": "zoneB",
+          "labelX": 120,
+          "labelY": 23,
           "width": 240,
           "x": 120,
           "y": 120
@@ -2090,6 +2236,8 @@
           "fontSize": 24,
           "height": 120,
           "id": "zoneB.item",
+          "labelX": 120,
+          "labelY": 120,
           "width": 120,
           "x": 120,
           "y": 120
@@ -2184,6 +2332,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 67,
+          "labelY": 315.5,
           "points": [
             {
               "x": 100,
@@ -2200,6 +2350,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 164,
+          "labelY": 315.5,
           "points": [
             {
               "x": 140,
@@ -2217,6 +2369,8 @@
           "fontSize": 28,
           "height": 240,
           "id": "zoneA",
+          "labelX": 120,
+          "labelY": 607,
           "width": 240,
           "x": 120,
           "y": 510
@@ -2225,6 +2379,8 @@
           "fontSize": 24,
           "height": 120,
           "id": "zoneA.item",
+          "labelX": 120,
+          "labelY": 510,
           "width": 120,
           "x": 120,
           "y": 510
@@ -2233,6 +2389,8 @@
           "fontSize": 28,
           "height": 240,
           "id": "zoneB",
+          "labelX": 120,
+          "labelY": 23,
           "width": 240,
           "x": 120,
           "y": 120
@@ -2241,6 +2399,8 @@
           "fontSize": 24,
           "height": 120,
           "id": "zoneB.item",
+          "labelX": 120,
+          "labelY": 120,
           "width": 120,
           "x": 120,
           "y": 120
@@ -2360,6 +2520,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 50.5,
+          "labelY": 183.5,
           "points": [
             {
               "x": 32,
@@ -2376,6 +2538,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_BOTTOM_CENTER",
+          "labelX": 223,
+          "labelY": 82.5,
           "points": [
             {
               "x": 149,
@@ -2393,6 +2557,8 @@
           "fontSize": 20,
           "height": 130,
           "id": "start",
+          "labelX": 361,
+          "labelY": 65,
           "width": 130,
           "x": 361,
           "y": 65
@@ -2401,6 +2567,8 @@
           "fontSize": 16,
           "height": 120,
           "id": "decision",
+          "labelX": 74,
+          "labelY": 65,
           "width": 148,
           "x": 74,
           "y": 65
@@ -2409,6 +2577,8 @@
           "fontSize": 16,
           "height": 118,
           "id": "db",
+          "labelX": 32,
+          "labelY": 346,
           "width": 64,
           "x": 32,
           "y": 334
@@ -2514,6 +2684,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 14.5,
+          "labelY": 210.5,
           "points": [
             {
               "x": 32,
@@ -2530,6 +2702,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 211,
+          "labelY": 331.5,
           "points": [
             {
               "x": 124,
@@ -2547,6 +2721,8 @@
           "fontSize": 20,
           "height": 130,
           "id": "start",
+          "labelX": 361,
+          "labelY": 333,
           "width": 130,
           "x": 361,
           "y": 333
@@ -2555,6 +2731,8 @@
           "fontSize": 16,
           "height": 120,
           "id": "decision",
+          "labelX": 74,
+          "labelY": 328,
           "width": 148,
           "x": 74,
           "y": 328
@@ -2563,6 +2741,8 @@
           "fontSize": 16,
           "height": 118,
           "id": "db",
+          "labelX": 32,
+          "labelY": 71,
           "width": 64,
           "x": 32,
           "y": 59
@@ -2668,6 +2848,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 222.5,
+          "labelY": 42.5,
           "points": [
             {
               "x": 148,
@@ -2684,6 +2866,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 110,
+          "labelY": 192.5,
           "points": [
             {
               "x": 87,
@@ -2701,6 +2885,8 @@
           "fontSize": 20,
           "height": 130,
           "id": "start",
+          "labelX": 65,
+          "labelY": 335,
           "width": 130,
           "x": 65,
           "y": 335
@@ -2709,6 +2895,8 @@
           "fontSize": 16,
           "height": 120,
           "id": "decision",
+          "labelX": 74,
+          "labelY": 60,
           "width": 148,
           "x": 74,
           "y": 60
@@ -2717,6 +2905,8 @@
           "fontSize": 16,
           "height": 118,
           "id": "db",
+          "labelX": 328,
+          "labelY": 71,
           "width": 64,
           "x": 328,
           "y": 59
@@ -2822,6 +3012,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 122.5,
+          "labelY": 82.5,
           "points": [
             {
               "x": 180,
@@ -2838,6 +3030,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_BOTTOM_CENTER",
+          "labelX": 387,
+          "labelY": 82.5,
           "points": [
             {
               "x": 329,
@@ -2855,6 +3049,8 @@
           "fontSize": 20,
           "height": 130,
           "id": "start",
+          "labelX": 509,
+          "labelY": 65,
           "width": 130,
           "x": 509,
           "y": 65
@@ -2863,6 +3059,8 @@
           "fontSize": 16,
           "height": 120,
           "id": "decision",
+          "labelX": 254,
+          "labelY": 65,
           "width": 148,
           "x": 254,
           "y": 65
@@ -2871,6 +3069,8 @@
           "fontSize": 16,
           "height": 118,
           "id": "db",
+          "labelX": 32,
+          "labelY": 77,
           "width": 64,
           "x": 32,
           "y": 65
@@ -2951,6 +3151,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 47.5,
+          "labelY": 104.5,
           "points": [
             {
               "x": 28,
@@ -2982,6 +3184,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "a",
+          "labelX": 28.5,
+          "labelY": 33,
           "width": 53,
           "x": 28.5,
           "y": 33
@@ -2990,6 +3194,8 @@
           "fontSize": 22,
           "height": 73,
           "id": "b",
+          "labelX": 28,
+          "labelY": 179.5,
           "width": 56,
           "x": 28,
           "y": 179.5
@@ -2998,6 +3204,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "c",
+          "labelX": 28.5,
+          "labelY": 325,
           "width": 53,
           "x": 28.5,
           "y": 325
@@ -3086,6 +3294,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 11.5,
+          "labelY": 254.5,
           "points": [
             {
               "x": 31,
@@ -3117,6 +3327,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "a",
+          "labelX": 31.5,
+          "labelY": 325,
           "width": 53,
           "x": 31.5,
           "y": 325
@@ -3125,6 +3337,8 @@
           "fontSize": 22,
           "height": 73,
           "id": "b",
+          "labelX": 31,
+          "labelY": 179.5,
           "width": 56,
           "x": 31,
           "y": 179.5
@@ -3133,6 +3347,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "c",
+          "labelX": 31.5,
+          "labelY": 33,
           "width": 53,
           "x": 31.5,
           "y": 33
@@ -3221,6 +3437,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 99.5,
+          "labelY": 20.5,
           "points": [
             {
               "x": 53,
@@ -3252,6 +3470,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "a",
+          "labelX": 26.5,
+          "labelY": 37,
           "width": 53,
           "x": 26.5,
           "y": 37
@@ -3260,6 +3480,8 @@
           "fontSize": 22,
           "height": 73,
           "id": "b",
+          "labelX": 173,
+          "labelY": 36.5,
           "width": 56,
           "x": 173,
           "y": 36.5
@@ -3268,6 +3490,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "c",
+          "labelX": 318.5,
+          "labelY": 37,
           "width": 53,
           "x": 318.5,
           "y": 37
@@ -3356,6 +3580,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 246.5,
+          "labelY": 54.5,
           "points": [
             {
               "x": 292,
@@ -3387,6 +3613,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "a",
+          "labelX": 318.5,
+          "labelY": 37,
           "width": 53,
           "x": 318.5,
           "y": 37
@@ -3395,6 +3623,8 @@
           "fontSize": 22,
           "height": 73,
           "id": "b",
+          "labelX": 173,
+          "labelY": 36.5,
           "width": 56,
           "x": 173,
           "y": 36.5
@@ -3403,6 +3633,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "c",
+          "labelX": 26.5,
+          "labelY": 37,
           "width": 53,
           "x": 26.5,
           "y": 37
@@ -3857,6 +4089,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 123.5,
+          "labelY": 275.5,
           "points": [
             {
               "x": 103,
@@ -3873,6 +4107,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "INSIDE_MIDDLE_LEFT",
+          "labelX": 143,
+          "labelY": 237.5,
           "points": [
             {
               "x": 143,
@@ -3889,6 +4125,8 @@
           "isCurve": false,
           "labelPercentage": 1,
           "labelPosition": "OUTSIDE_BOTTOM_CENTER",
+          "labelX": 206,
+          "labelY": 275.5,
           "points": [
             {
               "x": 183,
@@ -3905,6 +4143,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 12.5,
+          "labelY": 9.5,
           "points": [
             {
               "x": 63,
@@ -3934,6 +4174,8 @@
           "fontSize": 32,
           "height": 160,
           "id": "a",
+          "labelX": 143,
+          "labelY": 120,
           "width": 160,
           "x": 143,
           "y": 120
@@ -3942,6 +4184,8 @@
           "fontSize": 32,
           "height": 160,
           "id": "b",
+          "labelX": 143,
+          "labelY": 430,
           "width": 160,
           "x": 143,
           "y": 430
@@ -4034,6 +4278,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 123.5,
+          "labelY": 235.5,
           "points": [
             {
               "x": 143,
@@ -4050,6 +4296,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_BOTTOM_CENTER",
+          "labelX": 214,
+          "labelY": 235.5,
           "points": [
             {
               "x": 183,
@@ -4066,6 +4314,8 @@
           "isCurve": false,
           "labelPercentage": 1,
           "labelPosition": "OUTSIDE_BOTTOM_CENTER",
+          "labelX": 81,
+          "labelY": 235.5,
           "points": [
             {
               "x": 103,
@@ -4082,6 +4332,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 12.5,
+          "labelY": 280.5,
           "points": [
             {
               "x": 63,
@@ -4111,6 +4363,8 @@
           "fontSize": 32,
           "height": 160,
           "id": "a",
+          "labelX": 143,
+          "labelY": 390,
           "width": 160,
           "x": 143,
           "y": 390
@@ -4119,6 +4373,8 @@
           "fontSize": 32,
           "height": 160,
           "id": "b",
+          "labelX": 143,
+          "labelY": 80,
           "width": 160,
           "x": 143,
           "y": 80
@@ -4211,6 +4467,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 298.5,
+          "labelY": 63.5,
           "points": [
             {
               "x": 223,
@@ -4227,6 +4485,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 298,
+          "labelY": 103.5,
           "points": [
             {
               "x": 223,
@@ -4243,6 +4503,8 @@
           "isCurve": false,
           "labelPercentage": 1,
           "labelPosition": "OUTSIDE_BOTTOM_CENTER",
+          "labelX": 298,
+          "labelY": 143.5,
           "points": [
             {
               "x": 373,
@@ -4259,6 +4521,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 12.5,
+          "labelY": 9.5,
           "points": [
             {
               "x": 63,
@@ -4288,6 +4552,8 @@
           "fontSize": 32,
           "height": 160,
           "id": "a",
+          "labelX": 143,
+          "labelY": 120,
           "width": 160,
           "x": 143,
           "y": 120
@@ -4296,6 +4562,8 @@
           "fontSize": 32,
           "height": 160,
           "id": "b",
+          "labelX": 453,
+          "labelY": 120,
           "width": 160,
           "x": 453,
           "y": 120
@@ -4388,6 +4656,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 235.5,
+          "labelY": 137.5,
           "points": [
             {
               "x": 310,
@@ -4404,6 +4674,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 235,
+          "labelY": 177.5,
           "points": [
             {
               "x": 310,
@@ -4420,6 +4692,8 @@
           "isCurve": false,
           "labelPercentage": 1,
           "labelPosition": "OUTSIDE_BOTTOM_CENTER",
+          "labelX": 235,
+          "labelY": 97.5,
           "points": [
             {
               "x": 160,
@@ -4436,6 +4710,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 260.5,
+          "labelY": 9.5,
           "points": [
             {
               "x": 310,
@@ -4465,6 +4741,8 @@
           "fontSize": 32,
           "height": 160,
           "id": "a",
+          "labelX": 390,
+          "labelY": 120,
           "width": 160,
           "x": 390,
           "y": 120
@@ -4473,6 +4751,8 @@
           "fontSize": 32,
           "height": 160,
           "id": "b",
+          "labelX": 80,
+          "labelY": 120,
           "width": 160,
           "x": 80,
           "y": 120
@@ -4597,6 +4877,8 @@
           "fontSize": 28,
           "height": 186,
           "id": "box",
+          "labelX": 246.5,
+          "labelY": 23,
           "width": 493,
           "x": 246.5,
           "y": 93
@@ -4605,6 +4887,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "box.a",
+          "labelX": 86.5,
+          "labelY": 93,
           "width": 53,
           "x": 86.5,
           "y": 93
@@ -4613,6 +4897,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "box.b",
+          "labelX": 246.5,
+          "labelY": 93,
           "width": 53,
           "x": 246.5,
           "y": 93
@@ -4621,6 +4907,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "box.c",
+          "labelX": 406.5,
+          "labelY": 93,
           "width": 53,
           "x": 406.5,
           "y": 93
@@ -4629,6 +4917,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "outside",
+          "labelX": 588,
+          "labelY": 93,
           "width": 98,
           "x": 588,
           "y": 93
@@ -4788,6 +5078,8 @@
           "fontSize": 28,
           "height": 186,
           "id": "box",
+          "labelX": 253.5,
+          "labelY": 23,
           "width": 507,
           "x": 253.5,
           "y": 93
@@ -4796,6 +5088,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "box.a",
+          "labelX": 86.5,
+          "labelY": 93,
           "width": 53,
           "x": 86.5,
           "y": 93
@@ -4804,6 +5098,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "box.b",
+          "labelX": 253.5,
+          "labelY": 93,
           "width": 53,
           "x": 253.5,
           "y": 93
@@ -4812,6 +5108,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "box.c",
+          "labelX": 420.5,
+          "labelY": 93,
           "width": 53,
           "x": 420.5,
           "y": 93
@@ -4820,6 +5118,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "outside",
+          "labelX": 609,
+          "labelY": 93,
           "width": 98,
           "x": 609,
           "y": 93
@@ -4979,6 +5279,8 @@
           "fontSize": 28,
           "height": 186,
           "id": "box",
+          "labelX": 262.5,
+          "labelY": 23,
           "width": 525,
           "x": 262.5,
           "y": 93
@@ -4987,6 +5289,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "box.a",
+          "labelX": 86.5,
+          "labelY": 93,
           "width": 53,
           "x": 86.5,
           "y": 93
@@ -4995,6 +5299,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "box.b",
+          "labelX": 262.5,
+          "labelY": 93,
           "width": 53,
           "x": 262.5,
           "y": 93
@@ -5003,6 +5309,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "box.c",
+          "labelX": 438.5,
+          "labelY": 93,
           "width": 53,
           "x": 438.5,
           "y": 93
@@ -5011,6 +5319,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "outside",
+          "labelX": 636,
+          "labelY": 93,
           "width": 98,
           "x": 636,
           "y": 93
@@ -5170,6 +5480,8 @@
           "fontSize": 28,
           "height": 186,
           "id": "box",
+          "labelX": 218.5,
+          "labelY": 23,
           "width": 437,
           "x": 218.5,
           "y": 93
@@ -5178,6 +5490,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "box.a",
+          "labelX": 86.5,
+          "labelY": 93,
           "width": 53,
           "x": 86.5,
           "y": 93
@@ -5186,6 +5500,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "box.b",
+          "labelX": 218.5,
+          "labelY": 93,
           "width": 53,
           "x": 218.5,
           "y": 93
@@ -5194,6 +5510,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "box.c",
+          "labelX": 350.5,
+          "labelY": 93,
           "width": 53,
           "x": 350.5,
           "y": 93
@@ -5202,6 +5520,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "outside",
+          "labelX": 351,
+          "labelY": 330,
           "width": 98,
           "x": 351,
           "y": 330
@@ -5352,6 +5672,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "a",
+          "labelX": 26.5,
+          "labelY": 33,
           "width": 53,
           "x": 26.5,
           "y": 33
@@ -5360,6 +5682,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "b",
+          "labelX": 63.5,
+          "labelY": 159,
           "width": 53,
           "x": 63.5,
           "y": 159
@@ -5368,6 +5692,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "c",
+          "labelX": 99.5,
+          "labelY": 33,
           "width": 53,
           "x": 99.5,
           "y": 33
@@ -5496,6 +5822,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "a",
+          "labelX": 26.5,
+          "labelY": 159,
           "width": 53,
           "x": 26.5,
           "y": 159
@@ -5504,6 +5832,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "b",
+          "labelX": 63.5,
+          "labelY": 33,
           "width": 53,
           "x": 63.5,
           "y": 33
@@ -5512,6 +5842,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "c",
+          "labelX": 99.5,
+          "labelY": 159,
           "width": 53,
           "x": 99.5,
           "y": 159
@@ -5640,6 +5972,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "a",
+          "labelX": 26.5,
+          "labelY": 33,
           "width": 53,
           "x": 26.5,
           "y": 33
@@ -5648,6 +5982,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "b",
+          "labelX": 229.5,
+          "labelY": 76,
           "width": 53,
           "x": 229.5,
           "y": 76
@@ -5656,6 +5992,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "c",
+          "labelX": 26.5,
+          "labelY": 119,
           "width": 53,
           "x": 26.5,
           "y": 119
@@ -5784,6 +6122,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "a",
+          "labelX": 152.5,
+          "labelY": 33,
           "width": 53,
           "x": 152.5,
           "y": 33
@@ -5792,6 +6132,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "b",
+          "labelX": 26.5,
+          "labelY": 76,
           "width": 53,
           "x": 26.5,
           "y": 76
@@ -5800,6 +6142,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "c",
+          "labelX": 152.5,
+          "labelY": 119,
           "width": 53,
           "x": 152.5,
           "y": 119
@@ -5872,6 +6216,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 136,
+          "labelY": 240.5,
           "points": [
             {
               "x": 109,
@@ -5897,6 +6243,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "Store",
+          "labelX": 109,
+          "labelY": 330,
           "width": 84,
           "x": 109,
           "y": 330
@@ -5957,6 +6305,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 83,
+          "labelY": 132.5,
           "points": [
             {
               "x": 109,
@@ -5982,6 +6332,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "Store",
+          "labelX": 109,
+          "labelY": 33,
           "width": 84,
           "x": 109,
           "y": 33
@@ -6042,6 +6394,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 258,
+          "labelY": 75.5,
           "points": [
             {
               "x": 219,
@@ -6067,6 +6421,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "Store",
+          "labelX": 339,
+          "labelY": 92,
           "width": 84,
           "x": 339,
           "y": 92
@@ -6127,6 +6483,8 @@
           "isCurve": false,
           "labelPercentage": 0,
           "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 141,
+          "labelY": 109.5,
           "points": [
             {
               "x": 198,
@@ -6152,6 +6510,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "Store",
+          "labelX": 42,
+          "labelY": 92,
           "width": 84,
           "x": 42,
           "y": 92
@@ -6238,6 +6598,8 @@
           "isCurve": false,
           "labelPercentage": 0.5,
           "labelPosition": "UNLOCKED_MIDDLE",
+          "labelX": 27,
+          "labelY": 141.5,
           "points": [
             {
               "x": 27,
@@ -6247,7 +6609,15 @@
               "x": 27,
               "y": 216
             }
-          ]
+          ],
+          "sourceArrowheadLabelPosition": {
+            "x": 58.5,
+            "y": 81.5
+          },
+          "targetArrowheadLabelPosition": {
+            "x": 59,
+            "y": 200.5
+          }
         },
         {
           "id": "e1",
@@ -6269,6 +6639,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "a",
+          "labelX": 26.5,
+          "labelY": 33,
           "width": 53,
           "x": 26.5,
           "y": 33
@@ -6277,6 +6649,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "b",
+          "labelX": 26.5,
+          "labelY": 249,
           "width": 53,
           "x": 26.5,
           "y": 249
@@ -6285,6 +6659,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "c",
+          "labelX": 26.5,
+          "labelY": 465,
           "width": 53,
           "x": 26.5,
           "y": 465
@@ -6380,6 +6756,8 @@
           "isCurve": false,
           "labelPercentage": 0.5,
           "labelPosition": "UNLOCKED_MIDDLE",
+          "labelX": 27,
+          "labelY": 307.5,
           "points": [
             {
               "x": 27,
@@ -6389,7 +6767,15 @@
               "x": 27,
               "y": 232
             }
-          ]
+          ],
+          "sourceArrowheadLabelPosition": {
+            "x": -4.5,
+            "y": 366.5
+          },
+          "targetArrowheadLabelPosition": {
+            "x": -5,
+            "y": 247.5
+          }
         },
         {
           "id": "e1",
@@ -6411,6 +6797,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "a",
+          "labelX": 26.5,
+          "labelY": 415,
           "width": 53,
           "x": 26.5,
           "y": 415
@@ -6419,6 +6807,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "b",
+          "labelX": 26.5,
+          "labelY": 199,
           "width": 53,
           "x": 26.5,
           "y": 199
@@ -6427,6 +6817,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "c",
+          "labelX": 26.5,
+          "labelY": 33,
           "width": 53,
           "x": 26.5,
           "y": 33
@@ -6522,6 +6914,8 @@
           "isCurve": false,
           "labelPercentage": 0.5,
           "labelPosition": "UNLOCKED_MIDDLE",
+          "labelX": 128,
+          "labelY": 33.5,
           "points": [
             {
               "x": 53,
@@ -6531,7 +6925,15 @@
               "x": 203,
               "y": 33
             }
-          ]
+          ],
+          "sourceArrowheadLabelPosition": {
+            "x": 80.5,
+            "y": 13.5
+          },
+          "targetArrowheadLabelPosition": {
+            "x": 177,
+            "y": 11.5
+          }
         },
         {
           "id": "e1",
@@ -6553,6 +6955,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "a",
+          "labelX": 26.5,
+          "labelY": 33,
           "width": 53,
           "x": 26.5,
           "y": 33
@@ -6561,6 +6965,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "b",
+          "labelX": 229.5,
+          "labelY": 33,
           "width": 53,
           "x": 229.5,
           "y": 33
@@ -6569,6 +6975,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "c",
+          "labelX": 432.5,
+          "labelY": 33,
           "width": 53,
           "x": 432.5,
           "y": 33
@@ -6664,6 +7072,8 @@
           "isCurve": false,
           "labelPercentage": 0.5,
           "labelPosition": "UNLOCKED_MIDDLE",
+          "labelX": 281,
+          "labelY": 33.5,
           "points": [
             {
               "x": 356,
@@ -6673,7 +7083,15 @@
               "x": 206,
               "y": 33
             }
-          ]
+          ],
+          "sourceArrowheadLabelPosition": {
+            "x": 328.5,
+            "y": 52.5
+          },
+          "targetArrowheadLabelPosition": {
+            "x": 232,
+            "y": 54.5
+          }
         },
         {
           "id": "e1",
@@ -6695,6 +7113,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "a",
+          "labelX": 382.5,
+          "labelY": 33,
           "width": 53,
           "x": 382.5,
           "y": 33
@@ -6703,6 +7123,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "b",
+          "labelX": 179.5,
+          "labelY": 33,
           "width": 53,
           "x": 179.5,
           "y": 33
@@ -6711,6 +7133,8 @@
           "fontSize": 16,
           "height": 66,
           "id": "c",
+          "labelX": 26.5,
+          "labelY": 33,
           "width": 53,
           "x": 26.5,
           "y": 33
@@ -6744,6 +7168,2214 @@
         "height": 66,
         "id": "c",
         "label": "c",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "shape": "rectangle",
+        "width": 53
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "other",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "end"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 260,
+              "y": 66
+            },
+            {
+              "x": 260,
+              "y": 170
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 186,
+          "id": "zone",
+          "labelX": 98.5,
+          "labelY": 23,
+          "width": 197,
+          "x": 98.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "zone.inner",
+          "labelX": 98.5,
+          "labelY": 93,
+          "width": 77,
+          "x": 98.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "other",
+          "labelX": 259.5,
+          "labelY": 33,
+          "width": 85,
+          "x": 259.5,
+          "y": 33
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "end",
+          "labelX": 260,
+          "labelY": 203,
+          "width": 72,
+          "x": 260,
+          "y": 203
+        }
+      ]
+    },
+    "name": "compiled-nested-near-TB",
+    "nodes": [
+      {
+        "d2Id": "zone",
+        "height": 81,
+        "id": "zone",
+        "isGroup": true,
+        "label": "zone",
+        "labelHeight": 36,
+        "labelWidth": 56,
+        "shape": "rectangle",
+        "width": 101
+      },
+      {
+        "d2Id": "inner",
+        "height": 66,
+        "id": "zone.inner",
+        "label": "Item",
+        "labelHeight": 21,
+        "labelWidth": 32,
+        "parentId": "zone",
+        "shape": "rectangle",
+        "width": 77
+      },
+      {
+        "d2Id": "other",
+        "height": 66,
+        "id": "other",
+        "label": "other",
+        "labelHeight": 21,
+        "labelWidth": 40,
+        "nearPath": [
+          "zone",
+          "inner"
+        ],
+        "shape": "rectangle",
+        "width": 85
+      },
+      {
+        "d2Id": "end",
+        "height": 66,
+        "id": "end",
+        "label": "end",
+        "labelHeight": 21,
+        "labelWidth": 27,
+        "shape": "rectangle",
+        "width": 72
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "other",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "end"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 260,
+              "y": 170
+            },
+            {
+              "x": 260,
+              "y": 66
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 186,
+          "id": "zone",
+          "labelX": 98.5,
+          "labelY": 23,
+          "width": 197,
+          "x": 98.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "zone.inner",
+          "labelX": 98.5,
+          "labelY": 93,
+          "width": 77,
+          "x": 98.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "other",
+          "labelX": 259.5,
+          "labelY": 203,
+          "width": 85,
+          "x": 259.5,
+          "y": 203
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "end",
+          "labelX": 260,
+          "labelY": 33,
+          "width": 72,
+          "x": 260,
+          "y": 33
+        }
+      ]
+    },
+    "name": "compiled-nested-near-BT",
+    "nodes": [
+      {
+        "d2Id": "zone",
+        "height": 81,
+        "id": "zone",
+        "isGroup": true,
+        "label": "zone",
+        "labelHeight": 36,
+        "labelWidth": 56,
+        "shape": "rectangle",
+        "width": 101
+      },
+      {
+        "d2Id": "inner",
+        "height": 66,
+        "id": "zone.inner",
+        "label": "Item",
+        "labelHeight": 21,
+        "labelWidth": 32,
+        "parentId": "zone",
+        "shape": "rectangle",
+        "width": 77
+      },
+      {
+        "d2Id": "other",
+        "height": 66,
+        "id": "other",
+        "label": "other",
+        "labelHeight": 21,
+        "labelWidth": 40,
+        "nearPath": [
+          "zone",
+          "inner"
+        ],
+        "shape": "rectangle",
+        "width": 85
+      },
+      {
+        "d2Id": "end",
+        "height": 66,
+        "id": "end",
+        "label": "end",
+        "labelHeight": 21,
+        "labelWidth": 27,
+        "shape": "rectangle",
+        "width": 72
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "other",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "end"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 85,
+              "y": 239
+            },
+            {
+              "x": 170,
+              "y": 239
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 186,
+          "id": "zone",
+          "labelX": 98.5,
+          "labelY": 23,
+          "width": 197,
+          "x": 98.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "zone.inner",
+          "labelX": 98.5,
+          "labelY": 93,
+          "width": 77,
+          "x": 98.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "other",
+          "labelX": 42.5,
+          "labelY": 239,
+          "width": 85,
+          "x": 42.5,
+          "y": 239
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "end",
+          "labelX": 206,
+          "labelY": 239,
+          "width": 72,
+          "x": 206,
+          "y": 239
+        }
+      ]
+    },
+    "name": "compiled-nested-near-LR",
+    "nodes": [
+      {
+        "d2Id": "zone",
+        "height": 81,
+        "id": "zone",
+        "isGroup": true,
+        "label": "zone",
+        "labelHeight": 36,
+        "labelWidth": 56,
+        "shape": "rectangle",
+        "width": 101
+      },
+      {
+        "d2Id": "inner",
+        "height": 66,
+        "id": "zone.inner",
+        "label": "Item",
+        "labelHeight": 21,
+        "labelWidth": 32,
+        "parentId": "zone",
+        "shape": "rectangle",
+        "width": 77
+      },
+      {
+        "d2Id": "other",
+        "height": 66,
+        "id": "other",
+        "label": "other",
+        "labelHeight": 21,
+        "labelWidth": 40,
+        "nearPath": [
+          "zone",
+          "inner"
+        ],
+        "shape": "rectangle",
+        "width": 85
+      },
+      {
+        "d2Id": "end",
+        "height": 66,
+        "id": "end",
+        "label": "end",
+        "labelHeight": 21,
+        "labelWidth": 27,
+        "shape": "rectangle",
+        "width": 72
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "other",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "end"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 170,
+              "y": 239
+            },
+            {
+              "x": 72,
+              "y": 239
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 186,
+          "id": "zone",
+          "labelX": 98.5,
+          "labelY": 23,
+          "width": 197,
+          "x": 98.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "zone.inner",
+          "labelX": 98.5,
+          "labelY": 93,
+          "width": 77,
+          "x": 98.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "other",
+          "labelX": 212.5,
+          "labelY": 239,
+          "width": 85,
+          "x": 212.5,
+          "y": 239
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "end",
+          "labelX": 36,
+          "labelY": 239,
+          "width": 72,
+          "x": 36,
+          "y": 239
+        }
+      ]
+    },
+    "name": "compiled-nested-near-RL",
+    "nodes": [
+      {
+        "d2Id": "zone",
+        "height": 81,
+        "id": "zone",
+        "isGroup": true,
+        "label": "zone",
+        "labelHeight": 36,
+        "labelWidth": 56,
+        "shape": "rectangle",
+        "width": 101
+      },
+      {
+        "d2Id": "inner",
+        "height": 66,
+        "id": "zone.inner",
+        "label": "Item",
+        "labelHeight": 21,
+        "labelWidth": 32,
+        "parentId": "zone",
+        "shape": "rectangle",
+        "width": 77
+      },
+      {
+        "d2Id": "other",
+        "height": 66,
+        "id": "other",
+        "label": "other",
+        "labelHeight": 21,
+        "labelWidth": 40,
+        "nearPath": [
+          "zone",
+          "inner"
+        ],
+        "shape": "rectangle",
+        "width": 85
+      },
+      {
+        "d2Id": "end",
+        "height": 66,
+        "id": "end",
+        "label": "end",
+        "labelHeight": 21,
+        "labelWidth": 27,
+        "shape": "rectangle",
+        "width": 72
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "\"app.server\".child",
+        "id": "e0",
+        "label": "link",
+        "labelHeight": 21,
+        "labelWidth": 25,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "other"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 120.5,
+          "labelY": 211.5,
+          "points": [
+            {
+              "x": 101,
+              "y": 126
+            },
+            {
+              "x": 101,
+              "y": 297
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 186,
+          "id": "\"app.server\"",
+          "labelX": 101,
+          "labelY": 23,
+          "width": 202,
+          "x": 101,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "\"app.server\".child",
+          "labelX": 101,
+          "labelY": 93,
+          "width": 82,
+          "x": 101,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "other",
+          "labelX": 100.5,
+          "labelY": 330,
+          "width": 85,
+          "x": 100.5,
+          "y": 330
+        }
+      ]
+    },
+    "name": "compiled-quoted-id-TB",
+    "nodes": [
+      {
+        "d2Id": "\"app.server\"",
+        "height": 81,
+        "id": "\"app.server\"",
+        "isGroup": true,
+        "label": "app.server",
+        "labelHeight": 36,
+        "labelWidth": 124,
+        "shape": "rectangle",
+        "width": 169
+      },
+      {
+        "d2Id": "child",
+        "height": 66,
+        "id": "\"app.server\".child",
+        "label": "Child",
+        "labelHeight": 21,
+        "labelWidth": 37,
+        "parentId": "\"app.server\"",
+        "shape": "rectangle",
+        "width": 82
+      },
+      {
+        "d2Id": "other",
+        "height": 66,
+        "id": "other",
+        "label": "other",
+        "labelHeight": 21,
+        "labelWidth": 40,
+        "shape": "rectangle",
+        "width": 85
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "\"app.server\".child",
+        "id": "e0",
+        "label": "link",
+        "labelHeight": 21,
+        "labelWidth": 25,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "other"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 82.5,
+          "labelY": 162.5,
+          "points": [
+            {
+              "x": 101,
+              "y": 258
+            },
+            {
+              "x": 101,
+              "y": 66
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 186,
+          "id": "\"app.server\"",
+          "labelX": 101,
+          "labelY": 361,
+          "width": 202,
+          "x": 101,
+          "y": 291
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "\"app.server\".child",
+          "labelX": 101,
+          "labelY": 291,
+          "width": 82,
+          "x": 101,
+          "y": 291
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "other",
+          "labelX": 100.5,
+          "labelY": 33,
+          "width": 85,
+          "x": 100.5,
+          "y": 33
+        }
+      ]
+    },
+    "name": "compiled-quoted-id-BT",
+    "nodes": [
+      {
+        "d2Id": "\"app.server\"",
+        "height": 81,
+        "id": "\"app.server\"",
+        "isGroup": true,
+        "label": "app.server",
+        "labelHeight": 36,
+        "labelWidth": 124,
+        "shape": "rectangle",
+        "width": 169
+      },
+      {
+        "d2Id": "child",
+        "height": 66,
+        "id": "\"app.server\".child",
+        "label": "Child",
+        "labelHeight": 21,
+        "labelWidth": 37,
+        "parentId": "\"app.server\"",
+        "shape": "rectangle",
+        "width": 82
+      },
+      {
+        "d2Id": "other",
+        "height": 66,
+        "id": "other",
+        "label": "other",
+        "labelHeight": 21,
+        "labelWidth": 40,
+        "shape": "rectangle",
+        "width": 85
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "\"app.server\".child",
+        "id": "e0",
+        "label": "link",
+        "labelHeight": 21,
+        "labelWidth": 25,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "other"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 219.5,
+          "labelY": 76.5,
+          "points": [
+            {
+              "x": 142,
+              "y": 93
+            },
+            {
+              "x": 297,
+              "y": 93
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 186,
+          "id": "\"app.server\"",
+          "labelX": 101,
+          "labelY": 23,
+          "width": 202,
+          "x": 101,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "\"app.server\".child",
+          "labelX": 101,
+          "labelY": 93,
+          "width": 82,
+          "x": 101,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "other",
+          "labelX": 339.5,
+          "labelY": 93,
+          "width": 85,
+          "x": 339.5,
+          "y": 93
+        }
+      ]
+    },
+    "name": "compiled-quoted-id-LR",
+    "nodes": [
+      {
+        "d2Id": "\"app.server\"",
+        "height": 81,
+        "id": "\"app.server\"",
+        "isGroup": true,
+        "label": "app.server",
+        "labelHeight": 36,
+        "labelWidth": 124,
+        "shape": "rectangle",
+        "width": 169
+      },
+      {
+        "d2Id": "child",
+        "height": 66,
+        "id": "\"app.server\".child",
+        "label": "Child",
+        "labelHeight": 21,
+        "labelWidth": 37,
+        "parentId": "\"app.server\"",
+        "shape": "rectangle",
+        "width": 82
+      },
+      {
+        "d2Id": "other",
+        "height": 66,
+        "id": "other",
+        "label": "other",
+        "labelHeight": 21,
+        "labelWidth": 40,
+        "shape": "rectangle",
+        "width": 85
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "\"app.server\".child",
+        "id": "e0",
+        "label": "link",
+        "labelHeight": 21,
+        "labelWidth": 25,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "other"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "labelPercentage": 0,
+          "labelPosition": "OUTSIDE_TOP_CENTER",
+          "labelX": 171.5,
+          "labelY": 110.5,
+          "points": [
+            {
+              "x": 258,
+              "y": 93
+            },
+            {
+              "x": 85,
+              "y": 93
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 186,
+          "id": "\"app.server\"",
+          "labelX": 299,
+          "labelY": 23,
+          "width": 202,
+          "x": 299,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "\"app.server\".child",
+          "labelX": 299,
+          "labelY": 93,
+          "width": 82,
+          "x": 299,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "other",
+          "labelX": 42.5,
+          "labelY": 93,
+          "width": 85,
+          "x": 42.5,
+          "y": 93
+        }
+      ]
+    },
+    "name": "compiled-quoted-id-RL",
+    "nodes": [
+      {
+        "d2Id": "\"app.server\"",
+        "height": 81,
+        "id": "\"app.server\"",
+        "isGroup": true,
+        "label": "app.server",
+        "labelHeight": 36,
+        "labelWidth": 124,
+        "shape": "rectangle",
+        "width": 169
+      },
+      {
+        "d2Id": "child",
+        "height": 66,
+        "id": "\"app.server\".child",
+        "label": "Child",
+        "labelHeight": 21,
+        "labelWidth": 37,
+        "parentId": "\"app.server\"",
+        "shape": "rectangle",
+        "width": 82
+      },
+      {
+        "d2Id": "other",
+        "height": 66,
+        "id": "other",
+        "label": "other",
+        "labelHeight": 21,
+        "labelWidth": 40,
+        "shape": "rectangle",
+        "width": 85
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "sized",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "other"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 75,
+              "y": 90
+            },
+            {
+              "x": 75,
+              "y": 150
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 90,
+          "id": "sized",
+          "labelX": 75,
+          "labelY": 45,
+          "width": 150,
+          "x": 75,
+          "y": 45
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "other",
+          "labelX": 75.5,
+          "labelY": 183,
+          "width": 85,
+          "x": 75.5,
+          "y": 183
+        }
+      ]
+    },
+    "name": "compiled-fixed-size-TB",
+    "nodes": [
+      {
+        "d2Id": "sized",
+        "desiredHeight": 90,
+        "desiredWidth": 150,
+        "height": 90,
+        "id": "sized",
+        "label": "sized",
+        "labelHeight": 21,
+        "labelWidth": 37,
+        "shape": "rectangle",
+        "width": 150
+      },
+      {
+        "d2Id": "other",
+        "height": 66,
+        "id": "other",
+        "label": "other",
+        "labelHeight": 21,
+        "labelWidth": 40,
+        "shape": "rectangle",
+        "width": 85
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "sized",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "other"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 75,
+              "y": 150
+            },
+            {
+              "x": 75,
+              "y": 66
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 90,
+          "id": "sized",
+          "labelX": 75,
+          "labelY": 195,
+          "width": 150,
+          "x": 75,
+          "y": 195
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "other",
+          "labelX": 75.5,
+          "labelY": 33,
+          "width": 85,
+          "x": 75.5,
+          "y": 33
+        }
+      ]
+    },
+    "name": "compiled-fixed-size-BT",
+    "nodes": [
+      {
+        "d2Id": "sized",
+        "desiredHeight": 90,
+        "desiredWidth": 150,
+        "height": 90,
+        "id": "sized",
+        "label": "sized",
+        "labelHeight": 21,
+        "labelWidth": 37,
+        "shape": "rectangle",
+        "width": 150
+      },
+      {
+        "d2Id": "other",
+        "height": 66,
+        "id": "other",
+        "label": "other",
+        "labelHeight": 21,
+        "labelWidth": 40,
+        "shape": "rectangle",
+        "width": 85
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "sized",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "other"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 150,
+              "y": 45
+            },
+            {
+              "x": 300,
+              "y": 45
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 90,
+          "id": "sized",
+          "labelX": 75,
+          "labelY": 45,
+          "width": 150,
+          "x": 75,
+          "y": 45
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "other",
+          "labelX": 342.5,
+          "labelY": 45,
+          "width": 85,
+          "x": 342.5,
+          "y": 45
+        }
+      ]
+    },
+    "name": "compiled-fixed-size-LR",
+    "nodes": [
+      {
+        "d2Id": "sized",
+        "desiredHeight": 90,
+        "desiredWidth": 150,
+        "height": 90,
+        "id": "sized",
+        "label": "sized",
+        "labelHeight": 21,
+        "labelWidth": 37,
+        "shape": "rectangle",
+        "width": 150
+      },
+      {
+        "d2Id": "other",
+        "height": 66,
+        "id": "other",
+        "label": "other",
+        "labelHeight": 21,
+        "labelWidth": 40,
+        "shape": "rectangle",
+        "width": 85
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "sized",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "other"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 150,
+              "y": 45
+            },
+            {
+              "x": 85,
+              "y": 45
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 90,
+          "id": "sized",
+          "labelX": 225,
+          "labelY": 45,
+          "width": 150,
+          "x": 225,
+          "y": 45
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "other",
+          "labelX": 42.5,
+          "labelY": 45,
+          "width": 85,
+          "x": 42.5,
+          "y": 45
+        }
+      ]
+    },
+    "name": "compiled-fixed-size-RL",
+    "nodes": [
+      {
+        "d2Id": "sized",
+        "desiredHeight": 90,
+        "desiredWidth": 150,
+        "height": 90,
+        "id": "sized",
+        "label": "sized",
+        "labelHeight": 21,
+        "labelWidth": 37,
+        "shape": "rectangle",
+        "width": 150
+      },
+      {
+        "d2Id": "other",
+        "height": 66,
+        "id": "other",
+        "label": "other",
+        "labelHeight": 21,
+        "labelWidth": 40,
+        "shape": "rectangle",
+        "width": 85
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "box.a",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "outside"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 86,
+              "y": 126
+            },
+            {
+              "x": 86,
+              "y": 297
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 186,
+          "id": "box",
+          "labelX": 123,
+          "labelY": 23,
+          "width": 246,
+          "x": 123,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.a",
+          "labelX": 86.5,
+          "labelY": 93,
+          "width": 53,
+          "x": 86.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.b",
+          "labelX": 159.5,
+          "labelY": 93,
+          "width": 53,
+          "x": 159.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "outside",
+          "labelX": 87,
+          "labelY": 330,
+          "width": 98,
+          "x": 87,
+          "y": 330
+        }
+      ]
+    },
+    "name": "compiled-grid-TB",
+    "nodes": [
+      {
+        "d2Id": "box",
+        "height": 81,
+        "id": "box",
+        "isGrid": true,
+        "isGroup": true,
+        "label": "box",
+        "labelHeight": 36,
+        "labelWidth": 42,
+        "shape": "rectangle",
+        "width": 87
+      },
+      {
+        "d2Id": "a",
+        "height": 66,
+        "id": "box.a",
+        "label": "a",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "b",
+        "height": 66,
+        "id": "box.b",
+        "label": "b",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "outside",
+        "height": 66,
+        "id": "outside",
+        "label": "outside",
+        "labelHeight": 21,
+        "labelWidth": 53,
+        "shape": "rectangle",
+        "width": 98
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "box.a",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "outside"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 86,
+              "y": 258
+            },
+            {
+              "x": 86,
+              "y": 66
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 186,
+          "id": "box",
+          "labelX": 123,
+          "labelY": 221,
+          "width": 246,
+          "x": 123,
+          "y": 291
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.a",
+          "labelX": 86.5,
+          "labelY": 291,
+          "width": 53,
+          "x": 86.5,
+          "y": 291
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.b",
+          "labelX": 159.5,
+          "labelY": 291,
+          "width": 53,
+          "x": 159.5,
+          "y": 291
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "outside",
+          "labelX": 87,
+          "labelY": 33,
+          "width": 98,
+          "x": 87,
+          "y": 33
+        }
+      ]
+    },
+    "name": "compiled-grid-BT",
+    "nodes": [
+      {
+        "d2Id": "box",
+        "height": 81,
+        "id": "box",
+        "isGrid": true,
+        "isGroup": true,
+        "label": "box",
+        "labelHeight": 36,
+        "labelWidth": 42,
+        "shape": "rectangle",
+        "width": 87
+      },
+      {
+        "d2Id": "a",
+        "height": 66,
+        "id": "box.a",
+        "label": "a",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "b",
+        "height": 66,
+        "id": "box.b",
+        "label": "b",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "outside",
+        "height": 66,
+        "id": "outside",
+        "label": "outside",
+        "labelHeight": 21,
+        "labelWidth": 53,
+        "shape": "rectangle",
+        "width": 98
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "box.a",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "outside"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 186,
+              "y": 93
+            },
+            {
+              "x": 396,
+              "y": 93
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 186,
+          "id": "box",
+          "labelX": 123,
+          "labelY": 23,
+          "width": 246,
+          "x": 123,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.a",
+          "labelX": 159.5,
+          "labelY": 93,
+          "width": 53,
+          "x": 159.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.b",
+          "labelX": 86.5,
+          "labelY": 93,
+          "width": 53,
+          "x": 86.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "outside",
+          "labelX": 445,
+          "labelY": 93,
+          "width": 98,
+          "x": 445,
+          "y": 93
+        }
+      ]
+    },
+    "name": "compiled-grid-LR",
+    "nodes": [
+      {
+        "d2Id": "box",
+        "height": 81,
+        "id": "box",
+        "isGrid": true,
+        "isGroup": true,
+        "label": "box",
+        "labelHeight": 36,
+        "labelWidth": 42,
+        "shape": "rectangle",
+        "width": 87
+      },
+      {
+        "d2Id": "a",
+        "height": 66,
+        "id": "box.a",
+        "label": "a",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "b",
+        "height": 66,
+        "id": "box.b",
+        "label": "b",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "outside",
+        "height": 66,
+        "id": "outside",
+        "label": "outside",
+        "labelHeight": 21,
+        "labelWidth": 53,
+        "shape": "rectangle",
+        "width": 98
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "box.a",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "outside"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 258,
+              "y": 93
+            },
+            {
+              "x": 98,
+              "y": 93
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 28,
+          "height": 186,
+          "id": "box",
+          "labelX": 321,
+          "labelY": 23,
+          "width": 246,
+          "x": 321,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.a",
+          "labelX": 284.5,
+          "labelY": 93,
+          "width": 53,
+          "x": 284.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "box.b",
+          "labelX": 357.5,
+          "labelY": 93,
+          "width": 53,
+          "x": 357.5,
+          "y": 93
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "outside",
+          "labelX": 49,
+          "labelY": 93,
+          "width": 98,
+          "x": 49,
+          "y": 93
+        }
+      ]
+    },
+    "name": "compiled-grid-RL",
+    "nodes": [
+      {
+        "d2Id": "box",
+        "height": 81,
+        "id": "box",
+        "isGrid": true,
+        "isGroup": true,
+        "label": "box",
+        "labelHeight": 36,
+        "labelWidth": 42,
+        "shape": "rectangle",
+        "width": 87
+      },
+      {
+        "d2Id": "a",
+        "height": 66,
+        "id": "box.a",
+        "label": "a",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "b",
+        "height": 66,
+        "id": "box.b",
+        "label": "b",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "parentId": "box",
+        "shape": "rectangle",
+        "width": 53
+      },
+      {
+        "d2Id": "outside",
+        "height": 66,
+        "id": "outside",
+        "label": "outside",
+        "labelHeight": 21,
+        "labelWidth": 53,
+        "shape": "rectangle",
+        "width": 98
+      }
+    ],
+    "options": {
+      "direction": "RL",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "a",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "b"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 39,
+              "y": 92
+            },
+            {
+              "x": 39,
+              "y": 184
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 92,
+          "iconPosition": "INSIDE_TOP_LEFT",
+          "id": "a",
+          "labelX": 39.5,
+          "labelY": -15.5,
+          "width": 79,
+          "x": 39.5,
+          "y": 46
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "b",
+          "labelX": 39.5,
+          "labelY": 217,
+          "width": 53,
+          "x": 39.5,
+          "y": 217
+        }
+      ]
+    },
+    "name": "compiled-icons-TB",
+    "nodes": [
+      {
+        "d2Id": "a",
+        "height": 92,
+        "icon": "https://example.com/icon.svg",
+        "iconPosition": "INSIDE_TOP_LEFT",
+        "id": "a",
+        "label": "a",
+        "labelHeight": 21,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelWidth": 8,
+        "shape": "rectangle",
+        "width": 79
+      },
+      {
+        "d2Id": "b",
+        "height": 66,
+        "id": "b",
+        "label": "b",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "shape": "rectangle",
+        "width": 53
+      }
+    ],
+    "options": {
+      "direction": "TB",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "a",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "b"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 39,
+              "y": 184
+            },
+            {
+              "x": 39,
+              "y": 66
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 92,
+          "iconPosition": "INSIDE_TOP_LEFT",
+          "id": "a",
+          "labelX": 39.5,
+          "labelY": 168.5,
+          "width": 79,
+          "x": 39.5,
+          "y": 230
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "b",
+          "labelX": 39.5,
+          "labelY": 33,
+          "width": 53,
+          "x": 39.5,
+          "y": 33
+        }
+      ]
+    },
+    "name": "compiled-icons-BT",
+    "nodes": [
+      {
+        "d2Id": "a",
+        "height": 92,
+        "icon": "https://example.com/icon.svg",
+        "iconPosition": "INSIDE_TOP_LEFT",
+        "id": "a",
+        "label": "a",
+        "labelHeight": 21,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelWidth": 8,
+        "shape": "rectangle",
+        "width": 79
+      },
+      {
+        "d2Id": "b",
+        "height": 66,
+        "id": "b",
+        "label": "b",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "shape": "rectangle",
+        "width": 53
+      }
+    ],
+    "options": {
+      "direction": "BT",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "a",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "b"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 79,
+              "y": 46
+            },
+            {
+              "x": 184,
+              "y": 46
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 92,
+          "iconPosition": "INSIDE_TOP_LEFT",
+          "id": "a",
+          "labelX": 39.5,
+          "labelY": -15.5,
+          "width": 79,
+          "x": 39.5,
+          "y": 46
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "b",
+          "labelX": 210.5,
+          "labelY": 46,
+          "width": 53,
+          "x": 210.5,
+          "y": 46
+        }
+      ]
+    },
+    "name": "compiled-icons-LR",
+    "nodes": [
+      {
+        "d2Id": "a",
+        "height": 92,
+        "icon": "https://example.com/icon.svg",
+        "iconPosition": "INSIDE_TOP_LEFT",
+        "id": "a",
+        "label": "a",
+        "labelHeight": 21,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelWidth": 8,
+        "shape": "rectangle",
+        "width": 79
+      },
+      {
+        "d2Id": "b",
+        "height": 66,
+        "id": "b",
+        "label": "b",
+        "labelHeight": 21,
+        "labelWidth": 8,
+        "shape": "rectangle",
+        "width": 53
+      }
+    ],
+    "options": {
+      "direction": "LR",
+      "seeds": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "edges": [
+      {
+        "d2Index": 0,
+        "from": "a",
+        "id": "e0",
+        "label": "",
+        "labelHeight": 0,
+        "labelWidth": 0,
+        "sourceArrow": false,
+        "targetArrow": true,
+        "to": "b"
+      }
+    ],
+    "expected": {
+      "edges": [
+        {
+          "id": "e0",
+          "isCurve": false,
+          "points": [
+            {
+              "x": 184,
+              "y": 46
+            },
+            {
+              "x": 53,
+              "y": 46
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "fontSize": 16,
+          "height": 92,
+          "iconPosition": "INSIDE_TOP_LEFT",
+          "id": "a",
+          "labelX": 223.5,
+          "labelY": -15.5,
+          "width": 79,
+          "x": 223.5,
+          "y": 46
+        },
+        {
+          "fontSize": 16,
+          "height": 66,
+          "id": "b",
+          "labelX": 26.5,
+          "labelY": 46,
+          "width": 53,
+          "x": 26.5,
+          "y": 46
+        }
+      ]
+    },
+    "name": "compiled-icons-RL",
+    "nodes": [
+      {
+        "d2Id": "a",
+        "height": 92,
+        "icon": "https://example.com/icon.svg",
+        "iconPosition": "INSIDE_TOP_LEFT",
+        "id": "a",
+        "label": "a",
+        "labelHeight": 21,
+        "labelPosition": "OUTSIDE_TOP_CENTER",
+        "labelWidth": 8,
+        "shape": "rectangle",
+        "width": 79
+      },
+      {
+        "d2Id": "b",
+        "height": 66,
+        "id": "b",
+        "label": "b",
         "labelHeight": 21,
         "labelWidth": 8,
         "shape": "rectangle",

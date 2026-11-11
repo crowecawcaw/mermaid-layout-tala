@@ -12,6 +12,8 @@ import (
 
 	"github.com/d2lang/d2/d2compiler"
 	"github.com/d2lang/d2/d2graph"
+	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/labeling"
+	"github.com/d2lang/d2/d2layouts/d2talalayout/internal/layoutgraph"
 	"github.com/d2lang/d2/lib/textmeasure"
 )
 
@@ -49,6 +51,11 @@ func TestExportTypeScriptLayoutcompiledFixtures(t *testing.T) {
 		{"near", "a -> b\nc: {near: a}\nc -> b\n"},
 		{"class", "User: {\n shape: class\n name: string\n save(): void\n}\nUser -> Store: writes\n"},
 		{"arrowheads", "a <-> b: route {\n source-arrowhead.shape: diamond\n source-arrowhead.style.filled: true\n source-arrowhead.label: source\n target-arrowhead.shape: circle\n target-arrowhead.label: target\n}\nb -> c\n"},
+		{"nested-near", "zone: {\n inner: Item\n}\nother: {near: zone.inner}\nother -> end\n"},
+		{"quoted-id", "\"app.server\": { child: Child }\n\"app.server\".child -> other: link\n"},
+		{"fixed-size", "sized: {\n width: 150\n height: 90\n}\nsized -> other\n"},
+		{"grid", "box: {\n grid-rows: 2\n a\n b\n}\nbox.a -> outside\n"},
+		{"icons", "a: {\n icon: https://example.com/icon.svg\n icon.near: top-left\n label.near: outside-top-center\n}\na -> b\n"},
 	}
 	directions := []struct{ api, d2 string }{{"TB", "down"}, {"BT", "up"}, {"LR", "right"}, {"RL", "left"}}
 	out := []any{}
@@ -154,6 +161,19 @@ func TestExportTypeScriptLayoutcompiledFixtures(t *testing.T) {
 			if err := Layout(context.Background(), g, &opts); err != nil {
 				t.Fatalf("%s %s layout: %v", c.name, direction.api, err)
 			}
+			internal := layoutgraph.NewGraph()
+			bindings, err := translateGraph(context.Background(), g, internal, true)
+			if err != nil {
+				t.Fatalf("%s %s translated result: %v", c.name, direction.api, err)
+			}
+			internalNodes := map[layoutgraph.EntityID]*layoutgraph.Node{}
+			internalEdges := map[layoutgraph.EntityID]*layoutgraph.Edge{}
+			for _, n := range internal.Nodes {
+				internalNodes[n.ID] = n
+			}
+			for _, e := range internal.Edges {
+				internalEdges[e.ID] = e
+			}
 			outNodes := []any{}
 			outEdges := []any{}
 			for _, obj := range g.Objects {
@@ -164,6 +184,13 @@ func TestExportTypeScriptLayoutcompiledFixtures(t *testing.T) {
 						t.Fatal(err)
 					}
 					n["fontSize"] = value
+				}
+				if obj.IconPosition != nil {
+					n["iconPosition"] = *obj.IconPosition
+				}
+				if node := internalNodes[bindings.objectIDs[obj]]; node.Label != nil {
+					p := node.LabelTopLeft(node.Label.Position, node.Label.Width, node.Label.Height)
+					n["labelX"], n["labelY"] = p.X+node.Label.Width/2, p.Y+node.Label.Height/2
 				}
 				outNodes = append(outNodes, n)
 			}
@@ -178,6 +205,19 @@ func TestExportTypeScriptLayoutcompiledFixtures(t *testing.T) {
 				}
 				if edge.LabelPercentage != nil {
 					e["labelPercentage"] = *edge.LabelPercentage
+				}
+				if translated := internalEdges[bindings.edgeIDs[edge]]; translated != nil {
+					reversed := edge.SrcArrow && !edge.DstArrow
+					if p := labeling.PositionArrowheadLabel(translated, reversed, translated.Points); p != nil {
+						e["sourceArrowheadLabelPosition"] = map[string]float64{"x": p.Box.TopLeft.X + p.Box.Width/2, "y": p.Box.TopLeft.Y + p.Box.Height/2}
+					}
+					if p := labeling.PositionArrowheadLabel(translated, !reversed, translated.Points); p != nil {
+						e["targetArrowheadLabelPosition"] = map[string]float64{"x": p.Box.TopLeft.X + p.Box.Width/2, "y": p.Box.TopLeft.Y + p.Box.Height/2}
+					}
+					if translated.Label != nil {
+						p := translated.LabelTopLeft(translated.Label.Position, translated.Label.Width, translated.Label.Height)
+						e["labelX"], e["labelY"] = p.X+translated.Label.Width/2, p.Y+translated.Label.Height/2
+					}
 				}
 				outEdges = append(outEdges, e)
 			}
