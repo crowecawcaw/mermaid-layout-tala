@@ -10,6 +10,7 @@ import (
 	"math/rand"
 	"os"
 	"path/filepath"
+	"reflect"
 	"strings"
 	"testing"
 
@@ -21,6 +22,21 @@ import (
 )
 
 func corpusID(id int64) string { return fmt.Sprint(id) }
+
+func corpusEdgeStyle(style layoutgraph.EdgeStyle) map[string]string {
+	keys := []string{"opacity", "stroke", "fill", "fillPattern", "strokeWidth", "strokeDash", "borderRadius", "shadow", "3d", "multiple", "font", "fontSize", "fontColor", "animated", "bold", "italic", "underline", "filled", "doubleBorder", "textTransform"}
+	result := map[string]string{}
+	value := reflect.ValueOf(style)
+	if value.NumField() != len(keys) {
+		panic("edge style fields changed")
+	}
+	for i, key := range keys {
+		if scalar, ok := value.Field(i).Interface().(*layoutgraph.StyleScalar); ok && scalar != nil {
+			result[key] = scalar.Value
+		}
+	}
+	return result
+}
 
 func corpusIDs(ids []int64) []string {
 	out := make([]string, len(ids))
@@ -483,6 +499,32 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 		fuzzInputs[name] = data
 		cases = append(cases, struct{ name, path string }{name, ""})
 	}
+	for variant := 0; variant < 2; variant++ {
+		name := fmt.Sprintf("complete-edge-style-%d", variant)
+		graph := layoutgraph.NewGraph()
+		nodes := []*layoutgraph.Node{}
+		for i := 0; i < 5; i++ {
+			node := layoutgraph.NewNode(int64(i+1), float64(55+i*5), float64(40+i*3))
+			graph.AddNewNodeToContainer(nil, node)
+			nodes = append(nodes, node)
+		}
+		values := []string{"0.75", "red", "blue", "dots", "2", "3", "4", "true", "true", "true", "sans", "16", "black", "true", "true", "true", "true", "true", "true", "uppercase"}
+		for i := 0; i < 5; i++ {
+			edge := graph.Connect(nodes[i], nodes[(i+1+variant)%len(nodes)])
+			edge.ID = int64(len(graph.Edges))
+			edge.TargetArrowhead = "triangle"
+			fields := reflect.ValueOf(&edge.Style).Elem()
+			for j, value := range values {
+				fields.Field(j).Set(reflect.ValueOf(&layoutgraph.StyleScalar{Value: value}))
+			}
+		}
+		data, err := graphjson.Marshal(context.Background(), graph)
+		if err != nil {
+			t.Fatal(err)
+		}
+		fuzzInputs[name] = data
+		cases = append(cases, struct{ name, path string }{name, ""})
+	}
 	random := rand.New(rand.NewSource(8675309))
 	for trial := 0; trial < 20; trial++ {
 		name := fmt.Sprintf("random-connected-%02d", trial)
@@ -648,16 +690,7 @@ func TestExportTypeScriptEngineupstreamcorpusFixtures(t *testing.T) {
 				if e.TargetArrowheadLabel != nil {
 					record["targetArrowheadLabel"] = map[string]any{"text": e.TargetArrowheadLabel.Text, "position": e.TargetArrowheadLabel.Position.String(), "width": e.TargetArrowheadLabel.Width, "height": e.TargetArrowheadLabel.Height}
 				}
-				style := map[string]string{}
-				if e.Style.Stroke != nil {
-					style["stroke"] = e.Style.Stroke.Value
-				}
-				if e.Style.StrokeDash != nil {
-					style["strokeDash"] = e.Style.StrokeDash.Value
-				}
-				if e.Style.Animated != nil {
-					style["animated"] = e.Style.Animated.Value
-				}
+				style := corpusEdgeStyle(e.Style)
 				if len(style) > 0 {
 					record["style"] = style
 				}

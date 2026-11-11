@@ -9,6 +9,15 @@ import { Point } from '../src/upstream/geo/point.js';
 import { Orientation } from '../src/upstream/geo/orientation.js';
 import { Layout } from '../src/upstream/engine/pipeline.js';
 
+const styleFields = [
+  ['opacity', 'Opacity'], ['stroke', 'Stroke'], ['fill', 'Fill'], ['fillPattern', 'FillPattern'],
+  ['strokeWidth', 'StrokeWidth'], ['strokeDash', 'StrokeDash'], ['borderRadius', 'BorderRadius'],
+  ['shadow', 'Shadow'], ['3d', 'ThreeDee'], ['multiple', 'Multiple'], ['font', 'Font'],
+  ['fontSize', 'FontSize'], ['fontColor', 'FontColor'], ['animated', 'Animated'], ['bold', 'Bold'],
+  ['italic', 'Italic'], ['underline', 'Underline'], ['filled', 'Filled'], ['doubleBorder', 'DoubleBorder'],
+  ['textTransform', 'TextTransform'],
+] as const;
+
 it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
   const graph = new Graph();
   graph.CellSize = fixture.input.CellSize;
@@ -64,7 +73,7 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
     if ('isInvisible' in input) edge.IsInvisible = input.isInvisible ?? false;
     if ('style' in input && input.style) {
       const style = input.style as Record<string, { value: string } | undefined>;
-      for (const [key, destination] of [['stroke', 'Stroke'], ['strokeDash', 'StrokeDash'], ['animated', 'Animated']] as const)
+      for (const [key, destination] of styleFields)
         if (style[key]) edge.Style[destination] = { Value: style[key]!.value };
     }
     if ('minWidth' in input) edge.MinWidth = input.minWidth ?? 0;
@@ -185,8 +194,8 @@ it.each(fixtures)('matches pinned upstream engine graph $name', (fixture) => {
     const edge = result.Edges[index]!;
     expect(edge).toBeDefined();
     const style: Record<string, string> = {};
-    for (const [key, value] of [['stroke', edge.Style.Stroke], ['strokeDash', edge.Style.StrokeDash], ['animated', edge.Style.Animated]] as const)
-      if (value) style[key] = value.Value;
+    for (const [key, destination] of styleFields)
+      if (edge.Style[destination]) style[key] = edge.Style[destination]!.Value;
     expect(style).toEqual('style' in expected ? expected.style : {});
     for (const [key, actual] of [['sourceArrowheadLabel', edge.SourceArrowheadLabel], ['targetArrowheadLabel', edge.TargetArrowheadLabel]] as const) {
       if (key in expected && expected[key]) {
